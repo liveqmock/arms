@@ -1,0 +1,68 @@
+body 
+{
+	margin: 0 0 0 0; 
+	font-family: 微软雅黑;
+	font-size: 13px;
+}
+
+
+/*头部CSS*/
+#header
+{
+	height:45px;
+	background-color:#eef2fb;
+}
+
+
+/*菜单CSS*/
+#menu
+{  
+	z-index:800;
+	position:absolute;
+	height:29px;
+	width:76px;
+	background-color:#e0ecff; 
+	border-bottom: 1px solid  #8db2e3;
+}
+#menuData
+{ 
+	width:80px;
+	padding-top:5px;
+	padding-left:10px; 
+	font-weight:bold;		 
+	color:gray;
+	cursor:pointer;
+}
+
+
+/*菜单树CSS*/
+#menuTree
+{ 
+	z-index:10000;
+	position:absolute;
+	background-color:White;	
+	width:350px;
+	height:370px;
+	border:1px solid #8b919f;	
+}
+#menuTreeLeft
+{ 
+	width:200px;
+	height:370px;
+	border:1px solid #8b919f;
+	overflow:scroll;
+	
+	}
+
+
+#menuTreeRight
+{ 
+	z-index:10001;
+	position:absolute;
+	width:145px;
+	height:200px;
+	vertical-align:top;
+	}
+
+
+ul.ztree {margin-top:2px;width:170px;height:335px;border: 1px solid #617775;overflow-y:scroll;overflow-x:auto;}

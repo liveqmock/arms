@@ -1,0 +1,98 @@
+
+body
+{
+	 SCROLLBAR-FACE-COLOR:#d1d1d1;/*滚动条凸出部分的颜色*/
+	 SCROLLBAR-HIGHLIGHT-COLOR:#ffffff; /*滚动条空白部分的颜色*/
+	 SCROLLBAR-SHADOW-COLOR:#ffffff; /*立体滚动条阴影的颜色*/
+	 SCROLLBAR-3DLIGHT-COLOR:#ffffff; /*滚动条亮边的颜色*/
+	 SCROLLBAR-ARROW-COLOR:#ffffff; /*上下按钮上三角箭头的颜色*/
+	 SCROLLBAR-TRACK-COLOR:#ffffff; /*滚动条的背景颜色*/
+	 SCROLLBAR-DARKSHADOW-COLOR:#ffffff; /*滚动条强阴影的颜色*/
+	 SCROLLBAR-BASE-COLOR:#ffffff; /*滚动条的基本颜色*/
+	}
+
+body,td,th,input 
+{
+	margin:0px;
+	font-family: 微软雅黑;
+	font-size: 13px;
+ }
+
+.allRegion
+{
+	margin:0px;
+	height:100%;
+}
+
+
+/*页面导航字体*/
+.title
+{
+    border-bottom:1px solid  #0099cc; 
+	margin: 5px; 
+	padding:2px 2px 2px 10px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #0099CC;
+	font-family: 微软雅黑;
+	font-size: 13px;	
+	
+}
+.titlebg
+{
+	background-image:url(../image/write.png);
+	background-repeat:no-repeat;
+	background-position:left top;
+	padding-left:24px;
+	}
+
+.titleSpan
+{
+	font-size: 12px;
+	color: #999999;
+	line-height: 5px;
+	padding-right: 5px;
+	padding-left: 5px;
+	line-height:24px;
+}	
+
+
+/* 区域*/
+.region
+{
+	/*border:1px solid #0099CC;*/
+	margin:5px;
+	padding:0px;
+	width:100%;
+	height:100%; 
+	}
+
+.requireSpan
+{
+	color:blue;
+	font-weight:bold;
+	font-size:13px;
+}
+
+
+/*带边框表格*/
+.tableborder 
+{
+	border-collapse:collapse;
+	}
+.tableborder td
+{
+	border:1px solid #ccc;
+	}
+	
+
+/*新增input样式*/
+.txtBorder
+{
+	border:1px solid #9a9a9a;
+}
+
+textarea
+{
+	border:1px solid #9a9a9a;
+}

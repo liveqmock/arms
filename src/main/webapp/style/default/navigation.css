@@ -1,0 +1,112 @@
+body
+{
+	font: 12px Arial, Helvetica, sans-serif;
+	padding: 0;
+	margin: 0;
+	background-image: url('../navigation/main-bg.gif');
+}
+img
+{
+	border: none;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+/* dock - top */
+.dock {
+	position: relative; 
+	height: 50px; 
+	text-align: center;
+}
+.dock-container {
+	position: absolute;
+	height: 50px;
+	background: url(../navigation/dock-bg2.gif);
+	padding-left: 20px;
+}
+a.dock-item {
+	display: block;
+	width: 40px;
+	color: #000;
+	position: absolute;
+	top: 0px;
+	text-align: center;
+	text-decoration: none;
+	font: bold 12px Arial, Helvetica, sans-serif;
+}
+.dock-item img {
+	border: none; 
+	margin: 5px 10px 0px; 
+	width: 100%; 
+}
+.dock-item span {
+	display: none; 
+	padding-left: 20px;
+}
+
+/* dock2 - bottom */
+#dock2
+{
+	background-position: left;
+	width: 100%; /*bottom: 45%;*/
+	position: absolute;
+	left: 0px;
+	background-image: url('../navigation/tookle.png');
+	background-repeat: repeat-y;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-color: #C0C0C0;
+	border-bottom-color: #C0C0C0;
+}
+.dock-container2
+{
+	/*background-position: url(images/dock-bg.gif);*/
+	position: absolute;
+	height: 50px; /*background: url(images/dock-bg.gif);*/
+}
+a.dock-item2
+{
+	display: block;
+	font: bold 12px Arial, Helvetica, sans-serif;
+	width: 40px;
+	color: #000;
+	bottom: 0px;
+	position: absolute;
+	text-align: center;
+	text-decoration: none;
+}
+.dock-item2 span {
+	display: none;
+	/*padding-left: 20px;*/
+}
+.dock-item2 img {
+	border: none; 
+	margin: 5px 10px 0px; 
+	width: 100%; 
+}
+
+.preview
+{
+	display: none;
+}
+
+.preview table
+{
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.preview table .pre_title
+{
+	border: 1px solid #CCCCCC;
+	line-height: 22px;
+	background-color: #E8E8E8;
+	cursor: hand;
+}
+
+.preview table .image
+{
+	cursor: hand;
+}
