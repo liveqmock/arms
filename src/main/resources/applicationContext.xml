@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="  
+	http://www.springframework.org/schema/beans  
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+	http://www.springframework.org/schema/context  
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	<context:annotation-config />
+	<context:component-scan base-package="com.chiefmech.arms.dao" />
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://120.24.213.132:3306/chiefmech?characterEncoding=UTF-8"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="e77a85d63e"></property>
+		<property name="maxActive" value="100"></property>
+		<property name="maxIdle" value="30"></property>
+		<property name="maxWait" value="500"></property>
+		<property name="defaultAutoCommit" value="true"></property>
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+</beans>
