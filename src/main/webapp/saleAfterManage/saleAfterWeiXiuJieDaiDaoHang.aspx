@@ -16,7 +16,7 @@
     	white-space:nowrap;
     	}
     </style>
- <link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=17a48e594e374bee9428a515058eb666" /><link rel="stylesheet" type="text/css" href="../style/themes/icon.css?v=17a48e594e374bee9428a515058eb666" /><script src="../JS/Frame/jquery-1.8.0.min.js" type="text/javascript"></script> <script src="../JS/Frame/jquery.easyui.min.js" type="text/javascript"></script> <script src="../JS/Frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script> <script src="../JS/common.js?v=17a48e594e374bee9428a515058eb666" type="text/javascript"></script><link href="../style/common.css?v=17a48e594e374bee9428a515058eb666" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=8" /></head>
+ <link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=17a48e594e374bee9428a515058eb666" /><link rel="stylesheet" type="text/css" href="../style/themes/icon.css?v=17a48e594e374bee9428a515058eb666" /><script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script> <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script> <script src="../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script> <script src="../js/common.js?v=17a48e594e374bee9428a515058eb666" type="text/javascript"></script><link href="../style/common.css?v=17a48e594e374bee9428a515058eb666" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=8" /></head>
 
 <script language="javascript" type="text/javascript" >
 
@@ -132,23 +132,23 @@ function __doPostBack(eventTarget, eventArgument) {
        <td colspan="2" align="center">
        <div style="border:1px dashed gray;width:180px;height:180px;text-align:center;">
        <br />
-       <a onclick="return saleAfterShow();" id="lnkSearch" class="easyui-linkbutton" href="javascript:__doPostBack('lnkSearch','')">维修接待</a>
+       <a onClick="return saleAfterShow();" id="lnkSearch" class="easyui-linkbutton" href="javascript:__doPostBack('lnkSearch','')">维修接待</a>
        </div>
        </td>
        
        <td colspan="2" align="center">
        <div style="border:1px dashed gray;width:180px;height:180px;padding-left:15px;">
        <br />
-       <a onclick="return yuYue();" id="lnkYuYue" class="easyui-linkbutton" href="javascript:__doPostBack('lnkYuYue','')">预约制作</a>
+       <a onClick="return yuYue();" id="lnkYuYue" class="easyui-linkbutton" href="javascript:__doPostBack('lnkYuYue','')">预约制作</a>
        预约单(0)
 
        <br /> <br />
-       <a onclick="return storeOtherOrder();" id="lnkPeiJianDingHuo" class="easyui-linkbutton" href="javascript:__doPostBack('lnkPeiJianDingHuo','')">配件订货</a>
-       订货单<a href='#' onclick="showStoreOtherOrderList('3901db63-9379-4ef2-8ace-67bf172a5559')">(0)</a>
+       <a onClick="return storeOtherOrder();" id="lnkPeiJianDingHuo" class="easyui-linkbutton" href="javascript:__doPostBack('lnkPeiJianDingHuo','')">配件订货</a>
+       订货单<a href='#' onClick="showStoreOtherOrderList('3901db63-9379-4ef2-8ace-67bf172a5559')">(0)</a>
        <br /><br />
 
-       <a onclick="return showStoreOtherOrderList('');" id="lnkPeiJianSelf" class="easyui-linkbutton" href="javascript:__doPostBack('lnkPeiJianSelf','')">我的订货</a>
-       订货单<a href='#' onclick="showStoreOtherOrderList('3901db63-9379-4ef2-8ace-67bf172a5559')">(0)</a>
+       <a onClick="return showStoreOtherOrderList('');" id="lnkPeiJianSelf" class="easyui-linkbutton" href="javascript:__doPostBack('lnkPeiJianSelf','')">我的订货</a>
+       订货单<a href='#' onClick="showStoreOtherOrderList('3901db63-9379-4ef2-8ace-67bf172a5559')">(0)</a>
        <br /><br />
        
 
@@ -158,7 +158,7 @@ function __doPostBack(eventTarget, eventArgument) {
        <td colspan="2" align="center">
        <div style="border:1px dashed gray;width:180px;height:180px;text-align:center;">
        <br />
-        <a onclick="return parWinClose();" id="lnkCancel" class="easyui-linkbutton"
+        <a onClick="return parWinClose();" id="lnkCancel" class="easyui-linkbutton"
           >关闭</a>
        维修单(0)
        </div>
@@ -258,7 +258,7 @@ function __doPostBack(eventTarget, eventArgument) {
 
         //转向配件订货
         function storeOtherOrder() {
-            z = window.open('../storeOthermanage/storeOtherOrderBill.aspx?busiType=customManage&busiGuid=3901db63-9379-4ef2-8ace-67bf172a5559&d=' + new Date(), '配件订货', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
+            z = window.open('../storeOtherManage/storeOtherOrderBill.aspx?busiType=customManage&busiGuid=3901db63-9379-4ef2-8ace-67bf172a5559&d=' + new Date(), '配件订货', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
             z.focus();
 
             window.opener = null;
@@ -269,7 +269,7 @@ function __doPostBack(eventTarget, eventArgument) {
 
         //转向配件订货列表
         function showStoreOtherOrderList(custGuid) {
-            z = window.open('../storeOthermanage/storeOtherOrderBillManageSelf.aspx?custGuid=' + custGuid + '&d=' + new Date(), '配件订货查看', 'height=600, width=1200, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
+            z = window.open('../storeOtherManage/storeOtherOrderBillManageSelf.aspx?custGuid=' + custGuid + '&d=' + new Date(), '配件订货查看', 'height=600, width=1200, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
             z.focus();
 
             window.opener = null;

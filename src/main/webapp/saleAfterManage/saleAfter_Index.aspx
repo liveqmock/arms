@@ -3,7 +3,7 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><title>
 	维修管理
 </title>
-     <script src="../JS/Frame/jquery-1.8.0.min.js" type="text/javascript"></script>
+     <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
      <link href="../style/common.css?v=20130317" rel="stylesheet" type="text/css" />
      <style type="text/css"> 
  td,div

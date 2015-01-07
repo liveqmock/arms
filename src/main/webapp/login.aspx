@@ -5,8 +5,8 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><title>
 	BOSS系统登录页V1.0.0
 </title>
-        <script src="JS/Frame/jquery-1.8.0.min.js" type="text/javascript"></script>
-     <script src="JS/Frame/jquery.Cookie.js" type="text/javascript"></script>
+        <script src="js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
+     <script src="js/frame/jquery.Cookie.js" type="text/javascript"></script>
      <link rel="shortcut icon" href="image/SyAuto.ico" type="image/x-icon" />
     <style type="text/css" media="screen">
         body

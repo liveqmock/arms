@@ -8,10 +8,10 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><title>
 	车辆新增
 </title><link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=20130306" />
-    <script src="../JS/Frame/jquery-1.8.0.min.js" type="text/javascript"></script>
-    <script src="../JS/Frame/jquery.easyui.min.js" type="text/javascript"></script> 
-    <script src="../JS/birthDate.js?a=123" type="text/javascript"></script> 
-     <script src="../JS/Frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
+    <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
+    <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script> 
+    <script src="../js/birthDate.js?a=123" type="text/javascript"></script> 
+     <script src="../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
  
 </head>
 
@@ -95,17 +95,6 @@ function __doPostBack(eventTarget, eventArgument) {
 </script>
 
 
-<script src="/sag/WebResource.axd?d=SwS7SA_er4TnTg91ZZTEFR5vtPO3EMarGJnCBJJ1orLREyem5RiTirMA3gLHOj8Bz0mcxDXhcFWYDcNXY9x5rtJbLmY1&amp;t=635223658464687500" type="text/javascript"></script>
-
-
-<script src="/sag/ScriptResource.axd?d=aWn6WWpp6JO8tfEFpl1tF7Rvh83KkhGOBToLZUVPBE_uTIDWZMXlLWv48sOFRgJPMMDrku_LyOuffQNbacJu3NKR4v3dteNo25Pr1XPX8BiVnhXIO1r2XqK5CWTxFwCpAF83d-eFx1bKb55_QWzwQnNm4_NTSTH69r3Jwn1B0OXRdbCr0&amp;t=ffffffffb6431ae9" type="text/javascript"></script>
-<script type="text/javascript">
-//<![CDATA[
-if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax 客户端框架未能加载。');
-//]]>
-</script>
-
-<script src="/sag/ScriptResource.axd?d=r4zPOI1pOwmxrdPYS7pjMIEpzy6siFeaMUfm7ACBaZ0x-y-xHV47PqeHRhdIXT5Ce14vOke9QIFXuki2Is20sWysW8Md3fu6sEaHELKw1QUiw3oSTrDIxOdFoMVt-dF7TIIUe42VlHOj5BElHqMrTRl_HHD9iApw00wolmnCZE0zLwNj0&amp;t=ffffffffb6431ae9" type="text/javascript"></script>
 <div>
 
 	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="73777E5E" />

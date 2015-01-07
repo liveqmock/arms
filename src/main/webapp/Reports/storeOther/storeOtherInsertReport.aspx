@@ -8,7 +8,7 @@
         white-space:nowrap;
         }
     </style>
- <link rel="stylesheet" type="text/css" href="../../style/themes/default/easyui.css?v=17a48e594e374bee9428a515058eb666" /><link rel="stylesheet" type="text/css" href="../../style/themes/icon.css?v=17a48e594e374bee9428a515058eb666" /><script src="../../JS/Frame/jquery-1.8.0.min.js" type="text/javascript"></script> <script src="../../JS/Frame/jquery.easyui.min.js" type="text/javascript"></script> <script src="../../JS/Frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script> <script src="../../JS/common.js?v=17a48e594e374bee9428a515058eb666" type="text/javascript"></script><link href="../../style/common.css?v=17a48e594e374bee9428a515058eb666" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="../../image/SyAuto.ico" type="image/x-icon" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=8" /></head>
+ <link rel="stylesheet" type="text/css" href="../../style/themes/default/easyui.css?v=17a48e594e374bee9428a515058eb666" /><link rel="stylesheet" type="text/css" href="../../style/themes/icon.css?v=17a48e594e374bee9428a515058eb666" /><script src="../../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script> <script src="../../js/frame/jquery.easyui.min.js" type="text/javascript"></script> <script src="../../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script> <script src="../../js/common.js?v=17a48e594e374bee9428a515058eb666" type="text/javascript"></script><link href="../../style/common.css?v=17a48e594e374bee9428a515058eb666" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="../../image/SyAuto.ico" type="image/x-icon" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=8" /></head>
 <body>
     <form name="form1" method="post" action="storeOtherInsertReport.aspx" id="form1">
 <div>
@@ -60,7 +60,7 @@ function __doPostBack(eventTarget, eventArgument) {
        <td>机构名称:</td>
        <td colspan="2" style="width:280px;">
        <input name="txtHidGroupId" type="text" value="6018" id="txtHidGroupId" style="display:none;" />
-          <input name="txtGroupName" type="text" value="深业雷克" id="txtGroupName" onclick="groupselect();" style="width:100%;" />
+          <input name="txtGroupName" type="text" value="深业雷克" id="txtGroupName" onClick="groupselect();" style="width:100%;" />
        </td>
        <td><table id="radIoFlag" border="0">
   <tr>
@@ -108,7 +108,7 @@ function __doPostBack(eventTarget, eventArgument) {
         <td>数量</td><td>金额</td><td>机构名</td>
         </tr>
         
-        <tr ondblclick="ruKuBillShow('693befed-dffe-46a0-bdac-1315fe71292e')">
+        <tr onDblClick="ruKuBillShow('693befed-dffe-46a0-bdac-1315fe71292e')">
         <td style="width:30px;text-align:center;">1</td><td>入库单</td>
         <td>RKD20150105008</td>
         <td>2015/01/05</td><td>2015/01/05</td>
@@ -116,7 +116,7 @@ function __doPostBack(eventTarget, eventArgument) {
         <td style="text-align:right;">1.00</td><td style="text-align:right;">250.000</td><td>深业雷克</td>
         </tr>
         
-        <tr ondblclick="ruKuBillShow('65acd198-dc53-4463-89cd-dd422a68def4')">
+        <tr onDblClick="ruKuBillShow('65acd198-dc53-4463-89cd-dd422a68def4')">
         <td style="width:30px;text-align:center;">2</td><td>入库单</td>
         <td>RKD20150105007</td>
         <td>2015/01/05</td><td>2015/01/05</td>
@@ -124,7 +124,7 @@ function __doPostBack(eventTarget, eventArgument) {
         <td style="text-align:right;">1.00</td><td style="text-align:right;">430.000</td><td>深业雷克</td>
         </tr>
         
-        <tr ondblclick="ruKuBillShow('e4894fe3-6916-48b7-a55e-afa2decac525')">
+        <tr onDblClick="ruKuBillShow('e4894fe3-6916-48b7-a55e-afa2decac525')">
         <td style="width:30px;text-align:center;">3</td><td>入库单</td>
         <td>RKD20150105006</td>
         <td>2015/01/05</td><td>2015/01/05</td>
@@ -132,7 +132,7 @@ function __doPostBack(eventTarget, eventArgument) {
         <td style="text-align:right;">1.00</td><td style="text-align:right;">250.000</td><td>深业雷克</td>
         </tr>
         
-        <tr ondblclick="ruKuBillShow('5b937206-a90f-4af6-a11a-d37a536a05e1')">
+        <tr onDblClick="ruKuBillShow('5b937206-a90f-4af6-a11a-d37a536a05e1')">
         <td style="width:30px;text-align:center;">4</td><td>入库单</td>
         <td>RKD20150105005</td>
         <td>2015/01/05</td><td>2015/01/05</td>
@@ -140,7 +140,7 @@ function __doPostBack(eventTarget, eventArgument) {
         <td style="text-align:right;">1.00</td><td style="text-align:right;">1230.000</td><td>深业雷克</td>
         </tr>
         
-        <tr ondblclick="ruKuBillShow('40ec2c10-7093-4dbe-bfb4-273b7feda3a2')">
+        <tr onDblClick="ruKuBillShow('40ec2c10-7093-4dbe-bfb4-273b7feda3a2')">
         <td style="width:30px;text-align:center;">5</td><td>入库单</td>
         <td>RKD20150105004</td>
         <td>2015/01/05</td><td>2015/01/05</td>
@@ -148,7 +148,7 @@ function __doPostBack(eventTarget, eventArgument) {
         <td style="text-align:right;">1.00</td><td style="text-align:right;">250.000</td><td>深业雷克</td>
         </tr>
         
-        <tr ondblclick="ruKuBillShow('9ca59da8-fbba-4d41-95e2-13ee1eec546f')">
+        <tr onDblClick="ruKuBillShow('9ca59da8-fbba-4d41-95e2-13ee1eec546f')">
         <td style="width:30px;text-align:center;">6</td><td>入库单</td>
         <td>RKD20150105003</td>
         <td>2015/01/05</td><td>2015/01/05</td>
@@ -156,7 +156,7 @@ function __doPostBack(eventTarget, eventArgument) {
         <td style="text-align:right;">91.00</td><td style="text-align:right;">10434.600</td><td>深业雷克</td>
         </tr>
         
-        <tr ondblclick="ruKuBillShow('d58ab4c8-1993-412a-8655-bbd58ef3d5c7')">
+        <tr onDblClick="ruKuBillShow('d58ab4c8-1993-412a-8655-bbd58ef3d5c7')">
         <td style="width:30px;text-align:center;">7</td><td>入库单</td>
         <td>RKD20150105002</td>
         <td>2015/01/05</td><td>2015/01/05</td>
@@ -164,7 +164,7 @@ function __doPostBack(eventTarget, eventArgument) {
         <td style="text-align:right;">17.00</td><td style="text-align:right;">4504.500</td><td>深业雷克</td>
         </tr>
         
-        <tr ondblclick="ruKuBillShow('87910fff-0aa9-4090-be2d-821a0c009b85')">
+        <tr onDblClick="ruKuBillShow('87910fff-0aa9-4090-be2d-821a0c009b85')">
         <td style="width:30px;text-align:center;">8</td><td>入库单</td>
         <td>RKD20150105001</td>
         <td>2015/01/05</td><td>2015/01/05</td>
@@ -172,7 +172,7 @@ function __doPostBack(eventTarget, eventArgument) {
         <td style="text-align:right;">10.00</td><td style="text-align:right;">1320.200</td><td>深业雷克</td>
         </tr>
         
-        <tr ondblclick="ruKuBillShow('106c321f-df8e-416a-8187-c36d68431dc3')">
+        <tr onDblClick="ruKuBillShow('106c321f-df8e-416a-8187-c36d68431dc3')">
         <td style="width:30px;text-align:center;">9</td><td>入库单</td>
         <td>RKD20150105000</td>
         <td>2015/01/05</td><td>2015/01/05</td>
@@ -199,7 +199,7 @@ function __doPostBack(eventTarget, eventArgument) {
    <div>
     <!--分页代码start-->
     共1页 当前1页 跳到<input name="txtThisPage" type="text" value="1" id="txtThisPage" style="border:none;border-bottom:1px solid black;width:30px;" />
-    <a onclick="return pageGo();" id="lnkPageGo" href="javascript:__doPostBack('lnkPageGo','')">转到</a>
+    <a onClick="return pageGo();" id="lnkPageGo" href="javascript:__doPostBack('lnkPageGo','')">转到</a>
     <!--分页代码end-->
     </div>
 
@@ -214,7 +214,7 @@ function __doPostBack(eventTarget, eventArgument) {
 
     <script language="javascript" type="text/javascript" >
         function groupselect() {
-            var href = "../../Index/groupSelect.aspx";
+            var href = "../../index/groupSelect.aspx";
             var SizeZ = 'dialogWidth:600px;dialogHeight:450px;center:yes;edge:sunken;help:no;resizable:no;scroll:no;status:no;';
             var returnValue = window.showModalDialog(href, '', SizeZ);
             if (returnValue != undefined && returnValue != "") {

@@ -54,10 +54,10 @@
             width: 100%;
         }
     </style>
- <link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=90e943c2686f4150a8a9caace115b2b0" /><link rel="stylesheet" type="text/css" href="../style/themes/icon.css?v=90e943c2686f4150a8a9caace115b2b0" /><script src="../JS/Frame/jquery-1.8.0.min.js" type="text/javascript"></script> <script src="../JS/Frame/jquery.easyui.min.js" type="text/javascript"></script> <script src="../JS/Frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script> <script src="../JS/common.js?v=90e943c2686f4150a8a9caace115b2b0" type="text/javascript"></script><link href="../style/common.css?v=90e943c2686f4150a8a9caace115b2b0" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=8" /></head>
-<script type="text/javascript" src="../JS/flexigrid.js"></script>
+ <link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=90e943c2686f4150a8a9caace115b2b0" /><link rel="stylesheet" type="text/css" href="../style/themes/icon.css?v=90e943c2686f4150a8a9caace115b2b0" /><script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script> <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script> <script src="../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script> <script src="../js/common.js?v=90e943c2686f4150a8a9caace115b2b0" type="text/javascript"></script><link href="../style/common.css?v=90e943c2686f4150a8a9caace115b2b0" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=8" /></head>
+<script type="text/javascript" src="../js/flexigrid.js"></script>
 
-<script type="text/javascript" src="../JS/GridPage.js"></script>
+<script type="text/javascript" src="../js/GridPage.js"></script>
 <body>
     <form name="form1" method="post" action="CommonReport.aspx?type=saleAfterWeiXiuGongDanList" id="form1">
 <div>
@@ -83,17 +83,6 @@ function __doPostBack(eventTarget, eventArgument) {
 </script>
 
 
-<script src="/sag/WebResource.axd?d=SwS7SA_er4TnTg91ZZTEFR5vtPO3EMarGJnCBJJ1orLREyem5RiTirMA3gLHOj8Bz0mcxDXhcFWYDcNXY9x5rtJbLmY1&amp;t=635223658464687500" type="text/javascript"></script>
-
-
-<script src="/sag/ScriptResource.axd?d=aWn6WWpp6JO8tfEFpl1tF7Rvh83KkhGOBToLZUVPBE_uTIDWZMXlLWv48sOFRgJPMMDrku_LyOuffQNbacJu3NKR4v3dteNo25Pr1XPX8BiVnhXIO1r2XqK5CWTxFwCpAF83d-eFx1bKb55_QWzwQnNm4_NTSTH69r3Jwn1B0OXRdbCr0&amp;t=ffffffffb6431ae9" type="text/javascript"></script>
-<script type="text/javascript">
-//<![CDATA[
-if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax 客户端框架未能加载。');
-//]]>
-</script>
-
-<script src="/sag/ScriptResource.axd?d=r4zPOI1pOwmxrdPYS7pjMIEpzy6siFeaMUfm7ACBaZ0x-y-xHV47PqeHRhdIXT5Ce14vOke9QIFXuki2Is20sWysW8Md3fu6sEaHELKw1QUiw3oSTrDIxOdFoMVt-dF7TIIUe42VlHOj5BElHqMrTRl_HHD9iApw00wolmnCZE0zLwNj0&amp;t=ffffffffb6431ae9" type="text/javascript"></script>
     <div class="title">
         <table border="0" style="width: 100%;">
             <tr>
@@ -256,7 +245,7 @@ Sys.WebForms.PageRequestManager.getInstance()._updateControls(['ttmpa2','tUpdate
             __doPostBack('tmp', '');
         }
         function groupselect() {
-            var href = "../Index/groupSelect.aspx";
+            var href = "../index/groupSelect.aspx";
             var SizeZ = 'dialogWidth:600px;dialogHeight:450px;center:yes;edge:sunken;help:no;resizable:no;scroll:no;status:no;';
             var returnValue = window.showModalDialog(href, '', SizeZ);
             if (returnValue != undefined && returnValue != "") {

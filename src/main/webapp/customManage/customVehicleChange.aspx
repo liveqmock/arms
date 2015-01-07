@@ -6,10 +6,10 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><title>
   车辆重新绑定
 </title><link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=20130306" />
-    <script src="../JS/Frame/jquery-1.8.0.min.js" type="text/javascript"></script>
-    <script src="../JS/Frame/jquery.easyui.min.js" type="text/javascript"></script> 
-    <script src="../JS/birthDate.js?a=123" type="text/javascript"></script> 
-    <script src="../JS/Frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
+    <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
+    <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script> 
+    <script src="../js/birthDate.js?a=123" type="text/javascript"></script> 
+    <script src="../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
     <style type="text/css">
     td,div
     {

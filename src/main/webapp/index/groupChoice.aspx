@@ -4,7 +4,7 @@
 <head><title>
 	机构选择
 </title>
-    <script src="../JS/organization.js" type="text/javascript"></script>
+    <script src="../js/organization.js" type="text/javascript"></script>
     <style type="text/css">
 .OrgBox{
 	font-size:12px;

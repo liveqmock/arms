@@ -7,8 +7,8 @@
     <title>
     导航图
 </title>
-     <script src="../JS/Frame/jquery.js" type="text/javascript"></script>
-     <script src="../JS/Frame/interface.js" type="text/javascript"></script>
+     <script src="../js/frame/jquery.js" type="text/javascript"></script>
+     <script src="../js/frame/interface.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
             $("#dock2").css("bottom", $(document).height() / 2);
@@ -95,7 +95,7 @@
 
     </head>
 <body>
-    <form name="form1" method="post" action="NavigationPicture.aspx" id="form1">
+    <form name="form1" method="post" action="navigationPicture.aspx" id="form1">
 <div>
 <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNzQ2MDg0MjI1D2QWAgIDD2QWKgIDDxYCHghkaXNhYmxlZAUIZGlzYWJsZWRkAgUPFgIfAAUIZGlzYWJsZWRkAgcPFgIfAAUIZGlzYWJsZWRkAgkPFgIfAAUIZGlzYWJsZWRkAgsPFgIfAAUIZGlzYWJsZWRkAg0PFgIfAAUIZGlzYWJsZWRkAg8PFgIfAAUIZGlzYWJsZWRkAhEPFgIfAAUIZGlzYWJsZWRkAhMPFgIfAAUIZGlzYWJsZWRkAhUPFgIfAAUIZGlzYWJsZWRkAhcPFgIfAAUIZGlzYWJsZWRkAhkPFgIfAAUIZGlzYWJsZWRkAhsPFgIfAGRkAh0PFgIfAGRkAh8PFgIfAGRkAiEPFgIfAGRkAiMPFgIfAAUIZGlzYWJsZWRkAiUPFgIfAAUIZGlzYWJsZWRkAicPFgIfAAUIZGlzYWJsZWRkAikPFgIfAAUIZGlzYWJsZWRkAisPFgIfAAUIZGlzYWJsZWRkZEfGc2ei4JI5bbI8pUP7P5IvfGHd" />
 </div>

@@ -54,7 +54,7 @@ td
  <title>
 	维修结算单
 </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /></head>
- <script src="../JS/Frame/jquery-1.8.0.min.js" type="text/javascript"></script>
+ <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
    <script language="javascript" type="text/javascript" >
 
       function show() {
