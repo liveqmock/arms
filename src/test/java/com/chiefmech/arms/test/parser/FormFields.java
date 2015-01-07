@@ -2,7 +2,7 @@ package com.chiefmech.arms.test.parser;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.htmlparser.NodeFilter;
@@ -20,11 +20,13 @@ public class FormFields {
 	public static void main(String[] args) throws IOException {
 		String directory = "D:/weixin/workspace/arms/src/main/webapp/";
 		String[] extensions = {"aspx"};
-		Collection<File> files = FileUtils.listFiles(new File(directory),
-				extensions, true);
+		List<File> files = (List<File>) FileUtils.listFiles(
+				new File(directory), extensions, true);
 
 		StringBuffer sb = new StringBuffer();
-		for (File file : files) {
+		for (int i = 0; i < files.size(); i++) {
+			File file = files.get(i);
+			sb.append(String.format("---------File %d-----------\n", i));
 			sb.append(parseFile(file)).append("\n");
 		}
 
@@ -94,7 +96,7 @@ public class FormFields {
 				.substring(0, MAXLEN);
 
 		sb.append(node.getTagName()).append(" ")
-				.append(node.getAttribute("type")).append("\t")
+				.append(node.getAttribute("type")).append("\t\t")
 				.append(node.getAttribute("name")).append("\t\t")
 				.append(nodeValue);
 		return sb.toString();
