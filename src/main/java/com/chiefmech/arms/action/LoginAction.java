@@ -16,14 +16,21 @@ public class LoginAction extends ActionSupport {
 
 	private String message;
 
-	@Action(value = "login", results = {@Result(name = "success", location = "login.jsp")})
+	@Action(value = "login", results = { @Result(name = "success", location = "login.jsp") })
 	public String login() {
 		// http://www.cnblogs.com/yjmyzz/p/3888507.html
 		return SUCCESS;
 	}
 
-	@Action(value = "admin", results = {@Result(name = "success", location = "admin.jsp")})
+	@Action(value = "admin", results = { @Result(name = "success", location = "view.jsp") })
 	public String admin() {
+		message = "admin";
+		return SUCCESS;
+	}
+
+	@Action(value = "welcome", results = { @Result(name = "success", location = "view.jsp") })
+	public String welcome() {
+		message = "welcome";
 		return SUCCESS;
 	}
 

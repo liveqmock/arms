@@ -5,11 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>admin</title>
+<title><s:property value='message' /></title>
 </head>
 <body>
-	<h1>Title : admin</h1>
-	<h1>Message : <s:property value='message' /></h1>
+	<h1>
+		Title :
+		<s:property value='message' />
+	</h1>
+	<h1>
+		Message :
+		<s:property value='message' />
+	</h1>
 
 </body>
 </html>
