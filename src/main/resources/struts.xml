@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- 设置为true的时候，开启dev模式，会输出很多有用的日志 -->
+	<constant name="struts.devMode" value="true" />
+
+	<!-- Convention Plugin在Action中的配置改变时，可以自动加载改变的内容而不用重新启动容器, 这种加载方式只是实验性的并且还没有在所有的容器中进行测试，因此官方不推荐使用。 -->
+	<constant name="struts.convention.classes.reload" value="false" />
+
+	<!-- 可以使用action名 + 感叹号 + 方法名进行方法调用 这个在开发阶段开启可加速开发人员的开发调试，但是在项目完成时还是设为false的好。毕竟直接访问类的方法是不安全的 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+
+	<!-- 设置默认的 字符集编码 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+
+	<constant name="struts.convention.result.path" value="/" />
+
+</struts>
