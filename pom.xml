@@ -52,6 +52,12 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.htmlparser</groupId>
+			<artifactId>htmlparser</artifactId>
+			<version>1.6</version>
+			<scope>test</scope>
+		</dependency>
 		<!-- 由目标容器（如tomcat）和JDK提供，只在编译的classpath中加载和使用，打包的时候不会包含在目标包中 -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
