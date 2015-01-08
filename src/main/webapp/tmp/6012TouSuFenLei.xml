@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tree id="0">
+  <item text="投诉分类" id="tousu" totalNum="294" open="1" call="1">
+    <item text="售后服务" id="63">
+      <item text="保养前台" id="70">
+        <item text="电话接待" id="75">
+          <item text="接听人员不热情" id="77"/>
+        </item>
+        <item text="预约服务" id="79">
+          <item text="预约接待人员不热情" id="89"/>
+          <item text="无人提醒预约时间" id="91">
+          </item>
+          <item text="沟通问题" id="292"/>
+        </item>
+        <item text="进店接待" id="81">
+          <item text="等待接待时间过长" id="90"/>
+          <item text="没有提醒保管贵重物品" id="144"/>
+          <item text="检查车辆不仔细" id="145"/>
+        </item>
+        <item text="问诊及诊断" id="82">
+          <item text="没有详细记录客户需求" id="95"/>
+          <item text="没有进行旧件确认" id="96"/>
+        </item>
+        <item text="估时估价" id="83">
+          <item text="没有详细说明费用构成" id="97"/>
+          <item text="没有详细说明维修时间" id="99"/>
+          <item text="估计时间不准确" id="100"/>
+          <item text="估计费用不准确" id="155"/>
+        </item>
+        <item text="增加项目" id="84">
+          <item text="没有详细说明增加项目内容" id="101"/>
+          <item text="没有详细说明增加项目时间" id="102"/>
+          <item text="没有提前通知增加的项目" id="103"/>
+        </item>
+        <item text="交车服务" id="85">
+          <item text="没有进行详细的费用说明" id="104"/>
+          <item text="没有进行详细的维修说明" id="105"/>
+          <item text="没有进行旧件展示确认" id="106"/>
+          <item text="交车检查不仔细" id="285"/>
+        </item>
+        <item text="其它问题" id="108">
+          <item text="驾驶客户车辆受损" id="109"/>
+        </item>
+        <item text="零配件" id="112">
+          <item text="零件订购错误" id="113"/>
+        </item>
+        <item text="跟进过程" id="115">
+          <item text="延迟交车未及时通知客户" id="116">
+          </item>
+          <item text="未及时通知客户零件到货" id="117"/>
+          <item text="未及时通知客户取车" id="234"/>
+          <item text="未征求客户意见新增项目" id="290"/>
+        </item>
+        <item text="服务态度" id="169">
+          <item text="接车员服务态度差" id="170"/>
+          <item text="接车员不热情" id="232"/>
+          <item text="缺乏沟通技巧" id="250"/>
+          <item text="接车员承诺未兑现" id="251"/>
+        </item>
+        <item text="专业程度" id="171">
+          <item text="接车员专业知识缺乏" id="172"/>
+          <item text="对产品价格不熟悉" id="255"/>
+        </item>
+        <item text="价格收费" id="236">
+          <item text="收费不合理" id="237"/>
+        </item>
+        <item text="活动优惠" id="253">
+          <item text="优惠券使用受限" id="254"/>
+        </item>
+      </item>
+      <item text="保险前台" id="71">
+        <item text="电话接待" id="128">
+          <item text="无人接听电话" id="138"/>
+          <item text="接听人员不热情" id="139"/>
+        </item>
+        <item text="预约服务" id="129">
+          <item text="预约接待人员不热情" id="140"/>
+          <item text="无人提醒预约时间" id="141"/>
+        </item>
+        <item text="进店接待" id="130">
+          <item text="等待接待时间过长" id="142"/>
+          <item text="没有提醒保管贵重物品" id="146"/>
+          <item text="检查车辆不仔细" id="147"/>
+        </item>
+        <item text="问诊及诊断" id="131">
+          <item text="没有详细记录客户需求" id="148"/>
+          <item text="没有进行旧件确认" id="149"/>
+          <item text="强制客户消费" id="150"/>
+        </item>
+        <item text="估时估价" id="132">
+          <item text="没有详细说明费用构成" id="151"/>
+          <item text="没有详细说明维修时间" id="152"/>
+          <item text="估计时间不准确" id="153"/>
+          <item text="估计费用不准确" id="154"/>
+        </item>
+        <item text="增加项目" id="133">
+          <item text="没有详细说明增加项目内容" id="156"/>
+          <item text="没有详细说明增加项目时间" id="157"/>
+          <item text="没有提前通知增加的项目" id="158"/>
+        </item>
+        <item text="交车服务" id="134">
+          <item text="没有进行详细的费用说明" id="159"/>
+          <item text="没有进行详细的维修说明" id="160"/>
+          <item text="没有进行旧件展示" id="161"/>
+          <item text="交车检查不仔细" id="286"/>
+        </item>
+        <item text="其它问题" id="135">
+          <item text="驾驶客户车辆受损" id="162"/>
+        </item>
+        <item text="零配件" id="136">
+          <item text="零件订购错误" id="163"/>
+        </item>
+        <item text="跟进过程" id="137">
+          <item text="延迟交车未及时通知客户" id="164"/>
+          <item text="未及时通知客户零件到货" id="165"/>
+          <item text="未及时通知客户取车" id="235"/>
+        </item>
+        <item text="续保前台" id="166">
+          <item text="续保价格不合理" id="167"/>
+          <item text="续保电话无人接听" id="168"/>
+        </item>
+        <item text="服务态度" id="173">
+          <item text="接车员服务态度差" id="174"/>
+          <item text="接车员不热情" id="233"/>
+          <item text="缺乏沟通技巧" id="249"/>
+          <item text="接车员承诺未兑现" id="252"/>
+        </item>
+        <item text="专业程度" id="175">
+          <item text="接车员保险专业知识缺乏" id="176"/>
+        </item>
+        <item text="价格收费" id="238">
+          <item text="收费不合理" id="239"/>
+        </item>
+        <item text="活动优惠" id="256">
+          <item text="优惠券使用受限" id="257"/>
+        </item>
+      </item>
+      <item text="机电车间" id="72">
+        <item text="作业流程" id="177">
+          <item text="维修保养时间过长" id="178"/>
+          <item text="漏做保养、维修项目" id="180"/>
+          <item text="不爱惜客户车辆" id="183"/>
+          <item text="作业过程弄乱车上物品" id="184"/>
+          <item text="使用车辆功能键未归位" id="185"/>
+          <item text="驾驶客户车辆受损" id="186"/>
+          <item text="新增项目不合理" id="190"/>
+        </item>
+        <item text="完工检查" id="193">
+          <item text="未作环车检查" id="194"/>
+          <item text="检查不仔细" id="195"/>
+          <item text="未检查出作业项目遗漏" id="196"/>
+        </item>
+        <item text="服务态度" id="229">
+          <item text="机修师傅服务态度差" id="230"/>
+        </item>
+        <item text="维修质量" id="240">
+          <item text="客户要求未能满足" id="241"/>
+          <item text="维修后故障未彻底解决" id="242"/>
+          <item text="保养维修后出现新问题" id="243"/>
+          <item text="检查车辆不仔细" id="244"/>
+          <item text="维修保养过程马虎" id="245"/>
+          <item text="检查车辆不仔细" id="246"/>
+        </item>
+      </item>
+      <item text="钣喷车间" id="73">
+        <item text="钣金质量" id="118">
+          <item text="部件生锈" id="121"/>
+          <item text="部件漏水" id="122"/>
+          <item text="部件异响" id="123"/>
+          <item text="部件脱胶" id="124"/>
+          <item text="车身配件装配不到位" id="125"/>
+          <item text="部件间缝隙不均匀" id="126"/>
+          <item text="受损部件未修复为原样" id="127"/>
+        </item>
+        <item text="喷漆质量" id="119">
+          <item text="有色差" id="197"/>
+          <item text="漆面有流挂、泪痕、气泡" id="198"/>
+          <item text="有尘点" id="199"/>
+          <item text="脱漆" id="200"/>
+          <item text="橘皮" id="201"/>
+          <item text="有砂纸痕" id="202"/>
+          <item text="失光" id="203"/>
+          <item text="有漆雾" id="204"/>
+          <item text="漆面出现裂痕" id="205"/>
+          <item text="打磨粗糙" id="206"/>
+          <item text="漆面不平整" id="207"/>
+          <item text="喷漆一段时间后出现问题" id="208"/>
+        </item>
+        <item text="完工检查" id="210">
+          <item text="未按要求认真检查" id="211"/>
+          <item text="检查不仔细" id="212"/>
+          <item text="未检查出作业项目遗漏" id="213"/>
+        </item>
+        <item text="服务态度" id="227">
+          <item text="钣金师傅服务态度差" id="228"/>
+        </item>
+        <item text="作业流程" id="283">
+          <item text="客户要求无法满足" id="284"/>
+        </item>
+      </item>
+      <item text="美容车间" id="74">
+        <item text="美容质量" id="214">
+          <item text="洗车不干净(内)" id="215"/>
+          <item text="洗车不干净(外)" id="216"/>
+          <item text="美容项目效果差" id="219"/>
+        </item>
+        <item text="作业规范" id="220">
+          <item text="洗车次序混乱" id="221"/>
+          <item text="洗车作业不规范" id="222"/>
+          <item text="洗车人员乱动车内设施/物品" id="223"/>
+          <item text="洗车时间过长" id="224"/>
+        </item>
+        <item text="服务态度" id="225">
+          <item text="洗车人员服务态度差" id="226"/>
+        </item>
+        <item text="价格收费" id="247">
+          <item text="收费不合理" id="248"/>
+        </item>
+      </item>
+      <item text="其它问题" id="107">
+        <item text="客户车上物品遗失" id="231"/>
+      </item>
+    </item>
+    <item text="销售服务" id="64">
+      <item text="电话接待" id="258"/>
+      <item text="展厅接待" id="259"/>
+      <item text="沟通能力" id="260"/>
+      <item text="服务态度" id="261"/>
+      <item text="产品价格" id="262"/>
+      <item text="产品质量" id="263"/>
+      <item text="大客户" id="264"/>
+      <item text="二手车" id="265"/>
+      <item text="赠品问题" id="287"/>
+      <item text="交车过程" id="293">
+        <item text="交车前检查" id="294"/>
+      </item>
+    </item>
+    <item text="精品服务" id="65">
+      <item text="精品安装" id="266"/>
+      <item text="精品质量" id="267"/>
+      <item text="精品价格" id="268"/>
+      <item text="服务态度" id="269"/>
+      <item text="服务跟进" id="270"/>
+    </item>
+    <item text="会员服务" id="66">
+      <item text="会员优惠" id="274"/>
+      <item text="会员制度" id="275"/>
+      <item text="服务态度" id="276"/>
+    </item>
+    <item text="账务服务" id="86">
+      <item text="账务制度" id="277"/>
+      <item text="服务态度" id="278"/>
+    </item>
+    <item text="行政服务" id="110">
+      <item text="保安服务" id="279"/>
+      <item text="人事服务" id="280"/>
+      <item text="其它服务" id="281"/>
+    </item>
+    <item text="产品质量" id="282"/>
+  </item>
+</tree>

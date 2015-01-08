@@ -129,13 +129,13 @@
         }
 
         function sendShow() {
-            //parent.mdfMenu("cc1234567878", "已发信息", "../CallManage/sendCall.aspx");
+            //parent.mdfMenu("cc1234567878", "已发信息", "../callManage/sendCall.aspx");
             //parWinClose();
             location.href = "sendCall.aspx?d="+new Date();
         }
 
         function receiveShow() {
-            //parent.mdfMenu("cc1234567878", "已收信息", "../CallManage/receiveCall.aspx");
+            //parent.mdfMenu("cc1234567878", "已收信息", "../callManage/receiveCall.aspx");
             //parWinClose();
             location.href = "receiveCall.aspx?d="+new Date();
         }

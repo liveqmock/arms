@@ -97,13 +97,13 @@
 <body>
     <form name="form1" method="post" action="navigationPicture.aspx" id="form1">
 <div>
-<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNzQ2MDg0MjI1D2QWAgIDD2QWKgIDDxYCHghkaXNhYmxlZAUIZGlzYWJsZWRkAgUPFgIfAAUIZGlzYWJsZWRkAgcPFgIfAAUIZGlzYWJsZWRkAgkPFgIfAAUIZGlzYWJsZWRkAgsPFgIfAAUIZGlzYWJsZWRkAg0PFgIfAAUIZGlzYWJsZWRkAg8PFgIfAAUIZGlzYWJsZWRkAhEPFgIfAAUIZGlzYWJsZWRkAhMPFgIfAAUIZGlzYWJsZWRkAhUPFgIfAAUIZGlzYWJsZWRkAhcPFgIfAAUIZGlzYWJsZWRkAhkPFgIfAAUIZGlzYWJsZWRkAhsPFgIfAGRkAh0PFgIfAGRkAh8PFgIfAGRkAiEPFgIfAGRkAiMPFgIfAAUIZGlzYWJsZWRkAiUPFgIfAAUIZGlzYWJsZWRkAicPFgIfAAUIZGlzYWJsZWRkAikPFgIfAAUIZGlzYWJsZWRkAisPFgIfAAUIZGlzYWJsZWRkZEfGc2ei4JI5bbI8pUP7P5IvfGHd" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNzQ2MDg0MjI1D2QWAgIDD2QWKgIDDxYCHghkaXNhYmxlZGRkAgUPFgIfAAUIZGlzYWJsZWRkAgcPFgIfAAUIZGlzYWJsZWRkAgkPFgIfAAUIZGlzYWJsZWRkAgsPFgIfAAUIZGlzYWJsZWRkAg0PFgIfAAUIZGlzYWJsZWRkAg8PFgIfAGRkAhEPFgIfAGRkAhMPFgIfAAUIZGlzYWJsZWRkAhUPFgIfAGRkAhcPFgIfAAUIZGlzYWJsZWRkAhkPFgIfAAUIZGlzYWJsZWRkAhsPFgIfAGRkAh0PFgIfAGRkAh8PFgIfAGRkAiEPFgIfAGRkAiMPFgIfAGRkAiUPFgIfAGRkAicPFgIfAGRkAikPFgIfAGRkAisPFgIfAGRkZFCyRkN91yeYqljIdXRT1H4zoBdZ" />
 </div>
 
 <div>
 
     <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="674C49FE" />
-    <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAgKhsqtHAumtwNYDuOdkbxPYTfjCvqR5+WQ30LBsXyw=" />
+    <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAgKO4o3iBQLprcDWA9nXpWWAWCwrkdD5QS9dSl/rbjhF" />
 </div>
     <input name="pathapp" type="hidden" id="pathapp" />
     <div class="dock" id="dock2">
@@ -120,7 +120,7 @@
                 <caption><b>售前管理</b></caption>
                 <tr>
                     <td align="center">
-                        <button id="butA1" type="button" onclick="parent.mdfMenu('','潜在客户','../SaleBefore_Manage/QianZaiKeHu.aspx')" disabled="disabled">
+                        <button id="butA1" type="button" onclick="parent.mdfMenu('','潜在客户','../SaleBefore_Manage/QianZaiKeHu.aspx')">
                             <img alt="" class="image" width="64px" height="64px" src="../style/navigation/gys.png" />
                             <div class="pre_title">潜在客户</div>
                         </button>
@@ -183,14 +183,14 @@
                 <caption><b>销售管理</b></caption>
                 <tr>
                     <td align="center">
-                        <button id="butC1" type="button" onclick="parent.mdfMenu('','定单管理','../SaleOrder_Manage/OrderManageList.aspx')" disabled="disabled">
+                        <button id="butC1" type="button" onclick="parent.mdfMenu('','定单管理','../SaleOrder_Manage/OrderManageList.aspx')">
                             <img alt="" width="64px" height="64px" src="../style/navigation/chcsye.gif" />
                             <div class="pre_title">定单管理</div>
                         </button>
                     </td>
                     <td align="center"><img alt="" width="32px" height="32px" src="../style/navigation/D.png" /></td>
                     <td align="center">
-                    <button id="butC2" type="button" onclick="parent.mdfMenu('','配车管理','../SaleOrder_Manage/OrderCustList.aspx')" disabled="disabled">
+                    <button id="butC2" type="button" onclick="parent.mdfMenu('','配车管理','../SaleOrder_Manage/OrderCustList.aspx')">
                         <img alt="" width="64px" height="64px" src="../style/navigation/gh.gif" /><div
                             class="pre_title">
                             配车管理</div></button>
@@ -212,7 +212,7 @@
                 </tr>
                  <tr>
                      <td align="center">
-                        <button id="butC4" type="button" onclick="parent.mdfMenu('','交车登记','../SaleOrder_Manage/OrderJiaoCheList.aspx')" disabled="disabled">
+                        <button id="butC4" type="button" onclick="parent.mdfMenu('','交车登记','../SaleOrder_Manage/OrderJiaoCheList.aspx')">
                          <img alt="" width="64px" height="64px" src="../style/navigation/png-0013.png" />
                          <div class="pre_title">交车登记</div></button>
                      </td>
@@ -270,7 +270,7 @@
                     <td align="center"></td>
                     <td align="center"></td>
                     <td align="center">
-                    <button id="butE1" type="button" onclick="parent.mdfMenu('','例外管理','../storeOtherManage/storeOtherExceptionManage.aspx')" disabled="disabled">
+                    <button id="butE1" type="button" onclick="parent.mdfMenu('','例外管理','../storeOtherManage/storeOtherExceptionManage.aspx')">
                         <img alt="" width="64px" height="64px" src="../style/navigation/zz.gif" />
                         <div class="pre_title">例外管理</div></button>
                     </td>
@@ -286,19 +286,19 @@
                 </tr>
                 <tr>
                     <td align="center">
-                    <button id="butE2" type="button" onclick="parent.mdfMenu('','配件入库','../storeOtherManage/storeOtherInsertBillManage.aspx')" disabled="disabled">
+                    <button id="butE2" type="button" onclick="parent.mdfMenu('','配件入库','../storeOtherManage/storeOtherInsertBillManage.aspx')">
                         <img alt="" width="64px" height="64px" src="../style/navigation/qtrk.gif" />
                         <div class="pre_title">配件入库</div></button>
                     </td>
                     <td align="center"><img alt="" width="32px" height="32px" src="../style/navigation/D.png" /></td>
                     <td align="center">
-                    <button id="butE3" type="button" onclick="parent.mdfMenu('','库存管理','../storeOtherManage/storeOtherReportJiShiKuCun.aspx')" disabled="disabled">
+                    <button id="butE3" type="button" onclick="parent.mdfMenu('','库存管理','../storeOtherManage/storeOtherReportJiShiKuCun.aspx')">
                         <img alt="" width="64px" height="64px" src="../style/navigation/gdzckplr.png" />
                         <div class="pre_title">库存管理</div></button>
                     </td> 
                     <td align="center"><img alt="" width="32px" height="32px" src="../style/navigation/D.png" /></td>
                     <td align="center">
-                    <button id="butE4" type="button" onclick="parent.mdfMenu('','销售出库','../storeOtherManage/storeOtherSaleManage.aspx')" disabled="disabled">
+                    <button id="butE4" type="button" onclick="parent.mdfMenu('','销售出库','../storeOtherManage/storeOtherSaleManage.aspx')">
                         <img alt="" width="64px" height="64px" src="../style/navigation/cgrk.gif" />
                         <div class="pre_title">销售出库</div></button>
                     </td>
@@ -314,7 +314,7 @@
                     <td align="center">&nbsp;</td>
                     <td align="center">&nbsp;</td>
                     <td align="center">
-                    <button id="butE5" type="button" onclick="parent.mdfMenu('','维修出库','../saleAfterManage/saleAfter_WeiXiuWuLiaoManage.aspx')" disabled="disabled">
+                    <button id="butE5" type="button" onclick="parent.mdfMenu('','维修出库','../saleAfterManage/saleAfter_WeiXiuWuLiaoManage.aspx')">
                         <img alt="" width="64px" height="64px" src="../style/navigation/png-0090.png" />
                         <div class="pre_title">维修出库</div></button>
                     </td>

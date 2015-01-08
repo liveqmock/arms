@@ -57,13 +57,17 @@ function __doPostBack(eventTarget, eventArgument) {
          <!--按钮区域 sart-->
           <tr>
           <td align="right">
-          <a onclick="return printThis();" id="lnkPrint" class="easyui-linkbutton" href="javascript:__doPostBack('lnkPrint','')">打印</a>
+          <a onClick="return printThis();" id="lnkPrint" class="easyui-linkbutton" href="javascript:__doPostBack('lnkPrint','')">打印</a>
+             
+             
+             <a onClick="return addWeiXiuTaoCan();" id="lnkTaoCan" class="easyui-linkbutton" href="javascript:__doPostBack('lnkTaoCan','')">新增套餐</a>
+             
+             
+             <a onClick="return zhangTaoMdfSave();" id="lnkSave" class="easyui-linkbutton" href="javascript:__doPostBack('lnkSave','')">保存</a>
              
              
              
-             
-             
-             <a onclick="return winClose();" id="lnkCancel" class="easyui-linkbutton" href="javascript:__doPostBack('lnkCancel','')">关闭</a>
+             <a onClick="return winClose();" id="lnkCancel" class="easyui-linkbutton" href="javascript:__doPostBack('lnkCancel','')">关闭</a>
           </td>
           </tr>
          <!--按钮区域 end-->
@@ -72,7 +76,8 @@ function __doPostBack(eventTarget, eventArgument) {
         <table border="0" cellpadding="0" cellspacing="0">
         <tr>
         <td style="vertical-align:middle;">
-         
+         <input name="btnWeiXiuListAdd" type="button" id="btnWeiXiuListAdd" value="维修项目" style="width:60px;height:30px;font-size:12px;" onclick="addWeiXiuXiangMuList()" />
+         <input name="btnWeiXiuTmpAdd" type="button" id="btnWeiXiuTmpAdd" value="N " style="width:20px;height:30px;font-size:12px;" onclick="addWeiXiuXiangMu()" />        
          
          </td>
         </tr>
@@ -109,7 +114,7 @@ function __doPostBack(eventTarget, eventArgument) {
            <td><select id='40dfae53-7856-47df-9664-a1266379c298SubZhangTao' style="display:none;width:75px;" ></select> 
            <span id="40dfae53-7856-47df-9664-a1266379c298SubZhangTaoB"></span></td>
            <td width="10px">
-           <img src="../image/delete.gif" alt="del" onclick="delWeiXiuXiangMu('40dfae53-7856-47df-9664-a1266379c298')"  />
+           <img src="../image/delete.gif" alt="del" onClick="delWeiXiuXiangMu('40dfae53-7856-47df-9664-a1266379c298')"  />
            </td>
           </tr>
          
@@ -133,7 +138,8 @@ function __doPostBack(eventTarget, eventArgument) {
         <table border="0" cellpadding="0" cellspacing="0">
         <tr>
         <td>
-         
+          <input name="btnWeiXiuWuLiao" type="button" id="btnWeiXiuWuLiao" value="物料选择" style="width:60px;height:30px;font-size:12px;" onclick="addWeiXiuWuLiaoList()" />
+
 
 
          </td>
@@ -157,231 +163,231 @@ function __doPostBack(eventTarget, eventArgument) {
            <td  onclick="zhangTaoMdf('abaa490a-116c-44b2-b1da-7cbba0615c23','wuLiao')"   style="text-align:center;">1
            <input type="hidden" name="wuLiao" value="abaa490a-116c-44b2-b1da-7cbba0615c23" />
            </td>
-           <td onclick="zhangTaoMdf('abaa490a-116c-44b2-b1da-7cbba0615c23','wuLiao')" >0415231090</td><td onclick="zhangTaoMdf('abaa490a-116c-44b2-b1da-7cbba0615c23','wuLiao')" >机油滤清器滤芯组件</td>
+           <td onClick="zhangTaoMdf('abaa490a-116c-44b2-b1da-7cbba0615c23','wuLiao')" >0415231090</td><td onClick="zhangTaoMdf('abaa490a-116c-44b2-b1da-7cbba0615c23','wuLiao')" >机油滤清器滤芯组件</td>
            <td  style="text-align:right;">
            <input  id='abaa490a-116c-44b2-b1da-7cbba0615c23RegQty' style="display:none;width:40px;" 
            value ="0.00" 
            class="easyui-numberbox" data-options="min:0,max:90,precision:2"  /> 
            <span id="abaa490a-116c-44b2-b1da-7cbba0615c23RegQtyB">0.00</span>
            </td>
-           <td onclick="zhangTaoMdf('abaa490a-116c-44b2-b1da-7cbba0615c23','wuLiao')"   style="text-align:right;">1.00</td>
-           <td onclick="zhangTaoMdf('abaa490a-116c-44b2-b1da-7cbba0615c23','wuLiao')"  style="text-align:right;">0.00</td>
-           <td onclick="zhangTaoMdf('abaa490a-116c-44b2-b1da-7cbba0615c23','wuLiao')"   style="text-align:right;">61.00</td>
+           <td onClick="zhangTaoMdf('abaa490a-116c-44b2-b1da-7cbba0615c23','wuLiao')"   style="text-align:right;">1.00</td>
+           <td onClick="zhangTaoMdf('abaa490a-116c-44b2-b1da-7cbba0615c23','wuLiao')"  style="text-align:right;">0.00</td>
+           <td onClick="zhangTaoMdf('abaa490a-116c-44b2-b1da-7cbba0615c23','wuLiao')"   style="text-align:right;">61.00</td>
            <td><select id='abaa490a-116c-44b2-b1da-7cbba0615c23ZhangTao' style="display:none;"  onchange=subZhangTaoMdf('abaa490a-116c-44b2-b1da-7cbba0615c23') ></select>
            <span id="abaa490a-116c-44b2-b1da-7cbba0615c23ZhangTaoB">厂家保修</span></td>
            <td><select id='abaa490a-116c-44b2-b1da-7cbba0615c23SubZhangTao' style="display:none;width:75px;" ></select> 
            <span id="abaa490a-116c-44b2-b1da-7cbba0615c23SubZhangTaoB'"></span></td>
-           <td width="10px">           <img src="../image/delete.gif" alt="del" onclick="delWeiXiuWuLiao('abaa490a-116c-44b2-b1da-7cbba0615c23')"  /></td>
+           <td width="10px">           <img src="../image/delete.gif" alt="del" onClick="delWeiXiuWuLiao('abaa490a-116c-44b2-b1da-7cbba0615c23')"  /></td>
           </tr>
          
          <tr  id="51b97d10-c35b-42ff-bfdf-d2b63d304c8eTr">
            <td  onclick="zhangTaoMdf('51b97d10-c35b-42ff-bfdf-d2b63d304c8e','wuLiao')"   style="text-align:center;">2
            <input type="hidden" name="wuLiao" value="51b97d10-c35b-42ff-bfdf-d2b63d304c8e" />
            </td>
-           <td onclick="zhangTaoMdf('51b97d10-c35b-42ff-bfdf-d2b63d304c8e','wuLiao')" >0882380150</td><td onclick="zhangTaoMdf('51b97d10-c35b-42ff-bfdf-d2b63d304c8e','wuLiao')" >雷克萨斯纯牌机动车辆制动液</td>
+           <td onClick="zhangTaoMdf('51b97d10-c35b-42ff-bfdf-d2b63d304c8e','wuLiao')" >0882380150</td><td onClick="zhangTaoMdf('51b97d10-c35b-42ff-bfdf-d2b63d304c8e','wuLiao')" >雷克萨斯纯牌机动车辆制动液</td>
            <td  style="text-align:right;">
            <input  id='51b97d10-c35b-42ff-bfdf-d2b63d304c8eRegQty' style="display:none;width:40px;" 
            value ="0.00" 
            class="easyui-numberbox" data-options="min:0,max:90,precision:2"  /> 
            <span id="51b97d10-c35b-42ff-bfdf-d2b63d304c8eRegQtyB">0.00</span>
            </td>
-           <td onclick="zhangTaoMdf('51b97d10-c35b-42ff-bfdf-d2b63d304c8e','wuLiao')"   style="text-align:right;">4.00</td>
-           <td onclick="zhangTaoMdf('51b97d10-c35b-42ff-bfdf-d2b63d304c8e','wuLiao')"  style="text-align:right;">0.00</td>
-           <td onclick="zhangTaoMdf('51b97d10-c35b-42ff-bfdf-d2b63d304c8e','wuLiao')"   style="text-align:right;">39.00</td>
+           <td onClick="zhangTaoMdf('51b97d10-c35b-42ff-bfdf-d2b63d304c8e','wuLiao')"   style="text-align:right;">4.00</td>
+           <td onClick="zhangTaoMdf('51b97d10-c35b-42ff-bfdf-d2b63d304c8e','wuLiao')"  style="text-align:right;">0.00</td>
+           <td onClick="zhangTaoMdf('51b97d10-c35b-42ff-bfdf-d2b63d304c8e','wuLiao')"   style="text-align:right;">39.00</td>
            <td><select id='51b97d10-c35b-42ff-bfdf-d2b63d304c8eZhangTao' style="display:none;"  onchange=subZhangTaoMdf('51b97d10-c35b-42ff-bfdf-d2b63d304c8e') ></select>
            <span id="51b97d10-c35b-42ff-bfdf-d2b63d304c8eZhangTaoB">厂家保修</span></td>
            <td><select id='51b97d10-c35b-42ff-bfdf-d2b63d304c8eSubZhangTao' style="display:none;width:75px;" ></select> 
            <span id="51b97d10-c35b-42ff-bfdf-d2b63d304c8eSubZhangTaoB'"></span></td>
-           <td width="10px">           <img src="../image/delete.gif" alt="del" onclick="delWeiXiuWuLiao('51b97d10-c35b-42ff-bfdf-d2b63d304c8e')"  /></td>
+           <td width="10px">           <img src="../image/delete.gif" alt="del" onClick="delWeiXiuWuLiao('51b97d10-c35b-42ff-bfdf-d2b63d304c8e')"  /></td>
           </tr>
          
          <tr  id="4e9e383d-1e45-48ae-9a70-16feceaa7632Tr">
            <td  onclick="zhangTaoMdf('4e9e383d-1e45-48ae-9a70-16feceaa7632','wuLiao')"   style="text-align:center;">3
            <input type="hidden" name="wuLiao" value="4e9e383d-1e45-48ae-9a70-16feceaa7632" />
            </td>
-           <td onclick="zhangTaoMdf('4e9e383d-1e45-48ae-9a70-16feceaa7632','wuLiao')" >0880880080</td><td onclick="zhangTaoMdf('4e9e383d-1e45-48ae-9a70-16feceaa7632','wuLiao')" >雷克萨斯纯牌车窗清洗液</td>
+           <td onClick="zhangTaoMdf('4e9e383d-1e45-48ae-9a70-16feceaa7632','wuLiao')" >0880880080</td><td onClick="zhangTaoMdf('4e9e383d-1e45-48ae-9a70-16feceaa7632','wuLiao')" >雷克萨斯纯牌车窗清洗液</td>
            <td  style="text-align:right;">
            <input  id='4e9e383d-1e45-48ae-9a70-16feceaa7632RegQty' style="display:none;width:40px;" 
            value ="0.00" 
            class="easyui-numberbox" data-options="min:0,max:90,precision:2"  /> 
            <span id="4e9e383d-1e45-48ae-9a70-16feceaa7632RegQtyB">0.00</span>
            </td>
-           <td onclick="zhangTaoMdf('4e9e383d-1e45-48ae-9a70-16feceaa7632','wuLiao')"   style="text-align:right;">1.00</td>
-           <td onclick="zhangTaoMdf('4e9e383d-1e45-48ae-9a70-16feceaa7632','wuLiao')"  style="text-align:right;">0.00</td>
-           <td onclick="zhangTaoMdf('4e9e383d-1e45-48ae-9a70-16feceaa7632','wuLiao')"   style="text-align:right;">46.00</td>
+           <td onClick="zhangTaoMdf('4e9e383d-1e45-48ae-9a70-16feceaa7632','wuLiao')"   style="text-align:right;">1.00</td>
+           <td onClick="zhangTaoMdf('4e9e383d-1e45-48ae-9a70-16feceaa7632','wuLiao')"  style="text-align:right;">0.00</td>
+           <td onClick="zhangTaoMdf('4e9e383d-1e45-48ae-9a70-16feceaa7632','wuLiao')"   style="text-align:right;">46.00</td>
            <td><select id='4e9e383d-1e45-48ae-9a70-16feceaa7632ZhangTao' style="display:none;"  onchange=subZhangTaoMdf('4e9e383d-1e45-48ae-9a70-16feceaa7632') ></select>
            <span id="4e9e383d-1e45-48ae-9a70-16feceaa7632ZhangTaoB">厂家保修</span></td>
            <td><select id='4e9e383d-1e45-48ae-9a70-16feceaa7632SubZhangTao' style="display:none;width:75px;" ></select> 
            <span id="4e9e383d-1e45-48ae-9a70-16feceaa7632SubZhangTaoB'"></span></td>
-           <td width="10px">           <img src="../image/delete.gif" alt="del" onclick="delWeiXiuWuLiao('4e9e383d-1e45-48ae-9a70-16feceaa7632')"  /></td>
+           <td width="10px">           <img src="../image/delete.gif" alt="del" onClick="delWeiXiuWuLiao('4e9e383d-1e45-48ae-9a70-16feceaa7632')"  /></td>
           </tr>
          
          <tr  id="8d043b5f-9b66-495d-a8b5-71dca5f661abTr">
            <td  onclick="zhangTaoMdf('8d043b5f-9b66-495d-a8b5-71dca5f661ab','wuLiao')"   style="text-align:center;">4
            <input type="hidden" name="wuLiao" value="8d043b5f-9b66-495d-a8b5-71dca5f661ab" />
            </td>
-           <td onclick="zhangTaoMdf('8d043b5f-9b66-495d-a8b5-71dca5f661ab','wuLiao')" >1780131131</td><td onclick="zhangTaoMdf('8d043b5f-9b66-495d-a8b5-71dca5f661ab','wuLiao')" >空气滤清器滤芯分总</td>
+           <td onClick="zhangTaoMdf('8d043b5f-9b66-495d-a8b5-71dca5f661ab','wuLiao')" >1780131131</td><td onClick="zhangTaoMdf('8d043b5f-9b66-495d-a8b5-71dca5f661ab','wuLiao')" >空气滤清器滤芯分总</td>
            <td  style="text-align:right;">
            <input  id='8d043b5f-9b66-495d-a8b5-71dca5f661abRegQty' style="display:none;width:40px;" 
            value ="0.00" 
            class="easyui-numberbox" data-options="min:0,max:90,precision:2"  /> 
            <span id="8d043b5f-9b66-495d-a8b5-71dca5f661abRegQtyB">0.00</span>
            </td>
-           <td onclick="zhangTaoMdf('8d043b5f-9b66-495d-a8b5-71dca5f661ab','wuLiao')"   style="text-align:right;">1.00</td>
-           <td onclick="zhangTaoMdf('8d043b5f-9b66-495d-a8b5-71dca5f661ab','wuLiao')"  style="text-align:right;">0.00</td>
-           <td onclick="zhangTaoMdf('8d043b5f-9b66-495d-a8b5-71dca5f661ab','wuLiao')"   style="text-align:right;">166.00</td>
+           <td onClick="zhangTaoMdf('8d043b5f-9b66-495d-a8b5-71dca5f661ab','wuLiao')"   style="text-align:right;">1.00</td>
+           <td onClick="zhangTaoMdf('8d043b5f-9b66-495d-a8b5-71dca5f661ab','wuLiao')"  style="text-align:right;">0.00</td>
+           <td onClick="zhangTaoMdf('8d043b5f-9b66-495d-a8b5-71dca5f661ab','wuLiao')"   style="text-align:right;">166.00</td>
            <td><select id='8d043b5f-9b66-495d-a8b5-71dca5f661abZhangTao' style="display:none;"  onchange=subZhangTaoMdf('8d043b5f-9b66-495d-a8b5-71dca5f661ab') ></select>
            <span id="8d043b5f-9b66-495d-a8b5-71dca5f661abZhangTaoB">厂家保修</span></td>
            <td><select id='8d043b5f-9b66-495d-a8b5-71dca5f661abSubZhangTao' style="display:none;width:75px;" ></select> 
            <span id="8d043b5f-9b66-495d-a8b5-71dca5f661abSubZhangTaoB'"></span></td>
-           <td width="10px">           <img src="../image/delete.gif" alt="del" onclick="delWeiXiuWuLiao('8d043b5f-9b66-495d-a8b5-71dca5f661ab')"  /></td>
+           <td width="10px">           <img src="../image/delete.gif" alt="del" onClick="delWeiXiuWuLiao('8d043b5f-9b66-495d-a8b5-71dca5f661ab')"  /></td>
           </tr>
          
          <tr  id="628013b5-2e32-4571-aad3-1d619dbf70c5Tr">
            <td  onclick="zhangTaoMdf('628013b5-2e32-4571-aad3-1d619dbf70c5','wuLiao')"   style="text-align:center;">5
            <input type="hidden" name="wuLiao" value="628013b5-2e32-4571-aad3-1d619dbf70c5" />
            </td>
-           <td onclick="zhangTaoMdf('628013b5-2e32-4571-aad3-1d619dbf70c5','wuLiao')" >8521410100</td><td onclick="zhangTaoMdf('628013b5-2e32-4571-aad3-1d619dbf70c5','wuLiao')" >后刮水器橡胶条</td>
+           <td onClick="zhangTaoMdf('628013b5-2e32-4571-aad3-1d619dbf70c5','wuLiao')" >8521410100</td><td onClick="zhangTaoMdf('628013b5-2e32-4571-aad3-1d619dbf70c5','wuLiao')" >后刮水器橡胶条</td>
            <td  style="text-align:right;">
            <input  id='628013b5-2e32-4571-aad3-1d619dbf70c5RegQty' style="display:none;width:40px;" 
            value ="0.00" 
            class="easyui-numberbox" data-options="min:0,max:90,precision:2"  /> 
            <span id="628013b5-2e32-4571-aad3-1d619dbf70c5RegQtyB">0.00</span>
            </td>
-           <td onclick="zhangTaoMdf('628013b5-2e32-4571-aad3-1d619dbf70c5','wuLiao')"   style="text-align:right;">1.00</td>
-           <td onclick="zhangTaoMdf('628013b5-2e32-4571-aad3-1d619dbf70c5','wuLiao')"  style="text-align:right;">0.00</td>
-           <td onclick="zhangTaoMdf('628013b5-2e32-4571-aad3-1d619dbf70c5','wuLiao')"   style="text-align:right;">32.00</td>
+           <td onClick="zhangTaoMdf('628013b5-2e32-4571-aad3-1d619dbf70c5','wuLiao')"   style="text-align:right;">1.00</td>
+           <td onClick="zhangTaoMdf('628013b5-2e32-4571-aad3-1d619dbf70c5','wuLiao')"  style="text-align:right;">0.00</td>
+           <td onClick="zhangTaoMdf('628013b5-2e32-4571-aad3-1d619dbf70c5','wuLiao')"   style="text-align:right;">32.00</td>
            <td><select id='628013b5-2e32-4571-aad3-1d619dbf70c5ZhangTao' style="display:none;"  onchange=subZhangTaoMdf('628013b5-2e32-4571-aad3-1d619dbf70c5') ></select>
            <span id="628013b5-2e32-4571-aad3-1d619dbf70c5ZhangTaoB">厂家保修</span></td>
            <td><select id='628013b5-2e32-4571-aad3-1d619dbf70c5SubZhangTao' style="display:none;width:75px;" ></select> 
            <span id="628013b5-2e32-4571-aad3-1d619dbf70c5SubZhangTaoB'"></span></td>
-           <td width="10px">           <img src="../image/delete.gif" alt="del" onclick="delWeiXiuWuLiao('628013b5-2e32-4571-aad3-1d619dbf70c5')"  /></td>
+           <td width="10px">           <img src="../image/delete.gif" alt="del" onClick="delWeiXiuWuLiao('628013b5-2e32-4571-aad3-1d619dbf70c5')"  /></td>
           </tr>
          
          <tr  id="bb1c7964-60c4-431a-b5bd-409cd663b28fTr">
            <td  onclick="zhangTaoMdf('bb1c7964-60c4-431a-b5bd-409cd663b28f','wuLiao')"   style="text-align:center;">6
            <input type="hidden" name="wuLiao" value="bb1c7964-60c4-431a-b5bd-409cd663b28f" />
            </td>
-           <td onclick="zhangTaoMdf('bb1c7964-60c4-431a-b5bd-409cd663b28f','wuLiao')" >8521453080</td><td onclick="zhangTaoMdf('bb1c7964-60c4-431a-b5bd-409cd663b28f','wuLiao')" >左侧刮水器橡胶条</td>
+           <td onClick="zhangTaoMdf('bb1c7964-60c4-431a-b5bd-409cd663b28f','wuLiao')" >8521453080</td><td onClick="zhangTaoMdf('bb1c7964-60c4-431a-b5bd-409cd663b28f','wuLiao')" >左侧刮水器橡胶条</td>
            <td  style="text-align:right;">
            <input  id='bb1c7964-60c4-431a-b5bd-409cd663b28fRegQty' style="display:none;width:40px;" 
            value ="0.00" 
            class="easyui-numberbox" data-options="min:0,max:90,precision:2"  /> 
            <span id="bb1c7964-60c4-431a-b5bd-409cd663b28fRegQtyB">0.00</span>
            </td>
-           <td onclick="zhangTaoMdf('bb1c7964-60c4-431a-b5bd-409cd663b28f','wuLiao')"   style="text-align:right;">1.00</td>
-           <td onclick="zhangTaoMdf('bb1c7964-60c4-431a-b5bd-409cd663b28f','wuLiao')"  style="text-align:right;">0.00</td>
-           <td onclick="zhangTaoMdf('bb1c7964-60c4-431a-b5bd-409cd663b28f','wuLiao')"   style="text-align:right;">70.00</td>
+           <td onClick="zhangTaoMdf('bb1c7964-60c4-431a-b5bd-409cd663b28f','wuLiao')"   style="text-align:right;">1.00</td>
+           <td onClick="zhangTaoMdf('bb1c7964-60c4-431a-b5bd-409cd663b28f','wuLiao')"  style="text-align:right;">0.00</td>
+           <td onClick="zhangTaoMdf('bb1c7964-60c4-431a-b5bd-409cd663b28f','wuLiao')"   style="text-align:right;">70.00</td>
            <td><select id='bb1c7964-60c4-431a-b5bd-409cd663b28fZhangTao' style="display:none;"  onchange=subZhangTaoMdf('bb1c7964-60c4-431a-b5bd-409cd663b28f') ></select>
            <span id="bb1c7964-60c4-431a-b5bd-409cd663b28fZhangTaoB">厂家保修</span></td>
            <td><select id='bb1c7964-60c4-431a-b5bd-409cd663b28fSubZhangTao' style="display:none;width:75px;" ></select> 
            <span id="bb1c7964-60c4-431a-b5bd-409cd663b28fSubZhangTaoB'"></span></td>
-           <td width="10px">           <img src="../image/delete.gif" alt="del" onclick="delWeiXiuWuLiao('bb1c7964-60c4-431a-b5bd-409cd663b28f')"  /></td>
+           <td width="10px">           <img src="../image/delete.gif" alt="del" onClick="delWeiXiuWuLiao('bb1c7964-60c4-431a-b5bd-409cd663b28f')"  /></td>
           </tr>
          
          <tr  id="afc5b5ad-860a-4341-8f0b-5ee040d83dbcTr">
            <td  onclick="zhangTaoMdf('afc5b5ad-860a-4341-8f0b-5ee040d83dbc','wuLiao')"   style="text-align:center;">7
            <input type="hidden" name="wuLiao" value="afc5b5ad-860a-4341-8f0b-5ee040d83dbc" />
            </td>
-           <td onclick="zhangTaoMdf('afc5b5ad-860a-4341-8f0b-5ee040d83dbc','wuLiao')" >8521468020</td><td onclick="zhangTaoMdf('afc5b5ad-860a-4341-8f0b-5ee040d83dbc','wuLiao')" >左侧刮水器橡胶条</td>
+           <td onClick="zhangTaoMdf('afc5b5ad-860a-4341-8f0b-5ee040d83dbc','wuLiao')" >8521468020</td><td onClick="zhangTaoMdf('afc5b5ad-860a-4341-8f0b-5ee040d83dbc','wuLiao')" >左侧刮水器橡胶条</td>
            <td  style="text-align:right;">
            <input  id='afc5b5ad-860a-4341-8f0b-5ee040d83dbcRegQty' style="display:none;width:40px;" 
            value ="0.00" 
            class="easyui-numberbox" data-options="min:0,max:90,precision:2"  /> 
            <span id="afc5b5ad-860a-4341-8f0b-5ee040d83dbcRegQtyB">0.00</span>
            </td>
-           <td onclick="zhangTaoMdf('afc5b5ad-860a-4341-8f0b-5ee040d83dbc','wuLiao')"   style="text-align:right;">1.00</td>
-           <td onclick="zhangTaoMdf('afc5b5ad-860a-4341-8f0b-5ee040d83dbc','wuLiao')"  style="text-align:right;">0.00</td>
-           <td onclick="zhangTaoMdf('afc5b5ad-860a-4341-8f0b-5ee040d83dbc','wuLiao')"   style="text-align:right;">55.00</td>
+           <td onClick="zhangTaoMdf('afc5b5ad-860a-4341-8f0b-5ee040d83dbc','wuLiao')"   style="text-align:right;">1.00</td>
+           <td onClick="zhangTaoMdf('afc5b5ad-860a-4341-8f0b-5ee040d83dbc','wuLiao')"  style="text-align:right;">0.00</td>
+           <td onClick="zhangTaoMdf('afc5b5ad-860a-4341-8f0b-5ee040d83dbc','wuLiao')"   style="text-align:right;">55.00</td>
            <td><select id='afc5b5ad-860a-4341-8f0b-5ee040d83dbcZhangTao' style="display:none;"  onchange=subZhangTaoMdf('afc5b5ad-860a-4341-8f0b-5ee040d83dbc') ></select>
            <span id="afc5b5ad-860a-4341-8f0b-5ee040d83dbcZhangTaoB">厂家保修</span></td>
            <td><select id='afc5b5ad-860a-4341-8f0b-5ee040d83dbcSubZhangTao' style="display:none;width:75px;" ></select> 
            <span id="afc5b5ad-860a-4341-8f0b-5ee040d83dbcSubZhangTaoB'"></span></td>
-           <td width="10px">           <img src="../image/delete.gif" alt="del" onclick="delWeiXiuWuLiao('afc5b5ad-860a-4341-8f0b-5ee040d83dbc')"  /></td>
+           <td width="10px">           <img src="../image/delete.gif" alt="del" onClick="delWeiXiuWuLiao('afc5b5ad-860a-4341-8f0b-5ee040d83dbc')"  /></td>
           </tr>
          
          <tr  id="d9994ef8-2545-45cb-b478-b1a5114b3cccTr">
            <td  onclick="zhangTaoMdf('d9994ef8-2545-45cb-b478-b1a5114b3ccc','wuLiao')"   style="text-align:center;">8
            <input type="hidden" name="wuLiao" value="d9994ef8-2545-45cb-b478-b1a5114b3ccc" />
            </td>
-           <td onclick="zhangTaoMdf('d9994ef8-2545-45cb-b478-b1a5114b3ccc','wuLiao')" >9043012031</td><td onclick="zhangTaoMdf('d9994ef8-2545-45cb-b478-b1a5114b3ccc','wuLiao')" >衬垫(用于油底壳排放</td>
+           <td onClick="zhangTaoMdf('d9994ef8-2545-45cb-b478-b1a5114b3ccc','wuLiao')" >9043012031</td><td onClick="zhangTaoMdf('d9994ef8-2545-45cb-b478-b1a5114b3ccc','wuLiao')" >衬垫(用于油底壳排放</td>
            <td  style="text-align:right;">
            <input  id='d9994ef8-2545-45cb-b478-b1a5114b3cccRegQty' style="display:none;width:40px;" 
            value ="0.00" 
            class="easyui-numberbox" data-options="min:0,max:90,precision:2"  /> 
            <span id="d9994ef8-2545-45cb-b478-b1a5114b3cccRegQtyB">0.00</span>
            </td>
-           <td onclick="zhangTaoMdf('d9994ef8-2545-45cb-b478-b1a5114b3ccc','wuLiao')"   style="text-align:right;">1.00</td>
-           <td onclick="zhangTaoMdf('d9994ef8-2545-45cb-b478-b1a5114b3ccc','wuLiao')"  style="text-align:right;">0.00</td>
-           <td onclick="zhangTaoMdf('d9994ef8-2545-45cb-b478-b1a5114b3ccc','wuLiao')"   style="text-align:right;">6.00</td>
+           <td onClick="zhangTaoMdf('d9994ef8-2545-45cb-b478-b1a5114b3ccc','wuLiao')"   style="text-align:right;">1.00</td>
+           <td onClick="zhangTaoMdf('d9994ef8-2545-45cb-b478-b1a5114b3ccc','wuLiao')"  style="text-align:right;">0.00</td>
+           <td onClick="zhangTaoMdf('d9994ef8-2545-45cb-b478-b1a5114b3ccc','wuLiao')"   style="text-align:right;">6.00</td>
            <td><select id='d9994ef8-2545-45cb-b478-b1a5114b3cccZhangTao' style="display:none;"  onchange=subZhangTaoMdf('d9994ef8-2545-45cb-b478-b1a5114b3ccc') ></select>
            <span id="d9994ef8-2545-45cb-b478-b1a5114b3cccZhangTaoB">厂家保修</span></td>
            <td><select id='d9994ef8-2545-45cb-b478-b1a5114b3cccSubZhangTao' style="display:none;width:75px;" ></select> 
            <span id="d9994ef8-2545-45cb-b478-b1a5114b3cccSubZhangTaoB'"></span></td>
-           <td width="10px">           <img src="../image/delete.gif" alt="del" onclick="delWeiXiuWuLiao('d9994ef8-2545-45cb-b478-b1a5114b3ccc')"  /></td>
+           <td width="10px">           <img src="../image/delete.gif" alt="del" onClick="delWeiXiuWuLiao('d9994ef8-2545-45cb-b478-b1a5114b3ccc')"  /></td>
           </tr>
          
          <tr  id="c52482eb-2872-4f68-9e60-d817130c24a2Tr">
            <td  onclick="zhangTaoMdf('c52482eb-2872-4f68-9e60-d817130c24a2','wuLiao')"   style="text-align:center;">9
            <input type="hidden" name="wuLiao" value="c52482eb-2872-4f68-9e60-d817130c24a2" />
            </td>
-           <td onclick="zhangTaoMdf('c52482eb-2872-4f68-9e60-d817130c24a2','wuLiao')" >CSYH</td><td onclick="zhangTaoMdf('c52482eb-2872-4f68-9e60-d817130c24a2','wuLiao')" >车身润滑四合一</td>
+           <td onClick="zhangTaoMdf('c52482eb-2872-4f68-9e60-d817130c24a2','wuLiao')" >CSYH</td><td onClick="zhangTaoMdf('c52482eb-2872-4f68-9e60-d817130c24a2','wuLiao')" >车身润滑四合一</td>
            <td  style="text-align:right;">
            <input  id='c52482eb-2872-4f68-9e60-d817130c24a2RegQty' style="display:none;width:40px;" 
            value ="0.00" 
            class="easyui-numberbox" data-options="min:0,max:90,precision:2"  /> 
            <span id="c52482eb-2872-4f68-9e60-d817130c24a2RegQtyB">0.00</span>
            </td>
-           <td onclick="zhangTaoMdf('c52482eb-2872-4f68-9e60-d817130c24a2','wuLiao')"   style="text-align:right;">1.00</td>
-           <td onclick="zhangTaoMdf('c52482eb-2872-4f68-9e60-d817130c24a2','wuLiao')"  style="text-align:right;">0.00</td>
-           <td onclick="zhangTaoMdf('c52482eb-2872-4f68-9e60-d817130c24a2','wuLiao')"   style="text-align:right;">80.00</td>
+           <td onClick="zhangTaoMdf('c52482eb-2872-4f68-9e60-d817130c24a2','wuLiao')"   style="text-align:right;">1.00</td>
+           <td onClick="zhangTaoMdf('c52482eb-2872-4f68-9e60-d817130c24a2','wuLiao')"  style="text-align:right;">0.00</td>
+           <td onClick="zhangTaoMdf('c52482eb-2872-4f68-9e60-d817130c24a2','wuLiao')"   style="text-align:right;">80.00</td>
            <td><select id='c52482eb-2872-4f68-9e60-d817130c24a2ZhangTao' style="display:none;"  onchange=subZhangTaoMdf('c52482eb-2872-4f68-9e60-d817130c24a2') ></select>
            <span id="c52482eb-2872-4f68-9e60-d817130c24a2ZhangTaoB">厂家保修</span></td>
            <td><select id='c52482eb-2872-4f68-9e60-d817130c24a2SubZhangTao' style="display:none;width:75px;" ></select> 
            <span id="c52482eb-2872-4f68-9e60-d817130c24a2SubZhangTaoB'"></span></td>
-           <td width="10px">           <img src="../image/delete.gif" alt="del" onclick="delWeiXiuWuLiao('c52482eb-2872-4f68-9e60-d817130c24a2')"  /></td>
+           <td width="10px">           <img src="../image/delete.gif" alt="del" onClick="delWeiXiuWuLiao('c52482eb-2872-4f68-9e60-d817130c24a2')"  /></td>
           </tr>
          
          <tr  id="920f2932-784e-4205-a260-0fc43fdb5df9Tr">
            <td  onclick="zhangTaoMdf('920f2932-784e-4205-a260-0fc43fdb5df9','wuLiao')"   style="text-align:center;">10
            <input type="hidden" name="wuLiao" value="920f2932-784e-4205-a260-0fc43fdb5df9" />
            </td>
-           <td onclick="zhangTaoMdf('920f2932-784e-4205-a260-0fc43fdb5df9','wuLiao')" >MF0W-40</td><td onclick="zhangTaoMdf('920f2932-784e-4205-a260-0fc43fdb5df9','wuLiao')" >金装美孚1号0W-40</td>
+           <td onClick="zhangTaoMdf('920f2932-784e-4205-a260-0fc43fdb5df9','wuLiao')" >MF0W-40</td><td onClick="zhangTaoMdf('920f2932-784e-4205-a260-0fc43fdb5df9','wuLiao')" >金装美孚1号0W-40</td>
            <td  style="text-align:right;">
            <input  id='920f2932-784e-4205-a260-0fc43fdb5df9RegQty' style="display:none;width:40px;" 
            value ="0.00" 
            class="easyui-numberbox" data-options="min:0,max:90,precision:2"  /> 
            <span id="920f2932-784e-4205-a260-0fc43fdb5df9RegQtyB">0.00</span>
            </td>
-           <td onclick="zhangTaoMdf('920f2932-784e-4205-a260-0fc43fdb5df9','wuLiao')"   style="text-align:right;">5.00</td>
-           <td onclick="zhangTaoMdf('920f2932-784e-4205-a260-0fc43fdb5df9','wuLiao')"  style="text-align:right;">0.00</td>
-           <td onclick="zhangTaoMdf('920f2932-784e-4205-a260-0fc43fdb5df9','wuLiao')"   style="text-align:right;">160.00</td>
+           <td onClick="zhangTaoMdf('920f2932-784e-4205-a260-0fc43fdb5df9','wuLiao')"   style="text-align:right;">5.00</td>
+           <td onClick="zhangTaoMdf('920f2932-784e-4205-a260-0fc43fdb5df9','wuLiao')"  style="text-align:right;">0.00</td>
+           <td onClick="zhangTaoMdf('920f2932-784e-4205-a260-0fc43fdb5df9','wuLiao')"   style="text-align:right;">160.00</td>
            <td><select id='920f2932-784e-4205-a260-0fc43fdb5df9ZhangTao' style="display:none;"  onchange=subZhangTaoMdf('920f2932-784e-4205-a260-0fc43fdb5df9') ></select>
            <span id="920f2932-784e-4205-a260-0fc43fdb5df9ZhangTaoB">厂家保修</span></td>
            <td><select id='920f2932-784e-4205-a260-0fc43fdb5df9SubZhangTao' style="display:none;width:75px;" ></select> 
            <span id="920f2932-784e-4205-a260-0fc43fdb5df9SubZhangTaoB'"></span></td>
-           <td width="10px">           <img src="../image/delete.gif" alt="del" onclick="delWeiXiuWuLiao('920f2932-784e-4205-a260-0fc43fdb5df9')"  /></td>
+           <td width="10px">           <img src="../image/delete.gif" alt="del" onClick="delWeiXiuWuLiao('920f2932-784e-4205-a260-0fc43fdb5df9')"  /></td>
           </tr>
          
          <tr  id="8b29d217-27b4-453d-829e-2df14062acedTr">
            <td  onclick="zhangTaoMdf('8b29d217-27b4-453d-829e-2df14062aced','wuLiao')"   style="text-align:center;">11
            <input type="hidden" name="wuLiao" value="8b29d217-27b4-453d-829e-2df14062aced" />
            </td>
-           <td onclick="zhangTaoMdf('8b29d217-27b4-453d-829e-2df14062aced','wuLiao')" >0881480010</td><td onclick="zhangTaoMdf('8b29d217-27b4-453d-829e-2df14062aced','wuLiao')" >LGC发动机清洗剂</td>
+           <td onClick="zhangTaoMdf('8b29d217-27b4-453d-829e-2df14062aced','wuLiao')" >0881480010</td><td onClick="zhangTaoMdf('8b29d217-27b4-453d-829e-2df14062aced','wuLiao')" >LGC发动机清洗剂</td>
            <td  style="text-align:right;">
            <input  id='8b29d217-27b4-453d-829e-2df14062acedRegQty' style="display:none;width:40px;" 
            value ="0.00" 
            class="easyui-numberbox" data-options="min:0,max:90,precision:2"  /> 
            <span id="8b29d217-27b4-453d-829e-2df14062acedRegQtyB">0.00</span>
            </td>
-           <td onclick="zhangTaoMdf('8b29d217-27b4-453d-829e-2df14062aced','wuLiao')"   style="text-align:right;">1.00</td>
-           <td onclick="zhangTaoMdf('8b29d217-27b4-453d-829e-2df14062aced','wuLiao')"  style="text-align:right;">0.00</td>
-           <td onclick="zhangTaoMdf('8b29d217-27b4-453d-829e-2df14062aced','wuLiao')"   style="text-align:right;">200.00</td>
+           <td onClick="zhangTaoMdf('8b29d217-27b4-453d-829e-2df14062aced','wuLiao')"   style="text-align:right;">1.00</td>
+           <td onClick="zhangTaoMdf('8b29d217-27b4-453d-829e-2df14062aced','wuLiao')"  style="text-align:right;">0.00</td>
+           <td onClick="zhangTaoMdf('8b29d217-27b4-453d-829e-2df14062aced','wuLiao')"   style="text-align:right;">200.00</td>
            <td><select id='8b29d217-27b4-453d-829e-2df14062acedZhangTao' style="display:none;"  onchange=subZhangTaoMdf('8b29d217-27b4-453d-829e-2df14062aced') ></select>
            <span id="8b29d217-27b4-453d-829e-2df14062acedZhangTaoB">正常维修</span></td>
            <td><select id='8b29d217-27b4-453d-829e-2df14062acedSubZhangTao' style="display:none;width:75px;" ></select> 
            <span id="8b29d217-27b4-453d-829e-2df14062acedSubZhangTaoB'"></span></td>
-           <td width="10px">           <img src="../image/delete.gif" alt="del" onclick="delWeiXiuWuLiao('8b29d217-27b4-453d-829e-2df14062aced')"  /></td>
+           <td width="10px">           <img src="../image/delete.gif" alt="del" onClick="delWeiXiuWuLiao('8b29d217-27b4-453d-829e-2df14062aced')"  /></td>
           </tr>
          
           <tr>
