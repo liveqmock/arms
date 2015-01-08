@@ -272,3 +272,45 @@ CREATE TABLE `weixiuxiangmu` (
 -- ----------------------------
 -- Records of weixiuxiangmu
 -- ----------------------------
+CREATE TABLE `weixiuxiangmutmp` (
+  `txtWeiXiuXiangMuBianHao` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '维修编号',
+  `txtWeiXiuBillNo` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '维修单号',
+  `ddlSuoShuGongDuan` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '所属工段',
+  `ddlSuoShuZhangTao` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '适用帐套',
+  `txtGongShi` float(10,2) NOT NULL COMMENT '工时',
+  `txtWeiXiuNeiRong` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '维修内容',
+  PRIMARY KEY (`txtWeiXiuXiangMuBianHao`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+CREATE TABLE `caigoubill` (
+  `txtGuid` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '物料guid',
+  `txtBillNo` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '采购单号',
+  `txtOrderDate` date DEFAULT NULL COMMENT '订购日期',
+  `txtSuppId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '供应商编号',
+  `txtSuppName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '供应商名称',
+  `txtJingShouRen` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '经手人',
+  `ddlCangKu` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '所属仓库',
+  `txtOrderJinE` float(10,2) NOT NULL COMMENT '预约订金',
+  `ddlChkType` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '结算方式',
+  `ddlFaPiaoType` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '发票类型',
+  `txtRemarks` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '单据备注',
+  `ddlStatus` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '审核状态',
+  PRIMARY KEY (`txtBillNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+CREATE TABLE `caigoubillMingxi` (
+  `txtBillNo` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '采购单号',
+  `txtMingxiId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '采购明细id',
+  `shopId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '商品编码',
+  `shopName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '商品名称',
+  `shopGuiGe` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '规格',
+  `unit` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '单位',
+  `kuCun` int(11) COLLATE utf8_bin NOT NULL COMMENT '库存',
+  `qty` int(11) COLLATE utf8_bin NOT NULL COMMENT '数量',
+  `price` float(10,2) NOT NULL COMMENT '价格',
+  `priceAll` float(10,2) NOT NULL COMMENT '金额',
+  `remarks` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '备注',
+  PRIMARY KEY (`txtBillNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
