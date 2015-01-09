@@ -20,12 +20,10 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>struts2</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>*.action</url-pattern>
 	</filter-mapping>
 	<!-- 设置默认首页文件列表配置文件 -->
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
+		<welcome-file>login.action</welcome-file>
 	</welcome-file-list>
 </web-app>

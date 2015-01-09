@@ -7,21 +7,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.RequestAware;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
-public class BaseActionSupport extends ActionSupport
-		implements
-			SessionAware,
-			RequestAware,
-			ServletResponseAware {
+public class BaseActionSupport extends ActionSupport implements SessionAware,
+		RequestAware, ServletResponseAware, ServletRequestAware {
 
 	protected Map<String, Object> session;
 	protected Map<String, Object> request;
-	protected HttpServletResponse response;
+	protected HttpServletResponse servletResponse;
+	protected HttpServletRequest servletRequest;
 	protected String basePath;
 
 	@Override
@@ -36,7 +35,12 @@ public class BaseActionSupport extends ActionSupport
 
 	@Override
 	public void setServletResponse(HttpServletResponse response) {
-		this.response = response;
+		this.servletResponse = response;
+	}
+
+	@Override
+	public void setServletRequest(HttpServletRequest request) {
+		this.servletRequest = request;
 	}
 
 	public String getBasePath() {

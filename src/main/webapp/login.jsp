@@ -84,7 +84,7 @@ body {
 	font-weight: bold;
 }
 
-#divUserName {
+#userLoginName {
 	background-image: url(loginImage/textBox-286.png);
 	background-color: transparent;
 	background-repeat: no-repeat;
@@ -98,7 +98,7 @@ body {
 	padding-left: 10px;
 }
 
-#divPwd {
+#password {
 	background-image: url(loginImage/textBox-286.png);
 	background-color: transparent;
 	background-repeat: no-repeat;
@@ -169,7 +169,7 @@ body {
 </style>
 </head>
 <body onkeydown="loginKey();">
-	<form name="form1" method="post" action="login" id="form1">
+	<form name="form1" method="post" action="login.action" id="form1">
 		<div id="topData">
 			<div id="loginForm">
 				<div id="login"></div>
@@ -179,18 +179,22 @@ body {
 					<span id="spanUser">用户名</span> <span id="spanPwd">密&nbsp;&nbsp;码</span>
 					<span id="spanForgetPwd"> 忘记登录密码?</span> <br />
 					<div>
-						<input name="divUserName" type="text" value="" maxlength="20"
-							id="divUserName" />
+						<input name="userLoginName" type="text"
+							value="<s:property value='user.userLoginName'/>" maxlength="20"
+							id="userLoginName" />
 
 						<div>
-							<input name="divPwd" type="password" maxlength="20" id="divPwd" />
+							<input name="password" type="password"
+								value="<s:property value='user.password'/>" maxlength="20"
+								id="password" />
 
 							<div id="loginBtn">
 								<input type="image" name="loginImgBtn" id="loginImgBtn"
 									src="loginImage/btn.png" onclick="return login();"
 									style="border-width: 0px; width: 100px; height: 100px;" />
 							</div>
-							<span style="color: red; font-weight: bold;" id="spanErr"></span>
+							<span style="color: red; font-weight: bold;" id="spanErr"><s:property
+									value="message" /></span>
 						</div>
 						<div id="loginTishi">
 							<p>
@@ -213,11 +217,8 @@ body {
 				&& $.cookie('txtUserName') != 'null') {
 			document.getElementById("chkJiZhuPwd").checked = true;
 
-			$("#divUserName").val($.cookie('txtUserName'));
-			$("#divPwd").val($.cookie('txtPassWord'));
-		} else {
-			$("#divUserName").val("");
-			$("#divPwd").val("");
+			$("#userLoginName").val($.cookie('txtUserName'));
+			$("#password").val($.cookie('txtPassWord'));
 		}
 	});
 
@@ -228,12 +229,12 @@ body {
 			theForm = document.form1;
 		}
 
-		if ($("#divUserName").val() == "") {
+		if ($("#userLoginName").val() == "") {
 			$("#spanErr").html("登录名不能为空!");
 			theForm.disable = true;
 			return false;
 		}
-		if ($("#divPwd").val() == "") {
+		if ($("#password").val() == "") {
 			$("#spanErr").html("密码不能为空!");
 			theForm.disable = true;
 			return false;
@@ -242,8 +243,8 @@ body {
 
 		//写入cookies
 		if (document.getElementById("chkJiZhuPwd").checked == true) {
-			$.cookie('txtUserName', $("#divUserName").val());
-			$.cookie('txtPassWord', $("#divPwd").val());
+			$.cookie('txtUserName', $("#userLoginName").val());
+			$.cookie('txtPassWord', $("#password").val());
 		} else {
 			$.cookie('txtUserName', null);
 			$.cookie('txtPassWord', null);

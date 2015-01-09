@@ -21,14 +21,17 @@
 
 	<package name="custom-default" extends="struts-default">
 		<interceptors>
-			<interceptor name="authority"
-				class="com.chiefmech.arms.intercepter.AuthInterceptor">
+			<interceptor name="loginInterceptor"
+				class="com.chiefmech.arms.intercepter.LoginInterceptor">
 			</interceptor>
-			<interceptor-stack name="authStack">
+			<interceptor-stack name="loginStack">
+				<interceptor-ref name="loginInterceptor" />
 				<interceptor-ref name="defaultStack" />
-				<interceptor-ref name="authority" />
 			</interceptor-stack>
 		</interceptors>
+		<global-results>
+			<result name="login" type="redirectAction">/login.action</result>
+		</global-results>
 	</package>
 
 </struts>
