@@ -100,16 +100,16 @@ function __doPostBack(eventTarget, eventArgument) {
                 <tr>  
                    <td>销售退库单明细</td>
                     <td align="right">
-                       <a onclick="return printThis();" 
+                       <a onClick="return printThis();" 
                        id="btnPrint" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-print'"  >打印</a>
 
-                       <a onclick="return historyShow('','');" 
+                       <a onClick="return historyShow('','');" 
                        id="A1" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'"  >审核日志</a>
 
 
                       
                       
-                      <a onclick="return saveCheck();" id="btnSave" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'" href="javascript:__doPostBack('btnSave','')">保存</a>
+                      <a onClick="return saveCheck();" id="btnSave" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'" href="javascript:__doPostBack('btnSave','')">保存</a>
                                             
                        
                     </td>

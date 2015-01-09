@@ -86,9 +86,9 @@ var syAutoAddRow = function () {
 
  
 /*控件移动 start*/
-    function gogo(ev, Id, NextId, backId, thisRow) {
+    function gogo(event, Id, NextId, backId, thisRow) {
     
-    var ev =window.event;     //获取event对象 
+    var ev = event || window.event;     //获取event对象 
     if (thisRow > syAutoI - 2) {   syAutoAddRow();  }
     //上键与下键前提是 下拉选择框未出现
     //物料自动选择start

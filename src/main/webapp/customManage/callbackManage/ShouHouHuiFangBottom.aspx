@@ -1,4 +1,4 @@
-<html>
+ï»¿<html>
 <head1>
     <title></title>
 
@@ -44,12 +44,12 @@
         <tr>
             <td>
                 <div align="center">
-                    <input type="button" accesskey="P" name="btnUp" value="ÉÏÒ»Ìõ"  style="border:0px;cursor:hand;"  onclick="pageShow(-1)"  />
+                    <input type="button" accesskey="P" name="btnUp" value="ä¸Šä¸€æ¡"  style="border:0px;cursor:hand;"  onclick="pageShow(-1)"  />
                 </div>
             </td>
             <td>
                 <div align="center">
-                    <input type="button" accesskey="N" name="btnDown" value="ÏÂÒ»Ìõ"  style="border:0px;cursor:hand;"  onclick="pageShow(1)"    />
+                    <input type="button" accesskey="N" name="btnDown" value="ä¸‹ä¸€æ¡"  style="border:0px;cursor:hand;"  onclick="pageShow(1)"    />
                 </div>
             </td>
         </tr>

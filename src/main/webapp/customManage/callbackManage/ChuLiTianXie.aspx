@@ -1,6 +1,6 @@
-<html>
+ï»¿<html>
 <head1>
-    <title>ÊÛºó»Ø·Ã´¦ÀíÌîĞ´</title>
+    <title>å”®åå›è®¿å¤„ç†å¡«å†™</title>
 
 </head1>
 <body>
@@ -34,49 +34,49 @@ function __doPostBack(eventTarget, eventArgument) {
             border="1" cellpadding="0" cellspacing="0" width="100%" style="font-size: 13px;">
             <tbody>
                 <tr>
-                    <td nowrap style="width: 12%" title="¿Í»§ĞÅÏ¢ÖĞ½Ó´ıÌáÊ¾ĞÅÏ¢">
-                        ÖØÒªÌáÊ¾
+                    <td nowrap style="width: 12%" title="å®¢æˆ·ä¿¡æ¯ä¸­æ¥å¾…æç¤ºä¿¡æ¯">
+                        é‡è¦æç¤º
                     </td>
                     <td colspan="5">
                         <textarea name="txtTiShi" rows="2" cols="20" id="txtTiShi" style="width: 90%; height: 35px;"></textarea>
-                        <input type="submit" name="btnTiShiSave" value="±£ ´æ" id="btnTiShiSave" style="background-color: #F9F8F5;
+                        <input type="submit" name="btnTiShiSave" value="ä¿ å­˜" id="btnTiShiSave" style="background-color: #F9F8F5;
                             width: 7%; height: 25px;" />
                     </td>
                 </tr>
                 <tr>
-                    <td nowrap style="width: 12%" title="¿Í»§×ÊÁÏÖĞÁªÏµÈËºÅÂë">
-                        Íâ²¦ºÅÂë
+                    <td nowrap style="width: 12%" title="å®¢æˆ·èµ„æ–™ä¸­è”ç³»äººå·ç ">
+                        å¤–æ‹¨å·ç 
                     </td>
                     <td style="width: 21%">
                         <input name="txtLianXiNum" type="text" value="13699755662" maxlength="20" id="txtLianXiNum" style="width: 90%" />
                     </td>
                     <td style="width: 12%">
-                        Íâ²¦½á¹û
+                        å¤–æ‹¨ç»“æœ
                     </td>
                     <td style="width: 21%">
                         <select name="ddlLastJieGuo" onchange="javascript:setTimeout('__doPostBack(\'ddlLastJieGuo\',\'\')', 0)" id="ddlLastJieGuo" style="width: 92%">
 	<option selected="selected" value=""></option>
-	<option value="³É¹¦">³É¹¦</option>
-	<option value="ÎŞÈË½Ó">ÎŞÈË½Ó</option>
-	<option value="¶Ô·½Ã¦">¶Ô·½Ã¦</option>
-	<option value="¹Ø»ú">¹Ø»ú</option>
-	<option value="Í¨»°ÖĞ">Í¨»°ÖĞ</option>
-	<option value="ÎŞ·¨½ÓÍ¨">ÎŞ·¨½ÓÍ¨</option>
-	<option value="À´µçÌáĞÑ">À´µçÌáĞÑ</option>
-	<option value="¿ÕºÅ">¿ÕºÅ</option>
-	<option value="´íºÅ">´íºÅ</option>
-	<option value="ÔİÍ£Ê¹ÓÃ">ÔİÍ£Ê¹ÓÃ</option>
-	<option value="ºÅÂë?????">??¡¤? ?¨¨?????</option>
-	<option value="?? ¨¨¡ä1">?? ¨¨¡ä1</option>
-	<option value="?¡ì??1|??¡ã">?¡ì??1|??¡ã</option>
-	<option value="?????¡§????????o">?????¡§????????o</option>
-	<option value="?????£¤">?????£¤</option>
+	<option value="æˆåŠŸ">æˆåŠŸ</option>
+	<option value="æ— äººæ¥">æ— äººæ¥</option>
+	<option value="å¯¹æ–¹å¿™">å¯¹æ–¹å¿™</option>
+	<option value="å…³æœº">å…³æœº</option>
+	<option value="é€šè¯ä¸­">é€šè¯ä¸­</option>
+	<option value="æ— æ³•æ¥é€š">æ— æ³•æ¥é€š</option>
+	<option value="æ¥ç”µæé†’">æ¥ç”µæé†’</option>
+	<option value="ç©ºå·">ç©ºå·</option>
+	<option value="é”™å·">é”™å·</option>
+	<option value="æš‚åœä½¿ç”¨">æš‚åœä½¿ç”¨</option>
+	<option value="å·ç ?????">??Â·? ?Ã¨?????</option>
+	<option value="?? Ã¨â€²1">?? Ã¨â€²1</option>
+	<option value="?Â§??1|??Â°">?Â§??1|??Â°</option>
+	<option value="?????Â¨????????o">?????Â¨????????o</option>
+	<option value="?????ï¿¥">?????ï¿¥</option>
 	<option value="??????">??????</option>
 
 </select>
                     </td>
                     <td   style="width: 12%">
-                        ???¨¨????????
+                        ???Ã¨????????
                     </td>
                     <td style="width: 21%">
                         <select name="ddlHuiFangJieGuo" id="ddlHuiFangJieGuo" disabled="disabled" onchange="hiddenTr(this.value)" style="width: 92%">
@@ -90,7 +90,7 @@ function __doPostBack(eventTarget, eventArgument) {
                 </tr>
                 <tr>
                     <td   style="width: 12%">
-                        ??¡é??¡¤???¨¨¡ì?
+                        ??ï¿ ??Â·???Ã¨Â§?
                     </td>
                     <td colspan="5">
                         <textarea name="txtLastYiJian" rows="2" cols="20" id="txtLastYiJian" style="width: 98%; height: 52px;"></textarea>
@@ -98,13 +98,13 @@ function __doPostBack(eventTarget, eventArgument) {
                 </tr>
                 <tr>
                     <td   style="width: 12%">
-                        ??¡é??¡¤??o¨¨??
+                        ??ï¿ ??Â·??oÃ¨??
                     </td>
                     <td colspan="3">
                         <textarea name="txtSuggest" rows="2" cols="20" id="txtSuggest" style="width: 97%; height: 35px;"></textarea>
                     </td>
                     <td   style="width: 12%">
-                        ??¡é??¡¤¨¨?¡§???
+                        ??ï¿ ??Â·Ã¨?Â¨???
                     </td>
                     <td style="width: 21%">
                         <textarea name="txtPraise" rows="2" cols="20" id="txtPraise" style="width: 91%; height: 35px;"></textarea>
@@ -112,59 +112,59 @@ function __doPostBack(eventTarget, eventArgument) {
                 </tr>
                 <tr>
                     <td  style="width: 12%">
-                        ?¡è? ?3¡§
+                        ?Â¤? ?3Â¨
                     </td>
                     <td colspan="3">
                         <textarea name="txtRemark" rows="2" cols="20" id="txtRemark" style="width: 97%; height: 18px;"></textarea>
                     </td>
                     <td style="width: 12%">
-                        ???¨¨????????
+                        ???Ã¨????????
                     </td>
                     <td style="width: 21%">
                         <select name="ddlHuiFangStatus" id="ddlHuiFangStatus" style="width: 92%">
 	<option value=""></option>
-	<option selected="selected" value="?¡¤2??????">?¡¤2??????</option>
+	<option selected="selected" value="?Â·2??????">?Â·2??????</option>
 	<option value="??a??????">??a??????</option>
-	<option value="?? ¨¦??¨¨??¨¦??">?? ¨¦??¨¨??¨¦??</option>
+	<option value="?? Ã©??Ã¨??Ã©??">?? Ã©??Ã¨??Ã©??</option>
 
 </select>
                     </td>
                 </tr>
                 <tr id="trTouSuXX" style="display: none">
                     <td  style="width: 12%">
-                        ???¨¨¡ì?????¡À?
+                        ???Ã¨Â§?????Â±?
                     </td>
                     <td style="width: 21%">
                         <input name="txtTouSuFenL" type="text" id="txtTouSuFenL" autocomplete="off" onclick="return showTree(this)" style="width: 90%" />
                     </td>
                     <td style="width: 12%">
-                        ?¡ä¡ì??£¤?¡§??o|
+                        ?â€²Â§??ï¿¥?Â¨??o|
                     </td>
                     <td style="width: 21%">
                         <select name="ddlUrgentDegree" id="ddlUrgentDegree" style="width: 92%">
 	<option value=""></option>
-	<option value="???¨¨??">???¨¨??</option>
-	<option value="?¡ä¡ì??£¤">?¡ä¡ì??£¤</option>
-	<option value="ÌØ½ô¼±">ÌØ½ô¼±</option>
+	<option value="???Ã¨??">???Ã¨??</option>
+	<option value="?â€²Â§??ï¿¥">?â€²Â§??ï¿¥</option>
+	<option value="ç‰¹ç´§æ€¥">ç‰¹ç´§æ€¥</option>
 
 </select>
                     </td>
                     <td style="width: 12%">
-                        Í¶ËßĞÔÖÊ
+                        æŠ•è¯‰æ€§è´¨
                     </td>
                     <td style="width: 21%">
                         <select name="ddlTouSuXingZh" id="ddlTouSuXingZh" style="width: 92%">
 	<option value=""></option>
-	<option value="Òâ¼û">Òâ¼û</option>
-	<option value="Ò»°ãÍ¶Ëß">Ò»°ãÍ¶Ëß</option>
-	<option value="ÖØ´óÍ¶Ëß">ÖØ´óÍ¶Ëß</option>
+	<option value="æ„è§">æ„è§</option>
+	<option value="ä¸€èˆ¬æŠ•è¯‰">ä¸€èˆ¬æŠ•è¯‰</option>
+	<option value="é‡å¤§æŠ•è¯‰">é‡å¤§æŠ•è¯‰</option>
 
 </select>
                     </td>
                 </tr>
                 <tr id="trBuM" style="display: none">
                     <td style="width: 12%">
-                        Í¶Ëß²¿ÃÅ
+                        æŠ•è¯‰éƒ¨é—¨
                     </td>
                     <td id="tdTouSuBM" colspan="5">
                        
@@ -173,7 +173,7 @@ function __doPostBack(eventTarget, eventArgument) {
                 </tr>
                 <tr>
                     <td align="right" colspan="6">
-                        <input type="submit" name="btnSave" value="±£ ´æ" onclick="return saveCheck();" id="btnSave" style="height:25px;
+                        <input type="submit" name="btnSave" value="ä¿ å­˜" onclick="return saveCheck();" id="btnSave" style="height:25px;
                             background-color:#F9F8F5;width:6%;" />
                         &nbsp;&nbsp;&nbsp;
                     </td>
@@ -196,51 +196,51 @@ function __doPostBack(eventTarget, eventArgument) {
 
         var btnFlag = "0";
         function saveCheck() {
-            //ÑéÖ¤¸÷×Ö¶Î³¤¶È
+            //éªŒè¯å„å­—æ®µé•¿åº¦
 
             if (btnFlag == "0") { btnFlag = "1"; } else {return false;}
 
 
             if (document.getElementById("ddlHuiFangStatus").value == "") {
-                alert('»Ø·Ã×´Ì¬±ØĞëÌîĞ´!');
+                alert('å›è®¿çŠ¶æ€å¿…é¡»å¡«å†™!');
                 btnFlag = "0";
               }
 
 
             if (document.getElementById("ddlLastJieGuo").value == "") {
-                alert('Íâ²¦½á¹û±ØĞëÌîĞ´!');
+                alert('å¤–æ‹¨ç»“æœå¿…é¡»å¡«å†™!');
                 btnFlag = "0";
             }
 
             //if (document.getElementById("ddlHuiFangJieGuo").value == "") {
-              //  alert('»Ø·Ã½á¹û±ØĞëÌîĞ´!');
+              //  alert('å›è®¿ç»“æœå¿…é¡»å¡«å†™!');
                 //btnFlag = "0";
             //}
 
 
             var t1 = document.getElementById("txtLastYiJian").innerHTML;
             if (t1.length > 200) {
-                alert("¿Í»§Òâ¼ûÌîĞ´³¬¹ı200×Ö,ÏµÍ³½«ÎŞ·¨±£´æ");
+                alert("å®¢æˆ·æ„è§å¡«å†™è¶…è¿‡200å­—,ç³»ç»Ÿå°†æ— æ³•ä¿å­˜");
                 btnFlag = "0";
             }
 
 
             var t2 = document.getElementById("txtSuggest").innerHTML;
             if (t2.length > 200) {
-                alert("¿Í»§½¨ÒéÌîĞ´³¬¹ı200×Ö,ÏµÍ³½«ÎŞ·¨±£´æ");
+                alert("å®¢æˆ·å»ºè®®å¡«å†™è¶…è¿‡200å­—,ç³»ç»Ÿå°†æ— æ³•ä¿å­˜");
                 btnFlag = "0";
             }
 
 
             var t3 = document.getElementById("txtPraise").innerHTML;
             if (t3.length > 200) {
-                alert("¿Í»§±íÑïÌîĞ´³¬¹ı200×Ö,ÏµÍ³½«ÎŞ·¨±£´æ");
+                alert("å®¢æˆ·è¡¨æ‰¬å¡«å†™è¶…è¿‡200å­—,ç³»ç»Ÿå°†æ— æ³•ä¿å­˜");
                 btnFlag = "0";
             }
 
             var t4 = document.getElementById("txtRemark").innerHTML;
             if (t4.length > 200) {
-                alert("±¸×¢ÌîĞ´³¬¹ı200×Ö,ÏµÍ³½«ÎŞ·¨±£´æ");
+                alert("å¤‡æ³¨å¡«å†™è¶…è¿‡200å­—,ç³»ç»Ÿå°†æ— æ³•ä¿å­˜");
                 btnFlag = "0";
             }
 
@@ -260,7 +260,7 @@ function __doPostBack(eventTarget, eventArgument) {
 
         function hiddenTr(value) {
             
-            //if (value == "²»ÂúÒâ") {
+            //if (value == "ä¸æ»¡æ„") {
               //  document.getElementById("trTouSuXX").style.display = "";
                // document.getElementById("trBuM").style.display = "";
             //}
@@ -271,9 +271,9 @@ function __doPostBack(eventTarget, eventArgument) {
 
             var SizeZ ='height=600,width=700,left=100,top=100,toolbar=no,resizable=yes,status=no,menubar=no,scrollbars=yes';
 
-            if (value == "²»ÂúÒâ") {
+            if (value == "ä¸æ»¡æ„") {
                 var href = "../ComplaintManage/ComplaintAdd.aspx?saleAfterGuid=ee9a30d5-6d9e-40f8-8da2-8a6064ff561f&vehicleId=132b0fdd-a2e1-4a77-a3f3-cb2a99ee8f86&cusId=132b0fdd-a2e1-4a77-a3f3-cb2a99ee8f86&&d=" + new Date();
-                z = window.open(href, 'Í¶Ëß', SizeZ);
+                z = window.open(href, 'æŠ•è¯‰', SizeZ);
                 z.focus();
           }
 

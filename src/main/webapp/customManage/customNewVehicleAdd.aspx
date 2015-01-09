@@ -699,11 +699,7 @@ function __doPostBack(eventTarget, eventArgument) {
     </div>
     
 
-<script type="text/javascript">
-//<![CDATA[
-Sys.Application.initialize();
-//]]>
-</script>
+
 </form>
      <script language="javascript" type="text/javascript" >
  

@@ -448,8 +448,8 @@ function __doPostBack(eventTarget, eventArgument) {
          $(function () {
              $("input[name='shopId']").live("keyup", function (event) {
                  //event Start
-                 var ev = window.event;  
-                 var tmp = ev.srcElement.id;
+                 var ev = event || window.event; 
+				 var tmp = ev.srcElement ? ev.srcElement.id : ev.target.id; 
                  obj = $("#" + tmp);
                  if (tmp.indexOf("shopId") > -1) {
                      isSelect = "123";

@@ -10,10 +10,58 @@ Target Server Type    : MYSQL
 Target Server Version : 50537
 File Encoding         : 65001
 
-Date: 2015-01-08 17:03:04
+Date: 2015-01-09 14:55:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `caigoubill`
+-- ----------------------------
+DROP TABLE IF EXISTS `caigoubill`;
+CREATE TABLE `caigoubill` (
+  `txtBillGuid` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '采购单guid',
+  `txtBillNo` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '采购单号',
+  `txtOrderDate` date DEFAULT NULL COMMENT '订购日期',
+  `txtSuppId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '供应商编号',
+  `txtSuppName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '供应商名称',
+  `txtJingShouRen` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '经手人',
+  `ddlCangKu` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '所属仓库',
+  `txtOrderJinE` float(10,2) NOT NULL COMMENT '预约订金',
+  `ddlChkType` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '结算方式',
+  `ddlFaPiaoType` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '发票类型',
+  `txtRemarks` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '单据备注',
+  `ddlStatus` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '审核状态',
+  PRIMARY KEY (`txtBillNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of caigoubill
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `caigoubillmingxi`
+-- ----------------------------
+DROP TABLE IF EXISTS `caigoubillmingxi`;
+CREATE TABLE `caigoubillmingxi` (
+  `txtBillNo` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '采购单号',
+  `txtMingxiId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '采购明细id',
+  `shopId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '商品编码',
+  `shopName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '商品名称',
+  `shopGuiGe` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '规格',
+  `unit` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '单位',
+  `kuCun` int(11) NOT NULL COMMENT '库存',
+  `qty` int(11) NOT NULL COMMENT '数量',
+  `price` float(10,2) NOT NULL COMMENT '价格',
+  `priceAll` float(10,2) NOT NULL COMMENT '金额',
+  `remarks` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '备注',
+  PRIMARY KEY (`txtBillNo`),
+  CONSTRAINT `caigoubillmingxi_ibfk_1` FOREIGN KEY (`txtBillNo`) REFERENCES `caigoubill` (`txtBillNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of caigoubillmingxi
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `chezhuxinxi`
@@ -184,6 +232,38 @@ CREATE TABLE `gongdanxiangmu` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `groups`
+-- ----------------------------
+DROP TABLE IF EXISTS `groups`;
+CREATE TABLE `groups` (
+  `groupId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '分组ID',
+  `groupName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '组名称',
+  `groupDesc` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '组描述',
+  PRIMARY KEY (`groupId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of groups
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `group_privilege`
+-- ----------------------------
+DROP TABLE IF EXISTS `group_privilege`;
+CREATE TABLE `group_privilege` (
+  `groupId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '分组ID',
+  `privilegeId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '权限ID',
+  PRIMARY KEY (`groupId`,`privilegeId`),
+  KEY `privilegeId` (`privilegeId`),
+  CONSTRAINT `group_privilege_ibfk_2` FOREIGN KEY (`privilegeId`) REFERENCES `privileges` (`privilegeId`),
+  CONSTRAINT `group_privilege_ibfk_1` FOREIGN KEY (`groupId`) REFERENCES `groups` (`groupId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of group_privilege
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `lianxirenxinxi`
 -- ----------------------------
 DROP TABLE IF EXISTS `lianxirenxinxi`;
@@ -216,6 +296,216 @@ CREATE TABLE `lianxirenxinxi` (
 
 -- ----------------------------
 -- Records of lianxirenxinxi
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `privileges`
+-- ----------------------------
+DROP TABLE IF EXISTS `privileges`;
+CREATE TABLE `privileges` (
+  `privilegeId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '权限ID',
+  `privilegeName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '权限名称',
+  `privilegeDesc` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '权限描述',
+  PRIMARY KEY (`privilegeId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of privileges
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `rukudan`
+-- ----------------------------
+DROP TABLE IF EXISTS `rukudan`;
+CREATE TABLE `rukudan` (
+  `txtGuid` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '入库单guid',
+  `txtBillNo` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '入库单号',
+  `txtRuKuDate` date DEFAULT NULL COMMENT '入库日期',
+  `txtSuppId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '供应商id',
+  `txtSuppName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '供应商名称',
+  `txtJingShouRen` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '经手人',
+  `ddlRuKuSort` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '入库类型',
+  `ddlCangKu` int(11) NOT NULL COMMENT '所属仓库',
+  `ddlFaPiaoType` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '收票类型',
+  `txtFaPiaoHao` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '发票号',
+  `txtRemarks` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '单据备注',
+  `ddlStatus` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '审核状态',
+  PRIMARY KEY (`txtGuid`),
+  KEY `txtBillNo` (`txtBillNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of rukudan
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `rukudanmingxi`
+-- ----------------------------
+DROP TABLE IF EXISTS `rukudanmingxi`;
+CREATE TABLE `rukudanmingxi` (
+  `txtGuid` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '入库单明细guid',
+  `txtBillNo` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '入库单号',
+  `shopId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '商品编码',
+  `shopName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '商品名称',
+  `shopGuiGe` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '规格',
+  `unit` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '单位',
+  `shopLoc` int(11) NOT NULL COMMENT '库位',
+  `kuCun` int(11) NOT NULL COMMENT '库存',
+  `qty` int(11) NOT NULL DEFAULT '1' COMMENT '数量',
+  `price` float(10,2) NOT NULL COMMENT '入库价',
+  `NoTaxPriceAll` float(10,2) NOT NULL COMMENT '不含税金额',
+  `TaxAll` float(10,2) NOT NULL COMMENT '税金',
+  `priceAll` float(10,2) NOT NULL COMMENT '金额',
+  `remarks` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '备注',
+  `salePrice` float(10,2) NOT NULL COMMENT '销售价',
+  PRIMARY KEY (`txtGuid`),
+  KEY `txtBillNo` (`txtBillNo`),
+  CONSTRAINT `rukudanmingxi_ibfk_1` FOREIGN KEY (`txtBillNo`) REFERENCES `rukudan` (`txtBillNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of rukudanmingxi
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `rukutuikudan`
+-- ----------------------------
+DROP TABLE IF EXISTS `rukutuikudan`;
+CREATE TABLE `rukutuikudan` (
+  `txtGuid` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '退库单guid',
+  `txtBillNo` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '退库单号',
+  `txtTuiKuDate` date DEFAULT NULL COMMENT '退库日期',
+  `txtSuppId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '供应商id',
+  `txtSuppName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '供应商名称',
+  `txtJingShouRen` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '经手人',
+  `ddlTuiKuSort` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '退库类型',
+  `ddlCangKu` int(11) NOT NULL COMMENT '所属仓库',
+  `ddlFaPiaoType` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '发票类型',
+  `txtFaPiaoHao` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '发票号',
+  `txtRemarks` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '单据备注',
+  `ddlStatus` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '审核状态',
+  PRIMARY KEY (`txtGuid`),
+  KEY `txtBillNo` (`txtBillNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of rukutuikudan
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `rukutuikudanmingxi`
+-- ----------------------------
+DROP TABLE IF EXISTS `rukutuikudanmingxi`;
+CREATE TABLE `rukutuikudanmingxi` (
+  `txtGuid` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '退库单guid',
+  `txtBillNo` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '明细单号',
+  `txtShopId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '商品编码',
+  `txtShopName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '商品名称',
+  `txtUnit` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '单位',
+  `txtQty` int(11) NOT NULL DEFAULT '1' COMMENT '数量',
+  `txtInPrice` float(10,2) NOT NULL COMMENT '退库价',
+  `txtRemarks` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '备注',
+  PRIMARY KEY (`txtGuid`),
+  KEY `txtBillNo` (`txtBillNo`),
+  CONSTRAINT `rukutuikudanmingxi_ibfk_1` FOREIGN KEY (`txtGuid`) REFERENCES `rukutuikudan` (`txtGuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of rukutuikudanmingxi
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `shop`
+-- ----------------------------
+DROP TABLE IF EXISTS `shop`;
+CREATE TABLE `shop` (
+  `txtShopGuid` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '商品编号',
+  `txtShopName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '商品名称',
+  `txtTiaoMa` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '商品条码',
+  `txtGuiGe` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '规格型号',
+  `txtChanDi` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '产地',
+  `txtYouXiaoQi` int(11) NOT NULL COMMENT '有效期(天)',
+  `ddlShiYongCheXing` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '适用车型',
+  `ddlSort` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '类别',
+  `dropIsYuanChang` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '是否原厂件',
+  `txtChangJiaCode` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '厂家编号',
+  `txtChangJiaBrand` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '厂家品牌',
+  `ddlUnit` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '计量单位',
+  `txtPJiaGe` float(10,2) NOT NULL COMMENT '批发价格',
+  `txtSalePrice` float(10,2) NOT NULL COMMENT '销售价格',
+  `txtChengBenJia` float(10,2) NOT NULL COMMENT '成本价格',
+  `txtPyMa` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '拼音编码',
+  `txtStockPos` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '存货位置',
+  `ddlShangPinQuFen` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '商品区分',
+  `dropIsJingPin` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '精品标志',
+  `txtKuCunShangXian` int(11) NOT NULL COMMENT '库存上限',
+  `txtKuCunXiaXian` int(11) NOT NULL COMMENT '库存下限',
+  `ddlSaleStatus` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '销售状态',
+  `txtRemarks` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '备注信息',
+  PRIMARY KEY (`txtShopGuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of shop
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `shopoperlog`
+-- ----------------------------
+DROP TABLE IF EXISTS `shopoperlog`;
+CREATE TABLE `shopoperlog` (
+  `operLogGuid` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '日志Guid',
+  `cangKu` int(11) NOT NULL COMMENT '仓库名',
+  `shopId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '商品编码',
+  `shopName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '商品名称',
+  `operDate` date DEFAULT NULL COMMENT '操作时间',
+  `qty` int(11) NOT NULL COMMENT '数量',
+  `chengBenJia` float(10,2) NOT NULL COMMENT '成本价',
+  `chengBenJiaAll` float(10,2) NOT NULL COMMENT '成本总额',
+  `salePrice` float(10,2) NOT NULL COMMENT '销售价',
+  `salePriceAll` float(10,2) NOT NULL COMMENT '销售总额',
+  `billNo` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '业务单号',
+  `billName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '业务类别',
+  PRIMARY KEY (`operLogGuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of shopoperlog
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `users`
+-- ----------------------------
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `userId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '用户id',
+  `userLoginName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '用户登录名',
+  `userDisplayName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '显示的用户名称',
+  `password` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '用户密码',
+  `lastLoginTime` datetime NOT NULL COMMENT '上次登录时间',
+  `isLimit` varchar(10) COLLATE utf8_bin NOT NULL DEFAULT '1' COMMENT '是否受权限限制，0为受限制，1为不受限制',
+  PRIMARY KEY (`userId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of users
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `user_group`
+-- ----------------------------
+DROP TABLE IF EXISTS `user_group`;
+CREATE TABLE `user_group` (
+  `userId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '用户ID',
+  `groupId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '分组ID',
+  PRIMARY KEY (`userId`,`groupId`),
+  KEY `groupId` (`groupId`),
+  CONSTRAINT `user_group_ibfk_2` FOREIGN KEY (`groupId`) REFERENCES `groups` (`groupId`),
+  CONSTRAINT `user_group_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of user_group
 -- ----------------------------
 
 -- ----------------------------
@@ -272,6 +562,11 @@ CREATE TABLE `weixiuxiangmu` (
 -- ----------------------------
 -- Records of weixiuxiangmu
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `weixiuxiangmutmp`
+-- ----------------------------
+DROP TABLE IF EXISTS `weixiuxiangmutmp`;
 CREATE TABLE `weixiuxiangmutmp` (
   `txtWeiXiuXiangMuBianHao` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '维修编号',
   `txtWeiXiuBillNo` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '维修单号',
@@ -282,35 +577,6 @@ CREATE TABLE `weixiuxiangmutmp` (
   PRIMARY KEY (`txtWeiXiuXiangMuBianHao`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-
-CREATE TABLE `caigoubill` (
-  `txtGuid` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '物料guid',
-  `txtBillNo` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '采购单号',
-  `txtOrderDate` date DEFAULT NULL COMMENT '订购日期',
-  `txtSuppId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '供应商编号',
-  `txtSuppName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '供应商名称',
-  `txtJingShouRen` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '经手人',
-  `ddlCangKu` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '所属仓库',
-  `txtOrderJinE` float(10,2) NOT NULL COMMENT '预约订金',
-  `ddlChkType` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '结算方式',
-  `ddlFaPiaoType` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '发票类型',
-  `txtRemarks` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '单据备注',
-  `ddlStatus` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '审核状态',
-  PRIMARY KEY (`txtBillNo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
-
-CREATE TABLE `caigoubillMingxi` (
-  `txtBillNo` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '采购单号',
-  `txtMingxiId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '采购明细id',
-  `shopId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '商品编码',
-  `shopName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '商品名称',
-  `shopGuiGe` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '规格',
-  `unit` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '单位',
-  `kuCun` int(11) COLLATE utf8_bin NOT NULL COMMENT '库存',
-  `qty` int(11) COLLATE utf8_bin NOT NULL COMMENT '数量',
-  `price` float(10,2) NOT NULL COMMENT '价格',
-  `priceAll` float(10,2) NOT NULL COMMENT '金额',
-  `remarks` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '备注',
-  PRIMARY KEY (`txtBillNo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ----------------------------
+-- Records of weixiuxiangmutmp
+-- ----------------------------

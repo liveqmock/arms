@@ -39,7 +39,7 @@
           <input name="txtSuppName" type="text" value="一汽丰田" maxlength="30" id="txtSuppName" style="width:100%;" />
           </td>
           <td>
-          <input type="button" value="C" style="height:25px;width:25px;" onclick="suppChoice()" />
+          <input type="button" value="C" style="height:25px;width:25px;" onClick="suppChoice()" />
           </td>
          <td><span class="requireSpan">*&nbsp;</span>经手人:</td>
          <td><input name="txtJingShouRen" type="text" value="吴可" maxlength="10" id="txtJingShouRen" /> </td>
@@ -84,10 +84,10 @@
          <td></td>
          <td></td>
          <td>
-         <select name="ddlStatus" id="ddlStatus" disabled="disabled" style="width:138px;">
-	<option value="0">待提交审核</option>
+         <select name="ddlStatus" id="ddlStatus" style="width:138px;">
+	<option selected="selected" value="0">待提交审核</option>
 	<option value="1">审核中</option>
-	<option selected="selected" value="2">审核完毕</option>
+	<option value="2">审核完毕</option>
 	<option value="3">单据已退回</option>
 	<option value="4">流程已删除</option>
 
@@ -102,10 +102,10 @@
                 <tr>  
                    <td>采购退库单明细</td>
                     <td align="right">
-                       <a onclick="return printThis();" 
+                       <a onClick="return printThis();" 
                        id="btnPrint" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-print'"  >打印</a>
 
-                       <a onclick="return historyShow('','6b4abc45-94df-4e62-b82b-93c8f3ebcc09');" 
+                       <a onClick="return historyShow('','6b4abc45-94df-4e62-b82b-93c8f3ebcc09');" 
 
                        id="A1" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'"  >审核日志</a>
 
@@ -140,7 +140,7 @@
         
         <tr>
           <td style="text-align:center;">1</td>
-          <td><span  name="shopMdf"><a href='#' onclick="mdfInfo('e347e8cc-72c1-485d-ad45-90feb90a862d')"  >修改</a></span></td>
+          <td><span  name="shopMdf"><a href='#' onClick="mdfInfo('e347e8cc-72c1-485d-ad45-90feb90a862d')"  >修改</a></span></td>
           <td>0446536020</td>
           <td>制动摩擦片=37030</td>
           <td></td>

@@ -1,0 +1,1 @@
+{"shopId":"YG","shopName":"油格","shopTiaoMa":"","shopChanDi":"","shopYouXiaoQi":"","shiYongCheXing":"","shopShangPinQuFen":"","shopGuiGe":"","unit":"","shopSalePrice":"310.00","kuCun":"0.00","shopLoc":"","shopAvgCost":"240.000"}

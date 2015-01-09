@@ -1,9 +1,9 @@
-
+О╩©
 <html>
-    <title>йш╨С╩ь╥ц</title>
+    <title>Е■╝Е░▌Е⌡·Х╝©</title>
     <script language="javascript" type="text/javascript">
-     ║║
-        //иор╩рЁ
+     Ц──
+        //Д╦┼Д╦─И║╣
         function pageChange(sort) {
             var thisPage =0;
             if(sort ==-1)

@@ -90,12 +90,6 @@ function __doPostBack(eventTarget, eventArgument) {
                     <span class="titleSpan">
                         客服预约报表</span>
                 </td>
-                <script type="text/javascript">
-//<![CDATA[
-Sys.WebForms.PageRequestManager._initialize('tmpa1', document.getElementById('form1'));
-Sys.WebForms.PageRequestManager.getInstance()._updateControls(['ttmpa2','tUpdatePanel1'], [], [], 90);
-//]]>
-</script>
 
                 <td align="right" >
                
@@ -258,6 +252,3 @@ Sys.WebForms.PageRequestManager.getInstance()._updateControls(['ttmpa2','tUpdate
     </script>
 </body>
 </html>
-<script type="text/javascript">
-    Sys.WebForms.PageRequestManager.getInstance().add_endRequest(initData);
-</script>
