@@ -29,8 +29,9 @@
 				<interceptor-ref name="defaultStack" />
 			</interceptor-stack>
 		</interceptors>
+		<default-interceptor-ref name="loginStack" />
 		<global-results>
-			<result name="login" type="redirectAction">/login.action</result>
+			<result name="userLogin" type="redirect">/login.action</result>
 		</global-results>
 	</package>
 

@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html>
-<head><title>
+<!DOCTYPE html><head><title>
     深业汽车业务管理信息系统V3.0.1    
     
 </title> <link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=74feba2d2e70452cbc1840620b9de165" /><link rel="stylesheet" type="text/css" href="../style/themes/icon.css?v=74feba2d2e70452cbc1840620b9de165" /><script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script> <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script> <script src="../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script> <script src="../js/common.js?v=74feba2d2e70452cbc1840620b9de165" type="text/javascript"></script><link href="../style/common.css?v=74feba2d2e70452cbc1840620b9de165" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=8" /></head>
-    <link href="../style/default/main.css" rel="stylesheet" type="text/css" />
+    
+<link href="../style/default/main.css" rel="stylesheet" type="text/css" />
  
     <script src="../js/frame/jquery.ztree.core-3.5.min.js" type="text/javascript"></script>
     <link href="../style/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css" />
@@ -245,7 +245,7 @@
     function exit() {
         $.messager.confirm('退出', '您确定退出本系统?', function (r) {
             if (r) {
-                location.href = "../loginExit.aspx";
+                location.href = "../logout.action";
             }
         });
     }
