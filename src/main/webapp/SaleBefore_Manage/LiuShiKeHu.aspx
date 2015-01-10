@@ -12,7 +12,7 @@
     $(function () {
         $("#hideSearch,#sortFiled,#search").click(function () {
             if (this.id == "sortFiled") {
-                parent.winopen('../Index/PageFiledSelect.aspx?PageName=LiuShiKeHu&&syauto=' + new Date() + '', '列设置', 845, 510, true, true, false);
+                parent.winopen('../index/PageFiledSelect.aspx?PageName=LiuShiKeHu&&syauto=' + new Date() + '', '列设置', 845, 510, true, true, false);
             }
             if (this.id == "hideSearch") {
                 $("#searchid").hide();

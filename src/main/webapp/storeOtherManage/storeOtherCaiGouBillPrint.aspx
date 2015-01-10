@@ -55,7 +55,7 @@ body, td, th
   <script language="javascript" type="text/javascript" >
        
       function show() {
-          window.open("http://localhost:59249/Index/printTest.html");
+          window.open("http://localhost:59249/index/printTest.html");
           window.opener = null;
           window.close();
       }

@@ -18,7 +18,7 @@
                 $("#searchid").show();
             }
             if (this.id == "sortFiled") {
-                parent.winopen('../Index/PageFiledSelect.aspx?PageName=GenZongPiShiDataSet&&syauto=' + new Date() + '', '列设置', 845, 510, true, true, false);
+                parent.winopen('../index/PageFiledSelect.aspx?PageName=GenZongPiShiDataSet&&syauto=' + new Date() + '', '列设置', 845, 510, true, true, false);
             }
         });
 

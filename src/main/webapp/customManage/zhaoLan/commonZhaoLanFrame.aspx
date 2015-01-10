@@ -16,7 +16,7 @@
         $("#btnUp").click(function () {
             gruid = window.opener.upPage(); 
             if (gruid.length == 3) {
-                $("#ifrmelianXiRenInfo")[0].src = "../customInfo/lianXiRenInfo.aspx?vehicleId=" + gruid[2] + "&cusGuid=" + gruid[0] + "&saleAfterGuid=" + gruid[1];
+                $("#ifrmeLianXiRenInfo")[0].src = "../customInfo/LianXiRenInfo.aspx?vehicleId=" + gruid[2] + "&cusGuid=" + gruid[0] + "&saleAfterGuid=" + gruid[1];
                 $("#ifrmeLianXFrame")[0].src = "../customInfo/LianXFrame.aspx?vehicleId=" + gruid[2] + "&cusGuid=" + gruid[0] + "&saleAfterGuid=" + gruid[1];
                 $("#iframeZhaoLanTianXie")[0].src = "../zhaoLan/ZhaoLanTianXie.aspx?Type=定期招揽&vehicleId=" + gruid[2] + "&cusGuid=" + gruid[0] + "&saleAfterGuid=" + gruid[1];
             }
@@ -24,7 +24,7 @@
         $("#btnDown").click(function () {
             gruid = window.opener.downPage();
             if (gruid.length == 3) {
-                $("#ifrmelianXiRenInfo")[0].src = "../customInfo/lianXiRenInfo.aspx?vehicleId=" + gruid[2] + "&cusGuid=" + gruid[0] + "&saleAfterGuid=" + gruid[1];
+                $("#ifrmeLianXiRenInfo")[0].src = "../customInfo/LianXiRenInfo.aspx?vehicleId=" + gruid[2] + "&cusGuid=" + gruid[0] + "&saleAfterGuid=" + gruid[1];
                 $("#ifrmeLianXFrame")[0].src = "../customInfo/LianXFrame.aspx?vehicleId=" + gruid[2] + "&cusGuid=" + gruid[0] + "&saleAfterGuid=" + gruid[1];
                 $("#iframeZhaoLanTianXie")[0].src = "../zhaoLan/ZhaoLanTianXie.aspx?Type=定期招揽&vehicleId=" + gruid[2] + "&cusGuid=" + gruid[0] + "&saleAfterGuid=" + gruid[1];
             }
@@ -41,7 +41,7 @@
 </div>
 
     <div>
-        <iframe id="ifrmelianXiRenInfo" src="../customInfo/lianXiRenInfo.aspx?vehicleId=15055ad5-3292-4d6d-ba2e-ecc3c4694611&cusGuid=15055ad5-3292-4d6d-ba2e-ecc3c4694611&&saleAfterGuid=fd3fc187-5b4f-459e-9036-55f9eda0e0b7"
+        <iframe id="ifrmeLianXiRenInfo" src="../customInfo/LianXiRenInfo.aspx?vehicleId=15055ad5-3292-4d6d-ba2e-ecc3c4694611&cusGuid=15055ad5-3292-4d6d-ba2e-ecc3c4694611&&saleAfterGuid=fd3fc187-5b4f-459e-9036-55f9eda0e0b7"
             style="width: 100%; height: 160px; border: 0;"></iframe>
         <iframe id="ifrmeLianXFrame" src=" ../customInfo/LianXFrame.aspx?vehicleId=15055ad5-3292-4d6d-ba2e-ecc3c4694611&cusGuid=15055ad5-3292-4d6d-ba2e-ecc3c4694611&&saleAfterGuid=fd3fc187-5b4f-459e-9036-55f9eda0e0b7"
             style="width: 100%; height: 200px; border: 0;"></iframe>

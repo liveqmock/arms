@@ -5,7 +5,7 @@
     新车销售定单管理
 </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <base target="_self" />
- <link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=2dfbab1f71764dc182eb87e4e0aad2fc" /><link rel="stylesheet" type="text/css" href="../style/themes/icon.css?v=2dfbab1f71764dc182eb87e4e0aad2fc" /><script src="../JS/Frame/jquery-1.8.0.min.js" type="text/javascript"></script> <script src="../JS/Frame/jquery.easyui.min.js" type="text/javascript"></script> <script src="../JS/Frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script> <script src="../JS/common.js?v=2dfbab1f71764dc182eb87e4e0aad2fc" type="text/javascript"></script><link href="../style/common.css?v=2dfbab1f71764dc182eb87e4e0aad2fc" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=8" /></head>
+ <link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=2dfbab1f71764dc182eb87e4e0aad2fc" /><link rel="stylesheet" type="text/css" href="../style/themes/icon.css?v=2dfbab1f71764dc182eb87e4e0aad2fc" /><script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script> <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script> <script src="../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script> <script src="../js/common.js?v=2dfbab1f71764dc182eb87e4e0aad2fc" type="text/javascript"></script><link href="../style/common.css?v=2dfbab1f71764dc182eb87e4e0aad2fc" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=8" /></head>
 <style type="text/css">
     html, body
     {
@@ -1366,7 +1366,7 @@ Sys.WebForms.PageRequestManager.getInstance()._updateControls(['thidup','tUpdate
                                 </td>
                                 <td nowrap="nowrap" rowspan="6">
                                     <div style="border: 1px solid #CCCCCC; width: 152px;">
-                                        <img src="../Index/getPic.aspx?parent_Guid=6012" id="imgCarPic" onerror="this.src='../image/SaleOrder/null-image.png'" style="width: 152px; height: 101px" /></div>
+                                        <img src="../index/getPic.aspx?parent_Guid=6012" id="imgCarPic" onerror="this.src='../image/SaleOrder/null-image.png'" style="width: 152px; height: 101px" /></div>
                                 </td>
                             </tr>
                             <tr>

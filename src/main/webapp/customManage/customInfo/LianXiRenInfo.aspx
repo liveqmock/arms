@@ -28,7 +28,7 @@
     </style>
 </head1>
 <body>
-    <form name="form1" method="post" action="lianXiRenInfo.aspx?vehicleId=15055ad5-3292-4d6d-ba2e-ecc3c4694611&amp;cusGuid=15055ad5-3292-4d6d-ba2e-ecc3c4694611&amp;&amp;saleAfterGuid=fd3fc187-5b4f-459e-9036-55f9eda0e0b7" id="form1">
+    <form name="form1" method="post" action="LianXiRenInfo.aspx?vehicleId=15055ad5-3292-4d6d-ba2e-ecc3c4694611&amp;cusGuid=15055ad5-3292-4d6d-ba2e-ecc3c4694611&amp;&amp;saleAfterGuid=fd3fc187-5b4f-459e-9036-55f9eda0e0b7" id="form1">
 <div>
 <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJOTE0NDI5ODIxD2QWAgIBD2QWHgIBDw8WAh4EVGV4dAUJ6LWjRzBTNjI4ZGQCAw8PFgIfAAUG5r2Y5bOwZGQCBQ8WAh8ABREyMDE0LTExLTQgOToyODo1NmQCBw8WAh8ABRIyMDE0LTExLTQgMTI6MjE6MTlkAgkPDxYCHwAFEUxGTUdKRTcyN0FTMDA0Nzg5ZGQCCw8PFgIfAAULMTM4NzkyOTI0MzJkZAINDw8WAh8ABQblnKjlupdkZAIPDw8WAh8ABRXpnLjpgZMtR1JKMTUwTC1HS0FHS0NkZAIRDw8WAh8ABQsxMzg3OTI5MjQzMmRkAhMPDxYCHwAFDOaZrumAmuWuouaIt2RkAhUPDxYCHwAFBua9mOWzsGRkAhcPDxYCHwBlZGQCGQ8PFgIfAAUGMTExMDc0ZGQCGw8PFgIfAAUOV1hEMjAxNDExMDQwMDZkZAIhDw8WAh8AZWRkZBtrXOKTP5r/bRiwu7ruXmKCwX57" />
 </div>

@@ -60,7 +60,7 @@
             }
         });
         $("#txtSalor").focusin(function () {
-            var res = window.showModalDialog('../Index/userSelect.aspx');
+            var res = window.showModalDialog('../index/userSelect.aspx');
             if (res) {
                 res = res.replace(/,/g, '');
                 var salorinfo = res.split('|');

@@ -72,7 +72,7 @@ function __doPostBack(eventTarget, eventArgument) {
 </script>
 
 
-    <div style="display:none;"><input type="button" value="打印" onclick="printThis();" /></div>
+    <div style="display:none;"><input type="button" value="打印" onClick="printThis();" /></div>
 
     <input name="txtVin" type="text" value="JTJZA11A8D2033028" id="txtVin" style="display:none;" />
 
@@ -434,7 +434,7 @@ function __doPostBack(eventTarget, eventArgument) {
        <td>工时(折后)</td><td style="color:blue;font-weight:bold;text-align:right;" id="gongShiZheHouHeJi">0</td>
       </tr>
       <tr>
-       <td>工时券</td><td><input name="txtGongShiQuanJinE" type="text" id="txtGongShiQuanJinE" onblur="heJiAll()" class="easyui-numberbox" data-options="min:0,precision:2" style="text-align:right;" /></td>
+       <td>工时券</td><td><input name="txtGongShiQuanJinE" type="text" id="txtGongShiQuanJinE" onBlur="heJiAll()" class="easyui-numberbox" data-options="min:0,precision:2" style="text-align:right;" /></td>
        <td>工时券帐套</td><td><select name="ddlGongShiQuanZhangTao" id="ddlGongShiQuanZhangTao" style="border:none;width:93px;">
 	<option selected="selected" value=""></option>
 	<option value="正常维修">正常维修</option>
@@ -447,7 +447,7 @@ function __doPostBack(eventTarget, eventArgument) {
        <td>材料(折后)</td><td style="color:blue;font-weight:bold;text-align:right;" id="caiLiaoZheHouHeJi">0</td>
       </tr>
       <tr>
-       <td>材料券</td><td><input name="txtCaiLiaoQuanJinE" type="text" id="txtCaiLiaoQuanJinE" onblur="heJiAll()" class="easyui-numberbox" data-options="min:0,precision:2" style="text-align:right;" /></td>
+       <td>材料券</td><td><input name="txtCaiLiaoQuanJinE" type="text" id="txtCaiLiaoQuanJinE" onBlur="heJiAll()" class="easyui-numberbox" data-options="min:0,precision:2" style="text-align:right;" /></td>
        <td>材料帐套</td><td><select name="ddlCaiLiaoQuanZhangTao" id="ddlCaiLiaoQuanZhangTao" style="border:none;width:93px;">
 	<option selected="selected" value=""></option>
 	<option value="正常维修">正常维修</option>
@@ -468,7 +468,7 @@ function __doPostBack(eventTarget, eventArgument) {
       </tr>
       <tr>
        <td style="color:Blue;font-weight:bold;text-align:right;">阳光会员</td>
-       <td style="color:Blue;font-weight:bold;text-align:left;"><a href="#" onclick="huiYuanInfoShow();" >[RG01M1416921]</a></td>
+       <td style="color:Blue;font-weight:bold;text-align:left;"><a href="#" onClick="huiYuanInfoShow();" >[RG01M1416921]</a></td>
        <td>使用卡钱包</td><td style="color:blue;font-weight:bold;text-align:right;" >0 </td>
        <td></td><td></td>
        <td></td><td></td>
@@ -483,13 +483,13 @@ function __doPostBack(eventTarget, eventArgument) {
      <table border="0" style="width:100%" >
      <tr>
      <td align="center">
-      <a onclick="return getZheKou();" id="lnkZheKou" disabled="disabled" class="easyui-linkbutton">折扣</a>
-      <a onclick="return saveCheck();" id="lnkSave" disabled="disabled" class="easyui-linkbutton">保存</a>
-      <a onclick="return chuanSongCaiWu();" id="lnkChuanSongCaiWu" disabled="disabled" class="easyui-linkbutton">传送财务</a>
-      <a onclick="return printThis(1,'print','');" id="lnkYiBanWeiXiuPrint" disabled="disabled" class="easyui-linkbutton">一般维修打印</a>
-      <a onclick="return printThis(2,'print','');" id="lnkChangJiaWeiXiuPrint" disabled="disabled" class="easyui-linkbutton">厂家保修打印</a>
-      <a onclick="return printThis(3,'print','');" id="lnkBaoXianWeiXiuPrint" disabled="disabled" class="easyui-linkbutton">保险打印</a>
-      <a onclick="return printThis(0,'','sample');" id="lnkWeiXiuPrintTest" class="easyui-linkbutton" href="javascript:__doPostBack('lnkWeiXiuPrintTest','')">预览</a>
+      <a onClick="return getZheKou();" id="lnkZheKou" disabled="disabled" class="easyui-linkbutton">折扣</a>
+      <a onClick="return saveCheck();" id="lnkSave" disabled="disabled" class="easyui-linkbutton">保存</a>
+      <a onClick="return chuanSongCaiWu();" id="lnkChuanSongCaiWu" disabled="disabled" class="easyui-linkbutton">传送财务</a>
+      <a onClick="return printThis(1,'print','');" id="lnkYiBanWeiXiuPrint" class="easyui-linkbutton">一般维修打印</a>
+      <a onClick="return printThis(2,'print','');" id="lnkChangJiaWeiXiuPrint" class="easyui-linkbutton">厂家保修打印</a>
+      <a onClick="return printThis(3,'print','');" id="lnkBaoXianWeiXiuPrint" class="easyui-linkbutton">保险打印</a>
+      <a onClick="return printThis(0,'','sample');" id="lnkWeiXiuPrintTest" class="easyui-linkbutton" href="javascript:__doPostBack('lnkWeiXiuPrintTest','')">预览</a>
 
      </td>
      </tr>

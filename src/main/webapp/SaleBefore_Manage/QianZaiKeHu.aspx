@@ -11,7 +11,7 @@
         //隐藏搜索框
                 $("#hideSearch,#sortFiled,#search").click(function () {
                     if (this.id == "sortFiled") {
-                        parent.winopen('../Index/PageFiledSelect.aspx?PageName=QianZaiKeHu&&syauto=' + new Date() + '', '列设置', 845, 540, true, true, false);
+                        parent.winopen('../index/PageFiledSelect.aspx?PageName=QianZaiKeHu&&syauto=' + new Date() + '', '列设置', 845, 540, true, true, false);
                     }
                     if (this.id == "hideSearch") {
                         $("#searchid").hide();
