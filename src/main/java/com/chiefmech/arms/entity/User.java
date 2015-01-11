@@ -6,8 +6,8 @@ import java.util.List;
 public class User {
 
 	private String userId;
-	private String userLoginName;
-	private String userDisplayName;
+	private String loginName;
+	private String displayName;
 	private String password;
 	private Timestamp lastLoginTime;
 	private String isLimit;
@@ -21,20 +21,20 @@ public class User {
 		this.userId = userId;
 	}
 
-	public String getUserLoginName() {
-		return userLoginName;
+	public String getLoginName() {
+		return loginName;
 	}
 
-	public void setUserLoginName(String userLoginName) {
-		this.userLoginName = userLoginName;
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
 	}
 
-	public String getUserDisplayName() {
-		return userDisplayName;
+	public String getDisplayName() {
+		return displayName;
 	}
 
-	public void setUserDisplayName(String userDisplayName) {
-		this.userDisplayName = userDisplayName;
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
 	}
 
 	public String getPassword() {

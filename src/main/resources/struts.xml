@@ -19,6 +19,8 @@
 
 	<constant name="struts.convention.result.path" value="/" />
 
+	<constant name="struts.ui.theme" value="simple" />
+
 	<package name="custom-default" extends="struts-default">
 		<interceptors>
 			<interceptor name="loginInterceptor"

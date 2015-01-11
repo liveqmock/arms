@@ -1,4 +1,4 @@
-package com.chiefmech.arms.action;
+package com.chiefmech.arms.action.index;
 
 import javax.servlet.http.HttpSession;
 
@@ -7,6 +7,7 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.chiefmech.arms.action.BaseActionSupport;
 import com.chiefmech.arms.common.util.Constants;
 
 @SuppressWarnings("serial")

@@ -84,7 +84,7 @@ body {
 	font-weight: bold;
 }
 
-#userLoginName {
+#loginName {
 	background-image: url(loginImage/textBox-286.png);
 	background-color: transparent;
 	background-repeat: no-repeat;
@@ -179,9 +179,9 @@ body {
 					<span id="spanUser">用户名</span> <span id="spanPwd">密&nbsp;&nbsp;码</span>
 					<span id="spanForgetPwd"> 忘记登录密码?</span> <br />
 					<div>
-						<input name="userLoginName" type="text"
-							value="<s:property value='user.userLoginName'/>" maxlength="20"
-							id="userLoginName" />
+						<input name="loginName" type="text"
+							value="<s:property value='user.loginName'/>" maxlength="20"
+							id="loginName" />
 
 						<div>
 							<input name="password" type="password"
@@ -193,8 +193,8 @@ body {
 									src="loginImage/btn.png" onclick="return login();"
 									style="border-width: 0px; width: 100px; height: 100px;" />
 							</div>
-							<span style="color: red; font-weight: bold;" id="spanErr"><s:property
-									value="message" /></span>
+							<span style="color: red; font-weight: bold;" id="spanErr"><s:fielderror
+									fieldName="error_username_password" /></span>
 						</div>
 						<div id="loginTishi">
 							<p>
@@ -217,7 +217,7 @@ body {
 				&& $.cookie('txtUserName') != 'null') {
 			document.getElementById("chkJiZhuPwd").checked = true;
 
-			$("#userLoginName").val($.cookie('txtUserName'));
+			$("#loginName").val($.cookie('txtUserName'));
 			$("#password").val($.cookie('txtPassWord'));
 		}
 	});
@@ -229,7 +229,7 @@ body {
 			theForm = document.form1;
 		}
 
-		if ($("#userLoginName").val() == "") {
+		if ($("#loginName").val() == "") {
 			$("#spanErr").html("登录名不能为空!");
 			theForm.disable = true;
 			return false;
@@ -243,7 +243,7 @@ body {
 
 		//写入cookies
 		if (document.getElementById("chkJiZhuPwd").checked == true) {
-			$.cookie('txtUserName', $("#userLoginName").val());
+			$.cookie('txtUserName', $("#loginName").val());
 			$.cookie('txtPassWord', $("#password").val());
 		} else {
 			$.cookie('txtUserName', null);

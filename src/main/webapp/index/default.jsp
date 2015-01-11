@@ -178,7 +178,7 @@
       <tr>
       <td> <img src="../image/DCLogo.png"  alt='logo' /></td>
       <td> <img src="../image/ShineClubLogo.png" style='margin-left:10px;' alt='logo' /></td>
-      <td style='width:75%;vertical-align:bottom;color:Blue;'>[<a href='#' onclick="winopen('groupSelfSet.aspx','机构扩展设置',900,500,true,true,false);">九江深丰</a> ]：<a href='#' onclick="winopen('userPersonalChange.aspx','个人设置',900,500,true,true,false);" >张小平</a>  &nbsp;&nbsp;<span id="time"></span></td>
+      <td style='width:75%;vertical-align:bottom;color:Blue;'>[<a href='#' onclick="winopen('groupSelfSet.aspx','机构扩展设置',900,500,true,true,false);">九江深丰</a> ]：<a href='#' onclick="winopen('userPersonalChange.jsp','个人设置',900,500,true,true,false);" ><s:property value='user.displayName'/></a>  &nbsp;&nbsp;<span id="time"></span></td>
       <td nowrap='nowrap' style='width:300px;'>
         <img src='../image/home.png' alt='机构'  title="机构"   onclick="winopen('groupChoice.aspx','机构选择',900,500,true,true,false);"  />         
         <img id="imgCallSrc" src='../image/voice.png' alt='消息'  title="消息"  onclick="showmsg(0);"  />
@@ -245,7 +245,7 @@
     function exit() {
         $.messager.confirm('退出', '您确定退出本系统?', function (r) {
             if (r) {
-                location.href = "../logout.action";
+                location.href = "logout.action";
             }
         });
     }

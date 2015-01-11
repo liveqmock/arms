@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.action.BaseActionSupport;
+import com.chiefmech.arms.common.util.Constants;
+import com.chiefmech.arms.entity.User;
 
 @SuppressWarnings("serial")
 @ParentPackage("custom-default")
@@ -14,9 +16,16 @@ import com.chiefmech.arms.action.BaseActionSupport;
 @Scope("prototype")
 public class HomePageAction extends BaseActionSupport {
 
+	private User user;
+
 	@Action(value = "default", results = { @Result(name = "success", location = "default.jsp") })
 	public String homePage() {
+		user = (User) session.get(Constants.KEY_USER_SESSION);
 		return SUCCESS;
+	}
+
+	public User getUser() {
+		return user;
 	}
 
 }

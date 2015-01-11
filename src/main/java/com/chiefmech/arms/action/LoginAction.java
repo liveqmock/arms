@@ -25,13 +25,12 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 
 	private User user = new User();
 
-	private String message;
-
 	@Action(value = "login", results = {
 			@Result(name = "success", type = "redirectAction", location = "index/default"),
 			@Result(name = "input", location = "login.jsp") })
 	public String login() {
-		if (StringUtils.isBlank(user.getUserLoginName())
+		this.clearFieldErrors();
+		if (StringUtils.isBlank(user.getLoginName())
 				|| StringUtils.isBlank(user.getPassword())) {
 			// 跳转到登录页面
 			return INPUT;
@@ -42,7 +41,7 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 						Constants.KEY_USER_SESSION, userInfo);
 				return SUCCESS;
 			} else {
-				message = "用户名或密码错误";
+				this.addFieldError("error_username_password", "用户名或密码错误");
 				return INPUT;
 			}
 		}
@@ -59,9 +58,5 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-
-	public String getMessage() {
-		return message;
 	}
 }
