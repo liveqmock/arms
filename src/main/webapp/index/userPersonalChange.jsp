@@ -22,15 +22,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
 </head>
 <body>
-	<form name="form1" method="post" action="userPersonalChange.action"
-		id="form1">
+	<form name="form1" method="post" id="form1">
 		<div>
-			<input type="hidden" name="__VIEWSTATEGENERATOR"
-				id="__VIEWSTATEGENERATOR" value="5B71688A" /> <input type="hidden"
-				name="__EVENTVALIDATION" id="__EVENTVALIDATION"
-				value="/wEWBQLG+5+VCQLUlvrbCAL7mJ6BBAL7mJqBBAKj7e2BCGd01QdoWNzo3ZlQP6QXFnIM2itH" />
+			<input type="hidden" name="userId"
+				value="<s:property value='user.userId'/>" />
 		</div>
-
 
 		<div class="allRegion">
 			<div class="title">
@@ -73,17 +69,24 @@
 	</form>
 
 	<script language="javascript" type="text/javascript">
-		var theForm = document.forms['form1'];
-		if (!theForm) {
-			theForm = document.form1;
-		}
 		function __doPostBack(eventTarget, eventArgument) {
-			if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
-				theForm.submit();
-			}
+			$("#form1").form('submit', {
+				url : "updateUserPersonalInfo.action",
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.statusCode == "success") {
+						alert('密码修改成功！');
+						parWinClose();
+					} else if (result.statusCode == "oldPwd_error") {
+						alert('验证旧密码失败！');
+					} else if (result.statusCode == "failed") {
+						alert('更新密码失败！');
+					}
+				}
+			});
 		}
-		function saveCheck() {
 
+		function saveCheck() {
 			var ischar = false;
 			var isNumber = false;
 			var isLength = false;

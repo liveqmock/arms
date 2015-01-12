@@ -165,7 +165,7 @@
     <script language="javascript" type="text/javascript">
 
         function UpdUserInfo() {
-            var href = "../customNewAdd.aspx?custId=15055ad5-3292-4d6d-ba2e-ecc3c4694611&d=" + new Date()
+            var href = "../customNewAdd.jsp?custId=15055ad5-3292-4d6d-ba2e-ecc3c4694611&d=" + new Date()
             var SizeZ = 'height=600,width=970,left=0,top=0,toolbar=no,resizable=yes,status=no,menubar=no,scrollbars=yes';
             try {
                 if (!openStatus2.closed) {

@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html><head><title>
-    深业汽车业务管理信息系统V3.0.1    
-    
-</title> <link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=74feba2d2e70452cbc1840620b9de165" /><link rel="stylesheet" type="text/css" href="../style/themes/icon.css?v=74feba2d2e70452cbc1840620b9de165" /><script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script> <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script> <script src="../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script> <script src="../js/common.js?v=74feba2d2e70452cbc1840620b9de165" type="text/javascript"></script><link href="../style/common.css?v=74feba2d2e70452cbc1840620b9de165" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=8" /></head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>汽修管理系统</title> <link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=74feba2d2e70452cbc1840620b9de165" /><link rel="stylesheet" type="text/css" href="../style/themes/icon.css?v=74feba2d2e70452cbc1840620b9de165" /><script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script> <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script> <script src="../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script> <script src="../js/common.js?v=74feba2d2e70452cbc1840620b9de165" type="text/javascript"></script><link href="../style/common.css?v=74feba2d2e70452cbc1840620b9de165" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=8" /></head>
     
 <link href="../style/default/main.css" rel="stylesheet" type="text/css" />
  
@@ -178,7 +176,7 @@
       <tr>
       <td> <img src="../image/DCLogo.png"  alt='logo' /></td>
       <td> <img src="../image/ShineClubLogo.png" style='margin-left:10px;' alt='logo' /></td>
-      <td style='width:75%;vertical-align:bottom;color:Blue;'>[<a href='#' onclick="winopen('groupSelfSet.aspx','机构扩展设置',900,500,true,true,false);">九江深丰</a> ]：<a href='#' onclick="winopen('userPersonalChange.jsp','个人设置',900,500,true,true,false);" ><s:property value='user.displayName'/></a>  &nbsp;&nbsp;<span id="time"></span></td>
+      <td style='width:75%;vertical-align:bottom;color:Blue;'>[<a href='#' onclick="winopen('groupSelfSet.aspx','机构扩展设置',900,500,true,true,false);">九江深丰</a> ]：<a href='#' onclick="winopen('userPersonalChange.action','个人设置',900,500,true,true,false);" ><s:property value='user.displayName'/></a>  &nbsp;&nbsp;<span id="time"></span></td>
       <td nowrap='nowrap' style='width:300px;'>
         <img src='../image/home.png' alt='机构'  title="机构"   onclick="winopen('groupChoice.aspx','机构选择',900,500,true,true,false);"  />         
         <img id="imgCallSrc" src='../image/voice.png' alt='消息'  title="消息"  onclick="showmsg(0);"  />
@@ -318,6 +316,7 @@
         
         if ($("#callSpan").html() != "") {
             document.title = msgI % 2 == 0 ? "【　　　】 - " + msgT : "【新消息】 - " + tiShiInfo + msgT;
+
         } else {
             document.title = msgT;
         }

@@ -787,7 +787,7 @@ function __doPostBack(eventTarget, eventArgument) {
 
          
          function cancelAddVehicle() {
-             location.href = "customNewAdd.aspx?showSort=3&custId=" + $("#txtCustId").val() + "&d=" + new Date();
+             location.href = "customNewAdd.jsp?showSort=3&custId=" + $("#txtCustId").val() + "&d=" + new Date();
              return false;
          }
 

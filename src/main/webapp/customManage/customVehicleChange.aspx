@@ -200,7 +200,7 @@ function __doPostBack(eventTarget, eventArgument) {
         }
 
         function backCustom() {
-            location.href = "customNewAdd.aspx?showSort=3&custId=05dde3ab-3f95-486e-9222-7dadf9a833c5&d="+new Date();
+            location.href = "customNewAdd.jsp?showSort=3&custId=05dde3ab-3f95-486e-9222-7dadf9a833c5&d="+new Date();
         }
 
     </script>

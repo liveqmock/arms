@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,9 +11,11 @@
 </title><link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=20130306" />
     <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
     <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script> 
+    <script src="../js/frame/underscore-min.js" type="text/javascript"></script> 
     <script src="../js/birthDate.js?a=123" type="text/javascript"></script> 
     <script src="../js/common.js?a=2014081611" type="text/javascript"></script> 
-     <script src="../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
+    <script src="../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
+    <script src="../js/geo.js" type="text/javascript"></script>
  
 </head>
 
@@ -68,13 +73,6 @@ td
 
  
 <body>
-    <form name="form1" method="post" action="customNewAdd.jsp?custId=80e1c393-1e7e-4aed-a87f-298427632abf&amp;d=Tue+Jan+06+2015+08%3a14%3a39+GMT+0800" id="form1">
-<div>
-<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
-<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
-<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
-<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="" />
-</div>
 
 <script type="text/javascript">
 //<![CDATA[
@@ -92,13 +90,6 @@ function __doPostBack(eventTarget, eventArgument) {
 //]]>
 </script>
 
-
-<div>
-
-    <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AA8E297A" />
-</div>
-
-
     <div style="width:900px;">
       <div id="tabs" class="tabs" style="width:900px;">
         <ul>        
@@ -109,7 +100,8 @@ function __doPostBack(eventTarget, eventArgument) {
       </div>
       
       <!--车主信息 start-->
-      <div id="aDiv" style="margin:2 0 0 5;display:none;" >
+    <form name="form1" method="post" id="form1">
+      <div id="aDiv" style="margin:2 0 0 5;display:block;" >
         <br />
         <span style="font-weight:bold;font-size:12px;color:Red;">请先填写证件类型及证件号码</span>
         <table border="0" cellpadding="0" cellspacing="0" width="900px"  style="border-collapse:collapse;border:1px solid #9a9a9a" >
@@ -207,92 +199,11 @@ function __doPostBack(eventTarget, eventArgument) {
          <td><span class="requireSpan">*</span>所属区域：</td>
          <td colspan="7">
 
-         <div id="cheZhu">
-    
-            <select name="ddlCheZhuP" onchange="javascript:setTimeout('__doPostBack(\'ddlCheZhuP\',\'\')', 0)" id="ddlCheZhuP" style="border:none;width:100px">
-        <option value="">请选择</option>
-        <option selected="selected" value="广东省">广东省</option>
-        <option value="北京市">北京市</option>
-        <option value="天津市">天津市</option>
-        <option value="河北省">河北省</option>
-        <option value="山西省">山西省</option>
-        <option value="内蒙古区">内蒙古区</option>
-        <option value="辽宁省">辽宁省</option>
-        <option value="吉林省">吉林省</option>
-        <option value="黑龙江省">黑龙江省</option>
-        <option value="上海市">上海市</option>
-        <option value="江苏省">江苏省</option>
-        <option value="浙江省">浙江省</option>
-        <option value="安徽省">安徽省</option>
-        <option value="福建省">福建省</option>
-        <option value="江西省">江西省</option>
-        <option value="山东省">山东省</option>
-        <option value="河南省">河南省</option>
-        <option value="湖北省">湖北省</option>
-        <option value="湖南省">湖南省</option>
-        <option value="广西省">广西省</option>
-        <option value="海南省">海南省</option>
-        <option value="重庆市">重庆市</option>
-        <option value="四川省">四川省</option>
-        <option value="贵州省">贵州省</option>
-        <option value="云南省">云南省</option>
-        <option value="西藏区">西藏区</option>
-        <option value="陕西省">陕西省</option>
-        <option value="甘肃省">甘肃省</option>
-        <option value="青海省">青海省</option>
-        <option value="宁夏区">宁夏区</option>
-        <option value="新疆区">新疆区</option>
-        <option value="台湾省">台湾省</option>
-        <option value="香港特区">香港特区</option>
-        <option value="澳门特区">澳门特区</option>
-
-    </select>省(直辖市)
-            <select name="ddlCheZhuC" onchange="javascript:setTimeout('__doPostBack(\'ddlCheZhuC\',\'\')', 0)" id="ddlCheZhuC" style="border:none;width:100px">
-        <option value="">请选择</option>
-        <option selected="selected" value="深圳市">深圳市</option>
-        <option value="广州市">广州市</option>
-        <option value="韶关市">韶关市</option>
-        <option value="珠海市">珠海市</option>
-        <option value="汕头市">汕头市</option>
-        <option value="佛山市">佛山市</option>
-        <option value="江门市">江门市</option>
-        <option value="湛江市">湛江市</option>
-        <option value="茂名市">茂名市</option>
-        <option value="肇庆市">肇庆市</option>
-        <option value="惠州市">惠州市</option>
-        <option value="梅州市">梅州市</option>
-        <option value="汕尾市">汕尾市</option>
-        <option value="河源市">河源市</option>
-        <option value="阳江市">阳江市</option>
-        <option value="清远市">清远市</option>
-        <option value="东莞市">东莞市</option>
-        <option value="中山市">中山市</option>
-        <option value="潮州市">潮州市</option>
-        <option value="揭阳市">揭阳市</option>
-        <option value="云浮市">云浮市</option>
-
-    </select>市(地区)
-            <select name="ddlCheZhuA" onchange="javascript:setTimeout('__doPostBack(\'ddlCheZhuA\',\'\')', 0)" id="ddlCheZhuA" style="border:none;width:100px">
-        <option value="">请选择</option>
-        <option value="南山区">南山区</option>
-        <option value="罗湖区">罗湖区</option>
-        <option value="福田区">福田区</option>
-        <option selected="selected" value="宝安区">宝安区</option>
-        <option value="龙岗区">龙岗区</option>
-        <option value="盐田区">盐田区</option>
-        <option value="龙华新区">龙华新区</option>
-        <option value="光明新区">光明新区</option>
-        <option value="坪山新区">坪山新区</option>
-
-    </select>区(县)
-           
+         <div id="cheZhu">    
+            <select name="ddlCheZhuP" id="ddlCheZhuP" style="border:none;width:100px"></select>
+            <select name="ddlCheZhuC" id="ddlCheZhuC" style="border:none;width:100px"></select>
+            <select name="ddlCheZhuA" id="ddlCheZhuA" style="border:none;width:100px"></select> 
 </div>
-
-           <!--隐藏域 start-->
-           <input name="txtCheZhuP" type="text" value="广东省" id="txtCheZhuP" style="display:none;" />
-           <input name="txtCheZhuC" type="text" value="深圳市" id="txtCheZhuC" style="display:none;" />
-           <input name="txtCheZhuA" type="text" value="宝安区" id="txtCheZhuA" style="display:none;" />
-           <!--隐藏域 end-->
          </td>
          </tr>
          <tr>
@@ -448,10 +359,11 @@ function __doPostBack(eventTarget, eventArgument) {
           
         </table>
       </div>
-
+	  </form>
       <!--车主信息 end-->
 
       <!--联系人信息 start-->
+    <form name="form2" method="post" id="form2">
       <div id="bDiv" style="margin:2 0 0 5;display:none;" >
         <br />
         <table border="0" cellpadding="0" cellspacing="0" width="900px"  style="border-collapse:collapse;border:1px solid #9a9a9a" >
@@ -686,6 +598,7 @@ function __doPostBack(eventTarget, eventArgument) {
 
          </table>
          </div>
+		</form>
       <!--联系人信息 end-->
  
 
@@ -745,10 +658,10 @@ function __doPostBack(eventTarget, eventArgument) {
       <!--按钮区域 end-->
     </div>
     
-
-</form>
-     <script language="javascript" type="text/javascript" >
-
+     <script language="javascript" type="text/javascript" >	
+	 
+	 	//初始化省市区三级联动下拉框
+		geoSetup(["ddlCheZhuP", "ddlCheZhuC", "ddlCheZhuA"], ["广东省","深圳市","盐田区"]);
          
          //各类验证 satrt
          function changeColor(id,sort)
