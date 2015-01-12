@@ -68,7 +68,7 @@ td
 
  
 <body>
-    <form name="form1" method="post" action="customNewAdd.jsp?custId=80e1c393-1e7e-4aed-a87f-298427632abf&amp;d=Tue+Jan+06+2015+08%3a14%3a39+GMT+0800" id="form1">
+    <form name="form1" method="post" action="customNewAdd.action?custId=80e1c393-1e7e-4aed-a87f-298427632abf&amp;d=Tue+Jan+06+2015+08%3a14%3a39+GMT+0800" id="form1">
 <div>
 <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
 <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
@@ -791,7 +791,7 @@ function __doPostBack(eventTarget, eventArgument) {
           {
              if(oldCusId.length == 36)
              {
-               z = window.open('../customManage/customNewAdd.jsp?custId='+oldCusId+'&d=' + new Date(), '新增客户信息2', 'height=600,width=970,top=80,left=80,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no, status=no')
+               z = window.open('../customManage/customNewAdd.action?custId='+oldCusId+'&d=' + new Date(), '新增客户信息2', 'height=600,width=970,top=80,left=80,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no, status=no')
                 z.focus();
 
              }

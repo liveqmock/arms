@@ -73,23 +73,6 @@ td
 
  
 <body>
-
-<script type="text/javascript">
-//<![CDATA[
-var theForm = document.forms['form1'];
-if (!theForm) {
-    theForm = document.form1;
-}
-function __doPostBack(eventTarget, eventArgument) {
-    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
-        theForm.__EVENTTARGET.value = eventTarget;
-        theForm.__EVENTARGUMENT.value = eventArgument;
-        theForm.submit();
-    }
-}
-//]]>
-</script>
-
     <div style="width:900px;">
       <div id="tabs" class="tabs" style="width:900px;">
         <ul>        
@@ -551,10 +534,6 @@ function __doPostBack(eventTarget, eventArgument) {
     </select>区(县)
           
 </div>
-
-              <input name="txtLianXiRenP" type="text" value="广东省" id="txtLianXiRenP" style="display:none;" />
-              <input name="txtLianXiRenC" type="text" value="深圳市" id="txtLianXiRenC" style="display:none;" />
-              <input name="txtLianXiRenA" type="text" value="宝安区" id="txtLianXiRenA" style="display:none;" />
          </td>
          </tr>
          <tr>
@@ -663,6 +642,20 @@ function __doPostBack(eventTarget, eventArgument) {
 	 	//初始化省市区三级联动下拉框
 		geoSetup(["ddlCheZhuP", "ddlCheZhuC", "ddlCheZhuA"], ["广东省","深圳市","盐田区"]);
          
+		function __doPostBack(eventTarget, eventArgument) {
+			$("#form1").form('submit', {
+				url : "insertLianXiRenXinXi.action",
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.statusCode == "success") {
+						alert('保存车主信息成功！');
+					} else if (result.statusCode == "failed") {
+						alert('保存车主信息成功！');
+					}
+				}
+			});			
+		}
+		 
          //各类验证 satrt
          function changeColor(id,sort)
          {
@@ -704,7 +697,7 @@ function __doPostBack(eventTarget, eventArgument) {
           {
              if(oldCusId.length == 36)
              {
-               z = window.open('../customManage/customNewAdd.jsp?custId='+oldCusId+'&d=' + new Date(), '新增客户信息2', 'height=600,width=970,top=80,left=80,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no, status=no')
+               z = window.open('../customManage/customNewAdd.action?custId='+oldCusId+'&d=' + new Date(), '新增客户信息2', 'height=600,width=970,top=80,left=80,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no, status=no')
                 z.focus();
 
              }
@@ -819,41 +812,6 @@ function __doPostBack(eventTarget, eventArgument) {
 
          var btnFlag = "0";
          function saveCheck(sort) {
-          
-
-                 if ($("#ddlCheLiangZhiZaoShang").val() != "") {
-                     $("#txtCheLiangZhiZaoShang").val($("#ddlCheLiangZhiZaoShang").val());
-                 }
-                 if ($("#ddlCheLiangCheXi").val() != "") {
-                     $("#txtCheLiangCheXi").val($("#ddlCheLiangCheXi").val());
-                 }
-
-                 //车主省 市 区导入
-                 if ($("#ddlCheZhuP").val() != "") {
-                     $("#txtCheZhuP").val($("#ddlCheZhuP").val());
-                 }
-                  
-                 if ($("#ddlCheZhuC").val() != "") {
-                     $("#txtCheZhuC").val($("#ddlCheZhuC").val());
-                 }
-                 if ($("#ddlCheZhuA").val() != "") {
-                     $("#txtCheZhuA").val($("#ddlCheZhuA").val());
-                 }
-
-                 if ($("#ddlLianXiRenP").val() != "") {
-                     $("#txtLianXiRenP").val($("#ddlLianXiRenP").val());
-                 }
-                 if ($("#ddlLianXiRenC").val() != "") {
-                     $("#txtLianXiRenC").val($("#ddlLianXiRenC").val());
-                 }
-                 if ($("#ddlLianXiRenA").val() != "") {
-                     $("#txtLianXiRenA").val($("#ddlLianXiRenA").val());
-                 }
-
-           
-
-
-
              var err = "";
              if (btnFlag == "0") { btnFlag = "1"; } else { return false; }
 
@@ -864,9 +822,9 @@ function __doPostBack(eventTarget, eventArgument) {
              if ($.trim($("#txtCheZhuMob").val()) == "") { err += "车主信息->车主手机不能为空！\n"; }
              if ($.trim($("#ddlCheZhuCardSort").val()) == "") { err += "车主信息->证件类型不能为空！\n"; }
              if ($.trim($("#txtCheZhuCardNo").val()) == "") { err += "车主信息->证件号码不能为空！\n"; }
-             if ($.trim($("#txtCheZhuP").val()) == "") { err += "车主信息->所属区域省份不能为空！\n"; }
-             if ($.trim($("#txtCheZhuC").val()) == "") { err += "车主信息->所属区域市不能为空！\n"; }
-             if ($.trim($("#txtCheZhuA").val()) == "") { err += "车主信息->所属区域地区不能为空！\n"; }
+             if ($.trim($("#ddlCheZhuP").val()) == "") { err += "车主信息->所属区域省份不能为空！\n"; }
+             if ($.trim($("#ddlCheZhuC").val()) == "") { err += "车主信息->所属区域市不能为空！\n"; }
+             if ($.trim($("#ddlCheZhuA").val()) == "") { err += "车主信息->所属区域地区不能为空！\n"; }
              if ($.trim($("#txtCheZhuAdd").val()) == "") { err += "车主信息->联系地址不能为空！\n"; }
              if ($.trim($("#txtLianXiRenName").val()) == "") { err += "联系人信息->联系人姓名不能为空！\n"; }
              if ($.trim($("#ddlLianXiRenSex").val()) == "") { err += "联系人信息->联系人性别不能为空！\n"; }
@@ -875,9 +833,9 @@ function __doPostBack(eventTarget, eventArgument) {
              if ($.trim($("#ddlLianXiCardSort").val()) == "") { err += "联系人信息->联系人证件类型不能为空！\n"; }
              if ($.trim($("#txtLianXiRenCardNo").val()) == "") { err += "联系人信息->联系人证件号码不能为空！\n"; }
              //if ($.trim($("#txtLianXiRenBirthday").val()) == "") { err += "联系人信息->联系人生日不能为空！\n"; }
-             if ($.trim($("#txtLianXiRenP").val()) == "") { err += "联系人信息->联系人所在省份不能为空！\n"; }
-             if ($.trim($("#txtLianXiRenC").val()) == "") { err += "联系人信息->联系人所在市不能为空！\n"; }
-             if ($.trim($("#txtLianXiRenA").val()) == "") { err += "联系人信息->联系人所在区不能为空！\n"; }
+             if ($.trim($("#ddlLianXiRenP").val()) == "") { err += "联系人信息->联系人所在省份不能为空！\n"; }
+             if ($.trim($("#ddlLianXiRenC").val()) == "") { err += "联系人信息->联系人所在市不能为空！\n"; }
+             if ($.trim($("#ddlLianXiRenA").val()) == "") { err += "联系人信息->联系人所在区不能为空！\n"; }
              if ($.trim($("#txtLianXiRenAdd").val()) == "") { err += "联系人信息->联系人地址不能为空！\n"; }
              //if ($.trim($("#ddlLianXiRenJiaZhaoSort").val()) == "") { err += "联系人信息->联系人证件类型不能为空！\n"; }
              //if ($.trim($("#txtLianXiRenJiaZhaoDate").val()) == "") { err += "联系人信息->联系人证件号码不能为空！\n"; }        

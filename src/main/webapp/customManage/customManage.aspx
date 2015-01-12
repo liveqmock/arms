@@ -115,7 +115,7 @@ function __doPostBack(eventTarget, eventArgument) {
 
         //新客户资料模块
         function addNewCustInfo(id, title) {
-            z = window.open('../customManage/customNewAdd.jsp?&d=' + new Date(), title, 'height=600,width=970,top=80,left=80,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=n o, status=no')
+            z = window.open('../customManage/customNewAdd.action?&d=' + new Date(), title, 'height=600,width=970,top=80,left=80,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=n o, status=no')
             z.focus();
         }
 
@@ -137,7 +137,7 @@ function __doPostBack(eventTarget, eventArgument) {
             var cheZhuName = $('#dg').datagrid('getRows')[index]['cheZhuName'];
            // parent.winopen('../customManage/customDetailAdd.aspx?custId=' + cusId + "&d=" + new Date(), '[' + cheZhuName + ']客户信息修改', 970, 600, true, true, false);
             // var href = "customDetailAdd.aspx?custId=" + cusId + "&d=" + new Date()
-            var href = "customNewAdd.jsp?custId=" + cusId + "&d=" + new Date()
+            var href = "customNewAdd.action?custId=" + cusId + "&d=" + new Date()
             var SizeZ = 'height=600,width=970,left=0,top=0,toolbar=no,resizable=yes,status=no,menubar=no,scrollbars=yes';
             try {
                 if (!openStatus2.closed) {

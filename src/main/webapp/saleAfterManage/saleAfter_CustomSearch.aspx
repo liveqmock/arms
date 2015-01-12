@@ -205,7 +205,7 @@ function __doPostBack(eventTarget, eventArgument) {
         //车辆信息新增
         function addCheLiangInfo() {
             //parent.winopen('../customManage/customAdd.aspx?&d=' + new Date(),'新增车辆信息', 970, 600, true, true, false);
-            z = window.open('../customManage/customNewAdd.jsp?d=' + new Date(), '新增客户信息', 'height=600,width=970,top=80,left=80,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no, status=no')
+            z = window.open('../customManage/customNewAdd.action?d=' + new Date(), '新增客户信息', 'height=600,width=970,top=80,left=80,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no, status=no')
             z.focus();
             return false;
         }
