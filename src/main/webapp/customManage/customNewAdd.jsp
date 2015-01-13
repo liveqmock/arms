@@ -148,7 +148,7 @@ td {
 								<option selected="selected" value="车主手机">车主手机</option>
 
 						</select></td>
-						<td><input name="txtCheZhuTel" type="text" maxlength="12"
+						<td><span class="requireSpan">*</span><input name="txtCheZhuTel" type="text" maxlength="12"
 							id="txtCheZhuTel" /></td>
 						<td>内线:</td>
 						<td><input name="txtCheZhuTelNeiXian" type="text"
