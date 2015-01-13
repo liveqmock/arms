@@ -9,7 +9,7 @@ public class P6spyLogFormat implements MessageFormattingStrategy {
 
 	/**
 	 * Formats a log message for the logging module
-	 *
+	 * 
 	 * @param connectionId
 	 *            the id of the connection
 	 * @param now
@@ -49,8 +49,8 @@ public class P6spyLogFormat implements MessageFormattingStrategy {
 				DateFormatUtils.format(Long.parseLong(now),
 						"yyyy-MM-dd HH:mm:ss")).append("|")
 				.append(String.format("elapsed:%5d", elapsed)).append("|")
-				.append(category).append("|connectionId:").append(connectionId)
-				.append("|").append(timeFlag).append("|")
+				.append(timeFlag).append("|").append(category)
+				.append("|connectionId:").append(connectionId).append("|")
 				.append(P6Util.singleLine(prepared)).append("|")
 				.append(P6Util.singleLine(sql));
 		return sb.toString();

@@ -122,13 +122,13 @@ td {
 		<form name="form1" method="post" id="form1">
 			<input name="txtCustId" type="hidden" id="txtCustId" />
 			<!--车主信息 start-->
-			<div id="aDiv" style="margin: 2 0 0 5; display: block;">
+			<div id="aDiv" style="margin: 2 0 0 5; display: none;">
 				<br /> <span
 					style="font-weight: bold; font-size: 12px; color: Red;"></span>
 				<table border="0" cellpadding="0" cellspacing="0" width="900px"
 					style="border-collapse: collapse; border: 1px solid #9a9a9a">
 					<tr>
-						<td onclick="lianXiRenToCheZhu()"><span class="requireSpan">*</span>客户类型：</td>
+						<td onclick="lianXiRenToCheZhu()">客户类型：</td>
 						<td style="width: 125px;"><select name="ddlCustSort"
 							id="ddlCustSort"
 							style="border: none; width: 100%; background-color: Transparent;">
@@ -210,7 +210,7 @@ td {
 							data-options="min:0,max:500,precision:0" /></td>
 					</tr>
 					<tr>
-						<td><span class="requireSpan">*</span>证件类型：</td>
+						<td>证件类型：</td>
 						<td><select name="ddlCheZhuCardSort" id="ddlCheZhuCardSort"
 							style="border: none; width: 100%;">
 								<option value="港澳身份证">港澳身份证</option>
@@ -224,12 +224,12 @@ td {
 						<td colspan="3"><input name="txtCheZhuCardNo" type="text"
 							maxlength="20" id="txtCheZhuCardNo" onblur="checkCardNo();"
 							style="width: 400px;" /></td>
-						<td><span class="requireSpan">*</span>生日:</td>
+						<td>生日:</td>
 						<td><input name="txtCheZhuShengRi" type="text"
 							id="txtCheZhuShengRi" class="inputCss easyui-datebox" /></td>
 					</tr>
 					<tr>
-						<td><span class="requireSpan">*</span>所属区域：</td>
+						<td>所属区域：</td>
 						<td colspan="7">
 
 							<div id="cheZhu">
@@ -409,7 +409,7 @@ td {
 			<!--车主信息 end-->
 
 			<!--联系人信息 start-->
-			<div id="bDiv" style="margin: 2 0 0 5; display: block;">
+			<div id="bDiv" style="margin: 2 0 0 5; display: none;">
 				<br />
 				<table border="0" cellpadding="0" cellspacing="0" width="900px"
 					style="border-collapse: collapse; border: 1px solid #9a9a9a">
@@ -417,7 +417,7 @@ td {
 						<td onclick="cheZhuToLianXiRen()"><span class="requireSpan">*</span>联系人姓名：</td>
 						<td><input name="txtLianXiRenName" type="text" maxlength="20"
 							id="txtLianXiRenName" /></td>
-						<td><span class="requireSpan">*</span>性别：</td>
+						<td>性别：</td>
 						<td><select name="ddlLianXiRenSex" id="ddlLianXiRenSex"
 							style="border: none; width: 125px">
 								<option selected="selected" value="男">男</option>
@@ -511,7 +511,7 @@ td {
 
 					<tr>
 
-						<td><span class="requireSpan">*</span>证件类型：</td>
+						<td>证件类型：</td>
 						<td><select name="ddlLianXiCardSort" id="ddlLianXiCardSort"
 							style="border: none; width: 100%;">
 								<option selected="selected" value="身份证">身份证</option>
@@ -526,13 +526,13 @@ td {
 							maxlength="20" id="txtLianXiRenCardNo"
 							onblur="cardNoToDate('txtLianXiRenCardNo','txtLianXiRenBirthday')"
 							style="width: 200px;" /></td>
-						<td><span class="requireSpan">*</span>联系人生日：</td>
+						<td>联系人生日：</td>
 						<td><input name="txtLianXiRenBirthday" type="text"
 							id="txtLianXiRenBirthday" class="inputCss easyui-datebox" /></td>
 
 					</tr>
 					<tr>
-						<td><span class="requireSpan">*</span>所属区域：</td>
+						<td>所属区域：</td>
 						<td colspan="7">
 							<div id="lianXiRen">
 
@@ -671,21 +671,17 @@ td {
 
 		<!--按钮区域 start-->
 		<div align="center" id="btnBottomDiv">
-
-			<a onclick="return saveCheck(1);" id="lnkMdf"
-				class="easyui-linkbutton"
-				href="javascript:__doPostBack('lnkMdf','')">保存</a> <a
-				onclick="return winClose();" id="lnkCancel"
-				class="easyui-linkbutton"
-				href="javascript:__doPostBack('lnkCancel','')">取消</a> <a
-				onclick="return sendVip();" id="lnkSendVip"
-				class="easyui-linkbutton"
-				href="javascript:__doPostBack('lnkSendVip','')">传送客户资料</a>
+			<a onclick="return saveCheck();" id="lnkSave" class="easyui-linkbutton"	href="javascript:__doPostBack('lnkSave','')">保存</a> 
+            <a id="lnkCancel" class="easyui-linkbutton" href="javascript:winClose()">取消</a> 
 		</div>
 		<!--按钮区域 end-->
 	</div>
 	<script language="javascript" type="text/javascript">
-		initFormData();
+
+		$(function() {
+			initFormData();
+			show(1);
+		});
 
 		function initFormData() {
 			var formJson = eval('(' + '<s:property value="jsonData" escape="false"/>' + ')');
@@ -780,20 +776,6 @@ td {
 		}
 
 		//客户资料同联系人资料的相互写入
-
-		//传送客户资料至VIP
-		function sendVip() {
-
-			$.get("DCHVIPInterface.aspx?d=" + new Date(), {
-				type : "C",
-				thisGuid : "80e1c393-1e7e-4aed-a87f-298427632abf"
-			}, function(data) {
-				alert(data);
-			});
-
-			return false;
-		}
-
 		var tmp = "a";
 		function show(sort) {
 			if ($("#" + tmp + "Div").length > 0) {
@@ -914,19 +896,8 @@ td {
 
 		}
 
-		$(function() {
-			show(1);
-			$("#txtCustId").css("display", "none");
-		});
-
-		var btnFlag = "0";
-		function saveCheck(sort) {
+		function saveCheck() {
 			var err = "";
-			if (btnFlag == "0") {
-				btnFlag = "1";
-			} else {
-				return false;
-			}
 
 			//验证必须填项
 			if ($.trim($("#txtCheZhuName").val()) == "") {
@@ -1038,23 +1009,15 @@ td {
 
 			if (err != "") {
 				alert(err);
-				btnFlag = "0";
 				return false;
+			}else{
+				return true;				
 			}
-
-			if (sort == "0") {
-				__doPostBack('lnkSave', '');
-			} else {
-				__doPostBack('lnkMdf', '');
-			}
-			return false;
 		}
 
 		function winClose() {
-
 			window.opener = null;
 			window.close();
-
 		}
 
 		function cardNoToDate(id1, id2) {

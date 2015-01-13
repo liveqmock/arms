@@ -1,0 +1,45 @@
+
+Git for Windows
+
+http://www.scootersoftware.com/support.php?c=kb_vcs.php
+============================================================================================
+
+Git for Linux
+BC3 logo BC version 3 or 4
+Git 1.8 and newer
+
+(Note:  Use bc3 on the command line for both BC version 3 and 4)
+Diff
+Confirm that "bcompare" can be launched from Terminal.  Then in a console window enter:
+  $ git config --global diff.tool bc3
+  $ git config --global difftool.bc3 trustExitCode true
+
+To launch a diff using Beyond Compare, use the command "git difftool file.ext".
+Merge Pro only
+Confirm that "bcompare" can be launched from Terminal.  Then enter the following:
+  git config --global merge.tool bc3
+  git config --global mergetool.bc3 trustExitCode true
+
+To launch a 3-way merge using Beyond Compare, use the command "git mergetool file.ext".
+
+
+
+Note: 
+At a Windows command prompt enter the commands:
+
+Diff
+At a command prompt enter the commands:
+  git config --global diff.tool bc3
+  git config --global difftool.bc3.cmd "\"c:/program files (x86)/beyond compare 3/bcomp.exe\" \"$LOCAL\" \"$REMOTE\""
+  git config --global difftool.prompt false
+
+To launch a diff with BC3, use the command "git difftool foofile.txt".
+
+3-Way Merge (v3 Pro)
+At a command prompt, enter the commands:
+  git config --global merge.tool bc3
+  git config --global mergetool.bc3.cmd "\"c:/program files (x86)/beyond compare 3/bcomp.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\""
+  git config --global mergetool.bc3.trustExitCode true
+
+To launch a 3-way merge with BC3, use the command "git mergetool foofile.txt". 
+
