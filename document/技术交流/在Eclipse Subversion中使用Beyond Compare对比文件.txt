@@ -1,0 +1,24 @@
+http://liuzhichao.com/p/1715.html
+
+
+1. Preferences -> Team -> SVN -> Diff Viewer
+2. Add…
+3. Extension or mime-type: *
+4. Diff program arguments -> Program Path: enter the path for BComp.exe (with no arguments). E.g.:
+E:\Tools\BeyondCompare3\BComp.exe  (我第一次设置因为目录有空格，无法打开。)
+5. Diff program arguments (box):
+
+"${base}" "${mine}"
+/lefttitle="Base ${base}"
+/righttitle="Local ${mine}"
+
+6. Merge program arguments -> Program path: path to BComp.exe again.
+7. Merge program arguments (box):
+
+"${theirs}" "${mine}" "${base}" "${merged}"
+/lefttitle="Incoming (${theirs})"
+/centertitle="Base (${base})"
+/righttitle="Local (${mine})"
+/outputtitle="Merged (${merged})"
+
+8. OK.Enjoy it!

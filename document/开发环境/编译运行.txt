@@ -1,0 +1,15 @@
+1. 安装好JDK, Maven, SVN, Tomcat, MySql
+
+2. 从SVN取到最新的代码，svn地址如下:
+	https://svn服务器地址/svn/arms/
+
+3. 打开Maven进入工程目录arms,运行Maven编译命令mvn clean package即可生产后台的war包，位于target目录中。
+
+4. 部署war包到目标webserver服务器，从tomcat管理页面上传war包即可
+	a)本机tomcat
+	http://本机tomcat地址/manager/html
+	b)服务器tomcat
+	http://服务器tomcat地址/manager/html
+
+5. 数据库管理
+	询问管理员获取数据库信息即可管理

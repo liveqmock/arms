@@ -4,6 +4,8 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 
+import net.sf.json.JSONObject;
+
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -12,8 +14,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.action.BaseActionSupport;
-import com.chiefmech.arms.entity.LianXiRenXinXi;
-import com.chiefmech.arms.service.LianXiRenService;
+import com.chiefmech.arms.entity.CheZhuLianXiRen;
+import com.chiefmech.arms.service.CheZhuLianXiRenService;
 import com.opensymphony.xwork2.ModelDriven;
 
 @SuppressWarnings("serial")
@@ -21,15 +23,16 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/customManage")
 @Controller()
 @Scope("prototype")
-public class LianXiRenAction extends BaseActionSupport implements
-		ModelDriven<LianXiRenXinXi> {
+public class CheZhuLianXiRenAction extends BaseActionSupport
+		implements
+			ModelDriven<CheZhuLianXiRen> {
 
 	@Resource()
-	private LianXiRenService lianXiRenService;
+	private CheZhuLianXiRenService cheZhuLianXiRenService;
 
-	private LianXiRenXinXi lianXiRen = new LianXiRenXinXi();
+	private CheZhuLianXiRen item = new CheZhuLianXiRen();
 
-	@Action(value = "customNewAdd", results = { @Result(name = "input", location = "customNewAdd.jsp") })
+	@Action(value = "customNewAdd", results = {@Result(name = "input", location = "customNewAdd.jsp")})
 	public String userPersonalChange() {
 		return INPUT;
 	}
@@ -39,11 +42,11 @@ public class LianXiRenAction extends BaseActionSupport implements
 		String statusCode = "failed";
 		String info = "保存信息失败";
 
-		lianXiRen.setTxtLianXiRenId(UUID.randomUUID().toString().toUpperCase());
-		int rowsAffected = lianXiRenService.insertLianXiRen(lianXiRen);
+		item.setTxtCustId(UUID.randomUUID().toString().toUpperCase());
+		int rowsAffected = cheZhuLianXiRenService.insertCheZhuLianXiRen(item);
 		if (rowsAffected == 1) {
 			statusCode = "success";
-			info = lianXiRen.getTxtLianXiRenId();
+			info = item.getTxtCustId();
 		}
 
 		this.transmitJson(String.format(
@@ -51,8 +54,16 @@ public class LianXiRenAction extends BaseActionSupport implements
 	}
 
 	@Override
-	public LianXiRenXinXi getModel() {
-		return lianXiRen;
+	public CheZhuLianXiRen getModel() {
+		return item;
+	}
+
+	public CheZhuLianXiRen getItem() {
+		return item;
+	}
+	
+	public String getJsonData(){
+		return JSONObject.fromObject(item).toString();
 	}
 
 }

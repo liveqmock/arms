@@ -1,0 +1,56 @@
+在每一个release的branch中进行 各自的开发，trunk只做发布使用，tags为tag存档目录（不允许修改）。
+
+开发模式（branch进行主要开发，分散式）：
+          优点：各 自开发独立，不容易相互影响。
+          缺点：管理复杂，merge的时候很麻烦。
+       
+
+开发过程的时序关系如下：
+
+1. 1.0开发，做 dev1.0的branch
+    此时的目录结构
+    svn://proj/
+    +trunk/ (不担负开发任务 )
+    +branches/
+        +dev_1.0 (copy from trunk)
+    +tags/
+
+2. 1.0开发完成，merge dev1.0到trunk
+    此时的目 录结构
+    svn://proj/
+    +trunk/ (merge from branch dev_1.0)
+    +branches/
+         +dev_1.0 (开发任务结束，freeze)
+    +tags/
+
+3. 根据trunk做1.0的tag    
+    此时的目录结构
+    svn://proj/
+    +trunk/ (merge from branch dev_1.0)
+    +branches/
+        +dev_1.0 (开发任务结束，freeze)
+    +tags/
+        +tag_release_1.0 (copy from trunk)
+    
+4. 2.0开发，做dev2.0分支
+    此时的目录结构
+    svn://proj/
+    +trunk/
+    +branches/
+        +dev_1.0 (开发任务结束，freeze)
+        +dev_2.0 （进行2.0开发）
+    +tags/
+        +tag_release_1.0 (copy from trunk)
+    
+5. 1.0有bug，直接在dev1.0的分支上修复
+    此时的目录结构
+    svn://proj/
+    +trunk/
+    +branches/
+        +dev_1.0 (1.0bugfix)
+        +dev_2.0 （进行2.0开发）
+    +tags/
+        +tag_release_1.0 (copy from trunk)
+        
+6. 选择性的进行代码merge
+

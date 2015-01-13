@@ -1,0 +1,16 @@
+编码工具
+Eclipse Java EE IDE 4.4(64位)
+
+JDK 1.7(64位)
+
+项目管理
+Maven 3.2.3 + SVN
+
+代码Review
+edu.hawaii.ics.csdl.jupiter_4.0.0.jar
+
+WebServer
+Tomcat7.0.54
+
+数据库
+MySQL5.5.37

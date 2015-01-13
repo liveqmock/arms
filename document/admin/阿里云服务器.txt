@@ -1,0 +1,33 @@
+阿里云
+http://www.aliyun.com/
+用户名
+2630324850@qq.com
+密码
+ChiefMech2014
+
+云服务器
+ip
+120.24.213.132
+用户名
+root
+密码
+ChiefMech2014
+
+VNC连接密码： 796508
+
+
+服务器配置
+操作系统：Ubuntu12.04 64位 
+集成软件：JDK1.7.0、Nginx1.6.0、MySQL5.5.37、Tomcat7.0.54、vsFTPd2.3.5
+
+服务器管理
+以root用户登陆云服务器，所有软件安装在/alidata/server
+
+
+tomcat登陆
+用户名：admin 密码：ChiefMech2014
+
+mysql数据库信息
+端口号：3306
+用户名：root
+密码：e77a85d63e

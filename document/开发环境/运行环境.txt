@@ -1,0 +1,10 @@
+1. 通过putty登陆阿里云服务器
+
+2. 重启tomcat
+root@iZ94gbrla0dZ:~# cd /alidata/server/tomcat7/bin/
+root@iZ94gbrla0dZ:/alidata/server/tomcat7/bin# ./shutdown.sh
+root@iZ94gbrla0dZ:/alidata/server/tomcat7/bin# ./startup.sh
+
+3. 重启mysql
+root@iZ94gbrla0dZ:/# service mysqld stop
+root@iZ94gbrla0dZ:/# service mysqld start
