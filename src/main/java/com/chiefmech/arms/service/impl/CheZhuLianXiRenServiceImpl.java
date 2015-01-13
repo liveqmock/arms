@@ -18,4 +18,9 @@ public class CheZhuLianXiRenServiceImpl implements CheZhuLianXiRenService {
 		return lianXiRenDao.insertCheZhuLianXiRen(item);
 	}
 
+	@Override
+	public int updateCheZhuLianXiRen(CheZhuLianXiRen item) {
+		return lianXiRenDao.updateCheZhuLianXiRen(item);
+	}
+
 }

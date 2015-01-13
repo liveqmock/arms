@@ -6,4 +6,6 @@ public interface CheZhuLianXiRenService {
 
 	public int insertCheZhuLianXiRen(CheZhuLianXiRen item);
 
+	public int updateCheZhuLianXiRen(CheZhuLianXiRen item);
+
 }

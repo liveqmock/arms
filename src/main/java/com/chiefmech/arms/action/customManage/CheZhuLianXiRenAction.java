@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import net.sf.json.JSONObject;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -42,8 +43,13 @@ public class CheZhuLianXiRenAction extends BaseActionSupport
 		String statusCode = "failed";
 		String info = "保存信息失败";
 
-		item.setTxtCustId(UUID.randomUUID().toString().toUpperCase());
-		int rowsAffected = cheZhuLianXiRenService.insertCheZhuLianXiRen(item);
+		int rowsAffected;
+		if (StringUtils.isBlank(item.getTxtCustId())) {
+			item.setTxtCustId(UUID.randomUUID().toString().toUpperCase());
+			rowsAffected = cheZhuLianXiRenService.insertCheZhuLianXiRen(item);
+		} else {
+			rowsAffected = cheZhuLianXiRenService.updateCheZhuLianXiRen(item);
+		}
 		if (rowsAffected == 1) {
 			statusCode = "success";
 			info = item.getTxtCustId();
@@ -61,8 +67,8 @@ public class CheZhuLianXiRenAction extends BaseActionSupport
 	public CheZhuLianXiRen getItem() {
 		return item;
 	}
-	
-	public String getJsonData(){
+
+	public String getJsonData() {
 		return JSONObject.fromObject(item).toString();
 	}
 

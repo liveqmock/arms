@@ -13,7 +13,7 @@ var opt0 = ["省份", "地级市", "市、县级市、县"];
 var selIdAry = []; //省市区三级联动下拉框的ID列表，格式为["ddlCheZhuP", "ddlCheZhuC", "ddlCheZhuA"]
 var selValAry = []; //省市区三级联动下拉框的value列表，格式为["广东省","深圳市","宝安区"]
 function geoSetup(idAry, valAry) {
-	if(arguments.length == 1){
+	if(arguments.length == 1 || selValAry[0]==""){
 		valAry = opt0;	
 	}
 	selIdAry = idAry;

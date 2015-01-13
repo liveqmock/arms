@@ -536,12 +536,9 @@ td {
 						<td colspan="7">
 							<div id="lianXiRen">
 
-								<select name="ddlLianXiRenP" id="ddlLianXiRenP"
-									style="border: none; width: 100px"></select> <select
-									name="ddlLianXiRenC" id="ddlLianXiRenC"
-									style="border: none; width: 100px"></select> <select
-									name="ddlLianXiRenA" id="ddlLianXiRenA"
-									style="border: none; width: 100px"></select>
+								<select name="ddlLianXiRenP" id="ddlLianXiRenP"	style="border: none; width: 100px"></select> 
+                                <select	name="ddlLianXiRenC" id="ddlLianXiRenC"	style="border: none; width: 100px"></select> 
+                                <select	name="ddlLianXiRenA" id="ddlLianXiRenA"	style="border: none; width: 100px"></select>
 
 							</div>
 						</td>
@@ -687,19 +684,18 @@ td {
 		</div>
 		<!--按钮区域 end-->
 	</div>
-
 	<script language="javascript" type="text/javascript">
 		initFormData();
 
 		function initFormData() {
-			var formJson = eval('(' + <s:property value='jsonData'/> + ')');
-			_.each(formJson, function(el) {
-
+			var formJson = eval('(' + '<s:property value="jsonData" escape="false"/>' + ')');
+			_.each(formJson, function(value, key) {
+				$("#"+key).val(value);
 			});
 
 			//初始化省市区三级联动下拉框
-			geoSetup(["ddlCheZhuP", "ddlCheZhuC", "ddlCheZhuA"], ["广东省", "深圳市",
-					"盐田区"]);
+			geoSetup(["ddlCheZhuP", "ddlCheZhuC", "ddlCheZhuA"], [formJson.ddlCheZhuP, formJson.ddlCheZhuC, formJson.ddlCheZhuA]);
+			geoSetup(["ddlLianXiRenP", "ddlLianXiRenC", "ddlLianXiRenA"], [formJson.ddlLianXiRenP, formJson.ddlLianXiRenC, formJson.ddlLianXiRenA]);
 		}
 
 		function __doPostBack(eventTarget, eventArgument) {
@@ -708,6 +704,7 @@ td {
 				success : function(result) {
 					var result = eval('(' + result + ')');
 					if (result.statusCode == "success") {
+						$("#txtCustId").val(result.info);
 						alert('保存车主信息成功！');
 					} else if (result.statusCode == "failed") {
 						alert('保存车主信息成功！');
