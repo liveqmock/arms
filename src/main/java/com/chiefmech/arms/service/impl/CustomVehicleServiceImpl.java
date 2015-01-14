@@ -1,5 +1,7 @@
 package com.chiefmech.arms.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -21,6 +23,21 @@ public class CustomVehicleServiceImpl implements CustomVehicleService {
 	@Override
 	public int updateCustomVehicle(CustomVehicle item) {
 		return customVehicleDao.updateCustomVehicle(item);
+	}
+
+	@Override
+	public List<CustomVehicle> queryCustomVehicleByCustId(String txtCustId) {
+		return customVehicleDao.queryCustomVehicleByCustId(txtCustId);
+	}
+
+	@Override
+	public CustomVehicle queryCustomVehicleByVehicleId(String txtVehicleId) {
+		return customVehicleDao.queryCustomVehicleByVehicleId(txtVehicleId);
+	}
+
+	@Override
+	public int changeCarOwner(String newCustId, String vehicleId) {
+		return customVehicleDao.changeCarOwner(newCustId, vehicleId);
 	}
 
 }

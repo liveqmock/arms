@@ -120,7 +120,7 @@ td {
 		</div>
 
 		<form name="form1" method="post" id="form1">
-			<input name="txtCustId" type="hidden" id="txtCustId" />
+			<input name="txtCustId" type="hidden" value="" id="txtCustId" />
 			<!--车主信息 start-->
 			<div id="aDiv" style="margin: 2 0 0 5; display: none;">
 				<br /> <span
@@ -279,56 +279,11 @@ td {
 						<td>职业类型：</td>
 						<td><select name="ddlCheZhuZhiYeSort" id="ddlCheZhuZhiYeSort"
 							style="border: none; width: 125px;">
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="其他">其他</option>
-								<option value="其他">其他</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
 								<option value="医生">医生</option>
 								<option value="老师">老师</option>
 								<option value="公务员">公务员</option>
 								<option value="个体">个体</option>
 								<option value="其他">其他</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="其他">其他</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="老师">老师</option>
-								<option value="公务员">公务员</option>
-								<option value="个体">个体</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="老师">老师</option>
-								<option value="公务员">公务员</option>
-								<option value="个体">个体</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="老师">老师</option>
-								<option value="公务员">公务员</option>
-								<option value="个体">个体</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
 								<option selected="selected" value=""></option>
 
 						</select></td>
@@ -452,58 +407,12 @@ td {
 						</select></td>
 						<td>职位：</td>
 						<td><select name="ddlLianXiRenZhiWei" id="ddlLianXiRenZhiWei"
-							style="border: none; width: 100%;">
-
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="其他">其他</option>
-								<option value="其他">其他</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
+							style="border: none; width: 100%;">	
 								<option value="医生">医生</option>
 								<option value="老师">老师</option>
 								<option value="公务员">公务员</option>
 								<option value="个体">个体</option>
 								<option value="其他">其他</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="其他">其他</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="老师">老师</option>
-								<option value="公务员">公务员</option>
-								<option value="个体">个体</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="老师">老师</option>
-								<option value="公务员">公务员</option>
-								<option value="个体">个体</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
-								<option value="老师">老师</option>
-								<option value="公务员">公务员</option>
-								<option value="个体">个体</option>
-								<option value="公司管理人员">公司管理人员</option>
-								<option value="医生">医生</option>
 								<option selected="selected" value=""></option>
 
 						</select></td>
@@ -607,7 +516,7 @@ td {
 		<!--车辆信息 start-->
 		<div id="cDiv" style="margin: 2 0 0 5; display: none;">
 			<br /> <span style="font-weight: bold; font-size: 12px; color: Red;">一辆车只能属于一个客户</span>
-			<a onclick="return changeVehicleId();" id="lnkRebindVehicle"
+            <a onclick="return changeVehicleId();" id="lnkRebindVehicle"
 				class="easyui-linkbutton"
 				href="javascript:__doPostBack('lnkRebindVehicle','')">绑定车辆</a> <a
 				onclick="return addVehicleId();" id="lnkAddVehicle"
@@ -617,51 +526,40 @@ td {
 
 			<table border="0" cellpadding="0" cellspacing="0" width="700px"
 				style="border-collapse: collapse; border: 1px solid #9a9a9a;">
-
-
+                <s:iterator value="customVehicleLst" status="status"> 
 				<tr>
-					<td style="font-weight: bold; color: Blue; width: 90px;">[1]车牌号码：</td>
-					<td style="width: 80px;">粤B9E6V9</td>
+					<td style="font-weight: bold; color: Blue; width: 90px;">[<s:property value='#status.count'/>]车牌号码：</td>
+					<td style="width: 80px;"><s:property value='txtCheLiangChePaiHao'/></td>
 					<td style="width: 65px;">车架号码：</td>
-					<td style="width: 125px;">JTHKR5BH1E2214889</td>
+					<td style="width: 125px;"><s:property value='txtCheLiangCheJiaHao'/></td>
 					<td style="width: 65px;">发动机号:</td>
-					<td style="width: 100px;">23333</td>
+					<td style="width: 100px;"><s:property value='txtCheLiangFaDongJiHao'/></td>
 					<td style="width: 65px;">变速箱号:</td>
-					<td style="width: 100px;">322222</td>
+					<td style="width: 100px;"><s:property value='txtCheLiangBianSuXiangHao'/></td>
 				</tr>
 				<tr>
 					<td>制造厂商：</td>
-					<td>雷克萨斯</td>
+					<td><s:property value='ddlCheLiangZhiZaoShang'/></td>
 					<td>车系：</td>
-					<td>CT200h</td>
+					<td><s:property value='ddlCheLiangCheXi'/></td>
 					<td>车型代码：</td>
-					<td>32222</td>
+					<td><s:property value='txtCheLiangCheXingDaiMa'/></td>
 					<td>车身颜色：</td>
-					<td>珍珠白</td>
+					<td><s:property value='ddlCheShenColor'/></td>
 				</tr>
 				<tr>
 					<td>购车日期：</td>
-					<td>1900-01-01</td>
+					<td><s:property value='txtGouCheDate'/></td>
 					<td>年审日期：</td>
-					<td></td>
-					<td>自店销售：</td>
-					<td style="font-size: 12px; font-weight: bold; color: Blue;"></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>客户来源：</td>
-					<td style="font-size: 12px; font-weight: bold; color: Blue;"></td>
-					<td>销售员：</td>
-					<td></td>
-					<td>销售单号：</td>
+					<td><s:property value='txtCheLiangNextExaDate'/></td>
+					<td>&nbsp;</td>
 					<td></td>
 					<td></td>
 					<td><a
-						onclick="mdfCheLiangInfo('b3a58fd0-467d-41b1-8b60-e682224c4519')"
+						onclick="mdfCheLiangInfo('<s:property value='txtVehicleId'/>')"
 						class="easyui-linkbutton">修改车辆</a></td>
 				</tr>
-
+                </s:iterator>
 			</table>
 
 		</div>
@@ -680,7 +578,7 @@ td {
 
 		$(function() {
 			initFormData();
-			show(1);
+			show(<s:property value="showSort" />);
 		});
 
 		function initFormData() {
@@ -690,23 +588,25 @@ td {
 			});
 
 			//初始化省市区三级联动下拉框
-			geoSetup(["ddlCheZhuP", "ddlCheZhuC", "ddlCheZhuA"], [formJson.ddlCheZhuP, formJson.ddlCheZhuC, formJson.ddlCheZhuA]);
-			geoSetup(["ddlLianXiRenP", "ddlLianXiRenC", "ddlLianXiRenA"], [formJson.ddlLianXiRenP, formJson.ddlLianXiRenC, formJson.ddlLianXiRenA]);
+			new PCA().geoSetup(["ddlCheZhuP", "ddlCheZhuC", "ddlCheZhuA"], [formJson.ddlCheZhuP, formJson.ddlCheZhuC, formJson.ddlCheZhuA]);
+			new PCA().geoSetup(["ddlLianXiRenP", "ddlLianXiRenC", "ddlLianXiRenA"], [formJson.ddlLianXiRenP, formJson.ddlLianXiRenC, formJson.ddlLianXiRenA]);
 		}
 
 		function __doPostBack(eventTarget, eventArgument) {
-			$("#form1").form('submit', {
-				url : "insertLianXiRenXinXi.action",
-				success : function(result) {
-					var result = eval('(' + result + ')');
-					if (result.statusCode == "success") {
-						$("#txtCustId").val(result.info);
-						alert('保存车主信息成功！');
-					} else if (result.statusCode == "failed") {
-						alert('保存车主信息成功！');
+			if(eventTarget=='lnkSave'){
+				$("#form1").form('submit', {
+					url : "insertLianXiRenXinXi.action",
+					success : function(result) {
+						var result = eval('(' + result + ')');
+						if (result.statusCode == "success") {
+							$("#txtCustId").val(result.info);
+							alert('保存车主和联系人信息成功！');
+						} else if (result.statusCode == "failed") {
+							alert('保存车主和联系人信息成功！');
+						}
 					}
-				}
-			});
+				});				
+			}
 		}
 
 		//各类验证 satrt
@@ -763,15 +663,25 @@ td {
 
 		//车辆资料新增
 		function addVehicleId() {
-			location.href = "customNewVehicleAdd.action?custId=80e1c393-1e7e-4aed-a87f-298427632abf&d="
+			var custId = $("#txtCustId").val();
+			if(custId==""){
+				alert("请先保存车主和联系人信息");
+			}else{				
+				location.href = "customNewVehicleAdd.action?custId=" + custId + "&d="
 					+ new Date();
+			}
 			return false;
 		}
 
 		//车辆车主转换
 		function changeVehicleId() {
-			location.href = "customVehicleChange.aspx?custId=80e1c393-1e7e-4aed-a87f-298427632abf&d="
+			var custId = $("#txtCustId").val();
+			if(custId==""){
+				alert("请先保存车主和联系人信息");
+			}else{				
+				location.href = "customVehicleChange.action?custId=" + custId + "&d="
 					+ new Date();
+			}
 			return false;
 		}
 

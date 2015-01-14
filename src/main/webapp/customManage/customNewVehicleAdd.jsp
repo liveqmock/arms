@@ -11,6 +11,7 @@
 </title><link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=20130306" />
     <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
     <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script> 
+<script src="../js/frame/underscore-min.js" type="text/javascript"></script>
     <script src="../js/birthDate.js?a=123" type="text/javascript"></script> 
      <script src="../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
  
@@ -72,6 +73,8 @@ td
  
 <body>
     <form name="form1" method="post" id="form1">
+       <input name="txtCustId" type="hidden" id="txtCustId" />
+       <input name="txtVehicleId" type="hidden" id="txtVehicleId" />
     <div style="width:900px;">
       <div id="tabs" class="tabs" style="width:900px;">
         <ul>		  
@@ -84,8 +87,6 @@ td
         <table border="0" cellpadding="0" cellspacing="0" width="900px"  style="border-collapse:collapse;border:1px solid #9a9a9a" >
          <tr>
          <td>
-         <input name="txtCustId" type="text" value="77CFC863-9F48-45B2-B3B7-E0B15035106A" id="txtCustId" style="display:none;" />
-         <input name="txtVehicleId" type="text" id="txtVehicleId" style="display:none;" />
          <span class="requireSpan">*</span>制造商：</td><td style="width:125px;">
          <div id="cheLiangZhiZaoShang">
 	   
@@ -634,13 +635,7 @@ td
          </tr>
          </table>
          </div>
-      <!--车辆信息 end-->
-
-        <!--销售信息 start-->
-        <div id="dDiv" style="margin:2 0 0 5;display:none;" >
-         <iframe id="divSaleInfo"    frameborder="0" scrolling="yes"  style="width:100%;height:500px;" ></iframe>
-        </div>
-        <!--销售信息 end-->      
+      <!--车辆信息 end-->  
       
       <div style="height:5px;"></div>
 
@@ -657,14 +652,27 @@ td
 
 </form>
      <script language="javascript" type="text/javascript" > 
+
+		$(function() {
+			initFormData();
+			show(3);
+		});
+
+		function initFormData() {
+			var formJson = eval('(' + '<s:property value="jsonData" escape="false"/>' + ')');
+			_.each(formJson, function(value, key) {
+				$("#"+key).val(value);
+			});
+		}
+		
 		function __doPostBack(eventTarget, eventArgument) {
 			$("#form1").form('submit', {
 				url : "saveCustomNewVehicle.action",
 				success : function(result) {
 					var result = eval('(' + result + ')');
 					if (result.statusCode == "success") {
-						$("#txtVehicleId").val(result.info);
 						alert('保存车辆信息成功！');
+						cancelAddVehicle();
 					} else if (result.statusCode == "failed") {
 						alert('保存车辆信息失败！');
 					}
@@ -682,17 +690,6 @@ td
 
              $("#" + tmp + "Div").show();
          }
-
-
-        
-
-
-         $(function () {
-             show(3);
-             $("#txtCustId").css("display", "none");
-
-         });
-
 
 
          //证件号码是否重复验证

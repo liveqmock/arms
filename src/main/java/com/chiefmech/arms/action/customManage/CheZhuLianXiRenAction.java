@@ -1,6 +1,6 @@
 package com.chiefmech.arms.action.customManage;
 
-import java.util.UUID;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -15,8 +15,11 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.action.BaseActionSupport;
+import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.entity.CheZhuLianXiRen;
+import com.chiefmech.arms.entity.CustomVehicle;
 import com.chiefmech.arms.service.CheZhuLianXiRenService;
+import com.chiefmech.arms.service.CustomVehicleService;
 import com.opensymphony.xwork2.ModelDriven;
 
 @SuppressWarnings("serial")
@@ -30,11 +33,21 @@ public class CheZhuLianXiRenAction extends BaseActionSupport
 
 	@Resource()
 	private CheZhuLianXiRenService cheZhuLianXiRenService;
+	@Resource()
+	private CustomVehicleService customVehicleService;
 
 	private CheZhuLianXiRen item = new CheZhuLianXiRen();
+	private List<CustomVehicle> customVehicleLst;
+	private String custId;
+	private int showSort = 1;
 
 	@Action(value = "customNewAdd", results = {@Result(name = "input", location = "customNewAdd.jsp")})
-	public String userPersonalChange() {
+	public String customNewAdd() {
+		if (custId != null) {
+			item = cheZhuLianXiRenService.findCheZhuLianXiRenById(custId);
+			customVehicleLst = customVehicleService
+					.queryCustomVehicleByCustId(custId);
+		}
 		return INPUT;
 	}
 
@@ -45,7 +58,7 @@ public class CheZhuLianXiRenAction extends BaseActionSupport
 
 		int rowsAffected;
 		if (StringUtils.isBlank(item.getTxtCustId())) {
-			item.setTxtCustId(UUID.randomUUID().toString().toUpperCase());
+			item.setTxtCustId(IDGen.getUUID());
 			rowsAffected = cheZhuLianXiRenService.insertCheZhuLianXiRen(item);
 		} else {
 			rowsAffected = cheZhuLianXiRenService.updateCheZhuLianXiRen(item);
@@ -68,8 +81,28 @@ public class CheZhuLianXiRenAction extends BaseActionSupport
 		return item;
 	}
 
+	public List<CustomVehicle> getCustomVehicleLst() {
+		return customVehicleLst;
+	}
+
+	public String getCustId() {
+		return custId;
+	}
+
 	public String getJsonData() {
 		return JSONObject.fromObject(item).toString();
+	}
+
+	public void setCustId(String custId) {
+		this.custId = custId;
+	}
+
+	public int getShowSort() {
+		return showSort;
+	}
+
+	public void setShowSort(int showSort) {
+		this.showSort = showSort;
 	}
 
 }

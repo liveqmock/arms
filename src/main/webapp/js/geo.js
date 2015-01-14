@@ -9,37 +9,41 @@ Dsy.prototype.Exists = function (id) {
     return true;
 }
 
-var opt0 = ["省份", "地级市", "市、县级市、县"];
-var selIdAry = []; //省市区三级联动下拉框的ID列表，格式为["ddlCheZhuP", "ddlCheZhuC", "ddlCheZhuA"]
-var selValAry = []; //省市区三级联动下拉框的value列表，格式为["广东省","深圳市","宝安区"]
-function geoSetup(idAry, valAry) {
-	if(arguments.length == 1 || selValAry[0]==""){
-		valAry = opt0;	
+function PCA(){
+	this.opt0 = ["省份", "地级市", "市、县级市、县"];
+	this.selIdAry = []; //省市区三级联动下拉框的ID列表，格式为["ddlCheZhuP", "ddlCheZhuC", "ddlCheZhuA"]
+	this.selValAry = []; //省市区三级联动下拉框的value列表，格式为["广东省","深圳市","宝安区"]
+}
+PCA.prototype.geoSetup = function(idAry, valAry) {
+	var self = this;
+	if(arguments.length == 1 || (arguments.length == 2 && valAry[0]=="")){
+		valAry = this.opt0;	
 	}
-	selIdAry = idAry;
-	selValAry = valAry;	
+	this.selIdAry = idAry;
+	this.selValAry = valAry;	
 	
-	_.each(selIdAry, function(selId, selIndex){
-		if(selIndex < selIdAry.length-1){
+	_.each(this.selIdAry, function(selId, selIndex){
+		if(selIndex < 2){
 			$("#"+selId).change(function(){
-				initSelect(selIndex+1);
+				self.initSelect(selIndex+1);
 			});
 		}
 	});
 	
-	initSelect(0);
+	this.initSelect(0);
 }
 
-function initSelect(selIndex) {
-	var selObj = $("#"+selIdAry[selIndex]);
+PCA.prototype.initSelect = function(selIndex) {
+	var self = this;
+	var selObj = $("#"+this.selIdAry[selIndex]);
     var code = "0";
     for (var i = 0; i < selIndex; i++) { 
-    	var pcode = $("#"+selIdAry[i]).get(0).selectedIndex - 1;
+    	var pcode = $("#"+this.selIdAry[i]).get(0).selectedIndex - 1;
     	code += ("_" + pcode);
     }
     
     selObj.empty();
-    selObj.append("<option value='"+opt0[selIndex]+"'>"+opt0[selIndex]+"</option>");
+    selObj.append("<option value='"+this.opt0[selIndex]+"'>"+this.opt0[selIndex]+"</option>");
     if (dsy.Exists(code)) {
         var items = dsy.Items[code];
         _.each(items, function(optionValue){
@@ -47,15 +51,15 @@ function initSelect(selIndex) {
         });
         
         var optionSelected = _.find(selObj.get(0).options, function(option){
-        	return option.text == selValAry[selIndex];
+        	return option.text == self.selValAry[selIndex];
         })        
         if(optionSelected){
         	optionSelected.selected = true;
         }
     }
 
-    if (++selIndex < selIdAry.length) {
-    	initSelect(selIndex);
+    if (++selIndex < this.selIdAry.length) {
+    	this.initSelect(selIndex);
     }
 }
 
