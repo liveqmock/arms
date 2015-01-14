@@ -24,7 +24,7 @@ public interface CustomVehicleDao {
 	@Select("select * from customvehicle where txtVehicleId=#{txtVehicleId}")
 	public CustomVehicle queryCustomVehicleByVehicleId(String txtVehicleId);
 
-	@Update("update customvehicle set txtCustId=#{txtCustId} where txtVehicleId=#{vehicleId}")
-	public int changeCarOwner(@Param("newCustId") String newCustId,
-			@Param("vehicleId") String vehicleId);
+	@Update("update customvehicle set txtCustId=#{txtCustId} where txtVehicleId=#{txtVehicleId}")
+	public int changeCarOwner(@Param("txtCustId") String newCustId,
+			@Param("txtVehicleId") String vehicleId);
 }

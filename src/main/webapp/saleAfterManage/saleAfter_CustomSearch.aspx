@@ -18,7 +18,7 @@
 </script>
 
 <body>
-    <form name="form1" method="post" action="saleAfter_CustomSearch.aspx" id="form1">
+    <form name="form1" method="post" action="saleAfterCustomSearch.action" id="form1">
 <div>
 <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
 <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />

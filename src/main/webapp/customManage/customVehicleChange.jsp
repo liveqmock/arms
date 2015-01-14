@@ -60,16 +60,16 @@
        <!--查询车辆信息-->
          <table border="0"  cellpadding="0" cellspacing="0" width="900px"   style="border-collapse:collapse;border:1px solid #9a9a9a"  >
           <tr><input name="custId" type="hidden" value="<s:property value='customer.txtCustId'/>" id="custId" />
-          <td>车牌号码:</td><td><input name="txtChePaiHaoMa" type="text" maxlength="10" id="txtChePaiHaoMa" /></td>
-          <td>车系:</td><td><input name="ddlCheLiangCheXi" type="text" maxlength="20" id="ddlCheLiangCheXi" /></td>
-          <td>车架号码:</td><td><input name="txtCheLiangCheJiaHao" type="text" maxlength="17" id="txtCheLiangCheJiaHao" /></td>
+          <td>车牌号码:</td><td><input name="txtCheLiangChePaiHao" type="text" value="<s:property value='query.txtCheLiangChePaiHao'/>" maxlength="10" id="txtCheLiangChePaiHao" /></td>
+          <td>车系:</td><td><input name="ddlCheLiangCheXi" type="text" value="<s:property value='query.ddlCheLiangCheXi'/>" maxlength="20" id="ddlCheLiangCheXi" /></td>
+          <td>车架号码:</td><td><input name="txtCheLiangCheJiaHao" type="text" value="<s:property value='query.txtCheLiangCheJiaHao'/>" maxlength="17" id="txtCheLiangCheJiaHao" /></td>
           <td>
           <a id="lnkbtnSearch" class="easyui-linkbutton" href="javascript:__doPostBack('lnkbtnSearch','')">查询</a>
           </td>
           </tr>
           <tr>
-          <td>车主名称:</td><td><input name="txtCheZhuName" type="text" maxlength="20" id="txtCheZhuName" /></td>
-          <td>车主电话:</td><td><input name="txtCheZhuTel" type="text" maxlength="20" id="txtCheZhuTel" /></td>
+          <td>车主名称:</td><td><input name="txtCheZhuName" type="text" value="<s:property value='query.txtCheZhuName'/>" maxlength="20" id="txtCheZhuName" /></td>
+          <td>车主电话:</td><td><input name="txtCheZhuTel" type="text" value="<s:property value='query.txtCheZhuTel'/>" maxlength="20" id="txtCheZhuTel" /></td>
           <td></td><td></td>
           <td></td>
           </tr>
@@ -79,7 +79,7 @@
           </tr>
            <!--绑定列表数据 start-->
            <tr>
-           <td>车主</td><td>联系电话</td><td>车牌号码</td>
+           <td>车主</td><td>车主电话</td><td>车牌号码</td>
            <td>车系</td><td>车架号码</td><td>购车日期</td>
            <td></td>
            </tr>
@@ -106,16 +106,19 @@
 			$("#form1").submit();
 		}
 	
-        function addChangeInfo(vehicleId) {
-            $.get("changeCarOwner.action?d=" + new Date(), {
-                "txtVehicleId": vehicleId,
-                "txtCustId":'<s:property value="customer.txtCustId"/>'
-            }, function (data) { 
-                if (data == "success") {
-                    alert('转换成功!');
-                }
-            });
-        }
+		function addChangeInfo(vehicleId) {
+			$.post("changeCarOwner.action?d=" + new Date(),
+			{
+				"txtVehicleId": vehicleId,
+				"txtCustId":'<s:property value="customer.txtCustId"/>'
+			}, 
+			function(result) { 
+				if (result.statusCode == "success") {
+					alert('转换成功!');
+				}
+			},
+			"json");
+		}
 
         function backCustom() {
              var txtCustId = '<s:property value="customer.txtCustId"/>';

@@ -10,12 +10,12 @@ public class CheZhuLianXiRenDaoSqlProvider {
 	public String queryVKeHuCheLiang(Map<String, Object> param) {
 		VKeHuCheLiang item = (VKeHuCheLiang) param.get("item");
 
-		String txtChePaiHaoMa = item.getTxtCheLiangChePaiHao();
+		String txtCheLiangChePaiHao = item.getTxtCheLiangChePaiHao();
 		String ddlCheLiangCheXi = item.getDdlCheLiangCheXi();
 		String txtCheLiangCheJiaHao = item.getTxtCheLiangCheJiaHao();
 		String txtCheZhuName = item.getTxtCheZhuName();
 		String txtCheZhuTel = item.getTxtCheZhuTel();
-		String[][] queryAry = {{"txtChePaiHaoMa", txtChePaiHaoMa},
+		String[][] queryAry = {{"txtCheLiangChePaiHao", txtCheLiangChePaiHao},
 				{"ddlCheLiangCheXi", ddlCheLiangCheXi},
 				{"txtCheLiangCheJiaHao", txtCheLiangCheJiaHao},
 				{"txtCheZhuName", txtCheZhuName},
@@ -29,9 +29,9 @@ public class CheZhuLianXiRenDaoSqlProvider {
 			fieldVal = query[1];
 			if (!StringUtils.isBlank(fieldVal)) {
 				if (where.length() > 0) {
-					where += ",";
+					where += " and ";
 				}
-				where += fieldName + " like %" + fieldVal + "%";
+				where += fieldName + " like '%" + fieldVal + "%'";
 			}
 		}
 		if (where.length() > 0) {
