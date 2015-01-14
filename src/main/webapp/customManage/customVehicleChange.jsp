@@ -108,8 +108,8 @@
 	
         function addChangeInfo(vehicleId) {
             $.get("changeCarOwner.action?d=" + new Date(), {
-                txtVehicleId: vehicleId,
-                txtCustId:'<s:property value="customer.txtCustId"/>'
+                "txtVehicleId": vehicleId,
+                "txtCustId":'<s:property value="customer.txtCustId"/>'
             }, function (data) { 
                 if (data == "success") {
                     alert('转换成功!');

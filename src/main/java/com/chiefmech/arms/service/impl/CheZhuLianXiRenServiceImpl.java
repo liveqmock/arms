@@ -33,7 +33,7 @@ public class CheZhuLianXiRenServiceImpl implements CheZhuLianXiRenService {
 
 	@Override
 	public List<VKeHuCheLiang> queryVKeHuCheLiang(VKeHuCheLiang query) {
-		return null;
+		return lianXiRenDao.queryVKeHuCheLiang(query);
 	}
 
 }
