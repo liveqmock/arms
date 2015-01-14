@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50537
 File Encoding         : 65001
 
-Date: 2015-01-09 14:55:37
+Date: 2015-01-14 09:20:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -64,10 +64,10 @@ CREATE TABLE `caigoubillmingxi` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `chezhuxinxi`
+-- Table structure for `chezhulianxiren`
 -- ----------------------------
-DROP TABLE IF EXISTS `chezhuxinxi`;
-CREATE TABLE `chezhuxinxi` (
+DROP TABLE IF EXISTS `chezhulianxiren`;
+CREATE TABLE `chezhulianxiren` (
   `txtCustId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '客户id',
   `ddlCustSort` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '客户类型',
   `txtCheZhuName` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '车主名',
@@ -101,28 +101,72 @@ CREATE TABLE `chezhuxinxi` (
   `txtCheZhuEMail` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'E-Mail',
   `txtCheZheGouCheQty` int(11) DEFAULT '1' COMMENT '购车次数',
   `txtCheZhuGongZuoDanWei` varchar(60) COLLATE utf8_bin DEFAULT NULL COMMENT '工作单位',
+  `txtLianXiRenName` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '联系人姓名',
+  `ddlLianXiRenSex` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '性别',
+  `txtLianXiRenTel` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '联系人电话',
+  `txtLianXiRenMob` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '联系人手机',
+  `ddlLianXiRenChengWei` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '称谓',
+  `ddlLianXiRenShenFen` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '身份',
+  `ddlLianXiRenZhiWei` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '职位',
+  `ddlLianXiCardSort` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '证件类型',
+  `txtLianXiRenCardNo` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '证件号码',
+  `txtLianXiRenBirthday` date DEFAULT NULL COMMENT '联系人生日',
+  `ddlLianXiRenP` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '所属区域-省(直辖市)',
+  `ddlLianXiRenC` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '所属区域-市(地区)',
+  `ddlLianXiRenA` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '所属区域-区(县)',
+  `txtLianXiRenAdd` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '车主地址',
+  `ddlLianXiRenJiaZhaoSort` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '驾照类型',
+  `txtLianXiRenJiaZhaoDate` date DEFAULT NULL COMMENT '驾照日期',
+  `txtLianXiRenFirstJiaZhaoDate` date DEFAULT NULL COMMENT '初领驾照日期',
+  `txtLianXiRenJiaZhaoArea` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '驾照所属地区',
+  `txtLianXiRenTeZheng` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '联系人特征',
+  `txtLianXiRenEMail` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'E-Mail',
+  `txtLianXiRenGongZuoDanWei` varchar(60) COLLATE utf8_bin DEFAULT NULL COMMENT '工作单位',
+  `txtCheLiangJieDaiTiXing` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '接待提醒',
   PRIMARY KEY (`txtCustId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
--- Records of chezhuxinxi
+-- Records of chezhulianxiren
 -- ----------------------------
+INSERT INTO `chezhulianxiren` VALUES ('77CFC863-9F48-45B2-B3B7-E0B15035106A', '普通客户', 'a', '车主电话', '13728901234', '', '', '', '13728901234', '', '', '', '', '0', '港澳身份证', 'a', '2015-01-13', '省份', '地级市', '市、县级市、县', 'a', '', '', '', '', '', '不清楚', '不清楚', '', '不清楚', '', '0', '', 'a', '男', '13728901234', '13728901234', 'MR', '', '', '身份证', 'aa', null, '省份', '地级市', '市、县级市、县', 'ss', 'A', null, null, '', '', '', '', '');
+INSERT INTO `chezhulianxiren` VALUES ('91926F72-8878-4FC4-8FA0-89145CFF9DB6', '普通客户', 'a', '车主电话', '13728901234', '', '', '', '13728901234', '', '', '', '', '0', '港澳身份证', 'c', null, '省份', '地级市', '市、县级市、县', 'd', '', '', '', '', '', '不清楚', '不清楚', '', '不清楚', '', '0', '', 'e', '男', 'f', '13728901234', 'MR', '', '', '身份证', 'h', null, '省份', '地级市', '市、县级市、县', 'g', 'A', null, null, '', '', '', '', '');
+INSERT INTO `chezhulianxiren` VALUES ('9A58099E-EC4D-4ECD-895E-B5A7CCD3F4EF', '普通客户', 'a', '车主电话', '13728905845', '', '', '', '13728905845', '', '', '', '', '0', '港澳身份证', 'a', null, '省份', '地级市', '市、县级市、县', 'a', '', '', '', '', '', '不清楚', '不清楚', '', '不清楚', '', '0', '', 'a', '男', '13728905845', '13728905845', 'MR', '', '', '身份证', 'a', null, '省份', '地级市', '市、县级市、县', 'a', 'A', null, null, '', '', '', '', '');
+INSERT INTO `chezhulianxiren` VALUES ('A0FA3CB0-AD02-4DCC-8CBA-E78FB4315CFD', '普通客户', '唐洋', '车主手机', '13265821118', '', '', '', '13265821118', '', '', '', '', '0', '身份证', '23333333333', null, '广东省', '深圳市', '盐田区', '广东省深圳南山区海印长城1期4栋5C', '', '', '', '', '', '不清楚', '不清楚', '', '不清楚', '', '1', '', '唐洋', '男', '13265821118', '13265821118', 'MR', '', '', '身份证', '5464454', null, '广东省', '深圳市', '宝安区', '广东省深圳南山区海印长城1期4栋5C', 'C', null, null, '', '', '', '', '');
+INSERT INTO `chezhulianxiren` VALUES ('B1FE25C8-AA41-41C5-8F87-74519BEBCE2D', '普通客户', '唐洋', '车主手机', '13265821118', '', '', '', '13265821118', '', '', '', '', '0', '身份证', '23333333333', null, '广东省', '深圳市', '盐田区', '广东省深圳南山区海印长城1期4栋5C', '', '', '', '', '', '不清楚', '不清楚', '', '不清楚', '', '1', '', '唐洋', '男', '13265821118', '13265821118', 'MR', '', '', '身份证', '5464454', null, '广东省', '深圳市', '宝安区', '广东省深圳南山区海印长城1期4栋5C', 'C', null, null, '', '', '', '', '');
 
 -- ----------------------------
--- Table structure for `chezhu_lianxiren`
+-- Table structure for `customvehicle`
 -- ----------------------------
-DROP TABLE IF EXISTS `chezhu_lianxiren`;
-CREATE TABLE `chezhu_lianxiren` (
+DROP TABLE IF EXISTS `customvehicle`;
+CREATE TABLE `customvehicle` (
   `txtCustId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '客户id',
-  `txtLianXiRenId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '车辆id',
-  PRIMARY KEY (`txtCustId`,`txtLianXiRenId`),
-  KEY `txtLianXiRenId` (`txtLianXiRenId`),
-  CONSTRAINT `chezhu_lianxiren_ibfk_2` FOREIGN KEY (`txtLianXiRenId`) REFERENCES `lianxirenxinxi` (`txtLianXiRenId`),
-  CONSTRAINT `chezhu_lianxiren_ibfk_1` FOREIGN KEY (`txtCustId`) REFERENCES `chezhuxinxi` (`txtCustId`)
+  `txtVehicleId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '车辆id',
+  `ddlCheLiangZhiZaoShang` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '制造商',
+  `ddlCheLiangCheXi` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车系',
+  `txtCheLiangCheXingDaiMa` varchar(30) COLLATE utf8_bin DEFAULT NULL COMMENT '车型代码',
+  `ddlCheShenColor` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车身颜色',
+  `txtCheLiangChePaiHao` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '车牌号',
+  `txtCheLiangCheJiaHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车架号',
+  `txtCheLiangFaDongJiHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '发动机号',
+  `txtCheLiangBianSuXiangHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '变速箱号',
+  `txtBaoXianDate` date DEFAULT NULL COMMENT '投保日期',
+  `txtZhiZaoDate` date DEFAULT NULL COMMENT '制造日期',
+  `txtGouCheDate` date DEFAULT NULL COMMENT '购车日期',
+  `ddlNeiZhuangYanSe` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '内装颜色',
+  `txtShangJianDanHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '商检单号',
+  `txtHeGeZhengHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '合格证号',
+  `txtJinKouZhengHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '进口证号',
+  `txtCheLiangGuiGe` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车辆规格',
+  `ddlCheLiangSort` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车辆种类',
+  `txtCheLiangNextExaDate` date DEFAULT NULL COMMENT '年审日期',
+  PRIMARY KEY (`txtVehicleId`),
+  KEY `txtCustId` (`txtCustId`),
+  CONSTRAINT `customvehicle_ibfk_1` FOREIGN KEY (`txtCustId`) REFERENCES `chezhulianxiren` (`txtCustId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
--- Records of chezhu_lianxiren
+-- Records of customvehicle
 -- ----------------------------
 
 -- ----------------------------
@@ -245,6 +289,9 @@ CREATE TABLE `groups` (
 -- ----------------------------
 -- Records of groups
 -- ----------------------------
+INSERT INTO `groups` VALUES ('1', 'reception', '接待员');
+INSERT INTO `groups` VALUES ('2', 'saleAftereManager', '售后经理');
+INSERT INTO `groups` VALUES ('3', 'partsManager', '物料经理');
 
 -- ----------------------------
 -- Table structure for `group_privilege`
@@ -255,48 +302,24 @@ CREATE TABLE `group_privilege` (
   `privilegeId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '权限ID',
   PRIMARY KEY (`groupId`,`privilegeId`),
   KEY `privilegeId` (`privilegeId`),
-  CONSTRAINT `group_privilege_ibfk_2` FOREIGN KEY (`privilegeId`) REFERENCES `privileges` (`privilegeId`),
-  CONSTRAINT `group_privilege_ibfk_1` FOREIGN KEY (`groupId`) REFERENCES `groups` (`groupId`)
+  CONSTRAINT `group_privilege_ibfk_1` FOREIGN KEY (`groupId`) REFERENCES `groups` (`groupId`),
+  CONSTRAINT `group_privilege_ibfk_2` FOREIGN KEY (`privilegeId`) REFERENCES `privileges` (`privilegeId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of group_privilege
 -- ----------------------------
-
--- ----------------------------
--- Table structure for `lianxirenxinxi`
--- ----------------------------
-DROP TABLE IF EXISTS `lianxirenxinxi`;
-CREATE TABLE `lianxirenxinxi` (
-  `txtLianXiRenId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '联系人id',
-  `txtLianXiRenName` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '联系人姓名',
-  `ddlLianXiRenSex` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '性别',
-  `txtLianXiRenTel` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '联系人电话',
-  `txtLianXiRenMob` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '联系人手机',
-  `ddlLianXiRenChengWei` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '称谓',
-  `ddlLianXiRenShenFen` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '身份',
-  `ddlLianXiRenZhiWei` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '职位',
-  `ddlLianXiCardSort` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '证件类型',
-  `txtLianXiRenCardNo` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '证件号码',
-  `txtLianXiRenBirthday` date DEFAULT NULL COMMENT '联系人生日',
-  `ddlLianXiRenP` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '所属区域-省(直辖市)',
-  `ddlLianXiRenC` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '所属区域-市(地区)',
-  `ddlLianXiRenA` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '所属区域-区(县)',
-  `txtLianXiRenAdd` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '车主地址',
-  `ddlLianXiRenJiaZhaoSort` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '驾照类型',
-  `txtLianXiRenJiaZhaoDate` date DEFAULT NULL COMMENT '驾照日期',
-  `txtLianXiRenFirstJiaZhaoDate` date DEFAULT NULL COMMENT '初领驾照日期',
-  `txtLianXiRenJiaZhaoArea` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '驾照所属地区',
-  `txtLianXiRenTeZheng` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '联系人特征',
-  `txtLianXiRenEMail` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'E-Mail',
-  `txtLianXiRenGongZuoDanWei` varchar(60) COLLATE utf8_bin DEFAULT NULL COMMENT '工作单位',
-  `txtCheLiangJieDaiTiXing` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '接待提醒',
-  PRIMARY KEY (`txtLianXiRenId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- ----------------------------
--- Records of lianxirenxinxi
--- ----------------------------
+INSERT INTO `group_privilege` VALUES ('1', '1');
+INSERT INTO `group_privilege` VALUES ('2', '1');
+INSERT INTO `group_privilege` VALUES ('1', '2');
+INSERT INTO `group_privilege` VALUES ('2', '2');
+INSERT INTO `group_privilege` VALUES ('1', '3');
+INSERT INTO `group_privilege` VALUES ('2', '3');
+INSERT INTO `group_privilege` VALUES ('1', '4');
+INSERT INTO `group_privilege` VALUES ('2', '4');
+INSERT INTO `group_privilege` VALUES ('3', '5');
+INSERT INTO `group_privilege` VALUES ('3', '6');
+INSERT INTO `group_privilege` VALUES ('3', '7');
 
 -- ----------------------------
 -- Table structure for `privileges`
@@ -312,6 +335,13 @@ CREATE TABLE `privileges` (
 -- ----------------------------
 -- Records of privileges
 -- ----------------------------
+INSERT INTO `privileges` VALUES ('1', 'gongdan_new', '');
+INSERT INTO `privileges` VALUES ('2', 'gongdan_xiangmu_add', '');
+INSERT INTO `privileges` VALUES ('3', 'gongdan_xiangmu_delete', '');
+INSERT INTO `privileges` VALUES ('4', 'gongdan_xiangmu_update', '');
+INSERT INTO `privileges` VALUES ('5', 'gongdan_wuliao_add', '');
+INSERT INTO `privileges` VALUES ('6', 'gongdan_wuliao_delete', '');
+INSERT INTO `privileges` VALUES ('7', 'gongdan_wuliao_update', '');
 
 -- ----------------------------
 -- Table structure for `rukudan`
@@ -479,8 +509,8 @@ CREATE TABLE `shopoperlog` (
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `userId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '用户id',
-  `userLoginName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '用户登录名',
-  `userDisplayName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '显示的用户名称',
+  `loginName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '用户登录名',
+  `displayName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '显示的用户名称',
   `password` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '用户密码',
   `lastLoginTime` datetime NOT NULL COMMENT '上次登录时间',
   `isLimit` varchar(10) COLLATE utf8_bin NOT NULL DEFAULT '1' COMMENT '是否受权限限制，0为受限制，1为不受限制',
@@ -490,6 +520,9 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
+INSERT INTO `users` VALUES ('1', 'yangxy', '小院', 'abc1234', '2015-01-08 15:17:12', '1');
+INSERT INTO `users` VALUES ('2', 'leh', '小乐', 'leh', '2015-01-08 15:17:12', '1');
+INSERT INTO `users` VALUES ('3', 'dengsj', '小邓', 'dengsj', '2015-01-30 15:17:12', '1');
 
 -- ----------------------------
 -- Table structure for `user_group`
@@ -500,51 +533,17 @@ CREATE TABLE `user_group` (
   `groupId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '分组ID',
   PRIMARY KEY (`userId`,`groupId`),
   KEY `groupId` (`groupId`),
-  CONSTRAINT `user_group_ibfk_2` FOREIGN KEY (`groupId`) REFERENCES `groups` (`groupId`),
-  CONSTRAINT `user_group_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`)
+  CONSTRAINT `user_group_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`),
+  CONSTRAINT `user_group_ibfk_2` FOREIGN KEY (`groupId`) REFERENCES `groups` (`groupId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of user_group
 -- ----------------------------
-
--- ----------------------------
--- Table structure for `vehiclexinxi`
--- ----------------------------
-DROP TABLE IF EXISTS `vehiclexinxi`;
-CREATE TABLE `vehiclexinxi` (
-  `txtCustId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '客户id',
-  `txtVehicleId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '车辆id',
-  `ddlCheLiangZhiZaoShang` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '制造商',
-  `ddlCheLiangCheXi` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车系',
-  `txtCheLiangCheXingDaiMa` varchar(30) COLLATE utf8_bin DEFAULT NULL COMMENT '车型代码',
-  `ddlCheShenColor` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车身颜色',
-  `txtCheLiangChePaiHao` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '车牌号',
-  `txtCheLiangCheJiaHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车架号',
-  `txtCheLiangFaDongJiHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '发动机号',
-  `txtCheLiangBianSuXiangHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '变速箱号',
-  `txtBaoXianDate` date DEFAULT NULL COMMENT '投保日期',
-  `txtZhiZaoDate` date DEFAULT NULL COMMENT '制造日期',
-  `txtGouCheDate` date DEFAULT NULL COMMENT '购车日期',
-  `ddlNeiZhuangYanSe` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '内装颜色',
-  `txtShangJianDanHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '商检单号',
-  `txtHeGeZhengHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '合格证号',
-  `txtJinKouZhengHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '进口证号',
-  `txtCheLiangGuiGe` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车辆规格',
-  `ddlCheLiangSort` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车辆种类',
-  `txtCheLiangNextExaDate` date DEFAULT NULL COMMENT '年审日期',
-  `ddlCheLiangZiDianSale` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '自店销售',
-  `txtCheLiangLaiYuan` varchar(60) COLLATE utf8_bin DEFAULT NULL COMMENT '车辆来源',
-  `txtCheLiangSaleName` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '销售员',
-  `txtCheLiangSaleBillNo` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '销售单号',
-  PRIMARY KEY (`txtVehicleId`),
-  KEY `txtCustId` (`txtCustId`),
-  CONSTRAINT `vehiclexinxi_ibfk_1` FOREIGN KEY (`txtCustId`) REFERENCES `chezhuxinxi` (`txtCustId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- ----------------------------
--- Records of vehiclexinxi
--- ----------------------------
+INSERT INTO `user_group` VALUES ('2', '1');
+INSERT INTO `user_group` VALUES ('1', '2');
+INSERT INTO `user_group` VALUES ('1', '3');
+INSERT INTO `user_group` VALUES ('3', '3');
 
 -- ----------------------------
 -- Table structure for `weixiuxiangmu`
@@ -580,69 +579,3 @@ CREATE TABLE `weixiuxiangmutmp` (
 -- ----------------------------
 -- Records of weixiuxiangmutmp
 -- ----------------------------
-
-
-
-
-
-
-CREATE TABLE `chezhulianxiren` (
-  `txtCustId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '客户id',
-  `ddlCustSort` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '客户类型',
-  `txtCheZhuName` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '车主名',
-  `ddlCheZhuTelSort` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '车主电话或手机',
-  `txtCheZhuTel` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '电话或手机号码',
-  `txtCheZhuTelNeiXian` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '内线',
-  `txtCheZhuZhuZhaiTel` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '住宅电话',
-  `txtCheZhuChuanZhen` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '传真',
-  `txtCheZhuMob` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车主手机',
-  `ddlCheZhuQiYeSort` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '企业类别',
-  `ddlCheZhuChengWei` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '称谓',
-  `ddlSex` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '性别',
-  `ddlCheZhuHunYinZhuangKuang` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '婚姻状况',
-  `txtCheZhuZiNvQty` int(11) DEFAULT '0' COMMENT '子女数目',
-  `ddlCheZhuCardSort` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '证件类型',
-  `txtCheZhuCardNo` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '证件号码',
-  `txtCheZhuShengRi` date DEFAULT NULL COMMENT '生日',
-  `ddlCheZhuP` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '所属区域-省(直辖市)',
-  `ddlCheZhuC` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '所属区域-市(地区)',
-  `ddlCheZhuA` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '所属区域-区(县)',
-  `txtCheZhuAdd` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '车主地址',
-  `ddlCheZhuSuoShuHangYe` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '所属行业',
-  `ddlCheZhuGuanXiSort` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '关系类型',
-  `ddlCheZhuJiaTingSort` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '家庭类型',
-  `ddlCheZhuZhiYeSort` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '职业类型',
-  `txtCheZhuLaiYuan` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '客户来源',
-  `ddlCheZhuNianLing` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '年龄区间',
-  `ddlCheZhuShouRu` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '收入区间',
-  `txtCheZhuAiHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '爱好',
-  `ddlCheZhuXueLi` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '学历',
-  `txtCheZhuEMail` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'E-Mail',
-  `txtCheZheGouCheQty` int(11) DEFAULT '1' COMMENT '购车次数',
-  `txtCheZhuGongZuoDanWei` varchar(60) COLLATE utf8_bin DEFAULT NULL COMMENT '工作单位',
-  `txtLianXiRenName` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '联系人姓名',
-  `ddlLianXiRenSex` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '性别',
-  `txtLianXiRenTel` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '联系人电话',
-  `txtLianXiRenMob` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '联系人手机',
-  `ddlLianXiRenChengWei` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '称谓',
-  `ddlLianXiRenShenFen` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '身份',
-  `ddlLianXiRenZhiWei` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '职位',
-  `ddlLianXiCardSort` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '证件类型',
-  `txtLianXiRenCardNo` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '证件号码',
-  `txtLianXiRenBirthday` date DEFAULT NULL COMMENT '联系人生日',
-  `ddlLianXiRenP` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '所属区域-省(直辖市)',
-  `ddlLianXiRenC` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '所属区域-市(地区)',
-  `ddlLianXiRenA` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '所属区域-区(县)',
-  `txtLianXiRenAdd` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '车主地址',
-  `ddlLianXiRenJiaZhaoSort` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '驾照类型',
-  `txtLianXiRenJiaZhaoDate` date DEFAULT NULL COMMENT '驾照日期',
-  `txtLianXiRenFirstJiaZhaoDate` date DEFAULT NULL COMMENT '初领驾照日期',
-  `txtLianXiRenJiaZhaoArea` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '驾照所属地区',
-  `txtLianXiRenTeZheng` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '联系人特征',
-  `txtLianXiRenEMail` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'E-Mail',
-  `txtLianXiRenGongZuoDanWei` varchar(60) COLLATE utf8_bin DEFAULT NULL COMMENT '工作单位',
-  `txtCheLiangJieDaiTiXing` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '接待提醒',
-  PRIMARY KEY (`txtCustId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
-

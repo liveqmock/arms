@@ -196,7 +196,7 @@ function __doPostBack(eventTarget, eventArgument) {
             var vehicleId = getCheck();
             if (vehicleId != "") {
                 //parent.winopen('../customManage/customAdd.aspx?custId=' + cusId + "&d=" + new Date(), '客户信息修改', 970, 600, true, true, false);
-                z = window.open('../customManage/customNewVehicleAdd.aspx?vehicleId=' + vehicleId + "&d=" + new Date(), '车辆信息修改', 'height=600, width=970, top=' + (screen.availHeight - 620) + ', left=' + screen.availWidth - 720 + ', toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
+                z = window.open('../customManage/customNewVehicleAdd.action?vehicleId=' + vehicleId + "&d=" + new Date(), '车辆信息修改', 'height=600, width=970, top=' + (screen.availHeight - 620) + ', left=' + screen.availWidth - 720 + ', toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
                 z.focus();
              }
             return false;

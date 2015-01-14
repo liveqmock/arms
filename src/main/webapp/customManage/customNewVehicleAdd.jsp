@@ -1,5 +1,6 @@
-
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -70,37 +71,7 @@ td
 
  
 <body>
-    <form name="form1" method="post" action="customNewVehicleAdd.action?vehicleId=0ccc60b3-e124-41c0-9aa4-dc48cc259acd&amp;d=Tue+Jan+06+2015+11%3a17%3a24+GMT+0800" id="form1">
-<div>
-<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
-<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
-<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
-<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="" />
-</div>
-
-<script type="text/javascript">
-//<![CDATA[
-var theForm = document.forms['form1'];
-if (!theForm) {
-    theForm = document.form1;
-}
-function __doPostBack(eventTarget, eventArgument) {
-    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
-        theForm.__EVENTTARGET.value = eventTarget;
-        theForm.__EVENTARGUMENT.value = eventArgument;
-        theForm.submit();
-    }
-}
-//]]>
-</script>
-
-
-<div>
-
-	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="73777E5E" />
-</div>
-
-
+    <form name="form1" method="post" id="form1">
     <div style="width:900px;">
       <div id="tabs" class="tabs" style="width:900px;">
         <ul>		  
@@ -108,17 +79,17 @@ function __doPostBack(eventTarget, eventArgument) {
         </ul>
       </div> 
       <!--车辆信息 start-->
-      <div id="cDiv" style="margin:2 0 0 5;display:none;" >
+      <div id="cDiv" style="margin:2 0 0 5;display:block;" >
         <br />
         <table border="0" cellpadding="0" cellspacing="0" width="900px"  style="border-collapse:collapse;border:1px solid #9a9a9a" >
          <tr>
          <td>
-         <input name="txtCustId" type="text" value="05dde3ab-3f95-486e-9222-7dadf9a833c5" id="txtCustId" style="display:none;" />
-         <input name="txtVehicleId" type="text" value="0ccc60b3-e124-41c0-9aa4-dc48cc259acd" id="txtVehicleId" style="display:none;" />
+         <input name="txtCustId" type="text" value="77CFC863-9F48-45B2-B3B7-E0B15035106A" id="txtCustId" style="display:none;" />
+         <input name="txtVehicleId" type="text" id="txtVehicleId" style="display:none;" />
          <span class="requireSpan">*</span>制造商：</td><td style="width:125px;">
          <div id="cheLiangZhiZaoShang">
 	   
-         <select name="ddlCheLiangZhiZaoShang" onchange="javascript:setTimeout('__doPostBack(\'ddlCheLiangZhiZaoShang\',\'\')', 0)" id="ddlCheLiangZhiZaoShang" style="border:none;width:100%;">
+         <select name="ddlCheLiangZhiZaoShang" id="ddlCheLiangZhiZaoShang" style="border:none;width:100%;">
 		<option value="东风本田">东风本田</option>
 		<option value="广汽本田">广汽本田</option>
 		<option value="广汽丰田">广汽丰田</option>
@@ -129,8 +100,7 @@ function __doPostBack(eventTarget, eventArgument) {
 
 	</select>          
          
-</div>  
-         <input name="txtCheLiangZhiZaoShang" type="text" value="Lexus雷克萨斯" maxlength="30" id="txtCheLiangZhiZaoShang" style="display:none;" />
+</div> 
          </td>
          <td><span class="requireSpan">*</span>车系：</td><td>
          <div id="cheLiangCheXi">
@@ -141,10 +111,9 @@ function __doPostBack(eventTarget, eventArgument) {
 	</select> 
         
 </div> 
-         <input name="txtCheLiangCheXi" type="text" value="RX270" maxlength="30" id="txtCheLiangCheXi" style="display:none;" />
          </td>
          
-         <td><span class="requireSpan">*</span>车型代码：</td><td><input name="txtCheLiangCheXingDaiMa" type="text" value="精英版" maxlength="30" id="txtCheLiangCheXingDaiMa" /></td>
+         <td><span class="requireSpan">*</span>车型代码：</td><td><input name="txtCheLiangCheXingDaiMa" type="text" maxlength="30" id="txtCheLiangCheXingDaiMa" /></td>
          <td><span class="requireSpan">*</span>车身颜色：</td><td>
          <select name="ddlCheShenColor" id="ddlCheShenColor" style="width:135px;border:none;">
 	<option value="橙金属色">橙金属色</option>
@@ -470,15 +439,15 @@ function __doPostBack(eventTarget, eventArgument) {
          </tr>
 
          <tr>
-         <td><span class="requireSpan">*</span>车牌号：</td><td><input name="txtCheLiangChePaiHao" type="text" value="粤B8G1C8" maxlength="8" id="txtCheLiangChePaiHao" /></td>
-         <td><span class="requireSpan">*</span>车架号：</td><td><input name="txtCheLiangCheJiaHao" type="text" value="JTJZA11A9E2469131" maxlength="17" id="txtCheLiangCheJiaHao" onblur="checkVIN();" /></td>
-         <td><span class="requireSpan">*</span>发动机号：</td><td><input name="txtCheLiangFaDongJiHao" type="text" value="1AR1155941" maxlength="20" id="txtCheLiangFaDongJiHao" /></td>
-         <td><span class="requireSpan">*</span>变速箱号：</td><td><input name="txtCheLiangBianSuXiangHao" type="text" value="0000" maxlength="20" id="txtCheLiangBianSuXiangHao" /></td>
+         <td><span class="requireSpan">*</span>车牌号：</td><td><input name="txtCheLiangChePaiHao" type="text" maxlength="8" id="txtCheLiangChePaiHao" /></td>
+         <td><span class="requireSpan">*</span>车架号：</td><td><input name="txtCheLiangCheJiaHao" type="text" maxlength="17" id="txtCheLiangCheJiaHao" onblur="checkVIN();" /></td>
+         <td><span class="requireSpan">*</span>发动机号：</td><td><input name="txtCheLiangFaDongJiHao" type="text" maxlength="20" id="txtCheLiangFaDongJiHao" /></td>
+         <td><span class="requireSpan">*</span>变速箱号：</td><td><input name="txtCheLiangBianSuXiangHao" type="text" maxlength="20" id="txtCheLiangBianSuXiangHao" /></td>
          </tr>
          <tr>
          <td><span class="requireSpan">*</span>投保日期：</td><td><input name="txtBaoXianDate" type="text" id="txtBaoXianDate" class="easyui-datebox" /> </td>
          <td><span class="requireSpan">*</span>制造日期：</td><td><input name="txtZhiZaoDate" type="text" id="txtZhiZaoDate" class="easyui-datebox" /> </td>
-         <td><span class="requireSpan">*</span>购车日期：</td><td><input name="txtGouCheDate" type="text" value="2014-10-30" id="txtGouCheDate" class="easyui-datebox" /> </td>
+         <td><span class="requireSpan">*</span>购车日期：</td><td><input name="txtGouCheDate" type="text" id="txtGouCheDate" class="easyui-datebox" /> </td>
          <td>内装颜色：</td><td>
               <select name="ddlNeiZhuangYanSe" id="ddlNeiZhuangYanSe" style="width:135px;border:none;">
 	<option value="黑色+鞍棕色">黑色+鞍棕色</option>
@@ -647,7 +616,7 @@ function __doPostBack(eventTarget, eventArgument) {
          </tr>
          <tr>
          <td>商检单号：</td><td><input name="txtShangJianDanHao" type="text" id="txtShangJianDanHao" /> </td>
-         <td>合格证号：</td><td><input name="txtHeGeZhengHao" type="text" value="XIX1708732" id="txtHeGeZhengHao" /> </td>
+         <td>合格证号：</td><td><input name="txtHeGeZhengHao" type="text" id="txtHeGeZhengHao" /> </td>
          <td>进口证号：</td><td><input name="txtJinKouZhengHao" type="text" id="txtJinKouZhengHao" /> </td>
          <td>车辆规格：</td><td><input name="txtCheLiangGuiGe" type="text" id="txtCheLiangGuiGe" /> </td>
          </tr>
@@ -657,26 +626,12 @@ function __doPostBack(eventTarget, eventArgument) {
          <select name="ddlCheLiangSort" id="ddlCheLiangSort" style="border:none;width:125px;">
 
 </select></td>
-         <td>年审日期：</td><td><input name="txtCheLiangNextExaDate" type="text" value="2015-1-6" id="txtCheLiangNextExaDate" class="inputCss easyui-datebox" />
+         <td>年审日期：</td><td><input name="txtCheLiangNextExaDate" type="text" id="txtCheLiangNextExaDate" class="inputCss easyui-datebox" />
          </td>
          <td>
          </td><td style="color:red;font-weight:bold;"> </td>
          <td></td><td></td>
          </tr>
-         <tr>
-           <td>自店销售:</td><td>
-           <select name="ddlCheLiangZiDianSale" id="ddlCheLiangZiDianSale">
-	<option value=""></option>
-	<option selected="selected" value="1">自店销售</option>
-	<option value="0">非自店销售</option>
-
-</select> </td>
-           <td>车辆来源:</td><td><input name="txtCheLiangLaiYuan" type="text" value="新车销售" maxlength="60" id="txtCheLiangLaiYuan" /></td>
-           <td>销售员:</td><td><input name="txtCheLiangSaleName" type="text" value="于燕飞" readonly="readonly" id="txtCheLiangSaleName" /></td>
-           <td>销售单号:</td><td><input name="txtCheLiangSaleBillNo" type="text" value="XSD201410152-1" readonly="readonly" id="txtCheLiangSaleBillNo" /></td>
-         </tr>
-
-
          </table>
          </div>
       <!--车辆信息 end-->
@@ -692,7 +647,7 @@ function __doPostBack(eventTarget, eventArgument) {
       <!--按钮区域 start-->
       <div align="center" id="btnBottomDiv" >
          
-            <a onclick="return saveCheck(1);" id="lnkMdf" class="easyui-linkbutton" href="javascript:__doPostBack('lnkMdf','')">修改</a>
+            <a onclick="return saveCheck();" id="lnkSave" class="easyui-linkbutton" href="javascript:__doPostBack('lnkSave','')">保存</a>
          <a  id="A1" class="easyui-linkbutton" onclick="cancelAddVehicle()" >取消</a>
       </div>
       <!--按钮区域 end-->
@@ -701,8 +656,22 @@ function __doPostBack(eventTarget, eventArgument) {
 
 
 </form>
-     <script language="javascript" type="text/javascript" >
- 
+     <script language="javascript" type="text/javascript" > 
+		function __doPostBack(eventTarget, eventArgument) {
+			$("#form1").form('submit', {
+				url : "saveCustomNewVehicle.action",
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.statusCode == "success") {
+						$("#txtVehicleId").val(result.info);
+						alert('保存车辆信息成功！');
+					} else if (result.statusCode == "failed") {
+						alert('保存车辆信息失败！');
+					}
+				}
+			});
+		}
+
          var tmp = "a";
          function show(sort) {
              if ($("#" + tmp + "Div").length > 0) { $("#" + tmp + "Div").hide(); }
@@ -743,35 +712,26 @@ function __doPostBack(eventTarget, eventArgument) {
 
 
          var btnFlag = "0";
-         function saveCheck(sort) {
-             if ($("#ddlCheLiangZhiZaoShang").val() != "") {
-                 $("#txtCheLiangZhiZaoShang").val($("#ddlCheLiangZhiZaoShang").val());
-             }
-             if ($("#ddlCheLiangCheXi").val() != "") {
-                 $("#txtCheLiangCheXi").val($("#ddlCheLiangCheXi").val());
-             }
-
+         function saveCheck() {
              var err = "";
-             if (btnFlag == "0") { btnFlag = "1"; } else { return false; }
 
              //验证必须填项
                        
-             if ($.trim($("#txtCheLiangZhiZaoShang").val()) == "") { err += "车辆信息->车辆制造商不能为空！\n"; }
-             if ($.trim($("#txtCheLiangCheXi").val()) == "") { err += "车辆信息->车系不能为空！\n"; }
+             if ($.trim($("#ddlCheLiangZhiZaoShang").val()) == "") { err += "车辆信息->车辆制造商不能为空！\n"; }
+             if ($.trim($("#ddlCheLiangCheXi").val()) == "") { err += "车辆信息->车系不能为空！\n"; }
              if ($.trim($("#txtCheLiangCheXingDaiMa").val()) == "") { err += "车辆信息->车型代码不能为空！\n"; }
              if ($.trim($("#txtCheLiangChePaiHao").val()) == "") { err += "车辆信息->车牌号不能为空！\n"; }
              if ($.trim($("#txtCheLiangCheJiaHao").val()) == "") { err += "车辆信息->车架号不能为空！\n"; }
              if ($.trim($("#txtCheLiangFaDongJiHao").val()) == "") { err += "车辆信息->发动机号不能为空！\n"; }
              if ($.trim($("#txtCheLiangBianSuXiangHao").val()) == "") { err += "车辆信息->变速箱号不能为空！\n"; }
 
-             if (err != "") { alert(err); btnFlag = "0"; return false; }
+             if (err != "") { 
+			 	alert(err); 
+				return false;
+			 }else{
+				 return true;
+			 }
 
-             if (sort == "0") {
-                 __doPostBack('lnkSave', '');
-             } else {
-                 __doPostBack('lnkMdf', '');
-             }
-             return false;
          }
 
   

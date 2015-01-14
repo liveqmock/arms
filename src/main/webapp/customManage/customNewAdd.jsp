@@ -756,14 +756,14 @@ td {
 
 		//车辆资料修改
 		function mdfCheLiangInfo(vehicleId) {
-			location.href = "customNewVehicleAdd.aspx?vehicleId=" + vehicleId
+			location.href = "customNewVehicleAdd.action?vehicleId=" + vehicleId
 					+ "&d=" + new Date();
 			return false;
 		}
 
 		//车辆资料新增
 		function addVehicleId() {
-			location.href = "customNewVehicleAdd.aspx?custId=80e1c393-1e7e-4aed-a87f-298427632abf&d="
+			location.href = "customNewVehicleAdd.action?custId=80e1c393-1e7e-4aed-a87f-298427632abf&d="
 					+ new Date();
 			return false;
 		}
