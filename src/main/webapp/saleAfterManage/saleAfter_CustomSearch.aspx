@@ -229,8 +229,8 @@ function __doPostBack(eventTarget, eventArgument) {
         function daoHangShow() {
          var vehicleId = getCheck();
          if (vehicleId != "") {
-            // parent.winopen('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.aspx?cusId=' + cusId + '&d=' + new Date(), '系统转向', 990, 600, true, true, false);
-             z = window.open('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.aspx?vehicleId=' + vehicleId + '&d=' + new Date(), '系统转向', 'height=600, width=990, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
+            // parent.winopen('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.action?cusId=' + cusId + '&d=' + new Date(), '系统转向', 990, 600, true, true, false);
+             z = window.open('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.action?vehicleId=' + vehicleId + '&d=' + new Date(), '系统转向', 'height=600, width=990, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
              z.focus();
          }
             return false;
@@ -248,8 +248,8 @@ function __doPostBack(eventTarget, eventArgument) {
         //客户接待
         function customJieDai(index) {
             var vehicleId = $('#dg2').datagrid('getRows')[index]['vehicleId'];
-           // parent.winopen('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.aspx?cusId='+cusId+'&d=' + new Date(), '系统转向', 990, 600, true, true, false);
-            z = window.open('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.aspx?vehicleId=' + vehicleId + '&d=' + new Date(), '系统转向', 'height=600, width=990, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
+           // parent.winopen('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.action?cusId='+cusId+'&d=' + new Date(), '系统转向', 990, 600, true, true, false);
+            z = window.open('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.action?vehicleId=' + vehicleId + '&d=' + new Date(), '系统转向', 'height=600, width=990, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
             z.focus();
             return false;
         }

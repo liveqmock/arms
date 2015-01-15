@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.chiefmech.arms.entity.query.SaleAfterCustomSearchBean;
 import com.chiefmech.arms.entity.view.VKeHuCheLiang;
 
 public class CheZhuLianXiRenDaoSqlProvider {
@@ -40,5 +41,28 @@ public class CheZhuLianXiRenDaoSqlProvider {
 
 		return String.format("select * from v_kehu_cheliang %s limit 0,10",
 				where);
+	}
+
+	public String getVKeHuCheLiangListForEasyUi(Map<String, Object> param) {
+		SaleAfterCustomSearchBean query = (SaleAfterCustomSearchBean) param
+				.get("item");
+
+		int rows = query.getTxtPageSize();
+		int page = query.getTxtPageNum();
+		int offset = (page - 1) * rows;
+
+		return String
+				.format("select * from v_kehu_cheliang where %s like '%%%s%%' limit %d,%d",
+						query.getQueryField(), query.getQueryValue(), offset,
+						rows);
+	}
+
+	public String getVKeHuCheLiangCountForEasyUi(Map<String, Object> param) {
+		SaleAfterCustomSearchBean query = (SaleAfterCustomSearchBean) param
+				.get("item");
+
+		return String.format(
+				"select count(*) from v_kehu_cheliang where %s like '%%%s%%'",
+				query.getQueryField(), query.getQueryValue());
 	}
 }

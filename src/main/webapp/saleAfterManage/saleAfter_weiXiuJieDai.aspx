@@ -21,7 +21,7 @@
 </script>
 
 <body>
-    <form name="form1" method="post" action="saleAfter_weiXiuJieDai.aspx?saleAfterWeiXiuGuid=d4e10073-1054-4c86-b552-f44623513d0b&amp;cusId=&amp;vehicleId=&amp;carId=&amp;yuYueId=" id="form1">
+    <form name="form1" method="post" action="saleAfterWeiXiuJieDai.action?saleAfterWeiXiuGuid=d4e10073-1054-4c86-b552-f44623513d0b&amp;cusId=&amp;vehicleId=&amp;carId=&amp;yuYueId=" id="form1">
 <div>
 <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
 <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
