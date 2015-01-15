@@ -119,6 +119,7 @@ public class GongDan {
 		this.setTxtLianXiRenMob(customerInfo.getTxtLianXiRenMob());
 		this.setTxtLianXiRenAdd(customerInfo.getTxtLianXiRenAdd());
 		this.setTxtSongCheJian(DateUtil.getCurrentDateTime());
+		this.setTxtGongDanStatus("接待中");
 	}
 	public GongDan() {
 	}
