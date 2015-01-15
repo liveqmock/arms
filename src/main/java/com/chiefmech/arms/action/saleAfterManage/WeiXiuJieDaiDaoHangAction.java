@@ -10,7 +10,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.action.BaseActionSupport;
-import com.chiefmech.arms.entity.query.SaleAfterCustomSearchBean;
+import com.chiefmech.arms.entity.GongDan;
+import com.chiefmech.arms.entity.view.VKeHuCheLiang;
 import com.chiefmech.arms.service.CheZhuLianXiRenService;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -19,29 +20,27 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/saleAfterManage")
 @Controller()
 @Scope("prototype")
-public class CustomSearchAction extends BaseActionSupport
-		implements
-			ModelDriven<SaleAfterCustomSearchBean> {
+public class WeiXiuJieDaiDaoHangAction extends BaseActionSupport {
 
 	@Resource()
 	private CheZhuLianXiRenService cheZhuLianXiRenService;
 
-	private SaleAfterCustomSearchBean query = new SaleAfterCustomSearchBean();
+	private String vehicleId;
+	private VKeHuCheLiang customer;
 
-	@Action(value = "saleAfterCustomSearch", results = {@Result(name = "input", location = "saleAfter_CustomSearch.jsp")})
-	public String saleAfterCustomSearch() {
+	@Action(value = "saleAfterWeiXiuJieDaiDaoHang", results = {@Result(name = "input", location = "saleAfterWeiXiuJieDaiDaoHang.jsp")})
+	public String saleAfterWeiXiuJieDaiDaoHang() {
+		customer = cheZhuLianXiRenService
+				.findVKeHuCheLiangByVehicleId(vehicleId);
 		return INPUT;
 	}
 
-	@Action(value = "customerSearch")
-	public void customerSearch() {
-		this.transmitJson(cheZhuLianXiRenService
-				.getVKeHuCheLiangEasyUiJSon(query));
+	public VKeHuCheLiang getCustomer() {
+		return customer;
 	}
 
-	@Override
-	public SaleAfterCustomSearchBean getModel() {
-		return query;
+	public void setVehicleId(String vehicleId) {
+		this.vehicleId = vehicleId;
 	}
 
 }

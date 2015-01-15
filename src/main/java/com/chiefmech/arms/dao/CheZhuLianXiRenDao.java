@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.chiefmech.arms.dao.sqlprovider.CheZhuLianXiRenDaoSqlProvider;
 import com.chiefmech.arms.entity.CheZhuLianXiRen;
+import com.chiefmech.arms.entity.query.SaleAfterCustomSearchBean;
 import com.chiefmech.arms.entity.view.VKeHuCheLiang;
 
 @Repository("cheZhuLianXiRenDaoDao")
@@ -27,4 +28,15 @@ public interface CheZhuLianXiRenDao {
 	@SelectProvider(type = CheZhuLianXiRenDaoSqlProvider.class, method = "queryVKeHuCheLiang")
 	public List<VKeHuCheLiang> queryVKeHuCheLiang(
 			@Param("item") VKeHuCheLiang query);
+
+	@SelectProvider(type = CheZhuLianXiRenDaoSqlProvider.class, method = "getVKeHuCheLiangListForEasyUi")
+	public List<VKeHuCheLiang> getVKeHuCheLiangListForEasyUi(
+			@Param("item") SaleAfterCustomSearchBean query);
+
+	@SelectProvider(type = CheZhuLianXiRenDaoSqlProvider.class, method = "getVKeHuCheLiangCountForEasyUi")
+	public int getVKeHuCheLiangCountForEasyUi(
+			@Param("item") SaleAfterCustomSearchBean query);
+
+	@Select("select * from v_kehu_cheliang where txtVehicleId=#{txtVehicleId}")
+	public VKeHuCheLiang findVKeHuCheLiangByVehicleId(String txtVehicleId);
 }

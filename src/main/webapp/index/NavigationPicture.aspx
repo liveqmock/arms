@@ -237,7 +237,7 @@
                 <caption><b>售后管理</b></caption>
                 <tr>
                     <td align="center">
-                    <button id="butD1" type="button" onclick="parent.mdfMenu('','维修接待','../saleAfterManage/saleAfter_CustomSearch.aspx')">
+                    <button id="butD1" type="button" onclick="parent.mdfMenu('','维修接待','../saleAfterManage/saleAfterCustomSearch.action')">
                         <img alt="" width="64px" height="64px" src="../style/navigation/png-0333.png" />
                         <div class="pre_title">维修接待</div></button>
                     </td>

@@ -12,23 +12,48 @@ public class VKeHuCheLiang {
 	private String txtCheZhuAdd;
 	private String txtLianXiRenName;
 	private String txtLianXiRenTel;
+	private String txtLianXiRenMob;
+	private String txtLianXiRenAdd;
 	private String txtVehicleId;
 	private String txtCheLiangChePaiHao;
 	private String ddlCheLiangZhiZaoShang;
 	private String ddlCheLiangCheXi;
+	private String txtCheLiangCheXingDaiMa;
 	private String txtCheLiangCheJiaHao;
+	private String txtCheLiangFaDongJiHao;
+	private String ddlCheShenColor;
+	private String txtLianXiRenJiaZhaoDate;
 	private String txtGouCheDate;
+	private String txtBaoXianDate;
 	public String getTxtCustId() {
 		return txtCustId;
 	}
 	public void setTxtCustId(String txtCustId) {
 		this.txtCustId = txtCustId;
 	}
+	public String getTxtCheLiangFaDongJiHao() {
+		return txtCheLiangFaDongJiHao;
+	}
+	public void setTxtCheLiangFaDongJiHao(String txtCheLiangFaDongJiHao) {
+		this.txtCheLiangFaDongJiHao = txtCheLiangFaDongJiHao;
+	}
 	public String getDdlCustSort() {
 		return ddlCustSort;
 	}
 	public void setDdlCustSort(String ddlCustSort) {
 		this.ddlCustSort = ddlCustSort;
+	}
+	public String getTxtLianXiRenMob() {
+		return txtLianXiRenMob;
+	}
+	public void setTxtLianXiRenMob(String txtLianXiRenMob) {
+		this.txtLianXiRenMob = txtLianXiRenMob;
+	}
+	public String getTxtCheLiangCheXingDaiMa() {
+		return txtCheLiangCheXingDaiMa;
+	}
+	public void setTxtCheLiangCheXingDaiMa(String txtCheLiangCheXingDaiMa) {
+		this.txtCheLiangCheXingDaiMa = txtCheLiangCheXingDaiMa;
 	}
 	public String getTxtCheZhuName() {
 		return txtCheZhuName;
@@ -119,6 +144,30 @@ public class VKeHuCheLiang {
 	}
 	public void setTxtGouCheDate(String txtGouCheDate) {
 		this.txtGouCheDate = txtGouCheDate;
+	}
+	public String getDdlCheShenColor() {
+		return ddlCheShenColor;
+	}
+	public void setDdlCheShenColor(String ddlCheShenColor) {
+		this.ddlCheShenColor = ddlCheShenColor;
+	}
+	public String getTxtLianXiRenJiaZhaoDate() {
+		return txtLianXiRenJiaZhaoDate;
+	}
+	public void setTxtLianXiRenJiaZhaoDate(String txtLianXiRenJiaZhaoDate) {
+		this.txtLianXiRenJiaZhaoDate = txtLianXiRenJiaZhaoDate;
+	}
+	public String getTxtBaoXianDate() {
+		return txtBaoXianDate;
+	}
+	public void setTxtBaoXianDate(String txtBaoXianDate) {
+		this.txtBaoXianDate = txtBaoXianDate;
+	}
+	public String getTxtLianXiRenAdd() {
+		return txtLianXiRenAdd;
+	}
+	public void setTxtLianXiRenAdd(String txtLianXiRenAdd) {
+		this.txtLianXiRenAdd = txtLianXiRenAdd;
 	}
 
 }

@@ -16,7 +16,7 @@
             __doPostBack('btnSearch','');
         }
     });
-    $(function () { $("#txtKeyWord").focus(); $("#txtKeyWord").select(); });
+    $(function () { $("#queryValue").focus(); $("#queryValue").select(); });
 
 </script>
 
@@ -35,24 +35,22 @@
         <table border="0"  cellpadding="0" cellspacing="0">
          <tr>
          <td>
-         <select name="dllSearchSort" id="dllSearchSort">
-    <option selected="selected" value="按车牌号">按车牌号</option>
-    <option value="按车架号">按车架号</option>
-    <option value="按联系人">按联系人</option>
-    <option value="按联系人手机">按联系人手机</option>
-    <option value="按车主名">按车主名</option>
+         <select name="queryField" id="queryField">
+    <option selected="selected" value="txtCheLiangChePaiHao">按车牌号</option>
+    <option value="txtCheLiangCheJiaHao">按车架号</option>
+    <option value="txtLianXiRenName">按联系人</option>
+    <option value="txtLianXiRenTel">联系人电话</option>
+    <option value="txtCheZhuName">按车主名</option>
 
 </select> </td>
          <td style="padding-left:5px">
-         <input name="txtKeyWord" type="text" value="粤" maxlength="20" id="txtKeyWord" style="width:150px;" />
+         <input name="queryValue" type="text" value="粤" maxlength="20" id="queryValue" style="width:150px;" />
          </td>
          <td>
          <a id="btnSearch" class="easyui-linkbutton" href="javascript:__doPostBack('btnSearch','')">查询</a>
          <a onclick="return cheLiangInfoShow();" id="LinkButton7" class="easyui-linkbutton" href="javascript:__doPostBack('LinkButton7','')">车辆信息</a>
          <a onclick="return cheLiangWeiXiuLiShiListShow();" id="LinkButton1" class="easyui-linkbutton" href="javascript:__doPostBack('LinkButton1','')">维修历史</a>
-         <a onclick="return daoHangShow();" id="LinkButton5" class="easyui-linkbutton" href="javascript:__doPostBack('LinkButton5','')">预约</a>
          <a onclick="return daoHangShow();" id="LinkButton6" class="easyui-linkbutton" href="javascript:__doPostBack('LinkButton6','')">维修接待</a>
-         <a onclick="return pdsPdiShow();" id="LinkButton3" class="easyui-linkbutton" href="javascript:__doPostBack('LinkButton3','')">新车检查</a>
          <a onclick="return addCheLiangInfo();" id="LinkButton4" class="easyui-linkbutton" href="javascript:__doPostBack('LinkButton4','')">新增车辆信息</a>
          
          </td>
@@ -70,16 +68,16 @@
           >
         <thead>
             <tr>
-                <th  data-options="field:'cusId',checkbox:true"></th>
-                <th  data-options="field:'vehicleId',hidden:true">车辆Id</th>
-                <th  data-options="field:'chePaiHao',width:80">车牌号码</th>              
+                <th  data-options="field:'txtCustId',checkbox:true"></th>
+                <th  data-options="field:'txtVehicleId',hidden:true">车辆Id</th>
+                <th  data-options="field:'txtCheLiangChePaiHao',width:80">车牌号码</th>              
                 
-                <th  data-options="field:'changPai',width:80">车辆品牌</th>
-                <th  data-options="field:'cheXi',width:70">车系名称</th>
-                <th  data-options="field:'cheJiaHao',width:140" >车架号码</th>
-                <th  data-options="field:'lianXiRenName',width:120">联系人名称</th>
-                <th  data-options="field:'lianXiRenTel',width:120">联系人电话</th>
-                <th  data-options="field:'cheZhuName',width:120">车主名称</th>                
+                <th  data-options="field:'ddlCheLiangZhiZaoShang',width:120">车辆品牌</th>
+                <th  data-options="field:'ddlCheLiangCheXi',width:70">车系名称</th>
+                <th  data-options="field:'txtCheLiangCheJiaHao',width:140" >车架号码</th>
+                <th  data-options="field:'txtLianXiRenName',width:120">联系人名称</th>
+                <th  data-options="field:'txtLianXiRenTel',width:120">联系人电话</th>
+                <th  data-options="field:'txtCheZhuName',width:120">车主名称</th>                
                  
             </tr>
         </thead>
@@ -105,9 +103,8 @@
 		function __doPostBack(eventTarget, eventArgument) {
 			if(eventTarget=='btnSearch'){
 				$("#form1").form('submit', {
-					url : "saleAfterCustomSearch.action",
+					url : "customerSearch.action",
 					success : function(jsonStr) {
-						jsonStr = '{"total":4290,"rows":[{"keyId":"1","vehicleId":"814aa971-eb8a-435b-9828-ec458dcc20e7","groupSimpleName":"深业雷克","changPai":"雷克萨斯","cusId":"0b6eccaf-ef23-4403-a469-4320e0d5b273","cSign":"","groupId":"6018","writeDate":"2015-1-6 9:48:11","lianXiRenMob":"13603093620","chePaiHao":"粤B","cheXi":"GX400","cheJiaHao":"JTJJU7FX4E5004159","cheZhuName":"张国兴","lianXiRenName":"张国兴","lianXiRenTel":"13603093620","huiYuanHaoMa":"","huiYuanJiBie":"","extendField1":""},{"keyId":"2","vehicleId":"2673da83-923f-46d0-afc5-778875a99d08","groupSimpleName":"深业雷克","changPai":"Lexus雷克萨斯","cusId":"ad5cbd30-0d40-4131-ae2a-5a4ef0f8a5bf","cSign":"","groupId":"6018","writeDate":"2015-1-5 17:25:16","lianXiRenMob":"13902319524","chePaiHao":"粤B6N5U5","cheXi":"RX270","cheJiaHao":"JTJZA11A3E2470436","cheZhuName":"陈卓成","lianXiRenName":"陈生","lianXiRenTel":"13902319524","huiYuanHaoMa":"","huiYuanJiBie":"","extendField1":""}]}';
 						setupDatagrid(jsonStr);
 					}
 				});				
@@ -161,7 +158,7 @@
 
         function getCheck() {
             var row = $('#dg2').datagrid('getSelected');
-            if (row) { return row.vehicleId; }
+            if (row) { return row.txtVehicleId; }
             else {
                 return "";
             }
@@ -190,7 +187,7 @@
         //车辆维修历史列表查询
         function cheLiangWeiXiuLiShiListShow() {
             var row = $('#dg2').datagrid('getSelected');
-            var vin = row.cheJiaHao;
+            var vin = row.txtCheLiangCheJiaHao;
             vin = vin.substring(0, 17);//车架号码只去前17位
             if (vin != "") {
                 //  parent.winopen('../saleAfterManage/saleAfter_weiXiuLiShiList.aspx?cusId='+cusId+'&d=' + new Date(), '维修历史查看', 970, 600, true, true, false);
@@ -206,8 +203,8 @@
         function daoHangShow() {
          var vehicleId = getCheck();
          if (vehicleId != "") {
-            // parent.winopen('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.aspx?cusId=' + cusId + '&d=' + new Date(), '系统转向', 990, 600, true, true, false);
-             z = window.open('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.aspx?vehicleId=' + vehicleId + '&d=' + new Date(), '系统转向', 'height=600, width=990, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
+            // parent.winopen('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.action?cusId=' + cusId + '&d=' + new Date(), '系统转向', 990, 600, true, true, false);
+             z = window.open('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.action?vehicleId=' + vehicleId + '&d=' + new Date(), '系统转向', 'height=600, width=790, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
              z.focus();
          }
             return false;
@@ -224,20 +221,11 @@
 
         //客户接待
         function customJieDai(index) {
-            var vehicleId = $('#dg2').datagrid('getRows')[index]['vehicleId'];
-           // parent.winopen('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.aspx?cusId='+cusId+'&d=' + new Date(), '系统转向', 990, 600, true, true, false);
-            z = window.open('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.aspx?vehicleId=' + vehicleId + '&d=' + new Date(), '系统转向', 'height=600, width=990, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
+            var vehicleId = $('#dg2').datagrid('getRows')[index]['txtVehicleId'];
+           // parent.winopen('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.action?cusId='+cusId+'&d=' + new Date(), '系统转向', 990, 600, true, true, false);
+            z = window.open('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.action?vehicleId=' + vehicleId + '&d=' + new Date(), '系统转向', 'height=600, width=990, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
             z.focus();
             return false;
-        }
-
-
-        //PDS PDI显示
-        function pdsPdiShow() {
-            //parent.winopen('../saleAfterManage/saleAfter_PDSList.aspx?d=' + new Date(), 'PDS/PDI', 990, 600, true, true, false);
-            z = window.open('../saleAfterManage/saleAfter_PDSList.aspx?d=' + new Date(),'PDSPDI','height=600,width=990,top=80,left=80,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no');
-            z.focus();
-            return false;       
         }
     </script>
 
