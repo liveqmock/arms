@@ -383,8 +383,8 @@ function __doPostBack(eventTarget, eventArgument) {
 
         //转入维修接待
         function zhuanRuWeiXiuJieDai() {
-            // parent.winopen('../saleAfterManage/saleAfter_Index.aspx?yuYueId=0fa6bbde-a9ad-4e80-8eb3-14006f387ff2&d=' + new Date(), '维修接待', 990, 600, true, true, false);
-            location.href = 'saleAfter_Index.aspx?yuYueId=0fa6bbde-a9ad-4e80-8eb3-14006f387ff2&d=' + new Date();
+            // parent.winopen('../saleAfterManage/saleAfterIndex.action?yuYueId=0fa6bbde-a9ad-4e80-8eb3-14006f387ff2&d=' + new Date(), '维修接待', 990, 600, true, true, false);
+            location.href = 'saleAfterIndex.action?yuYueId=0fa6bbde-a9ad-4e80-8eb3-14006f387ff2&d=' + new Date();
             return false;
         }
         

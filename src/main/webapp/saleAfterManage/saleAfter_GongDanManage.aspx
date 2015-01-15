@@ -190,8 +190,8 @@ function __doPostBack(eventTarget, eventArgument) {
         function billShow(index) {
             var thisGuid = $('#dg').datagrid('getRows')[index]['thisGuid'];
             if (thisGuid != "" && thisGuid !=undefined) {
-                //parent.winopen('../saleAfterManage/saleAfter_Index.aspx?tabId= &saleAfterWeiXiuGuid=' + thisGuid + '&d=' + new Date(), '维修工单', 990, 600, true, true, false);
-                z = window.open('../saleAfterManage/saleAfter_Index.aspx?tabId=' +$.getUrlParam('tabId','')+ '&saleAfterWeiXiuGuid=' + thisGuid + '&d=' + new Date(), '维修工单', 'height=600,width=990,top=100,left=50,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no');
+                //parent.winopen('../saleAfterManage/saleAfterIndex.action?tabId= &saleAfterWeiXiuGuid=' + thisGuid + '&d=' + new Date(), '维修工单', 990, 600, true, true, false);
+                z = window.open('../saleAfterManage/saleAfterIndex.action?tabId=' +$.getUrlParam('tabId','')+ '&saleAfterWeiXiuGuid=' + thisGuid + '&d=' + new Date(), '维修工单', 'height=600,width=990,top=100,left=50,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no');
                 z.focus();
             }
           }

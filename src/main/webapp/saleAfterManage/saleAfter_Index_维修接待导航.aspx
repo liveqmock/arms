@@ -120,7 +120,7 @@ padding-left:200px;}
 
 
      function showRefresh() {
-         location.href = '../saleAfterManage/saleAfter_Index.aspx?saleAfterWeiXiuGuid=&tabId=' + tabId + '&d=' + new Date();
+         location.href = '../saleAfterManage/saleAfterIndex.action?saleAfterWeiXiuGuid=&tabId=' + tabId + '&d=' + new Date();
 
      }
 

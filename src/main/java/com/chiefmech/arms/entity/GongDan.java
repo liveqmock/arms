@@ -98,6 +98,8 @@ public class GongDan {
 	private String txtHuiYuanHao;
 	/** 联系地址 */
 	private String txtLianXiRenAdd;
+	/** 工单状态 */
+	private String txtGongDanStatus;
 
 	public GongDan(VKeHuCheLiang customerInfo) {
 		this.setTxtChePaiHao(customerInfo.getTxtCheLiangChePaiHao());
@@ -125,6 +127,12 @@ public class GongDan {
 	}
 	public void setTxtGongDanId(String txtGongDanId) {
 		this.txtGongDanId = txtGongDanId;
+	}
+	public String getTxtGongDanStatus() {
+		return txtGongDanStatus;
+	}
+	public void setTxtGongDanStatus(String txtGongDanStatus) {
+		this.txtGongDanStatus = txtGongDanStatus;
 	}
 	public String getTxtBillNo() {
 		return txtBillNo;

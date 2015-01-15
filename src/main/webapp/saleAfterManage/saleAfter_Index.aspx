@@ -133,7 +133,7 @@ padding-left:200px;}
 
 
      function showRefresh() {
-         location.href = '../saleAfterManage/saleAfter_Index.aspx?saleAfterWeiXiuGuid=d4e10073-1054-4c86-b552-f44623513d0b&tabId=' + tabId + '&d=' + new Date();
+         location.href = '../saleAfterManage/saleAfterIndex.action?saleAfterWeiXiuGuid=d4e10073-1054-4c86-b552-f44623513d0b&tabId=' + tabId + '&d=' + new Date();
 
      }
 

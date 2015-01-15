@@ -40,13 +40,17 @@ public class SaleAfterIndexAction extends BaseActionSupport
 
 	@Action(value = "saleAfterIndex", results = {@Result(name = "input", location = "saleAfter_Index.jsp")})
 	public String saleAfterIndex() {
-		customer = cheZhuLianXiRenService
-				.findVKeHuCheLiangByVehicleId(vehicleId);
+		initGonDan();
 		return INPUT;
 	}
 
 	@Action(value = "saleAfterWeiXiuJieDai", results = {@Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp")})
 	public String saleAfterWeiXiuJieDai() {
+		initGonDan();
+		return INPUT;
+	}
+
+	private void initGonDan() {
 		if (StringUtils.isNoneBlank(saleAfterWeiXiuGuid)) {
 			gongDan = gongDanService
 					.findGongDanByWeiXiuGuid(saleAfterWeiXiuGuid);
@@ -55,7 +59,6 @@ public class SaleAfterIndexAction extends BaseActionSupport
 					.findVKeHuCheLiangByVehicleId(vehicleId);
 			gongDan = new GongDan(customer);
 		}
-		return INPUT;
 	}
 
 	public VKeHuCheLiang getCustomer() {

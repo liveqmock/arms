@@ -1100,8 +1100,8 @@ function __doPostBack(eventTarget, eventArgument) {
        
         //PDS页面转向
         function saleAfterShowByPDS(carId) {
-            //parent.winopen('../saleAfterManage/saleAfter_Index.aspx?carId=' + carId + '&d=' + new Date(), '维修接待(PDS/PDI)', 990, 600, true, true, false);
-            z = window.open('../saleAfterManage/saleAfter_Index.aspx?carId=' + carId + '&d=' + new Date(), '维修接待PDSPDI', 'height=600, width=990, top=30, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
+            //parent.winopen('../saleAfterManage/saleAfterIndex.action?carId=' + carId + '&d=' + new Date(), '维修接待(PDS/PDI)', 990, 600, true, true, false);
+            z = window.open('../saleAfterManage/saleAfterIndex.action?carId=' + carId + '&d=' + new Date(), '维修接待PDSPDI', 'height=600, width=990, top=30, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
             z.focus();
             return false;
         }

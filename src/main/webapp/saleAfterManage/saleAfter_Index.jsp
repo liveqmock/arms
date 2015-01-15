@@ -52,7 +52,7 @@ padding-left:200px;}
         <tr><td class="titlebg"><span>售后管理</span>
         <span class="titleSpan1">(工单制作)</span> 
          </td><td align="right" style="padding-right:20px;color:Blue;font-weight:bold;">
-           维修单号:JDD20150105028&nbsp;车牌号:粤1WT45&nbsp;<a href='#' onclick='showRefresh();' >接待中</a>
+           维修单号:<s:property value='gongDan.txtBillNo' />&nbsp;车牌号:<s:property value='gongDan.txtChePaiHao' />&nbsp;<a href='#' onclick='showRefresh();' ><s:property value='gongDan.txtGongDanStatus' /></a>
            </td></tr>
          </table> 
 
@@ -136,7 +136,7 @@ padding-left:200px;}
 
 
      function showRefresh() {
-         location.href = '../saleAfterManage/saleAfter_Index.aspx?saleAfterWeiXiuGuid=d4e10073-1054-4c86-b552-f44623513d0b&tabId=' + tabId + '&d=' + new Date();
+         location.href = '../saleAfterManage/saleAfterIndex.action?saleAfterWeiXiuGuid=d4e10073-1054-4c86-b552-f44623513d0b&tabId=' + tabId + '&d=' + new Date();
 
      }
 
