@@ -14,7 +14,7 @@
   	}
 </style>
 
- <link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=17a48e594e374bee9428a515058eb666" /><link rel="stylesheet" type="text/css" href="../style/themes/icon.css?v=17a48e594e374bee9428a515058eb666" /><script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script> <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script> <script src="../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script> <script src="../js/common.js?v=17a48e594e374bee9428a515058eb666" type="text/javascript"></script><link href="../style/common.css?v=17a48e594e374bee9428a515058eb666" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=8" /></head>
+ <link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=17a48e594e374bee9428a515058eb666" /><link rel="stylesheet" type="text/css" href="../style/themes/icon.css?v=17a48e594e374bee9428a515058eb666" /><script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script> <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script> <script src="../js/frame/underscore-min.js" type="text/javascript"></script> <script src="../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script> <script src="../js/common.js?v=17a48e594e374bee9428a515058eb666" type="text/javascript"></script><link href="../style/common.css?v=17a48e594e374bee9428a515058eb666" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=8" /></head>
 
 <script language="javascript" type="text/javascript" >
   
@@ -24,6 +24,11 @@
 
 <body>
     <form name="form1" method="post" id="form1">
+        <input name="txtGongDanId" type="hidden" id="txtGongDanId" />
+        <input name="txtCusId" type="hidden" id="txtCusId" />
+        <input name="txtVehicleId" type="hidden" id="txtVehicleId" />
+        <input name="txtSongCheJian" type="hidden" id="txtSongCheJian" />
+        <input name="txtGongDanStatus" type="hidden" id="txtGongDanStatus" />
     <div style="margin-left:5px;margin-top:5px;">        
        <table border="0"   cellpadding="0" cellspacing="0" width="900px" >
         <tr>
@@ -33,11 +38,6 @@
         <tr>
         <td  style="width:94px;">车牌号:</td>
         <td style="width:150px;">
-        <input name="txtCusId" type="text" id="txtCusId" style="display:none;" />
-        <input name="txtVehicleId" type="text" id="txtVehicleId" style="display:none;" />
-        <input name="txtYuYueId" type="text" id="txtYuYueId" style="display:none;" />
-        <input name="txtSongCheJian" type="text" id="txtSongCheJian" style="display:none;" />
-
         <input name="txtChePaiHao" type="text" maxlength="10" id="txtChePaiHao" /> </td>
         <td  style="width:90px;"><span class="requireSpan">*</span>里程:</td>
         <td><input name="txtLiCheng" type="text" maxlength="10" id="txtLiCheng" class="easyui-numberbox" /> </td>
@@ -79,7 +79,7 @@
         <td>车主手机:</td>
         <td><input name="txtCheZhuMob" type="text" maxlength="11" id="txtCheZhuMob" /> </td>
         <td>会员等级:</td>
-        <td><input name="txtHuiYuanDengJi" type="text" maxlength="10" readonly="readonly" id="txtHuiYuanDengJi" /></td>
+        <td><input name="txtHuiYuanDengJi" type="text" maxlength="10" readonly id="txtHuiYuanDengJi" /></td>
         </tr>
          <tr>
         <td>联系人:</td>
@@ -89,7 +89,7 @@
         <td>联系人手机:</td>
         <td><input name="txtLianXiRenMob" type="text" maxlength="11" id="txtLianXiRenMob" /> </td>
         <td>会员卡号:</td>
-        <td><input name="txtHuiYuanHao" type="text" maxlength="10" readonly="readonly" id="txtHuiYuanHao" /></td>
+        <td><input name="txtHuiYuanHao" type="text" maxlength="10" readonly id="txtHuiYuanHao" /></td>
         </tr> 
 
         <tr>
@@ -107,7 +107,7 @@
         </tr>
         <tr>
         <td>维修单号:</td>
-        <td><input name="txtBillNo" type="text" value="等待生成" readonly="readonly" id="txtBillNo" /> </td>
+        <td><input name="txtBillNo" type="text" readonly id="txtBillNo" /> </td>
         <td><span class="requireSpan">*</span>协议单号:</td>
         <td><input name="txtXieYiBillNo" type="text" maxlength="12" id="txtXieYiBillNo" /> </td>
         <td><span class="requireSpan">*</span>入厂时间:</td>
@@ -136,13 +136,13 @@
 </select>
         </td>
         <td colspan="4"><!--保险相关信息-->
-        <input id="chkShouBao" type="checkbox" name="chkShouBao" /><label for="chkShouBao">首保</label>
-        <input id="chkMianJian" type="checkbox" name="chkMianJian" /><label for="chkMianJian">免检</label> 
-        <input id="chkXinCheJianCha" type="checkbox" name="chkXinCheJianCha" /><label for="chkXinCheJianCha">新车检查</label>
-        <input id="chkFanXiu" type="checkbox" name="chkFanXiu" /><label for="chkFanXiu">返修</label>
-        <input id="chkBaoXian" type="checkbox" name="chkBaoXian" onClick="baoXianShow();" /><label for="chkBaoXian">保险</label>
+        <input id="chkShouBao" type="checkbox" value="y" name="chkShouBao" /><label for="chkShouBao">首保</label>
+        <input id="chkMianJian" type="checkbox" value="y" name="chkMianJian" /><label for="chkMianJian">免检</label> 
+        <input id="chkXinCheJianCha" type="checkbox" value="y" name="chkXinCheJianCha" /><label for="chkXinCheJianCha">新车检查</label>
+        <input id="chkFanXiu" type="checkbox" value="y" name="chkFanXiu" /><label for="chkFanXiu">返修</label>
+        <input id="chkBaoXian" type="checkbox" value="y" name="chkBaoXian" onClick="baoXianShow();" /><label for="chkBaoXian">保险</label>
         <span id="spanShiFouMaiDan"  style="visibility:hidden">
-        <input id="chkShiFouMaiDan" type="checkbox" name="chkShiFouMaiDan" /><label for="chkShiFouMaiDan">是否买单</label>
+        <input id="chkShiFouMaiDan" type="checkbox" value="y" name="chkShiFouMaiDan" /><label for="chkShiFouMaiDan">是否买单</label>
         </span> 
         </td>
         </tr>
@@ -205,7 +205,7 @@
          <textarea name="txtGuZhangReason" rows="2" cols="20" id="txtGuZhangReason" style="height:70px;width:270px;"></textarea>
          </td>
          <td>
-         <textarea name="txtWeiXiuCuoShi" rows="2" cols="20" readonly="readonly" id="txtWeiXiuCuoShi" style="height:70px;width:270px;"></textarea>
+         <textarea name="txtWeiXiuCuoShi" rows="2" cols="20" readonly id="txtWeiXiuCuoShi" style="height:70px;width:270px;"></textarea>
          </td>
          </tr>
 
@@ -244,6 +244,25 @@
 			});
 		}
 
+		function __doPostBack(eventTarget, eventArgument) {
+			if(eventTarget=='lnkSave'){
+				$("#form1").form('submit', {
+					url : "saveWeiXiuJieDai.action",
+					success : function(result) {
+						var result = eval('(' + result + ')');
+						if (result.statusCode == "success") {
+							var idInfo = result.info;
+							$("#txtGongDanId").val(idInfo.gongDanId);
+							$("#txtBillNo").val(idInfo.billNo);
+							alert('保存维修接待信息成功！');
+						} else if (result.statusCode == "failed") {
+							alert('保存维修接待信息失败！');
+						}
+					}
+				});				
+			}
+		}
+
         //发送数据至VIP
         function sendVip() {
             $.get("../customManage/DCHVIPInterface.aspx?d=" + new Date(),
@@ -255,11 +274,8 @@
         }
 
 
-        var btnFlag = "0";
         function saveCheck(sort) {
-
             var err = "";
-            if (btnFlag == "0") { btnFlag = "1"; } else {return false;}
             //保存前验证
            
            //必填项验证
@@ -268,22 +284,19 @@
             if ($("#txtXieYiBillNo").val() == "") { err += "协议单号不能为空！\n"; }
             if ($("#ddlWeiXiuSort").val() == "") { err += "维修类型不能为空！\n"; }
             if ($("#txtRuChangDate").val() == "") { err += "入厂时间不能为空！\n"; }
-            if ($("#txtYuChuChangDate").val() == "") { err += "出厂时间不能为空！\n"; }
-
-            if (err != "") {alert(err);btnFlag = "0";return false;}
+            if ($("#txtYuChuChangDate").datebox("getValue") == "") { err += "预出厂时间不能为空！\n"; }
             
             $("#txtSongCheJian").val("");
-
             if (sort == "1") {
                 $("#txtSongCheJian").val("送车间");
             }
 
-            //验证字段
-
-
-            //执行保存
-            __doPostBack('lnkSave','');
-            return false;
+            if (err != "") {
+                alert(err);
+                return false;
+            }else{
+                return true;
+            }
 
         }
 

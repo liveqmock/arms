@@ -18,5 +18,19 @@ public class GongDanServiceImpl implements GongDanService {
 		return gongDanDao.findGongDanByWeiXiuGuid(txtGongDanId);
 	}
 
+	@Override
+	public int insertWeiXiuJieDai(GongDan item) {
+		return gongDanDao.insertWeiXiuJieDai(item);
+	}
+
+	@Override
+	public int updateWeiXiuJieDai(GongDan item) {
+		return gongDanDao.updateWeiXiuJieDai(item);
+	}
+
+	@Override
+	public String getNewBillNo() {
+		return gongDanDao.getNewBillNo();
+	}
 
 }

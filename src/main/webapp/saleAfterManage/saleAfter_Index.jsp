@@ -80,21 +80,10 @@ padding-left:200px;}
 </body>
 
  <script language="javascript" type="text/javascript" >
-	(function ($) {
-		$.getUrlParam = function (name, defaultValue) {
-			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-			var r = window.location.search.substr(1).match(reg);
-			if (r != null && r[2].trim().length>0){
-				return unescape(r[2]);
-			}else{
-				return defaultValue;
-			}
-		}
-	})(jQuery);
-
-     var saleAfterWeiXiuGuid = "d4e10073-1054-4c86-b552-f44623513d0b";
+     var saleAfterWeiXiuGuid = "<s:property value='saleAfterWeiXiuGuid' />";
+     var tabId = <s:property value='tabId' />;
+     var vehicleId = "<s:property value='vehicleId' />";
      var tmp = "a";
-     var tabId = 1;
      function show(sort) {
          var url = "";
          if (sort != 1 && saleAfterWeiXiuGuid == "") {
@@ -104,12 +93,12 @@ padding-left:200px;}
          tabId=sort;
           
          if ($("#" + tmp + "Frame").length > 0) { $("#" + tmp + "Frame").hide(); }
-         if (sort == 1) { $("#" + tmp).removeClass(); $("#a").addClass("tabs_active"); tmp = "a"; url = "saleAfterWeiXiuJieDai.action?saleAfterWeiXiuGuid=d4e10073-1054-4c86-b552-f44623513d0b&cusId=&vehicleId=&carId=&yuYueId="; $(".titleSpan1").html("(维修接待)"); }
+         if (sort == 1) { $("#" + tmp).removeClass(); $("#a").addClass("tabs_active"); tmp = "a"; url = "saleAfterWeiXiuJieDai.action?saleAfterWeiXiuGuid=" + saleAfterWeiXiuGuid + "&vehicleId=" + vehicleId + "&d=" + new Date(); $(".titleSpan1").html("(维修接待)"); }
          if (sort == 2) { $("#" + tmp).removeClass(); $("#b").addClass("tabs_active"); tmp = "b"; url = "saleAfter_gongDanZhiZuo.aspx?saleAfterWeiXiuGuid=" + saleAfterWeiXiuGuid + "&d=" + new Date(); $(".titleSpan1").html("(工单制作)"); }
-         if (sort == 3) { $("#" + tmp).removeClass(); $("#c").addClass("tabs_active"); tmp = "c"; url = "saleAfter_weiXiuPaiGong.aspx?saleAfterWeiXiuGuid=d4e10073-1054-4c86-b552-f44623513d0b&d" + new Date(); $(".titleSpan1").html("(维修派工)"); }
-         if (sort == 4) { $("#" + tmp).removeClass(); $("#d").addClass("tabs_active"); tmp = "d"; url = "saleAfter_weiXiuWanJian.aspx?saleAfterWeiXiuGuid=d4e10073-1054-4c86-b552-f44623513d0b&d" + new Date(); $(".titleSpan1").html("(完工确认)"); }
-         if (sort == 5) { $("#" + tmp).removeClass(); $("#e").addClass("tabs_active"); tmp = "e"; url = "saleAfter_WeiXiuFeiYongList.aspx?saleAfterWeiXiuGuid=d4e10073-1054-4c86-b552-f44623513d0b&d" + new Date(); $(".titleSpan1").html("(费用明细)"); }
-         if (sort == 6) { $("#" + tmp).removeClass(); $("#f").addClass("tabs_active"); tmp = "f"; url = "saleAfter_weiXiuLiShiList.aspx?saleAfterWeiXiuGuid=d4e10073-1054-4c86-b552-f44623513d0b&d" + new Date(); $(".titleSpan1").html("(维修历史)"); }
+         if (sort == 3) { $("#" + tmp).removeClass(); $("#c").addClass("tabs_active"); tmp = "c"; url = "saleAfter_weiXiuPaiGong.aspx?saleAfterWeiXiuGuid=" + saleAfterWeiXiuGuid + "&d" + new Date(); $(".titleSpan1").html("(维修派工)"); }
+         if (sort == 4) { $("#" + tmp).removeClass(); $("#d").addClass("tabs_active"); tmp = "d"; url = "saleAfter_weiXiuWanJian.aspx?saleAfterWeiXiuGuid=" + saleAfterWeiXiuGuid + "&d" + new Date(); $(".titleSpan1").html("(完工确认)"); }
+         if (sort == 5) { $("#" + tmp).removeClass(); $("#e").addClass("tabs_active"); tmp = "e"; url = "saleAfter_WeiXiuFeiYongList.aspx?saleAfterWeiXiuGuid=" + saleAfterWeiXiuGuid + "&d" + new Date(); $(".titleSpan1").html("(费用明细)"); }
+         if (sort == 6) { $("#" + tmp).removeClass(); $("#f").addClass("tabs_active"); tmp = "f"; url = "saleAfter_weiXiuLiShiList.aspx?saleAfterWeiXiuGuid=" + saleAfterWeiXiuGuid + "&d" + new Date(); $(".titleSpan1").html("(维修历史)"); }
 
          if ($("#" + tmp + "Frame").length > 0) { $("#" + tmp + "Frame").show(); }
          else {
@@ -121,10 +110,9 @@ padding-left:200px;}
 
 
      $(function () {
-		 tabId = $.getUrlParam('tabId','1');
          show(tabId);
 
-         if ("d4e10073-1054-4c86-b552-f44623513d0b" == "") {
+         if (false) {//权限判断是否可见
              $("#c").css("display", "none");
              $("#d").css("display", "none");
              $("#e").css("display", "none");
@@ -136,7 +124,7 @@ padding-left:200px;}
 
 
      function showRefresh() {
-         location.href = '../saleAfterManage/saleAfterIndex.action?saleAfterWeiXiuGuid=d4e10073-1054-4c86-b552-f44623513d0b&tabId=' + tabId + '&d=' + new Date();
+         location.href = '../saleAfterManage/saleAfterIndex.action?saleAfterWeiXiuGuid=' + saleAfterWeiXiuGuid + '&tabId=' + tabId + '&d=' + new Date();
 
      }
 
