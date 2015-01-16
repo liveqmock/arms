@@ -500,15 +500,3 @@ function checkCarNumber(v) {
     //常规车牌 粤B12345                //武警车牌                                        //粤Z1234港                                               //新军车牌         //黑龙江特殊车牌
     return /(^[\u4E00-\u9FA5]{1}[A-Z0-9]{6}$)|(^[A-Z]{2}[A-Z0-9\u4E00-\u9FA5]{1}[A-Z0-9]{4}$)|(^[\u4E00-\u9FA5]{1}[A-Z0-9]{5}[挂学警军港澳]{1}$)|(^[A-Z]{2}[0-9]{5}$)|(^(08|38){1}[A-Z0-9]{4}[A-Z0-9挂学警军港澳]{1}$)/.test(v);
 }
-
-(function ($) {
-	$.getUrlParam = function (name, defaultValue) {
-		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-		var r = window.location.search.substr(1).match(reg);
-		if (r != null && r[2].trim().length>0){
-			return unescape(r[2]);
-		}else{
-			return defaultValue;
-		}
-	}
-})(jQuery);

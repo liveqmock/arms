@@ -127,6 +127,11 @@ padding-left:200px;}
          location.href = '../saleAfterManage/saleAfterIndex.action?saleAfterWeiXiuGuid=' + saleAfterWeiXiuGuid + '&tabId=' + tabId + '&d=' + new Date();
 
      }
+	 
+     function refreshPage(newSaleAfterWeiXiuGuid) {
+         saleAfterWeiXiuGuid = newSaleAfterWeiXiuGuid;
+		 showRefresh();
+     }
 
 
      $(function () {

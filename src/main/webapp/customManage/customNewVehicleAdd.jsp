@@ -14,6 +14,7 @@
 <script src="../js/frame/underscore-min.js" type="text/javascript"></script>
     <script src="../js/birthDate.js?a=123" type="text/javascript"></script> 
      <script src="../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
+     <script src="../js/customcommon.js" type="text/javascript"></script>
  
 </head>
 
@@ -654,16 +655,10 @@ td
      <script language="javascript" type="text/javascript" > 
 
 		$(function() {
-			initFormData();
+			var formJson = eval('(' + '<s:property value="jsonData" escape="false"/>' + ')');
+			initFormData(formJson);
 			show(3);
 		});
-
-		function initFormData() {
-			var formJson = eval('(' + '<s:property value="jsonData" escape="false"/>' + ')');
-			_.each(formJson, function(value, key) {
-				$("#"+key).val(value);
-			});
-		}
 		
 		function __doPostBack(eventTarget, eventArgument) {
 			$("#form1").form('submit', {

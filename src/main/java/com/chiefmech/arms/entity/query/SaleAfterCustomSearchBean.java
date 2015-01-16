@@ -1,6 +1,9 @@
 package com.chiefmech.arms.entity.query;
 
-public class SaleAfterCustomSearchBean {
+import com.chiefmech.arms.entity.query.Criteria.Action;
+
+public class SaleAfterCustomSearchBean extends SearchBean {
+
 	private String queryField;
 	private String queryValue;
 	private int txtPageNum;
@@ -30,4 +33,10 @@ public class SaleAfterCustomSearchBean {
 		this.txtPageSize = txtPageSize;
 	}
 
+	@Override
+	public void initSearchFields() {
+		this.addField(new Criteria(Action.LIKE, this.getQueryField(), this
+				.getQueryValue()));
+		this.addLimitInfo(this.getTxtPageNum(), this.getTxtPageSize());
+	}
 }

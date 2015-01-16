@@ -14,7 +14,7 @@
   	}
 </style>
 
- <link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=17a48e594e374bee9428a515058eb666" /><link rel="stylesheet" type="text/css" href="../style/themes/icon.css?v=17a48e594e374bee9428a515058eb666" /><script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script> <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script> <script src="../js/frame/underscore-min.js" type="text/javascript"></script> <script src="../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script> <script src="../js/common.js?v=17a48e594e374bee9428a515058eb666" type="text/javascript"></script><link href="../style/common.css?v=17a48e594e374bee9428a515058eb666" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=8" /></head>
+ <link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=17a48e594e374bee9428a515058eb666" /><link rel="stylesheet" type="text/css" href="../style/themes/icon.css?v=17a48e594e374bee9428a515058eb666" /><script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script> <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script> <script src="../js/frame/underscore-min.js" type="text/javascript"></script> <script src="../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script> <script src="../js/common.js?v=17a48e594e374bee9428a515058eb666" type="text/javascript"></script><link href="../style/common.css?v=17a48e594e374bee9428a515058eb666" rel="stylesheet" type="text/css" /><script src="../js/customcommon.js" type="text/javascript"></script><link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=8" /></head>
 
 <script language="javascript" type="text/javascript" >
   
@@ -25,9 +25,8 @@
 <body>
     <form name="form1" method="post" id="form1">
         <input name="txtGongDanId" type="hidden" id="txtGongDanId" />
-        <input name="txtCusId" type="hidden" id="txtCusId" />
+        <input name="txtCustId" type="hidden" id="txtCustId" />
         <input name="txtVehicleId" type="hidden" id="txtVehicleId" />
-        <input name="txtSongCheJian" type="hidden" id="txtSongCheJian" />
         <input name="txtGongDanStatus" type="hidden" id="txtGongDanStatus" />
     <div style="margin-left:5px;margin-top:5px;">        
        <table border="0"   cellpadding="0" cellspacing="0" width="900px" >
@@ -136,13 +135,13 @@
 </select>
         </td>
         <td colspan="4"><!--保险相关信息-->
-        <input id="chkShouBao" type="checkbox" value="y" name="chkShouBao" /><label for="chkShouBao">首保</label>
-        <input id="chkMianJian" type="checkbox" value="y" name="chkMianJian" /><label for="chkMianJian">免检</label> 
-        <input id="chkXinCheJianCha" type="checkbox" value="y" name="chkXinCheJianCha" /><label for="chkXinCheJianCha">新车检查</label>
-        <input id="chkFanXiu" type="checkbox" value="y" name="chkFanXiu" /><label for="chkFanXiu">返修</label>
-        <input id="chkBaoXian" type="checkbox" value="y" name="chkBaoXian" onClick="baoXianShow();" /><label for="chkBaoXian">保险</label>
+        <input id="chkShouBao" type="checkbox" name="chkShouBao" /><label for="chkShouBao">首保</label>
+        <input id="chkMianJian" type="checkbox" name="chkMianJian" /><label for="chkMianJian">免检</label> 
+        <input id="chkXinCheJianCha" type="checkbox" name="chkXinCheJianCha" /><label for="chkXinCheJianCha">新车检查</label>
+        <input id="chkFanXiu" type="checkbox" name="chkFanXiu" /><label for="chkFanXiu">返修</label>
+        <input id="chkBaoXian" type="checkbox" name="chkBaoXian" onClick="baoXianShow();" /><label for="chkBaoXian">保险</label>
         <span id="spanShiFouMaiDan"  style="visibility:hidden">
-        <input id="chkShiFouMaiDan" type="checkbox" value="y" name="chkShiFouMaiDan" /><label for="chkShiFouMaiDan">是否买单</label>
+        <input id="chkShiFouMaiDan" type="checkbox" name="chkShiFouMaiDan" /><label for="chkShiFouMaiDan">是否买单</label>
         </span> 
         </td>
         </tr>
@@ -205,7 +204,7 @@
          <textarea name="txtGuZhangReason" rows="2" cols="20" id="txtGuZhangReason" style="height:70px;width:270px;"></textarea>
          </td>
          <td>
-         <textarea name="txtWeiXiuCuoShi" rows="2" cols="20" readonly id="txtWeiXiuCuoShi" style="height:70px;width:270px;"></textarea>
+         <textarea name="txtWeiXiuCuoShi" rows="2" cols="20" id="txtWeiXiuCuoShi" style="height:70px;width:270px;"></textarea>
          </td>
          </tr>
 
@@ -216,7 +215,6 @@
          <td colspan="3" align="center">
           <!--按钮区域 start--> 
            <a onClick="return saveCheck();" id="lnkSave" class="easyui-linkbutton" href="javascript:__doPostBack('lnkSave','')">保存</a>
-           <a onClick="return saveCheck(1);" id="lnkSendCheJian" class="easyui-linkbutton" href="javascript:__doPostBack('lnkSendCheJian','')">送车间</a>
            
            <a onClick="return winClose();" id="lnkCancel" class="easyui-linkbutton" href="javascript:__doPostBack('lnkCancel','')">关闭</a>
            
@@ -234,15 +232,9 @@
     <script language="javascript" type="text/javascript" >
 
 		$(function() {
-			initFormData();
-		});
-
-		function initFormData() {
 			var formJson = eval('(' + '<s:property value="jsonData" escape="false"/>' + ')');
-			_.each(formJson, function(value, key) {
-				$("#"+key).val(value);
-			});
-		}
+			initFormData(formJson);
+		});
 
 		function __doPostBack(eventTarget, eventArgument) {
 			if(eventTarget=='lnkSave'){
@@ -251,10 +243,9 @@
 					success : function(result) {
 						var result = eval('(' + result + ')');
 						if (result.statusCode == "success") {
-							var idInfo = result.info;
-							$("#txtGongDanId").val(idInfo.gongDanId);
-							$("#txtBillNo").val(idInfo.billNo);
 							alert('保存维修接待信息成功！');
+							var idInfo = eval('(' + result.info + ')');
+							parent.refreshPage(idInfo.gongDanId);
 						} else if (result.statusCode == "failed") {
 							alert('保存维修接待信息失败！');
 						}
@@ -274,7 +265,7 @@
         }
 
 
-        function saveCheck(sort) {
+        function saveCheck() {
             var err = "";
             //保存前验证
            
@@ -286,11 +277,6 @@
             if ($("#txtRuChangDate").val() == "") { err += "入厂时间不能为空！\n"; }
             if ($("#txtYuChuChangDate").datebox("getValue") == "") { err += "预出厂时间不能为空！\n"; }
             
-            $("#txtSongCheJian").val("");
-            if (sort == "1") {
-                $("#txtSongCheJian").val("送车间");
-            }
-
             if (err != "") {
                 alert(err);
                 return false;

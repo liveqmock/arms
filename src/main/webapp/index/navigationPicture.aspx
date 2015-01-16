@@ -243,19 +243,19 @@
                     </td>
                     <td align="center"><img alt="" width="32px" height="32px" src="../style/navigation/D.png" /></td>
                     <td align="center">
-                    <button id="butD2" type="button" onclick="parent.mdfMenu('','工单制作','../saleAfterManage/saleAfter_GongDanManage.aspx')">
+                    <button id="butD2" type="button" onclick="parent.mdfMenu('','工单制作','../saleAfterManage/saleAfterGongDanManage.action')">
                         <img alt="" width="64px" height="64px" src="../style/navigation/png-0357.png" />
                         <div class="pre_title">工单制作</div></button>
                     </td>
                     <td align="center"><img alt="" width="32px" height="32px" src="../style/navigation/D.png" /></td>
                     <td align="center">
-                    <button id="butD3" type="button" onclick="parent.mdfMenu('','维修派工','../saleAfterManage/saleAfter_GongDanManage.aspx?tabId=3')">
+                    <button id="butD3" type="button" onclick="parent.mdfMenu('','维修派工','../saleAfterManage/saleAfterGongDanManage.action?tabId=3')">
                         <img alt="" width="64px" height="64px" src="../style/navigation/xtsz.png" />
                         <div class="pre_title">维修派工</div></button>
                     </td>
                     <td align="center"><img alt="" width="32px" height="32px" src="../style/navigation/D.png" /></td>
                     <td align="center">
-                    <button id="butD4" type="button" onclick="parent.mdfMenu('','交车管理','../saleAfterManage/saleAfter_GongDanManage.aspx?tabId=6')">
+                    <button id="butD4" type="button" onclick="parent.mdfMenu('','交车管理','../saleAfterManage/saleAfterGongDanManage.action?tabId=6')">
                         <img alt="" width="64px" height="64px" src="../style/navigation/png-0013.png" />
                         <div class="pre_title">交车管理</div></button>
                     </td>

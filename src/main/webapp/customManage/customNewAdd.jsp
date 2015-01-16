@@ -17,6 +17,7 @@
 <script src="../js/common.js?a=2014081611" type="text/javascript"></script>
 <script src="../js/frame/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
+<script src="../js/customcommon.js" type="text/javascript"></script>
 <script src="../js/geo.js" type="text/javascript"></script>
 
 </head>
@@ -577,16 +578,13 @@ td {
 	<script language="javascript" type="text/javascript">
 
 		$(function() {
-			initFormData();
+			var formJson = eval('(' + '<s:property value="jsonData" escape="false"/>' + ')');
+			initFormData(formJson);
+			setUpPCA(formJson);
 			show(<s:property value="showSort" />);
 		});
 
-		function initFormData() {
-			var formJson = eval('(' + '<s:property value="jsonData" escape="false"/>' + ')');
-			_.each(formJson, function(value, key) {
-				$("#"+key).val(value);
-			});
-
+		function setUpPCA(formJson) {
 			//初始化省市区三级联动下拉框
 			new PCA().geoSetup(["ddlCheZhuP", "ddlCheZhuC", "ddlCheZhuA"], [formJson.ddlCheZhuP, formJson.ddlCheZhuC, formJson.ddlCheZhuA]);
 			new PCA().geoSetup(["ddlLianXiRenP", "ddlLianXiRenC", "ddlLianXiRenA"], [formJson.ddlLianXiRenP, formJson.ddlLianXiRenC, formJson.ddlLianXiRenA]);

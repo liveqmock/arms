@@ -21,7 +21,7 @@
 
 
 <body>
-    <form name="form1" method="post" action="saleAfter_GongDanManage.aspx?tabId=6" id="form1">
+    <form name="form1" method="post" action="saleAfterGongDanManage.action?tabId=6" id="form1">
 <div>
 <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
 <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />

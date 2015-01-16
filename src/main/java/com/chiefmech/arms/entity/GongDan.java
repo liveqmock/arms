@@ -1,7 +1,5 @@
 package com.chiefmech.arms.entity;
 
-import java.util.Date;
-
 import com.chiefmech.arms.common.util.DateUtil;
 import com.chiefmech.arms.entity.view.VKeHuCheLiang;
 
@@ -12,8 +10,6 @@ public class GongDan {
 	private String txtCustId;
 	/** 车辆id */
 	private String txtVehicleId;
-	/** 送车间 */
-	private String txtSongCheJian;
 	/** 工单状态 */
 	private String txtGongDanStatus;
 	/** 车牌号 */
@@ -65,7 +61,7 @@ public class GongDan {
 	/** 入厂时间 */
 	public String txtRuChangDate;
 	/** 预出厂时间 */
-	public Date txtYuChuChangDate;
+	public String txtYuChuChangDate;
 	/** 服务顾问 */
 	private String txtFuWuUserId;
 	/** 维修类别 */
@@ -87,7 +83,7 @@ public class GongDan {
 	/** 本店保单 */
 	private String radBaoXianIsBenDian;
 	/** 出险日期 */
-	public Date txtBaoXianDate;
+	public String txtBaoXianDate;
 	/** 理赔公司 */
 	private String ddlBaoXianLiPeiComp;
 	/** 维修提示 */
@@ -100,6 +96,10 @@ public class GongDan {
 	private String txtWeiXiuCuoShi;
 	/** 预约id */
 	private String txtYuYueId;
+	/** 结算时间 */
+	public String txtJieSuanDate;
+	/** 出厂时间 */
+	public String txtChuChangDate;
 
 	public GongDan(VKeHuCheLiang customerInfo) {
 		this.setTxtCustId(customerInfo.getTxtCustId());
@@ -112,7 +112,7 @@ public class GongDan {
 		this.setTxtCheXiName(customerInfo.getDdlCheLiangCheXi());
 		this.setTxtChenShenYanSe(customerInfo.getDdlCheShenColor());
 		this.setTxtCheXingDaiMa(customerInfo.getTxtCheLiangCheXingDaiMa());
-		this.setTxtCustSort(customerInfo.getDdlCheZhuTelSort());
+		this.setTxtCustSort(customerInfo.getDdlCustSort());
 		this.setTxtCheZhuName(customerInfo.getTxtCheZhuName());
 		this.setTxtCheZhuTel(customerInfo.getTxtCheZhuTel());
 		this.setTxtCheZhuMob(customerInfo.getTxtCheZhuMob());
@@ -166,14 +166,6 @@ public class GongDan {
 
 	public void setTxtRuChangDate(String txtRuChangDate) {
 		this.txtRuChangDate = txtRuChangDate;
-	}
-
-	public Date getTxtYuChuChangDate() {
-		return txtYuChuChangDate;
-	}
-
-	public void setTxtYuChuChangDate(Date txtYuChuChangDate) {
-		this.txtYuChuChangDate = txtYuChuChangDate;
 	}
 
 	public String getTxtFuWuUserId() {
@@ -256,11 +248,19 @@ public class GongDan {
 		this.radBaoXianIsBenDian = radBaoXianIsBenDian;
 	}
 
-	public Date getTxtBaoXianDate() {
+	public String getTxtYuChuChangDate() {
+		return txtYuChuChangDate;
+	}
+
+	public void setTxtYuChuChangDate(String txtYuChuChangDate) {
+		this.txtYuChuChangDate = txtYuChuChangDate;
+	}
+
+	public String getTxtBaoXianDate() {
 		return txtBaoXianDate;
 	}
 
-	public void setTxtBaoXianDate(Date txtBaoXianDate) {
+	public void setTxtBaoXianDate(String txtBaoXianDate) {
 		this.txtBaoXianDate = txtBaoXianDate;
 	}
 
@@ -326,14 +326,6 @@ public class GongDan {
 
 	public void setTxtYuYueId(String txtYuYueId) {
 		this.txtYuYueId = txtYuYueId;
-	}
-
-	public String getTxtSongCheJian() {
-		return txtSongCheJian;
-	}
-
-	public void setTxtSongCheJian(String txtSongCheJian) {
-		this.txtSongCheJian = txtSongCheJian;
 	}
 
 	public String getTxtChePaiHao() {
@@ -502,6 +494,22 @@ public class GongDan {
 
 	public void setTxtLianXiRenAdd(String txtLianXiRenAdd) {
 		this.txtLianXiRenAdd = txtLianXiRenAdd;
+	}
+
+	public String getTxtJieSuanDate() {
+		return txtJieSuanDate;
+	}
+
+	public void setTxtJieSuanDate(String txtJieSuanDate) {
+		this.txtJieSuanDate = txtJieSuanDate;
+	}
+
+	public String getTxtChuChangDate() {
+		return txtChuChangDate;
+	}
+
+	public void setTxtChuChangDate(String txtChuChangDate) {
+		this.txtChuChangDate = txtChuChangDate;
 	}
 
 }

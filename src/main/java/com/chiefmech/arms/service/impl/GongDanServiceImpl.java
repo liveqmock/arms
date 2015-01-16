@@ -1,11 +1,17 @@
 package com.chiefmech.arms.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
+
+import net.sf.json.JSONArray;
 
 import org.springframework.stereotype.Service;
 
 import com.chiefmech.arms.dao.GongDanDao;
 import com.chiefmech.arms.entity.GongDan;
+import com.chiefmech.arms.entity.query.SaleAfterGongDanSearchBean;
+import com.chiefmech.arms.entity.view.VKeHuCheLiang;
 import com.chiefmech.arms.service.GongDanService;
 
 @Service("gongDanService")
@@ -31,6 +37,17 @@ public class GongDanServiceImpl implements GongDanService {
 	@Override
 	public String getNewBillNo() {
 		return gongDanDao.getNewBillNo();
+	}
+
+	@Override
+	public String getSaleAfterGongDanEasyUiJSon(SaleAfterGongDanSearchBean query) {
+		List<GongDan> lst = gongDanDao.getGongDanListForEasyUi(query);
+		int total = gongDanDao.getGongDanCountForEasyUi(query);
+
+		String lstJson = JSONArray.fromObject(lst).toString();
+		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
+				lstJson);
+		return jsonStr;
 	}
 
 }
