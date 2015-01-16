@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.chiefmech.arms.dao.sqlprovider.GongDanDaoSqlProvider;
 import com.chiefmech.arms.entity.GongDan;
+import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
 import com.chiefmech.arms.entity.query.SaleAfterGongDanSearchBean;
 
 @Repository("gongDanDao")
@@ -35,4 +36,10 @@ public interface GongDanDao {
 	public int getGongDanCountForEasyUi(
 			@Param("item") SaleAfterGongDanSearchBean query);
 
+	@Insert("insert into gongdanxiangmu(txtWeiXiuXiangMuId,txtBillNo,txtXiangMuId,txtGongDuanName,txtGongShi,txtGongShiFei,txtWeiXiuNeiRong) values(#{txtWeiXiuXiangMuId},#{txtBillNo},#{txtXiangMuId},#{txtGongDuanName},#{txtGongShi},#{txtGongShiFei},#{txtWeiXiuNeiRong})")
+	public int insertGongDanWeiXiuXiangMu(GongDanWeiXiuXiangMu item);
+
+	@Select("select * from gongdanxiangmu where txtBillNo=#{txtGongDanId}")
+	public List<GongDanWeiXiuXiangMu> getGongDanWeiXiuXiangMuListByGongDanId(
+			String txtGongDanId);
 }

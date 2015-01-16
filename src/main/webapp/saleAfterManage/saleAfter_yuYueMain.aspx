@@ -297,7 +297,7 @@ function __doPostBack(eventTarget, eventArgument) {
 
         //维修明细添加
         function addWeiXiuXiangMuList() {
-            var u = "../saleAfterManage/saleAfter_gongDanZhiZuoAddWeiXiuXiangMu.aspx?type=yuYueManage&saleAfterGuid=0fa6bbde-a9ad-4e80-8eb3-14006f387ff2&d=" + new Date();
+            var u = "../saleAfterManage/saleAfterGongDanZhiZuoAddWeiXiuXiangMu.action?type=yuYueManage&saleAfterGuid=0fa6bbde-a9ad-4e80-8eb3-14006f387ff2&d=" + new Date();
             var SizeZ = "dialogWidth:750px;dialogHeight:550px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
             var returnValue = window.showModalDialog(u, '', SizeZ);
             //关闭当前窗体

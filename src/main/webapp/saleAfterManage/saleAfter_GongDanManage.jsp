@@ -57,8 +57,8 @@
                 <th  data-options="field:'txtFuWuUserId',width:70">服务顾问</th>
                 <th  data-options="field:'txtChePaiHao',width:80">车牌号</th>
                 <th  data-options="field:'txtCheXiName',width:120" sortable=true>车系名称</th>
-                <th  data-options="field:'txtCheZhuName',width:80">车主名称</th>
-                <th  data-options="field:'txtCheZhuTel',width:120">车主电话</th>
+                <th  data-options="field:'txtCheZhuName',width:60">车主名称</th>
+                <th  data-options="field:'txtCheZhuTel',width:100">车主电话</th>
                 <th  data-options="field:'txtRuChangDate',width:120">入厂时间</th>
                 <th  data-options="field:'txtYuChuChangDate',width:120">预出厂时间</th> 
                 <th  data-options="field:'txtJieSuanDate',width:120">结算时间</th>

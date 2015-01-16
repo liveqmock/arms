@@ -102,7 +102,7 @@ padding-left:200px;}
           
          if ($("#" + tmp + "Frame").length > 0) { $("#" + tmp + "Frame").hide(); }
          if (sort == 1) { $("#" + tmp).removeClass(); $("#a").addClass("tabs_active"); tmp = "a"; url = "saleAfterWeiXiuJieDai.action?saleAfterWeiXiuGuid=d4e10073-1054-4c86-b552-f44623513d0b&cusId=&vehicleId=&carId=&yuYueId="; $(".titleSpan1").html("(维修接待)"); }
-         if (sort == 2) { $("#" + tmp).removeClass(); $("#b").addClass("tabs_active"); tmp = "b"; url = "saleAfter_gongDanZhiZuo.aspx?saleAfterWeiXiuGuid=" + saleAfterWeiXiuGuid + "&d=" + new Date(); $(".titleSpan1").html("(工单制作)"); }
+         if (sort == 2) { $("#" + tmp).removeClass(); $("#b").addClass("tabs_active"); tmp = "b"; url = "saleAfterGongDanZhiZuo.action?saleAfterWeiXiuGuid=" + saleAfterWeiXiuGuid + "&d=" + new Date(); $(".titleSpan1").html("(工单制作)"); }
          if (sort == 3) { $("#" + tmp).removeClass(); $("#c").addClass("tabs_active"); tmp = "c"; url = "saleAfter_weiXiuPaiGong.aspx?saleAfterWeiXiuGuid=d4e10073-1054-4c86-b552-f44623513d0b&d" + new Date(); $(".titleSpan1").html("(维修派工)"); }
          if (sort == 4) { $("#" + tmp).removeClass(); $("#d").addClass("tabs_active"); tmp = "d"; url = "saleAfter_weiXiuWanJian.aspx?saleAfterWeiXiuGuid=d4e10073-1054-4c86-b552-f44623513d0b&d" + new Date(); $(".titleSpan1").html("(完工确认)"); }
          if (sort == 5) { $("#" + tmp).removeClass(); $("#e").addClass("tabs_active"); tmp = "e"; url = "saleAfter_WeiXiuFeiYongList.aspx?saleAfterWeiXiuGuid=d4e10073-1054-4c86-b552-f44623513d0b&d" + new Date(); $(".titleSpan1").html("(费用明细)"); }

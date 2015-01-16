@@ -21,14 +21,14 @@
 
     //页面刷新方法
     function pageLoad() {
-        location.href = "saleAfter_gongDanZhiZuo.aspx?saleAfterWeiXiuGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
+        location.href = "saleAfterGongDanZhiZuo.action?saleAfterWeiXiuGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
 
      }
 
 </script>
 
 <body>
-    <form name="form1" method="post" action="saleAfter_gongDanZhiZuo.aspx?saleAfterWeiXiuGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&amp;d=Tue+Jan+06+2015+12%3a17%3a32+GMT+0800" id="form1">
+    <form name="form1" method="post" action="saleAfterGongDanZhiZuo.action?saleAfterWeiXiuGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&amp;d=Tue+Jan+06+2015+12%3a17%3a32+GMT+0800" id="form1">
 <div>
 <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
 <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
@@ -76,8 +76,8 @@ function __doPostBack(eventTarget, eventArgument) {
         <table border="0" cellpadding="0" cellspacing="0">
         <tr>
         <td style="vertical-align:middle;">
-         <input name="btnWeiXiuListAdd" type="button" id="btnWeiXiuListAdd" value="维修项目" style="width:60px;height:30px;font-size:12px;" onclick="addWeiXiuXiangMuList()" />
-         <input name="btnWeiXiuTmpAdd" type="button" id="btnWeiXiuTmpAdd" value="N " style="width:20px;height:30px;font-size:12px;" onclick="addWeiXiuXiangMu()" />        
+         <input name="btnWeiXiuListAdd" type="button" id="btnWeiXiuListAdd" value="维修项目" style="width:60px;height:30px;font-size:12px;" onClick="addWeiXiuXiangMuList()" />
+         <input name="btnWeiXiuTmpAdd" type="button" id="btnWeiXiuTmpAdd" value="N " style="width:20px;height:30px;font-size:12px;" onClick="addWeiXiuXiangMu()" />        
          
          </td>
         </tr>
@@ -138,7 +138,7 @@ function __doPostBack(eventTarget, eventArgument) {
         <table border="0" cellpadding="0" cellspacing="0">
         <tr>
         <td>
-          <input name="btnWeiXiuWuLiao" type="button" id="btnWeiXiuWuLiao" value="物料选择" style="width:60px;height:30px;font-size:12px;" onclick="addWeiXiuWuLiaoList()" />
+          <input name="btnWeiXiuWuLiao" type="button" id="btnWeiXiuWuLiao" value="物料选择" style="width:60px;height:30px;font-size:12px;" onClick="addWeiXiuWuLiaoList()" />
 
 
 
@@ -558,7 +558,7 @@ function __doPostBack(eventTarget, eventArgument) {
       }, function (data) {
           if (data == "ok") {
               alert("修改成功！");
-              location.href = "saleAfter_gongDanZhiZuo.aspx?saleAfterWeiXiuGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
+              location.href = "saleAfterGongDanZhiZuo.action?saleAfterWeiXiuGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
           }
           else {
               alert(data);
@@ -582,7 +582,7 @@ function __doPostBack(eventTarget, eventArgument) {
             
             if("6018" !="9999")
             {
-             u = "../saleAfterManage/saleAfter_gongDanZhiZuoAddWeiXiuXiangMu.aspx?baoXianFlag=0&saleAfterGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
+             u = "../saleAfterManage/saleAfterGongDanZhiZuoAddWeiXiuXiangMu.action?baoXianFlag=0&saleAfterGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
             }else
             {
             u = "../saleAfterManage/saleAfter_gongDanZhiZuoAddWeiXiuXiangMuNew.aspx?baoXianFlag=0&saleAfterGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
@@ -594,7 +594,7 @@ function __doPostBack(eventTarget, eventArgument) {
                 returnValue.focus();
             } else {
                 returnValue = window.showModalDialog(u, '', SizeZ);
-                location.href = "saleAfter_gongDanZhiZuo.aspx?saleAfterWeiXiuGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
+                location.href = "saleAfterGongDanZhiZuo.action?saleAfterWeiXiuGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
             }
             //关闭当前窗体
             if (returnValue != undefined && returnValue != "") {
@@ -616,7 +616,7 @@ function __doPostBack(eventTarget, eventArgument) {
                 returnValue.focus();
             } else {
                 returnValue = window.showModalDialog(u, '', SizeZ);
-                location.href = "saleAfter_gongDanZhiZuo.aspx?saleAfterWeiXiuGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
+                location.href = "saleAfterGongDanZhiZuo.action?saleAfterWeiXiuGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
             }
             //关闭当前窗体
             if (returnValue != undefined && returnValue != "") {
@@ -638,7 +638,7 @@ function __doPostBack(eventTarget, eventArgument) {
                     }, function (data) {
                         //刷新页面
                         if (data == "ok") {
-                            location.href = "saleAfter_gongDanZhiZuo.aspx?saleAfterWeiXiuGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
+                            location.href = "saleAfterGongDanZhiZuo.action?saleAfterWeiXiuGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
                         } else {
                             alert(data);
                         }
@@ -659,7 +659,7 @@ function __doPostBack(eventTarget, eventArgument) {
                 returnValue.focus();
             } else {
                  returnValue = window.showModalDialog(u, '', SizeZ);                 
-                 location.href = "saleAfter_gongDanZhiZuo.aspx?saleAfterWeiXiuGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
+                 location.href = "saleAfterGongDanZhiZuo.action?saleAfterWeiXiuGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
             }
             //关闭当前窗体
             if (returnValue != undefined && returnValue != "") {
@@ -681,7 +681,7 @@ function __doPostBack(eventTarget, eventArgument) {
                         //刷新页面
                         if (data == "ok") {
                             $("#" + weiXiuWuLiaoDetailGuid + "Tr").css("display","none");
-                            //location.href = "saleAfter_gongDanZhiZuo.aspx?saleAfterWeiXiuGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
+                            //location.href = "saleAfterGongDanZhiZuo.action?saleAfterWeiXiuGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
                         } else {
                             alert(data);
                         }
@@ -707,7 +707,7 @@ function __doPostBack(eventTarget, eventArgument) {
             if (returnValue != undefined && returnValue != "") {
 
             }
-            location.href = "saleAfter_gongDanZhiZuo.aspx?saleAfterWeiXiuGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
+            location.href = "saleAfterGongDanZhiZuo.action?saleAfterWeiXiuGuid=fccde036-8415-49b3-ad09-d7ca4dc52871&d=" + new Date();
             return false;
         }
 

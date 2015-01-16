@@ -29,7 +29,7 @@
       
     </script>
 <body>
-    <form name="form1" method="post" action="saleAfter_gongDanZhiZuoAddWeiXiuXiangMu.aspx?type=yuYueManage&amp;saleAfterGuid=0fa6bbde-a9ad-4e80-8eb3-14006f387ff2&amp;d=Mon+Jan+05+2015+15%3a19%3a49+GMT+0800" id="form1">
+    <form name="form1" method="post" action="saleAfterGongDanZhiZuoAddWeiXiuXiangMu.action?type=yuYueManage&amp;saleAfterGuid=0fa6bbde-a9ad-4e80-8eb3-14006f387ff2&amp;d=Mon+Jan+05+2015+15%3a19%3a49+GMT+0800" id="form1">
 <div>
 <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
 <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
