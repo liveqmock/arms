@@ -2,6 +2,7 @@ package com.chiefmech.arms.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -38,6 +39,9 @@ public interface GongDanDao {
 
 	@Insert("insert into gongdanxiangmu(txtWeiXiuXiangMuId,txtBillNo,txtXiangMuId,txtGongDuanName,txtGongShi,txtGongShiFei,txtWeiXiuNeiRong) values(#{txtWeiXiuXiangMuId},#{txtBillNo},#{txtXiangMuId},#{txtGongDuanName},#{txtGongShi},#{txtGongShiFei},#{txtWeiXiuNeiRong})")
 	public int insertGongDanWeiXiuXiangMu(GongDanWeiXiuXiangMu item);
+
+	@Delete("delete from gongdanxiangmu where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
+	public int deleteGongDanWeiXiuXiangMu(String txtWeiXiuXiangMuId);
 
 	@Select("select * from gongdanxiangmu where txtBillNo=#{txtGongDanId}")
 	public List<GongDanWeiXiuXiangMu> getGongDanWeiXiuXiangMuListByGongDanId(

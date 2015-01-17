@@ -1,7 +1,5 @@
 package com.chiefmech.arms.action.saleAfterManage;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -23,19 +21,26 @@ import com.opensymphony.xwork2.ModelDriven;
 @Controller()
 @Scope("prototype")
 public class GongDanZhiZuoAddWeiXiuXiangMuAction extends BaseActionSupport
-		implements ModelDriven<WeiXiuXiangMu> {
+		implements
+			ModelDriven<WeiXiuXiangMu> {
 
 	@Resource()
 	private GongDanService gongDanService;
 
-	private List<WeiXiuXiangMu> weiXiuXiangMuLst;
 	private WeiXiuXiangMu item = new WeiXiuXiangMu();
 	private String saleAfterGuid;
+	private String txtWeiXiuXiangMuId;
+	private String easyUiJSonData;
 
-	@Action(value = "saleAfterGongDanZhiZuoAddWeiXiuXiangMu", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuoAddWeiXiuXiangMu.jsp") })
+	@Action(value = "saleAfterGongDanZhiZuoAddWeiXiuXiangMu", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuoAddWeiXiuXiangMu.jsp")})
 	public String saleAfterGongDanZhiZuoAddWeiXiuXiangMu() {
-		weiXiuXiangMuLst = gongDanService.getWeiXiuXiangMuList(item);
+		easyUiJSonData = gongDanService.getWeiXiuXiangMuEasyUiJSon(item);
 		return INPUT;
+	}
+
+	@Action(value = "queryWeiXiuXiangMu")
+	public void queryWeiXiuXiangMu() {
+		this.transmitJson(gongDanService.getWeiXiuXiangMuEasyUiJSon(item));
 	}
 
 	@Action(value = "AddGongDanWeiXiuXiangMu")
@@ -53,6 +58,18 @@ public class GongDanZhiZuoAddWeiXiuXiangMuAction extends BaseActionSupport
 		this.transmitJson(String.format("{\"statusCode\":\"%s\"}", statusCode));
 	}
 
+	@Action(value = "deleteGongDanWeiXiuXiangMu")
+	public void deleteGongDanWeiXiuXiangMu() {
+		String statusCode = "failed";
+		int rowsAffected = gongDanService
+				.deleteGongDanWeiXiuXiangMu(txtWeiXiuXiangMuId);
+		if (rowsAffected == 1) {
+			statusCode = "ok";
+		}
+
+		this.transmitJson(statusCode);
+	}
+
 	public String getSaleAfterGuid() {
 		return saleAfterGuid;
 	}
@@ -66,12 +83,16 @@ public class GongDanZhiZuoAddWeiXiuXiangMuAction extends BaseActionSupport
 		return item;
 	}
 
-	public List<WeiXiuXiangMu> getWeiXiuXiangMuLst() {
-		return weiXiuXiangMuLst;
-	}
-
 	public WeiXiuXiangMu getQuery() {
 		return item;
+	}
+
+	public void setTxtWeiXiuXiangMuId(String txtWeiXiuXiangMuId) {
+		this.txtWeiXiuXiangMuId = txtWeiXiuXiangMuId;
+	}
+
+	public String getEasyUiJSonData() {
+		return easyUiJSonData;
 	}
 
 }

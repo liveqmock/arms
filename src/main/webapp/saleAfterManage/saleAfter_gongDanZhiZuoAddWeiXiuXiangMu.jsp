@@ -64,56 +64,58 @@
        </tr>
        </table>
        <!--数据列表 satrt-->
-       <table border="1" cellpadding="0" cellspacing="0"   style="border-collapse:collapse;border:1px solid gray;width:700px;" >
-           <tr style="height:23px;">
-           <td width="80px">维修编号</td><td width="30px">工段</td><td width="30px">工时</td>
-           <td width="250px">维修内容</td> 
-           </tr>
-           
-           <s:iterator value="weiXiuXiangMuLst" status="status">
-           <tr id='<s:property value="#status.count" />' style="height:23px;" onclick=insertWeiXiuXiangMu('<s:property value="#status.count" />','<s:property value="txtWeiXiuXiangMuBianHao" />','<s:property value="ddlSuoShuGongDuan" />','<s:property value="txtGongShi" />','<s:property value="txtWeiXiuNeiRong" />') >
-           <td><s:property value="txtWeiXiuXiangMuBianHao" /></td>
-           <td><s:property value="ddlSuoShuGongDuan" /></td>
-           <td><s:property value="txtGongShi" /></td>
-           <td><s:property value="txtWeiXiuNeiRong" /></td>
-           </tr>
-           </s:iterator>
-           
-       </table> 
+        <table id="dg" width="700" class="easyui-datagrid" data-options="singleSelect:true,rownumbers:true,onClickRow:insertWeiXiuXiangMu" >
+            <thead>
+                <tr>
+                    <th field="txtWeiXiuXiangMuBianHao" width="100">维修编号</th>
+                    <th field="ddlSuoShuGongDuan" width="80">工段</th>
+                    <th field="txtGongShi" width="80">工时</th>
+                    <th field="txtWeiXiuNeiRong" width="200">维修内容</th>
+                </tr>
+            </thead>
+        </table>
        <!--数据列表 end-->
     </div>
     </form>
     
-    <script language="javascript" type="text/javascript" >
-         var saleAfterGuid = '<s:property value="saleAfterGuid" />';		 
+    <script language="javascript" type="text/javascript" >		 	
+        $(function () {
+			var jsonStr = '<s:property value="easyUiJSonData" escape="false"/>';
+        	setupDatagrid(jsonStr);
+        });
+		
+		function setupDatagrid(jsonStr) {
+            $('#dg').datagrid('loadData', $.parseJSON(jsonStr));
+        }	 
 
         function searchWeiXiuXiangMu(){
 			$("#form1").form('submit', {
-				url : "saleAfterGongDanZhiZuoAddWeiXiuXiangMu.action?saleAfterGuid=" +saleAfterGuid+ "&d=" + new Date()
+				url : "queryWeiXiuXiangMu.action",				
+				success : function(jsonStr) {
+					setupDatagrid(jsonStr);
+				}
 			});	
         }
 		 
-        function insertWeiXiuXiangMu(trId, bianHao, gongDuanName, gongShi, weiXiuNeiRong)        {
-			//工单制作
+        function insertWeiXiuXiangMu(index,row){
 			$.post("AddGongDanWeiXiuXiangMu.action?d=" + new Date(), {
-				"saleAfterGuid": saleAfterGuid,
-				"txtWeiXiuXiangMuBianHao": bianHao,
-				"ddlSuoShuGongDuan": gongDuanName,
-				"txtGongShi": gongShi,
-				"txtWeiXiuNeiRong": weiXiuNeiRong
+				"saleAfterGuid": '<s:property value="saleAfterGuid" />',
+				"txtWeiXiuXiangMuBianHao": row.txtWeiXiuXiangMuBianHao,
+				"ddlSuoShuGongDuan": row.ddlSuoShuGongDuan,
+				"txtGongShi": row.txtGongShi,
+				"txtWeiXiuNeiRong": row.txtWeiXiuNeiRong
 			}, function (data) {
 				if (data.statusCode == "success") {
 					if (window.opener != null) {
 						window.opener.pageLoad();
 						window.opener.focus();
 					} 
-                    $("#" + trId).css("display", "none");
+					$('#dg').datagrid('deleteRow', index);
 				}else{
 					alert("添加工单维修项目信息失败");
 				}
 			}, "json");
         }
-reload();
     </script>
 
 </body>

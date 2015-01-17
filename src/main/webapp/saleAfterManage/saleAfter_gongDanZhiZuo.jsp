@@ -59,39 +59,58 @@
          <input name="btnWeiXiuListAdd" type="button" id="btnWeiXiuListAdd" value="维修项目" style="width:60px;height:30px;font-size:12px;" onClick="addWeiXiuXiangMuList()" /></td>
         </tr>
         </table>
+        <table id="dg" class="easyui-datagrid" data-options="toolbar: '#tb',singleSelect:true,rownumbers:true,onClickRow:onClickWeiXiuXiangMuRow">
+            <thead>
+                <tr> <th field="txtGongDuanName" width="100" data-options="editor:{type:'combobox',options:{valueField:'code',textField:'name',method:'get',url:'data/weiXiuGongDuan.json'}
+}">工段</th>
+                    <th field="txtXiangMuId" width="150">项目编号</th>
+                    <th field="txtWeiXiuNeiRong" width="300">维修内容</th>
+                    <th field="txtGongShi" width="100" data-options="align:'right',editor:{type:'numberbox',options:{precision:2}}">工时</th>
+                    <th field="txtGongShiFei" width="150" data-options="align:'right',editor:{type:'numberbox',options:{precision:2}}">工时费</th>
+                    <th field="ddlZhangTao" width="150" data-options="editor:{type:'combobox',options:{valueField:'code',textField:'name',method:'get',url:'data/zhangTao.json'}
+}">帐套</th>
+                    <th field="ddlSubZhangTao" width="150">子帐套</th>
+                </tr>
+            </thead>
+        </table>
+         <div id="tb" style="height:auto">
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="removeXiangMu()">删除选中项目</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()">保存修改</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()">放弃修改</a>
+        </div>
         <table border="1" style="border-collapse:collapse;border:1px solid #d6d3ce;width:100%"  >
         <!--维修项目 start-->
          
           <tr>
            <td style="width:30px;">NO.</td>
            <td style="width:50px;">工段</td>
-           <td style="width:150px;">项目编号</td>
-           <td style="width:360px;">维修内容</td>
+           <td style="width:100px;">项目编号</td>
+           <td style="width:300px;">维修内容</td>
            <td width="60px" style="text-align:right;">工时</td><td  width="60px" style="text-align:right;">工时费</td>
            <td  width="120px">帐套</td><td  width="150px">子帐套</td><td width="10px"></td>
           </tr>
          <s:iterator value="gongDanWeiXiuXiangMuLst" status="status">
          <tr >
-           <td style="width:20px;text-align:center;"  onclick="zhangTaoMdf('40dfae53-7856-47df-9664-a1266379c298','weiXiu')" ><s:property value="#status.count" />
-           <input type="hidden" name="weiXiu" value="40dfae53-7856-47df-9664-a1266379c298" />
+           <td style="width:20px;text-align:center;"  onclick="zhangTaoMdf('<s:property value='txtWeiXiuXiangMuId' />','weiXiu')" ><s:property value="#status.count" />
+           <input type="hidden" name="weiXiu" value="<s:property value='txtWeiXiuXiangMuId' />" />
            </td>
-           <td  width='30px'>
-           <select id='40dfae53-7856-47df-9664-a1266379c298GongDuanName' style="display:none;width:50px;"  ></select>
-           <span id="40dfae53-7856-47df-9664-a1266379c298GongDuanNameB"><s:property value="txtGongDuanName" /></span>
+           <td  width='30px' onclick="zhangTaoMdf('<s:property value='txtWeiXiuXiangMuId' />','weiXiu')">
+           <select id='<s:property value="txtWeiXiuXiangMuId" />GongDuanName' style="display:none;width:50px;"  ></select>
+           <span id="<s:property value='txtWeiXiuXiangMuId' />GongDuanNameB"><s:property value="txtGongDuanName" /></span>
             </td>
-           <td  onclick="zhangTaoMdf('40dfae53-7856-47df-9664-a1266379c298','weiXiu')"><s:property value="txtXiangMuId" /></td>
-           <td  onclick="zhangTaoMdf('40dfae53-7856-47df-9664-a1266379c298','weiXiu')"><s:property value="txtWeiXiuNeiRong" /></td>
-           <td  style="text-align:right;" >
-           <span id="40dfae53-7856-47df-9664-a1266379c298GongShiB" ><s:property value='txtGongShi' /></span>
-           <input type="text" style="width:55px;display:none;"  class="easyui-numberbox" data-options="min:0,max:900,precision:2"  value="<s:property value='txtGongShi' />" id='40dfae53-7856-47df-9664-a1266379c298GongShi' />
+           <td  onclick="zhangTaoMdf('<s:property value='txtWeiXiuXiangMuId' />','weiXiu')"><s:property value="txtXiangMuId" /></td>
+           <td  onclick="zhangTaoMdf('<s:property value='txtWeiXiuXiangMuId' />','weiXiu')"><s:property value="txtWeiXiuNeiRong" /></td>
+           <td  style="text-align:right;" onclick="zhangTaoMdf('<s:property value='txtWeiXiuXiangMuId' />','weiXiu')">
+           <span id="<s:property value='txtWeiXiuXiangMuId' />GongShiB" ><s:property value='txtGongShi' /></span>
+           <input type="text" style="width:55px;display:none;"  class="easyui-numberbox" data-options="min:0,max:900,precision:2"  value="<s:property value='txtGongShi' />" id='<s:property value="txtWeiXiuXiangMuId" />GongShi' />
            </td>
-           <td style="text-align:right;"  onclick="zhangTaoMdf('40dfae53-7856-47df-9664-a1266379c298','weiXiu')"><s:property value="txtGongShiFei" /></td>
-           <td><select id='40dfae53-7856-47df-9664-a1266379c298ZhangTao' style="display:none;width:75px;"  onchange=subZhangTaoMdf('40dfae53-7856-47df-9664-a1266379c298') ></select>
-           <span id="40dfae53-7856-47df-9664-a1266379c298ZhangTaoB">厂家保修</span></td>
-           <td><select id='40dfae53-7856-47df-9664-a1266379c298SubZhangTao' style="display:none;width:75px;" ></select> 
-           <span id="40dfae53-7856-47df-9664-a1266379c298SubZhangTaoB"></span></td>
+           <td style="text-align:right;"  onclick="zhangTaoMdf('<s:property value='txtWeiXiuXiangMuId' />','weiXiu')"><s:property value="txtGongShiFei" /></td>
+           <td onclick="zhangTaoMdf('<s:property value='txtWeiXiuXiangMuId' />','weiXiu')"><select id='<s:property value="txtWeiXiuXiangMuId" />ZhangTao' style="display:none;width:75px;"  onchange='subZhangTaoMdf("<s:property value="txtWeiXiuXiangMuId" />")' ></select>
+           <span id="<s:property value='txtWeiXiuXiangMuId' />ZhangTaoB">厂家保修</span></td>
+           <td onclick="zhangTaoMdf('<s:property value='txtWeiXiuXiangMuId' />','weiXiu')"><select id='<s:property value="txtWeiXiuXiangMuId" />SubZhangTao' style="display:none;width:75px;" ></select> 
+           <span id="<s:property value='txtWeiXiuXiangMuId' />SubZhangTaoB"></span></td>
            <td width="10px">
-           <img src="../image/delete.gif" alt="del" onClick="delWeiXiuXiangMu('40dfae53-7856-47df-9664-a1266379c298')"  />
+           <img src="../image/delete.gif" alt="del" onClick="delWeiXiuXiangMu('<s:property value='txtWeiXiuXiangMuId' />')"  />
            </td>
           </tr>
          </s:iterator>
@@ -196,7 +215,77 @@
     </form>
 
      
-    <script language="javascript" type="text/javascript">
+    <script language="javascript" type="text/javascript"> 	
+        $(function () {
+			var jsonStr = '<s:property value="easyUiJSonData" escape="false"/>';
+        	setupDatagrid(jsonStr);
+        });
+		
+		function setupDatagrid(jsonStr) {
+            $('#dg').datagrid('loadData', $.parseJSON(jsonStr));
+        }
+		
+		var editIndex = undefined;
+		function endEditing() {
+			if (editIndex == undefined) {
+				return true;
+			}
+			if ($('#dg').datagrid('validateRow', editIndex)) {
+				$('#dg').datagrid('endEdit', editIndex);
+				editIndex = undefined;
+				return true;
+			} else {
+				return false;
+			}
+		}
+		function onClickWeiXiuXiangMuRow(index) {
+			if (editIndex != index) {
+				if (endEditing()) {
+					$('#dg').datagrid('selectRow', index).datagrid('beginEdit', index);
+					editIndex = index;
+				} else {
+					$('#dg').datagrid('selectRow', editIndex);
+				}
+			}
+		}
+		function removeXiangMu() {
+			if (editIndex == undefined) {
+				return;
+			}
+			$('#dg').datagrid('cancelEdit', editIndex).datagrid('deleteRow', editIndex);
+			editIndex = undefined;
+		}
+		function accept() {
+			if (endEditing()) {
+				//$('#dg').datagrid('acceptChanges');
+				var rows = $('#dg').datagrid('getChanges',"updated");
+				alert(rows.length + ' rows are changed!');
+			}
+		}
+		function reject(){
+			$('#dg').datagrid('rejectChanges');
+			editIndex = undefined;
+		}
+		
+		function deleteItem() {
+			var row = $('#dg').datagrid('getSelected');
+			if (row) {
+				$.messager.confirm('确认', '确定要删除选中业务吗?', function(r) {
+					if (r) {
+						$.post('deleteServiceItem.action', {
+							id : row.id
+						}, function(result) {
+							if (result.errorMsg) {
+								$.messager.alert('出错啦', result.errorMsg);
+							} else {
+								$('#dg').datagrid('reload'); // reload data
+							}
+						}, 'json');
+					}
+				});
+			}
+		}
+		
         function printThis() {
             window.open("saleAfter_WeiXiuJieDaiPrint.aspx?saleAfterGuid=" +saleAfterGuid+ "&d=" + new Date());
             return false;
@@ -413,10 +502,8 @@
             $.messager.confirm('删除', '删除此维修项目?', function (r) {
                 if (r) {
 
-                    $.get("saleAfter_gongDanZhiZuoExec.aspx", {
-                        "type": "weiXiuXiangMuDel",
-                        "saleAfterGuid": saleAfterGuid,
-                        "weiXiuXiangMuThisId": weiXiuXiangMuThisId
+                    $.get("deleteGongDanWeiXiuXiangMu.action", {
+                        "txtWeiXiuXiangMuId": weiXiuXiangMuThisId
                     }, function (data) {
                         //刷新页面
                         if (data == "ok") {

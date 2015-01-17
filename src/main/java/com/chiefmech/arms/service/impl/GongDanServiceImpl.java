@@ -55,8 +55,14 @@ public class GongDanServiceImpl implements GongDanService {
 	}
 
 	@Override
-	public List<WeiXiuXiangMu> getWeiXiuXiangMuList(WeiXiuXiangMu query) {
-		return weiXiuXiangMuDao.getWeiXiuXiangMuList(query);
+	public String getWeiXiuXiangMuEasyUiJSon(WeiXiuXiangMu query) {
+		List<WeiXiuXiangMu> lst = weiXiuXiangMuDao.getWeiXiuXiangMuList(query);
+		int total = lst.size();
+
+		String lstJson = JSONArray.fromObject(lst).toString();
+		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
+				lstJson);
+		return jsonStr;
 	}
 
 	@Override
@@ -68,6 +74,23 @@ public class GongDanServiceImpl implements GongDanService {
 	public List<GongDanWeiXiuXiangMu> getGongDanWeiXiuXiangMuListByGongDanId(
 			String txtGongDanId) {
 		return gongDanDao.getGongDanWeiXiuXiangMuListByGongDanId(txtGongDanId);
+	}
+
+	@Override
+	public int deleteGongDanWeiXiuXiangMu(String txtWeiXiuXiangMuId) {
+		return gongDanDao.deleteGongDanWeiXiuXiangMu(txtWeiXiuXiangMuId);
+	}
+
+	@Override
+	public String getWeiXiuXiangMuEasyUiJSonByGongDanId(String txtGongDanId) {
+		List<GongDanWeiXiuXiangMu> lst = gongDanDao
+				.getGongDanWeiXiuXiangMuListByGongDanId(txtGongDanId);
+		int total = lst.size();
+
+		String lstJson = JSONArray.fromObject(lst).toString();
+		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
+				lstJson);
+		return jsonStr;
 	}
 
 }

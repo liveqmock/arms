@@ -26,12 +26,15 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 	private GongDanService gongDanService;
 
 	private String saleAfterWeiXiuGuid;
+	private String easyUiJSonData;
 	private List<GongDanWeiXiuXiangMu> gongDanWeiXiuXiangMuLst;
 
-	@Action(value = "saleAfterGongDanZhiZuo", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
+	@Action(value = "saleAfterGongDanZhiZuo", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
 	public String saleAfterWeiXiuJieDai() {
 		gongDanWeiXiuXiangMuLst = gongDanService
 				.getGongDanWeiXiuXiangMuListByGongDanId(saleAfterWeiXiuGuid);
+		easyUiJSonData = gongDanService
+				.getWeiXiuXiangMuEasyUiJSonByGongDanId(saleAfterWeiXiuGuid);
 		return INPUT;
 	}
 
@@ -45,6 +48,10 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 
 	public List<GongDanWeiXiuXiangMu> getGongDanWeiXiuXiangMuLst() {
 		return gongDanWeiXiuXiangMuLst;
+	}
+
+	public String getEasyUiJSonData() {
+		return easyUiJSonData;
 	}
 
 }

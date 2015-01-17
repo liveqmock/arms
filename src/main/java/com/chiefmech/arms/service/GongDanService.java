@@ -19,10 +19,14 @@ public interface GongDanService {
 
 	public String getSaleAfterGongDanEasyUiJSon(SaleAfterGongDanSearchBean query);
 
-	public List<WeiXiuXiangMu> getWeiXiuXiangMuList(WeiXiuXiangMu query);
+	public String getWeiXiuXiangMuEasyUiJSon(WeiXiuXiangMu query);
 
 	public int insertGongDanWeiXiuXiangMu(GongDanWeiXiuXiangMu item);
 
+	public int deleteGongDanWeiXiuXiangMu(String txtWeiXiuXiangMuId);
+
 	public List<GongDanWeiXiuXiangMu> getGongDanWeiXiuXiangMuListByGongDanId(
-			String txtGongDanId);;
+			String txtGongDanId);
+
+	public String getWeiXiuXiangMuEasyUiJSonByGongDanId(String txtGongDanId);
 }
