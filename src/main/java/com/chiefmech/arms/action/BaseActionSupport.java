@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
@@ -19,12 +18,8 @@ import com.chiefmech.arms.entity.User;
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
-public class BaseActionSupport extends ActionSupport
-		implements
-			SessionAware,
-			RequestAware,
-			ServletResponseAware,
-			ServletRequestAware {
+public class BaseActionSupport extends ActionSupport implements SessionAware,
+		RequestAware, ServletResponseAware, ServletRequestAware {
 	private static Logger logger = Logger.getLogger(BaseActionSupport.class
 			.getName());
 
@@ -32,6 +27,7 @@ public class BaseActionSupport extends ActionSupport
 	protected Map<String, Object> request;
 	protected HttpServletResponse servletResponse;
 	protected HttpServletRequest servletRequest;
+	protected String basePath;
 
 	@Override
 	public void setSession(Map<String, Object> session) {
@@ -51,14 +47,14 @@ public class BaseActionSupport extends ActionSupport
 	@Override
 	public void setServletRequest(HttpServletRequest request) {
 		this.servletRequest = request;
+		basePath = new StringBuffer(request.getScheme()).append("://")
+				.append(request.getServerName()).append(":")
+				.append(request.getServerPort())
+				.append(request.getContextPath()).toString();
 	}
 
 	public String getBasePath() {
-		HttpServletRequest request = ServletActionContext.getRequest();
-		return new StringBuffer(request.getScheme()).append("://")
-				.append(request.getServerName()).append(":")
-				.append(request.getServerPort())
-				.append(request.getContextPath()).append("/").toString();
+		return basePath;
 	}
 
 	public User getUser() {
