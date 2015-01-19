@@ -56,7 +56,8 @@ public class GongDanServiceImpl implements GongDanService {
 
 	@Override
 	public String getWeiXiuXiangMuEasyUiJSon(WeiXiuXiangMu query) {
-		List<WeiXiuXiangMu> lst = weiXiuXiangMuDao.getWeiXiuXiangMuList(query);
+		List<WeiXiuXiangMu> lst = weiXiuXiangMuDao.getWeiXiuXiangMuList(query,
+				0, 0);
 		int total = lst.size();
 
 		String lstJson = JSONArray.fromObject(lst).toString();

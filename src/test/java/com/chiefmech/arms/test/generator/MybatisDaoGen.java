@@ -4,13 +4,13 @@ import java.lang.reflect.Field;
 
 import junit.framework.TestCase;
 
-import com.chiefmech.arms.entity.GongDan;
+import com.chiefmech.arms.entity.WeiXiuXiangMu;
 
 public class MybatisDaoGen extends TestCase {
 
 	public static void main(String[] args) {
 
-		Object[][] beans = {{"gongdan", "txtGongDanId", GongDan.class}};
+		Object[][] beans = {{"weixiuxiangmu", "txtWeiXiuXiangMuBianHao", WeiXiuXiangMu.class}};
 
 		StringBuffer sb = new StringBuffer();
 		String fieldInfo = "";
@@ -41,7 +41,7 @@ public class MybatisDaoGen extends TestCase {
 			}
 			sb.append(fieldInfo).append(")\")\n");
 			sb.append(String.format("public int insert%s(%s item);\n",
-					entityName, entityName));
+					"Item", entityName));
 			System.out.println(sb.toString());
 
 			// sql for action update
@@ -60,7 +60,7 @@ public class MybatisDaoGen extends TestCase {
 			sb.append(fieldInfo).append(" where ").append(fieldId)
 					.append("=#{").append(fieldId).append("}\")\n");
 			sb.append(String.format("public int update%s(%s item);\n",
-					entityName, entityName));
+					"Item", entityName));
 			System.out.println(sb.toString());
 
 			// sql for action delete
@@ -69,7 +69,7 @@ public class MybatisDaoGen extends TestCase {
 					.append(" where ").append(fieldId).append("=#{")
 					.append(fieldId).append("}\")\n");
 			sb.append(String.format("public int delete%s(String id);\n",
-					entityName));
+					"Item"));
 			System.out.println(sb.toString());
 
 			// sql for action select
@@ -77,7 +77,7 @@ public class MybatisDaoGen extends TestCase {
 			sb.append("@Select(\"select * from ").append(tableName)
 					.append("\")\n");
 			sb.append(String.format("public List<%s> select%s();\n",
-					entityName, entityName));
+					entityName, "Item"));
 			System.out.println(sb.toString());
 		}
 	}
