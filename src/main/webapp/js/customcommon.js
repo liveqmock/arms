@@ -14,29 +14,38 @@ function initFormData(formJson) {
 	});
 }
 
-function initRowEditDatagrid(datagridObj) {
-	$(datagridObj).datagrid({
+(function($) {
+	$.extend($.fn.datagrid.methods, {
+		hasEditingRow: function (jq) {
+			var rows = this.getRows(jq);
+			return _.some(rows, function(el){
+				return el.editing == true;
+			});
+		}
+	});	
+	
+	var updateEditRow = function(jq, index, row) {
+		$(jq).datagrid('updateRow', {
+			index : index,
+			row : {}
+		});
+	}
+	$.extend($.fn.datagrid.defaults, {
 		onBeforeEdit : function(index, row) {
 			row.editing = true;
-			updateActions(datagridObj,index);
+			updateEditRow(this,index,{});
 		},
 		onAfterEdit : function(index, row) {
 			row.editing = false;
-			updateActions(datagridObj,index);
+			updateEditRow(this,index,{});
 		},
 		onCancelEdit : function(index, row) {
 			row.editing = false;
-			updateActions(datagridObj,index);
+			updateEditRow(this,index,{});
 		}
 	});
-}
+})(jQuery);
 
-function updateActions(datagridObj,index) {
-	$(datagridObj).datagrid('updateRow', {
-		index : index,
-		row : {}
-	});
-}
 function getDatagridRowIndex(target) {
 	var tr = $(target).closest('tr.datagrid-row');
 	return parseInt(tr.attr('datagrid-row-index'));

@@ -4,7 +4,7 @@
 <html>
 <head><title>
 
-</title> <link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=90e943c2686f4150a8a9caace115b2b0" /><link rel="stylesheet" type="text/css" href="../style/themes/icon.css?v=90e943c2686f4150a8a9caace115b2b0" /><script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script> <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script> <script src="../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script> <script src="../js/common.js?v=90e943c2686f4150a8a9caace115b2b0" type="text/javascript"></script><script src="../js/customcommon.js" type="text/javascript"></script><link href="../style/common.css?v=90e943c2686f4150a8a9caace115b2b0" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=8" /></head>
+</title> <link rel="stylesheet" type="text/css" href="../style/themes/default/easyui.css?v=90e943c2686f4150a8a9caace115b2b0" /><link rel="stylesheet" type="text/css" href="../style/themes/icon.css?v=90e943c2686f4150a8a9caace115b2b0" /><script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script> <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script> <script src="../js/frame/locale/easyui-lang-zh_CN.js" type="text/javascript"></script> <script src="../js/common.js?v=90e943c2686f4150a8a9caace115b2b0" type="text/javascript"></script><script src="../js/frame/underscore-min.js" type="text/javascript"></script><script src="../js/customcommon.js" type="text/javascript"></script><link href="../style/common.css?v=90e943c2686f4150a8a9caace115b2b0" rel="stylesheet" type="text/css" /><link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=8" /></head>
 
 <body>
     <form name="form1" method="post" id="form1">
@@ -138,7 +138,7 @@
            <td onClick="zhangTaoMdf('abaa490a-116c-44b2-b1da-7cbba0615c23','wuLiao')"   style="text-align:right;">1.00</td>
            <td onClick="zhangTaoMdf('abaa490a-116c-44b2-b1da-7cbba0615c23','wuLiao')"  style="text-align:right;">0.00</td>
            <td onClick="zhangTaoMdf('abaa490a-116c-44b2-b1da-7cbba0615c23','wuLiao')"   style="text-align:right;">61.00</td>
-           <td><select id='abaa490a-116c-44b2-b1da-7cbba0615c23ZhangTao' style="display:none;"  onchange=subZhangTaoMdf('abaa490a-116c-44b2-b1da-7cbba0615c23') ></select>
+           <td><select id='abaa490a-116c-44b2-b1da-7cbba0615c23ZhangTao' style="display:none;"  onchange="subZhangTaoMdf('abaa490a-116c-44b2-b1da-7cbba0615c23')" ></select>
            <span id="abaa490a-116c-44b2-b1da-7cbba0615c23ZhangTaoB">厂家保修</span></td>
            <td><select id='abaa490a-116c-44b2-b1da-7cbba0615c23SubZhangTao' style="display:none;width:75px;" ></select> 
            <span id="abaa490a-116c-44b2-b1da-7cbba0615c23SubZhangTaoB'"></span></td>
@@ -169,7 +169,6 @@
         $(function () {
 			var jsonStr = '<s:property value="easyUiJSonData" escape="false"/>';
         	setupDatagrid(jsonStr);
-			initRowEditDatagrid($('#datagridXiangMu'));
         });
 
 		//页面刷新方法
@@ -182,27 +181,25 @@
 		
 		function formatAction(value,row,index){
 			if (row.editing){
-				var s = '<a href="#" onclick="saverow(this)">保存修改</a>&nbsp;&nbsp;&nbsp;&nbsp;';
-				var c = '<a href="#" onclick="cancelrow(this)">取消修改</a>';
+				var s = '<a href="#" onclick="saverow(this);return false;">保存修改</a>&nbsp;&nbsp;&nbsp;&nbsp;';
+				var c = '<a href="#" onclick="cancelrow(this);return false;">取消修改</a>';
 				return s+c;
 			} else {
-				var e = '<a href="#" onclick="editrow(this)">编辑本行</a>&nbsp;&nbsp;&nbsp;&nbsp;';
-				var d = '<a href="#" onclick="deleterow(this)">删除本行</a>';
+				var e = '<a href="#" onclick="editrow(this);return false;">编辑本行</a>&nbsp;&nbsp;&nbsp;&nbsp;';
+				var d = '<a href="#" onclick="deleterow(this);return false;">删除本行</a>';
 				return e+d;
 			}
 		}
 		
-		var isDatagridXiangMuEditing = false;
 		function editrow(target){
-			if(isDatagridXiangMuEditing){
+			if($('#datagridXiangMu').datagrid('hasEditingRow')){
 				$.messager.alert('提示','请先处理尚未完成的编辑行信息');
 			}else{
 				$('#datagridXiangMu').datagrid('beginEdit', getDatagridRowIndex(target));
-				isDatagridXiangMuEditing = true;
 			}			
 		}
 		function deleterow(target){
-			if(isDatagridXiangMuEditing){
+			if($('#datagridXiangMu').datagrid('hasEditingRow')){
 				$.messager.alert('提示','请先处理尚未完成的编辑行信息');
 			}else{
 				$.messager.confirm('提示','确定要删除本行信息吗?',function(r){
@@ -214,11 +211,9 @@
 		}
 		function saverow(target){
 			$('#datagridXiangMu').datagrid('endEdit', getDatagridRowIndex(target));
-			isDatagridXiangMuEditing = false;
 		}
 		function cancelrow(target){
 			$('#datagridXiangMu').datagrid('cancelEdit', getDatagridRowIndex(target));
-			isDatagridXiangMuEditing = false;
 		}
 		
 		function deleteItem() {
