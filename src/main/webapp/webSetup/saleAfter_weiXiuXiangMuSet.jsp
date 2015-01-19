@@ -79,12 +79,12 @@ td {
 				<tr>
 					<td><span class="requireSpan">*&nbsp;</span>维修编号:</td>
 					<td><input name="txtWeiXiuXiangMuBianHao" type="text"
-						id="txtWeiXiuXiangMuBianHao" data-options="required:true" /></td>
+						id="txtWeiXiuXiangMuBianHao" class="easyui-validatebox" data-options="required:true,missingMessage:'维修编号为必填项'" /></td>
 				</tr>
 				<tr>
 					<td><span class="requireSpan">*&nbsp;</span>所属工段:</td>
 					<td><select name="ddlSuoShuGongDuan" id="ddlSuoShuGongDuan"
-						style="width: 138px;">
+						style="width: 138px;" class="easyui-validatebox" data-options="required:true">
 							<option value="机电">机电</option>
 							<option value="保养">保养</option>
 							<option value="钣金">钣金</option>
@@ -103,7 +103,7 @@ td {
 				<tr>
 					<td><span class="requireSpan">*&nbsp;</span>维修内容:</td>
 					<td style="height: 55px;"><textarea name="txtWeiXiuNeiRong"
-							rows="2" cols="20" id="txtWeiXiuNeiRong"></textarea></td>
+							rows="2" cols="20" id="txtWeiXiuNeiRong" class="easyui-validatebox" data-options="required:true"></textarea></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><br /> <a onclick="saveItem()"
