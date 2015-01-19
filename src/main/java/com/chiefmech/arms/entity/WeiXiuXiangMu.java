@@ -2,10 +2,19 @@ package com.chiefmech.arms.entity;
 
 public class WeiXiuXiangMu {
 
+	private String txtWeiXiuXiangMuGuid;
 	private String txtWeiXiuXiangMuBianHao;
 	private float txtGongShi;
 	private String ddlSuoShuGongDuan;
 	private String txtWeiXiuNeiRong;
+
+	public String getTxtWeiXiuXiangMuGuid() {
+		return txtWeiXiuXiangMuGuid;
+	}
+
+	public void setTxtWeiXiuXiangMuGuid(String txtWeiXiuXiangMuGuid) {
+		this.txtWeiXiuXiangMuGuid = txtWeiXiuXiangMuGuid;
+	}
 
 	public String getTxtWeiXiuXiangMuBianHao() {
 		return txtWeiXiuXiangMuBianHao;

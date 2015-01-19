@@ -17,7 +17,7 @@ public abstract class SearchBean {
 		lst.add(bean);
 	}
 
-	protected void addLimitInfo(int pageNum, int pageRows) {
+	public void addLimitInfo(int pageNum, int pageRows) {
 		this.pageNum = pageNum;
 		this.pageRows = pageRows;
 	}

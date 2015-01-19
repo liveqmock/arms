@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.action.BaseActionSupport;
+import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.entity.WeiXiuXiangMu;
 import com.chiefmech.arms.service.WeiXiuXiangMuService;
 import com.opensymphony.xwork2.ModelDriven;
@@ -20,8 +21,7 @@ import com.opensymphony.xwork2.ModelDriven;
 @Controller()
 @Scope("prototype")
 public class SaleAfterWeiXiuXiangMuSetAction extends BaseActionSupport
-		implements
-			ModelDriven<WeiXiuXiangMu> {
+		implements ModelDriven<WeiXiuXiangMu> {
 
 	@Resource()
 	private WeiXiuXiangMuService weiXiuXiangMuService;
@@ -30,7 +30,7 @@ public class SaleAfterWeiXiuXiangMuSetAction extends BaseActionSupport
 	private int page = 1;
 	private int rows = 10;
 
-	@Action(value = "saleAfterWeiXiuXiangMuSet", results = {@Result(name = "input", location = "saleAfter_weiXiuXiangMuSet.jsp")})
+	@Action(value = "saleAfterWeiXiuXiangMuSet", results = { @Result(name = "input", location = "saleAfter_weiXiuXiangMuSet.jsp") })
 	public String saleAfterWeiXiuXiangMuSet() {
 		return INPUT;
 	}
@@ -41,8 +41,15 @@ public class SaleAfterWeiXiuXiangMuSetAction extends BaseActionSupport
 				page, rows));
 	}
 
+	@Action(value = "weiXiuXiangMuSearch")
+	public void weiXiuXiangMuSearch() {
+		this.transmitJson(weiXiuXiangMuService.getWeiXiuXiangMuEasyUiJSon(item,
+				page, rows));
+	}
+
 	@Action(value = "insertWeiXiuXiangMu")
-	public void insertWeiXiuXiangMu(WeiXiuXiangMu item) {
+	public void insertItem() {
+		item.setTxtWeiXiuXiangMuGuid(IDGen.getUUID());
 		int rowAffected = weiXiuXiangMuService.insertItem(item);
 		String jsonStr = getJsonResponse(rowAffected, "新增");
 
@@ -50,7 +57,7 @@ public class SaleAfterWeiXiuXiangMuSetAction extends BaseActionSupport
 	}
 
 	@Action(value = "updateWeiXiuXiangMu")
-	public void updateItem(WeiXiuXiangMu item) {
+	public void updateItem() {
 		int rowAffected = weiXiuXiangMuService.updateItem(item);
 		String jsonStr = getJsonResponse(rowAffected, "更新");
 
@@ -58,7 +65,8 @@ public class SaleAfterWeiXiuXiangMuSetAction extends BaseActionSupport
 	}
 
 	@Action(value = "deleteWeiXiuXiangMu")
-	public void deleteItem(String id) {
+	public void deleteItem() {
+		String id = item.getTxtWeiXiuXiangMuGuid();
 		int rowAffected = weiXiuXiangMuService.deleteItem(id);
 		String jsonStr = getJsonResponse(rowAffected, "删除");
 

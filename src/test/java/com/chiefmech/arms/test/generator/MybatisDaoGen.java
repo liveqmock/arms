@@ -10,7 +10,7 @@ public class MybatisDaoGen extends TestCase {
 
 	public static void main(String[] args) {
 
-		Object[][] beans = {{"weixiuxiangmu", "txtWeiXiuXiangMuBianHao", WeiXiuXiangMu.class}};
+		Object[][] beans = {{"weixiuxiangmu", "txtWeiXiuXiangMuGuid", WeiXiuXiangMu.class}};
 
 		StringBuffer sb = new StringBuffer();
 		String fieldInfo = "";

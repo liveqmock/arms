@@ -21,6 +21,16 @@ function initFormData(formJson) {
 			return _.some(rows, function(el){
 				return el.editing == true;
 			});
+		},
+		getEventTargetRow: function (jq, clickevent) {
+			var tr = $(clickevent).closest('tr.datagrid-row');			
+			var rowIndex = parseInt(tr.attr('datagrid-row-index'));
+			if(_.isNaN(rowIndex)){
+				return null;
+			}else{
+				var rows = this.getRows(jq);
+				return rows[rowIndex];
+			}			
 		}
 	});	
 	
@@ -46,7 +56,6 @@ function initFormData(formJson) {
 	});
 })(jQuery);
 
-function getDatagridRowIndex(target) {
-	var tr = $(target).closest('tr.datagrid-row');
-	return parseInt(tr.attr('datagrid-row-index'));
+function toggleSearchPanel() {
+	$("#searchPanel").toggle();
 }

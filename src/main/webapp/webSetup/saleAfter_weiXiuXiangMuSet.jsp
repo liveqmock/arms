@@ -12,7 +12,9 @@
 <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="../js/frame/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
+<script src="../js/frame/underscore-min.js" type="text/javascript"></script>
 <script src="../js/common.js" type="text/javascript"></script>
+<script src="../js/customcommon.js" type="text/javascript"></script>
 <link href="../style/common.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -28,62 +30,56 @@ td {
 		<tr>
 			<td class="titlebg"><span>维修设置</span> <span class="titleSpan">(维修项目管理)</span>
 			</td>
-			<td align="right"><a onclick="return delCheck();" id="lnkDel"
-				class="easyui-linkbutton"
-				data-options="plain:true,iconCls:'icon-remove'"
-				href="javascript:__doPostBack('lnkDel','')">删除</a> <a href="#"
-				class="easyui-linkbutton"
-				data-options="plain:true,iconCls:'icon-add'" onclick="addItem();">新增</a>
-				<a href="#" class="easyui-linkbutton"
-				data-options="plain:true,iconCls:'icon-search'"
-				onclick="searchClick('1');">查询条件</a> <a href="#"
-				class="easyui-linkbutton"
-				data-options="plain:true,iconCls:'icon-add'"
-				onclick="gongShiFeiLvSet('1');">费率</a> <a href="#"
-				class="easyui-linkbutton"
-				data-options="plain:true,iconCls:'icon-add'"
-				onclick="biaoZhunGongShiSet('1');">标准工时设置</a></td>
 		</tr>
 	</table>
-	<table border='0' id="search" style="display: block;">
-		<tr>
-			<td>维修编码:</td>
-			<td><input name="txtWeiXiuBianHao" type="text" maxlength="20"
-				id="txtWeiXiuBianHao" style="width: 120px;" /></td>
-			<td>维修名称:</td>
-			<td><input name="txtWeiXiuMingCheng" type="text" maxlength="20"
-				id="txtWeiXiuMingCheng" style="width: 120px;" /></td>
-			<td>适用车型:</td>
-			<td><input name="txtShiYongCheXing" type="text" maxlength="20"
-				id="txtShiYongCheXing" style="width: 120px;" /></td>
-			<td><a id="lnkSearch" class="easyui-linkbutton"
-				href="javascript:__doPostBack('lnkSearch','')">查询</a></td>
-		</tr>
-	</table>
-	<table id="dg" class="easyui-datagrid"
-		data-options="url:'queryWeiXiuXiangMu.action',
-                        rownumbers:true,
-                        singleSelect:true,
-                        autoRowHeight:false,
-                        pagination:true">
+	<form name="fmSearch" method="post" id="fmSearch">
+		<table id="searchPanel" class="searchPanel" style="display: none;">
+			<tr>
+				<td>维修项目编号:</td>
+				<td><input name="txtWeiXiuXiangMuBianHao" type="text"
+					maxlength="20" id="txtWeiXiuXiangMuBianHao" style="width: 120px;" /></td>
+				<td>工段名称:</td>
+				<td><input name="ddlSuoShuGongDuan" type="text" maxlength="20"
+					id="ddlSuoShuGongDuan" style="width: 120px;" /></td>
+				<td>维修内容:</td>
+				<td><input name="txtWeiXiuNeiRong" type="text" maxlength="20"
+					id="txtWeiXiuNeiRong" style="width: 120px;" /></td>
+				<td><a id="lnkSearch" class="easyui-linkbutton"
+					href="javascript:doSearch()">查询项目</a>&nbsp;&nbsp;&nbsp;<a
+					id="lnkSearch" class="easyui-linkbutton"
+					href="javascript:clearSearchFrm()">清空查询</a></td>
+			</tr>
+		</table>
+	</form>
+	<table id="mydg" class="easyui-datagrid"
+		data-options="url:'weiXiuXiangMuSearch.action',rownumbers:true,singleSelect:true,toolbar:'#toolbar',pagination:true">
 		<thead>
 			<tr>
-				<th data-options="field:'txtWeiXiuXiangMuBianHao',width:120" sortable="true">维修项目编号</th>
+				<th data-options="field:'txtWeiXiuXiangMuBianHao',width:120"
+					sortable="true">维修项目编号</th>
 				<th data-options="field:'txtGongShi',width:80">工时</th>
 				<th data-options="field:'ddlSuoShuGongDuan',width:80">工段名称</th>
 				<th data-options="field:'txtWeiXiuNeiRong',width:370">维修内容</th>
+				<th field="action" width="100" align="center"
+					formatter="formatAction">操作</th>
 			</tr>
 		</thead>
 	</table>
 
-	<div id="dlg" class="easyui-dialog" closed="true"
+	<div id="toolbar">
+		<a href="javascript:void(0)" class="easyui-linkbutton"
+			iconCls="icon-add" plain="true" onclick="addItem()">新增</a> <a
+			href="javascript:void(0)" class="easyui-linkbutton"
+			iconCls="icon-search" plain="true" onclick="toggleSearchPanel()">查询</a>
+	</div>
+	<div id="mydlg" class="easyui-dialog" closed="true"
 		style="width: 400px; height: 280px; padding: 10px 20px;">
 		<form name="fm" method="post" id="fm">
 			<table border="0" cellpadding="0" cellspacing="0" width="280px">
 				<tr>
 					<td><span class="requireSpan">*&nbsp;</span>维修编号:</td>
-					<td><input name="txtWeiXiuXiangMuBianHao" type="text" id="txtWeiXiuXiangMuBianHao" 
-                        data-options="required:true"/></td>
+					<td><input name="txtWeiXiuXiangMuBianHao" type="text"
+						id="txtWeiXiuXiangMuBianHao" data-options="required:true" /></td>
 				</tr>
 				<tr>
 					<td><span class="requireSpan">*&nbsp;</span>所属工段:</td>
@@ -112,7 +108,7 @@ td {
 				<tr>
 					<td colspan="2" align="center"><br /> <a onclick="saveItem()"
 						id="btnSave" class="easyui-linkbutton" href="javascript:void(0)">保存</a>&nbsp;&nbsp;&nbsp;<a
-						onclick="javascript:$('#dlg').dialog('close')" id="btnSave"
+						onclick="javascript:$('#mydlg').dialog('close')" id="btnSave"
 						class="easyui-linkbutton" href="javascript:void(0)">取消</a></td>
 				</tr>
 			</table>
@@ -122,16 +118,35 @@ td {
 	<script type="text/javascript">
 		var url;
 		function addItem() {
-			$('#dlg').dialog('open').dialog('setTitle', '添加新的维修项目');
+			$('#mydlg').dialog('open').dialog('setTitle', '添加维修项目');
 			$('#fm').form('clear');
 			url = 'insertWeiXiuXiangMu.action';
 		}
-		function editItem() {
-			var row = $('#dg').datagrid('getSelected');
+		function editItem(clickevent) {
+			var row = $('#mydg').datagrid('getEventTargetRow', clickevent);
 			if (row) {
-				$('#dlg').dialog('open').dialog('setTitle', '修改选中维修项目');
+				$('#mydlg').dialog('open').dialog('setTitle', '修改维修项目');
 				$('#fm').form('load', row);
-				url = 'updateWeiXiuXiangMu.action?id=' + row.id;
+				url = 'updateWeiXiuXiangMu.action?txtWeiXiuXiangMuGuid='
+						+ row.txtWeiXiuXiangMuGuid;
+			}
+		}
+		function deleteItem(clickevent) {
+			var row = $('#mydg').datagrid('getEventTargetRow', clickevent);
+			if (row) {
+				$.messager.confirm('确认', '确定要删除选中维修项目吗?', function(r) {
+					if (r) {
+						$.post('deleteWeiXiuXiangMu.action', {
+							"txtWeiXiuXiangMuGuid" : row.txtWeiXiuXiangMuGuid
+						}, function(result) {
+							if (result.errorMsg) {
+								$.messager.alert('出错啦', result.errorMsg);
+							} else {
+								$('#mydg').datagrid('reload'); // reload data
+							}
+						}, 'json');
+					}
+				});
 			}
 		}
 		function saveItem() {
@@ -145,29 +160,33 @@ td {
 					if (result.errorMsg) {
 						$.messager.alert('出错啦', result.errorMsg);
 					} else {
-						$('#dlg').dialog('close'); // close the dialog
-						$('#dg').datagrid('reload'); // reload data
+						$('#mydlg').dialog('close'); // close the dialog
+						$('#mydg').datagrid('reload'); // reload data
 					}
 				}
 			});
 		}
-		function deleteItem() {
-			var row = $('#dg').datagrid('getSelected');
-			if (row) {
-				$.messager.confirm('确认', '确定要删除选中维修项目吗?', function(r) {
-					if (r) {
-						$.post('deleteWeiXiuXiangMu.action', {
-							id : row.id
-						}, function(result) {
-							if (result.errorMsg) {
-								$.messager.alert('出错啦', result.errorMsg);
-							} else {
-								$('#dg').datagrid('reload'); // reload data
-							}
-						}, 'json');
-					}
-				});
-			}
+
+		function doSearch() {
+			$("#fmSearch").form('submit', {
+				url : "weiXiuXiangMuSearch.action",
+				success : function(jsonStr) {
+					setupDatagrid(jsonStr);
+				}
+			});
+		}
+
+		function clearSearchFrm() {
+			$("#fmSearch").form('clear');
+			doSearch();
+		}
+
+		function setupDatagrid(jsonStr) {
+			$('#mydg').datagrid('loadData', $.parseJSON(jsonStr));
+		}
+
+		function formatAction(value, row, index) {
+			return '<a href="javascript:void(0)" onclick="editItem(this)">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="deleteItem(this)">删除</a>';
 		}
 	</script>
 
