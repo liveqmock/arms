@@ -336,7 +336,7 @@
   width: auto;
   line-height: 24px;
   font-size: 12px;
-  padding: 0;
+  padding: 0 10px;
   margin: 0 4px;
 }
 .l-btn-icon {
@@ -450,9 +450,9 @@
   background: linear-gradient(to bottom,#ffffff 0,#eeeeee 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff,endColorstr=#eeeeee,GradientType=0);
-  -moz-border-radius: 5px 5px 5px 5px;
-  -webkit-border-radius: 5px 5px 5px 5px;
-  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
 }
 .l-btn:hover {
   background: #eaf2ff;

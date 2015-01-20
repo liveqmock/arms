@@ -81,20 +81,20 @@ $(document).ready(function() {
 			},
 			message: '请输入数字'
 		},
-		date : {
+		date: {
 			validator : function(value) {
 				return /^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$/i.test($
 						.trim(value));
 			},
 			message : '曰期格式错误,如2012-09-11.'
 		},
-		maxLength : {
+		maxLength: {
 			validator : function(value, param) {
 				return param[0] >= value.length;
 			},
 			message : '请输入最多{0}位字符.'
 		},
-		minLength : {
+		minLength: {
 			validator : function(value, param) {
 				return param[0] >= value.length;
 			},
