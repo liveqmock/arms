@@ -170,7 +170,7 @@ td {
 			$("#fmSearch").form('submit', {
 				url : "weiXiuXiangMuSearch.action",
 				success : function(jsonStr) {
-					setupDatagrid(jsonStr);
+					$('#mydg').datagrid('loadData', $.parseJSON(jsonStr));
 				}
 			});
 		}
@@ -178,10 +178,6 @@ td {
 		function clearSearchFrm() {
 			$("#fmSearch").form('clear');
 			doSearch();
-		}
-
-		function setupDatagrid(jsonStr) {
-			$('#mydg').datagrid('loadData', $.parseJSON(jsonStr));
 		}
 
 		function formatAction(value, row, index) {
