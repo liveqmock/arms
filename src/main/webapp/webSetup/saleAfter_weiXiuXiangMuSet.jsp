@@ -73,7 +73,7 @@ td {
 			iconCls="icon-search" plain="true" onclick="toggleSearchPanel()">查询</a>
 	</div>
 	<div id="mydlg" class="easyui-dialog" closed="true"
-		style="width: 400px; height: 280px; padding: 10px 20px;">
+		style="width: 450px; height: 300px; padding: 10px 20px;">
 		<form name="fm" method="post" id="fm">
 			<table border="0" cellpadding="0" cellspacing="0" width="280px">
 				<tr>
@@ -90,7 +90,6 @@ td {
 							<option value="钣金">钣金</option>
 							<option value="美容">美容</option>
 							<option value="喷漆">喷漆</option>
-							<option selected="selected" value=""></option>
 
 					</select></td>
 				</tr>
