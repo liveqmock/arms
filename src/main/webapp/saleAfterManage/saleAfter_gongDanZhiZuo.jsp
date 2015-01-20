@@ -191,11 +191,16 @@
 			}
 		}
 		
+		function getTargetRowIndex(target){			
+			return $('#datagridXiangMu').datagrid('getEventTargetRowIndex');
+		}
+		
 		function editrow(target){
 			if($('#datagridXiangMu').datagrid('hasEditingRow')){
 				$.messager.alert('提示','请先处理尚未完成的编辑行信息');
 			}else{
-				$('#datagridXiangMu').datagrid('beginEdit', getDatagridRowIndex(target));
+				var aa = getTargetRowIndex(target);
+				$('#datagridXiangMu').datagrid('beginEdit', getTargetRowIndex(target));
 			}			
 		}
 		function deleterow(target){
@@ -204,16 +209,16 @@
 			}else{
 				$.messager.confirm('提示','确定要删除本行信息吗?',function(r){
 					if (r){
-						$('#datagridXiangMu').datagrid('deleteRow', getDatagridRowIndex(target));
+						$('#datagridXiangMu').datagrid('deleteRow', getTargetRowIndex(target));
 					}
 				});
 			}			
 		}
 		function saverow(target){
-			$('#datagridXiangMu').datagrid('endEdit', getDatagridRowIndex(target));
+			$('#datagridXiangMu').datagrid('endEdit', getTargetRowIndex(target));
 		}
 		function cancelrow(target){
-			$('#datagridXiangMu').datagrid('cancelEdit', getDatagridRowIndex(target));
+			$('#datagridXiangMu').datagrid('cancelEdit', getTargetRowIndex(target));
 		}
 		
 		function deleteItem() {

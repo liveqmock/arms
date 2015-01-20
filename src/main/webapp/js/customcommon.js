@@ -23,9 +23,12 @@ function initFormData(formJson) {
 				return el.editing == true;
 			});
 		},
-		getEventTargetRow: function (jq, clickevent) {
-			var tr = $(clickevent).closest('tr.datagrid-row');			
-			var rowIndex = parseInt(tr.attr('datagrid-row-index'));
+		getEventTargetRowIndex: function (jq, target) {
+			var tr = $(target).closest('tr.datagrid-row');			
+			return parseInt(tr.attr('datagrid-row-index'));
+		},
+		getEventTargetRow: function (jq, target) {		
+			var rowIndex = getEventTargetRowIndex(jq, target);
 			if(_.isNaN(rowIndex)){
 				return null;
 			}else{
