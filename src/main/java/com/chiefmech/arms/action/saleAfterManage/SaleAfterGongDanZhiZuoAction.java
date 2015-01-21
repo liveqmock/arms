@@ -1,8 +1,8 @@
 package com.chiefmech.arms.action.saleAfterManage;
 
-import java.util.List;
-
 import javax.annotation.Resource;
+
+import net.sf.json.JSONObject;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -26,16 +26,43 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 	private GongDanService gongDanService;
 
 	private String saleAfterWeiXiuGuid;
+	private String txtWeiXiuXiangMuId;
 	private String easyUiJSonData;
-	private List<GongDanWeiXiuXiangMu> gongDanWeiXiuXiangMuLst;
 
 	@Action(value = "saleAfterGongDanZhiZuo", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
 	public String saleAfterWeiXiuJieDai() {
-		gongDanWeiXiuXiangMuLst = gongDanService
-				.getGongDanWeiXiuXiangMuListByGongDanId(saleAfterWeiXiuGuid);
-		easyUiJSonData = gongDanService
-				.getWeiXiuXiangMuEasyUiJSonByGongDanId(saleAfterWeiXiuGuid);
 		return INPUT;
+	}
+
+	@Action(value = "queryGongDanWeiXiuXiangMu")
+	public void queryGongDanWeiXiuXiangMu() {
+		this.transmitJson(easyUiJSonData = gongDanService
+				.getWeiXiuXiangMuEasyUiJSonByGongDanId(saleAfterWeiXiuGuid));
+	}
+
+	@Action(value = "deleteGongDanWeiXiuXiangMu")
+	public void deleteGongDanWeiXiuXiangMu() {
+		int rowAffected = gongDanService
+				.deleteGongDanWeiXiuXiangMu(txtWeiXiuXiangMuId);
+		String jsonStr = getCrudJsonResponse(rowAffected, "删除");
+
+		this.transmitJson(jsonStr);
+	}
+
+	@Action(value = "updateGongDanWeiXiuXiangMu")
+	public void updateGongDanWeiXiuXiangMu() {
+		JSONObject jsonObject = JSONObject.fromObject(easyUiJSonData);
+		GongDanWeiXiuXiangMu gongDanWeiXiuXiangMu = (GongDanWeiXiuXiangMu) JSONObject
+				.toBean(jsonObject, GongDanWeiXiuXiangMu.class);
+		int rowAffected = gongDanService
+				.updateGongDanWeiXiuXiangMuWhenZhiZuo(gongDanWeiXiuXiangMu);
+		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
+
+		this.transmitJson(jsonStr);
+	}
+
+	public void setTxtWeiXiuXiangMuId(String txtWeiXiuXiangMuId) {
+		this.txtWeiXiuXiangMuId = txtWeiXiuXiangMuId;
 	}
 
 	public String getSaleAfterWeiXiuGuid() {
@@ -44,10 +71,6 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 
 	public void setSaleAfterWeiXiuGuid(String saleAfterWeiXiuGuid) {
 		this.saleAfterWeiXiuGuid = saleAfterWeiXiuGuid;
-	}
-
-	public List<GongDanWeiXiuXiangMu> getGongDanWeiXiuXiangMuLst() {
-		return gongDanWeiXiuXiangMuLst;
 	}
 
 	public String getEasyUiJSonData() {

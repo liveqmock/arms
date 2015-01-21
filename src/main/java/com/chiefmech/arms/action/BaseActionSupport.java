@@ -18,8 +18,12 @@ import com.chiefmech.arms.entity.User;
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
-public class BaseActionSupport extends ActionSupport implements SessionAware,
-		RequestAware, ServletResponseAware, ServletRequestAware {
+public class BaseActionSupport extends ActionSupport
+		implements
+			SessionAware,
+			RequestAware,
+			ServletResponseAware,
+			ServletRequestAware {
 	private static Logger logger = Logger.getLogger(BaseActionSupport.class
 			.getName());
 
@@ -89,6 +93,15 @@ public class BaseActionSupport extends ActionSupport implements SessionAware,
 		} catch (IOException e) {
 			logger.fatal("IOException when output ajax data", e);
 		}
+	}
+
+	protected String getCrudJsonResponse(int rowAffected, String action) {
+		String jsonStr = "{\"status\":\"ok\"}";
+		if (rowAffected != 1) {
+			jsonStr = String.format("{\"errorMsg\":\"%s数据失败\"}", action);
+		}
+
+		return jsonStr;
 	}
 
 }

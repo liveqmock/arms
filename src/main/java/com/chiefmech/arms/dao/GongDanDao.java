@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.chiefmech.arms.dao.sqlprovider.GongDanDaoSqlProvider;
 import com.chiefmech.arms.entity.GongDan;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
+import com.chiefmech.arms.entity.footer.GongDanWeiXiuXiangMuFooter;
 import com.chiefmech.arms.entity.query.SaleAfterGongDanSearchBean;
 
 @Repository("gongDanDao")
@@ -37,8 +38,11 @@ public interface GongDanDao {
 	public int getGongDanCountForEasyUi(
 			@Param("item") SaleAfterGongDanSearchBean query);
 
-	@Insert("insert into gongdanxiangmu(txtWeiXiuXiangMuId,txtBillNo,txtXiangMuId,txtGongDuanName,txtGongShi,txtGongShiFei,txtWeiXiuNeiRong) values(#{txtWeiXiuXiangMuId},#{txtBillNo},#{txtXiangMuId},#{txtGongDuanName},#{txtGongShi},#{txtGongShiFei},#{txtWeiXiuNeiRong})")
+	@Insert("insert into gongdanxiangmu(txtWeiXiuXiangMuId,txtBillNo,txtXiangMuId,txtGongDuanName,txtGongShi,txtGongShiFei,txtWeiXiuNeiRong,ddlZhangTao) values(#{txtWeiXiuXiangMuId},#{txtBillNo},#{txtXiangMuId},#{txtGongDuanName},#{txtGongShi},#{txtGongShiFei},#{txtWeiXiuNeiRong},#{ddlZhangTao})")
 	public int insertGongDanWeiXiuXiangMu(GongDanWeiXiuXiangMu item);
+
+	@Update("update gongdanxiangmu set txtGongDuanName=#{txtGongDuanName},txtGongShi=#{txtGongShi},txtGongShiFei=#{txtGongShiFei},ddlZhangTao=#{ddlZhangTao} where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
+	public int updateItemWhenZhiZuo(GongDanWeiXiuXiangMu item);
 
 	@Delete("delete from gongdanxiangmu where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
 	public int deleteGongDanWeiXiuXiangMu(String txtWeiXiuXiangMuId);
@@ -46,4 +50,9 @@ public interface GongDanDao {
 	@Select("select * from gongdanxiangmu where txtBillNo=#{txtGongDanId}")
 	public List<GongDanWeiXiuXiangMu> getGongDanWeiXiuXiangMuListByGongDanId(
 			String txtGongDanId);
+
+	@Select("select '合计' txtGongDuanName, sum(txtGongShi) txtGongShi, sum(txtGongShiFei) txtGongShiFei from gongdanxiangmu where txtBillNo=#{txtGongDanId}")
+	public List<GongDanWeiXiuXiangMuFooter> getGongDanWeiXiuXiangMuFooterListByGongDanId(
+			String txtGongDanId);
+
 }

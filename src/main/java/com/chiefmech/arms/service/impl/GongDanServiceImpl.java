@@ -13,6 +13,7 @@ import com.chiefmech.arms.dao.WeiXiuXiangMuDao;
 import com.chiefmech.arms.entity.GongDan;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
 import com.chiefmech.arms.entity.WeiXiuXiangMu;
+import com.chiefmech.arms.entity.footer.GongDanWeiXiuXiangMuFooter;
 import com.chiefmech.arms.entity.query.SaleAfterGongDanSearchBean;
 import com.chiefmech.arms.service.GongDanService;
 
@@ -55,10 +56,11 @@ public class GongDanServiceImpl implements GongDanService {
 	}
 
 	@Override
-	public String getWeiXiuXiangMuEasyUiJSon(WeiXiuXiangMu query) {
+	public String getWeiXiuXiangMuEasyUiJSon(WeiXiuXiangMu query, int page,
+			int rows) {
 		List<WeiXiuXiangMu> lst = weiXiuXiangMuDao.getWeiXiuXiangMuList(query,
-				0, 0);
-		int total = lst.size();
+				page, rows);
+		int total = weiXiuXiangMuDao.getWeiXiuXiangMuListCount(query);
 
 		String lstJson = JSONArray.fromObject(lst).toString();
 		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
@@ -67,11 +69,29 @@ public class GongDanServiceImpl implements GongDanService {
 	}
 
 	@Override
-	public int insertGongDanWeiXiuXiangMu(GongDanWeiXiuXiangMu item) {
-		return gongDanDao.insertGongDanWeiXiuXiangMu(item);
+	public int insertGongDanWeiXiuXiangMu(String saleAfterGuid,
+			List<WeiXiuXiangMu> weiXiuXiangMuLst) {
+		boolean isAllItemInserted = true;
+		int rowAffected = 0;
+		for (WeiXiuXiangMu weiXiuXiangMuItem : weiXiuXiangMuLst) {
+			GongDanWeiXiuXiangMu gongDanWeiXiuXiangMu = new GongDanWeiXiuXiangMu(
+					saleAfterGuid, weiXiuXiangMuItem);
+			rowAffected = gongDanDao
+					.insertGongDanWeiXiuXiangMu(gongDanWeiXiuXiangMu);
+			if (rowAffected != 1) {
+				isAllItemInserted = false;
+				break;
+			}
+		}
+
+		return isAllItemInserted ? 1 : 0;
 	}
 
 	@Override
+	public int updateGongDanWeiXiuXiangMuWhenZhiZuo(GongDanWeiXiuXiangMu item) {
+		return gongDanDao.updateItemWhenZhiZuo(item);
+	}
+
 	public List<GongDanWeiXiuXiangMu> getGongDanWeiXiuXiangMuListByGongDanId(
 			String txtGongDanId) {
 		return gongDanDao.getGongDanWeiXiuXiangMuListByGongDanId(txtGongDanId);
@@ -87,10 +107,14 @@ public class GongDanServiceImpl implements GongDanService {
 		List<GongDanWeiXiuXiangMu> lst = gongDanDao
 				.getGongDanWeiXiuXiangMuListByGongDanId(txtGongDanId);
 		int total = lst.size();
+		List<GongDanWeiXiuXiangMuFooter> footerLst = gongDanDao
+				.getGongDanWeiXiuXiangMuFooterListByGongDanId(txtGongDanId);
 
 		String lstJson = JSONArray.fromObject(lst).toString();
-		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
-				lstJson);
+		String footerJson = JSONArray.fromObject(footerLst).toString();
+		String jsonStr = String.format(
+				"{\"total\":\"%d\",\"rows\":%s,\"footer\":%s}", total, lstJson,
+				footerJson);
 		return jsonStr;
 	}
 

@@ -24,6 +24,7 @@ public class GongDanWeiXiuXiangMu {
 
 	public GongDanWeiXiuXiangMu(String saleAfterWeiXiuGuid, WeiXiuXiangMu item) {
 		this.txtWeiXiuXiangMuId = IDGen.getUUID();
+		this.ddlZhangTao = "正常维修";
 		this.txtBillNo = saleAfterWeiXiuGuid;
 		this.txtXiangMuId = item.getTxtWeiXiuXiangMuBianHao();
 		this.txtGongDuanName = item.getDdlSuoShuGongDuan();
