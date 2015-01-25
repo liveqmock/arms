@@ -3,7 +3,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
-<title>工单制作新增维修项目</title>
+<title>维修物料新增</title>
 
 <link rel="stylesheet" type="text/css"
 	href="../style/themes/default/easyui.css" />
@@ -25,7 +25,7 @@
 			<table border="0"
 				style="width: 700px; border-bottom: 1px solid #b8b8b8;">
 				<tr>
-					<td class="titlebg"><span>售后管理</span> <span class="titleSpan">(维修项目新增)</span>
+					<td class="titlebg"><span>售后管理</span> <span class="titleSpan">(维修物料新增)</span>
 					</td>
 					<td align="right"></td>
 				</tr>
@@ -33,37 +33,24 @@
 
 			<table border="0">
 				<tr>
-					<td>项目编号:</td>
-					<td><input name="txtWeiXiuXiangMuBianHao" type="text"
-						maxlength="30" id="txtXiangMuBianHao" style="width: 150px;" /></td>
-					<td>维修工段:</td>
-					<td><select name="ddlSuoShuGongDuan" id="ddlWeiXiuGongDuan"
-						style="width: 150px">
-							<option value="机电">机电</option>
-							<option value="保养">保养</option>
-							<option value="钣金">钣金</option>
-							<option value="美容">美容</option>
-							<option value="喷漆">喷漆</option>
-							<option selected="selected" value=""></option>
-
-					</select></td>
-					<td>维修内容:</td>
-					<td><input name="txtWeiXiuNeiRong" type="text"
-						id="txtWeiXiuNeiRong" style="width: 160px;" /></td>
-
+					<td>商品编码:</td>
+					<td><input name="txtShopId" type="text" maxlength="10" id="txtShopId" /> </td>
+					<td>商品名称:</td>
+         			<td><input name="txtShopName" type="text" maxlength="10" id="txtShopName" /> </td>
 					<td><a id="lnkSearch" class="easyui-linkbutton"
-						href="javascript:searchWeiXiuXiangMu()">查询</a></td>
+						href="javascript:searchWeiXiuWuLiao()">查询</a></td>
 				</tr>
 			</table>
 			<table id="mydg" width="730" class="easyui-datagrid"
-				data-options="url:'queryWeiXiuXiangMu.action',rownumbers:true,toolbar:'#tb',pagination:true">
+				data-options="url:'queryWeiXiuWuLiao.action',rownumbers:true,toolbar:'#tb',pagination:true">
 				<thead>
 					<tr>
 						<th field="ck" checkbox="true" width="20"></th>
-						<th field="txtWeiXiuXiangMuBianHao" width="100">维修编号</th>
-						<th field="ddlSuoShuGongDuan" width="100">工段</th>
-						<th field="txtGongShi" width="100">工时</th>
-						<th field="txtWeiXiuNeiRong" width="250">维修内容</th>
+						<th field="txtShopId" width="100">商品编号</th>
+						<th field="txtShopName" width="100">商品名称</th>
+						<th field="txtSalePrice" width="100">销售价</th>
+						<th field="txtRegQty" width="100">需求数</th>
+						<th field="txtKuCun" width="100">库存数</th>
 					</tr>
 				</thead>
 			</table>
@@ -76,9 +63,9 @@
 	</form>
 
 	<script language="javascript" type="text/javascript">
-		function searchWeiXiuXiangMu() {
+		function searchWeiXiuWuLiao() {
 			$("#form1").form('submit', {
-				url : "queryWeiXiuXiangMu.action",
+				url : "queryWeiXiuWuLiao.action",
 				success : function(jsonStr) {
 					$('#mydg').datagrid('loadData', $.parseJSON(jsonStr));
 				}
@@ -90,7 +77,7 @@
 			if (checkedRows.length == 0) {
 				$.messager.alert('提示', '请先选中要插入的维修项目');
 			} else {
-				$.post("addGongDanWeiXiuXiangMu.action?d=" + new Date(), {
+				$.post("addGongDanWeiXiuWuLiao.action?d=" + new Date(), {
 					"saleAfterGuid" : '<s:property value="saleAfterGuid" />',
 					"easyUiJSonData" : JsonToString(checkedRows)
 				}, function(result) {

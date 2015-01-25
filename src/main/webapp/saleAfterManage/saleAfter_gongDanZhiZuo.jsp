@@ -42,11 +42,31 @@
             </thead>
         </table>
          <div id="tb" style="height:auto">
-        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onClick="addWeiXiuXiangMuList()">添加维修项目</a>
-        </div>
-        
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onClick="addItemList()">添加维修项目</a>
+        </div>       
 
         <div  style="height:1px;"></div>
+        
+      <table id="datagridWuLiao" class="easyui-datagrid" data-options="url:'queryGongDanWeiXiuWuLiao.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />',toolbar:'#tb2',singleSelect:true,rownumbers:true,showFooter:true">
+            <thead>
+                <tr> 
+                    <th field="txtWuLiaoId" width="150">商品编号</th>
+                    <th field="txtWuLiaoName" width="300">商品名称</th>
+                    <th field="txtRegQty" width="80" data-options="align:'right',editor:{type:'numberbox',options:{precision:2,required: true,missingMessage:'所需数量必须填写'}}">所需数量</th>
+                    <th field="txtTakeQty" width="80" data-options="align:'right',editor:{type:'numberbox',options:{precision:2,required: true,missingMessage:'领用数量必须填写'}}">领用数量</th>
+                    <th field="txtReturnQty" width="80" data-options="align:'right',editor:{type:'numberbox',options:{precision:2,required: true,missingMessage:'退货数量必须填写'}}">退货数量</th>
+                    <th field="txtPrice" width="100">单价</th>
+                    <th field="ddlZhangTao" width="150" data-options="editor:{type:'combobox',options:{valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/zhangTaoOption.action'}}">帐套</th>
+                    <th field="action" width="200" align="center" formatter="formatAction2">操作</th>
+                </tr>
+            </thead>
+        </table>
+         <div id="tb2" style="height:auto">
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onClick="addItemList2()">添加物料</a>
+        </div>
+		
+		
+		
       <table border="0" cellpadding="0" cellspacing="0">
         <tr>
         <td>
@@ -112,17 +132,13 @@
      
     <script language="javascript" type="text/javascript"> 
 		var saleAfterGuid = '<s:property value="saleAfterWeiXiuGuid" />'; 
-		var tableXiangMu = $('#datagridXiangMu');
-
-		function pageLoad() {
-			tableXiangMu.datagrid('reload');
-		 }
+		var myTable = $('#datagridXiangMu');
 		 
-        function addWeiXiuXiangMuList() {
-            var sURL = "../saleAfterManage/saleAfterGongDanZhiZuoAddWeiXiuXiangMu.action?saleAfterGuid=" +saleAfterGuid+ "&d=" + new Date();       	var sFeatures = "dialogWidth:750px;dialogHeight:670px;center:yes;help:no;resizable:no;scroll:yes;status:no;";            
+        function addItemList() {
+			var sURL = "../saleAfterManage/saleAfterGongDanZhiZuoAddWeiXiuXiangMu.action?saleAfterGuid=" +saleAfterGuid+ "&d=" + new Date();
+			var sFeatures = "dialogWidth:750px;dialogHeight:670px;center:yes;help:no;resizable:no;scroll:yes;status:no;";            
 			window.showModalDialog(sURL, window, sFeatures);
-			
-            tableXiangMu.datagrid('reload');
+			myTable.datagrid('reload');
         }
 		
 		function formatAction(value,row,index){
@@ -142,24 +158,35 @@
 		}
 		
 		function getTargetRowIndex(target){			
-			return tableXiangMu.datagrid('getEventTargetRowIndex', target);
+			return myTable.datagrid('getEventTargetRowIndex', target);
 		}
 		
 		function editrow(target){
-			if(tableXiangMu.datagrid('hasEditingRow')){
+			if(myTable.datagrid('hasEditingRow')){
 				$.messager.alert('提示','请先处理尚未完成的编辑行信息');
 			}else{
-				tableXiangMu.datagrid('beginEdit', getTargetRowIndex(target));
+				myTable.datagrid('beginEdit', getTargetRowIndex(target));
 			}			
 		}
 		
 		function deleterow(target){
-			if(tableXiangMu.datagrid('hasEditingRow')){
+			if(myTable.datagrid('hasEditingRow')){
 				$.messager.alert('提示','请先处理尚未完成的编辑行信息');
 			}else{
 				$.messager.confirm('提示','确定要删除本行信息吗?',function(r){
 					if (r){
-						tableXiangMu.datagrid('deleteRow', getTargetRowIndex(target));
+						var rowIndex = getTargetRowIndex(target);
+						var editRow = myTable.datagrid('getRows')[rowIndex];
+						$.post('deleteGongDanWeiXiuXiangMu.action', {
+							"txtWeiXiuXiangMuId" : editRow.txtWeiXiuXiangMuId
+						}, function(result) {
+							if (result.errorMsg) {
+								$.messager.alert('出错啦', result.errorMsg);
+								myTable.datagrid('cancelEdit', rowIndex);
+							} else {
+								myTable.datagrid('reload');
+							}
+						}, 'json');
 					}
 				});
 			}			
@@ -167,17 +194,17 @@
 		
 		function saverow(target){
 			var rowIndex = getTargetRowIndex(target);
-			if(tableXiangMu.datagrid('validateRow', rowIndex)){
-				tableXiangMu.datagrid('endEdit', rowIndex);
-				var editRow = tableXiangMu.datagrid('getRows')[rowIndex];
+			if(myTable.datagrid('validateRow', rowIndex)){
+				myTable.datagrid('endEdit', rowIndex);
+				var editRow = myTable.datagrid('getRows')[rowIndex];
 				$.post('updateGongDanWeiXiuXiangMu.action', {
-					"easyUiJSonData" : JSON.stringify(editRow)
+					"easyUiJSonData" : JsonToString(editRow)
 				}, function(result) {
 					if (result.errorMsg) {
 						$.messager.alert('出错啦', result.errorMsg);
-						tableXiangMu.datagrid('cancelEdit', rowIndex);
+						myTable.datagrid('cancelEdit', rowIndex);
 					} else {
-						tableXiangMu.datagrid('reload');
+						myTable.datagrid('reload');
 					}
 				}, 'json');
 			}else{
@@ -186,297 +213,100 @@
 		}
 		
 		function cancelrow(target){
-			tableXiangMu.datagrid('cancelEdit', getTargetRowIndex(target));
+			myTable.datagrid('cancelEdit', getTargetRowIndex(target));
 		}
 		
+		//-------------------------Datagrid2------------------------------------
+		var myTable2 = $('#datagridWuLiao');
+		 
+        function addItemList2() {
+            var sURL = "../saleAfterManage/saleAfter_gongDanZhiZuoAddWeiXiuWuLiao.aspx?baoXianFlag=0&saleAfterGuid=" +saleAfterGuid+ "&d=" + new Date();
+            var sFeatures = "dialogWidth:750px;dialogHeight:550px;center:yes;help:no;resizable:no;scroll:yes;status:no;";     
+			window.showModalDialog(sURL, window, sFeatures);
+			myTable2.datagrid('reload');
+        }
 		
-		function deleteItem() {
-			var row = $('#dg').datagrid('getSelected');
-			if (row) {
-				$.messager.confirm('确认', '确定要删除选中业务吗?', function(r) {
-					if (r) {
-						$.post('deleteServiceItem.action', {
-							id : row.id
+		function formatAction2(value,row,index){
+			if(row.txtWuLiaoId == "合计"){
+				return "";
+			}else{
+				if (row.editing){
+					var s = '<a href="#" onclick="saverow2(this);return false;">保存修改</a>&nbsp;&nbsp;&nbsp;&nbsp;';
+					var c = '<a href="#" onclick="cancelrow2(this);return false;">取消修改</a>';
+					return s+c;
+				} else {
+					var e = '<a href="#" onclick="editrow2(this);return false;">编辑本行</a>&nbsp;&nbsp;&nbsp;&nbsp;';
+					var d = '<a href="#" onclick="deleterow2(this);return false;">删除本行</a>';
+					return e+d;
+				}
+			}
+		}
+		
+		function getTargetRowIndex2(target){			
+			return myTable2.datagrid('getEventTargetRowIndex', target);
+		}
+		
+		function editrow2(target){
+			if(myTable2.datagrid('hasEditingRow')){
+				$.messager.alert('提示','请先处理尚未完成的编辑行信息');
+			}else{
+				myTable2.datagrid('beginEdit', getTargetRowIndex2(target));
+			}			
+		}
+		
+		function deleterow2(target){
+			if(myTable2.datagrid('hasEditingRow')){
+				$.messager.alert('提示','请先处理尚未完成的编辑行信息');
+			}else{
+				$.messager.confirm('提示','确定要删除本行信息吗?',function(r){
+					if (r){
+						var rowIndex = getTargetRowIndex2(target);
+						var editRow = myTable2.datagrid('getRows')[rowIndex];
+						$.post('deleteGongDanWeiXiuWuLiao.action', {
+							"txtWeiXiuWuLiaoId" : editRow.txtWeiXiuWuLiaoId
 						}, function(result) {
 							if (result.errorMsg) {
 								$.messager.alert('出错啦', result.errorMsg);
+								myTable2.datagrid('cancelEdit', rowIndex);
 							} else {
-								$('#dg').datagrid('reload'); // reload data
+								myTable2.datagrid('reload');
 							}
 						}, 'json');
 					}
 				});
+			}			
+		}
+		
+		function saverow2(target){
+			var rowIndex = getTargetRowIndex2(target);
+			if(myTable2.datagrid('validateRow', rowIndex)){
+				myTable2.datagrid('endEdit', rowIndex);
+				var editRow = myTable2.datagrid('getRows')[rowIndex];
+				$.post('updateGongDanWeiXiuWuLiao.action', {
+					"easyUiJSonData" : JsonToString(editRow)
+				}, function(result) {
+					if (result.errorMsg) {
+						$.messager.alert('出错啦', result.errorMsg);
+						myTable2.datagrid('cancelEdit', rowIndex);
+					} else {
+						myTable2.datagrid('reload');
+					}
+				}, 'json');
+			}else{
+				$.messager.alert('提示','请先按照提示填写行信息');	
 			}
 		}
 		
+		function cancelrow2(target){
+			myTable2.datagrid('cancelEdit', getTargetRowIndex2(target));
+		}
+		
+		
+				
         function printThis() {
             window.open("saleAfter_WeiXiuJieDaiPrint.aspx?saleAfterGuid=" +saleAfterGuid+ "&d=" + new Date());
             return false;
         }
-
-     
-     var zhangTao =$.parseJSON('[{"zhangTaoName":"正常维修","zhangTaoList":[]},{"zhangTaoName":"厂家保修","zhangTaoList":[]},{"zhangTaoName":"大客户(月结)","zhangTaoList":[]},{"zhangTaoName":"保险","zhangTaoList":[]},{"zhangTaoName":"保险自付","zhangTaoList":[]},{"zhangTaoName":"内结","zhangTaoList":[{"zhangTaoName":"销售部支付"},{"zhangTaoName":"售后部支付"},{"zhangTaoName":"客户部支付"}]}]');
-     var weiXiuGongDuanInfo ="<option value='机电'>机电</option><option value='保养'>保养</option><option value='钣金'>钣金</option><option value='美容'>美容</option><option value='喷漆'>喷漆</option";
-
-     //维修项目修改
-     function zhangTaoMdf(detailGuid,sort) {
-         if (zhangTao == null) {return false;}
-      var thisValue = $("#" + detailGuid + "ZhangTaoB").html();
-      $("#"+detailGuid+"ZhangTaoB").css("display","none");
-      $("#" + detailGuid + "SubZhangTaoB").css("display", "none");
-
-      if (sort == "weiXiu") {
-           if("6018" !="9999")
-            {
-                $("#" + detailGuid + "GongShiB").css("display", "none");  //取消工时修改
-                $("#" + detailGuid + "GongShi").css("display", "block");  //取消工时修改
-            }
-          $("#" + detailGuid + "GongDuanNameB").css("display", "none");
-          $("#" + detailGuid + "GongDuanName").css("display", "block");
-
-          $("#" + detailGuid + "GongDuanName").empty();
-          $("#" + detailGuid + "GongDuanName").append("<option value=''></option>" + weiXiuGongDuanInfo);
-          $("#" + detailGuid + "GongDuanName").val($("#" + detailGuid + "GongDuanNameB").html());
-      }
-
-      $("#"+detailGuid+"ZhangTao").css("display","block");
-      $("#"+detailGuid+"SubZhangTao").css("display","block");
-
-      if (sort == "wuLiao") {
-          $("#" + detailGuid + "RegQty").css("display", "block"); //需求数量
-          $("#" + detailGuid + "RegQtyB").css("display", "none"); //需求数量
-      
-      }
-
-
-
-      //生成select
-
-      $("#" + detailGuid + "ZhangTao").empty();
-      $("#" + detailGuid + "ZhangTao").append("<option value=''></option>");
-
-      for (var i = 0; i < zhangTao.length; i++) {
-         //帐套判断 start
-          if ("0" == 1 && zhangTao[i].zhangTaoName !="正常维修") {
-              if (zhangTao[i].zhangTaoName == thisValue) {
-                  $("#" + detailGuid + "ZhangTao").append("<option value='" + zhangTao[i].zhangTaoName + "' selected=true>" + zhangTao[i].zhangTaoName + "</option>");
-              }
-              else {
-                  $("#" + detailGuid + "ZhangTao").append("<option value='" + zhangTao[i].zhangTaoName + "'>" + zhangTao[i].zhangTaoName + "</option>");
-              }
-          }
-
-          if ("0" != 1 && zhangTao[i].zhangTaoName != "保险" && zhangTao[i].zhangTaoName != "保险自付") {
-
-              if (zhangTao[i].zhangTaoName == thisValue) {
-                  $("#" + detailGuid + "ZhangTao").append("<option value='" + zhangTao[i].zhangTaoName + "' selected=true>" + zhangTao[i].zhangTaoName + "</option>");
-              }
-              else {
-                  $("#" + detailGuid + "ZhangTao").append("<option value='" + zhangTao[i].zhangTaoName + "'>" + zhangTao[i].zhangTaoName + "</option>");
-              }
-          }
-          //帐套判断 end
-          
-      }
-      subZhangTaoMdf(detailGuid);
-  }
-
-  function subZhangTaoMdf(detailGuid) {
-      if (zhangTao == null) { return false; }
-
-      var thisZhangTao = $("#" + detailGuid + "ZhangTao").val(); ;
-      var thisValue = $("#" + detailGuid + "SubZhangTaoB").html(); ;
-      if (thisZhangTao == "") {return;}
-      $("#" + detailGuid + "SubZhangTao").empty();
-      $("#" + detailGuid + "SubZhangTao").append("<option value=''></option>");
-      for (var i = 0; i < zhangTao.length; i++) {
-          if (zhangTao[i].zhangTaoName == thisZhangTao) {
-              for (var j = 0; j < zhangTao[i].zhangTaoList.length; j++) {
-                  if (zhangTao[i].zhangTaoList[j].zhangTaoName == thisValue) {
-                      $("#" + detailGuid + "SubZhangTao").append("<option value='" + zhangTao[i].zhangTaoList[j].zhangTaoName + "' selected=true>" + zhangTao[i].zhangTaoList[j].zhangTaoName + "</option>");
-                  }
-                  else {
-                      $("#" + detailGuid + "SubZhangTao").append("<option value='" + zhangTao[i].zhangTaoList[j].zhangTaoName + "'>" + zhangTao[i].zhangTaoList[j].zhangTaoName + "</option>");
-                  }     
-              }
-          }
-      }
-
-
-
-  }
-
-
-
-
-
-  //避免多次重复提交操作
-  function zhangTaoMdfSave() {
-      //叠加数据 数据格式:类型，工时,帐套,子帐套
-      var str = "";
-      var obj1 = document.getElementsByName("weiXiu");
-      var obj2 = document.getElementsByName("wuLiao");       
-      for (var i = 0; i < obj1.length; i++) { 
-          if ($("#" + obj1[i].value + "ZhangTao").css("display") == "block") {            
-              //验证数据是否都填写 
-              if ($("#" + obj1[i].value + "ZhangTao").val() == "") { $("#" + obj1[i].value + "ZhangTao").css("background-color", "red"); return false; }
-              if ($("#" + obj1[i].value + "SubZhangTao").val() == "" && $("#" + obj1[i].value + "SubZhangTao option").length>1) { $("#" + obj1[i].value + "SubZhangTao").css("background-color", "red"); return false; }
-              if ($("#" + obj1[i].value + "GongShi").val() == "") { $("#" + obj1[i].value + "GongShi").css("background-color", "red"); return false; }
-            
-               //叠加数据
-              str +="weiXiu,"+$("#" + obj1[i].value + "GongShi").val()+","+$("#" + obj1[i].value + "ZhangTao").val()+","+$("#" + obj1[i].value + "SubZhangTao").val()+","+obj1[i].value+","+$("#" + obj1[i].value + "GongDuanName").val()+ "|";
-
-          }
-      } 
-      for (var i = 0; i < obj2.length; i++) {
-          if ($("#" + obj2[i].value + "ZhangTao").css("display") == "block") {
-              //验证数据是否都填写
-              if ($("#" + obj2[i].value + "ZhangTao").val() == "") { $("#" + obj2[i].value + "ZhangTao").css("background-color", "red"); return false; }
-              if ($("#" + obj2[i].value + "SubZhangTao").val() == "" && $("#" + obj2[i].value + "SubZhangTao option").length >1) { $("#" + obj2[i].value + "SubZhangTao").css("background-color", "red"); return false; }
-
-              //叠加数据
-              str += "wuLiao,0," + $("#" + obj2[i].value + "ZhangTao").val() + "," + $("#" + obj2[i].value + "SubZhangTao").val() + "," + obj2[i].value + "," + $("#" + obj2[i].value + "RegQty").val() + "|";
-
-          }
-      }
-    
-      //所有修改
-      if (str == "") {
-          alert("修改完成！");
-      } else {
-          //发送数据值服务器端
-
-      $.post("saleAfter_gongDanZhiZuoExec.aspx?d=" + new Date(), {
-          "type": "weiXiuMdf",
-          "saleAfterGuid": saleAfterGuid,
-          "str": str
-      }, function (data) {
-          if (data == "ok") {
-              alert("修改成功！");
-              location.href = "saleAfterGongDanZhiZuo.action?saleAfterWeiXiuGuid=" +saleAfterGuid+ "&d=" + new Date();
-          }
-          else {
-              alert(data);
-          }
-      });
-      }
-
-
-      return false;
-  }
-
-
-    </script>
-
-
-
-    <script language="javascript" type="text/javascript">
-
-
-        function addWeiXiuXiangMu() {
-           
-            var u = "../saleAfterManage/saleAfter_gongDanZhiZuotmpAddWeiXiuXiangMu.aspx?saleAfterGuid=" +saleAfterGuid+ "&d=" + new Date();
-            var SizeZ = "dialogWidth:550px;dialogHeight:350px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
-            
-            var returnValue;
-            if (navigator.userAgent.indexOf('iPad') != -1 || isChrome()) {
-                returnValue = window.open(u, "维修项目添加L", "height=400,width=650,top=130,left=700,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no");
-                returnValue.focus();
-            } else {
-                returnValue = window.showModalDialog(u, '', SizeZ);
-                location.href = "saleAfterGongDanZhiZuo.action?saleAfterWeiXiuGuid=" +saleAfterGuid+ "&d=" + new Date();
-            }
-            //关闭当前窗体
-            if (returnValue != undefined && returnValue != "") {
-
-            }
-            return false;
-        }
-
-
-        function delWeiXiuXiangMu(weiXiuXiangMuThisId) {
-
-            $.messager.confirm('删除', '删除此维修项目?', function (r) {
-                if (r) {
-
-                    $.get("deleteGongDanWeiXiuXiangMu.action", {
-                        "txtWeiXiuXiangMuId": weiXiuXiangMuThisId
-                    }, function (data) {
-                        //刷新页面
-                        if (data == "ok") {
-                            location.href = "saleAfterGongDanZhiZuo.action?saleAfterWeiXiuGuid=" +saleAfterGuid+ "&d=" + new Date();
-                        } else {
-                            alert(data);
-                        }
-                    });
-
-                }
-            }); 
-
-        }
-
-
-        function addWeiXiuWuLiaoList() {
-            var u = "../saleAfterManage/saleAfter_gongDanZhiZuoAddWeiXiuWuLiao.aspx?baoXianFlag=0&saleAfterGuid=" +saleAfterGuid+ "&d=" + new Date();
-            var SizeZ = "dialogWidth:750px;dialogHeight:550px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
-            var returnValue;
-            if (navigator.userAgent.indexOf('iPad') != -1 || isChrome()) {
-                returnValue = window.open(u, "维修物料添加", "height=400,width=730,top=130,left=480,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no");
-                returnValue.focus();
-            } else {
-                 returnValue = window.showModalDialog(u, '', SizeZ);                 
-                 location.href = "saleAfterGongDanZhiZuo.action?saleAfterWeiXiuGuid=" +saleAfterGuid+ "&d=" + new Date();
-            }
-            //关闭当前窗体
-            if (returnValue != undefined && returnValue != "") {
-
-            }
-            return false;
-        }
-
-
-        function delWeiXiuWuLiao(weiXiuWuLiaoDetailGuid) {
-            $.messager.confirm('删除', '删除此维修项目?', function (r) {
-                if (r) {
-
-                    $.get("saleAfter_gongDanZhiZuoExec.aspx", {
-                        "type": "weiXiuWuLiaoDel",
-                        "saleAfterGuid": saleAfterGuid,
-                        "weiXiuWuLiaoThisId": weiXiuWuLiaoDetailGuid
-                    }, function (data) {
-                        //刷新页面
-                        if (data == "ok") {
-                            $("#" + weiXiuWuLiaoDetailGuid + "Tr").css("display","none");
-                            //location.href = "saleAfterGongDanZhiZuo.action?saleAfterWeiXiuGuid=" +saleAfterGuid+ "&d=" + new Date();
-                        } else {
-                            alert(data);
-                        }
-                    });
-
-                }
-            }); 
-           
-        }
-
-
-        //套餐新增模块
-        function addWeiXiuTaoCan() {
-            var u = "../saleAfterManage/saleAfter_taoCanChoiceMain.aspx?baoXianFlag=0&saleAfterGuid=" +saleAfterGuid+ "&d=" + new Date();
-            var SizeZ = "dialogWidth:750px;dialogHeight:550px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
-            var returnValue;
-            if (navigator.userAgent.indexOf('iPad') != -1 || isChrome()) {
-                returnValue = window.open(u, "维修套餐添加", "");
-            } else {
-                returnValue = window.showModalDialog(u, '', SizeZ);
-            }
-            //关闭当前窗体
-            if (returnValue != undefined && returnValue != "") {
-
-            }
-            location.href = "saleAfterGongDanZhiZuo.action?saleAfterWeiXiuGuid=" +saleAfterGuid+ "&d=" + new Date();
-            return false;
-        }
-
 
         function winClose() {
             if (!confirm("您确定要退出？")) {

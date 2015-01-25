@@ -3,6 +3,7 @@ package com.chiefmech.arms.service;
 import java.util.List;
 
 import com.chiefmech.arms.entity.GongDan;
+import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
 import com.chiefmech.arms.entity.WeiXiuXiangMu;
 import com.chiefmech.arms.entity.query.SaleAfterGongDanSearchBean;
@@ -30,4 +31,10 @@ public interface GongDanService {
 	public int deleteGongDanWeiXiuXiangMu(String txtWeiXiuXiangMuId);
 
 	public String getWeiXiuXiangMuEasyUiJSonByGongDanId(String txtGongDanId);
+
+	public int updateGongDanWeiXiuWuLiaoWhenZhiZuo(GongDanWeiXiuWuLiao item);
+
+	public int deleteGongDanWeiXiuWuLiao(String txtWeiXiuWuLiaoId);
+
+	public String getWeiXiuWuLiaoEasyUiJSonByGongDanId(String txtGongDanId);
 }

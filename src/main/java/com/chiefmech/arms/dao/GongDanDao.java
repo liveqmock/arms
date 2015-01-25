@@ -12,7 +12,9 @@ import org.springframework.stereotype.Repository;
 
 import com.chiefmech.arms.dao.sqlprovider.GongDanDaoSqlProvider;
 import com.chiefmech.arms.entity.GongDan;
+import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
+import com.chiefmech.arms.entity.footer.GongDanWeiXiuWuLiaoFooter;
 import com.chiefmech.arms.entity.footer.GongDanWeiXiuXiangMuFooter;
 import com.chiefmech.arms.entity.query.SaleAfterGongDanSearchBean;
 
@@ -42,7 +44,7 @@ public interface GongDanDao {
 	public int insertGongDanWeiXiuXiangMu(GongDanWeiXiuXiangMu item);
 
 	@Update("update gongdanxiangmu set txtGongDuanName=#{txtGongDuanName},txtGongShi=#{txtGongShi},txtGongShiFei=#{txtGongShiFei},ddlZhangTao=#{ddlZhangTao} where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
-	public int updateItemWhenZhiZuo(GongDanWeiXiuXiangMu item);
+	public int updateGongDanWeiXiuXiangMuWhenZhiZuo(GongDanWeiXiuXiangMu item);
 
 	@Delete("delete from gongdanxiangmu where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
 	public int deleteGongDanWeiXiuXiangMu(String txtWeiXiuXiangMuId);
@@ -53,6 +55,20 @@ public interface GongDanDao {
 
 	@Select("select '合计' txtGongDuanName, sum(txtGongShi) txtGongShi, sum(txtGongShiFei) txtGongShiFei from gongdanxiangmu where txtBillNo=#{txtGongDanId}")
 	public List<GongDanWeiXiuXiangMuFooter> getGongDanWeiXiuXiangMuFooterListByGongDanId(
+			String txtGongDanId);
+
+	@Update("update gongdanwuliao set txtRegQty=#{txtRegQty},txtTakeQty=#{txtTakeQty},txtReturnQty=#{txtReturnQty},ddlZhangTao=#{ddlZhangTao} where txtWuLiaoGuid=#{txtWuLiaoGuid}")
+	public int updateGongDanWeiXiuWuLiaoWhenZhiZuo(GongDanWeiXiuWuLiao item);
+
+	@Delete("delete from gongdanwuliao where txtWuLiaoGuid=#{txtWuLiaoGuid}")
+	public int deleteGongDanWeiXiuWuLiao(String txtWeiXiuWuLiaoId);
+
+	@Select("select * from gongdanwuliao where txtBillNo=#{txtGongDanId}")
+	public List<GongDanWeiXiuXiangMu> getGongDanWeiXiuWuLiaoListByGongDanId(
+			String txtGongDanId);
+
+	@Select("select '合计' txtWuLiaoId, sum(txtRegQty) txtRegQty, sum(txtTakeQty) txtTakeQty, sum(txtReturnQty) txtReturnQty from gongdanwuliao where txtBillNo=#{txtGongDanId}")
+	public List<GongDanWeiXiuWuLiaoFooter> getGongDanWeiXiuWuLiaoFooterListByGongDanId(
 			String txtGongDanId);
 
 }
