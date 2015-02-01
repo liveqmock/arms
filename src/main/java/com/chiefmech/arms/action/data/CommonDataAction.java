@@ -29,6 +29,16 @@ public class CommonDataAction extends BaseActionSupport {
 		this.transmitJson(getJsonData("data/zhangTao.json"));
 	}
 
+	@Action(value = "weiXiuBanZuOption")
+	public void weiXiuBanZu() {
+		this.transmitJson(getJsonData("data/weiXiuBanZu.json"));
+	}
+
+	@Action(value = "weiXiuZhuXiuRenOption")
+	public void weiXiuZhuXiuRen() {
+		this.transmitJson(getJsonData("data/weiXiuZhuXiuRen.json"));
+	}
+
 	private String getJsonData(String path) {
 		String jsonStr = "[]";
 		try {

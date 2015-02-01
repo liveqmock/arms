@@ -28,7 +28,7 @@ public class LoginInterceptor extends AbstractInterceptor {
 			return invocation.invoke();
 		} else {
 			logger.debug("用户未登录，跳转登录页面");
-			// return "userLogin";
+		//	 return "userLogin";
 			return invocation.invoke(); // For dev purpose
 		}
 	}

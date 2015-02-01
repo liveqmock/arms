@@ -5,6 +5,7 @@ import java.util.List;
 import com.chiefmech.arms.entity.GongDan;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
+import com.chiefmech.arms.entity.WeiXiuWuLiao;
 import com.chiefmech.arms.entity.WeiXiuXiangMu;
 import com.chiefmech.arms.entity.query.SaleAfterGongDanSearchBean;
 
@@ -34,7 +35,15 @@ public interface GongDanService {
 
 	public int updateGongDanWeiXiuWuLiaoWhenZhiZuo(GongDanWeiXiuWuLiao item);
 
+	public int updateGongDanWeiXiuXiangMuWhenPaiGong(GongDanWeiXiuXiangMu item);
+
 	public int deleteGongDanWeiXiuWuLiao(String txtWeiXiuWuLiaoId);
 
 	public String getWeiXiuWuLiaoEasyUiJSonByGongDanId(String txtGongDanId);
+
+	public String getWeiXiuWuLiaoEasyUiJSon(WeiXiuWuLiao item, int page,
+			int rows);
+
+	public int insertGongDanWeiXiuWuLiao(String saleAfterGuid,
+			List<WeiXiuWuLiao> weiXiuWuLiaoLst);
 }

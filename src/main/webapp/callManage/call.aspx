@@ -100,7 +100,7 @@
             if (sort == "3") { selected = $("#hidMCCUserId").val(); }
 
             var t = "";
-            var user = window.showModalDialog("../index/userSelect.aspx?isSelected=1&selected=" + selected+"&d="+new Date(), "cc", "dialogWidth=500px;dialogHeight=400px");
+            var user = window.showModalDialog("../index/userSelect.action?isSelected=1&selected=" + selected+"&d="+new Date(), "cc", "dialogWidth=500px;dialogHeight=400px");
             if (user != "") {
                 t = user.split("|");
             }

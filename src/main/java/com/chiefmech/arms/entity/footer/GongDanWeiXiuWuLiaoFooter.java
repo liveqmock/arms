@@ -6,6 +6,7 @@ public class GongDanWeiXiuWuLiaoFooter {
 	private float txtRegQty;
 	private float txtTakeQty;
 	private float txtReturnQty;
+	private float txtPrice;
 
 	public String getTxtWuLiaoId() {
 		return txtWuLiaoId;
@@ -37,6 +38,14 @@ public class GongDanWeiXiuWuLiaoFooter {
 
 	public void setTxtReturnQty(float txtReturnQty) {
 		this.txtReturnQty = txtReturnQty;
+	}
+
+	public String getTxtPrice() {
+		return "预估费用：" + txtPrice;
+	}
+
+	public void setTxtPrice(float txtPrice) {
+		this.txtPrice = txtPrice;
 	}
 
 }

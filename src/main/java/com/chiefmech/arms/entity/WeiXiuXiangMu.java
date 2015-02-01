@@ -7,6 +7,7 @@ public class WeiXiuXiangMu {
 	private float txtGongShi;
 	private String ddlSuoShuGongDuan;
 	private String txtWeiXiuNeiRong;
+	private String ddlSuoShuZhangTao;
 
 	public String getTxtWeiXiuXiangMuGuid() {
 		return txtWeiXiuXiangMuGuid;
@@ -46,6 +47,14 @@ public class WeiXiuXiangMu {
 
 	public void setTxtWeiXiuNeiRong(String txtWeiXiuNeiRong) {
 		this.txtWeiXiuNeiRong = txtWeiXiuNeiRong;
+	}
+
+	public String getDdlSuoShuZhangTao() {
+		return ddlSuoShuZhangTao;
+	}
+
+	public void setDdlSuoShuZhangTao(String ddlSuoShuZhangTao) {
+		this.ddlSuoShuZhangTao = ddlSuoShuZhangTao;
 	}
 
 }

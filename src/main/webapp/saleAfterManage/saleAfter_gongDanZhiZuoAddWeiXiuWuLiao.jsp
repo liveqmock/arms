@@ -49,7 +49,6 @@
 						<th field="txtShopId" width="100">商品编号</th>
 						<th field="txtShopName" width="100">商品名称</th>
 						<th field="txtSalePrice" width="100">销售价</th>
-						<th field="txtRegQty" width="100">需求数</th>
 						<th field="txtKuCun" width="100">库存数</th>
 					</tr>
 				</thead>

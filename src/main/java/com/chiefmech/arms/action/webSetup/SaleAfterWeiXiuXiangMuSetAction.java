@@ -1,5 +1,7 @@
 package com.chiefmech.arms.action.webSetup;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -12,7 +14,9 @@ import org.springframework.stereotype.Controller;
 import com.chiefmech.arms.action.BaseActionSupport;
 import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.entity.WeiXiuXiangMu;
+import com.chiefmech.arms.entity.ZhangTao;
 import com.chiefmech.arms.service.WeiXiuXiangMuService;
+import com.chiefmech.arms.service.ZhangTaoService;
 import com.opensymphony.xwork2.ModelDriven;
 
 @SuppressWarnings("serial")
@@ -26,12 +30,17 @@ public class SaleAfterWeiXiuXiangMuSetAction extends BaseActionSupport
 	@Resource()
 	private WeiXiuXiangMuService weiXiuXiangMuService;
 
+	@Resource()
+	private ZhangTaoService zhangTaoService;
+
 	private WeiXiuXiangMu item = new WeiXiuXiangMu();
 	private int page = 1;
 	private int rows = 10;
+	private List<ZhangTao> ZhangTaoLst;
 
 	@Action(value = "saleAfterWeiXiuXiangMuSet", results = { @Result(name = "input", location = "saleAfter_weiXiuXiangMuSet.jsp") })
 	public String saleAfterWeiXiuXiangMuSet() {
+		ZhangTaoLst = zhangTaoService.findZhangTao();
 		return INPUT;
 	}
 
@@ -93,6 +102,14 @@ public class SaleAfterWeiXiuXiangMuSetAction extends BaseActionSupport
 
 	public void setRows(int rows) {
 		this.rows = rows;
+	}
+
+	public List<ZhangTao> getZhangTaoLst() {
+		return ZhangTaoLst;
+	}
+
+	public void setZhangTaoLst(List<ZhangTao> zhangTaoLst) {
+		ZhangTaoLst = zhangTaoLst;
 	}
 
 }

@@ -177,7 +177,7 @@ body {
 				<div id="loginFormBg">
 					<!--登录框 start-->
 					<span id="spanUser">用户名</span> <span id="spanPwd">密&nbsp;&nbsp;码</span>
-					<span id="spanForgetPwd"> 忘记登录密码?</span> <br />
+					<span id="spanForgetPwd"> </span> <br />
 					<div>
 						<input name="loginName" type="text"
 							value="<s:property value='user.loginName'/>" maxlength="20"

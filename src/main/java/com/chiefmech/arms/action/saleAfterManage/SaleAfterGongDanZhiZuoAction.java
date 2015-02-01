@@ -30,9 +30,29 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 	private String txtWeiXiuWuLiaoId;
 	private String txtWeiXiuXiangMuId;
 	private String easyUiJSonData;
+	private String action;
 
 	@Action(value = "saleAfterGongDanZhiZuo", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
-	public String saleAfterWeiXiuJieDai() {
+	public String saleAfterGongDanZhiZuo() {
+		action = "GongDanZhiZuo";
+		return INPUT;
+	}
+
+	@Action(value = "saleAfterWeiXiuPaiGong", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
+	public String saleAfterWeiXiuPaiGong() {
+		action = "WeiXiuPaiGong";
+		return INPUT;
+	}
+
+	@Action(value = "saleAfterWeiXiuWanJian", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
+	public String saleAfterWeiXiuWanJian() {
+		action = "WeiXiuWanJian";
+		return INPUT;
+	}
+
+	@Action(value = "saleAfterWeiXiuJieSuan", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
+	public String saleAfterWeiXiuJieSuan() {
+		action = "WeiXiuJieSuan";
 		return INPUT;
 	}
 
@@ -51,13 +71,25 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 		this.transmitJson(jsonStr);
 	}
 
-	@Action(value = "updateGongDanWeiXiuXiangMu")
-	public void updateGongDanWeiXiuXiangMu() {
+	@Action(value = "updateGongDanWeiXiuXiangMuWhenZhiZuo")
+	public void updateGongDanWeiXiuXiangMuWhenZhiZuo() {
 		JSONObject jsonObject = JSONObject.fromObject(easyUiJSonData);
 		GongDanWeiXiuXiangMu gongDanWeiXiuXiangMu = (GongDanWeiXiuXiangMu) JSONObject
 				.toBean(jsonObject, GongDanWeiXiuXiangMu.class);
 		int rowAffected = gongDanService
 				.updateGongDanWeiXiuXiangMuWhenZhiZuo(gongDanWeiXiuXiangMu);
+		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
+
+		this.transmitJson(jsonStr);
+	}
+
+	@Action(value = "updateGongDanWeiXiuXiangMuWhenPaiGong")
+	public void updateGongDanWeiXiuXiangMuWhenPaiGong() {
+		JSONObject jsonObject = JSONObject.fromObject(easyUiJSonData);
+		GongDanWeiXiuXiangMu gongDanWeiXiuXiangMu = (GongDanWeiXiuXiangMu) JSONObject
+				.toBean(jsonObject, GongDanWeiXiuXiangMu.class);
+		int rowAffected = gongDanService
+				.updateGongDanWeiXiuXiangMuWhenPaiGong(gongDanWeiXiuXiangMu);
 		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
 
 		this.transmitJson(jsonStr);
@@ -112,6 +144,10 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 
 	public String getEasyUiJSonData() {
 		return easyUiJSonData;
+	}
+
+	public String getAction() {
+		return action;
 	}
 
 }

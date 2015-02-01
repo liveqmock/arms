@@ -1,5 +1,7 @@
 package com.chiefmech.arms.entity;
 
+import com.chiefmech.arms.common.util.IDGen;
+
 public class GongDanWeiXiuWuLiao {
 
 	private String txtWuLiaoGuid;
@@ -12,6 +14,19 @@ public class GongDanWeiXiuWuLiao {
 	private float txtPrice;
 	private String ddlZhangTao;
 	private String ddlSubZhangTao;
+
+	public GongDanWeiXiuWuLiao() {
+
+	}
+
+	public GongDanWeiXiuWuLiao(String saleAfterGuid, WeiXiuWuLiao item) {
+		this.txtWuLiaoGuid = IDGen.getUUID();
+		this.txtWuLiaoId = item.getTxtShopId();
+		this.txtBillNo = saleAfterGuid;
+		this.txtWuLiaoName = item.getTxtShopName();
+		this.txtPrice = item.getTxtSalePrice();
+		this.ddlZhangTao = "正常维修";
+	}
 
 	public String getTxtWuLiaoGuid() {
 		return txtWuLiaoGuid;

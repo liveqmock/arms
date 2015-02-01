@@ -9,10 +9,12 @@ import net.sf.json.JSONArray;
 import org.springframework.stereotype.Service;
 
 import com.chiefmech.arms.dao.GongDanDao;
+import com.chiefmech.arms.dao.WeiXiuWuLiaoDao;
 import com.chiefmech.arms.dao.WeiXiuXiangMuDao;
 import com.chiefmech.arms.entity.GongDan;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
+import com.chiefmech.arms.entity.WeiXiuWuLiao;
 import com.chiefmech.arms.entity.WeiXiuXiangMu;
 import com.chiefmech.arms.entity.footer.GongDanWeiXiuWuLiaoFooter;
 import com.chiefmech.arms.entity.footer.GongDanWeiXiuXiangMuFooter;
@@ -25,6 +27,8 @@ public class GongDanServiceImpl implements GongDanService {
 	private GongDanDao gongDanDao;
 	@Resource()
 	private WeiXiuXiangMuDao weiXiuXiangMuDao;
+	@Resource()
+	private WeiXiuWuLiaoDao weiXiuWuLiaoDao;
 
 	@Override
 	public GongDan findGongDanByWeiXiuGuid(String txtGongDanId) {
@@ -94,6 +98,11 @@ public class GongDanServiceImpl implements GongDanService {
 		return gongDanDao.updateGongDanWeiXiuXiangMuWhenZhiZuo(item);
 	}
 
+	@Override
+	public int updateGongDanWeiXiuXiangMuWhenPaiGong(GongDanWeiXiuXiangMu item) {
+		return gongDanDao.updateGongDanWeiXiuXiangMuWhenPaiGong(item);
+	}
+
 	public List<GongDanWeiXiuXiangMu> getGongDanWeiXiuXiangMuListByGongDanId(
 			String txtGongDanId) {
 		return gongDanDao.getGongDanWeiXiuXiangMuListByGongDanId(txtGongDanId);
@@ -132,7 +141,7 @@ public class GongDanServiceImpl implements GongDanService {
 
 	@Override
 	public String getWeiXiuWuLiaoEasyUiJSonByGongDanId(String txtGongDanId) {
-		List<GongDanWeiXiuXiangMu> lst = gongDanDao
+		List<GongDanWeiXiuWuLiao> lst = gongDanDao
 				.getGongDanWeiXiuWuLiaoListByGongDanId(txtGongDanId);
 		int total = lst.size();
 		List<GongDanWeiXiuWuLiaoFooter> footerLst = gongDanDao
@@ -144,6 +153,38 @@ public class GongDanServiceImpl implements GongDanService {
 				"{\"total\":\"%d\",\"rows\":%s,\"footer\":%s}", total, lstJson,
 				footerJson);
 		return jsonStr;
+	}
+
+	@Override
+	public String getWeiXiuWuLiaoEasyUiJSon(WeiXiuWuLiao item, int page,
+			int rows) {
+		List<WeiXiuWuLiao> lst = weiXiuWuLiaoDao.getWeiXiuWuLiaoList(item,
+				page, rows);
+		int total = weiXiuWuLiaoDao.getWeiXiuWuLiaoListCount(item);
+
+		String lstJson = JSONArray.fromObject(lst).toString();
+		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
+				lstJson);
+		return jsonStr;
+	}
+
+	@Override
+	public int insertGongDanWeiXiuWuLiao(String saleAfterGuid,
+			List<WeiXiuWuLiao> weiXiuWuLiaoLst) {
+		boolean isAllItemInserted = true;
+		int rowAffected = 0;
+		for (WeiXiuWuLiao item : weiXiuWuLiaoLst) {
+			GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao = new GongDanWeiXiuWuLiao(
+					saleAfterGuid, item);
+			rowAffected = gongDanDao
+					.insertGongDanWeiXiuWuLiao(gongDanWeiXiuWuLiao);
+			if (rowAffected != 1) {
+				isAllItemInserted = false;
+				break;
+			}
+		}
+
+		return isAllItemInserted ? 1 : 0;
 	}
 
 }

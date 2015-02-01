@@ -143,11 +143,10 @@ function __doPostBack(eventTarget, eventArgument) {
 
         function shouHuoChoice() {
            //收货人选择
-            var u = "../webSetUp/commonManage.aspx?d=" + new Date();
+            var u = "../webSetup/commonManage.aspx?d=" + new Date();
             z = window.open(u, '收货人选择', 'height=400,width=430,top=35,left=160,toolbar=no,menubar=no,scrollbars=yes, resizable=no,location=no, status=no');
             z.focus();
 
-            
         }
 
         $("#txtShouHuoRen").bind("blur", changeJingShouRen);

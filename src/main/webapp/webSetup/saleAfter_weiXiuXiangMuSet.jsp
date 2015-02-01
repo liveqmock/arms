@@ -52,7 +52,11 @@ td {
 		</table>
 	</form>
 	<table id="mydg" class="easyui-datagrid"
-		data-options="url:'weiXiuXiangMuSearch.action',rownumbers:true,singleSelect:true,toolbar:'#toolbar',pagination:true">
+		data-options="url:'weiXiuXiangMuSearch.action',
+							rownumbers:true,
+							singleSelect:true,
+							toolbar:'#toolbar',
+							pagination:true">
 		<thead>
 			<tr>
 				<th data-options="field:'txtWeiXiuXiangMuBianHao',width:120"
@@ -60,6 +64,7 @@ td {
 				<th data-options="field:'txtGongShi',width:80">工时</th>
 				<th data-options="field:'ddlSuoShuGongDuan',width:80">工段名称</th>
 				<th data-options="field:'txtWeiXiuNeiRong',width:370">维修内容</th>
+				<th data-options="field:'ddlSuoShuZhangTao',width:80">所属帐套</th>
 				<th field="action" width="100" align="center"
 					formatter="formatAction">操作</th>
 			</tr>
@@ -79,12 +84,14 @@ td {
 				<tr>
 					<td><span class="requireSpan">*&nbsp;</span>维修编号:</td>
 					<td><input name="txtWeiXiuXiangMuBianHao" type="text"
-						id="txtWeiXiuXiangMuBianHao" class="easyui-validatebox" data-options="required:true,missingMessage:'维修编号为必填项'" /></td>
+						id="txtWeiXiuXiangMuBianHao" class="easyui-validatebox"
+						data-options="required:true,missingMessage:'维修编号为必填项'" /></td>
 				</tr>
 				<tr>
 					<td><span class="requireSpan">*&nbsp;</span>所属工段:</td>
 					<td><select name="ddlSuoShuGongDuan" id="ddlSuoShuGongDuan"
-						style="width: 138px;" class="easyui-validatebox" data-options="required:true">
+						style="width: 138px;" class="easyui-validatebox"
+						data-options="required:true">
 							<option value="机电">机电</option>
 							<option value="保养">保养</option>
 							<option value="钣金">钣金</option>
@@ -94,6 +101,15 @@ td {
 					</select></td>
 				</tr>
 				<tr>
+					<td><span class="requireSpan">*&nbsp;</span>所属帐套:</td>
+					<td><select id="ddlSuoShuZhangTao" name="ddlSuoShuZhangTao"
+						style="width: 138px;">
+							<s:iterator value="ZhangTaoLst">
+								<option value="<s:property value='txtZhangTaoMing' />"><s:property
+										value='txtZhangTaoMing' /></option>							
+							</s:iterator>
+					</select></td>                  
+				</tr>
 					<td><span class="requireSpan">*&nbsp;</span>工时:</td>
 					<td><input name="txtGongShi" type="text" id="txtGongShi"
 						class="easyui-numberbox"
@@ -102,7 +118,8 @@ td {
 				<tr>
 					<td><span class="requireSpan">*&nbsp;</span>维修内容:</td>
 					<td style="height: 55px;"><textarea name="txtWeiXiuNeiRong"
-							rows="2" cols="20" id="txtWeiXiuNeiRong" class="easyui-validatebox" data-options="required:true"></textarea></td>
+							rows="2" cols="20" id="txtWeiXiuNeiRong"
+							class="easyui-validatebox" data-options="required:true"></textarea></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><br /> <a onclick="saveItem()"

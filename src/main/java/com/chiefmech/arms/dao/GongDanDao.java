@@ -46,6 +46,9 @@ public interface GongDanDao {
 	@Update("update gongdanxiangmu set txtGongDuanName=#{txtGongDuanName},txtGongShi=#{txtGongShi},txtGongShiFei=#{txtGongShiFei},ddlZhangTao=#{ddlZhangTao} where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
 	public int updateGongDanWeiXiuXiangMuWhenZhiZuo(GongDanWeiXiuXiangMu item);
 
+	@Update("update gongdanxiangmu set txtBanZu=#{txtBanZu},txtZhuXiuRen=#{txtZhuXiuRen} where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
+	public int updateGongDanWeiXiuXiangMuWhenPaiGong(GongDanWeiXiuXiangMu item);
+
 	@Delete("delete from gongdanxiangmu where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
 	public int deleteGongDanWeiXiuXiangMu(String txtWeiXiuXiangMuId);
 
@@ -64,11 +67,14 @@ public interface GongDanDao {
 	public int deleteGongDanWeiXiuWuLiao(String txtWeiXiuWuLiaoId);
 
 	@Select("select * from gongdanwuliao where txtBillNo=#{txtGongDanId}")
-	public List<GongDanWeiXiuXiangMu> getGongDanWeiXiuWuLiaoListByGongDanId(
+	public List<GongDanWeiXiuWuLiao> getGongDanWeiXiuWuLiaoListByGongDanId(
 			String txtGongDanId);
 
-	@Select("select '合计' txtWuLiaoId, sum(txtRegQty) txtRegQty, sum(txtTakeQty) txtTakeQty, sum(txtReturnQty) txtReturnQty from gongdanwuliao where txtBillNo=#{txtGongDanId}")
+	@Select("select '合计' txtWuLiaoId, sum(txtRegQty) txtRegQty, sum(txtTakeQty) txtTakeQty, sum(txtReturnQty) txtReturnQty, sum(txtPrice*txtRegQty) txtPrice from gongdanwuliao where txtBillNo=#{txtGongDanId}")
 	public List<GongDanWeiXiuWuLiaoFooter> getGongDanWeiXiuWuLiaoFooterListByGongDanId(
 			String txtGongDanId);
+
+	@Insert("insert into gongdanwuliao(txtWuLiaoGuid,txtWuLiaoId,txtBillNo,txtWuLiaoName,txtPrice,ddlZhangTao) values(#{txtWuLiaoGuid},#{txtWuLiaoId},#{txtBillNo},#{txtWuLiaoName},#{txtPrice},#{ddlZhangTao})")
+	public int insertGongDanWeiXiuWuLiao(GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao);
 
 }

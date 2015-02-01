@@ -26,6 +26,15 @@ function initFormData(formJson) {
 		getEventTargetRowIndex: function (jq, target) {
 			var tr = $(target).closest('tr.datagrid-row');			
 			return parseInt(tr.attr('datagrid-row-index'));
+		},
+		getEventTargetRow: function (jq, target) {			
+			var rowIndex = this.getEventTargetRowIndex(jq, target);
+			if(_.isNaN(rowIndex)){
+				return null;
+			}else{
+				var rows = this.getRows(jq);
+				return rows[rowIndex];
+			}			
 		}
 	});	
 	
