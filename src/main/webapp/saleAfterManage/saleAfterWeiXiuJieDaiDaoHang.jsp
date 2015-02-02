@@ -25,12 +25,12 @@
 
     var tmp = '#FFFFFF';
     $(function () {
-        $('#tbWeiXiuList tr').mouseover(function () {
+        $('tr').mouseover(function () {
             tmp = this.style.backgroundColor;
             this.style.backgroundColor = '#eaf2ff';
         });
 
-        $('#tbWeiXiuList tr').mouseout(function () {
+        $('tr').mouseout(function () {
             this.style.backgroundColor = tmp;
         });
     });
@@ -42,77 +42,77 @@
 <body>
     <form name="form1" method="post" id="form1">
     <div style="margin-top:20px;margin-left:20px;">
-      <table id="tb1" border="0" cellpadding="0" cellspacing="0" width="750px">
+      <table id="tb1" border="0" cellpadding="0" cellspacing="0" width="700px">
        <tr>
-       <td>客户名：</td>
-       <td><input name="txtCustName" type="text" value="<s:property value='customer.txtCheZhuName' />" readonly="readonly" id="txtCustName" /> </td>
+       <td style="width:100px;">车主名：</td>
+       <td style="width:200px;"><input name="txtCustName" type="text" value="<s:property value='customer.txtCheZhuName' />" readonly id="txtCustName" style="width:90%;" /> </td>
+       <td style="width:100px;">车主电话：</td>
+       <td style="width:200px;"><input name="txtCheZhuMob" type="text" value="<s:property value='customer.txtCheZhuMob' />" readonly id="txtCheZhuMob"style="width:90%;" /> </td>
+       </tr>
+       <tr>
        <td>联系人：</td>
-       <td><input name="txtLianXiRenName" type="text" value="<s:property value='customer.txtCheZhuName' />" readonly="readonly" id="txtLianXiRenName" /> </td>
-       <td style="width:100px;">联系人电话：</td>
-       <td style="width:160px;"><input name="txtLianXiRenMob" type="text" value="<s:property value='customer.txtLianXiRenTel' />" readonly="readonly" id="txtLianXiRenMob" style="width:130px;" /> </td>
+       <td><input name="txtLianXiRenName" type="text" value="<s:property value='customer.txtCheZhuName' />" readonly id="txtLianXiRenName" style="width:90%;"/> </td>
+       <td>联系人电话：</td>
+       <td style="width:160px;"><input name="txtLianXiRenMob" type="text" value="<s:property value='customer.txtLianXiRenTel' />" readonly id="txtLianXiRenMob" style="width:90%;"/> </td>
 
-
-       <td rowspan="8" style="padding-left:2;vertical-align:top;">
-           <!--RGVIP start--><!--RGVIP end-->
-
-       </td>
 
 
        </tr>
        <tr>
        <td>车牌号：</td>
-       <td><input name="txtChePaiHao" type="text" value="<s:property value='customer.txtCheLiangChePaiHao' />" readonly="readonly" id="txtChePaiHao" /> </td>
+       <td><input name="txtChePaiHao" type="text" value="<s:property value='customer.txtCheLiangChePaiHao' />" readonly id="txtChePaiHao"style="width:90%;" /> </td>
        <td>车架号码：</td>
-       <td><input name="txtCheJiaHaoMa" type="text" value="<s:property value='customer.txtCheLiangCheJiaHao' />" readonly="readonly" id="txtCheJiaHaoMa" /> </td>
+       <td><input name="txtCheJiaHaoMa" type="text" value="<s:property value='customer.txtCheLiangCheJiaHao' />" readonly id="txtCheJiaHaoMa" style="width:90%;"/> </td>
        </tr>
 
        <tr>
        <td>车系：</td>
-       <td><input name="txtCheXi" type="text" value="<s:property value='customer.ddlCheLiangCheXi' />" readonly="readonly" id="txtCheXi" /> </td>
-       <td style="width:80px;">车身颜色：</td>
-       <td><input name="txtCheShenYanSe" type="text" value="<s:property value='customer.ddlCheShenColor' />" readonly="readonly" id="txtCheShenYanSe" /> </td>
-       <td colspan="2" style="color:Red;font-weight:bold;">
-        
-       </td> 
+       <td><input name="txtCheXi" type="text" value="<s:property value='customer.ddlCheLiangCheXi' />" readonly id="txtCheXi" style="width:90%;"/> </td>
+       <td>车身颜色：</td>
+       <td><input name="txtCheShenYanSe" type="text" value="<s:property value='customer.ddlCheShenColor' />" readonly id="txtCheShenYanSe" style="width:90%;"/> </td>
         
        </tr>
        <tr>
-       <td style="width:80px;">联系人地址:</td>
-       <td colspan="5" style="width:620px"><input name="txtLianXiRenAdd" type="text" value="<s:property value='customer.txtLianXiRenAdd' />" readonly="readonly" id="txtLianXiRenAdd" style="width:100%;" /> </td>
+       <td>联系人地址:</td>
+       <td colspan="3"><input name="txtLianXiRenAdd" type="text" value="<s:property value='customer.txtLianXiRenAdd' />" readonly id="txtLianXiRenAdd" style="width:96%;" /> </td>
        </tr>
        <tr>
        <td>驾照日期：</td>
-       <td><input name="txtJiaZhaoDate" type="text" value="<s:property value='customer.txtLianXiRenJiaZhaoDate' />" readonly="readonly" id="txtJiaZhaoDate" /> </td>
-       <td>购车日期：</td>
-       <td><input name="txtGouCheDate" type="text" value="<s:property value='customer.txtGouCheDate' />" readonly="readonly" id="txtGouCheDate" /> </td>
+       <td><input name="txtJiaZhaoDate" type="text" value="<s:property value='customer.txtLianXiRenJiaZhaoDate' />" readonly id="txtJiaZhaoDate"style="width:90%;"  /> </td>
        <td>投保日期：</td>
-       <td><input name="txtChuXianDate" type="text" value="<s:property value='customer.txtBaoXianDate' />" readonly="readonly" id="txtChuXianDate" style="width:100%;" /> </td>
+       <td><input name="txtChuXianDate" type="text" value="<s:property value='customer.txtBaoXianDate' />" readonly id="txtChuXianDate" style="width:90%;"/> </td>
        </tr>
 
        <tr>
-       <td colspan="6" height="6px"></td>
+       <td colspan="4" height="6px"></td>
        </tr>
        <tr>
        <td colspan="2" align="center">
-       <div style="border:1px dashed gray;width:180px;height:180px;text-align:center;">
+       <div style="border:1px dashed gray;width:200px;height:180px;text-align:center;"><table border="0"  style="vertical-align:top;color:Blue;font-weight:bold;">
+             <tr>
+               <td>会员等级：[<s:property value='customer.txtHuiYuanDengJi' /> ]</td></tr>
+             <tr><td>会员编号：[<s:property value='customer.txtHuiYuanHao' />]
+             </td></tr>
+             <tr><td>工时折扣：[<s:property value='customer.txtGongShiZheKou' />]  </td></tr>
+             <tr><td>材料折扣：[<s:property value='customer.txtCaiLiaoZheKou' />]</td></tr>
+           </table>
        </div>
        </td>
        
        <td colspan="2" align="center">
-       <div style="border:1px dashed gray;width:180px;height:180px;text-align:center;">
+       <div style="border:1px dashed gray;width:200px;height:180px;text-align:center;">
        <br />
        <a onClick="return saleAfterShow();" id="lnkSearch" class="easyui-linkbutton" href="javascript:__doPostBack('lnkSearch','')">维修接待</a>
        </div>
        
        </td>
 
-       <td colspan="2" align="center">
-       <div style="border:1px dashed gray;width:180px;height:180px;text-align:center;">
-       </div>
-       </td>
-
 
        </tr> 
+
+       <tr>
+       <td colspan="4" height="6px"></td>
+       </tr>
       </table>      
     
     维修信息列表(前5条)

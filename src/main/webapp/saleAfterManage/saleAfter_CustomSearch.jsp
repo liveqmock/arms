@@ -77,7 +77,9 @@
                 <th  data-options="field:'txtCheLiangCheJiaHao',width:140" >车架号码</th>
                 <th  data-options="field:'txtLianXiRenName',width:120">联系人名称</th>
                 <th  data-options="field:'txtLianXiRenTel',width:120">联系人电话</th>
-                <th  data-options="field:'txtCheZhuName',width:120">车主名称</th>                
+                <th  data-options="field:'txtCheZhuName',width:120">车主名称</th>
+                <th  data-options="field:'txtHuiYuanHao',width:120">会员号码</th>
+                <th  data-options="field:'txtHuiYuanDengJi',width:120">会员级别</th>                
                  
             </tr>
         </thead>
@@ -223,7 +225,7 @@
         function customJieDai(index) {
             var vehicleId = $('#dg2').datagrid('getRows')[index]['txtVehicleId'];
            // parent.winopen('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.action?cusId='+cusId+'&d=' + new Date(), '系统转向', 990, 600, true, true, false);
-            z = window.open('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.action?vehicleId=' + vehicleId + '&d=' + new Date(), '系统转向', 'height=600, width=990, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
+            z = window.open('../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.action?vehicleId=' + vehicleId + '&d=' + new Date(), '系统转向', 'height=600, width=790, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
             z.focus();
             return false;
         }

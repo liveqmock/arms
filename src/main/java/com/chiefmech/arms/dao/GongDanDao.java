@@ -73,7 +73,7 @@ public interface GongDanDao {
 	public List<GongDanWeiXiuWuLiao> getGongDanWeiXiuWuLiaoListByGongDanId(
 			String txtGongDanId);
 
-	@Select("select '合计' txtWuLiaoId, sum(txtRegQty) txtRegQty, sum(txtTakeQty) txtTakeQty, sum(txtReturnQty) txtReturnQty, sum(txtPrice*txtRegQty) txtPrice from gongdanwuliao where txtBillNo=#{txtGongDanId}")
+	@Select("select '合计' txtWuLiaoId, sum(txtRegQty) txtRegQty, sum(txtTakeQty) txtTakeQty, sum(txtReturnQty) txtReturnQty, sum(txtPrice*txtTakeQty) txtPaid from gongdanwuliao where txtBillNo=#{txtGongDanId}")
 	public List<GongDanWeiXiuWuLiaoFooter> getGongDanWeiXiuWuLiaoFooterListByGongDanId(
 			String txtGongDanId);
 

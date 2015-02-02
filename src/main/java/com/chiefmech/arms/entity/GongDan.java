@@ -100,6 +100,14 @@ public class GongDan {
 	public String txtJieSuanDate;
 	/** 出厂时间 */
 	public String txtChuChangDate;
+	private float txtGongShiZheKou;
+	private float txtCaiLiaoZheKou;
+	private float txtGongShiZheQian;
+	private float txtCaiLiaoZheQian;
+	private float txtGongShiZheHou;
+	private float txtCaiLiaoZheHou;
+	private float txtZheQianHeJi;
+	private float txtZheHouHeJi;
 
 	public GongDan(VKeHuCheLiang customerInfo) {
 		this.setTxtCustId(customerInfo.getTxtCustId());
@@ -120,6 +128,10 @@ public class GongDan {
 		this.setTxtLianXiRenTel(customerInfo.getTxtLianXiRenTel());
 		this.setTxtLianXiRenMob(customerInfo.getTxtLianXiRenMob());
 		this.setTxtLianXiRenAdd(customerInfo.getTxtLianXiRenAdd());
+		this.setTxtHuiYuanDengJi(customerInfo.getTxtHuiYuanDengJi());
+		this.setTxtHuiYuanHao(customerInfo.getTxtHuiYuanHao());
+		this.setTxtGongShiZheKou(customerInfo.getTxtGongShiZheKou());
+		this.setTxtCaiLiaoZheKou(customerInfo.getTxtCaiLiaoZheKou());
 		this.setTxtRuChangDate(DateUtil.getCurrentDateTime());
 		this.setTxtBillNo("等待生成");
 		this.setTxtGongDanStatus("接待中");
@@ -510,6 +522,54 @@ public class GongDan {
 
 	public void setTxtChuChangDate(String txtChuChangDate) {
 		this.txtChuChangDate = txtChuChangDate;
+	}
+
+	public float getTxtGongShiZheKou() {
+		return txtGongShiZheKou;
+	}
+
+	public void setTxtGongShiZheKou(float txtGongShiZheKou) {
+		this.txtGongShiZheKou = txtGongShiZheKou;
+	}
+
+	public float getTxtCaiLiaoZheKou() {
+		return txtCaiLiaoZheKou;
+	}
+
+	public void setTxtCaiLiaoZheKou(float txtCaiLiaoZheKou) {
+		this.txtCaiLiaoZheKou = txtCaiLiaoZheKou;
+	}
+
+	public float getTxtGongShiZheQian() {
+		return txtGongShiZheQian;
+	}
+
+	public void setTxtGongShiZheQian(float txtGongShiZheQian) {
+		this.txtGongShiZheQian = txtGongShiZheQian;
+	}
+
+	public float getTxtCaiLiaoZheQian() {
+		return txtCaiLiaoZheQian;
+	}
+
+	public void setTxtCaiLiaoZheQian(float txtCaiLiaoZheQian) {
+		this.txtCaiLiaoZheQian = txtCaiLiaoZheQian;
+	}
+
+	public float getTxtGongShiZheHou() {
+		return this.txtGongShiZheQian * this.txtGongShiZheKou;
+	}
+
+	public float getTxtCaiLiaoZheHou() {
+		return this.txtCaiLiaoZheQian * this.txtCaiLiaoZheKou;
+	}
+
+	public float getTxtZheQianHeJi() {
+		return this.txtCaiLiaoZheQian + this.txtGongShiZheQian;
+	}
+
+	public float getTxtZheHouHeJi() {
+		return this.txtCaiLiaoZheHou + this.txtGongShiZheHou;
 	}
 
 }

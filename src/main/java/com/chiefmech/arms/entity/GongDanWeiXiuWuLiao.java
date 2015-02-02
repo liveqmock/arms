@@ -12,6 +12,7 @@ public class GongDanWeiXiuWuLiao {
 	private float txtTakeQty;
 	private float txtReturnQty;
 	private float txtPrice;
+	private float txtPaid;
 	private String ddlZhangTao;
 	private String ddlSubZhangTao;
 
@@ -90,6 +91,10 @@ public class GongDanWeiXiuWuLiao {
 
 	public void setTxtPrice(float txtPrice) {
 		this.txtPrice = txtPrice;
+	}
+
+	public float getTxtPaid() {
+		return this.txtTakeQty * this.txtPrice;
 	}
 
 	public String getDdlZhangTao() {

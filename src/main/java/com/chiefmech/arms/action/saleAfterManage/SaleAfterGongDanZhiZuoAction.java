@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.action.BaseActionSupport;
 import com.chiefmech.arms.common.util.DateUtil;
+import com.chiefmech.arms.entity.GongDan;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
 import com.chiefmech.arms.service.GongDanService;
@@ -32,28 +33,30 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 	private String txtWeiXiuXiangMuId;
 	private String easyUiJSonData;
 	private String action;
+	private GongDan gongDan;
 
-	@Action(value = "saleAfterGongDanZhiZuo", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
+	@Action(value = "saleAfterGongDanZhiZuo", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
 	public String saleAfterGongDanZhiZuo() {
 		action = "GongDanZhiZuo";
 		return INPUT;
 	}
 
-	@Action(value = "saleAfterWeiXiuPaiGong", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
+	@Action(value = "saleAfterWeiXiuPaiGong", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
 	public String saleAfterWeiXiuPaiGong() {
 		action = "WeiXiuPaiGong";
 		return INPUT;
 	}
 
-	@Action(value = "saleAfterWeiXiuWanJian", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
+	@Action(value = "saleAfterWeiXiuWanJian", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
 	public String saleAfterWeiXiuWanJian() {
 		action = "WeiXiuWanJian";
 		return INPUT;
 	}
 
-	@Action(value = "saleAfterWeiXiuJieSuan", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
+	@Action(value = "saleAfterWeiXiuJieSuan", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
 	public String saleAfterWeiXiuJieSuan() {
 		action = "WeiXiuJieSuan";
+		gongDan = gongDanService.findGongDanByWeiXiuGuid(saleAfterWeiXiuGuid);
 		return INPUT;
 	}
 
@@ -164,6 +167,10 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 
 	public String getAction() {
 		return action;
+	}
+
+	public GongDan getGongDan() {
+		return gongDan;
 	}
 
 }
