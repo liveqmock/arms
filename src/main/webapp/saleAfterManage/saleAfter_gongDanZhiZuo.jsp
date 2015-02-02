@@ -18,6 +18,9 @@
 <link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
+<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<meta HTTP-EQUIV="Expires" CONTENT="0"> 
 </head>
 
 <body>
@@ -39,28 +42,35 @@
 			data-options="url:'queryGongDanWeiXiuXiangMu.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />',toolbar:'#tb',singleSelect:true,rownumbers:true,showFooter:true">
 			<thead>
 				<tr>
-					<th field="txtGongDuanName" width="100"
+					<th field="txtGongDuanName" width="80"
 						<s:if test="action=='GongDanZhiZuo'">
 						data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuGongDuanOption.action'}}"</s:if>>工段</th>
-					<th field="txtXiangMuId" width="150">项目编号</th>
+					<s:if test="action=='GongDanZhiZuo' || action=='WeiXiuJieSuan'">
+						<th field="txtXiangMuId" width="150">项目编号</th>
+					</s:if>
 					<th field="txtWeiXiuNeiRong" width="200">维修内容</th>
-					<th field="txtGongShi" width="80"
+					<th field="txtGongShi" width="40"
 						<s:if test="action=='GongDanZhiZuo'">
 						data-options="align:'right',editor:{type:'numberbox',options:{precision:2,required: true,missingMessage:'工时必须填写'}}"</s:if>>工时</th>
-					<th field="txtGongShiFei" width="100"
+					<th field="txtGongShiFei" width="80"
 						<s:if test="action=='GongDanZhiZuo'">
 						data-options="align:'right',editor:{type:'numberbox',options:{precision:2,required:true,missingMessage:'工时费必须填写'}}"</s:if>>工时费</th>
 					<th field="ddlZhangTao" width="100"
 						<s:if test="action=='GongDanZhiZuo'">
 						data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/zhangTaoOption.action'}}"</s:if>>帐套</th>
-					<s:if test="action=='WeiXiuPaiGong'">
+					<s:if test="action=='WeiXiuPaiGong' || action=='WeiXiuWanJian' || action=='WeiXiuJieSuan'">
 						<th field="txtBanZu" width="100"
 							data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuBanZuOption.action'}}">维修班组</th>
-						<th field="txtZhuXiuRen" width="100"
+						<th field="txtZhuXiuRen" width="80"
 							data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuZhuXiuRenOption.action'}}">主修人</th>
 					</s:if>
-					<th field="action" width="150" align="center"
+                    <s:if test="action=='WeiXiuJieSuan'">
+                    <th field="txtWanJianRen" width="100">完检人</th>
+                    </s:if>
+                    <s:if test="action!='WeiXiuJieSuan'">
+					<th field="action" width="200" align="center"
 						formatter="formatAction">操作</th>
+					</s:if>
 				</tr>
 			</thead>
 		</table>
@@ -74,7 +84,7 @@
 
 		<div style="height: 10px;"></div>
 
-		<s:if test="action!='WeiXiuPaiGong'">
+		<s:if test="action=='GongDanZhiZuo' || action=='WeiXiuJieSuan'">
 			<table id="datagridWuLiao" class="easyui-datagrid"
 				data-options="url:'queryGongDanWeiXiuWuLiao.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />',toolbar:'#tb2',singleSelect:true,rownumbers:true,showFooter:true">
 				<thead>
@@ -124,6 +134,7 @@
 			if (row.txtGongDuanName == "合计") {
 				return "";
 			} else {
+				<s:if test="action=='GongDanZhiZuo' || action=='WeiXiuPaiGong'">
 				if (row.editing) {
 					var s = '<a href="#" onclick="saverow(this);return false;">保存修改</a>&nbsp;&nbsp;&nbsp;&nbsp;';
 					var c = '<a href="#" onclick="cancelrow(this);return false;">取消修改</a>';
@@ -133,6 +144,16 @@
 					var d = '<a href="#" onclick="deleterow(this);return false;">删除本行</a>';
 					return e + d;
 				}
+				</s:if>
+				<s:elseif test="action=='WeiXiuWanJian'">
+				if (row.txtWanJianStatus == "完检" || row.txtWanJianStatus == "返修") {
+					return row.txtWanJianStatus + " " + row.txtWanJianRen + " " + row.txtWanJianShiJian;
+				}else{
+					var s = '<a href="#" onclick="updateWanJianStatus(this,\'完检\');return false;">完检</a>&nbsp;&nbsp;&nbsp;&nbsp;';
+					var c = '<a href="#" onclick="updateWanJianStatus(this,\'返修\');return false;">返修</a>';
+					return s + c;
+				}
+				</s:elseif>
 			}
 		}
 
@@ -179,7 +200,7 @@
 				var url = "";
 				<s:if test="action=='GongDanZhiZuo'">
 				url = "updateGongDanWeiXiuXiangMuWhenZhiZuo.action";
-				</s:if>
+				</s:if>;
 				<s:elseif test="action=='WeiXiuPaiGong'">
 				url = "updateGongDanWeiXiuXiangMuWhenPaiGong.action";
 				</s:elseif>
@@ -200,6 +221,25 @@
 
 		function cancelrow(target) {
 			myTable.datagrid('cancelEdit', getTargetRowIndex(target));
+		}
+
+		function updateWanJianStatus(target, status) {			
+			$.messager.confirm('提示', '确定要'+status+'吗?', function(r) {
+				if (r) {
+					var editRow = myTable.datagrid('getEventTargetRow', target);
+					editRow.txtWanJianStatus = status;
+					$.post("updateGongDanWeiXiuXiangMuWhenWanJian.action", {
+							"easyUiJSonData" : JsonToString(editRow)
+						}, function(result) {
+							if (result.errorMsg) {
+								$.messager.alert('出错啦', result.errorMsg);
+								myTable.datagrid('cancelEdit', rowIndex);
+							} else {
+								myTable.datagrid('reload');
+							}
+						}, 'json');	
+				}
+			});		
 		}
 
 		//-------------------------Datagrid2------------------------------------

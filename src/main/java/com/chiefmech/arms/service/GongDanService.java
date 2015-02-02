@@ -40,6 +40,8 @@ public interface GongDanService {
 
 	public int updateGongDanWeiXiuXiangMuWhenPaiGong(GongDanWeiXiuXiangMu item);
 
+	public int updateGongDanWeiXiuXiangMuWhenWanJian(GongDanWeiXiuXiangMu item);
+
 	public int deleteGongDanWeiXiuWuLiao(String txtWeiXiuWuLiaoId);
 
 	public String getWeiXiuWuLiaoEasyUiJSonByGongDanId(String txtGongDanId);
@@ -49,4 +51,5 @@ public interface GongDanService {
 
 	public int insertGongDanWeiXiuWuLiao(String saleAfterGuid,
 			List<WeiXiuWuLiao> weiXiuWuLiaoLst);
+
 }

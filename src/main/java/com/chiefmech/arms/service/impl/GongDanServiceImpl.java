@@ -135,6 +135,11 @@ public class GongDanServiceImpl implements GongDanService {
 	}
 
 	@Override
+	public int updateGongDanWeiXiuXiangMuWhenWanJian(GongDanWeiXiuXiangMu item) {
+		return gongDanDao.updateGongDanWeiXiuXiangMuWhenWanJian(item);
+	}
+
+	@Override
 	public int deleteGongDanWeiXiuWuLiao(String txtWeiXiuWuLiaoId) {
 		return gongDanDao.deleteGongDanWeiXiuWuLiao(txtWeiXiuWuLiaoId);
 	}

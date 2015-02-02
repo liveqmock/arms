@@ -40,7 +40,7 @@
 				.init(
 						$("#treeDemo"),
 						setting,
-						[ {
+						[{
 							name : "系统菜单",
 							open : true,
 							font : {
@@ -232,7 +232,7 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('ad5a76f2-e266-41c4-89d6-2d63d8239c4c','高级招揽','../customManage/zhaoLan/GaoJiZhaoLanView.aspx');"
-												} ],
+												}],
 										url : "",
 										target : "_blank"
 									},
@@ -313,7 +313,7 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('97e6ad68-baa6-4550-8673-3ca53b2a1518','单据撤销','../saleAfterManage/saleAfter_WeiXiuFeiYongCancelManage.aspx');"
-												} ],
+												}],
 										url : "",
 										target : "_blank"
 									},
@@ -394,7 +394,7 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('76ae3969-3e62-4b3d-a205-a8f7cbc15f81','精品出退库','../storeOtherManage/storeOtherJingPinManage.aspx');"
-												} ],
+												}],
 										url : "",
 										target : "_blank"
 									},
@@ -520,7 +520,7 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('7acf3c55-3939-41ba-b525-3a1dfa035c88','维修派工管理','../webSetup/weiXiuPaiGongManage.action');"
-												},],
+												}, ],
 										url : "",
 										target : "_blank"
 									},
@@ -568,11 +568,11 @@
 												}, ],
 										url : "",
 										target : "_blank"
-									} ],
+									}],
 							url : "",
 							target : "_blank",
 							click : "mdfMenu('00000000-0000-0000-0000-000000000001','系统菜单','');"
-						} ]);
+						}]);
 		buildLink();
 
 		$("#tabList")
@@ -748,14 +748,14 @@
 	<div data-options="region:'north',border:false"
 		style="height: 55px; padding-left: 15px; padding-right: 15px;">
 		<table border='0'>
-			<tr>	
-				<td style="width:170px;height:44px;"> <img style="width:100%;height:100%;" src="../image/u17.png" alt='logo' /> </td>
-				<td style="vertical-align: bottom;color:blue;">深圳八路通汽车科技有限公司<!-- <img src="../image/ShineClubLogo.png"
-					style='margin-left: 10px;' alt='logo' /> --></td>
+			<tr>
+				<td><img src="../image/DCLogo.png" alt='logo' /></td>
+				<td><img src="../image/ShineClubLogo.png"
+					style='margin-left: 10px;' alt='logo' /></td>
 				<td style='width: 62%; vertical-align: bottom; color: Blue;'>[<a
 					href='#'
-					onclick="winopen('groupSelfSet.jsp','机构扩展设置',900,500,true,true,false);"><s:property value='user.jigouName' /></a>
-					]：<a href='#'
+					onclick="winopen('groupSelfSet.jsp','机构扩展设置',900,500,true,true,false);"><s:property
+							value='user.jigouName' /></a> ]：<a href='#'
 					onclick="winopen('userPersonalChange.action','个人设置',900,500,true,true,false);"><s:property
 							value='user.displayName' /></a> &nbsp;&nbsp;<span id="time"></span></td>
 				<td nowrap='nowrap' style='width: 300px;'><img
@@ -847,8 +847,8 @@
 
 		if (sort == "0") {
 			//弹出消息中心页面
-			winopen('../callManage/callCenter.action', '互动信息中心', 800, 600, true,
-					true, false);
+			winopen('../callManage/callCenter.action', '互动信息中心', 800, 600,
+					true, true, false);
 		} else {
 			//自动加载当前消息信息
 			//return; //暂停自动刷新

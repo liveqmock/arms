@@ -15,8 +15,9 @@ public class GongDanWeiXiuXiangMu {
 	private String ddlSubZhangTao;
 	private String txtBanZu;
 	private String txtZhuXiuRen;
-	private String txtWanJian;
-	private String txtWanJianF;
+	private String txtWanJianStatus;
+	private String txtWanJianRen;
+	private String txtWanJianShiJian;
 
 	public GongDanWeiXiuXiangMu() {
 
@@ -121,20 +122,28 @@ public class GongDanWeiXiuXiangMu {
 		this.txtZhuXiuRen = txtZhuXiuRen;
 	}
 
-	public String getTxtWanJian() {
-		return txtWanJian;
+	public String getTxtWanJianStatus() {
+		return txtWanJianStatus;
 	}
 
-	public void setTxtWanJian(String txtWanJian) {
-		this.txtWanJian = txtWanJian;
+	public void setTxtWanJianStatus(String txtWanJianStatus) {
+		this.txtWanJianStatus = txtWanJianStatus;
 	}
 
-	public String getTxtWanJianF() {
-		return txtWanJianF;
+	public String getTxtWanJianRen() {
+		return txtWanJianRen;
 	}
 
-	public void setTxtWanJianF(String txtWanJianF) {
-		this.txtWanJianF = txtWanJianF;
+	public void setTxtWanJianRen(String txtWanJianRen) {
+		this.txtWanJianRen = txtWanJianRen;
+	}
+
+	public String getTxtWanJianShiJian() {
+		return txtWanJianShiJian;
+	}
+
+	public void setTxtWanJianShiJian(String txtWanJianShiJian) {
+		this.txtWanJianShiJian = txtWanJianShiJian;
 	}
 
 }

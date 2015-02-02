@@ -3,7 +3,11 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<meta HTTP-EQUIV="Expires" CONTENT="0"> 
+<title>
 	维修管理
 </title>
      <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
