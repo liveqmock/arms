@@ -31,6 +31,9 @@ public interface GongDanService {
 
 	public int deleteGongDanWeiXiuXiangMu(String txtWeiXiuXiangMuId);
 
+	public List<GongDanWeiXiuXiangMu> getGongDanWeiXiuXiangMuListByGongDanId(
+			String txtGongDanId);
+
 	public String getWeiXiuXiangMuEasyUiJSonByGongDanId(String txtGongDanId);
 
 	public int updateGongDanWeiXiuWuLiaoWhenZhiZuo(GongDanWeiXiuWuLiao item);

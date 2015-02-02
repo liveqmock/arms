@@ -33,7 +33,7 @@ public interface CarMoDelViewDao {
 	@Delete("delete from carmodel where id=#{id}")
 	public int deleteItem(int id);
 
-	@Select("select * from carmodel")
+	@Select("select * from view_carmodel")
 	public List<CarMoDelView> selectItem();
 
 

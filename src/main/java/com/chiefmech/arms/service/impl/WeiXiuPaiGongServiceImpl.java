@@ -43,4 +43,9 @@ public class WeiXiuPaiGongServiceImpl implements WeiXiuPaiGongService {
 		return weiXiuPaiGongDao.deleteItem(id);
 	}
 
+	@Override
+	public List<WeiXiuPaiGong> selectItem() {
+		return weiXiuPaiGongDao.selectItem();
+	}
+
 }

@@ -47,7 +47,7 @@
 					<tr>
 						<th field="ck" checkbox="true" width="20"></th>
 						<th field="txtShopId" width="100">商品编号</th>
-						<th field="txtShopName" width="100">商品名称</th>
+						<th field="txtShopName" width="200">商品名称</th>
 						<th field="txtSalePrice" width="100">销售价</th>
 						<th field="txtKuCun" width="100">库存数</th>
 					</tr>
@@ -56,7 +56,7 @@
 			<div id="tb" style="height: auto">
 				<a href="javascript:void(0)" class="easyui-linkbutton"
 					data-options="iconCls:'icon-add',plain:true"
-					onClick="addCheckedItems()">添加选中维修项目</a>
+					onClick="addCheckedItems()">添加选中物料</a>
 			</div>
 		</div>
 	</form>

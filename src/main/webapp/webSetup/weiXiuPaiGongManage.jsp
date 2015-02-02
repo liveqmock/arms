@@ -34,7 +34,7 @@ td {
 	</table>
 	<form name="fmSearch" method="post" id="fmSearch">
 		<table id="searchPanel" class="searchPanel" style="display: none;">
-			<tr>
+			<tr><td>维修组名:</td>
 				<td><input name="weixiuzuName" type="text" maxlength="10"
 					id="weixiuzuName" style="width: 120px;" /></td>
 				<td><a id="lnkSearch" class="easyui-linkbutton"

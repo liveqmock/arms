@@ -123,7 +123,7 @@ td {
 		<form name="form1" method="post" id="form1">
 			<input name="txtCustId" type="hidden" value="" id="txtCustId" />
 			<!--车主信息 start-->
-			<div id="aDiv" style="margin: 2 0 0 5; display: none;">
+			<div id="aDiv" style="margin: 2 0 0 5; display: block;">
 				<br /> <span
 					style="font-weight: bold; font-size: 12px; color: Red;"></span>
 				<table border="0" cellpadding="0" cellspacing="0" width="900px"
@@ -149,16 +149,13 @@ td {
 								<option selected="selected" value="车主手机">车主手机</option>
 
 						</select></td>
-						<td><span class="requireSpan">*</span><input name="txtCheZhuTel" type="text" maxlength="12"
-							id="txtCheZhuTel" /></td>
+						<td><span class="requireSpan">*</span><input
+							name="txtCheZhuTel" type="text" maxlength="12" id="txtCheZhuTel" /></td>
 						<td>内线:</td>
 						<td><input name="txtCheZhuTelNeiXian" type="text"
 							maxlength="5" id="txtCheZhuTelNeiXian" /></td>
 					</tr>
-
 					<tr>
-						<td></td>
-						<td></td>
 						<td><span class="requireSpan"></span>住宅电话：</td>
 						<td><input name="txtCheZhuZhuZhaiTel" type="text"
 							maxlength="12" id="txtCheZhuZhuZhaiTel" /></td>
@@ -168,15 +165,11 @@ td {
 						<td><span class="requireSpan">*</span>车主手机：</td>
 						<td><input name="txtCheZhuMob" type="text" maxlength="12"
 							id="txtCheZhuMob" /></td>
+						<td></td>
+						<td></td>
 					</tr>
 
 					<tr>
-						<td><span class="requireSpan"></span>企业类别:</td>
-						<td><select name="ddlCheZhuQiYeSort" id="ddlCheZhuQiYeSort"
-							style="border: none; width: 100%;">
-								<option selected="selected" value=""></option>
-
-						</select></td>
 						<td>称谓：</td>
 						<td><select name="ddlCheZhuChengWei" id="ddlCheZhuChengWei"
 							style="border: none; width: 100%;">
@@ -205,10 +198,9 @@ td {
 
 						</select>
 						</td>
-						<td>子女数目：</td>
-						<td><input name="txtCheZhuZiNvQty" type="text"
-							id="txtCheZhuZiNvQty" class="easyui-numberbox"
-							data-options="min:0,max:500,precision:0" /></td>
+						<td>生日:</td>
+						<td><input name="txtCheZhuShengRi" type="text"
+							id="txtCheZhuShengRi" class="inputCss easyui-datebox" /></td>
 					</tr>
 					<tr>
 						<td>证件类型：</td>
@@ -225,9 +217,7 @@ td {
 						<td colspan="3"><input name="txtCheZhuCardNo" type="text"
 							maxlength="20" id="txtCheZhuCardNo" onblur="checkCardNo();"
 							style="width: 400px;" /></td>
-						<td>生日:</td>
-						<td><input name="txtCheZhuShengRi" type="text"
-							id="txtCheZhuShengRi" class="inputCss easyui-datebox" /></td>
+
 					</tr>
 					<tr>
 						<td>所属区域：</td>
@@ -242,6 +232,8 @@ td {
 									style="border: none; width: 100px"></select>
 							</div>
 						</td>
+						<td></td>
+						<td></td>
 					</tr>
 					<tr>
 						<td><span class="requireSpan">*</span>车主地址：</td>
@@ -251,12 +243,6 @@ td {
 
 					<!--20130827新加入客户识别信息-->
 					<tr>
-						<td>所属行业：</td>
-						<td><select name="ddlCheZhuSuoShuHangYe"
-							id="ddlCheZhuSuoShuHangYe" style="border: none; width: 125px;">
-								<option selected="selected" value=""></option>
-
-						</select></td>
 						<td>关系类型：</td>
 						<td><select name="ddlCheZhuGuanXiSort"
 							id="ddlCheZhuGuanXiSort" style="border: none; width: 125px;">
@@ -286,8 +272,10 @@ td {
 								<option value="个体">个体</option>
 								<option value="其他">其他</option>
 								<option selected="selected" value=""></option>
-
 						</select></td>
+						
+						<td></td>
+						<td></td>
 					</tr>
 
 					<tr>
@@ -390,8 +378,6 @@ td {
 					</tr>
 
 					<tr>
-						<td></td>
-						<td></td>
 						<td>称谓：</td>
 						<td><select name="ddlLianXiRenChengWei"
 							id="ddlLianXiRenChengWei" style="border: none; width: 100%;">
@@ -400,15 +386,9 @@ td {
 								<option value="MS">小姐</option>
 
 						</select></td>
-						<td>身份：</td>
-						<td><select name="ddlLianXiRenShenFen"
-							id="ddlLianXiRenShenFen" style="border: none; width: 100%;">
-								<option selected="selected" value=""></option>
-
-						</select></td>
 						<td>职位：</td>
 						<td><select name="ddlLianXiRenZhiWei" id="ddlLianXiRenZhiWei"
-							style="border: none; width: 100%;">	
+							style="border: none; width: 100%;">
 								<option value="医生">医生</option>
 								<option value="老师">老师</option>
 								<option value="公务员">公务员</option>
@@ -417,6 +397,12 @@ td {
 								<option selected="selected" value=""></option>
 
 						</select></td>
+						<td>联系人生日：</td>
+						<td><input name="txtLianXiRenBirthday" type="text"
+							id="txtLianXiRenBirthday" class="inputCss easyui-datebox" /></td>
+
+						<td></td>
+						<td></td>
 					</tr>
 
 					<tr>
@@ -436,9 +422,6 @@ td {
 							maxlength="20" id="txtLianXiRenCardNo"
 							onblur="cardNoToDate('txtLianXiRenCardNo','txtLianXiRenBirthday')"
 							style="width: 200px;" /></td>
-						<td>联系人生日：</td>
-						<td><input name="txtLianXiRenBirthday" type="text"
-							id="txtLianXiRenBirthday" class="inputCss easyui-datebox" /></td>
 
 					</tr>
 					<tr>
@@ -446,9 +429,12 @@ td {
 						<td colspan="7">
 							<div id="lianXiRen">
 
-								<select name="ddlLianXiRenP" id="ddlLianXiRenP"	style="border: none; width: 100px"></select> 
-                                <select	name="ddlLianXiRenC" id="ddlLianXiRenC"	style="border: none; width: 100px"></select> 
-                                <select	name="ddlLianXiRenA" id="ddlLianXiRenA"	style="border: none; width: 100px"></select>
+								<select name="ddlLianXiRenP" id="ddlLianXiRenP"
+									style="border: none; width: 100px"></select> <select
+									name="ddlLianXiRenC" id="ddlLianXiRenC"
+									style="border: none; width: 100px"></select> <select
+									name="ddlLianXiRenA" id="ddlLianXiRenA"
+									style="border: none; width: 100px"></select>
 
 							</div>
 						</td>
@@ -517,7 +503,7 @@ td {
 		<!--车辆信息 start-->
 		<div id="cDiv" style="margin: 2 0 0 5; display: none;">
 			<br /> <span style="font-weight: bold; font-size: 12px; color: Red;">一辆车只能属于一个客户</span>
-            <a onclick="return changeVehicleId();" id="lnkRebindVehicle"
+			<a onclick="return changeVehicleId();" id="lnkRebindVehicle"
 				class="easyui-linkbutton"
 				href="javascript:__doPostBack('lnkRebindVehicle','')">绑定车辆</a> <a
 				onclick="return addVehicleId();" id="lnkAddVehicle"
@@ -527,40 +513,46 @@ td {
 
 			<table border="0" cellpadding="0" cellspacing="0" width="700px"
 				style="border-collapse: collapse; border: 1px solid #9a9a9a;">
-                <s:iterator value="customVehicleLst" status="status"> 
-				<tr>
-					<td style="font-weight: bold; color: Blue; width: 90px;">[<s:property value='#status.count'/>]车牌号码：</td>
-					<td style="width: 80px;"><s:property value='txtCheLiangChePaiHao'/></td>
-					<td style="width: 65px;">车架号码：</td>
-					<td style="width: 125px;"><s:property value='txtCheLiangCheJiaHao'/></td>
-					<td style="width: 65px;">发动机号:</td>
-					<td style="width: 100px;"><s:property value='txtCheLiangFaDongJiHao'/></td>
-					<td style="width: 65px;">变速箱号:</td>
-					<td style="width: 100px;"><s:property value='txtCheLiangBianSuXiangHao'/></td>
-				</tr>
-				<tr>
-					<td>制造厂商：</td>
-					<td><s:property value='ddlCheLiangZhiZaoShang'/></td>
-					<td>车系：</td>
-					<td><s:property value='ddlCheLiangCheXi'/></td>
-					<td>车型代码：</td>
-					<td><s:property value='txtCheLiangCheXingDaiMa'/></td>
-					<td>车身颜色：</td>
-					<td><s:property value='ddlCheShenColor'/></td>
-				</tr>
-				<tr>
-					<td>购车日期：</td>
-					<td><s:property value='txtGouCheDate'/></td>
-					<td>年审日期：</td>
-					<td><s:property value='txtCheLiangNextExaDate'/></td>
-					<td>&nbsp;</td>
-					<td></td>
-					<td></td>
-					<td><a
-						onclick="mdfCheLiangInfo('<s:property value='txtVehicleId'/>')"
-						class="easyui-linkbutton">修改车辆</a></td>
-				</tr>
-                </s:iterator>
+				<s:iterator value="customVehicleLst" status="status">
+					<tr>
+						<td style="font-weight: bold; color: Blue; width: 90px;">[<s:property
+								value='#status.count' />]车牌号码：
+						</td>
+						<td style="width: 80px;"><s:property
+								value='txtCheLiangChePaiHao' /></td>
+						<td style="width: 65px;">车架号码：</td>
+						<td style="width: 125px;"><s:property
+								value='txtCheLiangCheJiaHao' /></td>
+						<td style="width: 65px;">发动机号:</td>
+						<td style="width: 100px;"><s:property
+								value='txtCheLiangFaDongJiHao' /></td>
+						<td style="width: 65px;">变速箱号:</td>
+						<td style="width: 100px;"><s:property
+								value='txtCheLiangBianSuXiangHao' /></td>
+					</tr>
+					<tr>
+						<td>制造厂商：</td>
+						<td><s:property value='ddlCheLiangZhiZaoShang' /></td>
+						<td>车系：</td>
+						<td><s:property value='ddlCheLiangCheXi' /></td>
+						<td>车型代码：</td>
+						<td><s:property value='txtCheLiangCheXingDaiMa' /></td>
+						<td>车身颜色：</td>
+						<td><s:property value='ddlCheShenColor' /></td>
+					</tr>
+					<tr>
+						<td>购车日期：</td>
+						<td><s:property value='txtGouCheDate' /></td>
+						<td>年审日期：</td>
+						<td><s:property value='txtCheLiangNextExaDate' /></td>
+						<td>&nbsp;</td>
+						<td></td>
+						<td></td>
+						<td><a
+							onclick="mdfCheLiangInfo('<s:property value='txtVehicleId'/>')"
+							class="easyui-linkbutton">修改车辆</a></td>
+					</tr>
+				</s:iterator>
 			</table>
 
 		</div>
@@ -570,8 +562,11 @@ td {
 
 		<!--按钮区域 start-->
 		<div align="center" id="btnBottomDiv">
-			<a onclick="return saveCheck();" id="lnkSave" class="easyui-linkbutton"	href="javascript:__doPostBack('lnkSave','')">保存</a> 
-            <a id="lnkCancel" class="easyui-linkbutton" href="javascript:winClose()">取消</a> 
+			<a onclick="return saveCheck();" id="lnkSave"
+				class="easyui-linkbutton"
+				href="javascript:__doPostBack('lnkSave','')">保存</a> <a
+				id="lnkCancel" class="easyui-linkbutton"
+				href="javascript:winClose()">取消</a>
 		</div>
 		<!--按钮区域 end-->
 	</div>

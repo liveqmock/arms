@@ -14,4 +14,6 @@ public interface CarBrandService {
 	public String getCarBrandEasyUiJSon(CarBrand query, int page, int rows);
 
 	public List<CarBrand> findCarBrand();
+	
+	
 }

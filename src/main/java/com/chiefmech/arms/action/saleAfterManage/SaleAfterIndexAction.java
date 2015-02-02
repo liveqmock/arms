@@ -25,9 +25,8 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/saleAfterManage")
 @Controller()
 @Scope("prototype")
-public class SaleAfterIndexAction extends BaseActionSupport
-		implements
-			ModelDriven<GongDan> {
+public class SaleAfterIndexAction extends BaseActionSupport implements
+		ModelDriven<GongDan> {
 
 	@Resource()
 	private GongDanService gongDanService;
@@ -35,18 +34,20 @@ public class SaleAfterIndexAction extends BaseActionSupport
 	private CheZhuLianXiRenService cheZhuLianXiRenService;
 
 	private GongDan gongDan = new GongDan();
+
 	private String saleAfterWeiXiuGuid;
 	private String vehicleId;
 	private int tabId = 1;
 	private VKeHuCheLiang customer;
 
-	@Action(value = "saleAfterIndex", results = {@Result(name = "input", location = "saleAfter_Index.jsp")})
+	@Action(value = "saleAfterIndex", results = { @Result(name = "input", location = "saleAfter_Index.jsp") })
 	public String saleAfterIndex() {
 		initGonDan();
+
 		return INPUT;
 	}
 
-	@Action(value = "saleAfterWeiXiuJieDai", results = {@Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp")})
+	@Action(value = "saleAfterWeiXiuJieDai", results = { @Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp") })
 	public String saleAfterWeiXiuJieDai() {
 		initGonDan();
 		return INPUT;

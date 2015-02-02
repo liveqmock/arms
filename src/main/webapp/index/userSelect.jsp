@@ -6,58 +6,54 @@
 <head>
 <title>用户选择</title>
 <link rel="stylesheet" type="text/css"
-	href="../style/themes/default/easyui.css?v=90e943c2686f4150a8a9caace115b2b0" />
+	href="../style/themes/default/easyui.css" />
 <link rel="stylesheet" type="text/css"
-	href="../style/themes/icon.css?v=90e943c2686f4150a8a9caace115b2b0" />
+	href="../style/themes/icon.css" />
 <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
 <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="../js/frame/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
-<script src="../js/common.js?v=90e943c2686f4150a8a9caace115b2b0"
+<script src="../js/common.js"
 	type="text/javascript"></script>
-<link href="../style/common.css?v=90e943c2686f4150a8a9caace115b2b0"
+<link href="../style/common.css"
 	rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
 </head>
 
-<link href="../style/common.css?v=20130326" rel="stylesheet"
+<link href="../style/common.css" rel="stylesheet"
 	type="text/css" />
-<script src="../js/common.js?v20120" type="text/javascript"></script>
-
-<!--
-使用方法:
--->
+<script src="../js/common.js" type="text/javascript"></script>
 
 <body>
 	<form name="form1" method="post" id="form1">
 		<div style="margin: 10px 0;"></div>
 		<div class="easyui-layout" style="width: 500px; height: 390px;">
 			<div data-options="region:'north'" style="height: 340px">
-				<ul class="easyui-tree" treeHeight='300px'>
-					<li><span>部门信息</span>
-					<ul>    
-					
-					<s:iterator value='jigouList' >
-					
-					
+			<input style="display:none;" type="text" id="UserId" value="<s:property value="UserId" />" />
+				<ul class="easyui-tree" treeHeight='300px'>			
+					<li><span>深圳市八路通汽车科技有限公司</span>
+					<ul>    					
+					<s:iterator value='jigouList' id="jigou" >				
 							<li><span><s:property value="jigouName" /></span>
 								<ul>
-									<li><span>IT部</span>
-										<ul>							
+								<s:iterator value='departMentList' id="departMent" >
+									<li><span><s:property value="departName" /></span>
+										<ul>	
+												<s:iterator value='systemOwnerList' id="systemOwner" >	
+														<s:if test="#jigou.jigouName==#systemOwner.jigouName && #departMent.departName ==#systemOwner.departName">	
 													<li><span><input type='checkbox'
-															name='selected' id='小邓' />小邓</span></li>
-													<li><span><input type='checkbox'
-															name='selected' id='小乐' />小乐</span></li>
-													<li><span><input type='checkbox'
-															name='selected' id='小院' />小院</span></li>
+															name='selected' value="<s:property value="#systemOwner.displayName" />" id='<s:property value="#systemOwner.userId" />' /><s:property value="#systemOwner.displayName" /></span>												
+															</li>
+														</s:if>	
+												</s:iterator>													
 												</ul>
-											
+											</li>
+											</s:iterator>
 								</ul></li>
 						</s:iterator>
-						</ul>
-						
+						</ul>					
 						</li>
 						
 				</ul>
@@ -67,12 +63,6 @@
 				<a class="easyui-linkbutton" href="javascript:backData()">确定</a> <a
 					class="easyui-linkbutton" href="javascript:closeWin()">取消</a>
 			</div>
-
-			<div data-options="region:'east'"
-				style="width: 180px; height: 0px; display: none;"></div>
-			<div data-options="region:'west'"
-				style="width: 100px; height: 0px; display: none;"></div>
-			<div data-options="region:'center'" style="display: none;"></div>
 		</div>
 	</form>
 
@@ -84,7 +74,7 @@
 		var obj = $("li");
 		var thisId = "";
 		for (var i = 0; i < obj.length; i++) {
-			if ($(obj[i]).html().indexOf("陈荣华") > 0) {
+			if ($(obj[i]).html().indexOf($("#"+$("#UserId").val().trim()).val()) > 0) {
 				$(obj[i]).attr("state", "open");
 			} else {
 				if ($(obj[i]).html().indexOf("<ul>") > 0
@@ -102,10 +92,16 @@
 			var obj = document.getElementsByName("selected");
 			for (var i = 0; i < obj.length; i++) {
 				if (obj[i].checked == true) {
-					t1 += obj[i].id + ",";
-					t2 += obj[i].value + ",";
+						if($("#UserId").val().trim()== obj[i].id)
+							{
+							alert("您不能给自己发送消息！");
+							return;
+						}
+					t1 += obj[i].value + ",";
+					t2 += obj[i].id + ",";
 				}
 			}
+			
 			window.returnValue = t1 + "|" + t2;
 			window.opener = null;
 			window.close();

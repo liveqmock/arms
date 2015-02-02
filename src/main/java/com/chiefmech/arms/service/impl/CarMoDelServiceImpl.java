@@ -46,7 +46,7 @@ public class CarMoDelServiceImpl implements CarMoDelService {
 
 	@Override
 	public List<CarMoDelView> findCarMoDel() {
-		return null;
+		return carMoDelDao.selectItem();
 	}
 
 }

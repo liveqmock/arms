@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>维修出退库查询</title>
+<title>商品采购入库单管理</title>
 <link rel="stylesheet" type="text/css"
 	href="../style/themes/default/easyui.css" />
 <link rel="stylesheet" type="text/css" href="../style/themes/icon.css" />
@@ -41,11 +41,11 @@ td {
 		<table id="searchPanel" class="searchPanel">
 			<tr>
 				<td>入库时间:</td>
-				<td><input name="txtRuKuDate" type="text" id="txtOrderDate"
+				<td><input name="txtRuKuDate" type="text" id="txtRuKuDate"
 					class="inputCss easyui-datebox" style="width: 100px;" /></td>
 				<td>至</td>
 				<td><input name="txtRuKuDateEnd" type="text"
-					id="txtOrderDateEnd" class="inputCss easyui-datebox"
+					id="txtRuKuDateEnd" class="inputCss easyui-datebox"
 					style="width: 100px;" /></td>
 				<td>单号:</td>
 				<td><input name="txtBillNo" type="text" maxlength="20"

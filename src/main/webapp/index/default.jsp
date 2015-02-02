@@ -47,7 +47,7 @@
 								'font-style' : '微软雅黑'
 							},
 							children : [
-									{
+									/* {
 										name : "新车销售",
 										font : {
 											'font-style' : '微软雅黑'
@@ -163,7 +163,7 @@
 												} ],
 										url : "",
 										target : "_blank"
-									},
+									}, */
 									{
 										name : "客服管理",
 										font : {
@@ -342,22 +342,22 @@
 													click : "mdfMenu('aef416a9-a829-4b9d-acb1-d31d4e2e1ef4','入库管理','../storeOtherManage/storeOtherInsertBillManage.action');"
 												},
 												{
-													name : "销售管理",
+													name : "销售管理查询",
 													font : {
 														'font-style' : '微软雅黑'
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('c5e430e2-702c-4298-ba20-f911b03fe909','销售管理','../storeOtherManage/storeOtherSaleManage.aspx');"
+													click : "mdfMenu('c5e430e2-702c-4298-ba20-f911b0123456','销售管理查询','../storeOtherManage/storeOtherSaleManage.action');"
 												},
 												{
-													name : "例外管理",
+													name : "例外管理查询",
 													font : {
 														'font-style' : '微软雅黑'
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('6604c82e-da53-4eda-962c-fd0dcb4fbb43','例外管理','../storeOtherManage/storeOtherExceptionManage.aspx');"
+													click : "mdfMenu('c5e430e2-702c-4238-ba20-f911b0123456','例外管理查询','../storeOtherManage/exceptionManage.action');"
 												},
 												{
 													name : "即时库存",
@@ -748,24 +748,24 @@
 	<div data-options="region:'north',border:false"
 		style="height: 55px; padding-left: 15px; padding-right: 15px;">
 		<table border='0'>
-			<tr>
-				<td><img src="../image/DCLogo.png" alt='logo' /></td>
-				<td><img src="../image/ShineClubLogo.png"
-					style='margin-left: 10px;' alt='logo' /></td>
-				<td style='width: 75%; vertical-align: bottom; color: Blue;'>[<a
+			<tr>	
+				<td style="width:170px;height:44px;"> <img style="width:100%;height:100%;" src="../image/u17.png" alt='logo' /> </td>
+				<td style="vertical-align: bottom;color:blue;">深圳八路通汽车科技有限公司<!-- <img src="../image/ShineClubLogo.png"
+					style='margin-left: 10px;' alt='logo' /> --></td>
+				<td style='width: 62%; vertical-align: bottom; color: Blue;'>[<a
 					href='#'
-					onclick="winopen('groupSelfSet.aspx','机构扩展设置',900,500,true,true,false);">九江深丰</a>
+					onclick="winopen('groupSelfSet.jsp','机构扩展设置',900,500,true,true,false);"><s:property value='user.jigouName' /></a>
 					]：<a href='#'
 					onclick="winopen('userPersonalChange.action','个人设置',900,500,true,true,false);"><s:property
 							value='user.displayName' /></a> &nbsp;&nbsp;<span id="time"></span></td>
 				<td nowrap='nowrap' style='width: 300px;'><img
 					src='../image/home.png' alt='机构' title="机构"
-					onclick="winopen('groupChoice.aspx','机构选择',900,500,true,true,false);" />
+					onclick="winopen('groupChoice.jsp','机构选择',900,500,true,true,false);" />
 					<img id="imgCallSrc" src='../image/voice.png' alt='消息' title="消息"
 					onclick="showmsg(0);" /> <span id="callSpan"
 					style="color: Red; font-weight: bold; font-size: 8px; position: relative; left: -10px; top: 0px; z-index: 10;"></span>
 					<img src="../image/chat.png" alt='互动' title="互动"
-					onclick="winopen('../callManage/call.aspx','互动',800,600,true,true,false);" />
+					onclick="winopen('../callManage/call.action','互动',800,600,true,true,false);" />
 					<img src="../image/T-shirt.png" alt='皮肤' title="皮肤"
 					onclick="winopen('skinSet.aspx','皮肤设置',900,500,true,true,false);" />
 					<img src="../image/help.png" alt='帮助' title="帮助" onclick="help();" />
@@ -789,8 +789,6 @@
 		<div id="menuTreeRight">
 			<table border='0' cellpadding='0' cellspacing='0' id='menuTb'
 				width='98%'>
-
-
 			</table>
 		</div>
 		<div id="menuTreeBottom" style="margin-left: 3px;">
@@ -849,7 +847,7 @@
 
 		if (sort == "0") {
 			//弹出消息中心页面
-			winopen('../callManage/callCenter.aspx', '互动信息中心', 800, 600, true,
+			winopen('../callManage/callCenter.action', '互动信息中心', 800, 600, true,
 					true, false);
 		} else {
 			//自动加载当前消息信息

@@ -35,6 +35,7 @@ td {
 	<form name="fmSearch" method="post" id="fmSearch">
 		<table id="searchPanel" class="searchPanel" style="display: none;">
 			<tr>
+			<td>仓库名:</td>
 				<td><input name="txtStoreName" type="text" maxlength="10"
 					id="txtStoreName" style="width: 120px;" /></td>
 				<td><a id="lnkSearch" class="easyui-linkbutton"

@@ -11,10 +11,20 @@ public class User {
 	private String password;
 	private Timestamp lastLoginTime;
 	private String isLimit;
+	private String departName;
 	private List<String> privilegeLst;
+	private String jigouName;
 
 	public String getUserId() {
 		return userId;
+	}
+
+	public String getJigouName() {
+		return jigouName;
+	}
+
+	public void setJigouName(String jigouName) {
+		this.jigouName = jigouName;
 	}
 
 	public void setUserId(String userId) {
@@ -23,6 +33,14 @@ public class User {
 
 	public String getLoginName() {
 		return loginName;
+	}
+
+	public String getDepartName() {
+		return departName;
+	}
+
+	public void setDepartName(String departName) {
+		this.departName = departName;
 	}
 
 	public void setLoginName(String loginName) {
