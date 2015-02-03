@@ -239,9 +239,9 @@ td {
 					href="javascript:void(0)">制作工单</a> </s:if><a onClick="return saveCheck();" id="lnkSave"
 						class="easyui-linkbutton"
 						href="javascript:__doPostBack('lnkSave','')">保存</a> </s:if><a
-						onClick="return winClose();" id="lnkCancel"
+						onClick="winClose();return false;" id="lnkCancel"
 						class="easyui-linkbutton"
-						href="javascript:__doPostBack('lnkCancel','')">关闭</a> <!--按钮区域 end-->
+						href="javascript:void(0)">关闭</a> <!--按钮区域 end-->
 					</td>
 				</tr>
 
@@ -304,16 +304,16 @@ td {
 		}
 
 		function winClose() {
-			if (!confirm("您确定要退出？")) {
-				return false;
-			}
-			try {
-				parent.parent.parWinClose();
-			} catch (e) {
-				parent.window.opener = null;
-				parent.window.close();
-			}
-			return false;
+			$.messager.confirm('提示', "您确定要退出？", function(r) {
+				if (r) {
+					try {
+						parent.parent.parWinClose();
+					} catch (e) {
+						parent.window.opener = null;
+						parent.window.close();
+					}
+				}
+			});
 		}
 
 		var tmp = '#FFFFFF';

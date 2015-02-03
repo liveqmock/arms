@@ -97,4 +97,12 @@ public interface GongDanDao {
 	@Select("select * from gongdan where txtChePaiHao=#{txtChePaiHao} order by txtChuChangDate desc")
 	public List<GongDan> getGongDanListByChePaiHao(String txtChePaiHao);
 
+	@Select("select * from gongdanxiangmu where txtBillNo=#{txtBillNo}")
+	public List<GongDanWeiXiuXiangMu> findGongDanXiangMuLstByWeiXiuGuid(
+			String txtBillNo);
+
+	@Select("select * from gongdanwuliao where txtBillNo=#{txtBillNo}")
+	public List<GongDanWeiXiuWuLiao> findGongDanWuLiaoLstByWeiXiuGuid(
+			String txtBillNo);
+
 }

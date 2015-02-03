@@ -214,4 +214,16 @@ public class GongDanServiceImpl implements GongDanService {
 		return gongDanDao.getGongDanListByChePaiHao(txtChePaiHao);
 	}
 
+	@Override
+	public List<GongDanWeiXiuXiangMu> findGongDanXiangMuLstByWeiXiuGuid(
+			String txtGongDanId) {
+		return gongDanDao.findGongDanXiangMuLstByWeiXiuGuid(txtGongDanId);
+	}
+
+	@Override
+	public List<GongDanWeiXiuWuLiao> findGongDanWuLiaoLstByWeiXiuGuid(
+			String txtGongDanId) {
+		return gongDanDao.findGongDanWuLiaoLstByWeiXiuGuid(txtGongDanId);
+	}
+
 }

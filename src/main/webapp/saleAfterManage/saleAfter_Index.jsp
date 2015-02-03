@@ -6,24 +6,15 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><title>
 	维修管理
 </title>
-
-<link rel="stylesheet" type="text/css"
-	href="../style/themes/default/easyui.css" />
-<link rel="stylesheet" type="text/css" href="../style/themes/icon.css" />
-<script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
-<script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script>
-<script src="../js/frame/locale/easyui-lang-zh_CN.js"
-	type="text/javascript"></script>
-<script src="../js/common.js" type="text/javascript"></script>
-<script src="../js/frame/underscore-min.js" type="text/javascript"></script>
-<script src="../js/customcommon.js" type="text/javascript"></script>
-<link href="../style/common.css" rel="stylesheet" type="text/css" />
+     <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
+     <link href="../style/common.css?v=20130317" rel="stylesheet" type="text/css" />
      <style type="text/css"> 
  td,div
  {
    font-size:12px;
+   
  }
-
+    	
 .tabs {
 font-family:Verdana,Arial,sans-serif;
 font-size:12px;
@@ -61,7 +52,7 @@ padding-left:200px;}
         <tr><td class="titlebg"><span>售后管理</span>
         <span class="titleSpan1">(工单制作)</span> 
          </td><td align="right" style="padding-right:20px;color:Blue;font-weight:bold;">
-           维修单号:<s:property value='gongDan.txtBillNo' />&nbsp;车牌号:<s:property value='gongDan.txtChePaiHao' />&nbsp;<a href='#' onclick='showRefresh();' ><s:property value='gongDan.txtGongDanStatus' /></a>
+           维修单号:<s:property value='gongDan.txtBillNo' />&nbsp;车牌号:<s:property value='gongDan.txtChePaiHao' />&nbsp;<s:property value='gongDan.txtGongDanStatus' />
            </td></tr>
          </table> 
 
@@ -81,7 +72,7 @@ padding-left:200px;}
 
 </div>
 
-<div id="content" style="border-left:1px solid gray;border-right:1px solid gray;border-bottom:1px solid gray;margin:0px;height:500px;">
+<div id="content" style="border-left:1px solid gray;border-right:1px solid gray;border-bottom:1px solid gray;margin:0px;height:520px;">
   
 
 </div> 
@@ -95,7 +86,7 @@ padding-left:200px;}
      function show(sort) {
          var url = "";
          if (sort != 1 && saleAfterWeiXiuGuid == "") {
-             $.messager.alert('提示',"请先保存维修接待信息！");
+             alert("请先保存维修接待信息！");
              return false;
          }
          tabId=sort;

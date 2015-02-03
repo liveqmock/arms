@@ -56,4 +56,10 @@ public interface GongDanService {
 			String txtGongDanStatus);
 
 	public List<GongDan> getGongDanListByChePaiHao(String txtChePaiHao);
+
+	public List<GongDanWeiXiuXiangMu> findGongDanXiangMuLstByWeiXiuGuid(
+			String saleAfterWeiXiuGuid);
+
+	public List<GongDanWeiXiuWuLiao> findGongDanWuLiaoLstByWeiXiuGuid(
+			String saleAfterWeiXiuGuid);
 }

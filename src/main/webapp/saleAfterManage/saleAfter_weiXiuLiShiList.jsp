@@ -91,8 +91,7 @@ td {
 
 
         function saleAfterLiShiShow(saleAfterGuid) {
-            //parent.location.href ='../saleAfterManage/saleAfterIndex.action?tabId=2&saleAfterWeiXiuGuid=' + saleAfterGuid + '&d=' + new Date();
-            z = window.open('../saleAfterManage/saleAfter_weiXiuLiShiDetailShowBySaleAfterGuid.aspx?saleAfterGuid=' + saleAfterGuid + '&d=' + new Date(), '维修历史查看', 'height=900, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
+            z = window.open('../saleAfterManage/weiXiuLiShiDetail.action?saleAfterWeiXiuGuid=' + saleAfterGuid + '&d=' + new Date(), '维修历史查看', 'height=900, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
             z.focus();
             return false;
         }
