@@ -21,9 +21,7 @@ public class VKeHuCheLiang {
 	private String txtCheLiangCheXingDaiMa;
 	private String txtCheLiangCheJiaHao;
 	private String txtCheLiangFaDongJiHao;
-	private String ddlCheShenColor;
 	private String txtLianXiRenJiaZhaoDate;
-	private String txtGouCheDate;
 	private String txtBaoXianDate;
 	private String txtHuiYuanDengJi;
 	private String txtHuiYuanHao;
@@ -180,22 +178,6 @@ public class VKeHuCheLiang {
 
 	public void setTxtCheLiangCheJiaHao(String txtCheLiangCheJiaHao) {
 		this.txtCheLiangCheJiaHao = txtCheLiangCheJiaHao;
-	}
-
-	public String getTxtGouCheDate() {
-		return txtGouCheDate;
-	}
-
-	public void setTxtGouCheDate(String txtGouCheDate) {
-		this.txtGouCheDate = txtGouCheDate;
-	}
-
-	public String getDdlCheShenColor() {
-		return ddlCheShenColor;
-	}
-
-	public void setDdlCheShenColor(String ddlCheShenColor) {
-		this.ddlCheShenColor = ddlCheShenColor;
 	}
 
 	public String getTxtLianXiRenJiaZhaoDate() {

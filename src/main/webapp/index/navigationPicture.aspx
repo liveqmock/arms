@@ -108,75 +108,12 @@
     <input name="pathapp" type="hidden" id="pathapp" />
     <div class="dock" id="dock2">
       <div class="dock-container2">
-          <a class="dock-item2" id="_pre_sales" href="javascript:void(0);"><span>售前管理</span><img src="../style/navigation/lrcwcsye.png" alt="售前管理" /></a>
-          <a class="dock-item2" id="_vehicle" href="javascript:void(0);"><span>车辆管理</span><img src="../style/navigation/1509_s.png" alt="车辆管理" /></a>
           <a class="dock-item2" id="_sales" href="javascript:void(0);"><span>销售管理</span><img src="../style/navigation/2313.png" alt="销售管理" /></a>
           <a class="dock-item2" id="_sale" href="javascript:void(0);"><span>售后管理</span><img src="../style/navigation/xtsz.png" alt="售后管理" /></a>
           <a class="dock-item2" id="_accessories" href="javascript:void(0);"><span>配件管理</span><img src="../style/navigation/ck.png" alt="配件管理" /></a>
       </div>
-    </div>
-    <div id="pre_sales" class="preview">
-            <table align="center" width="300px" height="300px">
-                <caption><b>售前管理</b></caption>
-                <tr>
-                    <td align="center">
-                        <button id="butA1" type="button" onclick="parent.mdfMenu('','潜在客户','../SaleBefore_Manage/QianZaiKeHu.aspx')">
-                            <img alt="" class="image" width="64px" height="64px" src="../style/navigation/gys.png" />
-                            <div class="pre_title">潜在客户</div>
-                        </button>
-                    </td>
-                    <td align="center"><img alt="" width="32px" height="32px" src="../style/navigation/D.png" /></td>
-                    <td align="center">
-                        <button id="butA2" type="button" onclick="parent.mdfMenu('','试乘试驾','../SaleBefore_Manage/SCSJ.aspx')" disabled="disabled">
-                            <img alt="" class="image" width="64px" height="64px" src="../style/navigation/2443.png" />
-                            <div class="pre_title">试乘试驾</div>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center"><img alt="" width="32px" height="32px" src="../style/navigation/B.png" /></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td align="center">
-                        <button id="butA3" type="button" onclick="parent.mdfMenu('','流失客户','../SaleBefore_Manage/LiuShiKeHu.aspx')" disabled="disabled">
-                            <img alt="" width="64px" height="64px" src="../style/navigation/png-0231.png" />
-                            <div class="pre_title">流失客户</div></td>
-                        </button>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
-        </div>
-        
-        <div id="vehicle" class="preview">
-            <table align="center" width="450px" height="300px" >
-                <caption><b>车辆管理</b></caption>
-                <tr>
-                    <td align="center" >
-                        <button id="butB1" style="width:120px;height:100px;" type="button" onclick="parent.mdfMenu('','入库定单','../CarManage/CarInStockOrder.aspx')" disabled="disabled">
-                        <img alt=""  style="width:64px;height:64px;" src="../style/navigation/1509_s.png" /><div
-                            class="pre_title">
-                            入库定单</div></button>
-                    </td>
-                    <td align="center"><img alt="" width="32px" height="32px" src="../style/navigation/D.png" /></td>
-                    <td align="center">
-                        <button id="butB2" type="button" onclick="parent.mdfMenu('','整车库存','../CarManage/CarStock.aspx')" disabled="disabled">
-                        <img alt="" width="64px" height="64px" src="../style/navigation/gdzckplr.png" /><div
-                            class="pre_title">
-                            整车库存</div></button>
-                    </td>
-                    <td align="center"><img alt="" width="32px" height="32px" src="../style/navigation/D.png" /></td>
-                    <td align="center">
-                        <button id="butB3" type="button" onclick="parent.mdfMenu('','移库调拨','../CarManage/CarDiaoBo.aspx')" disabled="disabled">
-                        <img alt="" width="64px" height="64px" src="../style/navigation/chdb.png" /><div
-                            class="pre_title">
-                            移库调拨</div></button>
-                    </td>
-                </tr>
-            </table>
-        </div>
+    </div>.
+    
         
         <div id="sales" class="preview">
             <table align="center" width="350px" height="350px">

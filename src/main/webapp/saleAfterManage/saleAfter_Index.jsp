@@ -3,15 +3,21 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
-<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
-<meta HTTP-EQUIV="Expires" CONTENT="0"> 
-<title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><title>
 	维修管理
 </title>
-     <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
-     <link href="../style/common.css?v=20130317" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css"
+	href="../style/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="../style/themes/icon.css" />
+<script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
+<script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script>
+<script src="../js/frame/locale/easyui-lang-zh_CN.js"
+	type="text/javascript"></script>
+<script src="../js/common.js" type="text/javascript"></script>
+<script src="../js/frame/underscore-min.js" type="text/javascript"></script>
+<script src="../js/customcommon.js" type="text/javascript"></script>
+<link href="../style/common.css" rel="stylesheet" type="text/css" />
      <style type="text/css"> 
  td,div
  {
@@ -89,7 +95,7 @@ padding-left:200px;}
      function show(sort) {
          var url = "";
          if (sort != 1 && saleAfterWeiXiuGuid == "") {
-             alert("请先保存维修接待单！");
+             $.messager.alert('提示',"请先保存维修接待信息！");
              return false;
          }
          tabId=sort;
@@ -102,10 +108,8 @@ padding-left:200px;}
          if (sort == 5) { $("#" + tmp).removeClass(); $("#e").addClass("tabs_active"); tmp = "e"; url = "saleAfterWeiXiuJieSuan.action?saleAfterWeiXiuGuid=" + saleAfterWeiXiuGuid + "&d" + new Date(); $(".titleSpan1").html("(费用明细)"); }
          if (sort == 6) { $("#" + tmp).removeClass(); $("#f").addClass("tabs_active"); tmp = "f"; url = "saleAfterWeiXiuLiShi.action?saleAfterWeiXiuGuid=" + saleAfterWeiXiuGuid + "&d" + new Date(); $(".titleSpan1").html("(维修历史)"); }
 
-         if ($("#" + tmp + "Frame").length > 0) { $("#" + tmp + "Frame").show(); }
-         else {
-             $("#content").append("<iframe id='" + tmp + "Frame' style='width:100%;height:100%;' src='" + url + "' frameborder='0' />");
-         }
+         if ($("#" + tmp + "Frame").length > 0) { $("#" + tmp + "Frame").remove(); }
+         $("#content").append("<iframe id='" + tmp + "Frame' style='width:100%;height:100%;' src='" + url + "' frameborder='0' />");
 
 
      }

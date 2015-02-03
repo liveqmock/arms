@@ -8,7 +8,14 @@ function initFormData(formJson) {
 		} else if ($(el).hasClass("easyui-datetimebox")
 				|| $(el).hasClass("easyui-datebox")) {
 			$(el).datebox("setValue", value);
-		} else {
+		} else if ($(el).hasClass("easyui-textbox")) {
+			$(el).textbox("setValue", value);
+		} else if ($(el).hasClass("easyui-numberbox")) {
+			$(el).numberbox("setValue", value);
+		} 
+		else if ($(el).hasClass("easyui-combobox")) {
+			$(el).combobox("setValue", value);
+		}else {
 			$(el).val(value);
 		}
 	});
@@ -91,6 +98,12 @@ $(document).ready(function() {
 			},
 			message : '曰期格式错误,如2012-09-11.'
 		},
+		exactLength: {
+			validator : function(value, param) {
+				return param[0] == value.length;
+			},
+			message : '请输入{0}位字符.'
+		},
 		maxLength: {
 			validator : function(value, param) {
 				return param[0] >= value.length;
@@ -131,4 +144,21 @@ $(document).ready(function() {
 
 function toggleSearchPanel() {
 	$("#searchPanel").toggle();
+}
+
+function updateGongDanStatus(saleAfterWeiXiuGuid, newGongDanStatus){
+	$.messager.confirm('提示', newGongDanStatus+'后本页面信息不能被修改，确定要'+newGongDanStatus+'吗?', function(r) {
+		if (r) {
+			$.post('updateGongDanStatus.action', {
+				"saleAfterWeiXiuGuid" : saleAfterWeiXiuGuid,
+				"txtGongDanStatus" : newGongDanStatus
+			}, function(result) {
+				if (result.errorMsg) {
+					$.messager.alert('出错啦', result.errorMsg);
+				} else {
+					parent.refreshPage(saleAfterWeiXiuGuid);
+				}
+			}, 'json');
+		}
+	});
 }

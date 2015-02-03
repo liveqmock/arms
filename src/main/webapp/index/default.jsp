@@ -6,16 +6,16 @@
 <head>
 <title>汽修管理系统</title>
 <link rel="stylesheet" type="text/css"
-	href="../style/themes/default/easyui.css?v=74feba2d2e70452cbc1840620b9de165" />
+	href="../style/themes/default/easyui.css" />
 <link rel="stylesheet" type="text/css"
-	href="../style/themes/icon.css?v=74feba2d2e70452cbc1840620b9de165" />
+	href="../style/themes/icon.css" />
 <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
 <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="../js/frame/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
-<script src="../js/common.js?v=74feba2d2e70452cbc1840620b9de165"
+<script src="../js/common.js"
 	type="text/javascript"></script>
-<link href="../style/common.css?v=74feba2d2e70452cbc1840620b9de165"
+<link href="../style/common.css"
 	rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -40,204 +40,15 @@
 				.init(
 						$("#treeDemo"),
 						setting,
-						[{
+						[ {
 							name : "系统菜单",
 							open : true,
 							font : {
 								'font-style' : '微软雅黑'
 							},
 							children : [
-									/* {
-										name : "新车销售",
-										font : {
-											'font-style' : '微软雅黑'
-										},
-										children : [
-												{
-													name : "订单管理",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('03453237-bfe8-4c89-ad60-9af4b871a177','订单管理','../SaleOrder_Manage/OrderManageList.aspx?d=20140707');"
-												},
-												{
-													name : "配车管理",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('aefc38e6-427f-4c9c-a3df-292351828b84','配车管理','../SaleOrder_Manage/OrderCustList.aspx');"
-												},
-												{
-													name : "交车登记",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('98479b9c-d4df-467e-8412-592ea2426108','交车登记','../SaleOrder_Manage/OrderJiaoCheList.aspx');"
-												}, ],
-										url : "",
-										target : "_blank"
-									},
 									{
-										name : "售前管理",
-										font : {
-											'font-style' : '微软雅黑'
-										},
-										children : [
-												{
-													name : "流失客户",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('a40f10a1-f4f6-4fcb-8cfc-13bcb97c3c1c','流失客户','../SaleBefore_Manage/LiuShiKeHu.aspx');"
-												},
-												{
-													name : "客户活动",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('e6a6d758-e2c6-454c-b765-1bdc2bd59300','客户活动','../SaleBefore_Manage/Cust_ManageCarMain.aspx');"
-												},
-												{
-													name : "意向客户",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('7fff3b6b-bcb7-48a8-b204-a08d3c387cde','意向客户','../SaleBefore_Manage/IntentionCustomer.aspx');"
-												},
-												{
-													name : "试乘试驾",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('01b281d3-8fab-4828-aa7b-baed11947961','试乘试驾','../SaleBefore_Manage/SCSJ.aspx');"
-												},
-												{
-													name : "跟踪批示",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('0c93ca71-81ad-4079-a5a3-ccf35a5749bc','跟踪批示','../SaleBefore_Manage/GenZongPiShiDataSet.aspx');"
-												},
-												{
-													name : "潜在客户",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('c4f25490-6853-417d-be2c-f0d4c14936e1','潜在客户','../SaleBefore_Manage/QianZaiKeHu.aspx');"
-												},
-												{
-													name : "客户推进",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('a2024e29-0266-4cbc-b042-020b716ab47b','客户推进','../SaleBefore_Manage/CustomerAdvancement.aspx');"
-												},
-												{
-													name : "潜客查询",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('e3616b00-a85c-4ecb-bce0-84759d624080','潜客查询','../SaleBefore_Manage/QianZaiKeHuList.aspx');"
-												} ],
-										url : "",
-										target : "_blank"
-									}, */
-									{
-										name : "客服管理",
-										font : {
-											'font-style' : '微软雅黑'
-										},
-										children : [
-												{
-													name : "客户声音",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('6440be6c-5b6a-45e2-9fd7-b3e3775bb24e','客户声音','../customManage/callbackManage/UserSuggestManage.aspx');"
-												},
-												{
-													name : "售后回访",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('ee86089e-80dd-4be9-af13-5eb8c14b0919','售后回访','../customManage/callbackManage/callBackListManage.aspx');"
-												},
-												{
-													name : "客户管理",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('4580d947-4f6f-4ad0-a02e-8a46e85668b9','客户管理','../customManage/customManage.aspx');"
-												},
-												{
-													name : "投诉管理",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('af672ca8-3ff8-4137-aeda-c5402f166803','投诉管理','../customManage/ComplaintManage/ComplaintView.aspx');"
-												},
-												{
-													name : "客服标识",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('9c87412f-d714-4cf8-8f88-54377edb264e','客服标识','../customManage/CustomizeSignSet.aspx');"
-												},
-												{
-													name : "普通招揽",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('13352206-b7e2-42b1-9668-df3e6d80dce4','普通招揽','../customManage/zhaoLan/commonZhaoLan.aspx');"
-												},
-												{
-													name : "高级招揽",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('ad5a76f2-e266-41c4-89d6-2d63d8239c4c','高级招揽','../customManage/zhaoLan/GaoJiZhaoLanView.aspx');"
-												}],
-										url : "",
-										target : "_blank"
-									},
-									{
-										name : "售后管理",
+										name : "维修接待",
 										font : {
 											'font-style' : '微软雅黑'
 										},
@@ -250,15 +61,6 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('e729a493-1fe5-45f8-910c-060e7d4a4865','维修接待','../saleAfterManage/saleAfterCustomSearch.action');"
-												},
-												{
-													name : "预约管理",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('ad1f0ed7-927f-4d39-897d-aae96ceb8677','预约管理','../saleAfterManage/saleAfter_yuYueManage.aspx');"
 												},
 												{
 													name : "工单管理",
@@ -313,7 +115,7 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('97e6ad68-baa6-4550-8673-3ca53b2a1518','单据撤销','../saleAfterManage/saleAfter_WeiXiuFeiYongCancelManage.aspx');"
-												}],
+												} ],
 										url : "",
 										target : "_blank"
 									},
@@ -394,25 +196,7 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('76ae3969-3e62-4b3d-a205-a8f7cbc15f81','精品出退库','../storeOtherManage/storeOtherJingPinManage.aspx');"
-												}],
-										url : "",
-										target : "_blank"
-									},
-									{
-										name : "报表中心",
-										font : {
-											'font-style' : '微软雅黑'
-										},
-										children : [
-												{
-													name : "报表导航",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('01a4e616-036d-449c-a71e-a12b7ab28716','报表导航','../Reports/reportIndex.aspx');"
-												}, ],
+												} ],
 										url : "",
 										target : "_blank"
 									},
@@ -568,11 +352,11 @@
 												}, ],
 										url : "",
 										target : "_blank"
-									}],
+									} ],
 							url : "",
 							target : "_blank",
 							click : "mdfMenu('00000000-0000-0000-0000-000000000001','系统菜单','');"
-						}]);
+						} ]);
 		buildLink();
 
 		$("#tabList")
@@ -752,12 +536,16 @@
 				<td><img src="../image/DCLogo.png" alt='logo' /></td>
 				<td><img src="../image/ShineClubLogo.png"
 					style='margin-left: 10px;' alt='logo' /></td>
-				<td style='width: 62%; vertical-align: bottom; color: Blue;'>[<a
+				<td style='width: 75%; vertical-align: bottom; color: Blue;'>[<a
+					onclick="winopen('groupSelfSet.action','机构扩展设置',900,500,true,true,false);"><s:property value='user.jigouName' /></a>
+					]：<a href='#'
+					onclick="winopen('userPersonalChange.action','个人设置',900,500,true,true,false);"><s:property value='user.displayName' /></a>
+					&nbsp;&nbsp;<span id="time"></span></td>
+				<td style='width: 62%; vertical-align: bottom; color: Blue;'><a
 					href='#'
-					onclick="winopen('groupSelfSet.jsp','机构扩展设置',900,500,true,true,false);"><s:property
-							value='user.jigouName' /></a> ]：<a href='#'
-					onclick="winopen('userPersonalChange.action','个人设置',900,500,true,true,false);"><s:property
-							value='user.displayName' /></a> &nbsp;&nbsp;<span id="time"></span></td>
+					onclick="winopen('groupSelfSet.jsp','机构扩展设置',900,500,true,true,false);"></a>
+				   <a href='#'
+					onclick="winopen('userPersonalChange.action','个人设置',900,500,true,true,false);"></a> &nbsp;&nbsp;<span id="time"></span></td>
 				<td nowrap='nowrap' style='width: 300px;'><img
 					src='../image/home.png' alt='机构' title="机构"
 					onclick="winopen('groupChoice.jsp','机构选择',900,500,true,true,false);" />
@@ -766,9 +554,6 @@
 					style="color: Red; font-weight: bold; font-size: 8px; position: relative; left: -10px; top: 0px; z-index: 10;"></span>
 					<img src="../image/chat.png" alt='互动' title="互动"
 					onclick="winopen('../callManage/call.action','互动',800,600,true,true,false);" />
-					<img src="../image/T-shirt.png" alt='皮肤' title="皮肤"
-					onclick="winopen('skinSet.aspx','皮肤设置',900,500,true,true,false);" />
-					<img src="../image/help.png" alt='帮助' title="帮助" onclick="help();" />
 					<img src="../image/exit.png" alt='退出' title="退出" onclick="exit()" />
 				</td>
 			</tr>
@@ -781,7 +566,6 @@
 		<div id="menuData" onmouseover="javascript:this.style.color='black';"
 			onmouseout="javascript:this.style.color='gray';">导航菜单</div>
 	</div>
-
 
 	<!--菜单树 start-->
 	<div id="menuTree">
@@ -847,8 +631,8 @@
 
 		if (sort == "0") {
 			//弹出消息中心页面
-			winopen('../callManage/callCenter.action', '互动信息中心', 800, 600,
-					true, true, false);
+			winopen('../callManage/callCenter.action', '互动信息中心', 800, 600, true,
+					true, false);
 		} else {
 			//自动加载当前消息信息
 			//return; //暂停自动刷新

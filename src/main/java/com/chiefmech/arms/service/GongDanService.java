@@ -52,4 +52,7 @@ public interface GongDanService {
 	public int insertGongDanWeiXiuWuLiao(String saleAfterGuid,
 			List<WeiXiuWuLiao> weiXiuWuLiaoLst);
 
+	public int updateGongDanStatus(String saleAfterWeiXiuGuid,
+			String txtGongDanStatus);
+
 }

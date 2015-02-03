@@ -44,7 +44,7 @@
 
 </select> </td>
          <td style="padding-left:5px">
-         <input name="queryValue" type="text" value="粤" maxlength="20" id="queryValue" style="width:150px;" />
+         <input name="queryValue" type="text" maxlength="20" id="queryValue" style="width:150px;" />
          </td>
          <td>
          <a id="btnSearch" class="easyui-linkbutton" href="javascript:__doPostBack('btnSearch','')">查询</a>

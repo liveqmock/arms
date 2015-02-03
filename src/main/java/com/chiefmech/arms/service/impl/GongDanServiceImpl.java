@@ -32,7 +32,12 @@ public class GongDanServiceImpl implements GongDanService {
 
 	@Override
 	public GongDan findGongDanByWeiXiuGuid(String txtGongDanId) {
-		return gongDanDao.findGongDanByWeiXiuGuid(txtGongDanId);
+		GongDan gongDan = gongDanDao.findGongDanByWeiXiuGuid(txtGongDanId);
+		gongDan.setTxtGongShiZheQian(gongDanDao
+				.getGongShiFeiZheQianByGongDanId(txtGongDanId));
+		gongDan.setTxtCaiLiaoZheQian(gongDanDao
+				.getCaiLiaoFeiZheQianByGongDanId(txtGongDanId));
+		return gongDan;
 	}
 
 	@Override
@@ -106,6 +111,11 @@ public class GongDanServiceImpl implements GongDanService {
 	public List<GongDanWeiXiuXiangMu> getGongDanWeiXiuXiangMuListByGongDanId(
 			String txtGongDanId) {
 		return gongDanDao.getGongDanWeiXiuXiangMuListByGongDanId(txtGongDanId);
+	}
+
+	@Override
+	public int updateGongDanStatus(String txtGongDanId, String txtGongDanStatus) {
+		return gongDanDao.updateGongDanStatus(txtGongDanId, txtGongDanStatus);
 	}
 
 	@Override

@@ -36,7 +36,7 @@ body {
 #login {
 	background-image: url(loginImage/logo-280.png);
 	background-repeat: no-repeat;
-	width: 328px;
+	width: 340px;
 	height: 61px;
 	position: absolute;
 	left: -100px;

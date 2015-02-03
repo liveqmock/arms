@@ -34,30 +34,35 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 	private String easyUiJSonData;
 	private String action;
 	private GongDan gongDan;
+	private String txtGongDanStatus;
 
-	@Action(value = "saleAfterGongDanZhiZuo", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
+	@Action(value = "saleAfterGongDanZhiZuo", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
 	public String saleAfterGongDanZhiZuo() {
-		action = "GongDanZhiZuo";
+		initWeiXiuAction("GongDanZhiZuo");
 		return INPUT;
 	}
 
-	@Action(value = "saleAfterWeiXiuPaiGong", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
+	@Action(value = "saleAfterWeiXiuPaiGong", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
 	public String saleAfterWeiXiuPaiGong() {
-		action = "WeiXiuPaiGong";
+		initWeiXiuAction("WeiXiuPaiGong");
 		return INPUT;
 	}
 
-	@Action(value = "saleAfterWeiXiuWanJian", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
+	@Action(value = "saleAfterWeiXiuWanJian", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
 	public String saleAfterWeiXiuWanJian() {
-		action = "WeiXiuWanJian";
+		initWeiXiuAction("WeiXiuWanJian");
 		return INPUT;
 	}
 
-	@Action(value = "saleAfterWeiXiuJieSuan", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
+	@Action(value = "saleAfterWeiXiuJieSuan", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
 	public String saleAfterWeiXiuJieSuan() {
-		action = "WeiXiuJieSuan";
-		gongDan = gongDanService.findGongDanByWeiXiuGuid(saleAfterWeiXiuGuid);
+		initWeiXiuAction("WeiXiuJieSuan");
 		return INPUT;
+	}
+
+	private void initWeiXiuAction(String targetAction) {
+		action = targetAction;
+		gongDan = gongDanService.findGongDanByWeiXiuGuid(saleAfterWeiXiuGuid);
 	}
 
 	@Action(value = "queryGongDanWeiXiuXiangMu")
@@ -109,6 +114,15 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 				.setTxtWanJianShiJian(DateUtil.getCurrentDateTime());
 		int rowAffected = gongDanService
 				.updateGongDanWeiXiuXiangMuWhenWanJian(gongDanWeiXiuXiangMu);
+		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
+
+		this.transmitJson(jsonStr);
+	}
+
+	@Action(value = "updateGongDanStatus")
+	public void updateGongDanStatus() {
+		int rowAffected = gongDanService.updateGongDanStatus(
+				saleAfterWeiXiuGuid, txtGongDanStatus);
 		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
 
 		this.transmitJson(jsonStr);
@@ -171,6 +185,10 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 
 	public GongDan getGongDan() {
 		return gongDan;
+	}
+
+	public void setTxtGongDanStatus(String txtGongDanStatus) {
+		this.txtGongDanStatus = txtGongDanStatus;
 	}
 
 }

@@ -18,8 +18,7 @@ public class GongDan {
 	public int txtLiCheng;
 	/** 油量 */
 	public float txtYouLiang;
-	/** 购车日期 */
-	public String txtGouCheDate;
+
 	/** VIN */
 	private String txtVin;
 	/** 发动机号 */
@@ -28,8 +27,7 @@ public class GongDan {
 	private String txtChangJiaPinPai;
 	/** 车系名称 */
 	private String txtCheXiName;
-	/** 车身颜色 */
-	private String txtChenShenYanSe;
+
 	/** AT/MT */
 	private String txtAT;
 	/** 车型代码 */
@@ -74,18 +72,10 @@ public class GongDan {
 	private String chkXinCheJianCha;
 	/** 返修 */
 	private String chkFanXiu;
-	/** 保险 */
-	private String chkBaoXian;
-	/** 是否买单 */
-	private String chkShiFouMaiDan;
-	/** 档案号 */
-	private String txtBaoXianDangAnHao;
-	/** 本店保单 */
-	private String radBaoXianIsBenDian;
-	/** 出险日期 */
-	public String txtBaoXianDate;
-	/** 理赔公司 */
-	private String ddlBaoXianLiPeiComp;
+	/** 下次保养里程 */
+	private String txtNewLiCheng;
+	/** 下次保养时间 */
+	private String txtNewRuChangDate;
 	/** 维修提示 */
 	private String txtTiShiInfo;
 	/** 交修原因 */
@@ -113,12 +103,10 @@ public class GongDan {
 		this.setTxtCustId(customerInfo.getTxtCustId());
 		this.setTxtVehicleId(customerInfo.getTxtVehicleId());
 		this.setTxtChePaiHao(customerInfo.getTxtCheLiangChePaiHao());
-		this.setTxtGouCheDate(customerInfo.getTxtGouCheDate());
 		this.setTxtVin(customerInfo.getTxtCheLiangCheJiaHao());
 		this.setTxtFaDongJiHao(customerInfo.getTxtCheLiangFaDongJiHao());
 		this.setTxtChangJiaPinPai(customerInfo.getDdlCheLiangZhiZaoShang());
 		this.setTxtCheXiName(customerInfo.getDdlCheLiangCheXi());
-		this.setTxtChenShenYanSe(customerInfo.getDdlCheShenColor());
 		this.setTxtCheXingDaiMa(customerInfo.getTxtCheLiangCheXingDaiMa());
 		this.setTxtCustSort(customerInfo.getDdlCustSort());
 		this.setTxtCheZhuName(customerInfo.getTxtCheZhuName());
@@ -134,7 +122,8 @@ public class GongDan {
 		this.setTxtCaiLiaoZheKou(customerInfo.getTxtCaiLiaoZheKou());
 		this.setTxtRuChangDate(DateUtil.getCurrentDateTime());
 		this.setTxtBillNo("等待生成");
-		this.setTxtGongDanStatus("接待中");
+		this.setDdlWeiXiuSort("一般维修");
+		this.setTxtGongDanStatus("维修接待");
 	}
 
 	public GongDan() {
@@ -150,6 +139,38 @@ public class GongDan {
 
 	public String getTxtGongDanStatus() {
 		return txtGongDanStatus;
+	}
+
+	public String getTxtNewLiCheng() {
+		return txtNewLiCheng;
+	}
+
+	public void setTxtNewLiCheng(String txtNewLiCheng) {
+		this.txtNewLiCheng = txtNewLiCheng;
+	}
+
+	public String getTxtNewRuChangDate() {
+		return txtNewRuChangDate;
+	}
+
+	public void setTxtNewRuChangDate(String txtNewRuChangDate) {
+		this.txtNewRuChangDate = txtNewRuChangDate;
+	}
+
+	public void setTxtGongShiZheHou(float txtGongShiZheHou) {
+		this.txtGongShiZheHou = txtGongShiZheHou;
+	}
+
+	public void setTxtCaiLiaoZheHou(float txtCaiLiaoZheHou) {
+		this.txtCaiLiaoZheHou = txtCaiLiaoZheHou;
+	}
+
+	public void setTxtZheQianHeJi(float txtZheQianHeJi) {
+		this.txtZheQianHeJi = txtZheQianHeJi;
+	}
+
+	public void setTxtZheHouHeJi(float txtZheHouHeJi) {
+		this.txtZheHouHeJi = txtZheHouHeJi;
 	}
 
 	public void setTxtGongDanStatus(String txtGongDanStatus) {
@@ -228,60 +249,12 @@ public class GongDan {
 		this.chkFanXiu = chkFanXiu;
 	}
 
-	public String getChkBaoXian() {
-		return chkBaoXian;
-	}
-
-	public void setChkBaoXian(String chkBaoXian) {
-		this.chkBaoXian = chkBaoXian;
-	}
-
-	public String getChkShiFouMaiDan() {
-		return chkShiFouMaiDan;
-	}
-
-	public void setChkShiFouMaiDan(String chkShiFouMaiDan) {
-		this.chkShiFouMaiDan = chkShiFouMaiDan;
-	}
-
-	public String getTxtBaoXianDangAnHao() {
-		return txtBaoXianDangAnHao;
-	}
-
-	public void setTxtBaoXianDangAnHao(String txtBaoXianDangAnHao) {
-		this.txtBaoXianDangAnHao = txtBaoXianDangAnHao;
-	}
-
-	public String getRadBaoXianIsBenDian() {
-		return radBaoXianIsBenDian;
-	}
-
-	public void setRadBaoXianIsBenDian(String radBaoXianIsBenDian) {
-		this.radBaoXianIsBenDian = radBaoXianIsBenDian;
-	}
-
 	public String getTxtYuChuChangDate() {
 		return txtYuChuChangDate;
 	}
 
 	public void setTxtYuChuChangDate(String txtYuChuChangDate) {
 		this.txtYuChuChangDate = txtYuChuChangDate;
-	}
-
-	public String getTxtBaoXianDate() {
-		return txtBaoXianDate;
-	}
-
-	public void setTxtBaoXianDate(String txtBaoXianDate) {
-		this.txtBaoXianDate = txtBaoXianDate;
-	}
-
-	public String getDdlBaoXianLiPeiComp() {
-		return ddlBaoXianLiPeiComp;
-	}
-
-	public void setDdlBaoXianLiPeiComp(String ddlBaoXianLiPeiComp) {
-		this.ddlBaoXianLiPeiComp = ddlBaoXianLiPeiComp;
 	}
 
 	public String getTxtTiShiInfo() {
@@ -364,14 +337,6 @@ public class GongDan {
 		this.txtYouLiang = txtYouLiang;
 	}
 
-	public String getTxtGouCheDate() {
-		return txtGouCheDate;
-	}
-
-	public void setTxtGouCheDate(String txtGouCheDate) {
-		this.txtGouCheDate = txtGouCheDate;
-	}
-
 	public String getTxtVin() {
 		return txtVin;
 	}
@@ -402,14 +367,6 @@ public class GongDan {
 
 	public void setTxtCheXiName(String txtCheXiName) {
 		this.txtCheXiName = txtCheXiName;
-	}
-
-	public String getTxtChenShenYanSe() {
-		return txtChenShenYanSe;
-	}
-
-	public void setTxtChenShenYanSe(String txtChenShenYanSe) {
-		this.txtChenShenYanSe = txtChenShenYanSe;
 	}
 
 	public String getTxtAT() {
@@ -556,20 +513,25 @@ public class GongDan {
 		this.txtCaiLiaoZheQian = txtCaiLiaoZheQian;
 	}
 
-	public float getTxtGongShiZheHou() {
-		return this.txtGongShiZheQian * this.txtGongShiZheKou;
+	public String getTxtGongShiZheHou() {
+		return String.format("%.2f", this.txtGongShiZheQian
+				* this.txtGongShiZheKou);
 	}
 
-	public float getTxtCaiLiaoZheHou() {
-		return this.txtCaiLiaoZheQian * this.txtCaiLiaoZheKou;
+	public String getTxtCaiLiaoZheHou() {
+		return String.format("%.2f", this.txtCaiLiaoZheQian
+				* this.txtCaiLiaoZheKou);
 	}
 
-	public float getTxtZheQianHeJi() {
-		return this.txtCaiLiaoZheQian + this.txtGongShiZheQian;
+	public String getTxtZheQianHeJi() {
+		return String.format("%.2f", this.txtCaiLiaoZheQian
+				+ this.txtGongShiZheQian);
 	}
 
-	public float getTxtZheHouHeJi() {
-		return this.txtCaiLiaoZheHou + this.txtGongShiZheHou;
+	public String getTxtZheHouHeJi() {
+		return String.format("%.2f", this.txtGongShiZheQian
+				* this.txtGongShiZheKou + this.txtCaiLiaoZheQian
+				* this.txtCaiLiaoZheKou);
 	}
 
 }
