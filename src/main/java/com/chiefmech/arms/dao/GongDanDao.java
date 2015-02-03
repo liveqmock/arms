@@ -94,7 +94,7 @@ public interface GongDanDao {
 	public int updateChuChangDate(@Param("txtGongDanId") String txtGongDanId,
 			@Param("txtChuChangDate") String txtChuChangDate);
 
-	@Select("select * from gongdan where txtChePaiHao=#{txtChePaiHao} order by txtChuChangDate")
+	@Select("select * from gongdan where txtChePaiHao=#{txtChePaiHao} order by txtChuChangDate desc")
 	public List<GongDan> getGongDanListByChePaiHao(String txtChePaiHao);
 
 }
