@@ -55,4 +55,5 @@ public interface GongDanService {
 	public int updateGongDanStatus(String saleAfterWeiXiuGuid,
 			String txtGongDanStatus);
 
+	public List<GongDan> getGongDanListByChePaiHao(String txtChePaiHao);
 }

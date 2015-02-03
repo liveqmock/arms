@@ -162,3 +162,24 @@ function updateGongDanStatus(saleAfterWeiXiuGuid, newGongDanStatus){
 		}
 	});
 }
+
+function updateWanJianStatus(target, status) {
+	$.messager.confirm('提示', '确定要' + status + '吗?', function(r) {
+		if (r) {
+			var editRow = myTable.datagrid('getEventTargetRow', target);
+			editRow.txtWanJianStatus = status;
+			$.post("updateGongDanWeiXiuXiangMuWhenWanJian.action",
+				{
+					"easyUiJSonData" : JsonToString(editRow)
+				},
+				function(result) {
+					if (result.errorMsg) {
+						$.messager.alert('出错啦',result.errorMsg);
+						myTable.datagrid('cancelEdit',rowIndex);
+					} else {
+						myTable.datagrid('reload');
+					}
+				}, 'json');
+		}
+	});
+}

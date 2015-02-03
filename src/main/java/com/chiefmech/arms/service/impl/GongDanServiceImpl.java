@@ -8,6 +8,7 @@ import net.sf.json.JSONArray;
 
 import org.springframework.stereotype.Service;
 
+import com.chiefmech.arms.common.util.DateUtil;
 import com.chiefmech.arms.dao.GongDanDao;
 import com.chiefmech.arms.dao.WeiXiuWuLiaoDao;
 import com.chiefmech.arms.dao.WeiXiuXiangMuDao;
@@ -115,7 +116,13 @@ public class GongDanServiceImpl implements GongDanService {
 
 	@Override
 	public int updateGongDanStatus(String txtGongDanId, String txtGongDanStatus) {
-		return gongDanDao.updateGongDanStatus(txtGongDanId, txtGongDanStatus);
+		int rowAffected = gongDanDao.updateGongDanStatus(txtGongDanId,
+				txtGongDanStatus);
+		if (rowAffected == 1 && txtGongDanStatus.equals("出库")) {
+			rowAffected = gongDanDao.updateChuChangDate(txtGongDanId,
+					DateUtil.getCurrentDate());
+		}
+		return rowAffected;
 	}
 
 	@Override
@@ -200,6 +207,11 @@ public class GongDanServiceImpl implements GongDanService {
 		}
 
 		return isAllItemInserted ? 1 : 0;
+	}
+
+	@Override
+	public List<GongDan> getGongDanListByChePaiHao(String txtChePaiHao) {
+		return gongDanDao.getGongDanListByChePaiHao(txtChePaiHao);
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.chiefmech.arms.action.saleAfterManage;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import net.sf.json.JSONObject;
@@ -35,6 +37,7 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 	private String action;
 	private GongDan gongDan;
 	private String txtGongDanStatus;
+	private List<GongDan> gongDanLst;
 
 	@Action(value = "saleAfterGongDanZhiZuo", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
 	public String saleAfterGongDanZhiZuo() {
@@ -57,6 +60,14 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 	@Action(value = "saleAfterWeiXiuJieSuan", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
 	public String saleAfterWeiXiuJieSuan() {
 		initWeiXiuAction("WeiXiuJieSuan");
+		return INPUT;
+	}
+
+	@Action(value = "saleAfterWeiXiuLiShi", results = {@Result(name = "input", location = "saleAfter_weiXiuLiShiList.jsp")})
+	public String saleAfterWeiXiuLiShi() {
+		initWeiXiuAction("WeiXiuLiShi");
+		gongDanLst = gongDanService.getGongDanListByChePaiHao(gongDan
+				.getTxtChePaiHao());
 		return INPUT;
 	}
 
@@ -189,6 +200,10 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 
 	public void setTxtGongDanStatus(String txtGongDanStatus) {
 		this.txtGongDanStatus = txtGongDanStatus;
+	}
+
+	public List<GongDan> getGongDanLst() {
+		return gongDanLst;
 	}
 
 }

@@ -89,8 +89,10 @@
 					<s:if test="action=='WeiXiuJieSuan'">
 						<th field="txtWanJianRen" width="80">完检人</th>
 					</s:if>
-					<s:if test="(action=='WeiXiuPaiGong' || action=='WeiXiuWanJian') && (gongDan.txtGongDanStatus=='完工确认' || gongDan.txtGongDanStatus=='返修')">
-						<th field="txtWanJianStatus" width="180" formatter="formatWanJianStatus">完检状态</th>
+					<s:if
+						test="(action=='WeiXiuPaiGong' || action=='WeiXiuWanJian') && (gongDan.txtGongDanStatus=='完工确认' || gongDan.txtGongDanStatus=='返修')">
+						<th field="txtWanJianStatus" width="180"
+							formatter="formatWanJianStatus">完检状态</th>
 					</s:if>
 					<s:if
 						test="(gongDan.txtGongDanStatus=='工单制作' && action=='GongDanZhiZuo') || ((gongDan.txtGongDanStatus=='维修派工' || gongDan.txtGongDanStatus=='返修') && action=='WeiXiuPaiGong') || (gongDan.txtGongDanStatus=='完工确认' && action=='WeiXiuWanJian')">
@@ -311,41 +313,6 @@
 
 		function cancelrow(target) {
 			myTable.datagrid('cancelEdit', getTargetRowIndex(target));
-		}
-
-		function updateWanJianStatus(target, status) {
-			$.messager
-					.confirm(
-							'提示',
-							'确定要' + status + '吗?',
-							function(r) {
-								if (r) {
-									var editRow = myTable.datagrid(
-											'getEventTargetRow', target);
-									editRow.txtWanJianStatus = status;
-									$
-											.post(
-													"updateGongDanWeiXiuXiangMuWhenWanJian.action",
-													{
-														"easyUiJSonData" : JsonToString(editRow)
-													},
-													function(result) {
-														if (result.errorMsg) {
-															$.messager
-																	.alert(
-																			'出错啦',
-																			result.errorMsg);
-															myTable
-																	.datagrid(
-																			'cancelEdit',
-																			rowIndex);
-														} else {
-															myTable
-																	.datagrid('reload');
-														}
-													}, 'json');
-								}
-							});
 		}
 
 		//-------------------------Datagrid2------------------------------------

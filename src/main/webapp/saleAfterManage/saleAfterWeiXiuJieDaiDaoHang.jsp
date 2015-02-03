@@ -119,17 +119,28 @@
     <!--维修列表 start-->
      <table border="1" id="tbWeiXiuList" cellpadding="0" cellspacing="0" width="700px" style="border-collapse:collapse;border:1px solid gray;">
        
-        <tr>
-        <td>工单号</td><td>协议单号</td><td>车牌号</td><td>服务顾问</td><td>联系人</td>
-        <td></td><td>车系</td><td>单据状态</td><td>接车日期</td>
-        </tr>
-        
-        <tr onclick=saleAfterLiShiShow('c2c6e440-1f8a-424e-b484-91d55db56289','已出库')>
-        <td>JDD20150102013</td><td>SL0X15013546</td><td>粤B2G1E9</td>
-        <td >张先赞</td><td>吴月梅</td>
-        <td >13926586569[定保]</td><td>RX270</td>
-        <td >已出库</td><td>2015-1-2 12:21:33</td>
-        </tr>
+       		<tr>
+				<td>工单号</td>
+				<td>协议单号</td>
+				<td>车牌号</td>
+				<td>服务顾问</td>
+				<td>联系人</td>
+				<td>联系人手机</td>
+				<td>单据状态</td>
+				<td>接车日期</td>
+			</tr>
+			<s:iterator value="gongDanLst">
+			<tr onclick=saleAfterLiShiShow('<s:property value="txtGongDanId" />')>
+				<td><s:property value="txtBillNo" /></td>
+				<td><s:property value="txtXieYiBillNo" /></td>
+				<td><s:property value="txtChePaiHao" /></td>
+				<td><s:property value="txtFuWuUserId" /></td>
+				<td><s:property value="txtLianXiRenName" /></td>
+				<td><s:property value="txtLianXiRenMob" /></td>
+				<td><s:property value="txtGongDanStatus" /></td>
+				<td><s:property value="txtChuChangDate" /></td>
+			</tr>
+			</s:iterator>
         
        
 

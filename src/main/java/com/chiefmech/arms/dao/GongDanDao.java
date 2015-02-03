@@ -90,4 +90,11 @@ public interface GongDanDao {
 	public int updateGongDanStatus(@Param("txtGongDanId") String txtGongDanId,
 			@Param("txtGongDanStatus") String txtGongDanStatus);
 
+	@Update("update gongdan set txtChuChangDate=#{txtChuChangDate} where txtGongDanId=#{txtGongDanId}")
+	public int updateChuChangDate(@Param("txtGongDanId") String txtGongDanId,
+			@Param("txtChuChangDate") String txtChuChangDate);
+
+	@Select("select * from gongdan where txtChePaiHao=#{txtChePaiHao} order by txtChuChangDate")
+	public List<GongDan> getGongDanListByChePaiHao(String txtChePaiHao);
+
 }
