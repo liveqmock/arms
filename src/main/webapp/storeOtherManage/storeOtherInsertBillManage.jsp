@@ -31,12 +31,14 @@ td {
 }
 </style>
 <body>
-	<table border="0" style="width: 100%;">
-		<tr>
-			<td class="titlebg"><span>配件管理</span> <span class="titleSpan">(采购入库单管理)</span>
-			</td>
-		</tr>
-	</table>
+        <table border="0" style="width:100%;">
+        <tr><td class="titlebg"><span>配件管理</span>
+        <span class="titleSpan">(采购入库单管理)</span> 
+         </td><td align="right">
+              <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'"  onclick="openRuKuDan('');">新增入库单</a>
+		      <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'" onclick="toggleSearchPanel();">查询</a>
+          </td></tr>
+         </table> 
 	<form name="fmSearch" method="post" id="fmSearch">
 		<table id="searchPanel" class="searchPanel">
 			<tr>
@@ -53,8 +55,6 @@ td {
 				<td>供应商:</td>
 				<td><input name="txtSuppName" type="text" maxlength="20"
 					id="txtSuppName" style="width: 120px;" /></td>
-			</tr>
-			<tr>
 				<td>单据状态:</td>
 				<td><select name="ddlStatus" id="ddlStatus"
 					style="width: 100px;">
@@ -77,19 +77,22 @@ td {
 						   rownumbers:true,
 						   singleSelect:true,
 						   toolbar:'#toolbar',
-						   pagination:true">
+						   pagination:true,
+         				   onDblClickRow:showRuKuDan">
 		<thead>
 			<tr>
-				<th data-options="field:'txtBillNo',width:150">入库单号</th>
-				<th data-options="field:'txtRuKuDate',width:150">入库日期</th>
-				<th data-options="field:'txtSuppName',width:150">供应商名称</th>
-				<th data-options="field:'txtJingShouRen',width:80">经手人</th>
-				<th data-options="field:'ddlCangKu',width:150">所属仓库</th>
-				<th data-options="field:'txtFaPiaoHao',width:150">发票号</th>
-				<th data-options="field:'ddlRuKuSort',width:80">入库类型</th>
-				<th data-options="field:'ddlFaPiaoType',width:80">发票类型</th>
-				<th data-options="field:'txtRemarks',width:80">单据备注</th>
-				<th data-options="field:'ddlStatus',width:80">审核状态</th>
+				<th width="150" data-options="field:'txtBillNo'">单号</th>
+                <th width="80" data-options="field:'ddlRuKuSort'">出入标志</th>  
+				<th width="150" data-options="field:'txtRuKuDate'">入库日期</th>
+				<th width="150" data-options="field:'txtSuppName'">供应商名称</th>
+				<th width="80" data-options="field:'txtJingShouRen'">经手人</th>
+				<th width="150" data-options="field:'ddlCangKu'">所属仓库</th>
+				<th width="150" data-options="field:'txtFaPiaoHao'">发票号</th>
+				<th width="80" data-options="field:'ddlFaPiaoType'">发票类型</th>
+				<th width="80" data-options="field:'txtRemarks'">单据备注</th>
+				<th width="80" data-options="field:'txtStatus'">审核状态</th>
+				<th width="80" data-options="field:'txtShenHeRen'">审核人</th>
+				<th width="80" data-options="field:'txtShenHeShiJian'">审核时间</th>
 			</tr>
 		</thead>
 	</table>
@@ -108,6 +111,17 @@ td {
 			$("#fmSearch").form('clear');
 			doSearch();
 		}
+		
+		function showRuKuDan(index) {
+            var ruKuDanGuid = $('#mydg').datagrid('getRows')[index]['txtGuid'];
+			openRuKuDan(ruKuDanGuid);
+		}
+		
+		 //新增入库单
+        function openRuKuDan(ruKuDanGuid) {
+            z = window.open('rukudanDetail.action?ruKuDanGuid='+ ruKuDanGuid + '&d=' + new Date(), '入库单', 'height=600,width=990,top=35,left=60,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+            z.focus();
+        }
 	</script>
 </body>
 </html>

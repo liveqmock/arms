@@ -53,10 +53,9 @@ td {
 						   pagination:true">
 		<thead>
 			<tr>
-				<th data-options="field:'txtStoreBianHao',width:80">仓库编号</th>
-				<th data-options="field:'txtStoreName',width:80">仓库名</th>
-				<th data-options="field:'ddlStoreSort',width:80">仓库类型</th>
-				<th data-options="field:'ddlStopFlag',width:80">启用标志</th>
+				<th width="80" data-options="field:'txtStoreBianHao'">仓库序号</th>
+				<th width="150" data-options="field:'txtStoreName'">仓库名</th>
+				<th width="150" data-options="field:'txtRemarks'">备注</th>
 				<th field="action" width="100" align="center"
 					formatter="formatAction">操作</th>
 			</tr>
@@ -73,7 +72,7 @@ td {
 		<form name="fm" method="post" id="fm">
 			<table border="0">
 				<tr>
-					<td align="right"><span class="requireSpan">*&nbsp;</span>仓库编号:</td>
+					<td align="right"><span class="requireSpan">*&nbsp;</span>仓库序号:</td>
 					<td><input name="txtStoreBianHao" type="text" maxlength="7"
 						class="easyui-validatebox"
 						data-options="required:true,missingMessage:'仓库编号为必填项'"
@@ -85,24 +84,6 @@ td {
 						class="easyui-validatebox"
 						data-options="required:true,missingMessage:'仓库名称为必填项'"
 						id="txtStoreName" style="width: 250px;" /></td>
-				</tr>
-				<tr>
-					<td align="right"><span class="requireSpan">*&nbsp;</span>仓库类别:</td>
-					<td><select name="ddlStoreSort" id="ddlStoreSort"
-						class="easyui-validatebox"
-						data-options="required:true,missingMessage:'仓库类别为必填项'">
-							<option value="销售仓库">销售仓库</option>
-							<option value="售后仓库">售后仓库</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td align="right"><span class="requireSpan">*&nbsp;</span>启用标志:</td>
-					<td><select name="ddlStopFlag" id="ddlStopFlag"
-						class="easyui-validatebox"
-						data-options="required:true,missingMessage:'启用标志为必填项'">
-							<option value="启用">启用</option>
-							<option value="停用">停用</option>
-					</select></td>
 				</tr>
 				<tr>
 					<td align="right">备注:</td>

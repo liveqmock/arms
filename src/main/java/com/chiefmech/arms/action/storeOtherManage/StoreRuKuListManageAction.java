@@ -17,24 +17,25 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/storeOtherManage")
 @Controller()
 @Scope("prototype")
-public class StoreOtherInsertBillManageAction extends BaseActionSupport
-implements ModelDriven<RuKuDanSearchBean>{
-	
+public class StoreRuKuListManageAction extends BaseActionSupport
+		implements
+			ModelDriven<RuKuDanSearchBean> {
+
 	@Resource()
-	private RuKuDanService ruKuBillService;
-	
+	private RuKuDanService ruKuDanService;
+
 	private RuKuDanSearchBean query = new RuKuDanSearchBean();
-	
-	@Action(value = "storeOtherInsertBillManage", results = { @Result(name = "input", location = "storeOtherInsertBillManage.jsp") })
+
+	@Action(value = "storeOtherInsertBillManage", results = {@Result(name = "input", location = "storeOtherInsertBillManage.jsp")})
 	public String storeOtherInsertBillManage() {
 		return INPUT;
 	}
 
 	@Action(value = "queryRuKuDan")
 	public void queryRuKuDan() {
-		this.transmitJson(ruKuBillService.getRuKuDanEasyUiJSon(query));
+		this.transmitJson(ruKuDanService.getRuKuDanEasyUiJSon(query));
 	}
-	
+
 	@Override
 	public RuKuDanSearchBean getModel() {
 		return query;

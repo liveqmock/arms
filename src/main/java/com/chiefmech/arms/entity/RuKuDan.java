@@ -14,10 +14,6 @@ public class RuKuDan {
 	 */
 	private String txtRuKuDate;
 	/**
-	 * 供应商ID
-	 */
-	private String txtSuppId;
-	/**
 	 * 供应商名称
 	 */
 	private String txtSuppName;
@@ -48,7 +44,12 @@ public class RuKuDan {
 	/**
 	 * 审核状态
 	 */
-	private String ddlStatus;
+	private String txtStatus;
+
+	private String txtShenHeRen;
+
+	private String txtShenHeShiJian;
+
 	public String getTxtGuid() {
 		return txtGuid;
 	}
@@ -66,12 +67,6 @@ public class RuKuDan {
 	}
 	public void setTxtRuKuDate(String txtRuKuDate) {
 		this.txtRuKuDate = txtRuKuDate;
-	}
-	public String getTxtSuppId() {
-		return txtSuppId;
-	}
-	public void setTxtSuppId(String txtSuppId) {
-		this.txtSuppId = txtSuppId;
 	}
 	public String getTxtSuppName() {
 		return txtSuppName;
@@ -115,10 +110,22 @@ public class RuKuDan {
 	public void setTxtRemarks(String txtRemarks) {
 		this.txtRemarks = txtRemarks;
 	}
-	public String getDdlStatus() {
-		return ddlStatus;
+	public String getTxtStatus() {
+		return txtStatus;
 	}
-	public void setDdlStatus(String ddlStatus) {
-		this.ddlStatus = ddlStatus;
+	public void setTxtStatus(String txtStatus) {
+		this.txtStatus = txtStatus;
+	}
+	public String getTxtShenHeRen() {
+		return txtShenHeRen;
+	}
+	public void setTxtShenHeRen(String txtShenHeRen) {
+		this.txtShenHeRen = txtShenHeRen;
+	}
+	public String getTxtShenHeShiJian() {
+		return txtShenHeShiJian;
+	}
+	public void setTxtShenHeShiJian(String txtShenHeShiJian) {
+		this.txtShenHeShiJian = txtShenHeShiJian;
 	}
 }

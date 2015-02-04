@@ -14,14 +14,6 @@ public class Store {
 	 */
 	private String txtStoreName;
 	/**
-	 * 仓库类别
-	 */
-	private String ddlStoreSort;
-	/**
-	 * 启用标志
-	 */
-	private String ddlStopFlag;
-	/**
 	 * 备注
 	 */
 	private String txtRemarks;
@@ -48,22 +40,6 @@ public class Store {
 
 	public void setTxtStoreName(String txtStoreName) {
 		this.txtStoreName = txtStoreName;
-	}
-
-	public String getDdlStoreSort() {
-		return ddlStoreSort;
-	}
-
-	public void setDdlStoreSort(String ddlStoreSort) {
-		this.ddlStoreSort = ddlStoreSort;
-	}
-
-	public String getDdlStopFlag() {
-		return ddlStopFlag;
-	}
-
-	public void setDdlStopFlag(String ddlStopFlag) {
-		this.ddlStopFlag = ddlStopFlag;
 	}
 
 	public String getTxtRemarks() {

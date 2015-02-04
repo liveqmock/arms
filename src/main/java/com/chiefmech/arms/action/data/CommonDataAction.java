@@ -3,6 +3,10 @@ package com.chiefmech.arms.action.data;
 import java.io.File;
 import java.io.IOException;
 
+import javax.annotation.Resource;
+
+import net.sf.json.JSONArray;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -11,6 +15,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.action.BaseActionSupport;
+import com.chiefmech.arms.service.StoreService;
 
 @SuppressWarnings("serial")
 @ParentPackage("custom-default")
@@ -18,6 +23,9 @@ import com.chiefmech.arms.action.BaseActionSupport;
 @Controller()
 @Scope("prototype")
 public class CommonDataAction extends BaseActionSupport {
+
+	@Resource()
+	private StoreService storeService;
 
 	@Action(value = "weiXiuGongDuanOption")
 	public void weiXiuGongDuan() {
@@ -37,6 +45,18 @@ public class CommonDataAction extends BaseActionSupport {
 	@Action(value = "weiXiuZhuXiuRenOption")
 	public void weiXiuZhuXiuRen() {
 		this.transmitJson(getJsonData("data/weiXiuZhuXiuRen.json"));
+	}
+
+	@Action(value = "peiJianChangKuOption")
+	public void peiJianChangKu() {
+		this.transmitJson(JSONArray.fromObject(storeService.getAllOptionBean())
+				.toString());
+		// this.transmitJson(getJsonData("data/peiJianChangKu.json"));
+	}
+
+	@Action(value = "gongYingShangOption")
+	public void gongYingShang() {
+		this.transmitJson(getJsonData("data/gongYingShang.json"));
 	}
 
 	private String getJsonData(String path) {

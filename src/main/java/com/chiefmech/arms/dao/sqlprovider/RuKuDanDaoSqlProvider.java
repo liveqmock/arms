@@ -10,7 +10,7 @@ public class RuKuDanDaoSqlProvider {
 	public String getRuKuDanList(Map<String, Object> param) {
 		SearchBean query = (RuKuDanSearchBean) param.get("item");
 
-		return String.format("select * from rukudan %s %s",
+		return String.format("select * from rukudan %s order by txtRuKuDate desc %s",
 				query.getWhereSql(), query.getLimitSql());
 	}
 

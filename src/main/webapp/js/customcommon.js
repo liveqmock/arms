@@ -146,6 +146,8 @@ function toggleSearchPanel() {
 	$("#searchPanel").toggle();
 }
 
+
+//-----------维修工单管理--------------
 function updateGongDanStatus(saleAfterWeiXiuGuid, newGongDanStatus){
 	$.messager.confirm('提示', newGongDanStatus+'后本页面信息不能被修改，确定要'+newGongDanStatus+'吗?', function(r) {
 		if (r) {
@@ -180,6 +182,59 @@ function updateWanJianStatus(target, status) {
 						myTable.datagrid('reload');
 					}
 				}, 'json');
+		}
+	});
+}
+
+//-----------入库单管理--------------
+function saveRuKuDan() {
+	$("#form1").form('submit',{
+		url : "saveRuKuDan.action",
+		success : function(result) {
+			var result = eval('(' + result + ')');
+			if (result.statusCode == "success") {
+				$.messager
+						.alert(
+								'提示',
+								'保存信息成功！',
+								'info',
+								function() {
+									refreshPage(result.info);
+								});
+			} else if (result.statusCode == "failed") {
+				$.messager.alert('提示', '保存信息失败！');
+			}
+		}
+	});
+}
+
+function updateRuKuDanStatus(ruKuDanGuid, newStatus){
+	$.messager.confirm('提示', '确定要'+newStatus+'吗?', function(r) {
+		if (r) {
+			$.post('updateRuKuDanStatus.action', {
+				"txtGuid" : ruKuDanGuid,
+				"txtStatus" : newStatus
+			}, function(result) {
+				if (result.errorMsg) {
+					$.messager.alert('出错啦', result.errorMsg);
+				} else {
+					refreshPage(ruKuDanGuid);
+				}
+			}, 'json');
+		}
+	});
+}
+
+function deleteRuKuDan() {
+	$.messager.confirm('提示', "本操作将删除入库单及其明细，您确定要删除吗？", function(r) {
+		if (r) {
+			$.post('deleteRuKuDan.action', {
+				"ruKuDanGuid" : ruKuDanGuid
+			}, function(result) {
+				if (result.errorMsg) {
+					$.messager.alert('出错啦', result.errorMsg);
+				}
+			}, 'json');
 		}
 	});
 }
