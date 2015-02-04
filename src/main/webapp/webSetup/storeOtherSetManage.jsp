@@ -53,7 +53,7 @@ td {
 						   pagination:true">
 		<thead>
 			<tr>
-				<th width="80" data-options="field:'txtStoreBianHao'">仓库序号</th>
+				<th width="80" data-options="field:'txtStoreBianHao'">仓库编号</th>
 				<th width="150" data-options="field:'txtStoreName'">仓库名</th>
 				<th width="150" data-options="field:'txtRemarks'">备注</th>
 				<th field="action" width="100" align="center"
@@ -72,7 +72,7 @@ td {
 		<form name="fm" method="post" id="fm">
 			<table border="0">
 				<tr>
-					<td align="right"><span class="requireSpan">*&nbsp;</span>仓库序号:</td>
+					<td align="right"><span class="requireSpan">*&nbsp;</span>仓库编号:</td>
 					<td><input name="txtStoreBianHao" type="text" maxlength="7"
 						class="easyui-validatebox"
 						data-options="required:true,missingMessage:'仓库编号为必填项'"
@@ -87,8 +87,9 @@ td {
 				</tr>
 				<tr>
 					<td align="right">备注:</td>
-					<td><textarea name="txtRemarks" rows="2" cols="20"
-							id="txtRemarks" style="height: 60px; width: 250px;"></textarea></td>
+					<td><input class="easyui-textbox"
+						name="txtRemarks" type="text" maxlength="60" id="txtRemarks"
+						style="width: 250px;" /></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><br /> <a onclick="saveItem()"

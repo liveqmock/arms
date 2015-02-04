@@ -2,6 +2,7 @@ package com.chiefmech.arms.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.chiefmech.arms.dao.sqlprovider.RuKuDanDaoSqlProvider;
 import com.chiefmech.arms.entity.RuKuDan;
+import com.chiefmech.arms.entity.RuKuDanWuLiao;
 import com.chiefmech.arms.entity.query.RuKuDanSearchBean;
 
 @Repository("ruKuDanDao")
@@ -36,4 +38,16 @@ public interface RuKuDanDao {
 
 	@Update("update rukudan set txtStatus=#{txtStatus},txtShenHeRen=#{txtShenHeRen},txtShenHeShiJian=#{txtShenHeShiJian} where txtGuid=#{txtGuid}")
 	public int updateRuKuDanStatus(RuKuDan item);
+
+	@Select("select * from rukudanwuliao where txtRuKuDanGuid=#{txtRuKuDanGuid}")
+	public List<RuKuDanWuLiao> getRuKuDanWuLiaoList(String txtRuKuDanGuid);
+
+	@Insert("insert into rukudanwuliao(txtWuLiaoGuid,txtRuKuDanGuid,txtWuLiaoCode,txtWuLiaoName,txtQty,txtPrice) values(#{txtWuLiaoGuid},#{txtRuKuDanGuid},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtPrice})")
+	public int insertRuKuDanWuLiao(RuKuDanWuLiao item);
+
+	@Update("update rukudanwuliao set txtRuKuDanGuid=#{txtRuKuDanGuid},txtWuLiaoCode=#{txtWuLiaoCode},txtWuLiaoName=#{txtWuLiaoName},txtQty=#{txtQty},txtPrice=#{txtPrice} where txtWuLiaoGuid=#{txtWuLiaoGuid}")
+	public int updateRuKuDanWuLiao(RuKuDanWuLiao item);
+
+	@Delete("delete from rukudanwuliao where txtWuLiaoGuid=#{txtWuLiaoGuid}")
+	public int deleteRuKuDanWuLiao(String txtWuLiaoGuid);
 }

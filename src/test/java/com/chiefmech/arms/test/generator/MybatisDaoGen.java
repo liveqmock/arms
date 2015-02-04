@@ -4,13 +4,14 @@ import java.lang.reflect.Field;
 
 import junit.framework.TestCase;
 
-import com.chiefmech.arms.entity.RuKuDan;
+import com.chiefmech.arms.entity.RuKuDanWuLiao;
 
 public class MybatisDaoGen extends TestCase {
 
 	public static void main(String[] args) {
 
-		Object[][] beans = {{"rukudan", "txtGuid", RuKuDan.class}};
+		Object[][] beans = { { "rukudanwuliao", "txtWuLiaoGuid",
+				RuKuDanWuLiao.class } };
 
 		StringBuffer sb = new StringBuffer();
 		String fieldInfo = "";

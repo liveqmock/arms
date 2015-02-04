@@ -57,12 +57,10 @@ td {
 						   pagination:true">
 		<thead>
 			<tr>
-				<th data-options="field:'txtSuppBianHao',width:120" sortable="true">供应商编号</th>
-				<th data-options="field:'txtSuppName',width:170">供应商名称</th>
-				<th data-options="field:'txtSuppTel1',width:120">电话1</th>
-				<th data-options="field:'txtSuppWangZhi',width:120">网址</th>
-				<th data-options="field:'txtSuppDiQu',width:120">地区</th>
-				<th field="action" width="100" align="center"
+				<th width="100" data-options="field:'txtSuppBianHao'" sortable="true">供应商编号</th>
+				<th width="200" data-options="field:'txtSuppName'">供应商名称</th>
+				<th width="200" data-options="field:'txtRemarks'">备注</th>
+				<th width="100" field="action" align="center"
 					formatter="formatAction">操作</th>
 			</tr>
 		</thead>
@@ -74,83 +72,30 @@ td {
 			iconCls="icon-search" plain="true" onclick="toggleSearchPanel()">查询</a>
 	</div>
 	<div id="mydlg" class="easyui-dialog" closed="true"
-		style="width: 788px; height: 500px; padding: 10px 20px;">
+		style="width: 450px; height: 300px; padding: 10px 20px;">
 		<form name="fm" method="post" id="fm">
 			<table border="0">
 				<tr>
 					<td><span class="requireSpan">*&nbsp;</span>供应商编号:</td>
-					<td><input class="easyui-validatebox"
-						data-options="required:true,missingMessage:'供应商编号为必填项'"
+					<td><input class="easyui-textbox"
+						data-options="required:true"
 						name="txtSuppBianHao" type="text" maxlength="8"
-						id="txtSuppBianHao" /></td>
+						id="txtSuppBianHao" style="width: 150px;"/></td>
+				</tr>
+				<tr>
 					<td><span class="requireSpan">*&nbsp;</span>供应商名称:</td>
-					<td colspan="3"><input class="easyui-validatebox"
-						data-options="required:true,missingMessage:'供应商名称为必填项'"
+					<td><input class="easyui-textbox"
+						data-options="required:true"
 						name="txtSuppName" type="text" maxlength="60" id="txtSuppName"
-						style="width: 380px;" /></td>
+						style="width: 250px;" /></td>
 				</tr>
 				<tr>
-					<td>邮政编码:</td>
-					<td><input name="txtSuppYouBian" type="text" maxlength="8"
-						id="txtSuppYouBian" /></td>
-					<td>通信地址:</td>
-					<td colspan="3"><input name="txtSuppDiZhi"
-						class="easyui-validatebox"
-						data-options="required:true,missingMessage:'供应商通信地址为必填项'"
-						type="text" maxlength="100" id="txtSuppDiZhi"
-						style="width: 380px;" /></td>
-				</tr>
+					<td align="right">备注:</td>
+					<td><input class="easyui-textbox"
+						name="txtRemarks" type="text" maxlength="60" id="txtRemarks"
+						style="width: 250px;" /></td>
 				<tr>
-					<td>网络地址:</td>
-					<td><input name="txtSuppWangZhi" type="text" maxlength="40"
-						id="txtSuppWangZhi" /></td>
-					<td>电子邮件:</td>
-					<td><input name="txtSuppEmail" type="text" maxlength="60"
-						id="txtSuppEmail" /></td>
-					<td>传真:</td>
-					<td><input name="txtSuppChuanZhen" type="text" maxlength="20"
-						id="txtSuppChuanZhen" /></td>
-				</tr>
-				<tr>
-					<td>电话1:</td>
-					<td><input class="easyui-validatebox"
-						data-options="required:true,missingMessage:'供应商电话为必填项'"
-						name="txtSuppTel1" type="text" maxlength="20" id="txtSuppTel1" />
-					</td>
-					<td>电话2:</td>
-					<td><input name="txtSuppTel2" type="text" maxlength="20"
-						id="txtSuppTel2" /></td>
-				</tr>
-				<tr>
-					<td>地区:</td>
-					<td><input name="txtSuppDiQu" type="text" maxlength="20"
-						id="txtSuppDiQu" /></td>
-				</tr>
-				<tr>
-					<td colspan="6"><hr /></td>
-				</tr>
-				<tr>
-					<td>姓名:</td>
-					<td><input class="easyui-validatebox"
-						data-options="required:true,missingMessage:'联系人姓名为必填项'"
-						name="txtLXingMing" type="text" maxlength="20" id="txtLXingMing" />
-					</td>
-				</tr>
-				<tr>
-					<td>称呼:</td>
-					<td><input class="easyui-validatebox"
-						data-options="required:true,missingMessage:'联系人称呼为必填项'"
-						name="txtLChengHu" type="text" maxlength="20" id="txtLChengHu" />
-					</td>
-				</tr>
-				<tr>
-					<td>手机:</td>
-					<td><input class="easyui-validatebox"
-						data-options="required:true,missingMessage:'联系人手机为必填项'"
-						name="txtLShouJi" type="text" id="txtLShouJi" /></td>
-				</tr>
-				<tr>
-					<td colspan="10" align="center"><br /> <a
+					<td colspan="8" align="center"><br /> <a
 						onclick="saveItem()" id="btnSave" class="easyui-linkbutton"
 						href="javascript:void(0)">保存</a>&nbsp;&nbsp;&nbsp;<a
 						onclick="javascript:$('#mydlg').dialog('close')" id="btnSave"

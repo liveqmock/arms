@@ -1,6 +1,7 @@
 package com.chiefmech.arms.service;
 
 import com.chiefmech.arms.entity.RuKuDan;
+import com.chiefmech.arms.entity.RuKuDanWuLiao;
 import com.chiefmech.arms.entity.query.RuKuDanSearchBean;
 
 public interface RuKuDanService {
@@ -16,5 +17,13 @@ public interface RuKuDanService {
 	public RuKuDan findRuKuDanByGuid(String ruKuDanGuid);
 
 	public int updateRuKuDanStatus(RuKuDan ruKuDan);
+
+	public String getRuKuDanWuLiaoEasyUiJSon(String ruKuDanGuid);
+
+	public int updateRuKuDanWuLiao(RuKuDanWuLiao ruKuDanWuLiao);
+
+	public int insertRuKuDanWuLiao(RuKuDanWuLiao ruKuDanWuLiao);
+
+	public int deleteRuKuDanWuLiao(String txtWuLiaoGuid);
 
 }

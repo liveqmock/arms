@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.chiefmech.arms.dao.SupplierDao;
 import com.chiefmech.arms.entity.Supplier;
+import com.chiefmech.arms.entity.option.OptionBean;
 import com.chiefmech.arms.service.SupplierService;
 
 @Service("supplierService")
@@ -41,6 +42,11 @@ public class SupplierServiceImpl implements SupplierService {
 		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
 				lstJson);
 		return jsonStr;
+	}
+
+	@Override
+	public List<OptionBean> getAllOptionBean() {
+		return supplierDao.getAllOptionBean();
 	}
 
 }

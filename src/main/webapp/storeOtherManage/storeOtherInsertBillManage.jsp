@@ -118,9 +118,11 @@ td {
 		}
 		
 		 //新增入库单
-        function openRuKuDan(ruKuDanGuid) {
-            z = window.open('rukudanDetail.action?ruKuDanGuid='+ ruKuDanGuid + '&d=' + new Date(), '入库单', 'height=600,width=990,top=35,left=60,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
-            z.focus();
+        function openRuKuDan(ruKuDanGuid) {			
+			var sURL = 'rukudanDetail.action?ruKuDanGuid='+ ruKuDanGuid + '&d=' + new Date()
+			var sFeatures = "dialogWidth:960px;dialogHeight:500px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
+			window.showModalDialog(sURL, window, sFeatures);
+			$('#mydg').datagrid('reload');
         }
 	</script>
 </body>

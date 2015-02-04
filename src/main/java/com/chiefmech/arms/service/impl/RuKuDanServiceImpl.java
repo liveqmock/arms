@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.chiefmech.arms.dao.RuKuDanDao;
 import com.chiefmech.arms.entity.RuKuDan;
+import com.chiefmech.arms.entity.RuKuDanWuLiao;
 import com.chiefmech.arms.entity.query.RuKuDanSearchBean;
 import com.chiefmech.arms.service.RuKuDanService;
 
@@ -53,6 +54,33 @@ public class RuKuDanServiceImpl implements RuKuDanService {
 	@Override
 	public int updateRuKuDanStatus(RuKuDan ruKuDan) {
 		return ruKuDanDao.updateRuKuDanStatus(ruKuDan);
+	}
+
+	@Override
+	public String getRuKuDanWuLiaoEasyUiJSon(String txtRuKuDanGuid) {
+		List<RuKuDanWuLiao> lst = ruKuDanDao
+				.getRuKuDanWuLiaoList(txtRuKuDanGuid);
+		int total = (lst == null) ? 0 : lst.size();
+
+		String lstJson = JSONArray.fromObject(lst).toString();
+		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
+				lstJson);
+		return jsonStr;
+	}
+
+	@Override
+	public int updateRuKuDanWuLiao(RuKuDanWuLiao ruKuDanWuLiao) {
+		return ruKuDanDao.updateRuKuDanWuLiao(ruKuDanWuLiao);
+	}
+
+	@Override
+	public int insertRuKuDanWuLiao(RuKuDanWuLiao ruKuDanWuLiao) {
+		return ruKuDanDao.insertRuKuDanWuLiao(ruKuDanWuLiao);
+	}
+
+	@Override
+	public int deleteRuKuDanWuLiao(String txtWuLiaoGuid) {
+		return ruKuDanDao.deleteRuKuDanWuLiao(txtWuLiaoGuid);
 	}
 
 }

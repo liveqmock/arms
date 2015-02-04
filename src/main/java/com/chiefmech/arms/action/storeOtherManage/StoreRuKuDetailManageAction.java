@@ -16,6 +16,7 @@ import com.chiefmech.arms.action.BaseActionSupport;
 import com.chiefmech.arms.common.util.DateUtil;
 import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.entity.RuKuDan;
+import com.chiefmech.arms.entity.RuKuDanWuLiao;
 import com.chiefmech.arms.service.RuKuDanService;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -24,17 +25,18 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/storeOtherManage")
 @Controller()
 @Scope("prototype")
-public class StoreRuKuDetailManageAction extends BaseActionSupport
-		implements
-			ModelDriven<RuKuDan> {
+public class StoreRuKuDetailManageAction extends BaseActionSupport implements
+		ModelDriven<RuKuDan> {
 
 	@Resource()
 	private RuKuDanService ruKuDanService;
 
 	private RuKuDan ruKuDan = new RuKuDan();
 	private String ruKuDanGuid;
+	private String txtWuLiaoGuid;
+	private String rowJsonData;
 
-	@Action(value = "rukudanDetail", results = {@Result(name = "input", location = "rukudanDetail.jsp")})
+	@Action(value = "rukudanDetail", results = { @Result(name = "input", location = "rukudanDetail.jsp") })
 	public String rukudanDetail() {
 
 		if (StringUtils.isBlank(ruKuDanGuid)) {
@@ -58,8 +60,7 @@ public class StoreRuKuDetailManageAction extends BaseActionSupport
 		int rowsAffected;
 		if (StringUtils.isBlank(ruKuDan.getTxtGuid())) {
 			ruKuDan.setTxtGuid(IDGen.getUUID());
-			String prefix = ruKuDan.getDdlRuKuSort().equals("入库单")
-					? "RKD"
+			String prefix = ruKuDan.getDdlRuKuSort().equals("入库单") ? "RKD"
 					: "TKD";
 			ruKuDan.setTxtBillNo(prefix + ruKuDanService.getNewBillNo());
 			rowsAffected = ruKuDanService.insertRuKuDan(ruKuDan);
@@ -88,12 +89,51 @@ public class StoreRuKuDetailManageAction extends BaseActionSupport
 		this.transmitJson(jsonStr);
 	}
 
+	@Action(value = "queryRuKuDanWuLiao")
+	public void queryRuKuDanWuLiao() {
+		this.transmitJson(ruKuDanService
+				.getRuKuDanWuLiaoEasyUiJSon(ruKuDanGuid));
+	}
+
+	@Action(value = "saveRuKuDanWuLiao")
+	public void saveRuKuDanWuLiao() {
+		JSONObject jsonObject = JSONObject.fromObject(rowJsonData);
+		RuKuDanWuLiao ruKuDanWuLiao = (RuKuDanWuLiao) JSONObject.toBean(
+				jsonObject, RuKuDanWuLiao.class);
+
+		int rowsAffected;
+		String action;
+		if (StringUtils.isBlank(ruKuDanWuLiao.getTxtWuLiaoGuid())) {
+			ruKuDanWuLiao.setTxtWuLiaoGuid(IDGen.getUUID());
+			rowsAffected = ruKuDanService.insertRuKuDanWuLiao(ruKuDanWuLiao);
+			action = "插入";
+		} else {
+			rowsAffected = ruKuDanService.updateRuKuDanWuLiao(ruKuDanWuLiao);
+			action = "更新";
+		}
+
+		this.transmitJson(getCrudJsonResponse(rowsAffected, action));
+
+	}
+
+	@Action(value = "deleteRuKuDanWuLiao")
+	public void deleteRuKuDanWuLiao() {
+		int rowAffected = ruKuDanService.deleteRuKuDanWuLiao(txtWuLiaoGuid);
+		String jsonStr = getCrudJsonResponse(rowAffected, "删除");
+
+		this.transmitJson(jsonStr);
+	}
+
 	public String getRuKuDanGuid() {
 		return ruKuDanGuid;
 	}
 
 	public void setRuKuDanGuid(String ruKuDanGuid) {
 		this.ruKuDanGuid = ruKuDanGuid;
+	}
+
+	public void setTxtWuLiaoGuid(String txtWuLiaoGuid) {
+		this.txtWuLiaoGuid = txtWuLiaoGuid;
 	}
 
 	public RuKuDan getRuKuDan() {
@@ -107,6 +147,14 @@ public class StoreRuKuDetailManageAction extends BaseActionSupport
 
 	public String getJsonData() {
 		return JSONObject.fromObject(ruKuDan).toString();
+	}
+
+	public String getRowJsonData() {
+		return rowJsonData;
+	}
+
+	public void setRowJsonData(String rowJsonData) {
+		this.rowJsonData = rowJsonData;
 	}
 
 }

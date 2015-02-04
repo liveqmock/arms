@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.action.BaseActionSupport;
 import com.chiefmech.arms.service.StoreService;
+import com.chiefmech.arms.service.SupplierService;
 
 @SuppressWarnings("serial")
 @ParentPackage("custom-default")
@@ -26,6 +27,8 @@ public class CommonDataAction extends BaseActionSupport {
 
 	@Resource()
 	private StoreService storeService;
+	@Resource()
+	private SupplierService supplierService;
 
 	@Action(value = "weiXiuGongDuanOption")
 	public void weiXiuGongDuan() {
@@ -56,7 +59,9 @@ public class CommonDataAction extends BaseActionSupport {
 
 	@Action(value = "gongYingShangOption")
 	public void gongYingShang() {
-		this.transmitJson(getJsonData("data/gongYingShang.json"));
+		this.transmitJson(JSONArray.fromObject(
+				supplierService.getAllOptionBean()).toString());
+		// this.transmitJson(getJsonData("data/gongYingShang.json"));
 	}
 
 	private String getJsonData(String path) {

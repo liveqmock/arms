@@ -36,7 +36,7 @@ public interface StoreDao {
 	@Select("select * from store")
 	public List<Store> selectItem();
 
-	@Select("select txtStoreName text, txtStoreName value from store")
+	@Select("select txtStoreName name, txtStoreName code from store")
 	public List<OptionBean> getAllOptionBean();
 
 }
