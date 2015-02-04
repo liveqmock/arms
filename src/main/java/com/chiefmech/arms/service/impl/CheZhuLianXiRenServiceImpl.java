@@ -56,4 +56,9 @@ public class CheZhuLianXiRenServiceImpl implements CheZhuLianXiRenService {
 		return lianXiRenDao.findVKeHuCheLiangByVehicleId(txtVehicleId);
 	}
 
+	@Override
+	public List<CheZhuLianXiRen> selectItem() {
+		return lianXiRenDao.selectItem();
+	}
+
 }

@@ -5,6 +5,9 @@ import java.lang.reflect.Field;
 import junit.framework.TestCase;
 
 import com.chiefmech.arms.entity.CarBrand;
+import com.chiefmech.arms.entity.CheZhuLianXiRen;
+import com.chiefmech.arms.entity.CustomVehicle;
+import com.chiefmech.arms.entity.GongDan;
 import com.chiefmech.arms.entity.Maill;
 import com.chiefmech.arms.entity.Store;
 import com.chiefmech.arms.entity.Supplier;
@@ -19,7 +22,7 @@ public class MybatisDaoGen extends TestCase {
 
 	public static void main(String[] args) {
 
-		Object[][] beans = {{"maill", "maillId", Maill.class}};
+		Object[][] beans = {{"customvehicle", "txtVehicleId", CustomVehicle.class}};
 
 		StringBuffer sb = new StringBuffer();
 		String fieldInfo = "";

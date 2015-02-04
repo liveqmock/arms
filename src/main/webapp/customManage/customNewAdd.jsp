@@ -6,27 +6,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head id="Head1">
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <title>客户新增</title>
 <link rel="stylesheet" type="text/css"
-	href="../style/themes/default/easyui.css?v=20130306" />
+	href="../style/themes/default/easyui.css" />
 <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
 <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="../js/frame/underscore-min.js" type="text/javascript"></script>
-<script src="../js/birthDate.js?a=123" type="text/javascript"></script>
-<script src="../js/common.js?a=2014081611" type="text/javascript"></script>
+<link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
+<script src="../js/birthDate.js" type="text/javascript"></script>
+<script src="../js/common.js" type="text/javascript"></script>
 <script src="../js/frame/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
 <script src="../js/customcommon.js" type="text/javascript"></script>
+<link href="../style/common.css" rel="stylesheet" type="text/css" />
 <script src="../js/geo.js" type="text/javascript"></script>
 
 </head>
 
 <style type="text/css">
-td, div {
-	font-size: 12px;
-}
-
 .tabs {
 	font-family: Verdana, Arial, sans-serif;
 	font-size: 12px;
@@ -94,45 +93,37 @@ td, div {
 	color: #555555;
 }
 
-input {
-	border: none;
-	width: 125px;
-}
-
 td {
-	height: 30px;
-	border: 1px solid #9a9a9a;
-}
-
-.requireSpan {
-	color: Blue;
+	height: 25px;
+	white-space: nowrap;
 }
 </style>
 
 
 <body>
-	<div style="width: 900px;">
+	<div style="width: 900px; margin: auto;">
 		<div id="tabs" class="tabs" style="width: 900px;">
 			<ul>
 				<li id="a"><a href="#tabs-1" onclick="show(1)">车主信息</a></li>
-				<li id="b"><a href="#tabs-2" onclick="show(2)">联系人信息</a></li>
+				<!-- <li id="b"><a href="#tabs-2" onclick="show(2)">联系人信息</a></li> -->
 				<li id="c"><a href="#tabs-3" onclick="show(3)">车辆信息</a></li>
 			</ul>
 		</div>
-
 		<form name="form1" method="post" id="form1">
 			<input name="txtCustId" type="hidden" value="" id="txtCustId" />
 			<!--车主信息 start-->
-			<div id="aDiv" style="margin: 2 0 0 5; display: block;">
-				<br /> <span
-					style="font-weight: bold; font-size: 12px; color: Red;"></span>
-				<table border="0" cellpadding="0" cellspacing="0" width="900px"
-					style="border-collapse: collapse; border: 1px solid #9a9a9a">
+			<div id="aDiv"
+				style="margin-left: 5px; margin: 2 0 0 5; display: block;">
+
+				<table cellpadding="0" cellspacing="0" width="900px">
+					<tr>
+						<td>车主信息</td>
+						<td colspan="7"></td>
+					</tr>
 					<tr>
 						<td onclick="lianXiRenToCheZhu()">客户类型：</td>
 						<td style="width: 125px;"><select name="ddlCustSort"
-							id="ddlCustSort"
-							style="border: none; width: 100%; background-color: Transparent;">
+							id="ddlCustSort" class="easyui-combobox" style="width: 100%;">
 								<option selected="selected" value="普通客户">普通客户</option>
 								<option value="普通客户">普通客户</option>
 								<option value="内部员工">内部员工</option>
@@ -140,89 +131,32 @@ td {
 								<option value="延保客户">延保客户</option>
 
 						</select></td>
-						<td><span class="requireSpan">*</span>车主名：</td>
-						<td><input name="txtCheZhuName" type="text" maxlength="100"
-							id="txtCheZhuName" /></td>
-						<td><select name="ddlCheZhuTelSort" id="ddlCheZhuTelSort"
-							style="border: none; width: 100%;">
-								<option value="车主电话">车主电话</option>
-								<option selected="selected" value="车主手机">车主手机</option>
-
-						</select></td>
-						<td><span class="requireSpan">*</span><input
-							name="txtCheZhuTel" type="text" maxlength="12" id="txtCheZhuTel" /></td>
-						<td>内线:</td>
-						<td><input name="txtCheZhuTelNeiXian" type="text"
-							maxlength="5" id="txtCheZhuTelNeiXian" /></td>
-					</tr>
-					<tr>
-						<td><span class="requireSpan"></span>住宅电话：</td>
-						<td><input name="txtCheZhuZhuZhaiTel" type="text"
-							maxlength="12" id="txtCheZhuZhuZhaiTel" /></td>
-						<td><span class="requireSpan"></span>传真：</td>
-						<td><input name="txtCheZhuChuanZhen" type="text"
-							maxlength="12" id="txtCheZhuChuanZhen" /></td>
+						<td><span class="requireSpan">&nbsp;*</span>车主名：</td>
+						<td><input name="txtCheZhuName"
+							data-options="required:true,missingMessage:'车主名为必填项'"
+							class="easyui-textbox" type="text"
+							data-options="validType:'maxLength[100]'" id="txtCheZhuName" /></td>
 						<td><span class="requireSpan">*</span>车主手机：</td>
-						<td><input name="txtCheZhuMob" type="text" maxlength="12"
-							id="txtCheZhuMob" /></td>
-						<td></td>
-						<td></td>
+						<td><input type="text"
+							data-options="required:true,missingMessage:'车主手机为必填项',validType:'mobile'"
+							class="easyui-textbox" name="txtCheZhuMob" id="txtCheZhuMob" />
+						</td>
+						<td><span class="requireSpan">*</span>电话：<input
+							class="easyui-textbox" name="txtCheZhuTel" type="text"
+							data-options="validType:'maxLength[12]'" id="txtCheZhuTel" /></td>
 					</tr>
-
 					<tr>
-						<td>称谓：</td>
-						<td><select name="ddlCheZhuChengWei" id="ddlCheZhuChengWei"
-							style="border: none; width: 100%;">
-								<option selected="selected" value=""></option>
-								<option value="MR">先生</option>
-								<option value="MRS">女士</option>
-								<option value="MS">小姐</option>
-
-						</select></td>
-						<td>性别： <select name="ddlSex" id="ddlSex"
-							style="border: none; width: 40px;">
-								<option value=""></option>
-								<option value="男">男</option>
-								<option value="女">女</option>
-
-						</select>
-						</td>
-						<td>婚姻状况： <select name="ddlCheZhuHunYinZhuangKuang"
-							id="ddlCheZhuHunYinZhuangKuang"
-							style="border: none; width: 50px;">
-								<option selected="selected" value=""></option>
-								<option value="已婚">已婚</option>
-								<option value="未婚">未婚</option>
-								<option value="离异">离异</option>
-								<option value="丧偶">丧偶</option>
-
-						</select>
-						</td>
-						<td>生日:</td>
+						<td><span class="requireSpan"></span>驾照日期：</td>
+						<td><input name="txtCheZhuJiaZhaoDate" type="text"
+							id="txtCheZhuJiaZhaoDate" class="inputCss easyui-datebox"
+							data-options="required:true,missingMessage:'车驾照为必填项'" /></td>
+						<td>&nbsp;生日：</td>
 						<td><input name="txtCheZhuShengRi" type="text"
 							id="txtCheZhuShengRi" class="inputCss easyui-datebox" /></td>
 					</tr>
 					<tr>
-						<td>证件类型：</td>
-						<td><select name="ddlCheZhuCardSort" id="ddlCheZhuCardSort"
-							style="border: none; width: 100%;">
-								<option value="港澳身份证">港澳身份证</option>
-								<option value="护照">护照</option>
-								<option selected="selected" value="身份证">身份证</option>
-								<option value="身份证">身份证</option>
-								<option value="组织机构代码">组织机构代码</option>
-
-						</select></td>
-						<td><span class="requireSpan">*</span>证件号码：</td>
-						<td colspan="3"><input name="txtCheZhuCardNo" type="text"
-							maxlength="20" id="txtCheZhuCardNo" onblur="checkCardNo();"
-							style="width: 400px;" /></td>
-
-					</tr>
-					<tr>
 						<td>所属区域：</td>
 						<td colspan="7">
-
 							<div id="cheZhu">
 								<select name="ddlCheZhuP" id="ddlCheZhuP"
 									style="border: none; width: 100px"></select> <select
@@ -238,192 +172,33 @@ td {
 					<tr>
 						<td><span class="requireSpan">*</span>车主地址：</td>
 						<td colspan="7"><input name="txtCheZhuAdd" type="text"
+							class="easyui-textbox"
+							data-options="required:true,missingMessage:'车主地址为必填项',validType:'maxLength[200]'"
 							id="txtCheZhuAdd" style="width: 700px;" /></td>
 					</tr>
+					<!--车主信息 end-->
 
-					<!--20130827新加入客户识别信息-->
+					<!--联系人信息 start-->
 					<tr>
-						<td>关系类型：</td>
-						<td><select name="ddlCheZhuGuanXiSort"
-							id="ddlCheZhuGuanXiSort" style="border: none; width: 125px;">
-								<option value="紧密">紧密</option>
-								<option value="良好">良好</option>
-								<option value="普通">普通</option>
-								<option value="紧张">紧张</option>
-								<option selected="selected" value=""></option>
-
-						</select></td>
-						<td>家庭类型：</td>
-						<td><select name="ddlCheZhuJiaTingSort"
-							id="ddlCheZhuJiaTingSort" style="border: none; width: 125px;">
-								<option value="未婚">未婚</option>
-								<option value="已婚有小孩">已婚有小孩</option>
-								<option value="已婚无小孩">已婚无小孩</option>
-								<option value="其他">其他</option>
-								<option selected="selected" value=""></option>
-
-						</select></td>
-						<td>职业类型：</td>
-						<td><select name="ddlCheZhuZhiYeSort" id="ddlCheZhuZhiYeSort"
-							style="border: none; width: 125px;">
-								<option value="医生">医生</option>
-								<option value="老师">老师</option>
-								<option value="公务员">公务员</option>
-								<option value="个体">个体</option>
-								<option value="其他">其他</option>
-								<option selected="selected" value=""></option>
-						</select></td>
-						
-						<td></td>
-						<td></td>
+						<td>联系人信息</td>
+						<td colspan="7"></td>
 					</tr>
-
-					<tr>
-						<td>客户来源：</td>
-						<td><input name="txtCheZhuLaiYuan" type="text" maxlength="10"
-							id="txtCheZhuLaiYuan" /></td>
-						<td>年龄区间：</td>
-						<td><select name="ddlCheZhuNianLing" id="ddlCheZhuNianLing"
-							style="border: none; width: 125px;">
-								<option selected="selected" value="不清楚">不清楚</option>
-								<option value="20岁以下">20岁以下</option>
-								<option value="21~25岁">21~25岁</option>
-								<option value="26~30岁">26~30岁</option>
-								<option value="31~35岁">31~35岁</option>
-								<option value="36~40岁">36~40岁</option>
-								<option value="41~45岁">41~45岁</option>
-								<option value="46~50岁">46~50岁</option>
-								<option value="51~55岁">51~55岁</option>
-								<option value="56~60岁">56~60岁</option>
-								<option value="60岁以上">60岁以上</option>
-
-						</select></td>
-						<td>收入区间：</td>
-						<td><select name="ddlCheZhuShouRu" id="ddlCheZhuShouRu"
-							style="border: none; width: 125px;">
-								<option selected="selected" value="不清楚">不清楚</option>
-								<option value="3000以下">3000以下</option>
-								<option value="3000~5999元">3000~5999元</option>
-								<option value="6000~9999元">6000~9999元</option>
-								<option value="10000~14999元">10000~14999元</option>
-								<option value="15000~19999元">15000~19999元</option>
-								<option value="20000~30000元">20000~30000元</option>
-								<option value="30000元以上">30000元以上</option>
-
-						</select></td>
-						<td>爱好：</td>
-						<td><input name="txtCheZhuAiHao" type="text" maxlength="20"
-							id="txtCheZhuAiHao" /></td>
-					</tr>
-
-					<tr>
-						<td>学历：</td>
-						<td><select name="ddlCheZhuXueLi" id="ddlCheZhuXueLi"
-							style="border: none; width: 125px;">
-								<option selected="selected" value="不清楚">不清楚</option>
-								<option value="小学">小学</option>
-								<option value="初中">初中</option>
-								<option value="高中/中专/技校">高中/中专/技校</option>
-								<option value="大专">大专</option>
-								<option value="本科">本科</option>
-								<option value="硕士">硕士</option>
-								<option value="博士">博士</option>
-
-						</select></td>
-						<td>E-Mail：</td>
-						<td><input name="txtCheZhuEMail" type="text" maxlength="50"
-							id="txtCheZhuEMail" /></td>
-						<td>购车次数：</td>
-						<td><input name="txtCheZheGouCheQty" type="text"
-							maxlength="3" id="txtCheZheGouCheQty" class="easyui-numberbox"
-							data-options="min:0,max:30,precision:0" /></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>工作单位：</td>
-						<td colspan="7"><input name="txtCheZhuGongZuoDanWei"
-							type="text" maxlength="60" id="txtCheZhuGongZuoDanWei"
-							style="width: 98%;" /></td>
-					</tr>
-
-
-				</table>
-			</div>
-			<!--车主信息 end-->
-
-			<!--联系人信息 start-->
-			<div id="bDiv" style="margin: 2 0 0 5; display: none;">
-				<br />
-				<table border="0" cellpadding="0" cellspacing="0" width="900px"
-					style="border-collapse: collapse; border: 1px solid #9a9a9a">
 					<tr>
 						<td onclick="cheZhuToLianXiRen()"><span class="requireSpan">*</span>联系人姓名：</td>
-						<td><input name="txtLianXiRenName" type="text" maxlength="20"
+						<td><input name="txtLianXiRenName" type="text"
+							class="easyui-textbox"
+							data-options="required:true,missingMessage:'联系人姓名为必填项',validType:'maxLength[20]'"
 							id="txtLianXiRenName" /></td>
-						<td>性别：</td>
-						<td><select name="ddlLianXiRenSex" id="ddlLianXiRenSex"
-							style="border: none; width: 125px">
-								<option selected="selected" value="男">男</option>
-								<option value="男">男</option>
-								<option value="女">女</option>
-
-						</select></td>
 						<td><span class="requireSpan">*</span>联系人电话：</td>
-						<td><input name="txtLianXiRenTel" type="text" maxlength="14"
-							id="txtLianXiRenTel" /></td>
+						<td><input name="txtLianXiRenTel" type="text"
+							class="easyui-textbox" id="txtLianXiRenTel" /></td>
 						<td><span class="requireSpan">*</span>联系人手机：</td>
-						<td><input name="txtLianXiRenMob" type="text" maxlength="14"
+						<td><input name="txtLianXiRenMob" type="text"
+							class="easyui-textbox"
+							data-options="required:true,missingMessage:'联系人手机为必填项',validType:'mobile' "
 							id="txtLianXiRenMob" /></td>
 					</tr>
 
-					<tr>
-						<td>称谓：</td>
-						<td><select name="ddlLianXiRenChengWei"
-							id="ddlLianXiRenChengWei" style="border: none; width: 100%;">
-								<option selected="selected" value="MR">先生</option>
-								<option value="MRS">女士</option>
-								<option value="MS">小姐</option>
-
-						</select></td>
-						<td>职位：</td>
-						<td><select name="ddlLianXiRenZhiWei" id="ddlLianXiRenZhiWei"
-							style="border: none; width: 100%;">
-								<option value="医生">医生</option>
-								<option value="老师">老师</option>
-								<option value="公务员">公务员</option>
-								<option value="个体">个体</option>
-								<option value="其他">其他</option>
-								<option selected="selected" value=""></option>
-
-						</select></td>
-						<td>联系人生日：</td>
-						<td><input name="txtLianXiRenBirthday" type="text"
-							id="txtLianXiRenBirthday" class="inputCss easyui-datebox" /></td>
-
-						<td></td>
-						<td></td>
-					</tr>
-
-					<tr>
-
-						<td>证件类型：</td>
-						<td><select name="ddlLianXiCardSort" id="ddlLianXiCardSort"
-							style="border: none; width: 100%;">
-								<option selected="selected" value="身份证">身份证</option>
-								<option value="港澳身份证">港澳身份证</option>
-								<option value="护照">护照</option>
-								<option value="身份证">身份证</option>
-								<option value="组织机构代码">组织机构代码</option>
-
-						</select></td>
-						<td><span class="requireSpan">*</span>证件号码：</td>
-						<td colspan="3"><input name="txtLianXiRenCardNo" type="text"
-							maxlength="20" id="txtLianXiRenCardNo"
-							onblur="cardNoToDate('txtLianXiRenCardNo','txtLianXiRenBirthday')"
-							style="width: 200px;" /></td>
-
-					</tr>
 					<tr>
 						<td>所属区域：</td>
 						<td colspan="7">
@@ -440,63 +215,14 @@ td {
 						</td>
 					</tr>
 					<tr>
-						<td><span class="requireSpan">*</span>车主地址：</td>
+						<td><span class="requireSpan">*</span>联系人地址：</td>
 						<td colspan="7"><input name="txtLianXiRenAdd" type="text"
-							maxlength="200" id="txtLianXiRenAdd" style="width: 700px;" /></td>
+							class="easyui-textbox" data-options="validType:'maxLength[200]'"
+							id="txtLianXiRenAdd" style="width: 700px;" /></td>
 					</tr>
-					<tr>
-						<td><span class="requireSpan"></span>驾照类型：</td>
-						<td><select name="ddlLianXiRenJiaZhaoSort"
-							id="ddlLianXiRenJiaZhaoSort" style="border: none; width: 125px">
-								<option value="A">A(1年)</option>
-								<option value="B">B(1年)</option>
-								<option selected="selected" value="C">C(6年)</option>
-
-						</select></td>
-						<td><span class="requireSpan"></span>驾照日期：</td>
-						<td><input name="txtLianXiRenJiaZhaoDate" type="text"
-							id="txtLianXiRenJiaZhaoDate" class="inputCss easyui-datebox" />
-						</td>
-						<td><span class="requireSpan"></span>初领驾照日期：</td>
-						<td><input name="txtLianXiRenFirstJiaZhaoDate" type="text"
-							id="txtLianXiRenFirstJiaZhaoDate" class="inputCss easyui-datebox" />
-						</td>
-						<td><span class="requireSpan"></span>驾照所属地区：</td>
-						<td><input name="txtLianXiRenJiaZhaoArea" type="text"
-							id="txtLianXiRenJiaZhaoArea" /></td>
-					</tr>
-
-					<tr>
-
-						<td>联系人特征：</td>
-						<td><input name="txtLianXiRenTeZheng" type="text"
-							id="txtLianXiRenTeZheng" /></td>
-						<td>E-Mail：</td>
-						<td><input name="txtLianXiRenEMail" type="text"
-							id="txtLianXiRenEMail" /></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>工作单位：</td>
-						<td colspan="7"><input name="txtLianXiRenGongZuoDanWei"
-							type="text" maxlength="60" id="txtLianXiRenGongZuoDanWei"
-							style="width: 98%;" /></td>
-					</tr>
-					<tr>
-						<td>接待提醒：</td>
-						<td colspan="7"><input name="txtCheLiangJieDaiTiXing"
-							type="text" maxlength="100" id="txtCheLiangJieDaiTiXing"
-							style="width: 98%; font-size: 12px; font-weight: bold; color: Blue;" />
-						</td>
-					</tr>
-
-
 				</table>
+				<!--联系人信息 end-->
 			</div>
-			<!--联系人信息 end-->
 		</form>
 
 
@@ -526,9 +252,6 @@ td {
 						<td style="width: 65px;">发动机号:</td>
 						<td style="width: 100px;"><s:property
 								value='txtCheLiangFaDongJiHao' /></td>
-						<td style="width: 65px;">变速箱号:</td>
-						<td style="width: 100px;"><s:property
-								value='txtCheLiangBianSuXiangHao' /></td>
 					</tr>
 					<tr>
 						<td>制造厂商：</td>
@@ -537,12 +260,8 @@ td {
 						<td><s:property value='ddlCheLiangCheXi' /></td>
 						<td>车型代码：</td>
 						<td><s:property value='txtCheLiangCheXingDaiMa' /></td>
-						<td>车身颜色：</td>
-						<td><s:property value='ddlCheShenColor' /></td>
 					</tr>
 					<tr>
-						<td>购车日期：</td>
-						<td><s:property value='txtGouCheDate' /></td>
 						<td>年审日期：</td>
 						<td><s:property value='txtCheLiangNextExaDate' /></td>
 						<td>&nbsp;</td>
@@ -562,8 +281,7 @@ td {
 
 		<!--按钮区域 start-->
 		<div align="center" id="btnBottomDiv">
-			<a onclick="return saveCheck();" id="lnkSave"
-				class="easyui-linkbutton"
+			<a id="lnkSave" class="easyui-linkbutton"
 				href="javascript:__doPostBack('lnkSave','')">保存</a> <a
 				id="lnkCancel" class="easyui-linkbutton"
 				href="javascript:winClose()">取消</a>
@@ -711,20 +429,11 @@ td {
 			if ($("#txtCheZhuName").val() != "") {
 				$("#txtLianXiRenName").val($("#txtCheZhuName").val());
 			}
-			if ($("#ddlSex").val() != "") {
-				$("#ddlLianXiRenSex").val($("#ddlSex").val());
-			}
 			if ($("#txtCheZhuTel").val() != "") {
 				$("#txtLianXiRenTel").val($("#txtCheZhuTel").val());
 			}
 			if ($("#txtCheZhuMob").val() != "") {
 				$("#txtLianXiRenMob").val($("#txtCheZhuMob").val());
-			}
-			if ($("#ddlCheZhuCardSort").val() != "") {
-				$("#ddlLianXiCardSort").val($("#ddlCheZhuCardSort").val());
-			}
-			if ($("#txtCheZhuCardNo").val() != "") {
-				$("#txtLianXiRenCardNo").val($("#txtCheZhuCardNo").val());
 			}
 			if ($("#ddlCheZhuP").val() != "") {
 				$("#ddlLianXiRenP").val($("#ddlCheZhuP").val());
@@ -757,20 +466,12 @@ td {
 			if ($("#txtLianXiRenName").val() != "") {
 				$("#txtCheZhuName").val($("#txtLianXiRenName").val());
 			}
-			if ($("#ddlLianXiRenSex").val() != "") {
-				$("#ddlSex").val($("#ddlLianXiRenSex").val());
-			}
+			
 			if ($("#txtLianXiRenTel").val() != "") {
 				$("#txtCheZhuTel").val($("#txtLianXiRenTel").val());
 			}
 			if ($("#txtLianXiRenMob").val() != "") {
 				$("#txtCheZhuMob").val($("#txtLianXiRenMob").val());
-			}
-			if ($("#ddlLianXiCardSort").val() != "") {
-				$("#ddlCheZhuCardSort").val($("#ddlLianXiCardSort").val());
-			}
-			if ($("#txtLianXiRenCardNo").val() != "") {
-				$("#txtCheZhuCardNo").val($("#txtLianXiRenCardNo").val());
 			}
 			if ($("#ddlLianXiRenP").val() != "") {
 				$("#ddlCheZhuP").val($("#ddlLianXiRenP").val());
@@ -799,124 +500,6 @@ td {
 
 		}
 
-		function saveCheck() {
-			var err = "";
-
-			//验证必须填项
-			if ($.trim($("#txtCheZhuName").val()) == "") {
-				err += "车主信息->车主姓名不能为空！\n";
-			}
-			if ($.trim($("#txtCheZhuTel").val()) == "") {
-				err += "车主信息->车主联系电话不能为空！\n";
-			}
-			if ($.trim($("#txtCheZhuMob").val()) == "") {
-				err += "车主信息->车主手机不能为空！\n";
-			}
-			if ($.trim($("#ddlCheZhuCardSort").val()) == "") {
-				err += "车主信息->证件类型不能为空！\n";
-			}
-			if ($.trim($("#txtCheZhuCardNo").val()) == "") {
-				err += "车主信息->证件号码不能为空！\n";
-			}
-			if ($.trim($("#ddlCheZhuP").val()) == "") {
-				err += "车主信息->所属区域省份不能为空！\n";
-			}
-			if ($.trim($("#ddlCheZhuC").val()) == "") {
-				err += "车主信息->所属区域市不能为空！\n";
-			}
-			if ($.trim($("#ddlCheZhuA").val()) == "") {
-				err += "车主信息->所属区域地区不能为空！\n";
-			}
-			if ($.trim($("#txtCheZhuAdd").val()) == "") {
-				err += "车主信息->联系地址不能为空！\n";
-			}
-			if ($.trim($("#txtLianXiRenName").val()) == "") {
-				err += "联系人信息->联系人姓名不能为空！\n";
-			}
-			if ($.trim($("#ddlLianXiRenSex").val()) == "") {
-				err += "联系人信息->联系人性别不能为空！\n";
-			}
-			if ($.trim($("#txtLianXiRenTel").val()) == "") {
-				err += "联系人信息->联系人电话不能为空！\n";
-			}
-			if ($.trim($("#txtLianXiRenMob").val()) == "") {
-				err += "联系人信息->联系人手机不能为空！\n";
-			}
-			if ($.trim($("#ddlLianXiCardSort").val()) == "") {
-				err += "联系人信息->联系人证件类型不能为空！\n";
-			}
-			if ($.trim($("#txtLianXiRenCardNo").val()) == "") {
-				err += "联系人信息->联系人证件号码不能为空！\n";
-			}
-			//if ($.trim($("#txtLianXiRenBirthday").val()) == "") { err += "联系人信息->联系人生日不能为空！\n"; }
-			if ($.trim($("#ddlLianXiRenP").val()) == "") {
-				err += "联系人信息->联系人所在省份不能为空！\n";
-			}
-			if ($.trim($("#ddlLianXiRenC").val()) == "") {
-				err += "联系人信息->联系人所在市不能为空！\n";
-			}
-			if ($.trim($("#ddlLianXiRenA").val()) == "") {
-				err += "联系人信息->联系人所在区不能为空！\n";
-			}
-			if ($.trim($("#txtLianXiRenAdd").val()) == "") {
-				err += "联系人信息->联系人地址不能为空！\n";
-			}
-			//if ($.trim($("#ddlLianXiRenJiaZhaoSort").val()) == "") { err += "联系人信息->联系人证件类型不能为空！\n"; }
-			//if ($.trim($("#txtLianXiRenJiaZhaoDate").val()) == "") { err += "联系人信息->联系人证件号码不能为空！\n"; }        
-
-			//数据录入格式是否正确验证
-			if (err == "") {
-				if ($("#ddlCheZhuTelSort").val() == "车主手机") {
-					if (!checkMobile($("#txtCheZhuTel").val())) {
-						err += "车主手机填写错误！";
-						changeColor("txtCheZhuTel", "red");
-					} else {
-						changeColor("txtCheZhuTel", "white");
-					}
-				} else {
-					if (!checkTel($("#txtCheZhuTel").val())) {
-						err += "车主电话填写错误！";
-						changeColor("txtCheZhuTel", "red");
-					} else {
-						changeColor("txtCheZhuTel", "white");
-					}
-				}
-
-				if (!checkTel($("#txtCheZhuZhuZhaiTel").val())) {
-					err += "车主住宅电话填写错误！";
-					changeColor("txtCheZhuZhuZhaiTel", "red");
-				} else {
-					changeColor("txtCheZhuZhuZhaiTel", "white");
-				}
-				if (!checkTel($("#txtCheZhuChuanZhen").val())) {
-					err += "车主传真填写错误！";
-					changeColor("txtCheZhuChuanZhen", "red");
-				} else {
-					changeColor("txtCheZhuChuanZhen", "white");
-				}
-				if (!checkMobile($("#txtCheZhuMob").val())) {
-					err += "车主手机填写错误！";
-					changeColor("txtCheZhuMob", "red");
-				} else {
-					changeColor("txtCheZhuMob", "white");
-				}
-
-				if (!checkMobile($("#txtLianXiRenMob").val())) {
-					err += "联系人手机填写错误！";
-					changeColor("txtLianXiRenMob", "red");
-				} else {
-					changeColor("txtLianXiRenMob", "white");
-				}
-
-			}
-
-			if (err != "") {
-				alert(err);
-				return false;
-			}else{
-				return true;				
-			}
-		}
 
 		function winClose() {
 			window.opener = null;

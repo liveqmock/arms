@@ -4,10 +4,7 @@ public class VKeHuCheLiang {
 	private String txtCustId;
 	private String ddlCustSort;
 	private String txtCheZhuName;
-	private String ddlCheZhuTelSort;
 	private String txtCheZhuTel;
-	private String ddlCheZhuCardSort;
-	private String txtCheZhuCardNo;
 	private String txtCheZhuMob;
 	private String txtCheZhuAdd;
 	private String txtLianXiRenName;
@@ -21,7 +18,6 @@ public class VKeHuCheLiang {
 	private String txtCheLiangCheXingDaiMa;
 	private String txtCheLiangCheJiaHao;
 	private String txtCheLiangFaDongJiHao;
-	private String txtLianXiRenJiaZhaoDate;
 	private String txtBaoXianDate;
 	private String txtHuiYuanDengJi;
 	private String txtHuiYuanHao;
@@ -76,13 +72,6 @@ public class VKeHuCheLiang {
 		this.txtCheZhuName = txtCheZhuName;
 	}
 
-	public String getDdlCheZhuTelSort() {
-		return ddlCheZhuTelSort;
-	}
-
-	public void setDdlCheZhuTelSort(String ddlCheZhuTelSort) {
-		this.ddlCheZhuTelSort = ddlCheZhuTelSort;
-	}
 
 	public String getTxtCheZhuTel() {
 		return txtCheZhuTel;
@@ -92,21 +81,6 @@ public class VKeHuCheLiang {
 		this.txtCheZhuTel = txtCheZhuTel;
 	}
 
-	public String getDdlCheZhuCardSort() {
-		return ddlCheZhuCardSort;
-	}
-
-	public void setDdlCheZhuCardSort(String ddlCheZhuCardSort) {
-		this.ddlCheZhuCardSort = ddlCheZhuCardSort;
-	}
-
-	public String getTxtCheZhuCardNo() {
-		return txtCheZhuCardNo;
-	}
-
-	public void setTxtCheZhuCardNo(String txtCheZhuCardNo) {
-		this.txtCheZhuCardNo = txtCheZhuCardNo;
-	}
 
 	public String getTxtCheZhuMob() {
 		return txtCheZhuMob;
@@ -178,14 +152,6 @@ public class VKeHuCheLiang {
 
 	public void setTxtCheLiangCheJiaHao(String txtCheLiangCheJiaHao) {
 		this.txtCheLiangCheJiaHao = txtCheLiangCheJiaHao;
-	}
-
-	public String getTxtLianXiRenJiaZhaoDate() {
-		return txtLianXiRenJiaZhaoDate;
-	}
-
-	public void setTxtLianXiRenJiaZhaoDate(String txtLianXiRenJiaZhaoDate) {
-		this.txtLianXiRenJiaZhaoDate = txtLianXiRenJiaZhaoDate;
 	}
 
 	public String getTxtBaoXianDate() {

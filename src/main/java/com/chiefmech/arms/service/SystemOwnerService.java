@@ -15,5 +15,7 @@ public interface SystemOwnerService {
 	public String getSystemOwnerEasyUiJSon(SystemOwner query, int page, int rows);
 	
 	public List<SystemOwner> selectItem();
+	
+	public SystemOwner findSystemOwnerById(String id);
 
 }

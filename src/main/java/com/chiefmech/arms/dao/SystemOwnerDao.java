@@ -35,5 +35,8 @@ public interface SystemOwnerDao {
 
 	@Select("select * from users")
 	public List<SystemOwner> selectItem();
+	
+	@Select("select * from users where userId=#{userId}")
+	public SystemOwner findSystemOwnerById(String id);
 
 }

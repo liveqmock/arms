@@ -38,9 +38,9 @@
      <span style="font-weight:bold;font-size:12px;color:Red;">选择历史车辆(每次只显示10条记录)</span>
         <table border="0" cellpadding="0" cellspacing="0" width="900px"  style="border-collapse:collapse;border:1px solid #9a9a9a" >
          <tr> 
-         <td style="width:70px;">客户类型:</td><td><s:property value="customer.ddlCustSort"/></td>
+        <%--  <td style="width:70px;">客户类型:</td><td><s:property value="customer.ddlCustSort"/></td> --%>
          <td  style="width:70px;">车主名称:</td><td style="width:300px;"><a href='#' onclick=backCustom() ><s:property value="customer.txtCheZhuName"/></a></td>
-         <td  style="width:70px;"><s:property value="customer.ddlCheZhuTelSort"/>:</td>
+         <td  style="width:70px;">车主电话:</td>
          <td><s:property value="customer.txtCheZhuTel"/></td>
          </tr>
          <tr>

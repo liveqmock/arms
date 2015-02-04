@@ -47,4 +47,9 @@ public class SystemOwenrServiceImpl implements SystemOwnerService {
 	public List<SystemOwner> selectItem() {
 		return systemOwnerDao.selectItem();
 	}
+
+	@Override
+	public SystemOwner findSystemOwnerById(String id) {
+		return systemOwnerDao.findSystemOwnerById(id);
+	}
 }

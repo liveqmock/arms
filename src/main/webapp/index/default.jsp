@@ -297,6 +297,15 @@
 													click : "mdfMenu('6aebe08f-9fff-4492-885f-a207c1e7ae81','套餐管理','../webSetup/saleAfterTaoCanManage.action');"
 												},
 												{
+													name : "会员管理",
+													font : {
+														'font-style' : '微软雅黑'
+													},
+													url : "",
+													target : "_blank",
+													click : "mdfMenu('6aebe08f-91ff-4592-885f-a217c1e6ae81','会员管理','../webSetup/huiYuanManage.action');"
+												},
+												{
 													name : "维修派工管理",
 													font : {
 														'font-style' : '微软雅黑'

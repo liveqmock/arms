@@ -20,4 +20,5 @@ public interface CheZhuLianXiRenService {
 
 	public String getVKeHuCheLiangEasyUiJSon(SaleAfterCustomSearchBean query);
 
+	public List<CheZhuLianXiRen> selectItem();
 }
