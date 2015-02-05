@@ -75,15 +75,15 @@ td {
 						   pagination:true">
 		<thead>
 			<tr>
-				<th width="100" data-options="field:'txtWuLiaoCode'">物料编码</th>
-				<th width="100" data-options="field:'txtWuLiaoName'">物料名称</th>
-				<th width="100" data-options="field:'txtQty'">数量</th>
-				<th width="100" data-options="field:'txtChengBenJia'">成本价格</th>
 				<th width="100" data-options="field:'ddlCangKu'">所属仓库</th>
+				<th width="100" data-options="field:'txtWuLiaoCode'">物料编码</th>
+				<th width="150" data-options="field:'txtWuLiaoName'">物料名称</th>
+				<th width="100" data-options="field:'txtChengBenJia'">成本价格</th>
 				<th width="100" data-options="field:'txtSalePrice'">销售价格</th>
-				<th width="100" data-options="field:'txtBillNo'">业务单号</th>
+				<th width="100" data-options="field:'txtQty'">数量</th>
+				<th width="150" data-options="field:'txtBillNo'">业务单号</th>
 				<th width="100" data-options="field:'txtBillSort'">业务类别</th>
-				<th width="100" data-options="field:'txtLogDate'">操作时间</th>
+				<th width="150" data-options="field:'txtLogDate'">操作时间</th>
 			</tr>
 		</thead>
 	</table>
