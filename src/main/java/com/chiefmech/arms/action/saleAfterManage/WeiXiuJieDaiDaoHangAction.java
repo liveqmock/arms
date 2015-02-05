@@ -33,12 +33,12 @@ public class WeiXiuJieDaiDaoHangAction extends BaseActionSupport {
 	private VKeHuCheLiang customer;
 	private List<GongDan> gongDanLst;
 
-	@Action(value = "saleAfterWeiXiuJieDaiDaoHang", results = { @Result(name = "input", location = "saleAfterWeiXiuJieDaiDaoHang.jsp") })
+	@Action(value = "saleAfterWeiXiuJieDaiDaoHang", results = {@Result(name = "input", location = "saleAfterWeiXiuJieDaiDaoHang.jsp")})
 	public String saleAfterWeiXiuJieDaiDaoHang() {
 		customer = cheZhuLianXiRenService
 				.findVKeHuCheLiangByVehicleId(vehicleId);
-		gongDanLst = gongDanService.getGongDanListByChePaiHao(customer
-				.getTxtCheLiangChePaiHao());
+		gongDanLst = gongDanService.getGongDanListByVehicleId(customer
+				.getTxtVehicleId());
 		if (gongDanLst != null && gongDanLst.size() > 5) {
 			for (int i = gongDanLst.size() - 1; i >= 5; i--) {
 				gongDanLst.remove(i);

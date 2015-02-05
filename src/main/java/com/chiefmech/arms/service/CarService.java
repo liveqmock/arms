@@ -9,6 +9,6 @@ public interface CarService {
 
 	public List<CarBrand> getAllCarBrand();
 
-	public List<CarModel> findCarModelByBrandId(String brandId);
+	public List<CarModel> findCarModelByBrandName(String brandName);
 
 }

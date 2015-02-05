@@ -46,4 +46,9 @@ public class HuiYuanServiceImpl implements HuiYuanService {
 		return jsonStr;
 	}
 
+	@Override
+	public String getNewHuiYuanBianHao() {
+		return huiYuanDao.getNewHuiYuanBianHao();
+	}
+
 }

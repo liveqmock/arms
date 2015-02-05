@@ -7,9 +7,9 @@ private String txtCustId;
 private String txtHuiYuanHao;
 private String txtHuiYuanDengJi;
 private String txtShenQingRiQi;
-private String txtHuiYuanJiFen;
-private String txtGongShiZheKou;
-private String txtCaiLiaoZheKou;
+private int txtHuiYuanJiFen;
+private float txtGongShiZheKou;
+private float txtCaiLiaoZheKou;
 
 public String getTxtHuiYuanId() {
 	return txtHuiYuanId;
@@ -30,7 +30,20 @@ public void setTxtHuiYuanHao(String txtHuiYuanHao) {
 	this.txtHuiYuanHao = txtHuiYuanHao;
 }
 public String getTxtHuiYuanDengJi() {
-	return txtHuiYuanDengJi;
+	if(txtHuiYuanJiFen<=3000){
+		   txtHuiYuanDengJi="铜卡用户";
+			return txtHuiYuanDengJi;
+		}
+		if(txtHuiYuanJiFen<=6000){
+			 txtHuiYuanDengJi="银卡用户";
+			return txtHuiYuanDengJi;
+		}
+		if(txtHuiYuanJiFen<=10000){
+		txtHuiYuanDengJi="金卡用户";
+		return txtHuiYuanDengJi;
+	}
+		txtHuiYuanDengJi="超级用户";
+		return txtHuiYuanDengJi;
 }
 public void setTxtHuiYuanDengJi(String txtHuiYuanDengJi) {
 	this.txtHuiYuanDengJi = txtHuiYuanDengJi;
@@ -41,22 +54,22 @@ public String getTxtShenQingRiQi() {
 public void setTxtShenQingRiQi(String txtShenQingRiQi) {
 	this.txtShenQingRiQi = txtShenQingRiQi;
 }
-public String getTxtHuiYuanJiFen() {
+public int getTxtHuiYuanJiFen() {
 	return txtHuiYuanJiFen;
 }
-public void setTxtHuiYuanJiFen(String txtHuiYuanJiFen) {
+public void setTxtHuiYuanJiFen(int txtHuiYuanJiFen) {
 	this.txtHuiYuanJiFen = txtHuiYuanJiFen;
 }
-public String getTxtGongShiZheKou() {
+public float getTxtGongShiZheKou() {
 	return txtGongShiZheKou;
 }
-public void setTxtGongShiZheKou(String txtGongShiZheKou) {
+public void setTxtGongShiZheKou(float txtGongShiZheKou) {
 	this.txtGongShiZheKou = txtGongShiZheKou;
 }
-public String getTxtCaiLiaoZheKou() {
+public float getTxtCaiLiaoZheKou() {
 	return txtCaiLiaoZheKou;
 }
-public void setTxtCaiLiaoZheKou(String txtCaiLiaoZheKou) {
+public void setTxtCaiLiaoZheKou(float txtCaiLiaoZheKou) {
 	this.txtCaiLiaoZheKou = txtCaiLiaoZheKou;
 }
 

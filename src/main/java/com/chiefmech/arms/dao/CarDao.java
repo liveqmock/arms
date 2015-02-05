@@ -17,7 +17,7 @@ public interface CarDao {
 	@Select("select brandId,brandName,brandLogo from carbrand")
 	public List<CarBrand> getAllCarBrand();
 
-	@Select("select modelId,modelName,brandId from carmodel where brandId=#{brandId}")
-	public List<CarModel> findCarModelByBrandId(@Param("brandId") String brandId);
+	@Select("select modelId,modelName,carmodel.brandId from carmodel left join carbrand on carbrand.brandId=carmodel.brandId where brandName=#{brandName};")
+	public List<CarModel> findCarModelByBrandName(@Param("brandName") String brandName);
 	
 }

@@ -5,11 +5,8 @@ public class VKeHuCheLiang {
 	private String ddlCustSort;
 	private String txtCheZhuName;
 	private String txtCheZhuTel;
-	private String txtCheZhuMob;
-	private String txtCheZhuAdd;
 	private String txtLianXiRenName;
 	private String txtLianXiRenTel;
-	private String txtLianXiRenMob;
 	private String txtLianXiRenAdd;
 	private String txtVehicleId;
 	private String txtCheLiangChePaiHao;
@@ -18,11 +15,20 @@ public class VKeHuCheLiang {
 	private String txtCheLiangCheXingDaiMa;
 	private String txtCheLiangCheJiaHao;
 	private String txtCheLiangFaDongJiHao;
-	private String txtBaoXianDate;
 	private String txtHuiYuanDengJi;
+	private String txtCheZhuJiaZhaoDate;
 	private String txtHuiYuanHao;
+	private int txtHuiYuanJiFen;
 	private float txtGongShiZheKou;
 	private float txtCaiLiaoZheKou;
+
+	public String getTxtCheZhuJiaZhaoDate() {
+		return txtCheZhuJiaZhaoDate;
+	}
+
+	public void setTxtCheZhuJiaZhaoDate(String txtCheZhuJiaZhaoDate) {
+		this.txtCheZhuJiaZhaoDate = txtCheZhuJiaZhaoDate;
+	}
 
 	public String getTxtCustId() {
 		return txtCustId;
@@ -40,20 +46,20 @@ public class VKeHuCheLiang {
 		this.txtCheLiangFaDongJiHao = txtCheLiangFaDongJiHao;
 	}
 
+	public int getTxtHuiYuanJiFen() {
+		return txtHuiYuanJiFen;
+	}
+
+	public void setTxtHuiYuanJiFen(int txtHuiYuanJiFen) {
+		this.txtHuiYuanJiFen = txtHuiYuanJiFen;
+	}
+
 	public String getDdlCustSort() {
 		return ddlCustSort;
 	}
 
 	public void setDdlCustSort(String ddlCustSort) {
 		this.ddlCustSort = ddlCustSort;
-	}
-
-	public String getTxtLianXiRenMob() {
-		return txtLianXiRenMob;
-	}
-
-	public void setTxtLianXiRenMob(String txtLianXiRenMob) {
-		this.txtLianXiRenMob = txtLianXiRenMob;
 	}
 
 	public String getTxtCheLiangCheXingDaiMa() {
@@ -79,23 +85,6 @@ public class VKeHuCheLiang {
 
 	public void setTxtCheZhuTel(String txtCheZhuTel) {
 		this.txtCheZhuTel = txtCheZhuTel;
-	}
-
-
-	public String getTxtCheZhuMob() {
-		return txtCheZhuMob;
-	}
-
-	public void setTxtCheZhuMob(String txtCheZhuMob) {
-		this.txtCheZhuMob = txtCheZhuMob;
-	}
-
-	public String getTxtCheZhuAdd() {
-		return txtCheZhuAdd;
-	}
-
-	public void setTxtCheZhuAdd(String txtCheZhuAdd) {
-		this.txtCheZhuAdd = txtCheZhuAdd;
 	}
 
 	public String getTxtLianXiRenName() {
@@ -154,13 +143,6 @@ public class VKeHuCheLiang {
 		this.txtCheLiangCheJiaHao = txtCheLiangCheJiaHao;
 	}
 
-	public String getTxtBaoXianDate() {
-		return txtBaoXianDate;
-	}
-
-	public void setTxtBaoXianDate(String txtBaoXianDate) {
-		this.txtBaoXianDate = txtBaoXianDate;
-	}
 
 	public String getTxtLianXiRenAdd() {
 		return txtLianXiRenAdd;
@@ -171,7 +153,20 @@ public class VKeHuCheLiang {
 	}
 
 	public String getTxtHuiYuanDengJi() {
-		return txtHuiYuanDengJi;
+		if(txtHuiYuanJiFen<=3000){
+			   txtHuiYuanDengJi="铜卡用户";
+				return txtHuiYuanDengJi;
+			}
+			if(txtHuiYuanJiFen<=6000){
+				 txtHuiYuanDengJi="银卡用户";
+				return txtHuiYuanDengJi;
+			}
+			if(txtHuiYuanJiFen<=10000){
+			txtHuiYuanDengJi="金卡用户";
+			return txtHuiYuanDengJi;
+		}
+			txtHuiYuanDengJi="超级用户";
+			return txtHuiYuanDengJi;
 	}
 
 	public void setTxtHuiYuanDengJi(String txtHuiYuanDengJi) {

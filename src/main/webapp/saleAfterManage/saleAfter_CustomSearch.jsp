@@ -44,7 +44,7 @@
 
 </select> </td>
          <td style="padding-left:5px">
-         <input name="queryValue" type="text" maxlength="20" id="queryValue" style="width:150px;" />
+         <input name="queryValue" type="text" maxlength="20" id="queryValue" style="width:150px;" />&nbsp;&nbsp;
          </td>
          <td>
          <a id="btnSearch" class="easyui-linkbutton" href="javascript:__doPostBack('btnSearch','')">查询</a>
@@ -59,7 +59,7 @@
         </table>
         <!--数据列表 start-->
         <div style="height:3px"></div>
-        <table id="dg2"    class="easyui-datagrid"    style="height:380px;"  
+        <table id="dg2"    class="easyui-datagrid"  
          data-options="rownumbers:true,singleSelect:true,
          pagination:true,
          pageNumber:1,
@@ -68,19 +68,16 @@
           >
         <thead>
             <tr>
-                <th  data-options="field:'txtCustId',checkbox:true"></th>
-                <th  data-options="field:'txtVehicleId',hidden:true">车辆Id</th>
-                <th  data-options="field:'txtCheLiangChePaiHao',width:80">车牌号码</th>              
-                
-                <th  data-options="field:'ddlCheLiangZhiZaoShang',width:120">车辆品牌</th>
-                <th  data-options="field:'ddlCheLiangCheXi',width:70">车系名称</th>
-                <th  data-options="field:'txtCheLiangCheJiaHao',width:140" >车架号码</th>
-                <th  data-options="field:'txtLianXiRenName',width:120">联系人名称</th>
-                <th  data-options="field:'txtLianXiRenTel',width:120">联系人电话</th>
-                <th  data-options="field:'txtCheZhuName',width:120">车主名称</th>
-                <th  data-options="field:'txtHuiYuanHao',width:120">会员号码</th>
-                <th  data-options="field:'txtHuiYuanDengJi',width:120">会员级别</th>                
-                 
+                <th width="20" data-options="field:'txtCustId',checkbox:true"></th>
+                <th width="100" data-options="field:'txtVehicleId',hidden:true">车辆Id</th>
+                <th width="100" data-options="field:'txtCheLiangChePaiHao'">车牌号码</th>                           
+                <th width="150" data-options="field:'ddlCheLiangZhiZaoShang'">车辆品牌</th>
+                <th width="150" data-options="field:'ddlCheLiangCheXi'">车系名称</th>
+                <th width="150" data-options="field:'txtCheLiangCheJiaHao'" >车架号码</th>
+                <th width="100" data-options="field:'txtLianXiRenName'">联系人名称</th>
+                <th width="150" data-options="field:'txtLianXiRenTel'">联系人电话</th>
+                <th width="100" data-options="field:'txtCheZhuName'">车主名称</th>
+                <th width="100" data-options="field:'txtHuiYuanDengJi'">会员级别</th>                               
             </tr>
         </thead>
     </table>
@@ -95,8 +92,6 @@
 
      <input name="txtPageNum" type="text" value="1" id="txtPageNum" style="display:none;" />
      <input name="txtPageSize" type="text" value="20" id="txtPageSize" style="display:none;" />
-      
-    
 <div>
 
 </div></form>
@@ -189,13 +184,9 @@
         //车辆维修历史列表查询
         function cheLiangWeiXiuLiShiListShow() {
             var row = $('#dg2').datagrid('getSelected');
-            var vin = row.txtCheLiangCheJiaHao;
-            vin = vin.substring(0, 17);//车架号码只去前17位
-            if (vin != "") {
-                //  parent.winopen('../saleAfterManage/saleAfter_weiXiuLiShiList.aspx?cusId='+cusId+'&d=' + new Date(), '维修历史查看', 970, 600, true, true, false);
-                  z = window.open('../saleAfterManage/saleAfter_weiXiuLiShiList.aspx?vin=' + vin + '&d=' + new Date(), '维修历史查看', 'height=600,width=970,top=80,left=80,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no')
-                  z.focus();
-              }
+            var vehicleId = row.txtVehicleId;
+			  z = window.open('weiXiuLiShiByVehicleId.action?vehicleId=' + vehicleId + '&d=' + new Date(), '维修历史查看', 'height=600,width=970,top=80,left=80,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no')
+			  z.focus();
             return false;
         }
 

@@ -24,8 +24,8 @@ public class CarServiceImpl implements CarService {
 	}
 
 	@Override
-	public List<CarModel> findCarModelByBrandId(String brandId) {
-		return carDao.findCarModelByBrandId(brandId);
+	public List<CarModel> findCarModelByBrandName(String brandName) {
+		return carDao.findCarModelByBrandName(brandName);
 	}
 
 }

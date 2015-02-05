@@ -36,5 +36,7 @@ public interface HuiYuanDao {
 	@Select("select * from huiyuan")
 	public List<HuiYuan> selectItem();
 
+	@Select("select concat(date_format(now(),'JDD%Y%m%d'),LPAD(ifnull(max(right(txtHuiYuanHao,3)+1),1),3,'0')) newTxtBillNo from huiyuan where txtHuiYuanHao like date_format(now(),'JDD%Y%m%d%%')")
+	public String getNewHuiYuanBianHao();
 
 }

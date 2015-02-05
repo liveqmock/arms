@@ -55,7 +55,7 @@ public interface GongDanService {
 	public int updateGongDanStatus(String saleAfterWeiXiuGuid,
 			String txtGongDanStatus);
 
-	public List<GongDan> getGongDanListByChePaiHao(String txtChePaiHao);
+	public List<GongDan> getGongDanListByVehicleId(String txtVehicleId);
 
 	public List<GongDanWeiXiuXiangMu> findGongDanXiangMuLstByWeiXiuGuid(
 			String saleAfterWeiXiuGuid);

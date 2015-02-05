@@ -43,17 +43,17 @@
 <body>
      <fieldset >
      <legend>车辆信息</legend>
-     <table border="0" width="98%" border="0" >
+     <table border="0" width="98%">
      <tr >
-      <td nowrap>维修单号:</td>
+      <td width="60" nowrap>维修单号:</td>
       <td nowrap><span id="labWeiXiuDanHao"><s:property value='gongDan.txtBillNo' /></span></td>
-      <td nowrap>协议单号:</td>
+      <td width="60" nowrap>协议单号:</td>
       <td nowrap><span id="labXieYiDanHao"><s:property value='gongDan.txtXieYiBillNo' /></span></td>
-      <td nowrap>车 主:</td>
+      <td width="60" nowrap>车 主:</td>
       <td nowrap><span id="labCheZhu"><s:property value='gongDan.txtCheZhuName' /></span></td>
-      <td nowrap>联系人:</td>
+      <td width="60" nowrap>联系人:</td>
       <td nowrap><span id="labLianXi"><s:property value='gongDan.txtLianXiRenName' /></span></td>
-      <td nowrap>联系电话:</td>
+      <td width="60" nowrap>联系电话:</td>
       <td nowrap><span id="labLianXiTel"><s:property value='gongDan.txtLianXiRenMob' /></span></td>
      </tr>
      <tr >

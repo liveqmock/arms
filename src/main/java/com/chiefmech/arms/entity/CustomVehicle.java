@@ -1,7 +1,5 @@
 package com.chiefmech.arms.entity;
 
-import java.util.Date;
-
 public class CustomVehicle {
 	private String txtCustId;
 	private String txtVehicleId;
@@ -11,9 +9,7 @@ public class CustomVehicle {
 	private String txtCheLiangChePaiHao;
 	private String txtCheLiangCheJiaHao;
 	private String txtCheLiangFaDongJiHao;
-	private Date txtBaoXianDate;
 	private String ddlCheLiangSort;
-	private Date txtCheLiangNextExaDate;
 
 	public String getTxtCustId() {
 		return txtCustId;
@@ -79,14 +75,6 @@ public class CustomVehicle {
 		this.txtCheLiangFaDongJiHao = txtCheLiangFaDongJiHao;
 	}
 
-	public Date getTxtBaoXianDate() {
-		return txtBaoXianDate;
-	}
-
-	public void setTxtBaoXianDate(Date txtBaoXianDate) {
-		this.txtBaoXianDate = txtBaoXianDate;
-	}
-
 	public String getDdlCheLiangSort() {
 		return ddlCheLiangSort;
 	}
@@ -94,13 +82,4 @@ public class CustomVehicle {
 	public void setDdlCheLiangSort(String ddlCheLiangSort) {
 		this.ddlCheLiangSort = ddlCheLiangSort;
 	}
-
-	public Date getTxtCheLiangNextExaDate() {
-		return txtCheLiangNextExaDate;
-	}
-
-	public void setTxtCheLiangNextExaDate(Date txtCheLiangNextExaDate) {
-		this.txtCheLiangNextExaDate = txtCheLiangNextExaDate;
-	}
-
 }

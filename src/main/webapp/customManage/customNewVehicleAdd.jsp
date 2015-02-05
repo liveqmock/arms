@@ -9,7 +9,7 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <title>车辆新增</title>
 <link rel="stylesheet" type="text/css"
-	href="../style/themes/default/easyui.css?v=20130306" />
+	href="../style/themes/default/easyui.css" />
 <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
 <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="../js/frame/underscore-min.js" type="text/javascript"></script>
@@ -118,22 +118,20 @@ td {
 			<div id="cDiv" style="margin: 2 0 0 5; display: block;">
 				<br />
 				<table border="0" cellpadding="0" cellspacing="0" width="900px"
-					style="border-collapse: collapse; ">
+					style="border-collapse: collapse;">
 					<tr>
-						<td><span class="requireSpan">*</span>制造商：</td>
+						<td><span class="requireSpan">*</span>品牌：</td>
 						<td style="width: 125px;">
 							<div id="cheLiangZhiZaoShang">
 								<select id="ddlCheLiangZhiZaoShang" 
 									name="ddlCheLiangZhiZaoShang"
-									style="border: none; width: 100%; ">
-									<option value="品牌">选择品牌</option>
+									style="border: none; width:100%;">								
 								</select>
-
 							</div>
 						</td>
 						<td><span class="requireSpan">*</span>车系：</td>
 						<td style="width: 125px;">
-							<div id="cheLiangCheXi" style="border: none; ">
+							<div id="cheLiangCheXi" style="border: none;">
 								<select id="ddlCheLiangCheXi" name="ddlCheLiangCheXi"
 									style="border: none; width: 100%;">
 								</select>
@@ -141,41 +139,36 @@ td {
 						</td>
 
 						<td><span class="requireSpan">*</span>车型代码：</td>
-						<td><input name="txtCheLiangCheXingDaiMa" type="text" class="easyui-textbox"
-							maxlength="30" id="txtCheLiangCheXingDaiMa" /></td>		
-							
-							<td>车辆种类：</td>
+						<td><input name="txtCheLiangCheXingDaiMa" type="text"
+							class="easyui-textbox" maxlength="30"
+							id="txtCheLiangCheXingDaiMa" /></td>
+
+						<td>车辆种类：</td>
 						<td><select name="ddlCheLiangSort" id="ddlCheLiangSort"
-							style="border: none; width: 125px;" >
+							style="border: none; width: 125px;">
 								<s:iterator value="VehiCleTypeList">
 									<option value="<s:property value='vehiCleTypeName' />"><s:property
 											value='vehiCleTypeName' /></option>
 								</s:iterator>
 
-						</select></td>		
+						</select></td>
 					</tr>
 
 					<tr>
 						<td><span class="requireSpan">*</span>车牌号：</td>
-						<td><input name="txtCheLiangChePaiHao" type="text" class="easyui-textbox"
-							 id="txtCheLiangChePaiHao"  data-options="required:true,missingMessage:'车牌号为必填项',validType:'maxLength[8]'" /></td>
+						<td><input name="txtCheLiangChePaiHao" type="text"
+							class="easyui-textbox" id="txtCheLiangChePaiHao"
+							data-options="required:true,missingMessage:'车牌号为必填项',validType:'maxLength[8]'" /></td>
 						<td><span class="requireSpan">*</span>车架号：</td>
-						<td><input name="txtCheLiangCheJiaHao" type="text" class="easyui-textbox"
-							data-options="required:true,missingMessage:'车架号为必填项',validType:'length[17,17]'" id="txtCheLiangCheJiaHao" onblur="checkVIN();" /></td>
+						<td><input name="txtCheLiangCheJiaHao" type="text"
+							class="easyui-textbox"
+							data-options="required:true,missingMessage:'车架号为必填项'"
+							id="txtCheLiangCheJiaHao" onblur="checkVIN();" /></td>
 						<td><span class="requireSpan">*</span>发动机号：</td>
-						<td><input name="txtCheLiangFaDongJiHao" type="text" class="easyui-textbox"
-						data-options="required:true,missingMessage:'发动号为必填项',validType:'length[17,17]'"
-						 id="txtCheLiangFaDongJiHao" /></td>
-							<td>年审日期：</td>
-						<td><input name="txtCheLiangNextExaDate" type="text"
-							id="txtCheLiangNextExaDate" class="inputCss easyui-datebox" data-options="required:true,missingMessage:'年审日期为必填项'" /></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td><span class="requireSpan">*</span>投保日期：</td>
-						<td><input name="txtBaoXianDate" type="text"
-							id="txtBaoXianDate" class="easyui-datebox" /></td>
-					</tr>			
+						<td><input name="txtCheLiangFaDongJiHao" type="text"
+							class="easyui-textbox"
+							data-options="required:true,missingMessage:'发动号为必填项'"
+							id="txtCheLiangFaDongJiHao" /></td>
 				</table>
 			</div>
 			<!--车辆信息 end-->
@@ -185,8 +178,7 @@ td {
 			<!--按钮区域 start-->
 			<div align="center" id="btnBottomDiv">
 
-				<a id="lnkSave"
-					class="easyui-linkbutton"
+				<a id="lnkSave" class="easyui-linkbutton" 
 					href="javascript:__doPostBack('lnkSave','')">保存</a> <a id="A1"
 					class="easyui-linkbutton" onclick="cancelAddVehicle()">取消</a>
 			</div>
@@ -197,16 +189,14 @@ td {
 
 	</form>
 	<script language="javascript" type="text/javascript">
-		function loadCarModelInfo(brandIdValue) {
-			$.getJSON("modelInfo.action", {
-				brandId : brandIdValue
+		function loadCarModelInfo(brandName) {
+			$.post("modelInfo.action", {
+				brandName : brandName
 			}, function(modelLst) {
 				$("#ddlCheLiangCheXi").children().remove();
-				$("#ddlCheLiangCheXi").append(
-						'<option value="车系">选择车系</option>');
 				$.each(modelLst, function(index, el) {
 					$("#ddlCheLiangCheXi").append(
-							'<option value="'+el.modelId+'">' + el.modelName
+							'<option value="'+el.modelName+'">' + el.modelName
 									+ '</option>');
 				}
 
@@ -215,7 +205,7 @@ td {
 			});
 		}
 
-		$(function() {
+		$(function() {			
 			$("#ddlCheLiangZhiZaoShang").change(function() {
 				loadCarModelInfo(this.value);
 			});
@@ -224,15 +214,18 @@ td {
 			initFormData(formJson);
 			show(3);
 			$.getJSON("brandInfo.action", {}, function(brandLst) {
+				$("#ddlCheLiangZhiZaoShang").append(
+				'<option value="品牌">选择品牌</option>');
 				$.each(brandLst, function(index, el) {
 					$("#ddlCheLiangZhiZaoShang").append(
-							'<option value="'+el.brandId+'">' + el.brandName
+							'<option value="'+el.brandName+'">' + el.brandName
 									+ '</option>');
 				});
 			});
 		});
 
 		function __doPostBack(eventTarget, eventArgument) {
+			if(	$("#ddlCheLiangZhiZaoShang").val().trim()!="品牌"){
 			$("#form1").form('submit', {
 				url : "saveCustomNewVehicle.action",
 				success : function(result) {
@@ -245,6 +238,7 @@ td {
 					}
 				}
 			});
+			}		
 		}
 
 		var tmp = "a";

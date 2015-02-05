@@ -1,11 +1,8 @@
 package com.chiefmech.arms.action.customManage;
 
 import java.util.List;
-
 import javax.annotation.Resource;
-
 import net.sf.json.JSONObject;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -13,7 +10,6 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
 import com.chiefmech.arms.action.BaseActionSupport;
 import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.entity.CheZhuLianXiRen;
@@ -55,7 +51,6 @@ public class CheZhuLianXiRenAction extends BaseActionSupport
 	public void insertLianXiRenXinXi() {
 		String statusCode = "failed";
 		String info = "保存信息失败";
-
 		int rowsAffected;
 		if (StringUtils.isBlank(item.getTxtCustId())) {
 			item.setTxtCustId(IDGen.getUUID());
@@ -100,7 +95,6 @@ public class CheZhuLianXiRenAction extends BaseActionSupport
 	public int getShowSort() {
 		return showSort;
 	}
-
 	public void setShowSort(int showSort) {
 		this.showSort = showSort;
 	}

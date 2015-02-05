@@ -16,10 +16,10 @@ import com.chiefmech.arms.entity.view.VKeHuCheLiang;
 
 @Repository("cheZhuLianXiRenDaoDao")
 public interface CheZhuLianXiRenDao {
-	@Insert("insert into chezhulianxiren(txtCustId,ddlCustSort,txtCheZhuTel,txtCheZhuName,txtCheZhuMob,txtCheZhuShengRi,ddlCheZhuP,ddlCheZhuC,ddlCheZhuA,txtCheZhuAdd,txtLianXiRenName,txtLianXiRenTel,txtLianXiRenMob,ddlLianXiRenP,ddlLianXiRenC,ddlLianXiRenA,txtLianXiRenAdd,txtCheZhuJiaZhaoDate) values(#{txtCustId},#{ddlCustSort},#{txtCheZhuTel},#{txtCheZhuName},#{txtCheZhuMob},#{txtCheZhuShengRi},#{ddlCheZhuP},#{ddlCheZhuC},#{ddlCheZhuA},#{txtCheZhuAdd},#{txtLianXiRenName},#{txtLianXiRenTel},#{txtLianXiRenMob},#{ddlLianXiRenP},#{ddlLianXiRenC},#{ddlLianXiRenA},#{txtLianXiRenAdd},#{txtCheZhuJiaZhaoDate})")
+	@Insert("insert into chezhulianxiren(txtCustId,ddlCustSort,txtCheZhuName,txtCheZhuTel,txtLianXiRenName,txtLianXiRenTel,txtLianXiRenAdd,txtCheZhuJiaZhaoDate,txtHuiYuanJiFen,txtGongShiZheKou,txtCaiLiaoZheKou,txtHuiYuanDengJi) values(#{txtCustId},#{ddlCustSort},#{txtCheZhuName},#{txtCheZhuTel},#{txtLianXiRenName},#{txtLianXiRenTel},#{txtLianXiRenAdd},#{txtCheZhuJiaZhaoDate},#{txtHuiYuanJiFen},#{txtGongShiZheKou},#{txtCaiLiaoZheKou},#{txtHuiYuanDengJi})")
 	public int insertCheZhuLianXiRen(CheZhuLianXiRen item);
 
-	@Update("update chezhulianxiren set ddlCustSort=#{ddlCustSort},txtCheZhuTel=#{txtCheZhuTel},txtCheZhuName=#{txtCheZhuName},txtCheZhuMob=#{txtCheZhuMob},txtCheZhuShengRi=#{txtCheZhuShengRi},ddlCheZhuP=#{ddlCheZhuP},ddlCheZhuC=#{ddlCheZhuC},ddlCheZhuA=#{ddlCheZhuA},txtCheZhuAdd=#{txtCheZhuAdd},txtLianXiRenName=#{txtLianXiRenName},txtLianXiRenTel=#{txtLianXiRenTel},txtLianXiRenMob=#{txtLianXiRenMob},ddlLianXiRenP=#{ddlLianXiRenP},ddlLianXiRenC=#{ddlLianXiRenC},ddlLianXiRenA=#{ddlLianXiRenA},txtLianXiRenAdd=#{txtLianXiRenAdd},txtCheZhuJiaZhaoDate=#{txtCheZhuJiaZhaoDate} where txtCustId=#{txtCustId}")
+	@Update("update chezhulianxiren set ddlCustSort=#{ddlCustSort},txtCheZhuName=#{txtCheZhuName},txtCheZhuTel=#{txtCheZhuTel},txtLianXiRenName=#{txtLianXiRenName},txtLianXiRenTel=#{txtLianXiRenTel},txtLianXiRenAdd=#{txtLianXiRenAdd},txtCheZhuJiaZhaoDate=#{txtCheZhuJiaZhaoDate},txtHuiYuanJiFen=#{txtHuiYuanJiFen},txtGongShiZheKou=#{txtGongShiZheKou},txtCaiLiaoZheKou=#{txtCaiLiaoZheKou},txtHuiYuanDengJi=#{txtHuiYuanDengJi} where txtCustId=#{txtCustId}")
 	public int updateCheZhuLianXiRen(CheZhuLianXiRen item);
 
 	@Select("select * from chezhulianxiren where txtCustId=#{txtCustId}")

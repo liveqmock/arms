@@ -45,25 +45,7 @@ td {
 					<td style="width: 150px;"><input class="easyui-textbox"
 						data-options="required:true,validType:'maxLength[10]'"
 						name="txtChePaiHao" type="text" id="txtChePaiHao" /></td>
-					<td style="width: 90px;"><span class="requireSpan">*</span>里程:</td>
-					<td><input name="txtLiCheng" type="text" id="txtLiCheng"
-						class="easyui-numberbox"
-						data-options="required:true,min:0,validType:'maxLength[10]',missingMessage:'里程为必填项'" /></td>
-					<td style="width: 90px;"><span class="requireSpan">*</span>油量:</td>
-					<td><input name="txtYouLiang" type="text" id="txtYouLiang"
-						class="easyui-numberbox"
-						data-options="required:true,precision:2,min:0,validType:'maxLength[10]',missingMessage:'油量为必填项'" />
-					</td>
-					<td>客户类别:</td>
-					<td><input class="easyui-textbox" name="txtCustSort"
-						type="text" data-options="validType:'maxLength[30]'"
-						id="txtCustSort" /></td>
-				</tr>
-				<tr>
-					<td>VIN:</td>
-					<td><input name="txtVin" type="text" class="easyui-textbox"
-						data-options="validType:'length[17,17]'" id="txtVin" /></td>
-					<td>厂家品牌:</td>
+					<td>品牌:</td>
 					<td><input class="easyui-textbox" name="txtChangJiaPinPai"
 						type="text" data-options="validType:'maxLength[20]'"
 						id="txtChangJiaPinPai" /></td>
@@ -77,50 +59,49 @@ td {
 						id="txtCheXingDaiMa" /></td>
 				</tr>
 				<tr>
-					<td>AT/MT:</td>
-					<td><select name="txtAT" id="txtAT" class="easyui-combobox"
-						style="width: 145px;">
-							<option value="AT">AT</option>
-							<option value="MT">MT</option>
-					</select></td>
+					<td>VIN:</td>
+					<td><input name="txtVin" type="text" class="easyui-textbox"
+						data-options="required:true,missingMessage:'油量为必填项'" id="txtVin" /></td>
 					<td>发动机号:</td>
 					<td><input name="txtFaDongJiHao" type="text"
-						class="easyui-textbox" data-options="validType:'exactLength[17]'"
+						class="easyui-textbox" 
 						id="txtFaDongJiHao" /></td>
-
+                      <td style="width: 90px;"><span class="requireSpan">*</span>里程:</td>
+					<td><input name="txtLiCheng" type="text" id="txtLiCheng"
+						class="easyui-numberbox"
+						data-options="required:true,min:0,validType:'maxLength[10]',missingMessage:'里程为必填项'" /></td>
+					<td style="width: 90px;"><span class="requireSpan">*</span>油量:</td>
+					<td><input name="txtYouLiang" type="text" id="txtYouLiang"
+						class="easyui-numberbox"
+						data-options="required:true,precision:2,min:0,validType:'maxLength[10]',missingMessage:'油量为必填项'" />
+					</td>
 				</tr>
 				<tr>
 					<td>车主信息</td>
 					<td colspan="7"></td>
 				</tr>
 				<tr>
-					<td>车主名:</td>
-					<td><input class="easyui-textbox"
-						data-options="required:true,missingMessage:'车主名为必填项',validType:'maxLength[10]'"
-						name="txtCheZhuName" type="text" id="txtCheZhuName" /></td>
-					<td>车主手机:</td>
-					<td><input name="txtCheZhuMob" class="easyui-textbox"
-						data-options="required:true,validType:'mobile'" type="text" id="txtCheZhuMob" />
-					</td>
-					<td>车主电话:</td>
-					<td><input name="txtCheZhuTel" class="easyui-textbox"
-						data-options="missingMessage:'车主电话为必填项',validType:'mobile'"
-						type="text" id="txtCheZhuTel" /></td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
+					<td>客户类别:</td>
+					<td><input class="easyui-textbox" name="txtCustSort"
+						type="text" data-options="validType:'maxLength[30]'"
+						id="txtCustSort" /></td>
 				</tr>
 				<tr>
-					<td>联系人:</td>
+					<td>车主名:</td>
+					<td><input class="easyui-textbox"
+						data-options="required:true,missingMessage:'车主名为必填项'"
+						name="txtCheZhuName" type="text" id="txtCheZhuName" /></td>
+					<td>车主电话:</td>
+					<td><input name="txtCheZhuTel" class="easyui-textbox"
+						data-options="required:true,missingMessage:'车主电话为必填项'"
+						type="text" id="txtCheZhuTel" /></td>
+                     <td>联系人:</td>
 					<td><input name="txtLianXiRenName" class="easyui-textbox"
-						data-options="required:true,missingMessage:'联系人姓名为必填项',validType:'maxLength[10]'"
+						data-options="required:true,missingMessage:'联系人姓名为必填项'"
 						type="text" id="txtLianXiRenName" /></td>
-					<td>联系人手机:</td>
-					<td><input name="txtLianXiRenMob" class="easyui-textbox"
-						data-options="required:true,validType:'mobile'" type="text" id="txtLianXiRenMob" />
-					</td>
 					<td>联系人电话:</td>
 					<td><input name="txtLianXiRenTel" class="easyui-textbox"
-						data-options="missingMessage:'联系人电话为必填项',validType:'mobile'"
+						data-options="required:true,missingMessage:'联系人电话为必填项'"
 						type="text" id="txtLianXiRenTel" /></td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
@@ -130,21 +111,22 @@ td {
 					<td colspan="7"><input class="easyui-textbox"
 						name="txtLianXiRenAdd" type="text"
 						data-options="validType:'maxLength[100]'" id="txtLianXiRenAdd"
-						style="width: 836px;" /></td>
+						style="width: 833px;" /></td>
 				</tr>
 				<tr>
 					<td>会员信息</td>
 					<td colspan="7"></td>
 				</tr>
 				<tr>
-                	<td>会员等级:</td>
-					<td><input class="easyui-textbox" name="txtHuiYuanDengJi" type="text" data-options="editable:false" id="txtHuiYuanDengJi" /></td>
-                	<td>会员卡号:</td>
-					<td><input class="easyui-textbox" name="txtHuiYuanHao" type="text" data-options="editable:false" id="txtHuiYuanHao" /></td>
-                	<td>工时折扣:</td>
-					<td><input class="easyui-textbox" name="txtGongShiZheKou" type="text" data-options="editable:false" id="txtGongShiZheKou" /></td>
-                	<td>材料折扣:</td>
-					<td><input class="easyui-textbox" name="txtCaiLiaoZheKou" type="text" data-options="editable:false" id="txtCaiLiaoZheKou" /></td>
+					<td>会员等级:</td>
+					<td><input class="easyui-textbox" name="txtHuiYuanDengJi"
+						type="text" data-options="editable:false" id="txtHuiYuanDengJi" /></td>
+					<td>工时折扣:</td>
+					<td><input class="easyui-textbox" name="txtGongShiZheKou"
+						type="text" data-options="editable:false" id="txtGongShiZheKou" /></td>
+					<td>材料折扣:</td>
+					<td><input class="easyui-textbox" name="txtCaiLiaoZheKou"
+						type="text" data-options="editable:false" id="txtCaiLiaoZheKou" /></td>
 				</tr>
 				<tr>
 					<td>维修信息</td>
@@ -191,10 +173,13 @@ td {
 					<td><input class="easyui-textbox" name="txtFuWuUserId"
 						type="text" maxlength="10" id="txtFuWuUserId" /></td>
 					<td style="width: 90px;"><span class="requireSpan">*</span>下次保养里程:</td>
-					<td><input type="text" id="txtNewLiCheng" name="txtNewLiCheng" class="easyui-numberbox"
+					<td><input type="text" id="txtNewLiCheng" name="txtNewLiCheng"
+						class="easyui-numberbox"
 						data-options="required:true,min:0,validType:'maxLength[10]',missingMessage:'下次保养里程为必填项' " /></td>
 					<td><span class="requireSpan">*</span>下次保养日期:</td>
-					<td><input type="text" id="txtNewRuChangDate" name="txtNewRuChangDate" class="easyui-datebox" data-options="required:true,missingMessage:'下次保养日期为必填项'"
+					<td><input type="text" id="txtNewRuChangDate"
+						name="txtNewRuChangDate" class="easyui-datebox"
+						data-options="required:true,missingMessage:'下次保养日期为必填项'"
 						style="width: 145px;" /></td>
 				</tr>
 				<!--保险信息 end-->
@@ -211,7 +196,7 @@ td {
 				</tr>
 			</table>
 			<table border="0" cellpadding="0" cellspacing="0" width="900px">
-			  <tr>
+				<tr>
 					<td>交修原因:</td>
 					<td>故障原因:</td>
 					<td>维修措施</td>
@@ -234,14 +219,18 @@ td {
 				</tr>
 				<tr>
 					<td colspan="3" align="center">
-						<!--按钮区域 start--><s:if test="gongDan.txtGongDanStatus=='维修接待'"><s:if test="gongDan.txtBillNo!='等待生成'"><a
-					onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','工单制作');return false;" class="easyui-linkbutton"
-					href="javascript:void(0)">制作工单</a> </s:if><a onClick="return saveCheck();" id="lnkSave"
-						class="easyui-linkbutton"
-						href="javascript:__doPostBack('lnkSave','')">保存</a> </s:if><a
-						onClick="winClose();return false;" id="lnkCancel"
-						class="easyui-linkbutton"
-						href="javascript:void(0)">关闭</a> <!--按钮区域 end-->
+						<!--按钮区域 start-->
+						<s:if test="gongDan.txtGongDanStatus=='维修接待'">
+							<s:if test="gongDan.txtBillNo!='等待生成'">
+								<a
+									onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','工单制作');return false;"
+									class="easyui-linkbutton" href="javascript:void(0)">制作工单</a>
+							</s:if>
+							<a onClick="return saveCheck();" id="lnkSave"
+								class="easyui-linkbutton"
+								href="javascript:__doPostBack('lnkSave','')">保存</a>
+						</s:if><a onClick="winClose();return false;" id="lnkCancel"
+						class="easyui-linkbutton" href="javascript:void(0)">关闭</a> <!--按钮区域 end-->
 					</td>
 				</tr>
 

@@ -70,51 +70,6 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('e3f0fe70-9e54-4fe5-9fbc-a0004af38ab5','工单管理','../saleAfterManage/saleAfterGongDanManage.action');"
-												},
-												{
-													name : "维修派工",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('3df737f6-b225-4a61-ae22-b97e62baf5cd','维修派工','../saleAfterManage/saleAfterGongDanManage.action?tabId=3');"
-												},
-												{
-													name : "完工确认",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('dd0db92e-1694-48b4-a7d6-7050be5874af','完工确认','../saleAfterManage/saleAfterGongDanManage.action?tabId=4');"
-												},
-												{
-													name : "费用明细",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('99fcdab9-1dbf-4995-9510-efd73271d947','费用明细','../saleAfterManage/saleAfterGongDanManage.action?tabId=5');"
-												},
-												{
-													name : "交车查询",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('aef7770f-0c2e-4794-9c07-c7fa88d49dc8','交车查询','../saleAfterManage/saleAfterGongDanManage.action?tabId=6');"
-												},
-												{
-													name : "单据撤销",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('97e6ad68-baa6-4550-8673-3ca53b2a1518','单据撤销','../saleAfterManage/saleAfter_WeiXiuFeiYongCancelManage.aspx');"
 												} ],
 										url : "",
 										target : "_blank"
@@ -126,15 +81,6 @@
 										},
 										children : [
 												{
-													name : "采购定单",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('24700033-e6f3-4133-8980-1f35031c47fd','采购定单','../storeOtherManage/storeOtherCaiGouBillManage.aspx');"
-												},
-												{
 													name : "入库管理",
 													font : {
 														'font-style' : '微软雅黑'
@@ -144,24 +90,6 @@
 													click : "mdfMenu('aef416a9-a829-4b9d-acb1-d31d4e2e1ef4','入库管理','../storeOtherManage/storeOtherInsertBillManage.action');"
 												},
 												{
-													name : "销售管理查询",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('c5e430e2-702c-4298-ba20-f911b0123456','销售管理查询','../storeOtherManage/storeOtherSaleManage.action');"
-												},
-												{
-													name : "例外管理查询",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('c5e430e2-702c-4238-ba20-f911b0123456','例外管理查询','../storeOtherManage/exceptionManage.action');"
-												},
-												{
 													name : "即时库存",
 													font : {
 														'font-style' : '微软雅黑'
@@ -169,34 +97,7 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('6968c5ef-3eff-4242-ac88-b6d645d6efd9','即时库存','../storeOtherManage/jiShiKuCunManage.action');"
-												},
-												{
-													name : "操作日志查询",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('4ab70d55-4c40-40bd-9849-b7a72c853014','操作日志查询','../storeOtherManage/shopOperLog.action');"
-												},
-												{
-													name : "维修出退库",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('e2e7c304-0fc6-46b1-96f5-8773191d394e','维修出退库','../saleAfterManage/saleAfterWeiXiuWuLiaoManage.action');"
-												},
-												{
-													name : "精品出退库",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('76ae3969-3e62-4b3d-a205-a8f7cbc15f81','精品出退库','../storeOtherManage/storeOtherJingPinManage.aspx');"
-												} ],
+												}],
 										url : "",
 										target : "_blank"
 									},
@@ -207,16 +108,7 @@
 										},
 										children : [
 												{
-													name : "单位管理",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('11213585-967e-42e6-9e4c-2a2f1dc81b8a','单位管理','../webSetup/storeOtherUnitManage.action');"
-												},
-												{
-													name : "车辆品牌管理",
+													name : "车辆品牌",
 													font : {
 														'font-style' : '微软雅黑'
 													},
@@ -225,7 +117,7 @@
 													click : "mdfMenu('11213585-967e-42e6-9e4c-2a2f1dc88sac','车辆品牌管理','../webSetup/carbrand.action');"
 												},
 												{
-													name : "车辆车系管理",
+													name : "车辆车系",
 													font : {
 														'font-style' : '微软雅黑'
 													},
@@ -234,7 +126,7 @@
 													click : "mdfMenu('11213585-967e-42e6-9e4c-2a2f1dc88999','车辆车系管理','../webSetup/carMoDel.action');"
 												},
 												{
-													name : "车辆类型管理",
+													name : "车辆类型",
 													font : {
 														'font-style' : '微软雅黑'
 													},
@@ -243,7 +135,7 @@
 													click : "mdfMenu('11213585-967e-42e6-9e4c-2a2f1dc88802','车辆类型管理','../webSetup/vehiCleTypeManage.action');"
 												},
 												{
-													name : "帐套管理",
+													name : "帐套",
 													font : {
 														'font-style' : '微软雅黑'
 													},
@@ -252,7 +144,7 @@
 													click : "mdfMenu('11213585-967e-42e6-9e4c-2a2f1dc88sac','帐套管理','../webSetup/zhangTao.action');"
 												},
 												{
-													name : "仓库管理",
+													name : "配件仓库",
 													font : {
 														'font-style' : '微软雅黑'
 													},
@@ -261,16 +153,7 @@
 													click : "mdfMenu('4ab70d55-4c40-40bd-9849-b7a72c85f4d9','仓库管理','../webSetup/storeOtherSetManage.action');"
 												},
 												{
-													name : "商品管理",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('0f7609a0-0169-4d13-9e75-0b901c07c728','商品管理','../webSetup/storeOtherShopManage.aspx');"
-												},
-												{
-													name : "供应商管理",
+													name : "供应商",
 													font : {
 														'font-style' : '微软雅黑'
 													},
@@ -288,7 +171,7 @@
 													click : "mdfMenu('7acf3c55-3939-41ba-b525-3a1dfa035ce9','维修项目','../webSetup/saleAfterWeiXiuXiangMuSet.action');"
 												},
 												{
-													name : "套餐管理",
+													name : "套餐",
 													font : {
 														'font-style' : '微软雅黑'
 													},
@@ -297,16 +180,7 @@
 													click : "mdfMenu('6aebe08f-9fff-4492-885f-a207c1e7ae81','套餐管理','../webSetup/saleAfterTaoCanManage.action');"
 												},
 												{
-													name : "会员管理",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('6aebe08f-91ff-4592-885f-a217c1e6ae81','会员管理','../webSetup/huiYuanManage.action');"
-												},
-												{
-													name : "维修派工管理",
+													name : "维修组主修人",
 													font : {
 														'font-style' : '微软雅黑'
 													},
@@ -342,23 +216,14 @@
 													click : "mdfMenu('6aebe08f-9fff-4492-885f-a207c1e78899','部门管理','../saleAfterDiscount/departMentManage.action');"
 												},
 												{
-													name : "系统用户管理",
+													name : "用户管理",
 													font : {
 														'font-style' : '微软雅黑'
 													},
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('6aebe08f-9fff-4492-885f-a20712348899','系统用户管理','../saleAfterDiscount/systemOwnerManage.action');"
-												},
-												{
-													name : "折扣管理",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('36f97396-88d1-4258-a27e-7c5a9003cae8','折扣管理','../saleAfterDiscount/userManage.action');"
-												}, ],
+												} ],
 										url : "",
 										target : "_blank"
 									} ],
@@ -372,8 +237,8 @@
 				.tabs(
 						'add',
 						{
-							title : "系统导航",
-							content : "<iframe src='navigationPicture.aspx' class=\"tabDefault\"  style='width:100%;height:100%;' frameborder='0' ></iframe>",
+							title : "维修接待",
+							content : "<iframe src='../saleAfterManage/saleAfterCustomSearch.action' class=\"tabDefault\"  style='width:100%;height:100%;' frameborder='0' ></iframe>",
 							closable : false
 						});
 
@@ -498,36 +363,19 @@
 <script language="javascript" type="text/javascript">
 	/*弹出网页对话框*/
 	function winopen(url, WinName, w, h, Modal, Shadow, Closed) {
-
-		if (navigator.userAgent.indexOf('iPad') != -1) {
-			//winow.open
-			parWinClose();
-			var z = window
-					.open(
-							url,
-							WinName,
-							"height="
-									+ h
-									+ ",width="
-									+ w
-									+ ",toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no");
-			z.focus();
-		} else {
-			document.getElementById('winDiv').innerHTML = "<iframe src='"
-					+ url
-					+ "' srcoll='yes'  style='height:100%;width:100%' frameBorder='0' ></iframe>";
-			$("#winDiv").window({
-				title : WinName,
-				width : w,
-				height : h,
-				maximizable : false,
-				minimizable : false,
-				modal : Modal,
-				shadow : Shadow,
-				closed : Closed
-			});
-		}
-
+		document.getElementById('winDiv').innerHTML = "<iframe src='"
+				+ url
+				+ "' srcoll='yes'  style='height:100%;width:100%' frameBorder='0' ></iframe>";
+		$("#winDiv").window({
+			title : WinName,
+			width : w,
+			height : h,
+			maximizable : false,
+			minimizable : false,
+			modal : Modal,
+			shadow : Shadow,
+			closed : Closed
+		});
 	}
 
 	function winClose() {
@@ -545,9 +393,7 @@
 				<td><img src="../image/DCLogo.png" alt='logo' /></td>
 				<td><img src="../image/ShineClubLogo.png"
 					style='margin-left: 10px;' alt='logo' /></td>
-				<td style='width: 75%; vertical-align: bottom; color: Blue;'>[<a
-					onclick="winopen('groupSelfSet.action','机构扩展设置',900,500,true,true,false);"><s:property value='user.jigouName' /></a>
-					]：<a href='#'
+				<td style='width: 75%; vertical-align: bottom; color: Blue;'>[<s:property value='user.jigouName' />] <a href='#'
 					onclick="winopen('userPersonalChange.action','个人设置',900,500,true,true,false);"><s:property value='user.displayName' /></a>
 					&nbsp;&nbsp;<span id="time"></span></td>
 				<td style='width: 62%; vertical-align: bottom; color: Blue;'><a
@@ -555,15 +401,9 @@
 					onclick="winopen('groupSelfSet.jsp','机构扩展设置',900,500,true,true,false);"></a>
 				   <a href='#'
 					onclick="winopen('userPersonalChange.action','个人设置',900,500,true,true,false);"></a> &nbsp;&nbsp;<span id="time"></span></td>
-				<td nowrap='nowrap' style='width: 300px;'><img
-					src='../image/home.png' alt='机构' title="机构"
-					onclick="winopen('groupChoice.jsp','机构选择',900,500,true,true,false);" />
-					<img id="imgCallSrc" src='../image/voice.png' alt='消息' title="消息"
+				<td nowrap='nowrap' style='width: 300px;'><img id="imgCallSrc" src='../image/voice.png' alt='消息' title="消息"
 					onclick="showmsg(0);" /> <span id="callSpan"
-					style="color: Red; font-weight: bold; font-size: 8px; position: relative; left: -10px; top: 0px; z-index: 10;"></span>
-					<img src="../image/chat.png" alt='互动' title="互动"
-					onclick="winopen('../callManage/call.action','互动',800,600,true,true,false);" />
-					<img src="../image/exit.png" alt='退出' title="退出" onclick="exit()" />
+					style="color: Red; font-weight: bold; font-size: 8px; position: relative; left: -10px; top: 0px; z-index: 10;"></span><img src="../image/exit.png" alt='退出' title="退出" onclick="exit()" />
 				</td>
 			</tr>
 		</table>

@@ -104,7 +104,7 @@ td {
 	<div style="width: 900px; margin: auto;">
 		<div id="tabs" class="tabs" style="width: 900px;">
 			<ul>
-				<li id="a"><a href="#tabs-1" onclick="show(1)">车主信息</a></li>
+				<li id="a"><a href="#tabs-1" onclick="show(1)">用户信息</a></li>
 				<!-- <li id="b"><a href="#tabs-2" onclick="show(2)">联系人信息</a></li> -->
 				<li id="c"><a href="#tabs-3" onclick="show(3)">车辆信息</a></li>
 			</ul>
@@ -121,107 +121,72 @@ td {
 						<td colspan="7"></td>
 					</tr>
 					<tr>
-						<td onclick="lianXiRenToCheZhu()">客户类型：</td>
+						<td onclick="lianXiRenToCheZhu()"><span class="requireSpan">&nbsp;*</span>客户类型：</td>
 						<td style="width: 125px;"><select name="ddlCustSort"
+							data-options="required:true,missingMessage:'客户类型为必填项'"
 							id="ddlCustSort" class="easyui-combobox" style="width: 100%;">
 								<option selected="selected" value="普通客户">普通客户</option>
-								<option value="普通客户">普通客户</option>
 								<option value="内部员工">内部员工</option>
 								<option value="定点单位">定点单位</option>
 								<option value="延保客户">延保客户</option>
-
 						</select></td>
 						<td><span class="requireSpan">&nbsp;*</span>车主名：</td>
 						<td><input name="txtCheZhuName"
 							data-options="required:true,missingMessage:'车主名为必填项'"
-							class="easyui-textbox" type="text"
-							data-options="validType:'maxLength[100]'" id="txtCheZhuName" /></td>
-						<td><span class="requireSpan">*</span>车主手机：</td>
-						<td><input type="text"
-							data-options="required:true,missingMessage:'车主手机为必填项',validType:'mobile'"
-							class="easyui-textbox" name="txtCheZhuMob" id="txtCheZhuMob" />
-						</td>
-						<td><span class="requireSpan">*</span>电话：<input
-							class="easyui-textbox" name="txtCheZhuTel" type="text"
-							data-options="validType:'maxLength[12]'" id="txtCheZhuTel" /></td>
-					</tr>
-					<tr>
-						<td><span class="requireSpan"></span>驾照日期：</td>
-						<td><input name="txtCheZhuJiaZhaoDate" type="text"
-							id="txtCheZhuJiaZhaoDate" class="inputCss easyui-datebox"
-							data-options="required:true,missingMessage:'车驾照为必填项'" /></td>
-						<td>&nbsp;生日：</td>
-						<td><input name="txtCheZhuShengRi" type="text"
-							id="txtCheZhuShengRi" class="inputCss easyui-datebox" /></td>
-					</tr>
-					<tr>
-						<td>所属区域：</td>
-						<td colspan="7">
-							<div id="cheZhu">
-								<select name="ddlCheZhuP" id="ddlCheZhuP"
-									style="border: none; width: 100px"></select> <select
-									name="ddlCheZhuC" id="ddlCheZhuC"
-									style="border: none; width: 100px"></select> <select
-									name="ddlCheZhuA" id="ddlCheZhuA"
-									style="border: none; width: 100px"></select>
-							</div>
-						</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td><span class="requireSpan">*</span>车主地址：</td>
-						<td colspan="7"><input name="txtCheZhuAdd" type="text"
-							class="easyui-textbox"
-							data-options="required:true,missingMessage:'车主地址为必填项',validType:'maxLength[200]'"
-							id="txtCheZhuAdd" style="width: 700px;" /></td>
-					</tr>
-					<!--车主信息 end-->
+							class="easyui-textbox" type="text" id="txtCheZhuName" /></td>
 
-					<!--联系人信息 start-->
-					<tr>
-						<td>联系人信息</td>
-						<td colspan="7"></td>
+						<td><span class="requireSpan">*</span>车主电话：</td>
+						<td><input class="easyui-textbox" name="txtCheZhuTel"
+							type="text"
+							data-options="required:true,missingMessage:'车主电话为必填项'"
+							id="txtCheZhuTel" /></td>
 					</tr>
+
 					<tr>
 						<td onclick="cheZhuToLianXiRen()"><span class="requireSpan">*</span>联系人姓名：</td>
 						<td><input name="txtLianXiRenName" type="text"
 							class="easyui-textbox"
-							data-options="required:true,missingMessage:'联系人姓名为必填项',validType:'maxLength[20]'"
+							data-options="required:true,missingMessage:'联系人姓名为必填项'"
 							id="txtLianXiRenName" /></td>
 						<td><span class="requireSpan">*</span>联系人电话：</td>
 						<td><input name="txtLianXiRenTel" type="text"
-							class="easyui-textbox" id="txtLianXiRenTel" /></td>
-						<td><span class="requireSpan">*</span>联系人手机：</td>
-						<td><input name="txtLianXiRenMob" type="text"
 							class="easyui-textbox"
-							data-options="required:true,missingMessage:'联系人手机为必填项',validType:'mobile' "
-							id="txtLianXiRenMob" /></td>
-					</tr>
-
-					<tr>
-						<td>所属区域：</td>
-						<td colspan="7">
-							<div id="lianXiRen">
-
-								<select name="ddlLianXiRenP" id="ddlLianXiRenP"
-									style="border: none; width: 100px"></select> <select
-									name="ddlLianXiRenC" id="ddlLianXiRenC"
-									style="border: none; width: 100px"></select> <select
-									name="ddlLianXiRenA" id="ddlLianXiRenA"
-									style="border: none; width: 100px"></select>
-
-							</div>
-						</td>
+							data-options="required:true,missingMessage:'联系人电话为必填项'"
+							id="txtLianXiRenTel" /></td>
+						<td><span class="requireSpan">*</span>驾照日期：</td>
+						<td><input name="txtCheZhuJiaZhaoDate" type="text"
+							id="txtCheZhuJiaZhaoDate" class=" easyui-datebox"
+							data-options="required:true,missingMessage:'车驾照为必填项'" /></td>
 					</tr>
 					<tr>
-						<td><span class="requireSpan">*</span>联系人地址：</td>
+						<td><span class="requireSpan"></span>联系地址：</td>
 						<td colspan="7"><input name="txtLianXiRenAdd" type="text"
 							class="easyui-textbox" data-options="validType:'maxLength[200]'"
-							id="txtLianXiRenAdd" style="width: 700px;" /></td>
+							id="txtLianXiRenAdd" style="width: 735px;" /></td>
+					</tr>
+
+					<tr>
+						<td>会员信息</td>
+						<td colspan="7"></td>
+					</tr>
+					<tr>
+						<td>会员积分:</td>
+						<td><input class="easyui-numberbox" name="txtHuiYuanJiFen"
+							data-options="required:true,missingMessage:'积分为必填项'" type="text"
+							id="txtHuiYuanJiFen" /></td>
+						<td>工时折扣:</td>
+						<td><input class="easyui-numberbox" name="txtGongShiZheKou"
+							type="text" id="txtGongShiZheKou"
+							data-options="precision:2,max:1" /></td>
+						<td>材料折扣:</td>
+						<td><input class="easyui-numberbox" name="txtCaiLiaoZheKou"
+							type="text" id="txtCaiLiaoZheKou"
+							data-options="precision:2,max:1" /></td>
 					</tr>
 				</table>
 				<!--联系人信息 end-->
+
+
 			</div>
 		</form>
 
@@ -229,14 +194,12 @@ td {
 		<!--车辆信息 start-->
 		<div id="cDiv" style="margin: 2 0 0 5; display: none;">
 			<br /> <span style="font-weight: bold; font-size: 12px; color: Red;">一辆车只能属于一个客户</span>
-			<a onclick="return changeVehicleId();" id="lnkRebindVehicle"
+			<!-- <a onclick="return changeVehicleId();" id="lnkRebindVehicle"
 				class="easyui-linkbutton"
-				href="javascript:__doPostBack('lnkRebindVehicle','')">绑定车辆</a> <a
-				onclick="return addVehicleId();" id="lnkAddVehicle"
+				href="javascript:__doPostBack('lnkRebindVehicle','')">绑定车辆</a> -->
+			<a onclick="return addVehicleId();" id="lnkAddVehicle"
 				class="easyui-linkbutton"
 				href="javascript:__doPostBack('lnkAddVehicle','')">新增车辆</a>
-
-
 			<table border="0" cellpadding="0" cellspacing="0" width="700px"
 				style="border-collapse: collapse; border: 1px solid #9a9a9a;">
 				<s:iterator value="customVehicleLst" status="status">
@@ -262,8 +225,8 @@ td {
 						<td><s:property value='txtCheLiangCheXingDaiMa' /></td>
 					</tr>
 					<tr>
-						<td>年审日期：</td>
-						<td><s:property value='txtCheLiangNextExaDate' /></td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
 						<td>&nbsp;</td>
 						<td></td>
 						<td></td>
@@ -291,17 +254,17 @@ td {
 	<script language="javascript" type="text/javascript">
 
 		$(function() {
-			var formJson = eval('(' + '<s:property value="jsonData" escape="false"/>' + ')');
+			 var formJson = eval('(' + '<s:property value="jsonData" escape="false"/>' + ')'); 
 			initFormData(formJson);
-			setUpPCA(formJson);
+			/* setUpPCA(formJson); */
 			show(<s:property value="showSort" />);
 		});
 
-		function setUpPCA(formJson) {
+		/* function setUpPCA(formJson) {
 			//初始化省市区三级联动下拉框
 			new PCA().geoSetup(["ddlCheZhuP", "ddlCheZhuC", "ddlCheZhuA"], [formJson.ddlCheZhuP, formJson.ddlCheZhuC, formJson.ddlCheZhuA]);
 			new PCA().geoSetup(["ddlLianXiRenP", "ddlLianXiRenC", "ddlLianXiRenA"], [formJson.ddlLianXiRenP, formJson.ddlLianXiRenC, formJson.ddlLianXiRenA]);
-		}
+		} */
 
 		function __doPostBack(eventTarget, eventArgument) {
 			if(eventTarget=='lnkSave'){
@@ -432,36 +395,16 @@ td {
 			if ($("#txtCheZhuTel").val() != "") {
 				$("#txtLianXiRenTel").val($("#txtCheZhuTel").val());
 			}
-			if ($("#txtCheZhuMob").val() != "") {
-				$("#txtLianXiRenMob").val($("#txtCheZhuMob").val());
-			}
-			if ($("#ddlCheZhuP").val() != "") {
-				$("#ddlLianXiRenP").val($("#ddlCheZhuP").val());
-			}
 
 			//下拉框 复制
 
 			selectCopy("ddlCheZhuC", "ddlLianXiRenC");
 			selectCopy("ddlCheZhuA", "ddlLianXiRenA");
-
-			if ($("#ddlCheZhuC").val() != "") {
-				$("#ddlLianXiRenC").val($("#ddlCheZhuC").val());
-			}
-
-			if ($("#ddlCheZhuA").val() != "") {
-				$("#ddlLianXiRenA").val($("#ddlCheZhuA").val());
-			}
-
-			if ($("#txtCheZhuAdd").val() != "") {
-				$("#txtLianXiRenAdd").val($("#txtCheZhuAdd").val());
-			}
-
 		}
 
 		//联系人资料传送至 ---车主资料
 		function lianXiRenToCheZhu() {
-			selectCopy("ddlLianXiRenC", "ddlCheZhuC");
-			selectCopy("ddlLianXiRenA", "ddlCheZhuA");
+	
 
 			if ($("#txtLianXiRenName").val() != "") {
 				$("#txtCheZhuName").val($("#txtLianXiRenName").val());
@@ -469,19 +412,7 @@ td {
 			
 			if ($("#txtLianXiRenTel").val() != "") {
 				$("#txtCheZhuTel").val($("#txtLianXiRenTel").val());
-			}
-			if ($("#txtLianXiRenMob").val() != "") {
-				$("#txtCheZhuMob").val($("#txtLianXiRenMob").val());
-			}
-			if ($("#ddlLianXiRenP").val() != "") {
-				$("#ddlCheZhuP").val($("#ddlLianXiRenP").val());
-			}
-			if ($("#ddlLianXiRenC").val() != "") {
-				$("#ddlCheZhuC").val($("#ddlLianXiRenC").val());
-			}
-			if ($("#ddlLianXiRenA").val() != "") {
-				$("#ddlCheZhuA").val($("#ddlLianXiRenA").val());
-			}
+			} 
 			if ($("#txtLianXiRenAdd").val() != "") {
 				$("#txtCheZhuAdd").val($("#txtLianXiRenAdd").val());
 			}

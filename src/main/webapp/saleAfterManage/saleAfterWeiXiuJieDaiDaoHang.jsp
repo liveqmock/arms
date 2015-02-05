@@ -47,7 +47,7 @@
        <td style="width:100px;">车主名：</td>
        <td style="width:200px;"><input name="txtCustName" type="text" value="<s:property value='customer.txtCheZhuName' />" readonly id="txtCustName" style="width:90%;" /> </td>
        <td style="width:100px;">车主电话：</td>
-       <td style="width:200px;"><input name="txtCheZhuMob" type="text" value="<s:property value='customer.txtCheZhuMob' />" readonly id="txtCheZhuMob"style="width:90%;" /> </td>
+       <td style="width:200px;"><input name="txtCheZhuTel" type="text" value="<s:property value='customer.txtCheZhuTel' />" readonly id="txtCheZhuTel"style="width:90%;" /> </td>
        </tr>
        <tr>
        <td>联系人：</td>
@@ -68,19 +68,12 @@
        <tr>
        <td>车系：</td>
        <td><input name="txtCheXi" type="text" value="<s:property value='customer.ddlCheLiangCheXi' />" readonly id="txtCheXi" style="width:90%;"/> </td>
-       <td>车身颜色：</td>
-       <td><input name="txtCheShenYanSe" type="text" value="<s:property value='customer.ddlCheShenColor' />" readonly id="txtCheShenYanSe" style="width:90%;"/> </td>
-        
+        <td>驾照日期：</td>
+       <td><input name="txtCheZhuJiaZhaoDate" type="text" value="<s:property value='customer.txtCheZhuJiaZhaoDate' />" readonly id="txtCheZhuJiaZhaoDate"style="width:90%;"  /> </td>
        </tr>
        <tr>
        <td>联系人地址:</td>
        <td colspan="3"><input name="txtLianXiRenAdd" type="text" value="<s:property value='customer.txtLianXiRenAdd' />" readonly id="txtLianXiRenAdd" style="width:96%;" /> </td>
-       </tr>
-       <tr>
-       <td>驾照日期：</td>
-       <td><input name="txtJiaZhaoDate" type="text" value="<s:property value='customer.txtLianXiRenJiaZhaoDate' />" readonly id="txtJiaZhaoDate"style="width:90%;"  /> </td>
-       <td>投保日期：</td>
-       <td><input name="txtChuXianDate" type="text" value="<s:property value='customer.txtBaoXianDate' />" readonly id="txtChuXianDate" style="width:90%;"/> </td>
        </tr>
 
        <tr>
@@ -91,8 +84,6 @@
        <div style="border:1px dashed gray;width:200px;height:180px;text-align:center;"><table border="0"  style="vertical-align:top;color:Blue;font-weight:bold;">
              <tr>
                <td>会员等级：[<s:property value='customer.txtHuiYuanDengJi' /> ]</td></tr>
-             <tr><td>会员编号：[<s:property value='customer.txtHuiYuanHao' />]
-             </td></tr>
              <tr><td>工时折扣：[<s:property value='customer.txtGongShiZheKou' />]  </td></tr>
              <tr><td>材料折扣：[<s:property value='customer.txtCaiLiaoZheKou' />]</td></tr>
            </table>

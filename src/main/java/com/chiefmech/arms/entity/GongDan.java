@@ -28,8 +28,6 @@ public class GongDan {
 	/** 车系名称 */
 	private String txtCheXiName;
 
-	/** AT/MT */
-	private String txtAT;
 	/** 车型代码 */
 	private String txtCheXingDaiMa;
 	/** 客户类别 */
@@ -38,16 +36,12 @@ public class GongDan {
 	private String txtCheZhuName;
 	/** 车主电话 */
 	private String txtCheZhuTel;
-	/** 车主手机 */
-	private String txtCheZhuMob;
 	/** 会员等级 */
 	private String txtHuiYuanDengJi;
 	/** 联系人姓名 */
 	private String txtLianXiRenName;
 	/** 联系人电话 */
 	private String txtLianXiRenTel;
-	/** 联系人手机 */
-	private String txtLianXiRenMob;
 	/** 会员卡号 */
 	private String txtHuiYuanHao;
 	/** 联系地址 */
@@ -111,10 +105,8 @@ public class GongDan {
 		this.setTxtCustSort(customerInfo.getDdlCustSort());
 		this.setTxtCheZhuName(customerInfo.getTxtCheZhuName());
 		this.setTxtCheZhuTel(customerInfo.getTxtCheZhuTel());
-		this.setTxtCheZhuMob(customerInfo.getTxtCheZhuMob());
 		this.setTxtLianXiRenName(customerInfo.getTxtLianXiRenName());
 		this.setTxtLianXiRenTel(customerInfo.getTxtLianXiRenTel());
-		this.setTxtLianXiRenMob(customerInfo.getTxtLianXiRenMob());
 		this.setTxtLianXiRenAdd(customerInfo.getTxtLianXiRenAdd());
 		this.setTxtHuiYuanDengJi(customerInfo.getTxtHuiYuanDengJi());
 		this.setTxtHuiYuanHao(customerInfo.getTxtHuiYuanHao());
@@ -369,14 +361,6 @@ public class GongDan {
 		this.txtCheXiName = txtCheXiName;
 	}
 
-	public String getTxtAT() {
-		return txtAT;
-	}
-
-	public void setTxtAT(String txtAT) {
-		this.txtAT = txtAT;
-	}
-
 	public String getTxtCheXingDaiMa() {
 		return txtCheXingDaiMa;
 	}
@@ -409,14 +393,6 @@ public class GongDan {
 		this.txtCheZhuTel = txtCheZhuTel;
 	}
 
-	public String getTxtCheZhuMob() {
-		return txtCheZhuMob;
-	}
-
-	public void setTxtCheZhuMob(String txtCheZhuMob) {
-		this.txtCheZhuMob = txtCheZhuMob;
-	}
-
 	public String getTxtHuiYuanDengJi() {
 		return txtHuiYuanDengJi;
 	}
@@ -439,14 +415,6 @@ public class GongDan {
 
 	public void setTxtLianXiRenTel(String txtLianXiRenTel) {
 		this.txtLianXiRenTel = txtLianXiRenTel;
-	}
-
-	public String getTxtLianXiRenMob() {
-		return txtLianXiRenMob;
-	}
-
-	public void setTxtLianXiRenMob(String txtLianXiRenMob) {
-		this.txtLianXiRenMob = txtLianXiRenMob;
 	}
 
 	public String getTxtHuiYuanHao() {

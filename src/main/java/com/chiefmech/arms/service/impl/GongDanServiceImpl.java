@@ -210,8 +210,8 @@ public class GongDanServiceImpl implements GongDanService {
 	}
 
 	@Override
-	public List<GongDan> getGongDanListByChePaiHao(String txtChePaiHao) {
-		return gongDanDao.getGongDanListByChePaiHao(txtChePaiHao);
+	public List<GongDan> getGongDanListByVehicleId(String txtVehicleId) {
+		return gongDanDao.getGongDanListByVehicleId(txtVehicleId);
 	}
 
 	@Override

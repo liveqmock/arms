@@ -60,7 +60,7 @@
 					<tr>
 						<td colspan="2"><a onclick="return saveCheck();" id="lnkSave"
 							class="easyui-linkbutton"
-							href="javascript:__doPostBack('lnkSave','')">密码修改</a></td>
+							href="javascript:__doPostBack('lnkSave','')">修改密码</a></td>
 					</tr>
 				</table>
 			</div>
@@ -87,56 +87,20 @@
 		}
 
 		function saveCheck() {
-			var ischar = false;
-			var isNumber = false;
-			var isLength = false;
-			var messageinfo = "";
-			var str = $.trim($('#txtNewPwd2').val());
 			var oldPwd = $.trim($('#txtOldPwd').val());
-			var newPwd = $.trim($('#txtNewPwd1').val());
+			var newPwd1 = $.trim($('#txtNewPwd1').val());
+			var newPwd2 = $.trim($('#txtNewPwd2').val());
 
-			if (str == "" || oldPwd == "" || newPwd == "") {
+			if (oldPwd == "" || newPwd1 == "" || newPwd2 == "") {
 				alert("密码都必须填写!");
 				return false;
 			}
-			if (str != newPwd) {
-				alert("新旧密码不一致!");
+			if (newPwd1 != newPwd2) {
+				alert("两次输入的新密码不一致!");
 				return false;
 			}
 
-			try {
-				if (str.match(/[A-Za-z]{1}/g).length >= 2)
-					ischar = true;
-				else
-					messageinfo += "字符至少需要2位.\n";
-			} catch (e) {
-				messageinfo += "字符至少需要2位.\n";
-			}
-
-			try {
-				if (str.match(/[0-9]{1}/g).length >= 2)
-					isNumber = true;
-				else
-					messageinfo += "数字最少2位.\n";
-			} catch (e) {
-				messageinfo += "数字最少2位.\n";
-			}
-
-			if (str.length >= 6)
-				isLength = true;
-			else if (str.length < 8)
-				messageinfo += "密码长度最小6位.\n";
-
-			if (ischar == false || isNumber == false || isLength == false) {
-				window.alert(messageinfo);
-				tmp = "";
-				return false;
-			}
-
-			else {
-				return true;
-			}
-
+			return true;
 		}
 	</script>
 

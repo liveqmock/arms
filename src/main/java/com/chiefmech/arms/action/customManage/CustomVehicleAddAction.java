@@ -1,11 +1,9 @@
 package com.chiefmech.arms.action.customManage;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
-
 import javax.annotation.Resource;
-
 import net.sf.json.JSONObject;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -13,7 +11,6 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
 import com.chiefmech.arms.action.BaseActionSupport;
 import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.entity.CarBrand;
@@ -43,7 +40,7 @@ public class CustomVehicleAddAction extends BaseActionSupport
 	@Resource()
 	private VehiCleTypeService  vehiCleTypeService;
 	
-	private String brandId;
+	private String brandName;
 	private List<VehiCleType> VehiCleTypeList;
 	private CustomVehicle item = new CustomVehicle();
 	private String custId;
@@ -85,8 +82,7 @@ public class CustomVehicleAddAction extends BaseActionSupport
 	@Action(value = "modelInfo")
 	public void getCarModelListByBrandId() {
 		StringBuffer bf = new StringBuffer();
-
-		List<CarModel> modelLst = carService.findCarModelByBrandId(brandId);
+		List<CarModel> modelLst = carService.findCarModelByBrandName(brandName);
 		for (int i = 0; i < modelLst.size(); i++) {
 			CarModel model = modelLst.get(i);
 			bf.append("{\"brandId\":\"").append(model.getBrandId())
@@ -136,11 +132,16 @@ public class CustomVehicleAddAction extends BaseActionSupport
 		this.custId = custId;
 	}
 
+	public String getBrandName() {
+		return brandName;
+	}
+
 	public void setVehicleId(String vehicleId) {
 		this.vehicleId = vehicleId;
 	}
-	public void setBrandId(String brandId) {
-		this.brandId = brandId;
+	
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
 	}
 
 	public List<VehiCleType> getVehiCleTypeList() {

@@ -12,10 +12,10 @@ import com.chiefmech.arms.entity.CustomVehicle;
 
 @Repository("customVehicleDao")
 public interface CustomVehicleDao {
-	@Insert("insert into customvehicle(txtCustId,txtVehicleId,ddlCheLiangZhiZaoShang,ddlCheLiangCheXi,txtCheLiangCheXingDaiMa,txtCheLiangChePaiHao,txtCheLiangCheJiaHao,txtCheLiangFaDongJiHao,txtBaoXianDate,ddlCheLiangSort,txtCheLiangNextExaDate) values(#{txtCustId},#{txtVehicleId},#{ddlCheLiangZhiZaoShang},#{ddlCheLiangCheXi},#{txtCheLiangCheXingDaiMa},#{txtCheLiangChePaiHao},#{txtCheLiangCheJiaHao},#{txtCheLiangFaDongJiHao},#{txtBaoXianDate},#{ddlCheLiangSort},#{txtCheLiangNextExaDate})")
+	@Insert("insert into customvehicle(txtCustId,txtVehicleId,ddlCheLiangZhiZaoShang,ddlCheLiangCheXi,txtCheLiangCheXingDaiMa,txtCheLiangChePaiHao,txtCheLiangCheJiaHao,txtCheLiangFaDongJiHao,ddlCheLiangSort) values(#{txtCustId},#{txtVehicleId},#{ddlCheLiangZhiZaoShang},#{ddlCheLiangCheXi},#{txtCheLiangCheXingDaiMa},#{txtCheLiangChePaiHao},#{txtCheLiangCheJiaHao},#{txtCheLiangFaDongJiHao},#{ddlCheLiangSort})")
 	public int insertCustomVehicle(CustomVehicle item);
 
-	@Update("update customvehicle set txtCustId=#{txtCustId},ddlCheLiangZhiZaoShang=#{ddlCheLiangZhiZaoShang},ddlCheLiangCheXi=#{ddlCheLiangCheXi},txtCheLiangCheXingDaiMa=#{txtCheLiangCheXingDaiMa},txtCheLiangChePaiHao=#{txtCheLiangChePaiHao},txtCheLiangCheJiaHao=#{txtCheLiangCheJiaHao},txtCheLiangFaDongJiHao=#{txtCheLiangFaDongJiHao},txtBaoXianDate=#{txtBaoXianDate},ddlCheLiangSort=#{ddlCheLiangSort},txtCheLiangNextExaDate=#{txtCheLiangNextExaDate} where txtVehicleId=#{txtVehicleId}")
+	@Update("update customvehicle set txtCustId=#{txtCustId},ddlCheLiangZhiZaoShang=#{ddlCheLiangZhiZaoShang},ddlCheLiangCheXi=#{ddlCheLiangCheXi},txtCheLiangCheXingDaiMa=#{txtCheLiangCheXingDaiMa},txtCheLiangChePaiHao=#{txtCheLiangChePaiHao},txtCheLiangCheJiaHao=#{txtCheLiangCheJiaHao},txtCheLiangFaDongJiHao=#{txtCheLiangFaDongJiHao},ddlCheLiangSort=#{ddlCheLiangSort} where txtVehicleId=#{txtVehicleId}")
 	public int updateCustomVehicle(CustomVehicle item);
 
 	@Select("select * from customvehicle where txtCustId=#{txtCustId}")

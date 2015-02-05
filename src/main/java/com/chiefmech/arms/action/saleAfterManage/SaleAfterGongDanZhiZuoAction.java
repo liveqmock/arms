@@ -31,6 +31,7 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 	private GongDanService gongDanService;
 
 	private String saleAfterWeiXiuGuid;
+	private String vehicleId;
 	private String txtWeiXiuWuLiaoId;
 	private String txtWeiXiuXiangMuId;
 	private String easyUiJSonData;
@@ -41,39 +42,46 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 	private List<GongDanWeiXiuXiangMu> gongDanXiangMuLst;
 	private List<GongDanWeiXiuWuLiao> gongDanWuLiaoLst;
 
-	@Action(value = "saleAfterGongDanZhiZuo", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
+	@Action(value = "saleAfterGongDanZhiZuo", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
 	public String saleAfterGongDanZhiZuo() {
 		initWeiXiuAction("GongDanZhiZuo");
 		return INPUT;
 	}
 
-	@Action(value = "saleAfterWeiXiuPaiGong", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
+	@Action(value = "saleAfterWeiXiuPaiGong", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
 	public String saleAfterWeiXiuPaiGong() {
 		initWeiXiuAction("WeiXiuPaiGong");
 		return INPUT;
 	}
 
-	@Action(value = "saleAfterWeiXiuWanJian", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
+	@Action(value = "saleAfterWeiXiuWanJian", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
 	public String saleAfterWeiXiuWanJian() {
 		initWeiXiuAction("WeiXiuWanJian");
 		return INPUT;
 	}
 
-	@Action(value = "saleAfterWeiXiuJieSuan", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
+	@Action(value = "saleAfterWeiXiuJieSuan", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
 	public String saleAfterWeiXiuJieSuan() {
 		initWeiXiuAction("WeiXiuJieSuan");
 		return INPUT;
 	}
 
-	@Action(value = "saleAfterWeiXiuLiShi", results = { @Result(name = "input", location = "saleAfter_weiXiuLiShiList.jsp") })
+	@Action(value = "saleAfterWeiXiuLiShi", results = {@Result(name = "input", location = "saleAfter_weiXiuLiShiList.jsp")})
 	public String saleAfterWeiXiuLiShi() {
 		initWeiXiuAction("WeiXiuLiShi");
-		gongDanLst = gongDanService.getGongDanListByChePaiHao(gongDan
-				.getTxtChePaiHao());
+		gongDanLst = gongDanService.getGongDanListByVehicleId(gongDan
+				.getTxtVehicleId());
 		return INPUT;
 	}
 
-	@Action(value = "weiXiuLiShiDetail", results = { @Result(name = "input", location = "saleAfter_weiXiuLiShiDetailShowBySaleAfterGuid.jsp") })
+	@Action(value = "weiXiuLiShiByVehicleId", results = {@Result(name = "input", location = "saleAfter_weiXiuLiShiList.jsp")})
+	public String weiXiuLiShiByVehicleId() {
+		action = "WeiXiuLiShi";
+		gongDanLst = gongDanService.getGongDanListByVehicleId(vehicleId);
+		return INPUT;
+	}
+
+	@Action(value = "weiXiuLiShiDetail", results = {@Result(name = "input", location = "saleAfter_weiXiuLiShiDetailShowBySaleAfterGuid.jsp")})
 	public String weiXiuLiShiDetail() {
 		gongDan = gongDanService.findGongDanByWeiXiuGuid(saleAfterWeiXiuGuid);
 		gongDanXiangMuLst = gongDanService
@@ -224,6 +232,10 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 
 	public List<GongDanWeiXiuWuLiao> getGongDanWuLiaoLst() {
 		return gongDanWuLiaoLst;
+	}
+
+	public void setVehicleId(String vehicleId) {
+		this.vehicleId = vehicleId;
 	}
 
 }
