@@ -18,10 +18,13 @@ public class KuCunOperLog {
 	private float txtSalePrice;
 	private String ddlCangKu;
 
+	public KuCunOperLog() {
+	}
+
 	public KuCunOperLog(RuKuDan ruKuDan, RuKuDanWuLiao ruKuDanWuLiao) {
 		this.txtLogGuid = IDGen.getUUID();
 		this.txtBillNo = ruKuDan.getTxtBillNo();
-		this.txtBillSort = "入库单";
+		this.txtBillSort = ruKuDan.getDdlRuKuSort();
 		this.txtLogDate = DateUtil.getCurrentDateTime();
 
 		this.txtWuLiaoGuid = ruKuDanWuLiao.getTxtWuLiaoGuid();
@@ -33,30 +36,38 @@ public class KuCunOperLog {
 	}
 
 	public boolean isKuCunPlusRequire() {
-		return this.txtBillSort.equals("入库单");
+		return this.txtBillSort.equals("入库单")
+				|| this.txtBillSort.equals("例外入库");
 	}
 
 	public String getTxtLogGuid() {
 		return txtLogGuid;
 	}
+
 	public void setTxtLogGuid(String txtLogGuid) {
 		this.txtLogGuid = txtLogGuid;
 	}
+
 	public String getTxtBillNo() {
 		return txtBillNo;
 	}
+
 	public void setTxtBillNo(String txtBillNo) {
 		this.txtBillNo = txtBillNo;
 	}
+
 	public String getTxtBillSort() {
 		return txtBillSort;
 	}
+
 	public void setTxtBillSort(String txtBillSort) {
 		this.txtBillSort = txtBillSort;
 	}
+
 	public String getTxtLogDate() {
 		return txtLogDate;
 	}
+
 	public void setTxtLogDate(String txtLogDate) {
 		this.txtLogDate = txtLogDate;
 	}

@@ -33,9 +33,9 @@ td {
 <body>
         <table border="0" style="width:100%;">
         <tr><td class="titlebg"><span>配件管理</span>
-        <span class="titleSpan">(采购入库单管理)</span> 
+        <span class="titleSpan">(出入库管理)</span> 
          </td><td align="right">
-              <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'"  onclick="openRuKuDan('');">新增入库单</a>
+              <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'"  onclick="openRuKuDan('');">新增出入库单</a>
 		      <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'" onclick="toggleSearchPanel();">查询</a>
 		      <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'" onclick="reloadCurentPage();">刷新</a>
           </td></tr>
@@ -43,7 +43,7 @@ td {
 	<form name="fmSearch" method="post" id="fmSearch">
 		<table id="searchPanel" class="searchPanel">
 			<tr>
-				<td>入库时间:</td>
+				<td>出入库时间:</td>
 				<td><input name="txtRuKuDateBegin" type="text" id="txtRuKuDateBegin"
 					class="easyui-datebox" style="width: 100px;" /></td>
 				<td>至</td>
@@ -77,7 +77,7 @@ td {
 		<thead>
 			<tr>
 				<th width="150" data-options="field:'txtBillNo'">单号</th>
-                <th width="80" data-options="field:'ddlRuKuSort'">出入标志</th>  
+                <th width="80" data-options="field:'ddlRuKuSort'">出入库类型</th>  
 				<th width="150" data-options="field:'txtRuKuDate'">入库日期</th>
 				<th width="150" data-options="field:'txtSuppName'">供应商名称</th>
 				<th width="80" data-options="field:'txtJingShouRen'">经手人</th>

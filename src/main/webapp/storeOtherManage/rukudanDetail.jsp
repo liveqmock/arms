@@ -31,7 +31,7 @@
 					<td class="titlebg"><span>配件管理</span></td>
 					<td align="right"><s:if test="ruKuDan.txtStatus=='待提交审核' || ruKuDan.txtStatus=='单据退回'">
 							<a onClick="saveRuKuDan();return false;"
-								class="easyui-linkbutton" href="javascript:void(0)">保存入库单</a>
+								class="easyui-linkbutton" href="javascript:void(0)">保存出入库单</a>
 							<a
 								onClick="updateRuKuDanStatus('<s:property value='ruKuDanGuid' />','审核中');return false;"
 								class="easyui-linkbutton" href="javascript:void(0)">提交审核</a>
@@ -68,10 +68,14 @@
 							data-options="required:true" /></td>
 					</tr>
 					<tr>
-						<td style="text-align: right;"><span class="requireSpan">*&nbsp;</span>出入标志:</td>
-						<td><input name="ddlRuKuSort" type="text" id="ddlRuKuSort"
-							class="easyui-textbox"
-							data-options="editable:false,required:true" /></td>
+						<td style="text-align: right;"><span class="requireSpan">*&nbsp;</span>出入库类型:</td>
+						<td><input name="ddlRuKuSort" id="ddlRuKuSort"
+                        <s:if test="ruKuDan.txtGuid==null">
+							class="easyui-combobox"	data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/chuRuKuSortOption.action'"
+                         </s:if>
+                         <s:else>
+                         class="easyui-textbox" data-options="editable:false,required:true"
+                         </s:else> /></td>
 						<td style="text-align: right;"><span class="requireSpan">*&nbsp;</span>所属仓库:</td>
 						<td><input name="ddlCangKu" id="ddlCangKu"
 							class="easyui-combobox"

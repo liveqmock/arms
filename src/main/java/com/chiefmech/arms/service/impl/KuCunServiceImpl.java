@@ -13,6 +13,7 @@ import com.chiefmech.arms.dao.KuCunDao;
 import com.chiefmech.arms.entity.KuCun;
 import com.chiefmech.arms.entity.KuCunOperLog;
 import com.chiefmech.arms.entity.Store;
+import com.chiefmech.arms.entity.query.KuCunOperLogSearchBean;
 import com.chiefmech.arms.service.KuCunService;
 
 @Service("kuCunService")
@@ -69,6 +70,17 @@ public class KuCunServiceImpl implements KuCunService {
 	@Override
 	public int updateJiShiKuCun(KuCun item) {
 		return kuCunDao.updateJiShiKuCun(item);
+	}
+
+	@Override
+	public String getKuCunOperLogEasyUiJSon(KuCunOperLogSearchBean query) {
+		List<KuCunOperLog> lst = kuCunDao.getKuCunOperLogList(query);
+		int total = kuCunDao.getKuCunOperLogListCount(query);
+
+		String lstJson = JSONArray.fromObject(lst).toString();
+		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
+				lstJson);
+		return jsonStr;
 	}
 
 }

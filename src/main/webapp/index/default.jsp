@@ -81,13 +81,13 @@
 										},
 										children : [
 												{
-													name : "入库管理",
+													name : "出入库管理",
 													font : {
 														'font-style' : '微软雅黑'
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('aef416a9-a829-4b9d-acb1-d31d4e2e1ef4','入库管理','../storeOtherManage/storeOtherInsertBillManage.action');"
+													click : "mdfMenu('aef416a9-a829-4b9d-acb1-d31d4e2e1ef4','出入库管理','../storeOtherManage/storeOtherInsertBillManage.action');"
 												},
 												{
 													name : "即时库存",
@@ -97,6 +97,15 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('6968c5ef-3eff-4242-ac88-b6d645d6efd9','即时库存','../storeOtherManage/jiShiKuCunManage.action');"
+												},
+												{
+													name : "库存日志",
+													font : {
+														'font-style' : '微软雅黑'
+													},
+													url : "",
+													target : "_blank",
+													click : "mdfMenu('6968c5ef-3eff-4242-ac88-b6d645dsds4','库存日志','../storeOtherManage/kuCunOperLog.action');"
 												}],
 										url : "",
 										target : "_blank"

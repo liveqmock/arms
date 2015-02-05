@@ -13,6 +13,7 @@ import com.chiefmech.arms.dao.sqlprovider.KuCunDaoSqlProvider;
 import com.chiefmech.arms.entity.KuCun;
 import com.chiefmech.arms.entity.KuCunOperLog;
 import com.chiefmech.arms.entity.Store;
+import com.chiefmech.arms.entity.query.KuCunOperLogSearchBean;
 
 @Repository("kuCunDao")
 public interface KuCunDao {
@@ -41,4 +42,12 @@ public interface KuCunDao {
 
 	@SelectProvider(type = KuCunDaoSqlProvider.class, method = "getKuCunListCount")
 	public int getKuCunListCount(@Param("item") KuCun query);
+
+	@SelectProvider(type = KuCunDaoSqlProvider.class, method = "getKuCunOperLogList")
+	public List<KuCunOperLog> getKuCunOperLogList(
+			@Param("item") KuCunOperLogSearchBean query);
+
+	@SelectProvider(type = KuCunDaoSqlProvider.class, method = "getKuCunOperLogListCount")
+	public int getKuCunOperLogListCount(
+			@Param("item") KuCunOperLogSearchBean query);
 }

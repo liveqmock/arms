@@ -41,7 +41,6 @@ public class StoreRuKuDetailManageAction extends BaseActionSupport implements
 
 		if (StringUtils.isBlank(ruKuDanGuid)) {
 			ruKuDan.setTxtBillNo("等待生成");
-			ruKuDan.setDdlRuKuSort("入库单");
 			ruKuDan.setTxtStatus("待提交审核");
 			ruKuDan.setTxtRuKuDate(DateUtil.getCurrentDate());
 			ruKuDan.setTxtJingShouRen(this.getUser().getDisplayName());
@@ -60,8 +59,18 @@ public class StoreRuKuDetailManageAction extends BaseActionSupport implements
 		int rowsAffected;
 		if (StringUtils.isBlank(ruKuDan.getTxtGuid())) {
 			ruKuDan.setTxtGuid(IDGen.getUUID());
-			String prefix = ruKuDan.getDdlRuKuSort().equals("入库单") ? "RKD"
-					: "TKD";
+			String ruKuDanSort = ruKuDan.getDdlRuKuSort();
+			String prefix = "";
+			if (ruKuDanSort.equals("入库单")) {
+				prefix = "RKD";
+			} else if (ruKuDanSort.equals("出库单")) {
+				prefix = "CKD";
+			} else if (ruKuDanSort.equals("例外入库")) {
+				prefix = "LWRKD";
+			} else if (ruKuDanSort.equals("例外出库")) {
+				prefix = "LWCKD";
+			}
+
 			ruKuDan.setTxtBillNo(prefix + ruKuDanService.getNewBillNo());
 			rowsAffected = ruKuDanService.insertRuKuDan(ruKuDan);
 		} else {

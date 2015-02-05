@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.chiefmech.arms.dao.ShopOperLogDao;
 import com.chiefmech.arms.entity.ShopOperLog;
-import com.chiefmech.arms.entity.query.ShopOperLogSearchBean;
+import com.chiefmech.arms.entity.query.KuCunOperLogSearchBean;
 import com.chiefmech.arms.service.ShopOperLogService;
 
 @Service("shopOperLogService")
@@ -20,7 +20,7 @@ public class ShopOperLogServiceImpl implements ShopOperLogService {
 	private ShopOperLogDao shopOperLogDao;
 
 	@Override
-	public String getShopOperLogEasyUiJSon(ShopOperLogSearchBean query) {
+	public String getShopOperLogEasyUiJSon(KuCunOperLogSearchBean query) {
 		List<ShopOperLog> lst = shopOperLogDao
 				.getShopOperLogListForEasyUi(query);
 		int total = shopOperLogDao.getShopOperLogCountForEasyUi(query);

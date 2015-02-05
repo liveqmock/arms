@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.chiefmech.arms.dao.sqlprovider.ShopOperLogDaoSqlProvider;
 import com.chiefmech.arms.entity.ShopOperLog;
-import com.chiefmech.arms.entity.query.ShopOperLogSearchBean;
+import com.chiefmech.arms.entity.query.KuCunOperLogSearchBean;
 
 
 @Repository("shopOperLogDao")
@@ -16,9 +16,9 @@ public interface ShopOperLogDao {
 	
 	@SelectProvider(type = ShopOperLogDaoSqlProvider.class, method = "getShopOperLogListForEasyUi")
 	public List<ShopOperLog> getShopOperLogListForEasyUi(
-			@Param("item") ShopOperLogSearchBean query);
+			@Param("item") KuCunOperLogSearchBean query);
 
 	@SelectProvider(type = ShopOperLogDaoSqlProvider.class, method = "getShopOperLogCountForEasyUi")
 	public int getShopOperLogCountForEasyUi(
-			@Param("item") ShopOperLogSearchBean query);
+			@Param("item") KuCunOperLogSearchBean query);
 }

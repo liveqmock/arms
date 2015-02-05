@@ -1,8 +1,8 @@
 package com.chiefmech.arms.service;
 
-import com.chiefmech.arms.entity.query.ShopOperLogSearchBean;
+import com.chiefmech.arms.entity.query.KuCunOperLogSearchBean;
 
 public interface ShopOperLogService {
 	
-	public String getShopOperLogEasyUiJSon(ShopOperLogSearchBean query);
+	public String getShopOperLogEasyUiJSon(KuCunOperLogSearchBean query);
 }
