@@ -9,9 +9,11 @@ import net.sf.json.JSONArray;
 import org.springframework.stereotype.Service;
 
 import com.chiefmech.arms.dao.RuKuDanDao;
+import com.chiefmech.arms.entity.KuCunOperLog;
 import com.chiefmech.arms.entity.RuKuDan;
 import com.chiefmech.arms.entity.RuKuDanWuLiao;
 import com.chiefmech.arms.entity.query.RuKuDanSearchBean;
+import com.chiefmech.arms.service.KuCunService;
 import com.chiefmech.arms.service.RuKuDanService;
 
 @Service("ruKuDanService")
@@ -19,6 +21,8 @@ public class RuKuDanServiceImpl implements RuKuDanService {
 
 	@Resource()
 	private RuKuDanDao ruKuDanDao;
+	@Resource()
+	private KuCunService kuCunService;
 
 	@Override
 	public String getRuKuDanEasyUiJSon(RuKuDanSearchBean query) {
@@ -53,6 +57,14 @@ public class RuKuDanServiceImpl implements RuKuDanService {
 
 	@Override
 	public int updateRuKuDanStatus(RuKuDan ruKuDan) {
+		if (ruKuDan.getTxtStatus().equals("审核完毕")) {
+			List<RuKuDanWuLiao> lst = ruKuDanDao.getRuKuDanWuLiaoList(ruKuDan
+					.getTxtGuid());
+			for (RuKuDanWuLiao ruKuDanWuLiao : lst) {
+				KuCunOperLog operLog = new KuCunOperLog(ruKuDan, ruKuDanWuLiao);
+				kuCunService.updateKuCun(operLog);
+			}
+		}
 		return ruKuDanDao.updateRuKuDanStatus(ruKuDan);
 	}
 

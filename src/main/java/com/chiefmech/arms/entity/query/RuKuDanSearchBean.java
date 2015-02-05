@@ -3,11 +3,11 @@ package com.chiefmech.arms.entity.query;
 import com.chiefmech.arms.entity.query.Criteria.Action;
 
 public class RuKuDanSearchBean extends SearchBean {
+	private String txtRuKuDateBegin;
+	private String txtRuKuDateEnd;
 	private String txtBillNo;
 	private String txtSuppName;
-	private String ddlStatus;
-	private String txtRuKuDate;
-	private String txtRuKuDateEnd;
+	private String txtStatus;
 	private int start = 1;
 	private int rows = 15;
 
@@ -27,27 +27,28 @@ public class RuKuDanSearchBean extends SearchBean {
 		this.txtSuppName = txtSuppName;
 	}
 
-	public String getDdlStatus() {
-		return ddlStatus;
-	}
-
-	public void setDdlStatus(String ddlStatus) {
-		this.ddlStatus = ddlStatus;
-	}
-	public String getTxtRuKuDate() {
-		return txtRuKuDate;
-	}
-
-	public void setTxtRuKuDate(String txtRuKuDate) {
-		this.txtRuKuDate = txtRuKuDate;
-	}
-
 	public String getTxtRuKuDateEnd() {
 		return txtRuKuDateEnd;
 	}
 
 	public void setTxtRuKuDateEnd(String txtRuKuDateEnd) {
 		this.txtRuKuDateEnd = txtRuKuDateEnd;
+	}
+
+	public String getTxtRuKuDateBegin() {
+		return txtRuKuDateBegin;
+	}
+
+	public void setTxtRuKuDateBegin(String txtRuKuDateBegin) {
+		this.txtRuKuDateBegin = txtRuKuDateBegin;
+	}
+
+	public String getTxtStatus() {
+		return txtStatus;
+	}
+
+	public void setTxtStatus(String txtStatus) {
+		this.txtStatus = txtStatus;
 	}
 
 	public int getStart() {
@@ -69,10 +70,10 @@ public class RuKuDanSearchBean extends SearchBean {
 	@Override
 	public void initSearchFields() {
 		this.addField(new Criteria(Action.STR_BETWEEN, "txtRuKuDate",
-				txtRuKuDate, txtRuKuDateEnd));
+				txtRuKuDateBegin, txtRuKuDateEnd));
 		this.addField(new Criteria(Action.LIKE, "txtBillNo", txtBillNo));
 		this.addField(new Criteria(Action.LIKE, "txtSuppName", txtSuppName));
-		this.addField(new Criteria(Action.LIKE, "ddlStatus", ddlStatus));
+		this.addField(new Criteria(Action.LIKE, "txtStatus", txtStatus));
 		this.addLimitInfo(this.getStart(), this.getRows());
 	}
 

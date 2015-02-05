@@ -37,34 +37,29 @@ td {
          </td><td align="right">
               <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'"  onclick="openRuKuDan('');">新增入库单</a>
 		      <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'" onclick="toggleSearchPanel();">查询</a>
+		      <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'" onclick="reloadCurentPage();">刷新</a>
           </td></tr>
          </table> 
 	<form name="fmSearch" method="post" id="fmSearch">
 		<table id="searchPanel" class="searchPanel">
 			<tr>
 				<td>入库时间:</td>
-				<td><input name="txtRuKuDate" type="text" id="txtRuKuDate"
-					class="inputCss easyui-datebox" style="width: 100px;" /></td>
+				<td><input name="txtRuKuDateBegin" type="text" id="txtRuKuDateBegin"
+					class="easyui-datebox" style="width: 100px;" /></td>
 				<td>至</td>
 				<td><input name="txtRuKuDateEnd" type="text"
-					id="txtRuKuDateEnd" class="inputCss easyui-datebox"
+					id="txtRuKuDateEnd" class="easyui-datebox"
 					style="width: 100px;" /></td>
 				<td>单号:</td>
-				<td><input name="txtBillNo" type="text" maxlength="20"
+				<td><input name="txtBillNo" type="text" class="easyui-textbox" maxlength="20"
 					id="txtBillNo" style="width: 120px;" /></td>
 				<td>供应商:</td>
-				<td><input name="txtSuppName" type="text" maxlength="20"
+				<td><input name="txtSuppName" type="text" class="easyui-textbox" maxlength="20"
 					id="txtSuppName" style="width: 120px;" /></td>
-				<td>单据状态:</td>
-				<td><select name="ddlStatus" id="ddlStatus"
-					style="width: 100px;">
-						<option selected="selected" value="">全部</option>
-						<option value="待提交审核">待提交审核</option>
-						<option value="审核中">审核中</option>
-						<option value="审核完毕">审核完毕</option>
-						<option value="单据退回处理">单据退回处理</option>
-						<option value="流程被删除">流程被删除</option>
-				</select></td>
+				<td>审核状态:</td>
+				<td><input name="txtStatus" id="txtStatus"
+							class="easyui-combobox"
+							data-options="editable:false,valueField: 'label',textField: 'value',data: [{label: '待提交审核',value: '待提交审核'},{label: '审核中',value: '审核中'},{label: '单据退回',value: '单据退回'},{label: '审核完毕',value: '审核完毕'}]" /></td>
 				<td colspan="3" style="text-align: center;"><a id="lnkSearch"
 					class="easyui-linkbutton" href="javascript:doSearch()">查询项目</a></td>
 				<td><a id="lnkSearch" class="easyui-linkbutton"

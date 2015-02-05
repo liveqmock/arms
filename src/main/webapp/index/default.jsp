@@ -168,7 +168,7 @@
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('6968c5ef-3eff-4242-ac88-b6d645d6efd9','即时库存','../storeOtherManage/reportJiShiKuCun.action');"
+													click : "mdfMenu('6968c5ef-3eff-4242-ac88-b6d645d6efd9','即时库存','../storeOtherManage/jiShiKuCunManage.action');"
 												},
 												{
 													name : "操作日志查询",

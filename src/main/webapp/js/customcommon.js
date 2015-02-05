@@ -146,6 +146,9 @@ function toggleSearchPanel() {
 	$("#searchPanel").toggle();
 }
 
+function reloadCurentPage(){
+	location.reload();	
+}
 
 //-----------维修工单管理--------------
 function updateGongDanStatus(saleAfterWeiXiuGuid, newGongDanStatus){
@@ -193,14 +196,9 @@ function saveRuKuDan() {
 		success : function(result) {
 			var result = eval('(' + result + ')');
 			if (result.statusCode == "success") {
-				$.messager
-						.alert(
-								'提示',
-								'保存信息成功！',
-								'info',
-								function() {
-									refreshPage(result.info);
-								});
+				$.messager.alert('提示', '保存信息成功！', 'info', function() {
+					refreshPage(result.info);
+				});
 			} else if (result.statusCode == "failed") {
 				$.messager.alert('提示', '保存信息失败！');
 			}
@@ -211,16 +209,20 @@ function saveRuKuDan() {
 function updateRuKuDanStatus(ruKuDanGuid, newStatus){
 	$.messager.confirm('提示', '确定要'+newStatus+'吗?', function(r) {
 		if (r) {
-			$.post('updateRuKuDanStatus.action', {
-				"txtGuid" : ruKuDanGuid,
-				"txtStatus" : newStatus
-			}, function(result) {
-				if (result.errorMsg) {
-					$.messager.alert('出错啦', result.errorMsg);
-				} else {
-					refreshPage(ruKuDanGuid);
+			var oldStatus = $("#txtStatus").textbox("getValue");
+			$("#txtStatus").textbox("setValue", newStatus);
+			$("#form1").form('submit',{
+				url : "updateRuKuDanStatus.action",
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.errorMsg) {
+						$("#txtStatus").textbox("setValue", oldStatus);
+						$.messager.alert('出错啦', result.errorMsg);
+					} else {
+						refreshPage(ruKuDanGuid);
+					}
 				}
-			}, 'json');
+			});
 		}
 	});
 }
