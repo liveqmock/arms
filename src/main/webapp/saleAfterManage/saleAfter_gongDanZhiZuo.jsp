@@ -65,7 +65,7 @@
 						<s:if test="action=='GongDanZhiZuo'">
 						data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuGongDuanOption.action'}}"</s:if>>工段</th>
 					<s:if test="action=='GongDanZhiZuo' || action=='WeiXiuJieSuan'">
-						<th field="txtXiangMuId" width="150">项目编号</th>
+						<th field="txtXiangMuCode" width="150">项目编号</th>
 					</s:if>
 					<th field="txtWeiXiuNeiRong" width="150">维修内容</th>
 					<th field="txtGongShi" width="50"
@@ -80,11 +80,11 @@
 					<s:if
 						test="action=='WeiXiuPaiGong' || action=='WeiXiuWanJian' || action=='WeiXiuJieSuan'">
 						<th field="txtBanZu" width="100"
-							data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuBanZuOption.action'}}">维修班组</th>
+							data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuBanZuOption.action',onChange:updateZhuXiuRen}}">维修班组</th>
 					</s:if>
 					<s:if test="action=='WeiXiuPaiGong' || action=='WeiXiuWanJian'">
 						<th field="txtZhuXiuRen" width="80"
-							data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuZhuXiuRenOption.action'}}">主修人</th>
+							data-options="editor:{type:'textbox'}">主修人</th>
 					</s:if>
 					<s:if test="action=='WeiXiuJieSuan'">
 						<th field="txtWanJianRen" width="80">完检人</th>
@@ -118,14 +118,11 @@
 				data-options="url:'queryGongDanWeiXiuWuLiao.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />',toolbar:'#tb2',singleSelect:true,rownumbers:true,showFooter:true">
 				<thead>
 					<tr>
-						<th field="txtWuLiaoId" width="100">商品编号</th>
-						<th field="txtWuLiaoName" width="200">商品名称</th>
-						<th field="txtRegQty" width="60"
-							data-options="align:'right',editor:{type:'numberbox',options:{required: true,missingMessage:'所需数量必须填写'}}">所需数量</th>
+						<th field="txtWuLiaoCode" width="100">物料编号</th>
+						<th field="txtWuLiaoName" width="200">物料名称</th>
+						<th field="ddlCangKu" width="100">所属仓库</th>
 						<th field="txtTakeQty" width="60"
 							data-options="align:'right',editor:{type:'numberbox',options:{required: true,missingMessage:'领用数量必须填写'}}">领用数量</th>
-						<th field="txtReturnQty" width="60"
-							data-options="align:'right',editor:{type:'numberbox',options:{required: true,missingMessage:'退货数量必须填写'}}">退货数量</th>
 						<th field="txtPrice" width="100">单价</th>
 						<th field="txtPaid" width="100">实际费用</th>
 						<th field="ddlZhangTao" width="100"
@@ -248,6 +245,18 @@
 				return "";	
 			}
 		}
+		
+		function updateZhuXiuRen(newBanZu, oldBanZu){
+			var editRow = myTable.datagrid('getEditingRow');
+			//alert("txtBanZu:"+editRow.txtBanZu+" newVal:"+newVal+" oldVal:"+oldVal);
+			$.post('queryZhuXiuRen.action', {
+				"weiXiuBanZu" : newBanZu
+			}, function(result) {
+				var editRowIndex = myTable.datagrid('getEditingRowIndex');
+				var zhuXiuRenEditor = myTable.datagrid('getEditor',{index:editRowIndex, field:'txtZhuXiuRen'});
+				$(zhuXiuRenEditor.target).textbox("setValue", result.info);
+			}, 'json');
+		}
 
 		function getTargetRowIndex(target) {
 			return myTable.datagrid('getEventTargetRowIndex', target);
@@ -319,15 +328,15 @@
 		var myTable2 = $('#datagridWuLiao');
 
 		function addItemList2() {
-			var sURL = "../saleAfterManage/saleAfterGongDanZhiZuoAddWeiXiuWuLiao.action?saleAfterGuid="
+			var sURL = "<s:property value='basePath' />/storeOtherManage/kuCunManage.action?action=addWuLiao&saleAfterWeiXiuGuid="
 					+ saleAfterGuid + "&d=" + new Date();
-			var sFeatures = "dialogWidth:750px;dialogHeight:550px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
+			var sFeatures = "dialogWidth:900px;dialogHeight:700px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
 			window.showModalDialog(sURL, window, sFeatures);
 			myTable2.datagrid('reload');
 		}
 
 		function formatAction2(value, row, index) {
-			if (row.txtWuLiaoId == "合计") {
+			if (row.txtWuLiaoCode == "合计") {
 				return "";
 			} else {
 				if (row.editing) {

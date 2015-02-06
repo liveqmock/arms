@@ -17,6 +17,7 @@ public class VKeHuCheLiang {
 	private String txtCheLiangFaDongJiHao;
 	private String txtHuiYuanDengJi;
 	private String txtCheZhuJiaZhaoDate;
+	private String ddlCheLiangSort;
 	private String txtHuiYuanHao;
 	private int txtHuiYuanJiFen;
 	private float txtGongShiZheKou;
@@ -195,6 +196,14 @@ public class VKeHuCheLiang {
 
 	public void setTxtCaiLiaoZheKou(float txtCaiLiaoZheKou) {
 		this.txtCaiLiaoZheKou = txtCaiLiaoZheKou;
+	}
+
+	public String getDdlCheLiangSort() {
+		return ddlCheLiangSort;
+	}
+
+	public void setDdlCheLiangSort(String ddlCheLiangSort) {
+		this.ddlCheLiangSort = ddlCheLiangSort;
 	}
 
 }

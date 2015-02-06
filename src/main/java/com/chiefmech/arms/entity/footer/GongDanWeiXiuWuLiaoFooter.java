@@ -2,18 +2,18 @@ package com.chiefmech.arms.entity.footer;
 
 public class GongDanWeiXiuWuLiaoFooter {
 
-	private String txtWuLiaoId;
+	private String txtWuLiaoCode;
 	private float txtRegQty;
 	private float txtTakeQty;
 	private float txtReturnQty;
 	private float txtPaid;
 
-	public String getTxtWuLiaoId() {
-		return txtWuLiaoId;
+	public String getTxtWuLiaoCode() {
+		return txtWuLiaoCode;
 	}
 
-	public void setTxtWuLiaoId(String txtWuLiaoId) {
-		this.txtWuLiaoId = txtWuLiaoId;
+	public void setTxtWuLiaoCode(String txtWuLiaoCode) {
+		this.txtWuLiaoCode = txtWuLiaoCode;
 	}
 
 	public float getTxtRegQty() {

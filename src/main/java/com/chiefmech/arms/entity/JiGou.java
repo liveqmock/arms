@@ -1,25 +1,21 @@
 package com.chiefmech.arms.entity;
 
 public class JiGou {
-	private int id;
+	private String jigouGuid;
 	private String jigouCode;
 	private String jigouName;
 	private String jigouLogo;
 	private String jigouAddr;
 	private String jigouDesc;
-	private String jigouPhone;
 	private String lastModifyTime;
-	private String jigouTel1;
-	private String jigouTel2;
+	private String jigouTel;
 	private String jigouFax;
-	private String jingpinFeilv;
-	private String jinpinMaoLiLv;
-	
-	public int getId() {
-		return id;
+
+	public String getJigouGuid() {
+		return jigouGuid;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setJigouGuid(String jigouGuid) {
+		this.jigouGuid = jigouGuid;
 	}
 	public String getJigouCode() {
 		return jigouCode;
@@ -51,29 +47,11 @@ public class JiGou {
 	public void setJigouDesc(String jigouDesc) {
 		this.jigouDesc = jigouDesc;
 	}
-	public String getJigouPhone() {
-		return jigouPhone;
-	}
-	public void setJigouPhone(String jigouPhone) {
-		this.jigouPhone = jigouPhone;
-	}
 	public String getLastModifyTime() {
 		return lastModifyTime;
 	}
 	public void setLastModifyTime(String lastModifyTime) {
 		this.lastModifyTime = lastModifyTime;
-	}
-	public String getJigouTel1() {
-		return jigouTel1;
-	}
-	public void setJigouTel1(String jigouTel1) {
-		this.jigouTel1 = jigouTel1;
-	}
-	public String getJigouTel2() {
-		return jigouTel2;
-	}
-	public void setJigouTel2(String jigouTel2) {
-		this.jigouTel2 = jigouTel2;
 	}
 	public String getJigouFax() {
 		return jigouFax;
@@ -81,17 +59,11 @@ public class JiGou {
 	public void setJigouFax(String jigouFax) {
 		this.jigouFax = jigouFax;
 	}
-	public String getJingpinFeilv() {
-		return jingpinFeilv;
+	public String getJigouTel() {
+		return jigouTel;
 	}
-	public void setJingpinFeilv(String jingpinFeilv) {
-		this.jingpinFeilv = jingpinFeilv;
+	public void setJigouTel(String jigouTel) {
+		this.jigouTel = jigouTel;
 	}
-	public String getJinpinMaoLiLv() {
-		return jinpinMaoLiLv;
-	}
-	public void setJinpinMaoLiLv(String jinpinMaoLiLv) {
-		this.jinpinMaoLiLv = jinpinMaoLiLv;
-	}
-	
+
 }

@@ -1,4 +1,4 @@
-package com.chiefmech.arms.action.webSetup;
+package com.chiefmech.arms.action.saleAfterDiscount;
 
 import javax.annotation.Resource;
 
@@ -8,63 +8,59 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
 import com.chiefmech.arms.action.BaseActionSupport;
-import com.chiefmech.arms.common.util.IDGen;
-import com.chiefmech.arms.entity.WeiXiuPaiGong;
-import com.chiefmech.arms.service.WeiXiuPaiGongService;
+import com.chiefmech.arms.entity.JiGou;
+import com.chiefmech.arms.service.JiGouService;
 import com.opensymphony.xwork2.ModelDriven;
 
 @SuppressWarnings("serial")
 @ParentPackage("custom-default")
-@Namespace("/webSetup")
+@Namespace("/saleAfterDiscount")
 @Controller()
 @Scope("prototype")
-public class WeiXiuPaiGongAction extends BaseActionSupport implements
-		ModelDriven<WeiXiuPaiGong> {
-	
+public class JiGouManageAction extends BaseActionSupport
+		implements
+			ModelDriven<JiGou> {
 	@Resource()
-	private WeiXiuPaiGongService weiXiuPaiGongService;
-	
-    private WeiXiuPaiGong item=new WeiXiuPaiGong();
-    private int page = 1;
+	private JiGouService jiGouService;
+	private JiGou item = new JiGou();
+	private int page = 1;
 	private int rows = 10;
 
-	@Action(value = "weiXiuPaiGongManage", results = { @Result(name = "input", location = "weiXiuPaiGongManage.jsp") })
-	public String weiXiuPaiGongManage() {
+	@Action(value = "jiGouManage", results = {@Result(name = "input", location = "jigouManage.jsp")})
+	public String jiGouManage() {
 		return INPUT;
 	}
-	@Action(value = "queryweiXiuPaiGong")
-	public void queryweiXiuPaiGong() {
-		this.transmitJson(weiXiuPaiGongService.getWeiXiuPaiGongEasyUiJSon(item, page, rows));
+
+	@Action(value = "queryJiGou")
+	public void queryUnit() {
+		this.transmitJson(jiGouService.getJiGouEasyUiJSon(item, page, rows));
 	}
 
-	@Action(value = "weiXiuPaiGongSearch")
-	public void weiXiuPaiGongSearch() {
-		this.transmitJson(weiXiuPaiGongService.getWeiXiuPaiGongEasyUiJSon(item, page, rows));
+	@Action(value = "JiGouSearch")
+	public void UnitSearch() {
+		this.transmitJson(jiGouService.getJiGouEasyUiJSon(item, page, rows));
 	}
 
-	@Action(value = "insertweiXiuPaiGong")
+	@Action(value = "insertJiGou")
 	public void insertItem() {
-		item.setWeixiuzuID(IDGen.getUUID());
-		int rowAffected = weiXiuPaiGongService.insertItem(item);
+		int rowAffected = jiGouService.insertItem(item);
 		String jsonStr = getJsonResponse(rowAffected, "新增");
 
 		this.transmitJson(jsonStr);
 	}
 
-	@Action(value = "updateweiXiuPaiGong")
+	@Action(value = "updateJiGou")
 	public void updateItem() {
-		int rowAffected = weiXiuPaiGongService.updateItem(item);
+		int rowAffected = jiGouService.updateItem(item);
 		String jsonStr = getJsonResponse(rowAffected, "更新");
 
 		this.transmitJson(jsonStr);
 	}
 
-	@Action(value = "deleteweiXiuPaiGong")
+	@Action(value = "deleteJiGou")
 	public void deleteItem() {
-		String id = item.getWeixiuzuID();
-		int rowAffected = weiXiuPaiGongService.deleteItem(id);
+		int rowAffected = jiGouService.deleteItem(item.getJigouGuid());
 		String jsonStr = getJsonResponse(rowAffected, "删除");
 
 		this.transmitJson(jsonStr);
@@ -78,11 +74,12 @@ public class WeiXiuPaiGongAction extends BaseActionSupport implements
 
 		return jsonStr;
 	}
+
 	@Override
-	public WeiXiuPaiGong getModel() {
+	public JiGou getModel() {
 		return item;
 	}
-	
+
 	public void setPage(int page) {
 		this.page = page;
 	}
@@ -90,4 +87,5 @@ public class WeiXiuPaiGongAction extends BaseActionSupport implements
 	public void setRows(int rows) {
 		this.rows = rows;
 	}
+
 }

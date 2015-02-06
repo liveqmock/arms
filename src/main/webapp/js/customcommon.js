@@ -30,6 +30,16 @@ function initFormData(formJson) {
 				return el.editing == true;
 			});
 		},
+		getEditingRow: function (jq) {
+			var rows = this.getRows(jq);
+			return _.find(rows, function(el){
+				return el.editing == true;
+			});
+		},
+		getEditingRowIndex: function (jq) {
+			var rowsEditFlag = _.pluck(this.getRows(jq), "editing");
+			return _.indexOf(rowsEditFlag, true);
+		},
 		getEventTargetRowIndex: function (jq, target) {
 			var tr = $(target).closest('tr.datagrid-row');			
 			return parseInt(tr.attr('datagrid-row-index'));

@@ -33,7 +33,7 @@ td {
 <body>
 	<table border="0" style="width: 100%;">
 		<tr>
-			<td class="titlebg"><span>配件管理</span> <span class="titleSpan">(即时库存管理)</span>
+			<td class="titlebg"><span>配件管理</span> <span class="titleSpan">(库存管理)</span>
 			</td><td align="right">
 		      <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'" onclick="toggleSearchPanel();">查询</a>
 		      <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'" onclick="reloadCurentPage();">刷新</a>
@@ -61,31 +61,43 @@ td {
 		</table>
 	</form>
 	<table id="mydg" class="easyui-datagrid"
-		data-options="url:'queryJiShiKuCun.action',
+		data-options="url:'queryKuCun.action',
 						   rownumbers:true,
-						   singleSelect:true,
-						   toolbar:'#toolbar',
+                           <s:if test="action=='updateKuCun'">singleSelect:true,</s:if>
+						   toolbar:'#tb',
 						   pagination:true,
 						   showFooter:true">
 		<thead>
 			<tr>
+                <s:if test="action=='addWuLiao'">
+				<th field="ck" checkbox="true" width="20"></th>
+				</s:if>
 				<th width="150" data-options="field:'txtWuLiaoCode'">物料编号</th>
 				<th width="150" data-options="field:'txtWuLiaoName'">物料名称</th>
 				<th width="100" data-options="field:'ddlCangKu'">所属仓库</th>
 				<th width="100" data-options="field:'txtQty'">物料库存数量</th>
 				<th width="100" data-options="field:'txtChengBenJia'">成本单价</th>
 				<th width="100" data-options="field:'txtSalePrice',align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">售价单价</th>
+                <s:if test="action=='updateKuCun'">
                 <th field="action" width="150" align="center"
 								formatter="formatAction">操作</th>
+				</s:if>
 			</tr>
 		</thead>
 	</table>
+     <s:if test="action=='addWuLiao'">
+    <div id="tb" style="height: auto">
+        <a href="javascript:void(0)" class="easyui-linkbutton"
+            data-options="iconCls:'icon-add',plain:true"
+            onClick="addCheckedItems()">添加选中物料</a>
+    </div>
+    </s:if>
 	<script type="text/javascript">
 		var myTable = $('#mydg');
 		
 		function doSearch() {
 			$("#fmSearch").form('submit', {
-				url : "queryJiShiKuCun.action",
+				url : "queryKuCun.action",
 				success : function(jsonStr) {
 					$('#mydg').datagrid('loadData', $.parseJSON(jsonStr));
 				}
@@ -142,6 +154,24 @@ td {
 
 		function cancelrow(target) {
 			myTable.datagrid('cancelEdit', getTargetRowIndex(target));
+		}
+
+		function addCheckedItems() {
+			var checkedRows = myTable.datagrid('getChecked');
+			if (checkedRows.length == 0) {
+				$.messager.alert('提示', '请先选中要插入的维修项目');
+			} else {
+				$.post("<s:property value='basePath' />/saleAfterManage/addGongDanWeiXiuWuLiao.action?d=" + new Date(), {
+					"saleAfterWeiXiuGuid" : "<s:property value='saleAfterWeiXiuGuid' />",
+					"easyUiJSonData" : JsonToString(checkedRows)
+				}, function(result) {
+					if (result.errorMsg) {
+						$.messager.alert('出错啦', result.errorMsg);
+					} else {
+						winThisClose();
+					}
+				}, "json");
+			}
 		}
 
 	</script>

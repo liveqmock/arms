@@ -7,18 +7,18 @@ import javax.annotation.Resource;
 import net.sf.json.JSONArray;
 import org.springframework.stereotype.Service;
 import com.chiefmech.arms.dao.WeiXiuPaiGongDao;
-import com.chiefmech.arms.entity.WeiXiuPaiGong;
-import com.chiefmech.arms.service.WeiXiuPaiGongService;
+import com.chiefmech.arms.entity.WeiXiuZhu;
+import com.chiefmech.arms.service.WeiXiuZhuService;
 
 @Service("weiXiuPaiGongService")
-public class WeiXiuPaiGongServiceImpl implements WeiXiuPaiGongService {
+public class WeiXiuPaiGongServiceImpl implements WeiXiuZhuService {
 	@Resource()
 	private WeiXiuPaiGongDao weiXiuPaiGongDao;
 
 	@Override
-	public String getWeiXiuPaiGongEasyUiJSon(WeiXiuPaiGong query, int page,
+	public String getWeiXiuPaiGongEasyUiJSon(WeiXiuZhu query, int page,
 			int rows) {
-		List<WeiXiuPaiGong> lst = weiXiuPaiGongDao.getWeiXiuPaiGongList(query,
+		List<WeiXiuZhu> lst = weiXiuPaiGongDao.getWeiXiuPaiGongList(query,
 				page, rows);
 		int total = weiXiuPaiGongDao.getWeiXiuPaiGongListCount(query);
 
@@ -29,12 +29,12 @@ public class WeiXiuPaiGongServiceImpl implements WeiXiuPaiGongService {
 	}
 
 	@Override
-	public int insertItem(WeiXiuPaiGong item) {
+	public int insertItem(WeiXiuZhu item) {
 		return weiXiuPaiGongDao.insertItem(item);
 	}
 
 	@Override
-	public int updateItem(WeiXiuPaiGong item) {
+	public int updateItem(WeiXiuZhu item) {
 		return weiXiuPaiGongDao.updateItem(item);
 	}
 
@@ -44,7 +44,7 @@ public class WeiXiuPaiGongServiceImpl implements WeiXiuPaiGongService {
 	}
 
 	@Override
-	public List<WeiXiuPaiGong> selectItem() {
+	public List<WeiXiuZhu> selectItem() {
 		return weiXiuPaiGongDao.selectItem();
 	}
 

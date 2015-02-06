@@ -1,6 +1,5 @@
 package com.chiefmech.arms.action.customManage;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 import javax.annotation.Resource;
 import net.sf.json.JSONObject;
@@ -13,8 +12,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import com.chiefmech.arms.action.BaseActionSupport;
 import com.chiefmech.arms.common.util.IDGen;
-import com.chiefmech.arms.entity.CarBrand;
-import com.chiefmech.arms.entity.CarModel;
 import com.chiefmech.arms.entity.CustomVehicle;
 import com.chiefmech.arms.entity.VehiCleType;
 import com.chiefmech.arms.service.CarService;
@@ -27,28 +24,28 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/customManage")
 @Controller()
 @Scope("prototype")
-public class CustomVehicleAddAction extends BaseActionSupport
-		implements
-			ModelDriven<CustomVehicle> {
+public class CustomVehicleAddAction extends BaseActionSupport implements
+		ModelDriven<CustomVehicle> {
 
 	@Resource()
 	private CustomVehicleService customVehicleService;
-	
+
 	@Resource()
 	private CarService carService;
-	
+
 	@Resource()
-	private VehiCleTypeService  vehiCleTypeService;
-	
+	private VehiCleTypeService vehiCleTypeService;
+
 	private String brandName;
 	private List<VehiCleType> VehiCleTypeList;
 	private CustomVehicle item = new CustomVehicle();
 	private String custId;
 	private String vehicleId;
+	private String txtCustId2;
 
-	@Action(value = "customNewVehicleAdd", results = {@Result(name = "input", location = "customNewVehicleAdd.jsp")})
+	@Action(value = "customNewVehicleAdd", results = { @Result(name = "input", location = "customNewVehicleAdd.jsp") })
 	public String customNewVehicleAdd() {
-		VehiCleTypeList=vehiCleTypeService.findVehiCleType();
+		VehiCleTypeList = vehiCleTypeService.findVehiCleType();
 		if (vehicleId != null) {
 			item = customVehicleService
 					.queryCustomVehicleByVehicleId(vehicleId);
@@ -57,47 +54,7 @@ public class CustomVehicleAddAction extends BaseActionSupport
 		}
 		return INPUT;
 	}
-	
-	@Action(value = "brandInfo")
-	public void getCarBrandList() {
-		StringBuffer bf = new StringBuffer();
 
-		List<CarBrand> brandLst = carService.getAllCarBrand();
-		for (int i = 0; i < brandLst.size(); i++) {
-			CarBrand brand = brandLst.get(i);
-			bf.append("{\"brandId\":\"").append(brand.getBrandId())
-					.append("\", \"brandName\":\"")
-					.append(brand.getBrandName())
-					.append("\", \"brandLogo\":\"")
-					.append(brand.getBrandLogo()).append("\"}");
-			if (i < brandLst.size() - 1) {
-				bf.append(",");
-			}
-			bf.append("\n");
-		}
-		this.transmitJson("[\n" + bf.toString() + "]");
-	}
-
-	
-	@Action(value = "modelInfo")
-	public void getCarModelListByBrandId() {
-		StringBuffer bf = new StringBuffer();
-		List<CarModel> modelLst = carService.findCarModelByBrandName(brandName);
-		for (int i = 0; i < modelLst.size(); i++) {
-			CarModel model = modelLst.get(i);
-			bf.append("{\"brandId\":\"").append(model.getBrandId())
-					.append("\", \"modelId\":\"").append(model.getModelId())
-					.append("\", \"modelName\":\"")
-					.append(model.getModelName()).append("\"}");;
-			if (i < modelLst.size() - 1) {
-				bf.append(",");
-			}
-			bf.append("\n");
-		}
-		this.transmitJson("[\n" + bf.toString() + "]");
-	}
-	
-	
 	@Action(value = "saveCustomNewVehicle")
 	public void saveCustomNewVehicle() {
 		String statusCode = "failed";
@@ -106,15 +63,20 @@ public class CustomVehicleAddAction extends BaseActionSupport
 		int rowsAffected;
 		if (StringUtils.isBlank(item.getTxtVehicleId())) {
 			item.setTxtVehicleId(IDGen.getUUID());
+			item.setTxtCustId(txtCustId2);
 			rowsAffected = customVehicleService.insertCustomVehicle(item);
+			if (rowsAffected == 1) {
+				statusCode = "success";
+				info = item.getTxtVehicleId();
+			}
 		} else {
+			item.setTxtCustId(txtCustId2);
 			rowsAffected = customVehicleService.updateCustomVehicle(item);
+			if (rowsAffected == 1) {
+				statusCode = "update";
+				info = item.getTxtVehicleId();
+			}
 		}
-		if (rowsAffected == 1) {
-			statusCode = "success";
-			info = item.getTxtVehicleId();
-		}
-
 		this.transmitJson(String.format(
 				"{\"statusCode\":\"%s\", \"info\":\"%s\"}", statusCode, info));
 	}
@@ -139,7 +101,7 @@ public class CustomVehicleAddAction extends BaseActionSupport
 	public void setVehicleId(String vehicleId) {
 		this.vehicleId = vehicleId;
 	}
-	
+
 	public void setBrandName(String brandName) {
 		this.brandName = brandName;
 	}
@@ -151,4 +113,12 @@ public class CustomVehicleAddAction extends BaseActionSupport
 	public void setVehiCleTypeList(List<VehiCleType> vehiCleTypeList) {
 		VehiCleTypeList = vehiCleTypeList;
 	}
+
+	public String getTxtCustId2() {
+		return txtCustId2;
+	}
+
+	public void setTxtCustId2(String txtCustId2) {
+		this.txtCustId2 = txtCustId2;
+	}	
 }

@@ -90,13 +90,13 @@
 													click : "mdfMenu('aef416a9-a829-4b9d-acb1-d31d4e2e1ef4','出入库管理','../storeOtherManage/storeOtherInsertBillManage.action');"
 												},
 												{
-													name : "即时库存",
+													name : "库存管理",
 													font : {
 														'font-style' : '微软雅黑'
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('6968c5ef-3eff-4242-ac88-b6d645d6efd9','即时库存','../storeOtherManage/jiShiKuCunManage.action');"
+													click : "mdfMenu('6968c5ef-3eff-4242-ac88-b6d645d6efd9','库存管理','../storeOtherManage/kuCunManage.action?action=updateKuCun');"
 												},
 												{
 													name : "库存日志",
@@ -189,13 +189,13 @@
 													click : "mdfMenu('6aebe08f-9fff-4492-885f-a207c1e7ae81','套餐管理','../webSetup/saleAfterTaoCanManage.action');"
 												},
 												{
-													name : "维修组主修人",
+													name : "维修组管理",
 													font : {
 														'font-style' : '微软雅黑'
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('7acf3c55-3939-41ba-b525-3a1dfa035c88','维修派工管理','../webSetup/weiXiuPaiGongManage.action');"
+													click : "mdfMenu('7acf3c55-3939-41ba-b525-3a1dfa035c88','维修组管理','../webSetup/weiXiuZhuManage.action');"
 												}, ],
 										url : "",
 										target : "_blank"

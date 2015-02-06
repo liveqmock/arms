@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.chiefmech.arms.dao.StoreDao;
 import com.chiefmech.arms.entity.Store;
-import com.chiefmech.arms.entity.option.OptionBean;
 import com.chiefmech.arms.service.StoreService;
 
 @Service("storeService")
@@ -47,11 +46,6 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public List<Store> selectItem() {
 		return storeDao.selectItem();
-	}
-
-	@Override
-	public List<OptionBean> getAllOptionBean() {
-		return storeDao.getAllOptionBean();
 	}
 
 }

@@ -8,10 +8,10 @@ public interface JiGouService {
 
 	public int updateItem(JiGou item);
 
-	public int deleteItem(int id);
+	public int deleteItem(String jigouGuid);
 
 	public String getJiGouEasyUiJSon(JiGou query, int page, int rows);
-	
+
 	public List<JiGou> selectItem();
 
 }

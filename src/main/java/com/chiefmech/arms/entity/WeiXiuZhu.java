@@ -1,15 +1,14 @@
 package com.chiefmech.arms.entity;
 
-public class WeiXiuPaiGong {
+public class WeiXiuZhu {
 	/** 维修组编号 */
 	private String weixiuzuID;
-	private String weixiuzuBianHao;
 	/** 维修组名 */
 	private String weixiuzuName;
 	/** 主修人 */
 	private String zhuxiuRen;
-	/** 维修组备注 */
-	private String weixiuzuDesc;
+	/** 所属机构 */
+	private String suoShuJiGou;
 	public String getWeixiuzuID() {
 		return weixiuzuID;
 	}
@@ -28,17 +27,11 @@ public class WeiXiuPaiGong {
 	public void setZhuxiuRen(String zhuxiuRen) {
 		this.zhuxiuRen = zhuxiuRen;
 	}
-	public String getWeixiuzuDesc() {
-		return weixiuzuDesc;
+	public String getSuoShuJiGou() {
+		return suoShuJiGou;
 	}
-	public void setWeixiuzuDesc(String weixiuzuDesc) {
-		this.weixiuzuDesc = weixiuzuDesc;
-	}
-	public String getWeixiuzuBianHao() {
-		return weixiuzuBianHao;
-	}
-	public void setWeixiuzuBianHao(String weixiuzuBianHao) {
-		this.weixiuzuBianHao = weixiuzuBianHao;
+	public void setSuoShuJiGou(String suoShuJiGou) {
+		this.suoShuJiGou = suoShuJiGou;
 	}
 
 }

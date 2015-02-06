@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.chiefmech.arms.dao.CarDao;
 import com.chiefmech.arms.entity.CarBrand;
 import com.chiefmech.arms.entity.CarModel;
+import com.chiefmech.arms.entity.option.OptionBean;
 import com.chiefmech.arms.service.CarService;
 
 
@@ -26,6 +27,16 @@ public class CarServiceImpl implements CarService {
 	@Override
 	public List<CarModel> findCarModelByBrandName(String brandName) {
 		return carDao.findCarModelByBrandName(brandName);
+	}
+
+	@Override
+	public List<OptionBean> getCarBrandAllOption() {
+		return carDao.getCarBrandAllOption();
+	}
+
+	@Override
+	public List<OptionBean> getCarModelAllOption(String code) {
+		return carDao.getCarModelAllOption(code);
 	}
 
 }

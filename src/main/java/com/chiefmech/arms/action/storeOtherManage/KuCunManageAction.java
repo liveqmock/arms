@@ -21,7 +21,7 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/storeOtherManage")
 @Controller()
 @Scope("prototype")
-public class JiShiKuCunManageAction extends BaseActionSupport
+public class KuCunManageAction extends BaseActionSupport
 		implements
 			ModelDriven<KuCun> {
 
@@ -32,12 +32,15 @@ public class JiShiKuCunManageAction extends BaseActionSupport
 	private int page = 1;
 	private int rows = 10;
 	private String rowJsonData;
+	private String saleAfterWeiXiuGuid;
+	private String action;
+	private String easyUiJSonData;
 
-	@Action(value = "jiShiKuCunManage", results = {@Result(name = "input", location = "jiShiKuCunManage.jsp")})
+	@Action(value = "kuCunManage", results = {@Result(name = "input", location = "kuCunManage.jsp")})
 	public String storeOtherSetManage() {
 		return INPUT;
 	}
-	@Action(value = "queryJiShiKuCun")
+	@Action(value = "queryKuCun")
 	public void queryJiShiKuCun() {
 		this.transmitJson(kuCunService.getKuCunEasyUiJSon(item, page, rows));
 	}
@@ -73,4 +76,27 @@ public class JiShiKuCunManageAction extends BaseActionSupport
 	public void setRowJsonData(String rowJsonData) {
 		this.rowJsonData = rowJsonData;
 	}
+
+	public String getEasyUiJSonData() {
+		return easyUiJSonData;
+	}
+
+	public void setEasyUiJSonData(String easyUiJSonData) {
+		this.easyUiJSonData = easyUiJSonData;
+	}
+
+	public String getSaleAfterWeiXiuGuid() {
+		return saleAfterWeiXiuGuid;
+	}
+	public void setSaleAfterWeiXiuGuid(String saleAfterWeiXiuGuid) {
+		this.saleAfterWeiXiuGuid = saleAfterWeiXiuGuid;
+	}
+	public String getAction() {
+		return action;
+	}
+
+	public void setAction(String action) {
+		this.action = action;
+	}
+
 }

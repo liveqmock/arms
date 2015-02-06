@@ -40,7 +40,7 @@ public interface GongDanDao {
 	public int getGongDanCountForEasyUi(
 			@Param("item") SaleAfterGongDanSearchBean query);
 
-	@Insert("insert into gongdanxiangmu(txtWeiXiuXiangMuId,txtBillNo,txtXiangMuId,txtGongDuanName,txtGongShi,txtGongShiFei,txtWeiXiuNeiRong,ddlZhangTao) values(#{txtWeiXiuXiangMuId},#{txtBillNo},#{txtXiangMuId},#{txtGongDuanName},#{txtGongShi},#{txtGongShiFei},#{txtWeiXiuNeiRong},#{ddlZhangTao})")
+	@Insert("insert into gongdanxiangmu(txtWeiXiuXiangMuId,txtGongDanGuid,txtXiangMuCode,txtGongDuanName,txtGongShi,txtGongShiFei,txtWeiXiuNeiRong,ddlZhangTao) values(#{txtWeiXiuXiangMuId},#{txtGongDanGuid},#{txtXiangMuCode},#{txtGongDuanName},#{txtGongShi},#{txtGongShiFei},#{txtWeiXiuNeiRong},#{ddlZhangTao})")
 	public int insertGongDanWeiXiuXiangMu(GongDanWeiXiuXiangMu item);
 
 	@Update("update gongdanxiangmu set txtGongDuanName=#{txtGongDuanName},txtGongShi=#{txtGongShi},txtGongShiFei=#{txtGongShiFei},ddlZhangTao=#{ddlZhangTao} where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
@@ -55,35 +55,35 @@ public interface GongDanDao {
 	@Delete("delete from gongdanxiangmu where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
 	public int deleteGongDanWeiXiuXiangMu(String txtWeiXiuXiangMuId);
 
-	@Select("select * from gongdanxiangmu where txtBillNo=#{txtGongDanId}")
+	@Select("select * from gongdanxiangmu where txtGongDanGuid=#{txtGongDanGuid}")
 	public List<GongDanWeiXiuXiangMu> getGongDanWeiXiuXiangMuListByGongDanId(
-			String txtGongDanId);
+			String txtGongDanGuid);
 
-	@Select("select '合计' txtGongDuanName, sum(txtGongShi) txtGongShi, sum(txtGongShiFei) txtGongShiFei from gongdanxiangmu where txtBillNo=#{txtGongDanId}")
+	@Select("select '合计' txtGongDuanName, sum(txtGongShi) txtGongShi, sum(txtGongShiFei) txtGongShiFei from gongdanxiangmu where txtGongDanGuid=#{txtGongDanId}")
 	public List<GongDanWeiXiuXiangMuFooter> getGongDanWeiXiuXiangMuFooterListByGongDanId(
 			String txtGongDanId);
 
-	@Select("select ifnull(sum(txtGongShiFei),0) GongShiFei from gongdanxiangmu where txtBillNo=#{txtGongDanId}")
+	@Select("select ifnull(sum(txtGongShiFei),0) GongShiFei from gongdanxiangmu where txtGongDanGuid=#{txtGongDanId}")
 	public float getGongShiFeiZheQianByGongDanId(String txtGongDanId);
 
-	@Update("update gongdanwuliao set txtRegQty=#{txtRegQty},txtTakeQty=#{txtTakeQty},txtReturnQty=#{txtReturnQty},ddlZhangTao=#{ddlZhangTao} where txtWuLiaoGuid=#{txtWuLiaoGuid}")
+	@Update("update gongdanwuliao set txtTakeQty=#{txtTakeQty},ddlZhangTao=#{ddlZhangTao} where txtWuLiaoGuid=#{txtWuLiaoGuid}")
 	public int updateGongDanWeiXiuWuLiaoWhenZhiZuo(GongDanWeiXiuWuLiao item);
 
 	@Delete("delete from gongdanwuliao where txtWuLiaoGuid=#{txtWuLiaoGuid}")
 	public int deleteGongDanWeiXiuWuLiao(String txtWeiXiuWuLiaoId);
 
-	@Select("select * from gongdanwuliao where txtBillNo=#{txtGongDanId}")
+	@Select("select * from gongdanwuliao where txtGongDanGuid=#{txtGongDanGuid}")
 	public List<GongDanWeiXiuWuLiao> getGongDanWeiXiuWuLiaoListByGongDanId(
-			String txtGongDanId);
+			String txtGongDanGuid);
 
-	@Select("select '合计' txtWuLiaoId, sum(txtRegQty) txtRegQty, sum(txtTakeQty) txtTakeQty, sum(txtReturnQty) txtReturnQty, sum(txtPrice*txtTakeQty) txtPaid from gongdanwuliao where txtBillNo=#{txtGongDanId}")
+	@Select("select '合计' txtWuLiaoCode, sum(txtTakeQty) txtTakeQty, sum(txtPrice*txtTakeQty) txtPaid from gongdanwuliao where txtGongDanGuid=#{txtGongDanId}")
 	public List<GongDanWeiXiuWuLiaoFooter> getGongDanWeiXiuWuLiaoFooterListByGongDanId(
 			String txtGongDanId);
 
-	@Select("select ifnull(sum(txtPrice*txtTakeQty),0) CaiLiaoFei from gongdanwuliao where txtBillNo=#{txtGongDanId}")
+	@Select("select ifnull(sum(txtPrice*txtTakeQty),0) CaiLiaoFei from gongdanwuliao where txtGongDanGuid=#{txtGongDanId}")
 	public float getCaiLiaoFeiZheQianByGongDanId(String txtGongDanId);
 
-	@Insert("insert into gongdanwuliao(txtWuLiaoGuid,txtWuLiaoId,txtBillNo,txtWuLiaoName,txtPrice,ddlZhangTao) values(#{txtWuLiaoGuid},#{txtWuLiaoId},#{txtBillNo},#{txtWuLiaoName},#{txtPrice},#{ddlZhangTao})")
+	@Insert("insert into gongdanwuliao(txtWuLiaoGuid,txtWuLiaoCode,txtGongDanGuid,txtWuLiaoName,ddlCangKu,txtPrice,ddlZhangTao) values(#{txtWuLiaoGuid},#{txtWuLiaoCode},#{txtGongDanGuid},#{txtWuLiaoName},#{ddlCangKu},#{txtPrice},#{ddlZhangTao})")
 	public int insertGongDanWeiXiuWuLiao(GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao);
 
 	@Update("update gongdan set txtGongDanStatus=#{txtGongDanStatus} where txtGongDanId=#{txtGongDanId}")
@@ -97,12 +97,15 @@ public interface GongDanDao {
 	@Select("select * from gongdan where txtVehicleId=#{txtVehicleId} order by txtChuChangDate desc")
 	public List<GongDan> getGongDanListByVehicleId(String txtVehicleId);
 
-	@Select("select * from gongdanxiangmu where txtBillNo=#{txtBillNo}")
+	@Select("select * from gongdanxiangmu where txtGongDanGuid=#{txtGongDanGuid}")
 	public List<GongDanWeiXiuXiangMu> findGongDanXiangMuLstByWeiXiuGuid(
-			String txtBillNo);
+			String txtGongDanGuid);
 
-	@Select("select * from gongdanwuliao where txtBillNo=#{txtBillNo}")
+	@Select("select * from gongdanwuliao where txtGongDanGuid=#{txtGongDanGuid}")
 	public List<GongDanWeiXiuWuLiao> findGongDanWuLiaoLstByWeiXiuGuid(
-			String txtBillNo);
+			String txtGongDanGuid);
+
+	@Select("select zhuxiuRen from weixiuzu where weixiuzuName=#{weixiuzuName}")
+	public String queryZhuXiuRen(String weixiuzuName);
 
 }

@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>机构管理</title>
+<title>店铺管理</title>
 <link rel="stylesheet" type="text/css"
 	href="../style/themes/default/easyui.css" />
 <link rel="stylesheet" type="text/css" href="../style/themes/icon.css" />
@@ -28,21 +28,21 @@ td {
 <body>
 	<table border="0" style="width: 100%;">
 		<tr>
-			<td class="titlebg"><span>系统设置</span> <span class="titleSpan">(机构设置管理)</span>
+			<td class="titlebg"><span>系统设置</span> <span class="titleSpan">(店铺管理)</span>
 			</td>
 		</tr>
 	</table>
 	<form name="fmSearch" method="post" id="fmSearch">
 		<table id="searchPanel" class="searchPanel" style="display: none;">
 			<tr>
-				<td>机构代码:</td>
+				<td>店铺编码:</td>
 				<td><input name="jigouCode" type="text" maxlength="20"
 					id="jigouCode" /></td>
-				<td>机构名称:</td>
+				<td>店铺名称:</td>
 				<td><input name="jigouName" type="text" maxlength="60"
 					id="jigouName" /></td>
 				<td><a id="lnkSearch" class="easyui-linkbutton"
-					href="javascript:doSearch()">机构查询</a>&nbsp;&nbsp;&nbsp;<a
+					href="javascript:doSearch()">店铺查询</a>&nbsp;&nbsp;&nbsp;<a
 					id="lnkSearch" class="easyui-linkbutton"
 					href="javascript:clearSearchFrm()">清空查询</a></td>
 			</tr>
@@ -57,69 +57,58 @@ td {
 						   pagination:true">
 		<thead>
 			<tr>
-				<th data-options="field:'jigouCode',width:300" hidden="true">机构代码</th>
-				<th data-options="field:'jigouName',width:300,sortable:true">机构名称</th>
-				<th data-options="field:'jigouAddr',width:300,sortable:true">机构地址</th>
-				<th data-options="field:'jigouDesc',width:300">机构描述</th>
-				<th data-options="field:'jigouTel1',width:80">机构电话1</th>
-				<th data-options="field:'jigouTel2',width:80">机构电话2</th>
-				<th data-options="field:'jigouFax',width:80">机构传真</th>
-				<th data-options="field:'jingpinFeilv',width:80">精品费率</th>
-				<th data-options="field:'jinpinMaoLiLv',width:80">精品毛利率</th>
-				<th field="action" width="100" align="center"
+				<th width="100" data-options="field:'jigouCode'">店铺编码</th>
+				<th width="150" data-options="field:'jigouName'">店铺名称</th>
+				<th width="400" data-options="field:'jigouAddr'">店铺地址</th>
+				<th width="100" data-options="field:'jigouTel'">店铺电话</th>
+				<th width="100" data-options="field:'jigouFax'">店铺传真</th>
+				<th width="100" field="action" align="center"
 					formatter="formatAction">操作</th>
 			</tr>
 		</thead>
 	</table>
 	<div id="toolbar">
 		<a href="javascript:void(0)" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true" onclick="addItem()">新增</a> <a
-			href="javascript:void(0)" class="easyui-linkbutton"
-			iconCls="icon-search" plain="true" onclick="toggleSearchPanel()">查询</a>
+			iconCls="icon-add" plain="true" onclick="addItem()">新增</a>
 	</div>
 	<div id="mydlg" class="easyui-dialog" closed="true"
 		style="width: 700px; height: 300px; padding: 10px 20px;">
 		<form name="fm" method="post" id="fm">
 			<table border="0" cellpadding="0" cellspacing="0" width="100%;">
-		  		<tr>
-					<td>机构代码:</td>
-					<td><input name="jigouCode" type="text" maxlength="15"
-						id="jigouCode" style="width: 250px;" class="easyui-validatebox"
-						data-options="required:true,missingMessage:'此项为必填项'" /></td>
-					<td>机构名称:</td>
-					<td><input name="jigouName" type="text" maxlength="15"
-						id="jigouName" style="width: 250px;" /></td>
+				<tr>
+					<td width="80">店铺编码:</td>
+					<td width="250"><input name="jigouCode" type="text"
+						maxlength="15" id="jigouCode" style="width: 100%;"
+						class="easyui-textbox" data-options="required:true" /></td>
+					<td width="80" align="right">店铺名称:</td>
+					<td width="250"><input name="jigouName" type="text"
+						maxlength="15" id="jigouName" style="width: 100%;"
+						class="easyui-textbox" data-options="required:true" /></td>
 				</tr>
 				<tr>
-					<td>机构地址:</td>
-					<td><input name="jigouAddr" type="text" maxlength="15"
-						id="jigouAddr" style="width: 250px;class="easyui-validatebox"
-						data-options="required:true,missingMessage:'此项为必填项'" /></td>
-					<td>机构描述:</td>
-					<td><input name="jigouDesc" type="text" maxlength="15"
-						id="jigouDesc" style="width: 250px;" /></td>
+					<td>店铺地址:</td>
+					<td colspan="3"><input name="jigouAddr" type="text"
+						maxlength="15" id="jigouAddr" style="width: 100%;"
+						class="easyui-textbox" data-options="required:true" /></td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
 				</tr>
 				<tr>
-					<td>机构电话1:</td>
-					<td><input name="jigouTel1" type="text" maxlength="15"
-						id="jigouTel1" style="width: 250px;class="easyui-validatebox"
-						data-options="required:true,missingMessage:'此项为必填项'" /></td>
-					<td>机构电话2:</td>
-					<td><input name="jigouTel2" type="text" maxlength="15"
-						id="jigouTel2" style="width: 250px;" /></td>
-				</tr>
-				<tr>
-					<td>机构传真:</td>
+					<td>店铺电话:</td>
+					<td><input name="jigouTel" type="text" maxlength="15"
+						id="jigouTel" style="width: 100%;" class="easyui-textbox"
+						data-options="required:true" /></td>
+					<td align="right">店铺传真:</td>
 					<td><input name="jigouFax" type="text" maxlength="15"
-						id="jigouFax" style="width: 250px;" /></td>
-					<td>精品费率:</td>
-					<td><input name="jingpinFeilv" type="text" maxlength="15"
-						id="jingpinFeilv" style="width: 250px;" /></td>
+						id="jigouFax" style="width: 100%;" class="easyui-textbox" /></td>
 				</tr>
 				<tr>
-					<td>精品毛利率:</td>
-					<td><input name="jinpinMaoLiLv" type="text" maxlength="15"
-						id="jinpinMaoLiLv" style="width: 250px;" /></td>
+					<td colspan="4">店铺描述:</td>
+				</tr>
+				<tr>
+					<td colspan="4"><input name="jigouDesc" id="jigouDesc"
+						class="easyui-textbox" data-options="multiline:true"
+						style="width: 100%; height: 100px" /></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><br /> <a onclick="saveItem()"
@@ -131,74 +120,74 @@ td {
 		</form>
 	</div>
 
-<script type="text/javascript">
-	var url;
-	function addItem() {
-		$('#mydlg').dialog('open').dialog('setTitle', '添加机构信息');
-		$('#fm').form('clear');
-		url = 'insertJiGou.action';
-	}
-	function editItem(clickevent) {
-		var row = $('#mydg').datagrid('getEventTargetRow', clickevent);
-		if (row) {
-			$('#mydlg').dialog('open').dialog('setTitle', '修改机构信息');
-			$('#fm').form('load', row);
-			url = 'updateJiGou.action?id=' + row.id;
+	<script type="text/javascript">
+		var url;
+		function addItem() {
+			$('#mydlg').dialog('open').dialog('setTitle', '添加店铺信息');
+			$('#fm').form('clear');
+			url = 'insertJiGou.action';
 		}
-	}
-	function deleteItem(clickevent) {
-		var row = $('#mydg').datagrid('getEventTargetRow', clickevent);
-		if (row) {
-			$.messager.confirm('确认', '确定要删除选中机构信息吗?', function(r) {
-				if (r) {
-					$.post('deleteJiGou.action', {
-						"id" : row.id
-					}, function(result) {
-						if (result.errorMsg) {
-							$.messager.alert('出错啦', result.errorMsg);
-						} else {
-							$('#mydg').datagrid('reload'); // reload data
-						}
-					}, 'json');
+		function editItem(clickevent) {
+			var row = $('#mydg').datagrid('getEventTargetRow', clickevent);
+			if (row) {
+				$('#mydlg').dialog('open').dialog('setTitle', '修改店铺信息');
+				$('#fm').form('load', row);
+				url = 'updateJiGou.action?jigouGuid=' + row.jigouGuid;
+			}
+		}
+		function deleteItem(clickevent) {
+			var row = $('#mydg').datagrid('getEventTargetRow', clickevent);
+			if (row) {
+				$.messager.confirm('确认', '确定要删除选中店铺信息吗?', function(r) {
+					if (r) {
+						$.post('deleteJiGou.action', {
+							"jigouGuid" : row.jigouGuid
+						}, function(result) {
+							if (result.errorMsg) {
+								$.messager.alert('出错啦', result.errorMsg);
+							} else {
+								$('#mydg').datagrid('reload'); // reload data
+							}
+						}, 'json');
+					}
+				});
+			}
+		}
+		function saveItem() {
+			$('#fm').form('submit', {
+				url : url,
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.errorMsg) {
+						$.messager.alert('出错啦', result.errorMsg);
+					} else {
+						$('#mydlg').dialog('close'); // close the dialog
+						$('#mydg').datagrid('reload'); // reload data
+					}
 				}
 			});
 		}
-	}
-	function saveItem() {
-		$('#fm').form('submit', {
-			url : url,
-			onSubmit : function() {
-				return $(this).form('validate');
-			},
-			success : function(result) {
-				var result = eval('(' + result + ')');
-				if (result.errorMsg) {
-					$.messager.alert('出错啦', result.errorMsg);
-				} else {
-					$('#mydlg').dialog('close'); // close the dialog
-					$('#mydg').datagrid('reload'); // reload data
+
+		function doSearch() {
+			$("#fmSearch").form('submit', {
+				url : "JiGouSearch.action",
+				success : function(jsonStr) {
+					$('#mydg').datagrid('loadData', $.parseJSON(jsonStr));
 				}
-			}
-		});
-	}
+			});
+		}
 
-	function doSearch() {
-		$("#fmSearch").form('submit', {
-			url : "JiGouSearch.action",
-			success : function(jsonStr) {
-				$('#mydg').datagrid('loadData', $.parseJSON(jsonStr));
-			}
-		});
-	}
+		function clearSearchFrm() {
+			$("#fmSearch").form('clear');
+			doSearch();
+		}
 
-	function clearSearchFrm() {
-		$("#fmSearch").form('clear');
-		doSearch();
-	}
-
-	function formatAction(value, row, index) {
-		return '<a href="javascript:void(0)" onclick="editItem(this)">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="deleteItem(this)">删除</a>';
-	}
-</script>
+		function formatAction(value, row, index) {
+			return '<a href="javascript:void(0)" onclick="editItem(this)">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="deleteItem(this)">删除</a>';
+		}
+	</script>
 </body>
 </html>

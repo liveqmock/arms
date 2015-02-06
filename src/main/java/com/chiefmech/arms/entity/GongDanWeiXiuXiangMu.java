@@ -5,8 +5,8 @@ import com.chiefmech.arms.common.util.IDGen;
 public class GongDanWeiXiuXiangMu {
 
 	private String txtWeiXiuXiangMuId;
-	private String txtBillNo;
-	private String txtXiangMuId;
+	private String txtGongDanGuid;
+	private String txtXiangMuCode;
 	private String txtGongDuanName;
 	private String txtWeiXiuNeiRong;
 	private float txtGongShi;
@@ -26,8 +26,8 @@ public class GongDanWeiXiuXiangMu {
 	public GongDanWeiXiuXiangMu(String saleAfterWeiXiuGuid, WeiXiuXiangMu item) {
 		this.txtWeiXiuXiangMuId = IDGen.getUUID();
 		this.ddlZhangTao = "正常维修";
-		this.txtBillNo = saleAfterWeiXiuGuid;
-		this.txtXiangMuId = item.getTxtWeiXiuXiangMuBianHao();
+		this.txtGongDanGuid = saleAfterWeiXiuGuid;
+		this.txtXiangMuCode = item.getTxtWeiXiuXiangMuBianHao();
 		this.txtGongDuanName = item.getDdlSuoShuGongDuan();
 		this.txtGongShi = item.getTxtGongShi();
 		this.txtGongShiFei = this.txtGongShi * 100;
@@ -42,20 +42,20 @@ public class GongDanWeiXiuXiangMu {
 		this.txtWeiXiuXiangMuId = txtWeiXiuXiangMuId;
 	}
 
-	public String getTxtBillNo() {
-		return txtBillNo;
+	public String getTxtGongDanGuid() {
+		return txtGongDanGuid;
 	}
 
-	public void setTxtBillNo(String txtBillNo) {
-		this.txtBillNo = txtBillNo;
+	public void setTxtGongDanGuid(String txtGongDanGuid) {
+		this.txtGongDanGuid = txtGongDanGuid;
 	}
 
-	public String getTxtXiangMuId() {
-		return txtXiangMuId;
+	public String getTxtXiangMuCode() {
+		return txtXiangMuCode;
 	}
 
-	public void setTxtXiangMuId(String txtXiangMuId) {
-		this.txtXiangMuId = txtXiangMuId;
+	public void setTxtXiangMuCode(String txtXiangMuCode) {
+		this.txtXiangMuCode = txtXiangMuCode;
 	}
 
 	public String getTxtGongDuanName() {

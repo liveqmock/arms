@@ -121,39 +121,28 @@ td {
 					style="border-collapse: collapse;">
 					<tr>
 						<td><span class="requireSpan">*</span>品牌：</td>
-						<td style="width: 125px;">
-							<div id="cheLiangZhiZaoShang">
-								<select id="ddlCheLiangZhiZaoShang" 
-									name="ddlCheLiangZhiZaoShang"
-									style="border: none; width:100%;">								
-								</select>
-							</div>
-						</td>
+						<td><input name="ddlCheLiangZhiZaoShang"
+							id="ddlCheLiangZhiZaoShang" class="easyui-combobox"
+							data-options="editable:false,valueField:'code',
+							textField:'name',method:'post',
+							url:'<s:property value='basePath' />/data/carBrandOption.action'" /></td>
 						<td><span class="requireSpan">*</span>车系：</td>
-						<td style="width: 125px;">
-							<div id="cheLiangCheXi" style="border: none;">
-								<select id="ddlCheLiangCheXi" name="ddlCheLiangCheXi"
-									style="border: none; width: 100%;">
-								</select>
-							</div>
-						</td>
-
+						<td><input name="ddlCheLiangCheXi" id="ddlCheLiangCheXi"
+							class="easyui-combobox"
+							data-options="editable:false,method:'post',valueField:'code',textField:'name'" /></td>
 						<td><span class="requireSpan">*</span>车型代码：</td>
 						<td><input name="txtCheLiangCheXingDaiMa" type="text"
 							class="easyui-textbox" maxlength="30"
 							id="txtCheLiangCheXingDaiMa" /></td>
-
 						<td>车辆种类：</td>
 						<td><select name="ddlCheLiangSort" id="ddlCheLiangSort"
-							style="border: none; width: 125px;">
+							class="easyui-combobox" style="border: none; width: 125px;">
 								<s:iterator value="VehiCleTypeList">
 									<option value="<s:property value='vehiCleTypeName' />"><s:property
 											value='vehiCleTypeName' /></option>
 								</s:iterator>
-
 						</select></td>
 					</tr>
-
 					<tr>
 						<td><span class="requireSpan">*</span>车牌号：</td>
 						<td><input name="txtCheLiangChePaiHao" type="text"
@@ -169,6 +158,7 @@ td {
 							class="easyui-textbox"
 							data-options="required:true,missingMessage:'发动号为必填项'"
 							id="txtCheLiangFaDongJiHao" /></td>
+					</tr>
 				</table>
 			</div>
 			<!--车辆信息 end-->
@@ -178,67 +168,47 @@ td {
 			<!--按钮区域 start-->
 			<div align="center" id="btnBottomDiv">
 
-				<a id="lnkSave" class="easyui-linkbutton" 
+				<a id="lnkSave" class="easyui-linkbutton"
 					href="javascript:__doPostBack('lnkSave','')">保存</a> <a id="A1"
 					class="easyui-linkbutton" onclick="cancelAddVehicle()">取消</a>
 			</div>
 			<!--按钮区域 end-->
 		</div>
-
-
-
 	</form>
 	<script language="javascript" type="text/javascript">
-		function loadCarModelInfo(brandName) {
-			$.post("modelInfo.action", {
-				brandName : brandName
-			}, function(modelLst) {
-				$("#ddlCheLiangCheXi").children().remove();
-				$.each(modelLst, function(index, el) {
-					$("#ddlCheLiangCheXi").append(
-							'<option value="'+el.modelName+'">' + el.modelName
-									+ '</option>');
-				}
+		$(function() {
+			$("#ddlCheLiangZhiZaoShang")
+					.combobox(
+							{onChange : function() {
+									$.post("<s:property value='basePath' />/data/carModelOption.action",
+													{code : $('#ddlCheLiangZhiZaoShang').combobox('getValue')
+													},
+								function(modelLst) {$('#ddlCheLiangCheXi').combobox("loadData",modelLst);
+													});
+								}
+							});
 
-				);
-
-			});
-		}
-
-		$(function() {			
-			$("#ddlCheLiangZhiZaoShang").change(function() {
-				loadCarModelInfo(this.value);
-			});
 			var formJson = eval('('
 					+ '<s:property value="jsonData" escape="false"/>' + ')');
 			initFormData(formJson);
 			show(3);
-			$.getJSON("brandInfo.action", {}, function(brandLst) {
-				$("#ddlCheLiangZhiZaoShang").append(
-				'<option value="品牌">选择品牌</option>');
-				$.each(brandLst, function(index, el) {
-					$("#ddlCheLiangZhiZaoShang").append(
-							'<option value="'+el.brandName+'">' + el.brandName
-									+ '</option>');
-				});
-			});
 		});
 
 		function __doPostBack(eventTarget, eventArgument) {
-			if(	$("#ddlCheLiangZhiZaoShang").val().trim()!="品牌"){
-			$("#form1").form('submit', {
-				url : "saveCustomNewVehicle.action",
-				success : function(result) {
-					var result = eval('(' + result + ')');
-					if (result.statusCode == "success") {
-						alert('保存车辆信息成功！');
-						cancelAddVehicle();
-					} else if (result.statusCode == "failed") {
-						alert('保存车辆信息失败！');
+			if ($("#ddlCheLiangZhiZaoShang").val().trim() != "品牌") {
+				$("#form1").form('submit', {
+					url : "saveCustomNewVehicle.action",
+					success : function(result) {
+						var result = eval('(' + result + ')');
+						if (result.statusCode == "success") {
+							alert('保存车辆信息成功！');
+							cancelAddVehicle();
+						} else if (result.statusCode == "failed") {
+							alert('保存车辆信息失败！');
+						}
 					}
-				}
-			});
-			}		
+				});
+			}
 		}
 
 		var tmp = "a";

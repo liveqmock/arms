@@ -2,6 +2,8 @@ package com.chiefmech.arms.action.data;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -15,8 +17,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.action.BaseActionSupport;
-import com.chiefmech.arms.service.StoreService;
-import com.chiefmech.arms.service.SupplierService;
+import com.chiefmech.arms.service.CommonDataService;
 
 @SuppressWarnings("serial")
 @ParentPackage("custom-default")
@@ -26,9 +27,7 @@ import com.chiefmech.arms.service.SupplierService;
 public class CommonDataAction extends BaseActionSupport {
 
 	@Resource()
-	private StoreService storeService;
-	@Resource()
-	private SupplierService supplierService;
+	private CommonDataService commonDataService;
 
 	@Action(value = "weiXiuGongDuanOption")
 	public void weiXiuGongDuan() {
@@ -40,16 +39,6 @@ public class CommonDataAction extends BaseActionSupport {
 		this.transmitJson(getJsonData("data/zhangTao.json"));
 	}
 
-	@Action(value = "weiXiuBanZuOption")
-	public void weiXiuBanZu() {
-		this.transmitJson(getJsonData("data/weiXiuBanZu.json"));
-	}
-
-	@Action(value = "weiXiuZhuXiuRenOption")
-	public void weiXiuZhuXiuRen() {
-		this.transmitJson(getJsonData("data/weiXiuZhuXiuRen.json"));
-	}
-
 	@Action(value = "chuRuKuSortOption")
 	public void chuRuKuSort() {
 		this.transmitJson(getJsonData("data/chuRuKuSort.json"));
@@ -57,16 +46,28 @@ public class CommonDataAction extends BaseActionSupport {
 
 	@Action(value = "peiJianChangKuOption")
 	public void peiJianChangKu() {
-		this.transmitJson(JSONArray.fromObject(storeService.getAllOptionBean())
-				.toString());
-		// this.transmitJson(getJsonData("data/peiJianChangKu.json"));
+		this.transmitJson(JSONArray.fromObject(
+				commonDataService.getOptionBean("ChangKu")).toString());
 	}
 
 	@Action(value = "gongYingShangOption")
 	public void gongYingShang() {
 		this.transmitJson(JSONArray.fromObject(
-				supplierService.getAllOptionBean()).toString());
-		// this.transmitJson(getJsonData("data/gongYingShang.json"));
+				commonDataService.getOptionBean("GongYingShang")).toString());
+	}
+
+	@Action(value = "weiXiuBanZuOption")
+	public void weiXiuBanZu() {
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("SuoShuJiGou", this.getUser().getJigouName());
+		this.transmitJson(JSONArray.fromObject(
+				commonDataService.getOptionBean("WeiXiuZu", param)).toString());
+	}
+
+	@Action(value = "jiGouOption")
+	public void jiGou() {
+		this.transmitJson(JSONArray.fromObject(
+				commonDataService.getOptionBean("JiGou")).toString());
 	}
 
 	private String getJsonData(String path) {

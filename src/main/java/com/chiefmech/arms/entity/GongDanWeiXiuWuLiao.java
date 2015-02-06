@@ -5,12 +5,11 @@ import com.chiefmech.arms.common.util.IDGen;
 public class GongDanWeiXiuWuLiao {
 
 	private String txtWuLiaoGuid;
-	private String txtWuLiaoId;
-	private String txtBillNo;
+	private String txtWuLiaoCode;
+	private String txtGongDanGuid;
 	private String txtWuLiaoName;
-	private float txtRegQty;
+	private String ddlCangKu;
 	private float txtTakeQty;
-	private float txtReturnQty;
 	private float txtPrice;
 	private float txtPaid;
 	private String ddlZhangTao;
@@ -20,11 +19,12 @@ public class GongDanWeiXiuWuLiao {
 
 	}
 
-	public GongDanWeiXiuWuLiao(String saleAfterGuid, WeiXiuWuLiao item) {
+	public GongDanWeiXiuWuLiao(String saleAfterGuid, KuCun item) {
 		this.txtWuLiaoGuid = IDGen.getUUID();
-		this.txtWuLiaoId = item.getTxtShopId();
-		this.txtBillNo = saleAfterGuid;
-		this.txtWuLiaoName = item.getTxtShopName();
+		this.txtWuLiaoCode = item.getTxtWuLiaoCode();
+		this.txtGongDanGuid = saleAfterGuid;
+		this.txtWuLiaoName = item.getTxtWuLiaoName();
+		this.ddlCangKu = item.getDdlCangKu();
 		this.txtPrice = item.getTxtSalePrice();
 		this.ddlZhangTao = "正常维修";
 	}
@@ -37,20 +37,20 @@ public class GongDanWeiXiuWuLiao {
 		this.txtWuLiaoGuid = txtWuLiaoGuid;
 	}
 
-	public String getTxtWuLiaoId() {
-		return txtWuLiaoId;
+	public String getTxtWuLiaoCode() {
+		return txtWuLiaoCode;
 	}
 
-	public void setTxtWuLiaoId(String txtWuLiaoId) {
-		this.txtWuLiaoId = txtWuLiaoId;
+	public void setTxtWuLiaoCode(String txtWuLiaoCode) {
+		this.txtWuLiaoCode = txtWuLiaoCode;
 	}
 
-	public String getTxtBillNo() {
-		return txtBillNo;
+	public String getTxtGongDanGuid() {
+		return txtGongDanGuid;
 	}
 
-	public void setTxtBillNo(String txtBillNo) {
-		this.txtBillNo = txtBillNo;
+	public void setTxtGongDanGuid(String txtGongDanGuid) {
+		this.txtGongDanGuid = txtGongDanGuid;
 	}
 
 	public String getTxtWuLiaoName() {
@@ -61,28 +61,12 @@ public class GongDanWeiXiuWuLiao {
 		this.txtWuLiaoName = txtWuLiaoName;
 	}
 
-	public float getTxtRegQty() {
-		return txtRegQty;
-	}
-
-	public void setTxtRegQty(float txtRegQty) {
-		this.txtRegQty = txtRegQty;
-	}
-
 	public float getTxtTakeQty() {
 		return txtTakeQty;
 	}
 
 	public void setTxtTakeQty(float txtTakeQty) {
 		this.txtTakeQty = txtTakeQty;
-	}
-
-	public float getTxtReturnQty() {
-		return txtReturnQty;
-	}
-
-	public void setTxtReturnQty(float txtReturnQty) {
-		this.txtReturnQty = txtReturnQty;
 	}
 
 	public float getTxtPrice() {
@@ -111,6 +95,14 @@ public class GongDanWeiXiuWuLiao {
 
 	public void setDdlSubZhangTao(String ddlSubZhangTao) {
 		this.ddlSubZhangTao = ddlSubZhangTao;
+	}
+
+	public String getDdlCangKu() {
+		return ddlCangKu;
+	}
+
+	public void setDdlCangKu(String ddlCangKu) {
+		this.ddlCangKu = ddlCangKu;
 	}
 
 }

@@ -2,7 +2,7 @@ package com.chiefmech.arms.dao.sqlprovider;
 
 import java.util.Map;
 
-import com.chiefmech.arms.entity.WeiXiuPaiGong;
+import com.chiefmech.arms.entity.WeiXiuZhu;
 import com.chiefmech.arms.entity.query.Criteria;
 import com.chiefmech.arms.entity.query.SearchBean;
 import com.chiefmech.arms.entity.query.Criteria.Action;
@@ -27,7 +27,7 @@ public class WeiXiuPaiGongDaoSqlProvider {
 	}
 
 	private SearchBean getCountSearchBean(Map<String, Object> param) {
-		final WeiXiuPaiGong item = (WeiXiuPaiGong) param.get("item");
+		final WeiXiuZhu item = (WeiXiuZhu) param.get("item");
 		SearchBean searchBean = new SearchBean() {
 			@Override
 			public void initSearchFields() {

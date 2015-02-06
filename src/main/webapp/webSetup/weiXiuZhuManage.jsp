@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>维修派工管理</title>
+<title>维修组管理</title>
 <link rel="stylesheet" type="text/css"
 	href="../style/themes/default/easyui.css" />
 <link rel="stylesheet" type="text/css" href="../style/themes/icon.css" />
@@ -28,74 +28,53 @@ td {
 <body>
 	<table border="0" style="width: 100%;">
 		<tr>
-			<td class="titlebg"><span>基础设置</span> <span class="titleSpan">(维修派工管理)</span>
+			<td class="titlebg"><span>基础设置</span> <span class="titleSpan">(维修组管理)</span>
 			</td>
 		</tr>
 	</table>
-	<form name="fmSearch" method="post" id="fmSearch">
-		<table id="searchPanel" class="searchPanel" style="display: none;">
-			<tr><td>维修组名:</td>
-				<td><input name="weixiuzuName" type="text" maxlength="10"
-					id="weixiuzuName" style="width: 120px;" /></td>
-				<td><a id="lnkSearch" class="easyui-linkbutton"
-					href="javascript:doSearch()">查询</a>&nbsp;&nbsp;&nbsp;<a
-					id="lnkSearch" class="easyui-linkbutton"
-					href="javascript:clearSearchFrm()">清空查询</a></td>
-			</tr>
-		</table>
-	</form>
 	<table id="mydg" class="easyui-datagrid"
-		data-options="url:'queryweiXiuPaiGong.action',
+		data-options="url:'queryWeiXiuZhu.action',
 						   rownumbers:true,
 						   singleSelect:true,
 						   toolbar:'#toolbar',
 						   pagination:true">
 		<thead>
 			<tr>
-				<th data-options="field:'weixiuzuBianHao',width:150">维修组编号</th>
-				<th data-options="field:'weixiuzuName',width:150">维修组名</th>
-				<th data-options="field:'zhuxiuRen',width:100">主修人</th>
-				<th data-options="field:'weixiuzuDesc',width:300">备注</th>
-				<th field="action" width="100" align="center"
+				<th width="200" data-options="field:'suoShuJiGou'">所属店铺</th>
+				<th width="100" data-options="field:'weixiuzuName'">维修组名</th>
+				<th width="100" data-options="field:'zhuxiuRen'">主修人</th>
+				<th width="100" field="action"align="center"
 					formatter="formatAction">操作</th>
 			</tr>
 		</thead>
 	</table>
 	<div id="toolbar">
 		<a href="javascript:void(0)" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true" onclick="addItem()">新增</a> <a
-			href="javascript:void(0)" class="easyui-linkbutton"
-			iconCls="icon-search" plain="true" onclick="toggleSearchPanel()">查询</a>
+			iconCls="icon-add" plain="true" onclick="addItem()">新增</a>
 	</div>
 	<div id="mydlg" class="easyui-dialog" closed="true"
 		style="width: 450px; height: 300px; padding: 10px 20px;">
 		<form name="fm" method="post" id="fm">
 			<table border="0">
 				<tr>
-					<td align="right"><span class="requireSpan">*&nbsp;</span>维修组编号:</td>
-					<td><input name="weixiuzuBianHao" type="text" maxlength="7"
-						class="easyui-validatebox"
-						data-options="required:true,missingMessage:'维修组类别为必填项'"
-						id="weixiuzuBianHao" style="width: 150px;" /></td>
+					<td align="right"><span class="requireSpan">*&nbsp;</span>所属店铺:</td>
+					<td><input name="suoShuJiGou" id="suoShuJiGou"
+							class="easyui-combobox"
+							data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/jiGouOption.action'" style="width: 250px;"/></td>
 				</tr>
 				<tr>
 					<td align="right"><span class="requireSpan">*&nbsp;</span>维修组名:</td>
 					<td><input name="weixiuzuName" type="text" maxlength="10"
 						class="easyui-validatebox"
-						data-options="required:true,missingMessage:'维修组名为必填项'"
+						data-options="required:true"
 						id="weixiuzuName" style="width: 250px;" /></td>
 				</tr>
 				<tr>
 					<td align="right"><span class="requireSpan">*&nbsp;</span>主修人:</td>
 					<td><input name="zhuxiuRen" type="text" maxlength="10"
 						class="easyui-validatebox"
-						data-options="required:true,missingMessage:'主修人仓库名称为必填项'"
+						data-options="required:true"
 						id="zhuxiuRen" style="width: 250px;" /></td>
-				</tr>
-				<tr>
-					<td align="right">备注:</td>
-					<td><textarea name="weixiuzuDesc" rows="2" cols="20"
-							id="weixiuzuDesc" style="height: 60px; width: 250px;"></textarea></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><br /> <a onclick="saveItem()"
@@ -110,16 +89,16 @@ td {
 	<script type="text/javascript">
 		var url;
 		function addItem() {
-			$('#mydlg').dialog('open').dialog('setTitle', '添加快修派工信息');
+			$('#mydlg').dialog('open').dialog('setTitle', '添加维修组信息');
 			$('#fm').form('clear');
-			url = 'insertweiXiuPaiGong.action';
+			url = 'insertWeiXiuZhu.action';
 		}
 		function editItem(clickevent) {
 			var row = $('#mydg').datagrid('getEventTargetRow', clickevent);
 			if (row) {
-				$('#mydlg').dialog('open').dialog('setTitle', '修改快修派工信息');
+				$('#mydlg').dialog('open').dialog('setTitle', '修改维修组信息');
 				$('#fm').form('load', row);
-				url = 'updateweiXiuPaiGong.action?weixiuzuID=' + row.weixiuzuID;
+				url = 'updateWeiXiuZhu.action?weixiuzuID=' + row.weixiuzuID;
 			}
 		}
 		function deleteItem(clickevent) {
@@ -127,7 +106,7 @@ td {
 			if (row) {
 				$.messager.confirm('确认', '确定要删除选中信息吗?', function(r) {
 					if (r) {
-						$.post('deleteweiXiuPaiGong.action', {
+						$.post('deleteWeiXiuZhu.action', {
 							"weixiuzuID" : row.weixiuzuID
 						}, function(result) {
 							if (result.errorMsg) {
@@ -156,20 +135,6 @@ td {
 					}
 				}
 			});
-		}
-
-		function doSearch() {
-			$("#fmSearch").form('submit', {
-				url : "weiXiuPaiGongSearch.action",
-				success : function(jsonStr) {
-					$('#mydg').datagrid('loadData', $.parseJSON(jsonStr));
-				}
-			});
-		}
-
-		function clearSearchFrm() {
-			$("#fmSearch").form('clear');
-			doSearch();
 		}
 
 		function formatAction(value, row, index) {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -18,6 +19,8 @@ import com.chiefmech.arms.common.util.DateUtil;
 import com.chiefmech.arms.entity.GongDan;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
+import com.chiefmech.arms.entity.KuCun;
+import com.chiefmech.arms.entity.WeiXiuWuLiao;
 import com.chiefmech.arms.service.GongDanService;
 
 @SuppressWarnings("serial")
@@ -38,6 +41,7 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 	private String action;
 	private GongDan gongDan;
 	private String txtGongDanStatus;
+	private String weiXiuBanZu;
 	private List<GongDan> gongDanLst;
 	private List<GongDanWeiXiuXiangMu> gongDanXiangMuLst;
 	private List<GongDanWeiXiuWuLiao> gongDanWuLiaoLst;
@@ -159,6 +163,18 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 		this.transmitJson(jsonStr);
 	}
 
+	@Action(value = "addGongDanWeiXiuWuLiao")
+	public void addGongDanWeiXiuWuLiao() {
+		JSONArray jsonArray = JSONArray.fromObject(easyUiJSonData);
+		List<KuCun> weiXiuWuLiaoLst = (List<KuCun>) JSONArray.toList(jsonArray,
+				KuCun.class);
+		int rowAffected = gongDanService.insertGongDanWeiXiuWuLiao(
+				saleAfterWeiXiuGuid, weiXiuWuLiaoLst);
+		String jsonStr = getCrudJsonResponse(rowAffected, "新增");
+
+		this.transmitJson(jsonStr);
+	}
+
 	@Action(value = "queryGongDanWeiXiuWuLiao")
 	public void queryGongDanWeiXiuWuLiao() {
 		this.transmitJson(easyUiJSonData = gongDanService
@@ -186,6 +202,11 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 		this.transmitJson(jsonStr);
 	}
 
+	@Action(value = "queryZhuXiuRen")
+	public void queryZhuXiuRen() {
+		String zhuXiuRen = gongDanService.queryZhuXiuRen(weiXiuBanZu);
+		this.transmitJson(String.format("{\"info\":\"%s\"}", zhuXiuRen));
+	}
 	public void setTxtWeiXiuXiangMuId(String txtWeiXiuXiangMuId) {
 		this.txtWeiXiuXiangMuId = txtWeiXiuXiangMuId;
 	}
@@ -236,6 +257,10 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 
 	public void setVehicleId(String vehicleId) {
 		this.vehicleId = vehicleId;
+	}
+
+	public void setWeiXiuBanZu(String weiXiuBanZu) {
+		this.weiXiuBanZu = weiXiuBanZu;
 	}
 
 }

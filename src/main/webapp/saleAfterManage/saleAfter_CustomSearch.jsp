@@ -59,7 +59,7 @@
         </table>
         <!--数据列表 start-->
         <div style="height:3px"></div>
-        <table id="dg2"    class="easyui-datagrid"  
+        <table id="dg2"    class="easyui-datagrid"    style="height:400px;"  
          data-options="rownumbers:true,singleSelect:true,
          pagination:true,
          pageNumber:1,
@@ -89,9 +89,6 @@
       
      </div>
      <!--维修历史 接待提醒 预约明细 end--> 
-
-     <input name="txtPageNum" type="text" value="1" id="txtPageNum" style="display:none;" />
-     <input name="txtPageSize" type="text" value="20" id="txtPageSize" style="display:none;" />
 <div>
 
 </div></form>
@@ -111,45 +108,7 @@
         //分页satrt
         function setupDatagrid(jsonStr){
 			jsonStrData = $.parseJSON(jsonStr);
-            $('#dg2').datagrid({ loadFilter: pagerFilter }).datagrid('loadData', jsonStrData);
-        }
-
-
-        function pagerFilter(data) {
-            if (typeof data.length == 'number' && typeof data.splice == 'function') {   // is array
-                data = {
-                    total: data.length,
-                    rows: data
-                }
-            }
-            var dg = $(this);
-            var opts = dg.datagrid('options');
-            var pager = dg.datagrid('getPager');
-            pager.pagination({
-                onSelectPage: function (pageNum, pageSize) {
-                    opts.pageNumber = pageNum;
-                    opts.pageSize = pageSize;
-                    pager.pagination('refresh', {
-                        pageNumber: pageNum,
-                        pageSize: pageSize
-                    });
-                    //alert("当前页:" + pageNum);
-                    $("#txtPageNum").val(pageNum);
-                    $("#txtPageSize").val(pageSize);
-
-                    //alert("页面尺寸:" + pageSize);
-
-                    __doPostBack('btnSearch', '');
-                    dg.datagrid('loadData', jsonStrData);
-                }
-            });
-            if (!data.originalRows) {
-                data.originalRows = (data.rows);
-            }
-            var start = (opts.pageNumber - 1) * parseInt(opts.pageSize);
-            var end = start + parseInt(opts.pageSize);
-            data.rows = (data.originalRows.slice(0, 100));
-            return jsonStrData;
+            $('#dg2').datagrid('loadData', jsonStrData);
         }
         //分页end
 
@@ -165,9 +124,12 @@
         //车辆信息查看
         function cheLiangInfoShow() {
             var vehicleId = getCheck();
+            var row = $('#dg2').datagrid('getSelected');
+            var txtCustId = row.txtCustId;
+            var vehicleId=row.txtVehicleId;
             if (vehicleId != "") {
-                //parent.winopen('../customManage/customAdd.aspx?custId=' + cusId + "&d=" + new Date(), '客户信息修改', 970, 600, true, true, false);
-                z = window.open('../customManage/customNewVehicleAdd.action?vehicleId=' + vehicleId + "&d=" + new Date(), '车辆信息修改', 'height=600, width=970, top=' + (screen.availHeight - 620) + ', left=' + screen.availWidth - 720 + ', toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
+                //parent.winopen(customNewVehicleAdd.action'../customManage/customAdd.aspx?custId=' + cusId + "&d=" + new Date(), '客户信息修改', 970, 600, true, true, false);
+                z = window.open('../customManage/customNewAdd.action?custId=' + txtCustId + "&vehicleId="+vehicleId+"&d=" + new Date(), '车辆信息修改', 'height=600,width=970,top=80,left=80,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no, status=no')
                 z.focus();
              }
             return false;

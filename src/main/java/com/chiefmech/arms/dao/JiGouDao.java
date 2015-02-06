@@ -12,25 +12,24 @@ import org.springframework.stereotype.Repository;
 import com.chiefmech.arms.dao.sqlprovider.JiGouDaoSqlProvider;
 import com.chiefmech.arms.entity.JiGou;
 
-
 @Repository("jiGouDao")
 public interface JiGouDao {
-	
+
 	@SelectProvider(type = JiGouDaoSqlProvider.class, method = "getJiGouList")
 	public List<JiGou> getJiGouList(@Param("item") JiGou query,
 			@Param("page") int page, @Param("rows") int rows);
 
 	@SelectProvider(type = JiGouDaoSqlProvider.class, method = "getJiGouListCount")
 	public int getJiGouListCount(@Param("item") JiGou query);
-	
-	@Insert("insert into JiGou(id,jigouCode,jigouName,jigouLogo,jigouAddr,jigouDesc,jigouPhone,lastModifyTime,jigouTel1,jigouTel2,jigouFax,jingpinFeilv,jinpinMaoLiLv) values(#{id},#{jigouCode},#{jigouName},#{jigouLogo},#{jigouAddr},#{jigouDesc},#{jigouPhone},#{lastModifyTime},#{jigouTel1},#{jigouTel2},#{jigouFax},#{jingpinFeilv},#{jinpinMaoLiLv})")
+
+	@Insert("insert into JiGou(jigouGuid,jigouCode,jigouName,jigouLogo,jigouAddr,jigouDesc,jigouTel,jigouFax) values(#{jigouGuid},#{jigouCode},#{jigouName},#{jigouLogo},#{jigouAddr},#{jigouDesc},#{jigouTel},#{jigouFax})")
 	public int insertItem(JiGou item);
 
-	@Update("update JiGou set jigouCode=#{jigouCode},jigouName=#{jigouName},jigouLogo=#{jigouLogo},jigouAddr=#{jigouAddr},jigouDesc=#{jigouDesc},jigouPhone=#{jigouPhone},lastModifyTime=#{lastModifyTime},jigouTel1=#{jigouTel1},jigouTel2=#{jigouTel2},jigouFax=#{jigouFax},jingpinFeilv=#{jingpinFeilv},jinpinMaoLiLv=#{jinpinMaoLiLv} where id=#{id}")
+	@Update("update JiGou set jigouCode=#{jigouCode},jigouName=#{jigouName},jigouLogo=#{jigouLogo},jigouAddr=#{jigouAddr},jigouDesc=#{jigouDesc},jigouTel=#{jigouTel},jigouFax=#{jigouFax} where jigouGuid=#{jigouGuid}")
 	public int updateItem(JiGou item);
 
-	@Delete("delete from JiGou where id=#{id}")
-	public int deleteItem(int id);
+	@Delete("delete from JiGou where jigouGuid=#{jigouGuid}")
+	public int deleteItem(String jigouGuid);
 
 	@Select("select * from JiGou")
 	public List<JiGou> selectItem();

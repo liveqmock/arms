@@ -5,14 +5,12 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import com.chiefmech.arms.dao.sqlprovider.SupplierDaoSqlProvider;
 import com.chiefmech.arms.entity.Supplier;
-import com.chiefmech.arms.entity.option.OptionBean;
 
 @Repository("supplierDao")
 public interface SupplierDao {
@@ -32,8 +30,5 @@ public interface SupplierDao {
 
 	@Delete("delete from supplier where txtSuppId=#{txtSuppId}")
 	public int deleteItem(String id);
-
-	@Select("select txtSuppName name, txtSuppName code from supplier")
-	public List<OptionBean> getAllOptionBean();
 
 }

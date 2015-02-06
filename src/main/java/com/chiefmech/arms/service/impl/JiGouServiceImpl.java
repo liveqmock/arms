@@ -8,6 +8,7 @@ import net.sf.json.JSONArray;
 
 import org.springframework.stereotype.Service;
 
+import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.dao.JiGouDao;
 import com.chiefmech.arms.entity.JiGou;
 import com.chiefmech.arms.service.JiGouService;
@@ -19,6 +20,7 @@ public class JiGouServiceImpl implements JiGouService {
 
 	@Override
 	public int insertItem(JiGou item) {
+		item.setJigouGuid(IDGen.getUUID());
 		return jiGouDao.insertItem(item);
 	}
 
@@ -28,8 +30,8 @@ public class JiGouServiceImpl implements JiGouService {
 	}
 
 	@Override
-	public int deleteItem(int id) {
-		return jiGouDao.deleteItem(id);
+	public int deleteItem(String jigouGuid) {
+		return jiGouDao.deleteItem(jigouGuid);
 	}
 
 	@Override

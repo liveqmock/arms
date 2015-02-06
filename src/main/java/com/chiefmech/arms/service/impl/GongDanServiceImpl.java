@@ -15,6 +15,7 @@ import com.chiefmech.arms.dao.WeiXiuXiangMuDao;
 import com.chiefmech.arms.entity.GongDan;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
+import com.chiefmech.arms.entity.KuCun;
 import com.chiefmech.arms.entity.WeiXiuWuLiao;
 import com.chiefmech.arms.entity.WeiXiuXiangMu;
 import com.chiefmech.arms.entity.footer.GongDanWeiXiuWuLiaoFooter;
@@ -192,10 +193,10 @@ public class GongDanServiceImpl implements GongDanService {
 
 	@Override
 	public int insertGongDanWeiXiuWuLiao(String saleAfterGuid,
-			List<WeiXiuWuLiao> weiXiuWuLiaoLst) {
+			List<KuCun> weiXiuWuLiaoLst) {
 		boolean isAllItemInserted = true;
 		int rowAffected = 0;
-		for (WeiXiuWuLiao item : weiXiuWuLiaoLst) {
+		for (KuCun item : weiXiuWuLiaoLst) {
 			GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao = new GongDanWeiXiuWuLiao(
 					saleAfterGuid, item);
 			rowAffected = gongDanDao
@@ -224,6 +225,11 @@ public class GongDanServiceImpl implements GongDanService {
 	public List<GongDanWeiXiuWuLiao> findGongDanWuLiaoLstByWeiXiuGuid(
 			String txtGongDanId) {
 		return gongDanDao.findGongDanWuLiaoLstByWeiXiuGuid(txtGongDanId);
+	}
+
+	@Override
+	public String queryZhuXiuRen(String weiXiuBanZu) {
+		return gongDanDao.queryZhuXiuRen(weiXiuBanZu);
 	}
 
 }

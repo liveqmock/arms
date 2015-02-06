@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import com.chiefmech.arms.dao.sqlprovider.StoreDaoSqlProvider;
 import com.chiefmech.arms.entity.Store;
-import com.chiefmech.arms.entity.option.OptionBean;
 
 @Repository("storeDao")
 public interface StoreDao {
@@ -35,8 +34,5 @@ public interface StoreDao {
 
 	@Select("select * from store")
 	public List<Store> selectItem();
-
-	@Select("select txtStoreName name, txtStoreName code from store")
-	public List<OptionBean> getAllOptionBean();
 
 }

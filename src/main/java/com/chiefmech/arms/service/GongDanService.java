@@ -5,6 +5,7 @@ import java.util.List;
 import com.chiefmech.arms.entity.GongDan;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
+import com.chiefmech.arms.entity.KuCun;
 import com.chiefmech.arms.entity.WeiXiuWuLiao;
 import com.chiefmech.arms.entity.WeiXiuXiangMu;
 import com.chiefmech.arms.entity.query.SaleAfterGongDanSearchBean;
@@ -50,7 +51,7 @@ public interface GongDanService {
 			int rows);
 
 	public int insertGongDanWeiXiuWuLiao(String saleAfterGuid,
-			List<WeiXiuWuLiao> weiXiuWuLiaoLst);
+			List<KuCun> weiXiuWuLiaoLst);
 
 	public int updateGongDanStatus(String saleAfterWeiXiuGuid,
 			String txtGongDanStatus);
@@ -62,4 +63,6 @@ public interface GongDanService {
 
 	public List<GongDanWeiXiuWuLiao> findGongDanWuLiaoLstByWeiXiuGuid(
 			String saleAfterWeiXiuGuid);
+
+	public String queryZhuXiuRen(String weiXiuBanZu);
 }
