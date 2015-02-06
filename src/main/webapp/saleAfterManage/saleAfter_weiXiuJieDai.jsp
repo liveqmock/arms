@@ -41,39 +41,39 @@ td {
 					<td colspan="7"></td>
 				</tr>
 				<tr>
-					<td style="width: 94px;">车牌号:</td>
-					<td style="width: 150px;"><input class="easyui-textbox"
+					<td width="90" align="right">车牌号:</td>
+					<td><input class="easyui-textbox"
 						data-options="required:true,validType:'maxLength[10]'"
 						name="txtChePaiHao" type="text" id="txtChePaiHao" /></td>
-					<td>品牌:</td>
+					<td width="90" align="right">品牌:</td>
 					<td><input class="easyui-textbox" name="txtChangJiaPinPai"
 						type="text" data-options="validType:'maxLength[20]'"
 						id="txtChangJiaPinPai" /></td>
-					<td>车系名称:</td>
+					<td width="90" align="right">车系名称:</td>
 					<td><input class="easyui-textbox" name="txtCheXiName"
 						type="text" data-options="validType:'maxLength[20]'"
 						id="txtCheXiName" /></td>
-					<td>车型代码:</td>
+					<td width="90" align="right">车型代码:</td>
 					<td><input class="easyui-textbox" name="txtCheXingDaiMa"
 						type="text" data-options="validType:'maxLength[20]'"
 						id="txtCheXingDaiMa" /></td>
 				</tr>
 				<tr>
-					<td>VIN:</td>
+					<td align="right">VIN:</td>
 					<td><input name="txtVin" type="text" class="easyui-textbox"
-						data-options="required:true,missingMessage:'油量为必填项'" id="txtVin" /></td>
-					<td>发动机号:</td>
+						data-options="required:true" id="txtVin" /></td>
+					<td align="right">发动机号:</td>
 					<td><input name="txtFaDongJiHao" type="text"
 						class="easyui-textbox" 
 						id="txtFaDongJiHao" /></td>
-                      <td style="width: 90px;"><span class="requireSpan">*</span>里程:</td>
+                      <td align="right"><span class="requireSpan">*</span>里程:</td>
 					<td><input name="txtLiCheng" type="text" id="txtLiCheng"
 						class="easyui-numberbox"
-						data-options="required:true,min:0,validType:'maxLength[10]',missingMessage:'里程为必填项'" /></td>
-					<td style="width: 90px;"><span class="requireSpan">*</span>油量:</td>
+						data-options="required:true,min:0,validType:'maxLength[10]'" /></td>
+					<td align="right"><span class="requireSpan">*</span>油量:</td>
 					<td><input name="txtYouLiang" type="text" id="txtYouLiang"
 						class="easyui-numberbox"
-						data-options="required:true,precision:2,min:0,validType:'maxLength[10]',missingMessage:'油量为必填项'" />
+						data-options="required:true,precision:2,min:0,validType:'maxLength[10]'" />
 					</td>
 				</tr>
 				<tr>
@@ -81,27 +81,27 @@ td {
 					<td colspan="7"></td>
 				</tr>
 				<tr>
-					<td>客户类别:</td>
+					<td align="right">客户类别:</td>
 					<td><input class="easyui-textbox" name="txtCustSort"
 						type="text" data-options="validType:'maxLength[30]'"
 						id="txtCustSort" /></td>
 				</tr>
 				<tr>
-					<td>车主名:</td>
+					<td align="right">车主名:</td>
 					<td><input class="easyui-textbox"
-						data-options="required:true,missingMessage:'车主名为必填项'"
+						data-options="required:true"
 						name="txtCheZhuName" type="text" id="txtCheZhuName" /></td>
-					<td>车主电话:</td>
+					<td align="right">车主电话:</td>
 					<td><input name="txtCheZhuTel" class="easyui-textbox"
-						data-options="required:true,missingMessage:'车主电话为必填项'"
+						data-options="required:true"
 						type="text" id="txtCheZhuTel" /></td>
-                     <td>联系人:</td>
+                     <td align="right">联系人:</td>
 					<td><input name="txtLianXiRenName" class="easyui-textbox"
-						data-options="required:true,missingMessage:'联系人姓名为必填项'"
+						data-options="required:true"
 						type="text" id="txtLianXiRenName" /></td>
-					<td>联系人电话:</td>
+					<td align="right">联系人电话:</td>
 					<td><input name="txtLianXiRenTel" class="easyui-textbox"
-						data-options="required:true,missingMessage:'联系人电话为必填项'"
+						data-options="required:true"
 						type="text" id="txtLianXiRenTel" /></td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
@@ -118,13 +118,13 @@ td {
 					<td colspan="7"></td>
 				</tr>
 				<tr>
-					<td>会员等级:</td>
+					<td align="right">会员等级:</td>
 					<td><input class="easyui-textbox" name="txtHuiYuanDengJi"
 						type="text" data-options="editable:false" id="txtHuiYuanDengJi" /></td>
-					<td>工时折扣:</td>
+					<td align="right">工时折扣:</td>
 					<td><input class="easyui-textbox" name="txtGongShiZheKou"
 						type="text" data-options="editable:false" id="txtGongShiZheKou" /></td>
-					<td>材料折扣:</td>
+					<td align="right">材料折扣:</td>
 					<td><input class="easyui-textbox" name="txtCaiLiaoZheKou"
 						type="text" data-options="editable:false" id="txtCaiLiaoZheKou" /></td>
 				</tr>
@@ -133,54 +133,40 @@ td {
 					<td colspan="7"></td>
 				</tr>
 				<tr>
-					<td>维修单号:</td>
+					<td align="right">维修单号:</td>
 					<td><input name="txtBillNo" class="easyui-textbox" type="text"
 						readonly id="txtBillNo" /></td>
-					<td><span class="requireSpan">*</span>维修类别:</td>
-					<td><select class="easyui-combobox"
-						data-options="editable:false,required:true,missingMessage:'维修类别为必填项'"
-						name="ddlWeiXiuSort" id="ddlWeiXiuSort" style="width: 145px;">
-							<option value="一般维修">一般维修</option>
-							<option value="年审">年审</option>
-							<option value="首保">首保</option>
-							<option value="定保">定保</option>
-							<option value="大客户">大客户</option>
-							<option value="厂家保修">厂家保修</option>
-							<option value="保险">保险</option>
-							<option value="新车检查">新车检查</option>
-							<option value="免检">免检</option>
-							<option value="返修">返修</option>
-							<option value=""></option>
-
-					</select></td>
-					<td><span class="requireSpan">*</span>入厂时间:</td>
+					<td align="right"><span class="requireSpan">*</span>维修类别:</td>
+					<td><input name="ddlWeiXiuSort" id="ddlWeiXiuSort"
+							class="easyui-combobox"
+							data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuSortOption.action'" /></td>
+					<td align="right"><span class="requireSpan">*</span>入厂时间:</td>
 					<td><input name="txtRuChangDate" type="text"
 						id="txtRuChangDate" class="easyui-datebox"
-						data-options="required:true,missingMessage:'入厂时间为必填项'"
+						data-options="required:true"
 						style="width: 145px;" /></td>
-					<td><span class="requireSpan">*</span>预出厂时间:</td>
+					<td align="right"><span class="requireSpan">*</span>预出厂时间:</td>
 					<td><input name="txtYuChuChangDate" type="text"
 						id="txtYuChuChangDate" class="easyui-datebox"
-						data-options="required:true,missingMessage:'预计出厂时间为必填项'"
+						data-options="required:true"
 						style="width: 145px;" /></td>
 				</tr>
 				<tr>
-					<td><span class="requireSpan">*</span>协议单号:</td>
+					<td align="right"><span class="requireSpan">*</span>协议单号:</td>
 					<td><input class="easyui-textbox"
-						data-options="required:true,missingMessage:'协议单号为必填项',validType:'maxLength[20]'"
+						data-options="required:true,validType:'maxLength[20]'"
 						name="txtXieYiBillNo" type="text" id="txtXieYiBillNo" /></td>
-					<td>服务顾问:</td>
+					<td align="right">服务顾问:</td>
 					<td><input class="easyui-textbox" name="txtFuWuUserId"
 						type="text" maxlength="10" id="txtFuWuUserId" /></td>
-					<td style="width: 90px;"><span class="requireSpan">*</span>下次保养里程:</td>
+					<td align="right"><span class="requireSpan">*</span>下次保养里程:</td>
 					<td><input type="text" id="txtNewLiCheng" name="txtNewLiCheng"
 						class="easyui-numberbox"
-						data-options="required:true,min:0,validType:'maxLength[10]',missingMessage:'下次保养里程为必填项' " /></td>
-					<td><span class="requireSpan">*</span>下次保养日期:</td>
+						data-options="required:true,min:0,validType:'maxLength[10]'" /></td>
+					<td align="right"><span class="requireSpan">*</span>下次保养日期:</td>
 					<td><input type="text" id="txtNewRuChangDate"
 						name="txtNewRuChangDate" class="easyui-datebox"
-						data-options="required:true,missingMessage:'下次保养日期为必填项'"
-						style="width: 145px;" /></td>
+						data-options="required:true" /></td>
 				</tr>
 				<!--保险信息 end-->
 

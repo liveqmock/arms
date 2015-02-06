@@ -106,7 +106,7 @@ textarea {
 				<td align="right"><span class="requireSpan">*&nbsp;</span>内容:</td>
 					<td>
 			<textarea 
-			name="txtRemarks" rows="2" cols="20" id="txtRemarks" style="height:400px;width:400px; " readonly="readonly">
+			name="txtRemarks" rows="2" cols="20" id="txtRemarks" style="height:200px;width:400px; " readonly="readonly">
 					</textarea>
 					</td>
 				</tr>

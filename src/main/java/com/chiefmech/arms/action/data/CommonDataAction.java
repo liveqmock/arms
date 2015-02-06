@@ -44,6 +44,11 @@ public class CommonDataAction extends BaseActionSupport {
 		this.transmitJson(getJsonData("data/chuRuKuSort.json"));
 	}
 
+	@Action(value = "weiXiuSortOption")
+	public void weiXiuSort() {
+		this.transmitJson(getJsonData("data/weiXiuSort.json"));
+	}
+
 	@Action(value = "peiJianChangKuOption")
 	public void peiJianChangKu() {
 		this.transmitJson(JSONArray.fromObject(

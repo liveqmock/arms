@@ -31,12 +31,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
 </head>
 <base target="_self" />
-<body style="margin: 2px">
+<body style="width: 780px;margin: 2px">
 	<form name="form1" action="insertMaill.action" method="post" id="form1">
 		<!--按钮导航区域 start-->
-		<div style="width: 780px; border-bottom: 1px solid #c7c8c9;">
+		<div style=" border-bottom: 1px solid #c7c8c9;">
 			<table border="0"
-				style="width: 600px; height: 30px; margin-top: 1px;">
+				style="width: 780px; height: 30px; margin-top: 1px;">
 				<tr>
 					<td style="display: block; width: 200px;"></td>
 					<td id="Td1"
@@ -85,7 +85,7 @@
 			</table>
 		</div>
 		<div style="text-align: right;">
-			<a class="easyui-linkbutton" onclick="return saveCheck();">发送</a>
+			<a class="easyui-linkbutton" onClick="return saveCheck();">发送</a>
 		</div>
 	</form>
 
