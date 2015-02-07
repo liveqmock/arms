@@ -148,8 +148,11 @@
 						+ row.txtCheLiangId + '&d=' + new Date();
 				var name = '维修接待';
 				var features = 'height=600, width=790, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';
-				var z = window.open(url, name, features);
-				z.focus();
+				
+				z = window.open(url, name, features);
+				z.focus();				
+				
+            	return false;
 			} else {
 				$.messager.alert('提示', '请先选中目标车辆');
 			}

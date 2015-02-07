@@ -142,13 +142,9 @@
  </form>
 
     <script language="javascript" type="text/javascript" >
-        function saleAfterShow2() {
-            var z = window.open('../saleAfterManage/saleAfterIndex.action?vehicleId=<s:property value="customer.txtCheLiangId" />&d=' + new Date(), '维修接待', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
-            z.focus();			
-			
-            window.opener = null;
-            window.close();
-			return false;
+        function saleAfterShow3() {
+            z = window.open('../saleAfterManage/saleAfterIndex.action?vehicleId=<s:property value="customer.txtCheLiangId" />&d=' + new Date(), '维修接待', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
+            z.focus();
         }
        function saleAfterShow() {
             //parent.winopen('../saleAfterManage/saleAfter_Index.aspx?cusId=3901db63-9379-4ef2-8ace-67bf172a5559&d=' + new Date(), '维修接待', 990, 600, true, true, false);
@@ -157,7 +153,6 @@
 
             window.opener = null;
             window.close();
-            return false;
         }
 
 

@@ -73,7 +73,7 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 	public String saleAfterWeiXiuLiShi() {
 		initWeiXiuAction("WeiXiuLiShi");
 		gongDanLst = gongDanService.getGongDanListByCheLiangId(gongDan
-				.getTxtCheLiangId());
+				.getTxtVehicleId());
 		return INPUT;
 	}
 
