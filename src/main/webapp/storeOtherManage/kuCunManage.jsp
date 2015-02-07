@@ -54,7 +54,7 @@ td {
 							class="easyui-combobox"
 							data-options="editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/peiJianChangKuOption.action'" /></td>
 					<td  style="text-align: center;"><a id="lnkSearch"
-					class="easyui-linkbutton" href="javascript:doSearch()">查询项目</a></td>
+					class="easyui-linkbutton" href="javascript:doSearch()">查询</a></td>
 				<td><a id="lnkSearch" class="easyui-linkbutton"
 					href="javascript:clearSearchFrm()">清空查询</a></td>
 			</tr>

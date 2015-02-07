@@ -10,13 +10,13 @@ Target Server Type    : MYSQL
 Target Server Version : 50537
 File Encoding         : 65001
 
-Date: 2015-02-07 00:06:12
+Date: 2015-02-07 14:30:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for caigoubill
+-- Table structure for `caigoubill`
 -- ----------------------------
 DROP TABLE IF EXISTS `caigoubill`;
 CREATE TABLE `caigoubill` (
@@ -42,7 +42,7 @@ INSERT INTO `caigoubill` VALUES ('1', 'CGTH20150108001', '2015-01-21', '217de046
 INSERT INTO `caigoubill` VALUES ('2', 'CGTH20150108003', '2015-02-17', '99b94f26d04d', '飞洒发', '李四', '大仓库', '300.00', '日结', '收据', '测试', '审核完毕');
 
 -- ----------------------------
--- Table structure for caigoubillmingxi
+-- Table structure for `caigoubillmingxi`
 -- ----------------------------
 DROP TABLE IF EXISTS `caigoubillmingxi`;
 CREATE TABLE `caigoubillmingxi` (
@@ -66,7 +66,7 @@ CREATE TABLE `caigoubillmingxi` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for carbrand
+-- Table structure for `carbrand`
 -- ----------------------------
 DROP TABLE IF EXISTS `carbrand`;
 CREATE TABLE `carbrand` (
@@ -229,7 +229,7 @@ INSERT INTO `carbrand` VALUES ('145', '00AU0BRU0BSR', '中兴', '1617');
 INSERT INTO `carbrand` VALUES ('146', '00AU0BSV0QUa', '之诺', '1617');
 
 -- ----------------------------
--- Table structure for carmodel
+-- Table structure for `carmodel`
 -- ----------------------------
 DROP TABLE IF EXISTS `carmodel`;
 CREATE TABLE `carmodel` (
@@ -1489,10 +1489,36 @@ INSERT INTO `carmodel` VALUES ('1241', '00AU0BRU0BSR0BcB0RWH', 'GX3', '00AU0BRU0
 INSERT INTO `carmodel` VALUES ('1242', '00AU0BSV0QUa0QUb0QXI', '之诺1E', '00AU0BSV0QUa');
 
 -- ----------------------------
--- Table structure for chezhulianxiren
+-- Table structure for `chelianginfo`
 -- ----------------------------
-DROP TABLE IF EXISTS `chezhulianxiren`;
-CREATE TABLE `chezhulianxiren` (
+DROP TABLE IF EXISTS `chelianginfo`;
+CREATE TABLE `chelianginfo` (
+  `txtCustId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '客户id',
+  `txtCheLiangId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '车辆id',
+  `ddlCheLiangZhiZaoShang` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '制造商',
+  `ddlCheLiangCheXi` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车系',
+  `txtCheLiangCheXingDaiMa` varchar(30) COLLATE utf8_bin DEFAULT NULL COMMENT '车型代码',
+  `txtCheLiangChePaiHao` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '车牌号',
+  `txtCheLiangCheJiaHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车架号',
+  `txtCheLiangFaDongJiHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '发动机号',
+  PRIMARY KEY (`txtCheLiangId`),
+  KEY `txtCustId` (`txtCustId`) USING BTREE,
+  CONSTRAINT `chelianginfo_ibfk_1` FOREIGN KEY (`txtCustId`) REFERENCES `customerinfo` (`txtCustId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of chelianginfo
+-- ----------------------------
+INSERT INTO `chelianginfo` VALUES ('57346bfb-0d2b-4a4e-ae9b-087b640f72be', '65a7e567-559a-426f-94b0-a9caf4d1196f', '11', '4', '5', '22', '3', '6');
+INSERT INTO `chelianginfo` VALUES ('57346bfb-0d2b-4a4e-ae9b-087b640f72be', '72115b31-3866-4281-aa3b-dab9fb5456ea', 'a', '1', '1', '1', '1', '1');
+INSERT INTO `chelianginfo` VALUES ('57346bfb-0d2b-4a4e-ae9b-087b640f72be', 'def9889d-36e5-41e4-8688-556435ebb68e', '2', '4', '5', '2345', '3', '6');
+INSERT INTO `chelianginfo` VALUES ('8a38b57e-c6ec-4f93-ac57-6672d51a842b', 'f5e4d7e7-d318-433b-95ec-5f5892c51e5e', '沃尔沃', '沃尔沃C70', '66356', '粤B65660', '13658963258963258', '13666589658214785');
+
+-- ----------------------------
+-- Table structure for `customerinfo`
+-- ----------------------------
+DROP TABLE IF EXISTS `customerinfo`;
+CREATE TABLE `customerinfo` (
   `txtCustId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '客户id',
   `ddlCustSort` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '客户类型',
   `txtCheZhuName` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '车主名',
@@ -1509,37 +1535,18 @@ CREATE TABLE `chezhulianxiren` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
--- Records of chezhulianxiren
+-- Records of customerinfo
 -- ----------------------------
-INSERT INTO `chezhulianxiren` VALUES ('8a38b57e-c6ec-4f93-ac57-6672d51a842b', '定点单位', '张先生', '66859995', '李先生', '136596578541', '深圳宝安', '2015-02-10', '6000', '0.40', '0.40', '银卡用户');
-INSERT INTO `chezhulianxiren` VALUES ('f8d7aead-22ba-4e23-b9e1-a0fbff919774', '普通客户', 'a', '12', 'aa', '22', 'sdfd', '2015-02-04', '0', '1.00', '1.00', '注册会员');
+INSERT INTO `customerinfo` VALUES ('57346bfb-0d2b-4a4e-ae9b-087b640f72be', '人保客户', '1', '2', '3', '4', '6', '2015-02-10', '0', '1.00', '1.00', '注册会员');
+INSERT INTO `customerinfo` VALUES ('59708953-fc5a-4373-8999-2759b0134628', '普通客户', '1', '2', '3', '4', '6', '2015-02-04', '0', '1.00', '1.00', '注册会员');
+INSERT INTO `customerinfo` VALUES ('5e09ef62-ba93-454e-8cfd-af40f5b892cf', '普通客户', 'a', 'b', 'c', 'd', 'e', '2015-02-02', '100', '1.00', '1.00', '铜牌用户');
+INSERT INTO `customerinfo` VALUES ('6e46e724-794f-4d8b-9d56-dbf047c4ef1e', '人保客户', 'a', 'b', 'c', 'd', 'e', '2015-02-10', '100', '1.00', '1.00', '铜牌用户');
+INSERT INTO `customerinfo` VALUES ('8a38b57e-c6ec-4f93-ac57-6672d51a842b', '定点单位', '张先生', '66859995', '李先生', '136596578541', '深圳宝安', '2015-02-10', '6000', '0.40', '0.40', '银卡用户');
+INSERT INTO `customerinfo` VALUES ('98f43e12-6141-492a-aafd-340eba95a5db', '普通客户', 'a', 'b', 'd', 'e', 'ee', '2015-02-11', '0', '1.00', '1.00', '注册会员');
+INSERT INTO `customerinfo` VALUES ('f8d7aead-22ba-4e23-b9e1-a0fbff919774', '普通客户', 'a', '12', 'aa', '22', 'sdfd', '2015-02-04', '0', '1.00', '1.00', '注册会员');
 
 -- ----------------------------
--- Table structure for customvehicle
--- ----------------------------
-DROP TABLE IF EXISTS `customvehicle`;
-CREATE TABLE `customvehicle` (
-  `txtCustId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '客户id',
-  `txtVehicleId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '车辆id',
-  `ddlCheLiangZhiZaoShang` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '制造商',
-  `ddlCheLiangCheXi` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车系',
-  `txtCheLiangCheXingDaiMa` varchar(30) COLLATE utf8_bin DEFAULT NULL COMMENT '车型代码',
-  `txtCheLiangChePaiHao` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '车牌号',
-  `txtCheLiangCheJiaHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车架号',
-  `txtCheLiangFaDongJiHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '发动机号',
-  `ddlCheLiangSort` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车辆种类',
-  PRIMARY KEY (`txtVehicleId`),
-  KEY `txtCustId` (`txtCustId`),
-  CONSTRAINT `customvehicle_ibfk_1` FOREIGN KEY (`txtCustId`) REFERENCES `chezhulianxiren` (`txtCustId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- ----------------------------
--- Records of customvehicle
--- ----------------------------
-INSERT INTO `customvehicle` VALUES ('8a38b57e-c6ec-4f93-ac57-6672d51a842b', 'f5e4d7e7-d318-433b-95ec-5f5892c51e5e', '沃尔沃', '沃尔沃C70', '66356', '粤B65660', '13658963258963258', '13666589658214785', 'SUV');
-
--- ----------------------------
--- Table structure for department
+-- Table structure for `department`
 -- ----------------------------
 DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department` (
@@ -1561,7 +1568,7 @@ INSERT INTO `department` VALUES ('659a8880-8fbe-4377-a034-43056824046b', 'XX1001
 INSERT INTO `department` VALUES ('ee706564-0dbc-498b-bd6a-799b603d6022', 'XX10010003', '客服部', '激情四射');
 
 -- ----------------------------
--- Table structure for gongdan
+-- Table structure for `gongdan`
 -- ----------------------------
 DROP TABLE IF EXISTS `gongdan`;
 CREATE TABLE `gongdan` (
@@ -1623,11 +1630,13 @@ INSERT INTO `gongdan` VALUES ('869df461-8a07-43fb-aa88-99eff990467e', 'JDD201502
 INSERT INTO `gongdan` VALUES ('5ff58d17-8c7b-4673-bc70-e9b21c97d5bc', 'JDD20150205006', 'aa', '2015-02-05', '2015-02-03', 'aaa', '一般维修', null, null, null, '', '', '', '', '8382e709-335a-472e-9156-9a23d1391107', '159849fd-b9d4-4474-af1d-ccd2e47ae051', null, '858', '33', '0.00', '6666', '666', '昌河', '爱迪尔', '695', '普通客户', '7777888889', '7777888889', '金卡用户', '6', '7777888889', null, '', '工单制作', null, null, '3', '2015-02-11', null, '0.40', '0.65');
 INSERT INTO `gongdan` VALUES ('0303dcfc-c114-45f5-a2ff-8434470c870d', 'JDD20150205007', 'aaa', '2015-02-05', '2015-02-04', 'ddd', '一般维修', null, null, null, '', '', '', '', '87295426-e2e0-40be-8874-d6ff0209d997', '01c247c0-260a-491b-b33a-6fa414292d52', null, '6', '0', '0.00', '66666666666666666', '66666666666666666', '比亚迪', '车系', '66', '内部员工', '1', '1', '铜卡用户', '1', '1', null, '', '工单制作', null, null, '44', '2015-02-26', null, '0.00', '0.00');
 INSERT INTO `gongdan` VALUES ('da39d4c6-db42-4074-a403-67b49accd762', 'JDD20150206001', 'aaa', '2015-02-06', '2015-02-03', '', '一般维修', null, null, null, '', '', '', '', '25ced1a5-93c6-4001-b650-f595d26da009', '24c9d5ad-402b-48f6-ae78-5379be4ccf99', null, '111111', '0', '0.00', '11111111111111111', '11111111111111111', '00AU0BRB0PdN', '00AU0BRB0PdN0PdO0PdQ', '', '内部员工', '111', '111', '铜卡用户', '11111111111', '111111', null, '', '工单制作', null, null, '444', '2015-02-27', null, '0.00', '0.00');
-INSERT INTO `gongdan` VALUES ('3ca9a1c6-d712-4066-a010-dc5ecea8ff55', 'JDD20150206002', 'pp', '2015-02-06', '2015-02-02', '', '一般维修', null, null, null, '', '', '', '', '25ced1a5-93c6-4001-b650-f595d26da009', '24c9d5ad-402b-48f6-ae78-5379be4ccf99', null, '111111', '0', '0.00', '11111111111111111', '11111111111111111', '00AU0BRB0PdN', '00AU0BRB0PdN0PdO0PdQ', '', '内部员工', '111', '111', '铜卡用户', '11111111111', '111111', null, '', '工单制作', null, null, '999', '2015-02-18', null, '0.00', '0.00');
+INSERT INTO `gongdan` VALUES ('3ca9a1c6-d712-4066-a010-dc5ecea8ff55', 'JDD20150206002', 'pp', '2015-02-06', '2015-02-02', '', '一般维修', null, null, null, '', '', '', '', '25ced1a5-93c6-4001-b650-f595d26da009', '24c9d5ad-402b-48f6-ae78-5379be4ccf99', null, '111111', '0', '0.00', '11111111111111111', '11111111111111111', '00AU0BRB0PdN', '00AU0BRB0PdN0PdO0PdQ', '', '内部员工', '111', '111', '铜卡用户', '11111111111', '111111', null, '', '出库', null, '2015-02-07', '999', '2015-02-18', null, '0.00', '0.00');
 INSERT INTO `gongdan` VALUES ('c9d09309-e232-492c-aae9-6a36b1f7f4b3', 'JDD20150206003', '66666', '2015-02-06', '2015-02-10', '', '一般维修', null, null, null, '', '', '', '', 'a13e9d73-0e3d-4075-a7a2-03f43f53c3f5', '1488921e-884f-4c24-a373-06c5f1db4ba1', null, 'dsa', '0', '0.00', 'dsa', 'dsa', '奔驰', '奔驰C级(进口)', '', '延保客户', 'sa', 'dd', '铜卡用户', 'dsa', 'sd', null, '', '维修接待', null, null, '66', '2015-02-20', null, '1.00', '1.00');
+INSERT INTO `gongdan` VALUES ('2edb253d-7993-44c0-8589-6162ddd3fcc9', 'JDD20150207001', 'ss', '2015-02-07', '2015-02-11', '', '一般维修', null, null, null, '', '', '', '', '8a38b57e-c6ec-4f93-ac57-6672d51a842b', 'f5e4d7e7-d318-433b-95ec-5f5892c51e5e', null, '粤B65660', '0', '0.00', '13658963258963258', '13666589658214785', '沃尔沃', '沃尔沃C70', '66356', '定点单位', '张先生', '66859995', '银卡用户', '李先生', '136596578541', null, '深圳宝安', '费用结算', null, null, '33', '2015-02-18', null, '0.40', '0.40');
+INSERT INTO `gongdan` VALUES ('451302da-8923-40b2-9346-13931fe98052', 'JDD20150207002', 'aaa', '2015-02-07', '2015-02-10', '', '一般维修', null, null, null, '', '', '', '', '8a38b57e-c6ec-4f93-ac57-6672d51a842b', 'f5e4d7e7-d318-433b-95ec-5f5892c51e5e', null, '粤B65660', '0', '0.00', '13658963258963258', '13666589658214785', '沃尔沃', '沃尔沃C70', '66356', '定点单位', '张先生', '66859995', '银卡用户', '李先生', '136596578541', null, '深圳宝安', '出库', null, '2015-02-07', '555', '2015-02-25', null, '0.40', '0.40');
 
 -- ----------------------------
--- Table structure for gongdanwuliao
+-- Table structure for `gongdanwuliao`
 -- ----------------------------
 DROP TABLE IF EXISTS `gongdanwuliao`;
 CREATE TABLE `gongdanwuliao` (
@@ -1648,15 +1657,23 @@ CREATE TABLE `gongdanwuliao` (
 -- ----------------------------
 -- Records of gongdanwuliao
 -- ----------------------------
+INSERT INTO `gongdanwuliao` VALUES ('33eacda7-e0f9-4533-bc05-262b6ebc948e', '2edb253d-7993-44c0-8589-6162ddd3fcc9', '002', 'aa1', '宝安配件仓库', '1.00', '15.00', '正常维修', null);
+INSERT INTO `gongdanwuliao` VALUES ('47ea2ea9-440c-40d9-8507-75e5ae039a70', '451302da-8923-40b2-9346-13931fe98052', '002', 'aa1', '宝安配件仓库', '1.00', '15.00', '正常维修', null);
 INSERT INTO `gongdanwuliao` VALUES ('494183c3-561d-4d8b-8b95-1d7e83445c4d', 'baef0327-4334-496f-91a7-e21eb3881fb7', '002', 'aa1', '宝安配件仓库', '1.00', '15.00', '正常维修', null);
+INSERT INTO `gongdanwuliao` VALUES ('76feee1d-150f-4eed-bf1f-54326275471d', '2edb253d-7993-44c0-8589-6162ddd3fcc9', '001', 'aa', '福田配件仓库', '1.00', '15.00', '正常维修', null);
 INSERT INTO `gongdanwuliao` VALUES ('902c6550-c648-420c-a260-c37d26afd2ed', '8c2ff9c5-358f-4b35-be3a-f633e2b3ab6b', '001', 'aa', '福田配件仓库', '1.00', '15.00', '正常维修', null);
+INSERT INTO `gongdanwuliao` VALUES ('9f8cbd9c-e56f-4b8c-ac39-85b0bd551a0d', '451302da-8923-40b2-9346-13931fe98052', '004', 'aa3', '福田配件仓库', '1.00', '50.00', '正常维修', null);
+INSERT INTO `gongdanwuliao` VALUES ('b616e723-cacd-4481-848d-9c5c536273c3', '3ca9a1c6-d712-4066-a010-dc5ecea8ff55', 'aaa', 'a1', '宝安配件仓库', '1.00', '200.00', '正常维修', null);
+INSERT INTO `gongdanwuliao` VALUES ('b71194e1-e6de-4cf9-a157-bab137b65524', '3ca9a1c6-d712-4066-a010-dc5ecea8ff55', '002', 'aa1', '宝安配件仓库', '1.00', '15.00', '正常维修', null);
 INSERT INTO `gongdanwuliao` VALUES ('bee8cf9c-8681-4160-a935-cbf170c0ce9d', '8c2ff9c5-358f-4b35-be3a-f633e2b3ab6b', '002', 'aa1', '宝安配件仓库', '1.00', '15.00', '正常维修', null);
+INSERT INTO `gongdanwuliao` VALUES ('d0739e03-03b2-40ed-b3c4-62a2c3933f03', '451302da-8923-40b2-9346-13931fe98052', '002', 'aa1', '福田配件仓库', '1.00', '25.00', '正常维修', null);
 INSERT INTO `gongdanwuliao` VALUES ('dad8ed67-c0b8-4c63-86f0-5017b54b71c3', 'baef0327-4334-496f-91a7-e21eb3881fb7', '004', 'aa3', '福田配件仓库', '1.00', '50.00', '正常维修', null);
+INSERT INTO `gongdanwuliao` VALUES ('ec34b114-1a66-4c6e-a86a-f59093194312', '3ca9a1c6-d712-4066-a010-dc5ecea8ff55', '004', 'aa3', '福田配件仓库', '1.00', '50.00', '正常维修', null);
 INSERT INTO `gongdanwuliao` VALUES ('ed77c80c-8179-4297-b0e4-3578d662882b', 'baef0327-4334-496f-91a7-e21eb3881fb7', '001', 'aa', '福田配件仓库', '1.00', '15.00', '正常维修', null);
 INSERT INTO `gongdanwuliao` VALUES ('fa5c9201-50d3-4d45-8d6a-f29688943d1e', '8c2ff9c5-358f-4b35-be3a-f633e2b3ab6b', '004', 'aa3', '福田配件仓库', '1.00', '50.00', '正常维修', null);
 
 -- ----------------------------
--- Table structure for gongdanxiangmu
+-- Table structure for `gongdanxiangmu`
 -- ----------------------------
 DROP TABLE IF EXISTS `gongdanxiangmu`;
 CREATE TABLE `gongdanxiangmu` (
@@ -1681,17 +1698,24 @@ CREATE TABLE `gongdanxiangmu` (
 -- ----------------------------
 -- Records of gongdanxiangmu
 -- ----------------------------
+INSERT INTO `gongdanxiangmu` VALUES ('0dd7b9c6-4e5c-49c2-82d5-78f8fce407b7', '451302da-8923-40b2-9346-13931fe98052', '20001000', '钣金', '喷漆', '6.00', '600.00', '正常维修', null, null, null, null, null, null);
+INSERT INTO `gongdanxiangmu` VALUES ('0fedd4d7-e18a-4159-849b-aeddfc9dc5c2', '2edb253d-7993-44c0-8589-6162ddd3fcc9', '10001002', '机电', '换前轮轴承或（及）油封', '3.00', '300.00', '正常维修', null, null, null, null, null, null);
+INSERT INTO `gongdanxiangmu` VALUES ('24e98d63-321d-4c25-b240-2c675d0cf2de', '2edb253d-7993-44c0-8589-6162ddd3fcc9', '20001001', '钣金', '检修门玻璃升降', '2.50', '250.00', '正常维修', null, null, null, null, null, null);
+INSERT INTO `gongdanxiangmu` VALUES ('291ca9e4-354b-4ce9-b280-0f07f59f894b', '3ca9a1c6-d712-4066-a010-dc5ecea8ff55', '10001002', '机电', '换前轮轴承或（及）油封', '3.00', '300.00', '正常维修', null, null, null, null, null, null);
 INSERT INTO `gongdanxiangmu` VALUES ('2e94850a-6ed4-46ec-8136-c4d9a147173b', 'c13b7d71-4618-4502-bd0f-30dea8ffa7ae', '10001002', '机电', '换前轮轴承或（及）油封', '3.00', '300.00', '正常维修', null, '四号班组', '老张a', '完检', '小院', '2015-02-06 15:26:41');
 INSERT INTO `gongdanxiangmu` VALUES ('3391a3e5-645c-43ed-91fd-28d2b89f1c64', '8c2ff9c5-358f-4b35-be3a-f633e2b3ab6b', '10001001', '机电', '一般维修', '5.00', '500.00', '正常维修', null, '快修二组', '李四', null, null, null);
+INSERT INTO `gongdanxiangmu` VALUES ('400d6980-8361-43bd-8046-12d8e4f821d0', '3ca9a1c6-d712-4066-a010-dc5ecea8ff55', '10001003', '机电', '改底盘装甲', '9.00', '900.00', '正常维修', null, null, null, null, null, null);
+INSERT INTO `gongdanxiangmu` VALUES ('664a3817-1f4c-454a-bf57-c358de4ce752', '3ca9a1c6-d712-4066-a010-dc5ecea8ff55', '20001000', '钣金', '喷漆', '6.00', '600.00', '正常维修', null, null, null, null, null, null);
 INSERT INTO `gongdanxiangmu` VALUES ('70e7453a-873d-4e7b-81f3-605ea5ae59bc', '8c2ff9c5-358f-4b35-be3a-f633e2b3ab6b', '20001000', '钣金', '喷漆', '6.00', '600.00', '正常维修', null, '快修二组', '王五', null, null, null);
 INSERT INTO `gongdanxiangmu` VALUES ('85a1da21-c176-4d8c-8009-690ce868fe50', 'baef0327-4334-496f-91a7-e21eb3881fb7', '10001002', '机电', '换前轮轴承或（及）油封', '3.00', '300.00', '正常维修', null, '四号班组', '', null, null, null);
 INSERT INTO `gongdanxiangmu` VALUES ('b8e5830b-a07a-4ea9-84cc-ce2ff7587e88', 'baef0327-4334-496f-91a7-e21eb3881fb7', '20001000', '钣金', '喷漆', '6.00', '600.00', '正常维修', null, '四号班组', '', null, null, null);
 INSERT INTO `gongdanxiangmu` VALUES ('bc294ef5-fd4c-4a18-a512-1374bbfe66ae', '8c2ff9c5-358f-4b35-be3a-f633e2b3ab6b', '10001002', '机电', '换前轮轴承或（及）油封', '3.00', '300.00', '正常维修', null, null, null, null, null, null);
 INSERT INTO `gongdanxiangmu` VALUES ('df66c6eb-7d7c-42d3-8de8-e5320372aa79', 'baef0327-4334-496f-91a7-e21eb3881fb7', '20001001', '钣金', '检修门玻璃升降', '2.50', '250.00', '正常维修', null, null, null, null, null, null);
+INSERT INTO `gongdanxiangmu` VALUES ('e99c03cd-553d-4bbf-9190-f52af5139972', '451302da-8923-40b2-9346-13931fe98052', '30001000', '美容', '水洗美容', '1.00', '100.00', '正常维修', null, null, null, null, null, null);
 INSERT INTO `gongdanxiangmu` VALUES ('f27c5bc8-7253-4503-a30e-a3b61533a5d3', 'c13b7d71-4618-4502-bd0f-30dea8ffa7ae', '20001001', '钣金', '检修门玻璃升降', '2.50', '250.00', '正常维修', null, '一号维修组', '老王', '返修', '小院', '2015-02-06 15:26:51');
 
 -- ----------------------------
--- Table structure for groups
+-- Table structure for `groups`
 -- ----------------------------
 DROP TABLE IF EXISTS `groups`;
 CREATE TABLE `groups` (
@@ -1709,7 +1733,7 @@ INSERT INTO `groups` VALUES ('2', 'saleAftereManager', '售后经理');
 INSERT INTO `groups` VALUES ('3', 'partsManager', '物料经理');
 
 -- ----------------------------
--- Table structure for group_privilege
+-- Table structure for `group_privilege`
 -- ----------------------------
 DROP TABLE IF EXISTS `group_privilege`;
 CREATE TABLE `group_privilege` (
@@ -1737,7 +1761,7 @@ INSERT INTO `group_privilege` VALUES ('3', '6');
 INSERT INTO `group_privilege` VALUES ('3', '7');
 
 -- ----------------------------
--- Table structure for huiyuan
+-- Table structure for `huiyuan`
 -- ----------------------------
 DROP TABLE IF EXISTS `huiyuan`;
 CREATE TABLE `huiyuan` (
@@ -1751,7 +1775,7 @@ CREATE TABLE `huiyuan` (
   `txtCaiLiaoZheKou` float(10,4) DEFAULT '1.0000' COMMENT '材料折扣',
   PRIMARY KEY (`txtHuiYuanId`),
   KEY `txtCustId` (`txtCustId`),
-  CONSTRAINT `huiyuan_ibfk_1` FOREIGN KEY (`txtCustId`) REFERENCES `chezhulianxiren` (`txtCustId`)
+  CONSTRAINT `huiyuan_ibfk_1` FOREIGN KEY (`txtCustId`) REFERENCES `customerinfo` (`txtCustId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
@@ -1759,7 +1783,7 @@ CREATE TABLE `huiyuan` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for jigou
+-- Table structure for `jigou`
 -- ----------------------------
 DROP TABLE IF EXISTS `jigou`;
 CREATE TABLE `jigou` (
@@ -1786,7 +1810,7 @@ INSERT INTO `jigou` VALUES ('b7b8787b-ee3d-480f-98b7-084481a8010i', '008', '八�
 INSERT INTO `jigou` VALUES ('b7b8787b-ee3d-480f-98b7-084481a8010j', '007', '总部', null, '深圳市西乡立交万骏汇商务大厦10楼', '深圳市八路通汽车科技有限公司总部所在', '', null);
 
 -- ----------------------------
--- Table structure for jishikucun
+-- Table structure for `jishikucun`
 -- ----------------------------
 DROP TABLE IF EXISTS `jishikucun`;
 CREATE TABLE `jishikucun` (
@@ -1811,7 +1835,7 @@ CREATE TABLE `jishikucun` (
 INSERT INTO `jishikucun` VALUES ('1', '2000', '胶扣', '1号仓库', '93', '5.00', '465.00', '2.00', '186.00', '2014-12-25', '2015-01-24', '测试');
 
 -- ----------------------------
--- Table structure for kucun
+-- Table structure for `kucun`
 -- ----------------------------
 DROP TABLE IF EXISTS `kucun`;
 CREATE TABLE `kucun` (
@@ -1838,7 +1862,7 @@ INSERT INTO `kucun` VALUES ('e9d043cc-ce7d-4bc1-a3fb-6052b98ee1d1', 'dfe2f053-75
 INSERT INTO `kucun` VALUES ('f9bb2bfe-c8b7-411e-b40e-adf1fc750c1a', 'f6114fc3-f4aa-40b9-9ba8-60b8a2363d96', 'a', 'b', '5', '8.0000', '0.0000', '福田配件仓库');
 
 -- ----------------------------
--- Table structure for kucunoperlog
+-- Table structure for `kucunoperlog`
 -- ----------------------------
 DROP TABLE IF EXISTS `kucunoperlog`;
 CREATE TABLE `kucunoperlog` (
@@ -1876,7 +1900,7 @@ INSERT INTO `kucunoperlog` VALUES ('ecaf8149-96ab-475c-ae7c-e761e9524e9d', 'ae88
 INSERT INTO `kucunoperlog` VALUES ('ffea4d72-6aa6-4ced-893b-1cff665eba87', 'c0da8ded-e4e5-4bc0-8bb6-049f53983dbe', 'cd8a7370-4ff0-40dc-ba76-c02add715b17', '004', 'aa3', '6', '9.00', '福田配件仓库', '0.00', 'RKD20150205002', '入库单', '2015-02-05 11:04:17');
 
 -- ----------------------------
--- Table structure for liwaibiao
+-- Table structure for `liwaibiao`
 -- ----------------------------
 DROP TABLE IF EXISTS `liwaibiao`;
 CREATE TABLE `liwaibiao` (
@@ -1901,7 +1925,7 @@ CREATE TABLE `liwaibiao` (
 INSERT INTO `liwaibiao` VALUES ('1', 'PJRK20150108003', '2015-01-21', '宝安西乡1号仓库', '吴可', '5', '22550', '王生', '2015-01-08 15:16:13', '审核完毕', 'NO.123456789');
 
 -- ----------------------------
--- Table structure for maill
+-- Table structure for `maill`
 -- ----------------------------
 DROP TABLE IF EXISTS `maill`;
 CREATE TABLE `maill` (
@@ -1947,7 +1971,7 @@ INSERT INTO `maill` VALUES ('dd791d80-6fe6-42d4-9f88-c2849f36dd7e', '2', '小乐
 INSERT INTO `maill` VALUES ('efd81a69-f845-4c69-9b7a-520dc3d67f77', '1', '小院', '3', '41a53bd3-b6e8-477a-96e3-c5755139a3d7', '小邓', '彭世明', '你们好', '2015-01-29', '2015-01-30');
 
 -- ----------------------------
--- Table structure for privileges
+-- Table structure for `privileges`
 -- ----------------------------
 DROP TABLE IF EXISTS `privileges`;
 CREATE TABLE `privileges` (
@@ -1969,7 +1993,7 @@ INSERT INTO `privileges` VALUES ('6', 'gongdan_wuliao_delete', '');
 INSERT INTO `privileges` VALUES ('7', 'gongdan_wuliao_update', '');
 
 -- ----------------------------
--- Table structure for rukudan
+-- Table structure for `rukudan`
 -- ----------------------------
 DROP TABLE IF EXISTS `rukudan`;
 CREATE TABLE `rukudan` (
@@ -2002,7 +2026,7 @@ INSERT INTO `rukudan` VALUES ('ee325a00-3cc2-48d8-9020-3b6dc95a6abf', 'CKD201502
 INSERT INTO `rukudan` VALUES ('fabd7d5a-b0f1-46f3-8ec4-d10fde69d2ec', 'RKD20150205002', '2015-02-05', '德明士贸易有限公司', '小院', '入库单', '福田配件仓库', '收据', '456', '', '审核完毕', '小院', '2015-02-05');
 
 -- ----------------------------
--- Table structure for rukudanmingxi
+-- Table structure for `rukudanmingxi`
 -- ----------------------------
 DROP TABLE IF EXISTS `rukudanmingxi`;
 CREATE TABLE `rukudanmingxi` (
@@ -2031,7 +2055,7 @@ CREATE TABLE `rukudanmingxi` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for rukudanwuliao
+-- Table structure for `rukudanwuliao`
 -- ----------------------------
 DROP TABLE IF EXISTS `rukudanwuliao`;
 CREATE TABLE `rukudanwuliao` (
@@ -2062,7 +2086,7 @@ INSERT INTO `rukudanwuliao` VALUES ('dfe2f053-753d-4607-8cdc-4bbd5454a97a', 'b85
 INSERT INTO `rukudanwuliao` VALUES ('f6114fc3-f4aa-40b9-9ba8-60b8a2363d96', '34fe0ae4-2672-4527-a936-730a0e74cc5f', 'a', 'b', '5', '8.00');
 
 -- ----------------------------
--- Table structure for rukutuikudan
+-- Table structure for `rukutuikudan`
 -- ----------------------------
 DROP TABLE IF EXISTS `rukutuikudan`;
 CREATE TABLE `rukutuikudan` (
@@ -2087,7 +2111,7 @@ CREATE TABLE `rukutuikudan` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for rukutuikudanmingxi
+-- Table structure for `rukutuikudanmingxi`
 -- ----------------------------
 DROP TABLE IF EXISTS `rukutuikudanmingxi`;
 CREATE TABLE `rukutuikudanmingxi` (
@@ -2109,7 +2133,7 @@ CREATE TABLE `rukutuikudanmingxi` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for shangpinxiaoshoudan
+-- Table structure for `shangpinxiaoshoudan`
 -- ----------------------------
 DROP TABLE IF EXISTS `shangpinxiaoshoudan`;
 CREATE TABLE `shangpinxiaoshoudan` (
@@ -2138,7 +2162,7 @@ CREATE TABLE `shangpinxiaoshoudan` (
 INSERT INTO `shangpinxiaoshoudan` VALUES ('No.201501220425', '2015-01-22', '1号店仓库', '福田彭峰', 'NO2015012202', '大客户', '增值税', '1.1', '12000', '物流', '德邦', '小明', '13800138000', '58000', '要快点到货，急用。', '审核完毕');
 
 -- ----------------------------
--- Table structure for shop
+-- Table structure for `shop`
 -- ----------------------------
 DROP TABLE IF EXISTS `shop`;
 CREATE TABLE `shop` (
@@ -2189,7 +2213,7 @@ INSERT INTO `shop` VALUES ('JPRHD', '14', '日行灯', '', '', '', '30', '', '',
 INSERT INTO `shop` VALUES ('JPZDKWX', '15', '尾箱自动锁', '', '', '', '30', '', '', '', '', '', '', '0.00', '350.00', '78.00', '', '', '', '', '0', '0', '销售', '');
 
 -- ----------------------------
--- Table structure for shopoperlog
+-- Table structure for `shopoperlog`
 -- ----------------------------
 DROP TABLE IF EXISTS `shopoperlog`;
 CREATE TABLE `shopoperlog` (
@@ -2215,7 +2239,7 @@ INSERT INTO `shopoperlog` VALUES ('1', '1号仓库', 'XCPK', '车牌扣', '2014-
 INSERT INTO `shopoperlog` VALUES ('2', '九江深丰配件仓', ' 	521020R902', '汽车保险杠外接板', '2015-01-14', '-1', '1.00', '235.40', '317.00', '-317.00', 'CGTH20150108002', '采购退货');
 
 -- ----------------------------
--- Table structure for store
+-- Table structure for `store`
 -- ----------------------------
 DROP TABLE IF EXISTS `store`;
 CREATE TABLE `store` (
@@ -2234,7 +2258,7 @@ INSERT INTO `store` VALUES ('03E5A3F8-7F33-48AD-AD18-7429A2D8A1C6', '0002', '福
 INSERT INTO `store` VALUES ('0950B268-7C4F-43E4-A1F1-3FD28F72E6A9', '0003', '龙岗配件仓库', '');
 
 -- ----------------------------
--- Table structure for supplier
+-- Table structure for `supplier`
 -- ----------------------------
 DROP TABLE IF EXISTS `supplier`;
 CREATE TABLE `supplier` (
@@ -2252,7 +2276,7 @@ INSERT INTO `supplier` VALUES ('217de046-ccc0-4a4f-bbff-99b94f26d04d', '00001', 
 INSERT INTO `supplier` VALUES ('548000e1-14fd-49e2-9651-9b80c1738b72', '00002', '一汽丰田', '');
 
 -- ----------------------------
--- Table structure for taocan
+-- Table structure for `taocan`
 -- ----------------------------
 DROP TABLE IF EXISTS `taocan`;
 CREATE TABLE `taocan` (
@@ -2278,7 +2302,7 @@ INSERT INTO `taocan` VALUES ('45966789-cd32-4b21-b868-5a8c6dbe9bd9', '12312312',
 INSERT INTO `taocan` VALUES ('9750d01b-fea7-411a-9569-f7b1e4d64df7', '123123121231', '套餐1', '2312', '1231');
 
 -- ----------------------------
--- Table structure for unit
+-- Table structure for `unit`
 -- ----------------------------
 DROP TABLE IF EXISTS `unit`;
 CREATE TABLE `unit` (
@@ -2301,7 +2325,7 @@ INSERT INTO `unit` VALUES ('com.chiefmech.arms.entity.User@5a6b4e31', 'fsa', '�
 INSERT INTO `unit` VALUES ('session.user', 'fas ', '停用', 'fsa ');
 
 -- ----------------------------
--- Table structure for users
+-- Table structure for `users`
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -2334,7 +2358,7 @@ INSERT INTO `users` VALUES ('c7ce4da6-7a20-4858-9626-be3835c58be4', 'sz', '沈�
 INSERT INTO `users` VALUES ('fdb8cb6c-cbfa-40fe-a9c8-faba52bb3c5a', 'xiaogp', '肖高平', '123', '2015-01-27 10:00:02', '1', '总部', '业务部');
 
 -- ----------------------------
--- Table structure for user_group
+-- Table structure for `user_group`
 -- ----------------------------
 DROP TABLE IF EXISTS `user_group`;
 CREATE TABLE `user_group` (
@@ -2355,7 +2379,7 @@ INSERT INTO `user_group` VALUES ('1', '3');
 INSERT INTO `user_group` VALUES ('3', '3');
 
 -- ----------------------------
--- Table structure for vehicletype
+-- Table structure for `vehicletype`
 -- ----------------------------
 DROP TABLE IF EXISTS `vehicletype`;
 CREATE TABLE `vehicletype` (
@@ -2372,7 +2396,7 @@ INSERT INTO `vehicletype` VALUES ('2', '001', 'SUV');
 INSERT INTO `vehicletype` VALUES ('6', '002', 'MPV');
 
 -- ----------------------------
--- Table structure for weixiuchutuiku
+-- Table structure for `weixiuchutuiku`
 -- ----------------------------
 DROP TABLE IF EXISTS `weixiuchutuiku`;
 CREATE TABLE `weixiuchutuiku` (
@@ -2398,7 +2422,7 @@ INSERT INTO `weixiuchutuiku` VALUES ('1', 'WXD20150108008', '2890', '鄂J53998',
 INSERT INTO `weixiuchutuiku` VALUES ('2', 'WXD20150108007', '2891', '赣GS1558', 'LFMJ44AF6E3037866', '祝文兵', '13593695988', 'RAV4ZSA44L-ANXGKC', '10K', '财务收款中', '2015-01-07', '2015-01-31');
 
 -- ----------------------------
--- Table structure for weixiuxiangmu
+-- Table structure for `weixiuxiangmu`
 -- ----------------------------
 DROP TABLE IF EXISTS `weixiuxiangmu`;
 CREATE TABLE `weixiuxiangmu` (
@@ -2435,7 +2459,7 @@ INSERT INTO `weixiuxiangmu` VALUES ('9ee9d759-340a-453f-b797-c6df6a9e91bb', '222
 INSERT INTO `weixiuxiangmu` VALUES ('f9fd3cc4-6502-4ead-830f-b328ba3d923d', '20001005', '2.00', '钣金', '一般维修', '普通帐套');
 
 -- ----------------------------
--- Table structure for weixiuxiangmutmp
+-- Table structure for `weixiuxiangmutmp`
 -- ----------------------------
 DROP TABLE IF EXISTS `weixiuxiangmutmp`;
 CREATE TABLE `weixiuxiangmutmp` (
@@ -2453,7 +2477,7 @@ CREATE TABLE `weixiuxiangmutmp` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for weixiuzu
+-- Table structure for `weixiuzu`
 -- ----------------------------
 DROP TABLE IF EXISTS `weixiuzu`;
 CREATE TABLE `weixiuzu` (
@@ -2473,7 +2497,7 @@ INSERT INTO `weixiuzu` VALUES ('352173b3-560c-49ea-82c2-6fafa097278c', '八路�
 INSERT INTO `weixiuzu` VALUES ('9beee7f4-d917-4503-a628-e32950437cb5', '八路通深圳西乡店', '四号班组', '老张');
 
 -- ----------------------------
--- Table structure for zhangtao
+-- Table structure for `zhangtao`
 -- ----------------------------
 DROP TABLE IF EXISTS `zhangtao`;
 CREATE TABLE `zhangtao` (
@@ -2492,7 +2516,7 @@ INSERT INTO `zhangtao` VALUES ('9c197930-de86-40e4-9008-4d107b20d6e3', 'VIP帐�
 INSERT INTO `zhangtao` VALUES ('c0b2d806-712c-465f-b984-602c81542e6f', '一般帐套');
 
 -- ----------------------------
--- Table structure for zhekou
+-- Table structure for `zhekou`
 -- ----------------------------
 DROP TABLE IF EXISTS `zhekou`;
 CREATE TABLE `zhekou` (
@@ -2518,19 +2542,19 @@ INSERT INTO `zhekou` VALUES ('bbc43d56-354f-46af-95e7-9f1f0c0d755c', '92c36efe-f
 INSERT INTO `zhekou` VALUES ('d2987d77-ee0a-47de-9cf2-fc31b08acf55', '7c1af8e8-7c8a-49ac-9e18-f7a597ced597', '4.04', '2.00', '2.00', '2.60', '2.00', '2.00', '2.00');
 
 -- ----------------------------
--- View structure for view_carmodel
+-- View structure for `view_carmodel`
 -- ----------------------------
 DROP VIEW IF EXISTS `view_carmodel`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`%` SQL SECURITY DEFINER VIEW `view_carmodel` AS select `t1`.`brandId` AS `brandId`,`t1`.`brandName` AS `brandName`,`t1`.`brandLogo` AS `brandLogo`,`t2`.`modelId` AS `modelId`,`t2`.`modelName` AS `modelName`,`t2`.`id` AS `id` from (`carbrand` `t1` join `carmodel` `t2`) where (`t1`.`brandId` = `t2`.`brandId`) ;
 
 -- ----------------------------
--- View structure for view_zhekou
+-- View structure for `view_zhekou`
 -- ----------------------------
 DROP VIEW IF EXISTS `view_zhekou`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`%` SQL SECURITY DEFINER VIEW `view_zhekou` AS select `t1`.`txtZheKouGuId` AS `txtZheKouGuId`,`t2`.`userId` AS `userId`,`t2`.`displayName` AS `displayName`,`t2`.`departName` AS `departName`,`t2`.`jigouName` AS `jigouName`,`t1`.`txtGongShiZheKou` AS `txtGongShiZheKou`,`t1`.`txtMeiRongZheKou` AS `txtMeiRongZheKou`,`t1`.`txtJiDianZheKou` AS `txtJiDianZheKou`,`t1`.`txtBaoYangZheKou` AS `txtBaoYangZheKou`,`t1`.`txtBanJinZheKou` AS `txtBanJinZheKou`,`t1`.`txtPenQiZheKou` AS `txtPenQiZheKou`,`t1`.`txtCaiLiaoZheKou` AS `txtCaiLiaoZheKou` from (`zhekou` `t1` left join `users` `t2` on((`t2`.`userId` = `t1`.`userId`))) ;
 
 -- ----------------------------
--- View structure for v_kehu_cheliang
+-- View structure for `v_kehu_cheliang`
 -- ----------------------------
 DROP VIEW IF EXISTS `v_kehu_cheliang`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`%` SQL SECURITY DEFINER VIEW `v_kehu_cheliang` AS select `customvehicle`.`txtCustId` AS `txtCustId`,`chezhulianxiren`.`ddlCustSort` AS `ddlCustSort`,`chezhulianxiren`.`txtCheZhuName` AS `txtCheZhuName`,`chezhulianxiren`.`txtCheZhuTel` AS `txtCheZhuTel`,`chezhulianxiren`.`txtLianXiRenName` AS `txtLianXiRenName`,`chezhulianxiren`.`txtLianXiRenTel` AS `txtLianXiRenTel`,`chezhulianxiren`.`txtLianXiRenAdd` AS `txtLianXiRenAdd`,`customvehicle`.`txtVehicleId` AS `txtVehicleId`,`customvehicle`.`txtCheLiangChePaiHao` AS `txtCheLiangChePaiHao`,`customvehicle`.`ddlCheLiangZhiZaoShang` AS `ddlCheLiangZhiZaoShang`,`customvehicle`.`ddlCheLiangCheXi` AS `ddlCheLiangCheXi`,`customvehicle`.`txtCheLiangCheXingDaiMa` AS `txtCheLiangCheXingDaiMa`,`customvehicle`.`txtCheLiangCheJiaHao` AS `txtCheLiangCheJiaHao`,`customvehicle`.`txtCheLiangFaDongJiHao` AS `txtCheLiangFaDongJiHao`,`chezhulianxiren`.`txtHuiYuanJiFen` AS `txtHuiYuanJiFen`,`chezhulianxiren`.`txtGongShiZheKou` AS `txtGongShiZheKou`,`chezhulianxiren`.`txtCaiLiaoZheKou` AS `txtCaiLiaoZheKou`,`chezhulianxiren`.`txtHuiYuanDengJi` AS `txtHuiYuanDengJi`,`chezhulianxiren`.`txtCheZhuJiaZhaoDate` AS `txtCheZhuJiaZhaoDate`,`customvehicle`.`ddlCheLiangSort` AS `ddlCheLiangSort` from (`customvehicle` left join `chezhulianxiren` on((`chezhulianxiren`.`txtCustId` = `customvehicle`.`txtCustId`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`%` SQL SECURITY DEFINER VIEW `v_kehu_cheliang` AS select `customerinfo`.`txtCustId` AS `txtCustId`,`customerinfo`.`ddlCustSort` AS `ddlCustSort`,`customerinfo`.`txtCheZhuName` AS `txtCheZhuName`,`customerinfo`.`txtCheZhuTel` AS `txtCheZhuTel`,`customerinfo`.`txtLianXiRenName` AS `txtLianXiRenName`,`customerinfo`.`txtLianXiRenTel` AS `txtLianXiRenTel`,`customerinfo`.`txtLianXiRenAdd` AS `txtLianXiRenAdd`,`customerinfo`.`txtHuiYuanJiFen` AS `txtHuiYuanJiFen`,`customerinfo`.`txtGongShiZheKou` AS `txtGongShiZheKou`,`customerinfo`.`txtCaiLiaoZheKou` AS `txtCaiLiaoZheKou`,`customerinfo`.`txtHuiYuanDengJi` AS `txtHuiYuanDengJi`,`customerinfo`.`txtCheZhuJiaZhaoDate` AS `txtCheZhuJiaZhaoDate`,`chelianginfo`.`txtCheLiangId` AS `txtCheLiangId`,`chelianginfo`.`txtCheLiangChePaiHao` AS `txtCheLiangChePaiHao`,`chelianginfo`.`ddlCheLiangZhiZaoShang` AS `ddlCheLiangZhiZaoShang`,`chelianginfo`.`ddlCheLiangCheXi` AS `ddlCheLiangCheXi`,`chelianginfo`.`txtCheLiangCheXingDaiMa` AS `txtCheLiangCheXingDaiMa`,`chelianginfo`.`txtCheLiangCheJiaHao` AS `txtCheLiangCheJiaHao`,`chelianginfo`.`txtCheLiangFaDongJiHao` AS `txtCheLiangFaDongJiHao` from (`customerinfo` left join `chelianginfo` on((`customerinfo`.`txtCustId` = `chelianginfo`.`txtCustId`))) ;

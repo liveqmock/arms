@@ -48,7 +48,7 @@
 					<td><a onclick="queryCustInfo();return false;"
 						class="easyui-linkbutton" href="javascript:void(0)">查询</a> <a
 						onclick="showCustomerInfo();return false;"
-						class="easyui-linkbutton" href="javascript:void(0)">查看客户信息</a> <a
+						class="easyui-linkbutton" href="javascript:void(0)">查看修改客户信息</a> <a
 						onclick="showWeiXiuLiShiList();return false;"
 						class="easyui-linkbutton" href="javascript:void(0)">维修历史</a> <a
 						onclick="jieDaiDaoHang();return false;" class="easyui-linkbutton"
@@ -150,9 +150,7 @@
 				var features = 'height=600, width=790, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';
 				
 				z = window.open(url, name, features);
-				z.focus();				
-				
-            	return false;
+				z.focus();
 			} else {
 				$.messager.alert('提示', '请先选中目标车辆');
 			}

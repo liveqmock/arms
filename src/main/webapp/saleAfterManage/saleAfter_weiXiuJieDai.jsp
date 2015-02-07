@@ -147,7 +147,7 @@ td {
 						style="width: 145px;" /></td>
 					<td align="right"><span class="requireSpan">*</span>预出厂时间:</td>
 					<td><input name="txtYuChuChangDate" type="text"
-						id="txtYuChuChangDate" class="easyui-datebox"
+						id="txtYuChuChangDate" class="easyui-datetimebox"
 						data-options="required:true"
 						style="width: 145px;" /></td>
 				</tr>
