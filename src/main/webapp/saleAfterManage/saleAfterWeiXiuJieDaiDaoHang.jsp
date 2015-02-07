@@ -142,8 +142,17 @@
  </form>
 
     <script language="javascript" type="text/javascript" >
-        function saleAfterShow() {
-            z = window.open('../saleAfterManage/saleAfterIndex.action?vehicleId=<s:property value="customer.txtCheLiangId" />&d=' + new Date(), '维修接待', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
+        function saleAfterShow2() {
+            var z = window.open('../saleAfterManage/saleAfterIndex.action?vehicleId=<s:property value="customer.txtCheLiangId" />&d=' + new Date(), '维修接待', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
+            z.focus();			
+			
+            window.opener = null;
+            window.close();
+			return false;
+        }
+       function saleAfterShow() {
+            //parent.winopen('../saleAfterManage/saleAfter_Index.aspx?cusId=3901db63-9379-4ef2-8ace-67bf172a5559&d=' + new Date(), '维修接待', 990, 600, true, true, false);
+            z = window.open('../saleAfterManage/saleAfter_Index.aspx?vehicleId=3901db63-9379-4ef2-8ace-67bf172a5559&d=' + new Date(), '维修接待', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
             z.focus();
 
             window.opener = null;
@@ -156,7 +165,7 @@
         function saleAfterLiShiShow(saleAfterGuid,busiStatus) {
             var z;
             if (busiStatus != '已出库') {
-                z = window.open('../saleAfterManage/saleAfterIndex.action?saleAfterWeiXiuGuid=' + saleAfterGuid + '&d=' + new Date(), '维修历史查看', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
+                z = window.open('../saleAfterManage/saleAfterIndex.action?saleAfterWeiXiuGuid=' + saleAfterGuid + '&d=' + new Date(), '维修历史查看', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
             } else {
                 z = window.open('../saleAfterManage/saleAfter_weiXiuLiShiDetailShowBySaleAfterGuid.aspx?saleAfterGuid=' + saleAfterGuid + '&d=' + new Date(), '维修历史查看', 'height=900, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
             }
@@ -164,7 +173,6 @@
 
             window.opener = null;
             window.close();
-            return false;
         }
 
     </script>
