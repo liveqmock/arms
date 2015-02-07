@@ -14,7 +14,7 @@ import org.springframework.stereotype.Controller;
 import com.chiefmech.arms.action.BaseActionSupport;
 import com.chiefmech.arms.entity.GongDan;
 import com.chiefmech.arms.entity.view.VKeHuCheLiang;
-import com.chiefmech.arms.service.CheZhuLianXiRenService;
+import com.chiefmech.arms.service.CustomerInfoService;
 import com.chiefmech.arms.service.GongDanService;
 
 @SuppressWarnings("serial")
@@ -27,18 +27,18 @@ public class WeiXiuJieDaiDaoHangAction extends BaseActionSupport {
 	@Resource()
 	private GongDanService gongDanService;
 	@Resource()
-	private CheZhuLianXiRenService cheZhuLianXiRenService;
+	private CustomerInfoService cheZhuLianXiRenService;
 
 	private String vehicleId;
 	private VKeHuCheLiang customer;
 	private List<GongDan> gongDanLst;
 
-	@Action(value = "saleAfterWeiXiuJieDaiDaoHang", results = {@Result(name = "input", location = "saleAfterWeiXiuJieDaiDaoHang.jsp")})
+	@Action(value = "saleAfterWeiXiuJieDaiDaoHang", results = { @Result(name = "input", location = "saleAfterWeiXiuJieDaiDaoHang.jsp") })
 	public String saleAfterWeiXiuJieDaiDaoHang() {
 		customer = cheZhuLianXiRenService
-				.findVKeHuCheLiangByVehicleId(vehicleId);
-		gongDanLst = gongDanService.getGongDanListByVehicleId(customer
-				.getTxtVehicleId());
+				.findVKeHuCheLiangByCheLiangId(vehicleId);
+		gongDanLst = gongDanService.getGongDanListByCheLiangId(customer
+				.getTxtCheLiangId());
 		if (gongDanLst != null && gongDanLst.size() > 5) {
 			for (int i = gongDanLst.size() - 1; i >= 5; i--) {
 				gongDanLst.remove(i);

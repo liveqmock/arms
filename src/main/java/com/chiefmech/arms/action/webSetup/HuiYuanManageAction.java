@@ -1,7 +1,7 @@
 package com.chiefmech.arms.action.webSetup;
 import java.util.List;
 
-import com.chiefmech.arms.entity.CheZhuLianXiRen;
+import com.chiefmech.arms.entity.CustomerInfo;
 import com.chiefmech.arms.entity.HuiYuan;
 import javax.annotation.Resource;
 import org.apache.struts2.convention.annotation.Action;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import com.chiefmech.arms.action.BaseActionSupport;
 import com.chiefmech.arms.common.util.IDGen;
-import com.chiefmech.arms.service.CheZhuLianXiRenService;
+import com.chiefmech.arms.service.CustomerInfoService;
 import com.chiefmech.arms.service.HuiYuanService;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -26,12 +26,12 @@ public class HuiYuanManageAction extends BaseActionSupport implements ModelDrive
 	private HuiYuanService huiYuanService;
 	
 	@Resource()
-	private CheZhuLianXiRenService cheZhuLianXiRenService;
+	private CustomerInfoService cheZhuLianXiRenService;
 	
 	private HuiYuan item=new HuiYuan();
 	private int page = 1;
 	private int rows = 5;
-	private List<CheZhuLianXiRen> CheZhuLianXiRenList;
+	private List<CustomerInfo> CheZhuLianXiRenList;
 	
 	@Action(value = "huiYuanManage", results = { @Result(name = "input", location = "huiYuanManage.jsp")})
 	public String huiYuanManage() {
@@ -99,11 +99,11 @@ public class HuiYuanManageAction extends BaseActionSupport implements ModelDrive
 		return item;
 	}
 
-	public List<CheZhuLianXiRen> getCheZhuLianXiRenList() {
+	public List<CustomerInfo> getCheZhuLianXiRenList() {
 		return CheZhuLianXiRenList;
 	}
 
-	public void setCheZhuLianXiRenList(List<CheZhuLianXiRen> cheZhuLianXiRenList) {
+	public void setCheZhuLianXiRenList(List<CustomerInfo> cheZhuLianXiRenList) {
 		CheZhuLianXiRenList = cheZhuLianXiRenList;
 	}
 	

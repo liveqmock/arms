@@ -1,15 +1,14 @@
 package com.chiefmech.arms.entity;
 
-public class CustomVehicle {
+public class CheLiangInfo {
 	private String txtCustId;
-	private String txtVehicleId;
+	private String txtCheLiangId;
 	private String ddlCheLiangZhiZaoShang;
 	private String ddlCheLiangCheXi;
 	private String txtCheLiangCheXingDaiMa;
 	private String txtCheLiangChePaiHao;
 	private String txtCheLiangCheJiaHao;
 	private String txtCheLiangFaDongJiHao;
-	private String ddlCheLiangSort;
 
 	public String getTxtCustId() {
 		return txtCustId;
@@ -19,12 +18,12 @@ public class CustomVehicle {
 		this.txtCustId = txtCustId;
 	}
 
-	public String getTxtVehicleId() {
-		return txtVehicleId;
+	public String getTxtCheLiangId() {
+		return txtCheLiangId;
 	}
 
-	public void setTxtVehicleId(String txtVehicleId) {
-		this.txtVehicleId = txtVehicleId;
+	public void setTxtCheLiangId(String txtCheLiangId) {
+		this.txtCheLiangId = txtCheLiangId;
 	}
 
 	public String getDdlCheLiangZhiZaoShang() {
@@ -73,13 +72,5 @@ public class CustomVehicle {
 
 	public void setTxtCheLiangFaDongJiHao(String txtCheLiangFaDongJiHao) {
 		this.txtCheLiangFaDongJiHao = txtCheLiangFaDongJiHao;
-	}
-
-	public String getDdlCheLiangSort() {
-		return ddlCheLiangSort;
-	}
-
-	public void setDdlCheLiangSort(String ddlCheLiangSort) {
-		this.ddlCheLiangSort = ddlCheLiangSort;
 	}
 }

@@ -168,7 +168,7 @@ body {
 }
 </style>
 </head>
-<body onkeydown="loginKey();">
+<body onkeydown="loginKey(event);">
 	<form name="form1" method="post" action="login.action" id="form1">
 		<div id="topData">
 			<div id="loginForm">
@@ -253,7 +253,8 @@ body {
 		return true;
 	}
 
-	function loginKey() {
+	function loginKey(evt) {
+		var event = arguments[0]||window.event;
 		if (event.keyCode == 13) {
 			$("#loginImgBtn").click();
 		}

@@ -9,7 +9,7 @@ public class GongDan {
 	/** 客户id */
 	private String txtCustId;
 	/** 车辆id */
-	private String txtVehicleId;
+	private String txtCheLiangId;
 	/** 工单状态 */
 	private String txtGongDanStatus;
 	/** 车牌号 */
@@ -95,7 +95,7 @@ public class GongDan {
 
 	public GongDan(VKeHuCheLiang customerInfo) {
 		this.setTxtCustId(customerInfo.getTxtCustId());
-		this.setTxtVehicleId(customerInfo.getTxtVehicleId());
+		this.setTxtCheLiangId(customerInfo.getTxtCheLiangId());
 		this.setTxtChePaiHao(customerInfo.getTxtCheLiangChePaiHao());
 		this.setTxtVin(customerInfo.getTxtCheLiangCheJiaHao());
 		this.setTxtFaDongJiHao(customerInfo.getTxtCheLiangFaDongJiHao());
@@ -289,12 +289,12 @@ public class GongDan {
 		this.txtCustId = txtCustId;
 	}
 
-	public String getTxtVehicleId() {
-		return txtVehicleId;
+	public String getTxtCheLiangId() {
+		return txtCheLiangId;
 	}
 
-	public void setTxtVehicleId(String txtVehicleId) {
-		this.txtVehicleId = txtVehicleId;
+	public void setTxtCheLiangId(String txtCheLiangId) {
+		this.txtCheLiangId = txtCheLiangId;
 	}
 
 	public String getTxtYuYueId() {

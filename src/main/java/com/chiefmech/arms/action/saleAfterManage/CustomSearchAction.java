@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.action.BaseActionSupport;
 import com.chiefmech.arms.entity.query.SaleAfterCustomSearchBean;
-import com.chiefmech.arms.service.CheZhuLianXiRenService;
+import com.chiefmech.arms.service.CustomerInfoService;
 import com.opensymphony.xwork2.ModelDriven;
 
 @SuppressWarnings("serial")
@@ -24,7 +24,7 @@ public class CustomSearchAction extends BaseActionSupport
 			ModelDriven<SaleAfterCustomSearchBean> {
 
 	@Resource()
-	private CheZhuLianXiRenService cheZhuLianXiRenService;
+	private CustomerInfoService cheZhuLianXiRenService;
 
 	private SaleAfterCustomSearchBean query = new SaleAfterCustomSearchBean();
 

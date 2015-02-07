@@ -20,7 +20,6 @@ import com.chiefmech.arms.entity.GongDan;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
 import com.chiefmech.arms.entity.KuCun;
-import com.chiefmech.arms.entity.WeiXiuWuLiao;
 import com.chiefmech.arms.service.GongDanService;
 
 @SuppressWarnings("serial")
@@ -46,46 +45,46 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 	private List<GongDanWeiXiuXiangMu> gongDanXiangMuLst;
 	private List<GongDanWeiXiuWuLiao> gongDanWuLiaoLst;
 
-	@Action(value = "saleAfterGongDanZhiZuo", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
+	@Action(value = "saleAfterGongDanZhiZuo", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
 	public String saleAfterGongDanZhiZuo() {
 		initWeiXiuAction("GongDanZhiZuo");
 		return INPUT;
 	}
 
-	@Action(value = "saleAfterWeiXiuPaiGong", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
+	@Action(value = "saleAfterWeiXiuPaiGong", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
 	public String saleAfterWeiXiuPaiGong() {
 		initWeiXiuAction("WeiXiuPaiGong");
 		return INPUT;
 	}
 
-	@Action(value = "saleAfterWeiXiuWanJian", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
+	@Action(value = "saleAfterWeiXiuWanJian", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
 	public String saleAfterWeiXiuWanJian() {
 		initWeiXiuAction("WeiXiuWanJian");
 		return INPUT;
 	}
 
-	@Action(value = "saleAfterWeiXiuJieSuan", results = {@Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp")})
+	@Action(value = "saleAfterWeiXiuJieSuan", results = { @Result(name = "input", location = "saleAfter_gongDanZhiZuo.jsp") })
 	public String saleAfterWeiXiuJieSuan() {
 		initWeiXiuAction("WeiXiuJieSuan");
 		return INPUT;
 	}
 
-	@Action(value = "saleAfterWeiXiuLiShi", results = {@Result(name = "input", location = "saleAfter_weiXiuLiShiList.jsp")})
+	@Action(value = "saleAfterWeiXiuLiShi", results = { @Result(name = "input", location = "saleAfter_weiXiuLiShiList.jsp") })
 	public String saleAfterWeiXiuLiShi() {
 		initWeiXiuAction("WeiXiuLiShi");
-		gongDanLst = gongDanService.getGongDanListByVehicleId(gongDan
-				.getTxtVehicleId());
+		gongDanLst = gongDanService.getGongDanListByCheLiangId(gongDan
+				.getTxtCheLiangId());
 		return INPUT;
 	}
 
-	@Action(value = "weiXiuLiShiByVehicleId", results = {@Result(name = "input", location = "saleAfter_weiXiuLiShiList.jsp")})
+	@Action(value = "weiXiuLiShiByVehicleId", results = { @Result(name = "input", location = "saleAfter_weiXiuLiShiList.jsp") })
 	public String weiXiuLiShiByVehicleId() {
 		action = "WeiXiuLiShi";
-		gongDanLst = gongDanService.getGongDanListByVehicleId(vehicleId);
+		gongDanLst = gongDanService.getGongDanListByCheLiangId(vehicleId);
 		return INPUT;
 	}
 
-	@Action(value = "weiXiuLiShiDetail", results = {@Result(name = "input", location = "saleAfter_weiXiuLiShiDetailShowBySaleAfterGuid.jsp")})
+	@Action(value = "weiXiuLiShiDetail", results = { @Result(name = "input", location = "saleAfter_weiXiuLiShiDetailShowBySaleAfterGuid.jsp") })
 	public String weiXiuLiShiDetail() {
 		gongDan = gongDanService.findGongDanByWeiXiuGuid(saleAfterWeiXiuGuid);
 		gongDanXiangMuLst = gongDanService
@@ -207,6 +206,7 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 		String zhuXiuRen = gongDanService.queryZhuXiuRen(weiXiuBanZu);
 		this.transmitJson(String.format("{\"info\":\"%s\"}", zhuXiuRen));
 	}
+
 	public void setTxtWeiXiuXiangMuId(String txtWeiXiuXiangMuId) {
 		this.txtWeiXiuXiangMuId = txtWeiXiuXiangMuId;
 	}

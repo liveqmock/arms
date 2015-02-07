@@ -93,7 +93,7 @@
        <td colspan="2" align="center">
        <div style="border:1px dashed gray;width:200px;height:180px;text-align:center;">
        <br />
-       <a onClick="return saleAfterShow();" id="lnkSearch" class="easyui-linkbutton" href="javascript:__doPostBack('lnkSearch','')">维修接待</a>
+       <a onClick="return saleAfterShow();" class="easyui-linkbutton" href="javascript:void(0)">维修接待</a>
        </div>
        
        </td>
@@ -142,13 +142,8 @@
  </form>
 
     <script language="javascript" type="text/javascript" >
-
-        //预约单转向
-
-        //维修单
         function saleAfterShow() {
-            //parent.winopen('../saleAfterManage/saleAfterIndex.action?cusId=3901db63-9379-4ef2-8ace-67bf172a5559&d=' + new Date(), '维修接待', 990, 600, true, true, false);
-            z = window.open('../saleAfterManage/saleAfterIndex.action?vehicleId=<s:property value="customer.txtVehicleId" />&d=' + new Date(), '维修接待', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
+            z = window.open('../saleAfterManage/saleAfterIndex.action?vehicleId=<s:property value="customer.txtCheLiangId" />&d=' + new Date(), '维修接待', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
             z.focus();
 
             window.opener = null;
@@ -159,8 +154,6 @@
 
        //查看维修历史信息
         function saleAfterLiShiShow(saleAfterGuid,busiStatus) {
-            //parent.winopen('../saleAfterManage/saleAfterIndex.action?saleAfterWeiXiuGuid='+saleAfterGuid+'&d=' + new Date(), '维修历史查看', 990, 600, true, true, false);
-
             var z;
             if (busiStatus != '已出库') {
                 z = window.open('../saleAfterManage/saleAfterIndex.action?saleAfterWeiXiuGuid=' + saleAfterGuid + '&d=' + new Date(), '维修历史查看', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
@@ -172,53 +165,6 @@
             window.opener = null;
             window.close();
             return false;
-        }
-
-        //转向预约
-        function yuYue() {
-            // parent.winopen('../saleAfterManage/saleAfter_yuYueMain.aspx?cusId=3901db63-9379-4ef2-8ace-67bf172a5559&d=' + new Date(), '维修预约', 990, 600, true, true, false);
-            z = window.open('../saleAfterManage/saleAfter_yuYueMain.aspx?vehicleId=3901db63-9379-4ef2-8ace-67bf172a5559&d=' + new Date(), '维修预约', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
-            z.focus();
-
-            window.opener = null;
-            window.close();
-            return false;
-         
-        }
-
-
-        //转向预约列表
-        function showYuYue() {
-            //parent.winopen('../saleAfterManage/saleAfter_yuYueListByCusId.aspx?cusId=3901db63-9379-4ef2-8ace-67bf172a5559&d=' + new Date(), '预约明细列表', 990, 600, true, true, false);
-            z = window.open('../saleAfterManage/saleAfter_yuYueListByCusId.aspx?vehicleId=3901db63-9379-4ef2-8ace-67bf172a5559&d=' + new Date(), '预约明细列表', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
-            z.focus();
-
-            window.opener = null;
-            window.close();
-            return false;
-        }
-
-
-        //转向配件订货
-        function storeOtherOrder() {
-            z = window.open('../storeOtherManage/storeOtherOrderBill.aspx?busiType=customManage&busiGuid=3901db63-9379-4ef2-8ace-67bf172a5559&d=' + new Date(), '配件订货', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
-            z.focus();
-
-            window.opener = null;
-            window.close();
-            return false;
-        }
-
-
-        //转向配件订货列表
-        function showStoreOtherOrderList(custGuid) {
-            z = window.open('../storeOtherManage/storeOtherOrderBillManageSelf.aspx?custGuid=' + custGuid + '&d=' + new Date(), '配件订货查看', 'height=600, width=1200, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
-            z.focus();
-
-            window.opener = null;
-            window.close();
-            return false;
-
         }
 
     </script>

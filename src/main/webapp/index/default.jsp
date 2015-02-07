@@ -7,16 +7,13 @@
 <title>汽修管理系统</title>
 <link rel="stylesheet" type="text/css"
 	href="../style/themes/default/easyui.css" />
-<link rel="stylesheet" type="text/css"
-	href="../style/themes/icon.css" />
+<link rel="stylesheet" type="text/css" href="../style/themes/icon.css" />
 <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
 <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="../js/frame/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
-<script src="../js/common.js"
-	type="text/javascript"></script>
-<link href="../style/common.css"
-	rel="stylesheet" type="text/css" />
+<script src="../js/common.js" type="text/javascript"></script>
+<link href="../style/common.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
@@ -106,7 +103,7 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('6968c5ef-3eff-4242-ac88-b6d645dsds4','库存日志','../storeOtherManage/kuCunOperLog.action');"
-												}],
+												} ],
 										url : "",
 										target : "_blank"
 									},
@@ -133,15 +130,6 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('11213585-967e-42e6-9e4c-2a2f1dc88999','车辆车系管理','../webSetup/carMoDel.action');"
-												},
-												{
-													name : "车辆类型",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('11213585-967e-42e6-9e4c-2a2f1dc88802','车辆类型管理','../webSetup/vehiCleTypeManage.action');"
 												},
 												{
 													name : "帐套",
@@ -402,18 +390,21 @@
 				<td><img src="../image/DCLogo.png" alt='logo' /></td>
 				<td><img src="../image/ShineClubLogo.png"
 					style='margin-left: 10px;' alt='logo' /></td>
-				<td style='width: 75%; vertical-align: bottom; color: Blue;'>[<s:property value='user.jigouName' />] <a href='#'
-					onclick="winopen('userPersonalChange.action','个人设置',900,500,true,true,false);"><s:property value='user.displayName' /></a>
-					&nbsp;&nbsp;<span id="time"></span></td>
+				<td style='width: 75%; vertical-align: bottom; color: Blue;'>[<s:property
+						value='user.jigouName' />] <a href='#'
+					onclick="winopen('userPersonalChange.action','个人设置',900,500,true,true,false);"><s:property
+							value='user.displayName' /></a> &nbsp;&nbsp;<span id="time"></span></td>
 				<td style='width: 62%; vertical-align: bottom; color: Blue;'><a
 					href='#'
 					onclick="winopen('groupSelfSet.jsp','机构扩展设置',900,500,true,true,false);"></a>
-				   <a href='#'
-					onclick="winopen('userPersonalChange.action','个人设置',900,500,true,true,false);"></a> &nbsp;&nbsp;<span id="time"></span></td>
-				<td nowrap='nowrap' style='width: 300px;'><img id="imgCallSrc" src='../image/voice.png' alt='消息' title="消息"
-					onclick="showmsg(0);" /> <span id="callSpan"
-					style="color: Red; font-weight: bold; font-size: 8px; position: relative; left: -10px; top: 0px; z-index: 10;"></span><img src="../image/exit.png" alt='退出' title="退出" onclick="exit()" />
-				</td>
+					<a href='#'
+					onclick="winopen('userPersonalChange.action','个人设置',900,500,true,true,false);"></a>
+					&nbsp;&nbsp;<span id="time"></span></td>
+				<td nowrap='nowrap' style='width: 300px;'><img id="imgCallSrc"
+					src='../image/voice.png' alt='消息' title="消息" onclick="showmsg(0);" />
+					<span id="callSpan"
+					style="color: Red; font-weight: bold; font-size: 8px; position: relative; left: -10px; top: 0px; z-index: 10;"></span><img
+					src="../image/exit.png" alt='退出' title="退出" onclick="exit()" /></td>
 			</tr>
 		</table>
 	</div>
@@ -489,8 +480,8 @@
 
 		if (sort == "0") {
 			//弹出消息中心页面
-			winopen('../callManage/callCenter.action', '互动信息中心', 800, 600, true,
-					true, false);
+			winopen('../callManage/callCenter.action', '互动信息中心', 800, 600,
+					true, true, false);
 		} else {
 			//自动加载当前消息信息
 			//return; //暂停自动刷新

@@ -8,7 +8,7 @@ public class VKeHuCheLiang {
 	private String txtLianXiRenName;
 	private String txtLianXiRenTel;
 	private String txtLianXiRenAdd;
-	private String txtVehicleId;
+	private String txtCheLiangId;
 	private String txtCheLiangChePaiHao;
 	private String ddlCheLiangZhiZaoShang;
 	private String ddlCheLiangCheXi;
@@ -17,7 +17,6 @@ public class VKeHuCheLiang {
 	private String txtCheLiangFaDongJiHao;
 	private String txtHuiYuanDengJi;
 	private String txtCheZhuJiaZhaoDate;
-	private String ddlCheLiangSort;
 	private String txtHuiYuanHao;
 	private int txtHuiYuanJiFen;
 	private float txtGongShiZheKou;
@@ -79,7 +78,6 @@ public class VKeHuCheLiang {
 		this.txtCheZhuName = txtCheZhuName;
 	}
 
-
 	public String getTxtCheZhuTel() {
 		return txtCheZhuTel;
 	}
@@ -104,12 +102,12 @@ public class VKeHuCheLiang {
 		this.txtLianXiRenTel = txtLianXiRenTel;
 	}
 
-	public String getTxtVehicleId() {
-		return txtVehicleId;
+	public String getTxtCheLiangId() {
+		return txtCheLiangId;
 	}
 
-	public void setTxtVehicleId(String txtVehicleId) {
-		this.txtVehicleId = txtVehicleId;
+	public void setTxtCheLiangId(String txtCheLiangId) {
+		this.txtCheLiangId = txtCheLiangId;
 	}
 
 	public String getTxtCheLiangChePaiHao() {
@@ -144,7 +142,6 @@ public class VKeHuCheLiang {
 		this.txtCheLiangCheJiaHao = txtCheLiangCheJiaHao;
 	}
 
-
 	public String getTxtLianXiRenAdd() {
 		return txtLianXiRenAdd;
 	}
@@ -154,20 +151,20 @@ public class VKeHuCheLiang {
 	}
 
 	public String getTxtHuiYuanDengJi() {
-		if(txtHuiYuanJiFen<=3000){
-			   txtHuiYuanDengJi="铜卡用户";
-				return txtHuiYuanDengJi;
-			}
-			if(txtHuiYuanJiFen<=6000){
-				 txtHuiYuanDengJi="银卡用户";
-				return txtHuiYuanDengJi;
-			}
-			if(txtHuiYuanJiFen<=10000){
-			txtHuiYuanDengJi="金卡用户";
+		if (txtHuiYuanJiFen <= 3000) {
+			txtHuiYuanDengJi = "铜卡用户";
 			return txtHuiYuanDengJi;
 		}
-			txtHuiYuanDengJi="超级用户";
+		if (txtHuiYuanJiFen <= 6000) {
+			txtHuiYuanDengJi = "银卡用户";
 			return txtHuiYuanDengJi;
+		}
+		if (txtHuiYuanJiFen <= 10000) {
+			txtHuiYuanDengJi = "金卡用户";
+			return txtHuiYuanDengJi;
+		}
+		txtHuiYuanDengJi = "超级用户";
+		return txtHuiYuanDengJi;
 	}
 
 	public void setTxtHuiYuanDengJi(String txtHuiYuanDengJi) {
@@ -196,14 +193,6 @@ public class VKeHuCheLiang {
 
 	public void setTxtCaiLiaoZheKou(float txtCaiLiaoZheKou) {
 		this.txtCaiLiaoZheKou = txtCaiLiaoZheKou;
-	}
-
-	public String getDdlCheLiangSort() {
-		return ddlCheLiangSort;
-	}
-
-	public void setDdlCheLiangSort(String ddlCheLiangSort) {
-		this.ddlCheLiangSort = ddlCheLiangSort;
 	}
 
 }

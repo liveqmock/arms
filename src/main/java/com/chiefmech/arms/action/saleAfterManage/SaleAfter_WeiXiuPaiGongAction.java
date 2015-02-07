@@ -16,7 +16,7 @@ import com.chiefmech.arms.action.BaseActionSupport;
 import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.entity.GongDan;
 import com.chiefmech.arms.entity.view.VKeHuCheLiang;
-import com.chiefmech.arms.service.CheZhuLianXiRenService;
+import com.chiefmech.arms.service.CustomerInfoService;
 import com.chiefmech.arms.service.GongDanService;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -32,7 +32,7 @@ public class SaleAfter_WeiXiuPaiGongAction extends BaseActionSupport
 	@Resource()
 	private GongDanService gongDanService;
 	@Resource()
-	private CheZhuLianXiRenService cheZhuLianXiRenService;
+	private CustomerInfoService cheZhuLianXiRenService;
 
 	private GongDan gongDan = new GongDan();
 	private String saleAfterWeiXiuPaiGong;
@@ -49,7 +49,7 @@ public class SaleAfter_WeiXiuPaiGongAction extends BaseActionSupport
 	private void initGonDan() {
 		if (StringUtils.isBlank(saleAfterWeiXiuPaiGong)) {
 			customer = cheZhuLianXiRenService
-					.findVKeHuCheLiangByVehicleId(vehicleId);
+					.findVKeHuCheLiangByCheLiangId(vehicleId);
 			gongDan = new GongDan(customer);
 		} else {
 			gongDan = gongDanService
