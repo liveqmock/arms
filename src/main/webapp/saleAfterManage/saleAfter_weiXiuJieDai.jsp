@@ -28,7 +28,7 @@ td {
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
 </head>
 
-<body>
+<body <s:if test="gongDan.txtGongDanStatus!='维修接待'">style="background-color:#DDD;"</s:if>>
 <table border="0" style="width: 900px">
 			<!--按钮区域 sart-->
 			<tr>
@@ -43,15 +43,14 @@ td {
 							<a onClick="saveGongDan();return false;"
 								class="easyui-linkbutton"
 								href="javascript:void(0)">保存</a>
-						</s:if><a onClick="winClose();return false;"
-						class="easyui-linkbutton" href="javascript:void(0)">关闭</a> <!--按钮区域 end-->
+						</s:if> <!--按钮区域 end-->
 					</td>
 				</tr>
 			<!--按钮区域 end-->
 		</table>
 	<form name="form1" method="post" id="form1">
 		<input name="txtGongDanId" type="hidden" id="txtGongDanId" />
-		<input name="txtVehicleId" type="hidden" id="txtVehicleId" />
+		<input name="txtCheLiangId" type="hidden" id="txtCheLiangId" />
 		<div style="margin-left: 5px; margin-top: 5px;">
 			<table border="0" cellpadding="0" cellspacing="0" width="900px">
 				
@@ -210,6 +209,17 @@ td {
 			var formJson = eval('('
 					+ '<s:property value="jsonData" escape="false"/>' + ')');
 			initFormData(formJson);
+			
+			<s:if test="gongDan.txtGongDanStatus!='维修接待'">
+			_.each(formJson, function(value, key) {
+				var el = $("#" + key);
+				if(_.size(el) > 0){
+					if ((el[0].tagName == "INPUT" || el[0].tagName == "TEXTAREA") && el.attr("type")!="hidden") {
+						$(el).parent().html(value);
+					}
+				}
+			});
+			</s:if>
 		});
 
 		function saveGongDan() {
@@ -228,12 +238,6 @@ td {
 				}
 			});
 		}
-
-
-		 function refreshGongDan(gongDanId) {
-			 parent.window.location.href = 'saleAfterIndex.action?saleAfterWeiXiuGuid=' + gongDanId + '&d=' + new Date();
-	
-		 }
 
 		function winClose() {
 			$.messager.confirm('提示', "您确定要退出？", function(r) {

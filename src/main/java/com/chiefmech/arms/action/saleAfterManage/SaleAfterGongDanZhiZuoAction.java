@@ -38,6 +38,7 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 	private String txtWeiXiuXiangMuId;
 	private String easyUiJSonData;
 	private String action;
+	private String flag;
 	private GongDan gongDan;
 	private String txtGongDanStatus;
 	private String weiXiuBanZu;
@@ -261,6 +262,14 @@ public class SaleAfterGongDanZhiZuoAction extends BaseActionSupport {
 
 	public void setWeiXiuBanZu(String weiXiuBanZu) {
 		this.weiXiuBanZu = weiXiuBanZu;
+	}
+
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
 	}
 
 }

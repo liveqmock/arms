@@ -23,7 +23,7 @@
 <meta HTTP-EQUIV="Expires" CONTENT="0">
 </head>
 
-<body>
+<body <s:if test="flag=='GrayBGColor'">style="background-color:#DDD;"</s:if>>
 	<div style="margin-top: 5px; margin-left: 5px; margin-right: 5px;">
 		<table border="0" style="width: 900px">
 			<!--按钮区域 sart-->
@@ -51,8 +51,7 @@
 						<a
 							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','出库');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">出库</a>
-					</s:elseif><a onClick="winClose();return false;" class="easyui-linkbutton"
-					href="javascript:void(0)">关闭</a></td>
+					</s:elseif></td>
 			</tr>
 			<!--按钮区域 end-->
 		</table>
@@ -147,7 +146,7 @@
 		<s:if test="action=='WeiXiuJieSuan'">
 			<div style="height: 10px;"></div>
 			<table border="1" id="jieSuanList"
-				style="border-collapse: collapse; border: 1px solid #d6d3ce;"
+				style=" background-color:white;border-collapse: collapse; border: 1px solid #d6d3ce;"
 				cellpadding="5">
 				<tr>
 					<td colspan="6">会员等级：<span

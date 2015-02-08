@@ -162,6 +162,10 @@ function reloadCurentPage(){
 }
 
 //-----------维修工单管理--------------
+ function refreshGongDan(gongDanId) {
+	 parent.window.location.href = 'saleAfterIndex.action?saleAfterWeiXiuGuid=' + gongDanId + '&d=' + new Date();
+ }
+ 
 function updateGongDanStatus(saleAfterWeiXiuGuid, newGongDanStatus){
 	$.messager.confirm('提示', newGongDanStatus+'后本页面信息不能被修改，确定要'+newGongDanStatus+'吗?', function(r) {
 		if (r) {

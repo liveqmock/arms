@@ -84,8 +84,7 @@ td,div {
 		<table border="0"
 			style="width: 100%; border-bottom: 2px dotted #dddddd;">
 			<tr>
-				<td class="titlebg"><span>售后管理</span> <span class="titleSpan1">(工单制作)</span>
-				</td>
+				<td class="titlebg"><span>售后管理</span> (<span class="titleSpan1"></span>)</td>
 				<td align="right"
 					style="padding-right: 20px; color: Blue; font-weight: bold;">
 					维修单号:<s:property value='gongDan.txtBillNo' />&nbsp;车牌号:<s:property
@@ -144,88 +143,24 @@ td,div {
 			return false;
 		}
 		
-		var url = action + "?saleAfterWeiXiuGuid="	+ saleAfterWeiXiuGuid + "&d=" + new Date();
+		var garyBgFlag = "";
+		if(status != "<s:property value='gongDan.txtGongDanStatus' />"){
+			garyBgFlag = "GrayBGColor";
+		}
+		var url = action + "?saleAfterWeiXiuGuid="	+ saleAfterWeiXiuGuid + "&flag=" + garyBgFlag + "&d=" + new Date();
 		if(status == "维修接待" && saleAfterWeiXiuGuid == ""){
-			url = action + "?cheLiangId=" + cheLiangId + "&d=" + new Date();
+			url = action + "?cheLiangId=" + cheLiangId + "&flag=" + garyBgFlag + "&d=" + new Date();
 		}
 		
 		$("#tab" + preTabIndex).removeClass();
 		$("#tab" + tabIndex).addClass("tabs_active");
 		preTabIndex = tabIndex;
 		
-		$(".titleSpan1").html("(" + status + ")");
+		$(".titleSpan1").html(status);
 		$("#content").html(
 				"<iframe style='width:100%;height:100%;' src='"	+ url + "' frameborder='0' />");
 	}
 
-/*
-	var tmp = "a";
-	function showzzz(targetTabId) {
-		curentTabId = targetTabId;
-
-		if ($("#" + tmp + "Frame").length > 0) {
-			$("#" + tmp + "Frame").hide();
-		}
-		var url = "";
-		if (targetTabId == 1) {
-			$("#" + tmp).removeClass();
-			$("#a").addClass("tabs_active");
-			tmp = "a";
-			url = "saleAfterWeiXiuJieDai.action?saleAfterWeiXiuGuid="
-					+ saleAfterWeiXiuGuid + "&cheLiangId=" + cheLiangId + "&d="
-					+ new Date();
-			$(".titleSpan1").html("(维修接待)");
-		}
-		if (targetTabId == 2) {
-			$("#" + tmp).removeClass();
-			$("#b").addClass("tabs_active");
-			tmp = "b";
-			url = "saleAfterGongDanZhiZuo.action?saleAfterWeiXiuGuid="
-					+ saleAfterWeiXiuGuid + "&d=" + new Date();
-			$(".titleSpan1").html("(工单制作)");
-		}
-		if (targetTabId == 3) {
-			$("#" + tmp).removeClass();
-			$("#c").addClass("tabs_active");
-			tmp = "c";
-			url = "saleAfterWeiXiuPaiGong.action?saleAfterWeiXiuGuid="
-					+ saleAfterWeiXiuGuid + "&d" + new Date();
-			$(".titleSpan1").html("(维修派工)");
-		}
-		if (targetTabId == 4) {
-			$("#" + tmp).removeClass();
-			$("#d").addClass("tabs_active");
-			tmp = "d";
-			url = "saleAfterWeiXiuWanJian.action?saleAfterWeiXiuGuid="
-					+ saleAfterWeiXiuGuid + "&d" + new Date();
-			$(".titleSpan1").html("(完工确认)");
-		}
-		if (targetTabId == 5) {
-			$("#" + tmp).removeClass();
-			$("#e").addClass("tabs_active");
-			tmp = "e";
-			url = "saleAfterWeiXiuJieSuan.action?saleAfterWeiXiuGuid="
-					+ saleAfterWeiXiuGuid + "&d" + new Date();
-			$(".titleSpan1").html("(费用明细)");
-		}
-		if (targetTabId == 6) {
-			$("#" + tmp).removeClass();
-			$("#f").addClass("tabs_active");
-			tmp = "f";
-			url = "saleAfterWeiXiuLiShi.action?saleAfterWeiXiuGuid="
-					+ saleAfterWeiXiuGuid + "&d" + new Date();
-			$(".titleSpan1").html("(维修历史)");
-		}
-
-		if ($("#" + tmp + "Frame").length > 0) {
-			$("#" + tmp + "Frame").remove();
-		}
-		$("#content").append(
-				"<iframe id='" + tmp
-						+ "Frame' style='width:100%;height:100%;' src='" + url
-						+ "' frameborder='0' />");
-
-	}*/
 </script>
 
 

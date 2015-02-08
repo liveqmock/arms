@@ -61,7 +61,7 @@
 			<!--数据列表 start-->
 			<div style="height: 3px"></div>
 			<table id="mydg" class="easyui-datagrid"
-				data-options="rownumbers:true,singleSelect:true, pagination:true,onDblClickRow:jieDaiDaoHang">
+				data-options="url:'customerSearch.action',rownumbers:true,singleSelect:true, pagination:true,onDblClickRow:jieDaiDaoHang">
 				<thead>
 					<tr>
 						<th width="20" data-options="field:'txtCustId',checkbox:true"></th>
