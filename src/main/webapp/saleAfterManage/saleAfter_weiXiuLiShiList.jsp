@@ -10,16 +10,16 @@ td {
 }
 </style>
 <link rel="stylesheet" type="text/css"
-	href="../style/themes/default/easyui.css?v=90e943c2686f4150a8a9caace115b2b0" />
+	href="../style/themes/default/easyui.css" />
 <link rel="stylesheet" type="text/css"
-	href="../style/themes/icon.css?v=90e943c2686f4150a8a9caace115b2b0" />
+	href="../style/themes/icon.css" />
 <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
 <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="../js/frame/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
-<script src="../js/common.js?v=90e943c2686f4150a8a9caace115b2b0"
+<script src="../js/common.js"
 	type="text/javascript"></script>
-<link href="../style/common.css?v=90e943c2686f4150a8a9caace115b2b0"
+<link href="../style/common.css"
 	rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />

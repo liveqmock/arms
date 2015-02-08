@@ -1,22 +1,23 @@
 function initFormData(formJson) {
 	_.each(formJson, function(value, key) {
 		var el = $("#" + key);
-		if ($(el).attr("type") == "checkbox") {
-			if (value == "on") {
-				$(el).attr("checked", true);
+		if(_.size(el) > 0){		
+			if ($(el).hasClass("easyui-datetimebox")
+					|| $(el).hasClass("easyui-datebox")) {
+				$(el).datebox("setValue", value);
+			} else if ($(el).hasClass("easyui-textbox")) {
+				$(el).textbox("setValue", value);
+			} else if ($(el).hasClass("easyui-numberbox")) {
+				$(el).numberbox("setValue", value);
+			} else if ($(el).hasClass("easyui-combobox")) {
+				$(el).combobox("setValue", value);
+			} else if ($(el).attr("type") == "checkbox") {
+				$(el).attr("checked", (value == "on"));
+			} else if (el[0].tagName == "DIV") {
+				$(el).html(value);
+			} else {
+				$(el).val(value);
 			}
-		} else if ($(el).hasClass("easyui-datetimebox")
-				|| $(el).hasClass("easyui-datebox")) {
-			$(el).datebox("setValue", value);
-		} else if ($(el).hasClass("easyui-textbox")) {
-			$(el).textbox("setValue", value);
-		} else if ($(el).hasClass("easyui-numberbox")) {
-			$(el).numberbox("setValue", value);
-		} 
-		else if ($(el).hasClass("easyui-combobox")) {
-			$(el).combobox("setValue", value);
-		}else {
-			$(el).val(value);
 		}
 	});
 }
@@ -171,7 +172,7 @@ function updateGongDanStatus(saleAfterWeiXiuGuid, newGongDanStatus){
 				if (result.errorMsg) {
 					$.messager.alert('出错啦', result.errorMsg);
 				} else {
-					parent.refreshPage(saleAfterWeiXiuGuid);
+					refreshGongDan(saleAfterWeiXiuGuid);
 				}
 			}, 'json');
 		}
@@ -207,7 +208,7 @@ function saveRuKuDan() {
 			var result = eval('(' + result + ')');
 			if (result.statusCode == "success") {
 				$.messager.alert('提示', '保存信息成功！', 'info', function() {
-					refreshPage(result.info);
+					refreshRuKuDan(result.info);
 				});
 			} else if (result.statusCode == "failed") {
 				$.messager.alert('提示', '保存信息失败！');
@@ -229,12 +230,37 @@ function updateRuKuDanStatus(ruKuDanGuid, newStatus){
 						$("#txtStatus").textbox("setValue", oldStatus);
 						$.messager.alert('出错啦', result.errorMsg);
 					} else {
-						refreshPage(ruKuDanGuid);
+						updatePage(ruKuDanGuid,getTabId(newStatus));
 					}
 				}
 			});
 		}
 	});
+}
+
+function getTabId(gongDanStatus){
+	var tabId = 1;
+	switch(gongDanStatus){
+	case "维修接待":
+		tabId = 1;
+		break;
+	case "工单制作":
+		tabId = 2;
+		break;
+	case "维修派工":
+		tabId = 3;
+		break;
+	case "完工确认":
+		tabId = 4;
+		break;
+	case "费用结算":
+		tabId = 5;
+		break;
+	case "维修历史":
+		tabId = 6;
+		break;
+	}
+	return tabId;
 }
 
 function deleteRuKuDan() {

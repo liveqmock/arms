@@ -227,15 +227,8 @@
 		}
 
 		
-	function refreshPage(ruKuDanGuid){
-		location.href = 'rukudanDetail.action?ruKuDanGuid='+ ruKuDanGuid + '&d=' + new Date();
-	}
-
-		function printThis() {
-			window
-					.open("../storeOtherManage/storeOtherInsertPrint.aspx?billGuid=6ee9a462-5b98-43a0-8570-12a961de169e&d="
-							+ new Date());
-			return false;
+		function refreshRuKuDan(ruKuDanGuid){
+			location.href = 'rukudanDetail.action?ruKuDanGuid='+ ruKuDanGuid + '&d=' + new Date();
 		}
 	</script>
 

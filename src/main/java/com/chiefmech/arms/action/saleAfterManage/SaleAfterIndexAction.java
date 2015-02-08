@@ -36,8 +36,7 @@ public class SaleAfterIndexAction extends BaseActionSupport implements
 	private GongDan gongDan = new GongDan();
 
 	private String saleAfterWeiXiuGuid;
-	private String vehicleId;
-	private int tabId = 1;
+	private String cheLiangId;
 	private VKeHuCheLiang customer;
 
 	@Action(value = "saleAfterIndex", results = { @Result(name = "input", location = "saleAfter_Index.jsp") })
@@ -56,11 +55,17 @@ public class SaleAfterIndexAction extends BaseActionSupport implements
 	private void initGonDan() {
 		if (StringUtils.isBlank(saleAfterWeiXiuGuid)) {
 			customer = cheZhuLianXiRenService
-					.findVKeHuCheLiangByCheLiangId(vehicleId);
+					.findVKeHuCheLiangByCheLiangId(cheLiangId);
 			gongDan = new GongDan(customer);
+			gongDan.setTxtFuWuGuWen(this.getUser().getDisplayName());
 		} else {
 			gongDan = gongDanService
 					.findGongDanByWeiXiuGuid(saleAfterWeiXiuGuid);
+		}
+
+		String gongDanStatus = gongDan.getTxtGongDanStatus();
+		if ("".equals(gongDanStatus)) {
+
 		}
 	}
 
@@ -71,8 +76,12 @@ public class SaleAfterIndexAction extends BaseActionSupport implements
 
 		int rowsAffected;
 		if (StringUtils.isBlank(gongDan.getTxtGongDanId())) {
+			customer = cheZhuLianXiRenService
+					.findVKeHuCheLiangByCheLiangId(gongDan.getTxtCheLiangId());
+			gongDan = new GongDan(customer, gongDan);
 			gongDan.setTxtGongDanId(IDGen.getUUID());
 			gongDan.setTxtBillNo(gongDanService.getNewBillNo());
+			gongDan.setTxtFuWuGuWen(this.getUser().getDisplayName());
 			rowsAffected = gongDanService.insertWeiXiuJieDai(gongDan);
 		} else {
 			rowsAffected = gongDanService.updateWeiXiuJieDai(gongDan);
@@ -91,12 +100,12 @@ public class SaleAfterIndexAction extends BaseActionSupport implements
 		return customer;
 	}
 
-	public String getVehicleId() {
-		return vehicleId;
+	public String getCheLiangId() {
+		return cheLiangId;
 	}
 
-	public void setVehicleId(String vehicleId) {
-		this.vehicleId = vehicleId;
+	public void setCheLiangId(String cheLiangId) {
+		this.cheLiangId = cheLiangId;
 	}
 
 	public void setSaleAfterWeiXiuGuid(String saleAfterWeiXiuGuid) {
@@ -105,14 +114,6 @@ public class SaleAfterIndexAction extends BaseActionSupport implements
 
 	public String getSaleAfterWeiXiuGuid() {
 		return saleAfterWeiXiuGuid;
-	}
-
-	public void setTabId(int tabId) {
-		this.tabId = tabId;
-	}
-
-	public int getTabId() {
-		return tabId;
 	}
 
 	@Override

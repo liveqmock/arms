@@ -144,7 +144,7 @@
 		function jieDaiDaoHang() {
 			var row = myTable.datagrid('getSelected');
 			if (row && row.txtCheLiangId!="") {
-				var url = '../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.action?vehicleId='
+				var url = '../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.action?cheLiangId='
 						+ row.txtCheLiangId + '&d=' + new Date();
 				var name = '维修接待';
 				var features = 'height=600, width=790, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';

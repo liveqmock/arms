@@ -114,24 +114,6 @@
 										},
 										children : [
 												{
-													name : "车辆品牌",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('11213585-967e-42e6-9e4c-2a2f1dc88sac','车辆品牌管理','../webSetup/carbrand.action');"
-												},
-												{
-													name : "车辆车系",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('11213585-967e-42e6-9e4c-2a2f1dc88999','车辆车系管理','../webSetup/carMoDel.action');"
-												},
-												{
 													name : "帐套",
 													font : {
 														'font-style' : '微软雅黑'
@@ -166,15 +148,6 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('7acf3c55-3939-41ba-b525-3a1dfa035ce9','维修项目','../webSetup/saleAfterWeiXiuXiangMuSet.action');"
-												},
-												{
-													name : "套餐",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('6aebe08f-9fff-4492-885f-a207c1e7ae81','套餐管理','../webSetup/saleAfterTaoCanManage.action');"
 												},
 												{
 													name : "维修组管理",
@@ -289,13 +262,6 @@
 		}
 		//判断Tab是否存在
 		url1 = url;
-		//if(url.indexOf("?")>0)
-		//{
-		//url = url + "&d=" + new Date();
-		//}else
-		//{
-		//url = url + "?d=" + new Date();
-		//}
 		$("#tabList")
 				.tabs(
 						'add',
@@ -354,10 +320,7 @@
 		$.cookie('menuIda17a7061-9f34-4ede-828b-3b1396ec4eaf', t);
 
 	}
-</script>
-
-
-<script language="javascript" type="text/javascript">
+	
 	/*弹出网页对话框*/
 	function winopen(url, WinName, w, h, Modal, Shadow, Closed) {
 		document.getElementById('winDiv').innerHTML = "<iframe src='"
@@ -392,18 +355,10 @@
 					style='margin-left: 10px;' alt='logo' /></td>
 				<td style='width: 75%; vertical-align: bottom; color: Blue;'>[<s:property
 						value='user.jigouName' />] <a href='#'
-					onclick="winopen('userPersonalChange.action','个人设置',900,500,true,true,false);"><s:property
+					onclick="winopen('userPersonalChange.action','个人设置',500,300,true,true,false);"><s:property
 							value='user.displayName' /></a> &nbsp;&nbsp;<span id="time"></span></td>
-				<td style='width: 62%; vertical-align: bottom; color: Blue;'><a
-					href='#'
-					onclick="winopen('groupSelfSet.jsp','机构扩展设置',900,500,true,true,false);"></a>
-					<a href='#'
-					onclick="winopen('userPersonalChange.action','个人设置',900,500,true,true,false);"></a>
-					&nbsp;&nbsp;<span id="time"></span></td>
-				<td nowrap='nowrap' style='width: 300px;'><img id="imgCallSrc"
-					src='../image/voice.png' alt='消息' title="消息" onclick="showmsg(0);" />
-					<span id="callSpan"
-					style="color: Red; font-weight: bold; font-size: 8px; position: relative; left: -10px; top: 0px; z-index: 10;"></span><img
+
+				<td nowrap='nowrap' style='width: 300px;' align="right"><img
 					src="../image/exit.png" alt='退出' title="退出" onclick="exit()" /></td>
 			</tr>
 		</table>
@@ -466,56 +421,6 @@
 		});
 	}
 
-	//系统帮助
-	function help() {
-
-	}
-
-	//菜单查询
-	function searchText() {
-
-	}
-
-	function showmsg(sort) {
-
-		if (sort == "0") {
-			//弹出消息中心页面
-			winopen('../callManage/callCenter.action', '互动信息中心', 800, 600,
-					true, true, false);
-		} else {
-			//自动加载当前消息信息
-			//return; //暂停自动刷新
-			$
-					.get(
-							"../callManage/callExec.aspx?d=" + new Date(),
-							{},
-							function(data) {
-								data = "";//[paddy]avoid web error, delete later
-								if (data != "") {
-									var dataT = data
-											.split('7E6065F2860648479F727CFB2E4A424C|');
-									if (dataT.length > 1) {
-										if (dataT[0] != 0) {
-											$("#imgCallSrc").attr("src",
-													"../image/voice2.gif");
-											$("#callSpan").html(dataT[0]);
-										}
-										tiShiInfo = dataT[1];
-
-									}
-								} else {
-									$("#imgCallSrc").attr("src",
-											"../image/voice.png");
-									$("#callSpan").html("");
-								}
-							});
-
-		}
-	}
-	function exa(m) {
-		alert(m);
-	}
-
 	function setTime() {
 		var dt = new Date();
 		var arr_week = new Array("周日", "周一", "周二", "周三", "周四", "周五", "周六");
@@ -534,32 +439,6 @@
 		time.innerHTML = "[" + strYear + strMonth + strDay + "&nbsp;" + strTime
 				+ "]";
 	}
-	//setInterval("setTime()", 1000);
-
-	//动态修改title
-	var msgI = 0;
-	var msgT = document.title;
-	var tiShiInfo = "";//系统提示信息
-	function msgShow() {
-
-		if ($("#callSpan").html() != "") {
-			document.title = msgI % 2 == 0 ? "【　　　】 - " + msgT : "【新消息】 - "
-					+ tiShiInfo + msgT;
-
-		} else {
-			document.title = msgT;
-		}
-		msgI++;
-	}
-	setInterval(msgShow, 10000);
-
-	//互动信息辅助函数
-	function showmsgT() {
-		showmsg(1);
-	}
-	//互动信息获取
-	setInterval(showmsgT, 500000);
-	showmsgT();
 </script>
 
 </html>

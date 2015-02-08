@@ -188,7 +188,7 @@ td {
 
 	<script language="javascript" type="text/javascript">
         function saleAfterShow() {
-            var z = window.open('../saleAfterManage/saleAfterIndex.action?vehicleId=<s:property value="customer.txtCheLiangId" />&d=' + new Date(), '_blank', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
+            var z = window.open('saleAfterIndex.action?cheLiangId=<s:property value="customer.txtCheLiangId" />&d=' + new Date(), '_blank', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
             z.focus();
 
             window.opener = null;
@@ -202,24 +202,20 @@ td {
 				saleAfterGongDanDetail(saleAfterGuid);
             }
 
+        }    
+		
+		function saleAfterLiShiDetail(saleAfterGuid) {
+            var z = window.open('weiXiuLiShiDetail.action?saleAfterWeiXiuGuid=' + saleAfterGuid + '&d=' + new Date(), '_blank', 'height=900, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
+            z.focus();
+			
             window.opener = null;
             window.close();
         }    
 		
-		function saleAfterLiShiDetail(saleAfterGuid) {
-            var z = window.open('weiXiuLiShiDetail.action?saleAfterWeiXiuGuid=' + saleAfterGuid + '&d=' + new Date(), '_blank', 'height=900, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
-            z.focus();
-        }    
-		
 		function saleAfterGongDanDetail(saleAfterGuid) {
-            var z = window.open('saleAfterIndex.action?saleAfterWeiXiuGuid=' + saleAfterGuid + '&d=' + new Date(), '_blank', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
+            var z = window.open('saleAfterIndex.action?saleAfterWeiXiuGuid=' + saleAfterGuid + '&d=' + new Date(), '_blank', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
             z.focus();
-        }
-		
-		function openUrlInNewWindow(sURL, sName, sFeatures) {
-            var z = window.open(sURL, sName, sFeatures);
-            z.focus();
-
+			
             window.opener = null;
             window.close();
         }

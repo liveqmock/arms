@@ -29,14 +29,14 @@ public class WeiXiuJieDaiDaoHangAction extends BaseActionSupport {
 	@Resource()
 	private CustomerInfoService cheZhuLianXiRenService;
 
-	private String vehicleId;
+	private String cheLiangId;
 	private VKeHuCheLiang customer;
 	private List<GongDan> gongDanLst;
 
 	@Action(value = "saleAfterWeiXiuJieDaiDaoHang", results = { @Result(name = "input", location = "saleAfterWeiXiuJieDaiDaoHang.jsp") })
 	public String saleAfterWeiXiuJieDaiDaoHang() {
 		customer = cheZhuLianXiRenService
-				.findVKeHuCheLiangByCheLiangId(vehicleId);
+				.findVKeHuCheLiangByCheLiangId(cheLiangId);
 		gongDanLst = gongDanService.getGongDanListByCheLiangId(customer
 				.getTxtCheLiangId());
 		if (gongDanLst != null && gongDanLst.size() > 5) {
@@ -47,12 +47,12 @@ public class WeiXiuJieDaiDaoHangAction extends BaseActionSupport {
 		return INPUT;
 	}
 
-	public VKeHuCheLiang getCustomer() {
-		return customer;
+	public void setCheLiangId(String cheLiangId) {
+		this.cheLiangId = cheLiangId;
 	}
 
-	public void setVehicleId(String vehicleId) {
-		this.vehicleId = vehicleId;
+	public VKeHuCheLiang getCustomer() {
+		return customer;
 	}
 
 	public List<GongDan> getGongDanLst() {

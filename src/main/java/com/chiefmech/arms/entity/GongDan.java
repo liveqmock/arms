@@ -9,7 +9,7 @@ public class GongDan {
 	/** 客户id */
 	private String txtCustId;
 	/** 车辆id */
-	private String txtVehicleId;
+	private String txtCheLiangId;
 	/** 工单状态 */
 	private String txtGongDanStatus;
 	/** 车牌号 */
@@ -55,17 +55,9 @@ public class GongDan {
 	/** 预出厂时间 */
 	public String txtYuChuChangDate;
 	/** 服务顾问 */
-	private String txtFuWuUserId;
+	private String txtFuWuGuWen;
 	/** 维修类别 */
 	private String ddlWeiXiuSort;
-	/** 首保 */
-	private String chkShouBao;
-	/** 免检 */
-	private String chkMianJian;
-	/** 新车检查 */
-	private String chkXinCheJianCha;
-	/** 返修 */
-	private String chkFanXiu;
 	/** 下次保养里程 */
 	private String txtNewLiCheng;
 	/** 下次保养时间 */
@@ -95,7 +87,7 @@ public class GongDan {
 
 	public GongDan(VKeHuCheLiang customerInfo) {
 		this.setTxtCustId(customerInfo.getTxtCustId());
-		this.setTxtVehicleId(customerInfo.getTxtCheLiangId());
+		this.setTxtCheLiangId(customerInfo.getTxtCheLiangId());
 		this.setTxtChePaiHao(customerInfo.getTxtCheLiangChePaiHao());
 		this.setTxtVin(customerInfo.getTxtCheLiangCheJiaHao());
 		this.setTxtFaDongJiHao(customerInfo.getTxtCheLiangFaDongJiHao());
@@ -116,6 +108,24 @@ public class GongDan {
 		this.setTxtBillNo("等待生成");
 		this.setDdlWeiXiuSort("一般维修");
 		this.setTxtGongDanStatus("维修接待");
+	}
+
+	public GongDan(VKeHuCheLiang customer, GongDan gongDan) {
+		this(customer);
+
+		this.setDdlWeiXiuSort(gongDan.getDdlWeiXiuSort());
+		this.setTxtRuChangDate(gongDan.getTxtRuChangDate());
+		this.setTxtYuChuChangDate(gongDan.getTxtYuChuChangDate());
+		this.setTxtLiCheng(gongDan.getTxtLiCheng());
+		this.setTxtYouLiang(gongDan.getTxtYouLiang());
+		this.setTxtNewLiCheng(gongDan.getTxtNewLiCheng());
+		this.setTxtNewRuChangDate(gongDan.getTxtNewRuChangDate());
+		this.setTxtXieYiBillNo(gongDan.getTxtXieYiBillNo());
+		this.setTxtFuWuGuWen(gongDan.getTxtFuWuGuWen());
+		this.setTxtTiShiInfo(gongDan.getTxtTiShiInfo());
+		this.setTxtJiaoXiuReason(gongDan.getTxtJiaoXiuReason());
+		this.setTxtGuZhangReason(gongDan.getTxtGuZhangReason());
+		this.setTxtWeiXiuCuoShi(gongDan.getTxtWeiXiuCuoShi());
 	}
 
 	public GongDan() {
@@ -193,12 +203,12 @@ public class GongDan {
 		this.txtRuChangDate = txtRuChangDate;
 	}
 
-	public String getTxtFuWuUserId() {
-		return txtFuWuUserId;
+	public String getTxtFuWuGuWen() {
+		return txtFuWuGuWen;
 	}
 
-	public void setTxtFuWuUserId(String txtFuWuUserId) {
-		this.txtFuWuUserId = txtFuWuUserId;
+	public void setTxtFuWuGuWen(String txtFuWuGuWen) {
+		this.txtFuWuGuWen = txtFuWuGuWen;
 	}
 
 	public String getDdlWeiXiuSort() {
@@ -207,38 +217,6 @@ public class GongDan {
 
 	public void setDdlWeiXiuSort(String ddlWeiXiuSort) {
 		this.ddlWeiXiuSort = ddlWeiXiuSort;
-	}
-
-	public String getChkShouBao() {
-		return chkShouBao;
-	}
-
-	public void setChkShouBao(String chkShouBao) {
-		this.chkShouBao = chkShouBao;
-	}
-
-	public String getChkMianJian() {
-		return chkMianJian;
-	}
-
-	public void setChkMianJian(String chkMianJian) {
-		this.chkMianJian = chkMianJian;
-	}
-
-	public String getChkXinCheJianCha() {
-		return chkXinCheJianCha;
-	}
-
-	public void setChkXinCheJianCha(String chkXinCheJianCha) {
-		this.chkXinCheJianCha = chkXinCheJianCha;
-	}
-
-	public String getChkFanXiu() {
-		return chkFanXiu;
-	}
-
-	public void setChkFanXiu(String chkFanXiu) {
-		this.chkFanXiu = chkFanXiu;
 	}
 
 	public String getTxtYuChuChangDate() {
@@ -289,12 +267,12 @@ public class GongDan {
 		this.txtCustId = txtCustId;
 	}
 
-	public String getTxtVehicleId() {
-		return txtVehicleId;
+	public String getTxtCheLiangId() {
+		return txtCheLiangId;
 	}
 
-	public void setTxtVehicleId(String txtVehicleId) {
-		this.txtVehicleId = txtVehicleId;
+	public void setTxtCheLiangId(String txtCheLiangId) {
+		this.txtCheLiangId = txtCheLiangId;
 	}
 
 	public String getTxtYuYueId() {
