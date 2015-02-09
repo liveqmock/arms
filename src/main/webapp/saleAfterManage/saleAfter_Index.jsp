@@ -89,7 +89,7 @@ td,div {
 					style="padding-right: 20px; color: Blue; font-weight: bold;">
 					维修单号:<s:property value='gongDan.txtBillNo' />&nbsp;车牌号:<s:property
 						value='gongDan.txtChePaiHao' />&nbsp;<s:property
-						value='gongDan.txtGongDanStatus' />
+						value='gongDanStatus' />
 				</td>
 			</tr>
 		</table>
@@ -97,21 +97,21 @@ td,div {
 	</div>
 
 	<div id="tabs" class="tabs">
-
 		<ul>
 			<li id="tab0"><a href="javascript:void(0)" onClick="show(0)">维修接待</a></li>
-			<li id="tab1"><a href="javascript:void(0)" onClick="show(1)">工单制作</a></li>
+			<li id="tab1"><a href="javascript:void(0)" onClick="show(1)">选取物料</a></li>
 			<li id="tab2"><a href="javascript:void(0)" onClick="show(2)">维修派工</a></li>
-			<li id="tab3"><a href="javascript:void(0)" onClick="show(3)">完工确认</a></li>
-			<li id="tab4"><a href="javascript:void(0)" onClick="show(4)">费用结算</a></li>
-			<li id="tab5"><a href="javascript:void(0)" onClick="show(5)">维修历史</a></li>
+			<li id="tab3"><a href="javascript:void(0)" onClick="show(3)">领取物料</a></li>
+			<li id="tab4"><a href="javascript:void(0)" onClick="show(4)">维修完检</a></li>
+			<li id="tab5"><a href="javascript:void(0)" onClick="show(5)">费用结算</a></li>
+			<li id="tab6"><a href="javascript:void(0)" onClick="show(6)">维修历史</a></li>
 
 		</ul>
 
 	</div>
 
 	<div id="content"
-		style="border-left: 1px solid gray; border-right: 1px solid gray; border-bottom: 1px solid gray; margin: 0px; height: 520px;">
+		style="border-left: 1px solid gray; border-right: 1px solid gray; border-bottom: 1px solid gray; margin: 0px; height: 720px;">
 
 
 	</div>
@@ -120,35 +120,40 @@ td,div {
 <script language="javascript" type="text/javascript">
 	var cheLiangId = "<s:property value='cheLiangId' />";
 	var saleAfterWeiXiuGuid = "<s:property value='saleAfterWeiXiuGuid' />";
-	var tabInfo = [ [ 'saleAfterWeiXiuJieDai.action', '维修接待' ],
-			[ 'saleAfterGongDanZhiZuo.action', '工单制作' ],
-			[ 'saleAfterWeiXiuPaiGong.action', '维修派工' ],
-			[ 'saleAfterWeiXiuWanJian.action', '完工确认' ],
-			[ 'saleAfterWeiXiuJieSuan.action', '费用结算' ],
-			[ 'saleAfterWeiXiuLiShi.action', '维修历史' ] ];
+	var tabInfo = [ [ 'gongDanWeiXiuJieDai.action', '维修接待' ],
+			[ 'gongDanWuLiaoXuanQu.action', '选取物料' ],
+			[ 'gongDanWeiXiuPaiGong.action', '维修派工' ],
+			[ 'gongDanLingQuWuLiao.action', '领取物料' ],
+			[ 'gongDanWeiXiuWanJian.action', '维修完检' ],
+			[ 'gongDanWeiXiuJieSuan.action', '费用结算' ],
+			[ 'cheLiangWeiXiuLiShi.action', '维修历史' ] ];
 	var preTabIndex = "";
 
 	$(function() {
-		var initTabIndex = _.indexOf(_.map(tabInfo, function(tab){ return tab[1];}), "<s:property value='gongDan.txtGongDanStatus' />");
+		var initTabIndex = _.indexOf(_.map(tabInfo, function(tab){ return tab[1];}), "<s:property value='gongDanStatus' />");
 		show(initTabIndex);
 	});
 	
 	function show(tabIndex) {
+		if(tabIndex < 0 || tabIndex >= _.size(tabInfo)){
+			tabIndex = _.size(tabInfo) - 1;
+		}
+		
 		var tab = tabInfo[tabIndex];
 		var action = tab[0];
-		var status = tab[1];
+		var tabName = tab[1];
 		
-		if (status != "维修接待" && saleAfterWeiXiuGuid == "") {
+		if (tabName != "维修接待" && saleAfterWeiXiuGuid == "") {
 			alert("请先保存维修接待信息！");
 			return false;
 		}
 		
 		var garyBgFlag = "";
-		if(status != "<s:property value='gongDan.txtGongDanStatus' />"){
+		if(tabName != "<s:property value='gongDanStatus' />"){
 			garyBgFlag = "GrayBGColor";
 		}
 		var url = action + "?saleAfterWeiXiuGuid="	+ saleAfterWeiXiuGuid + "&flag=" + garyBgFlag + "&d=" + new Date();
-		if(status == "维修接待" && saleAfterWeiXiuGuid == ""){
+		if((tabName == "维修接待" && saleAfterWeiXiuGuid == "") || (tabName == "维修历史")){
 			url = action + "?cheLiangId=" + cheLiangId + "&flag=" + garyBgFlag + "&d=" + new Date();
 		}
 		
@@ -156,7 +161,7 @@ td,div {
 		$("#tab" + tabIndex).addClass("tabs_active");
 		preTabIndex = tabIndex;
 		
-		$(".titleSpan1").html(status);
+		$(".titleSpan1").html(tabName);
 		$("#content").html(
 				"<iframe style='width:100%;height:100%;' src='"	+ url + "' frameborder='0' />");
 	}

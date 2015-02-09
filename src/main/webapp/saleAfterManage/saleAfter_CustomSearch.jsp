@@ -130,7 +130,7 @@
 		function showWeiXiuLiShiList() {
 			var row = myTable.datagrid('getSelected');
 			if (row) {				
-				var url = 'weiXiuLiShiByVehicleId.action?vehicleId=' + row.txtCheLiangId
+				var url = 'cheLiangWeiXiuLiShi.action?cheLiangId=' + row.txtCheLiangId
 						+ '&d=' + new Date();
 				var name = '维修历史';
 				var features = 'height=600,width=970,top=80,left=80,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no';

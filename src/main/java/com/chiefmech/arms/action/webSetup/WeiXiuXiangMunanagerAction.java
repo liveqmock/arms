@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import net.sf.json.JSONArray;
+
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -14,9 +16,8 @@ import org.springframework.stereotype.Controller;
 import com.chiefmech.arms.action.BaseActionSupport;
 import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.entity.WeiXiuXiangMu;
-import com.chiefmech.arms.entity.ZhangTao;
+import com.chiefmech.arms.service.GongDanService;
 import com.chiefmech.arms.service.WeiXiuXiangMuService;
-import com.chiefmech.arms.service.ZhangTaoService;
 import com.opensymphony.xwork2.ModelDriven;
 
 @SuppressWarnings("serial")
@@ -24,23 +25,24 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/webSetup")
 @Controller()
 @Scope("prototype")
-public class SaleAfterWeiXiuXiangMuSetAction extends BaseActionSupport
-		implements ModelDriven<WeiXiuXiangMu> {
+public class WeiXiuXiangMunanagerAction extends BaseActionSupport
+		implements
+			ModelDriven<WeiXiuXiangMu> {
 
+	@Resource()
+	private GongDanService gongDanService;
 	@Resource()
 	private WeiXiuXiangMuService weiXiuXiangMuService;
 
-	@Resource()
-	private ZhangTaoService zhangTaoService;
-
 	private WeiXiuXiangMu item = new WeiXiuXiangMu();
+	private String saleAfterGuid;
+	private String easyUiJSonData;
+	private String action;
 	private int page = 1;
 	private int rows = 10;
-	private List<ZhangTao> ZhangTaoLst;
 
-	@Action(value = "saleAfterWeiXiuXiangMuSet", results = { @Result(name = "input", location = "saleAfter_weiXiuXiangMuSet.jsp") })
+	@Action(value = "weiXiuXiangMuManage", results = {@Result(name = "input", location = "weiXiuXiangMuManage.jsp")})
 	public String saleAfterWeiXiuXiangMuSet() {
-		ZhangTaoLst = zhangTaoService.findZhangTao();
 		return INPUT;
 	}
 
@@ -58,7 +60,7 @@ public class SaleAfterWeiXiuXiangMuSetAction extends BaseActionSupport
 
 	@Action(value = "insertWeiXiuXiangMu")
 	public void insertItem() {
-		item.setTxtWeiXiuXiangMuGuid(IDGen.getUUID());
+		item.setTxtGuid(IDGen.getUUID());
 		int rowAffected = weiXiuXiangMuService.insertItem(item);
 		String jsonStr = getJsonResponse(rowAffected, "新增");
 
@@ -75,9 +77,21 @@ public class SaleAfterWeiXiuXiangMuSetAction extends BaseActionSupport
 
 	@Action(value = "deleteWeiXiuXiangMu")
 	public void deleteItem() {
-		String id = item.getTxtWeiXiuXiangMuGuid();
+		String id = item.getTxtGuid();
 		int rowAffected = weiXiuXiangMuService.deleteItem(id);
 		String jsonStr = getJsonResponse(rowAffected, "删除");
+
+		this.transmitJson(jsonStr);
+	}
+
+	@Action(value = "addGongDanWeiXiuXiangMu")
+	public void addGongDanWeiXiuXiangMu() {
+		JSONArray jsonArray = JSONArray.fromObject(easyUiJSonData);
+		List<WeiXiuXiangMu> weiXiuXiangMuLst = (List<WeiXiuXiangMu>) JSONArray
+				.toList(jsonArray, WeiXiuXiangMu.class);
+		int rowAffected = gongDanService.insertGongDanWeiXiuXiangMu(
+				saleAfterGuid, weiXiuXiangMuLst);
+		String jsonStr = getCrudJsonResponse(rowAffected, "新增");
 
 		this.transmitJson(jsonStr);
 	}
@@ -104,12 +118,27 @@ public class SaleAfterWeiXiuXiangMuSetAction extends BaseActionSupport
 		this.rows = rows;
 	}
 
-	public List<ZhangTao> getZhangTaoLst() {
-		return ZhangTaoLst;
+	public String getAction() {
+		return action;
 	}
 
-	public void setZhangTaoLst(List<ZhangTao> zhangTaoLst) {
-		ZhangTaoLst = zhangTaoLst;
+	public void setAction(String action) {
+		this.action = action;
+	}
+	public String getSaleAfterGuid() {
+		return saleAfterGuid;
+	}
+
+	public void setSaleAfterGuid(String saleAfterGuid) {
+		this.saleAfterGuid = saleAfterGuid;
+	}
+
+	public String getEasyUiJSonData() {
+		return easyUiJSonData;
+	}
+
+	public void setEasyUiJSonData(String easyUiJSonData) {
+		this.easyUiJSonData = easyUiJSonData;
 	}
 
 }

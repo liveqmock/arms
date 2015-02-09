@@ -1,60 +1,47 @@
 package com.chiefmech.arms.entity;
 
 public class WeiXiuXiangMu {
-
-	private String txtWeiXiuXiangMuGuid;
-	private String txtWeiXiuXiangMuBianHao;
-	private float txtGongShi;
-	private String ddlSuoShuGongDuan;
-	private String txtWeiXiuNeiRong;
-	private String ddlSuoShuZhangTao;
-
-	public String getTxtWeiXiuXiangMuGuid() {
-		return txtWeiXiuXiangMuGuid;
+	private String txtGuid;
+	private String txtCode;
+	private String txtName;
+	private String txtNeiRong;
+	private float txtFeiYong;
+	private String ddlGongDuan;
+	public String getTxtGuid() {
+		return txtGuid;
 	}
-
-	public void setTxtWeiXiuXiangMuGuid(String txtWeiXiuXiangMuGuid) {
-		this.txtWeiXiuXiangMuGuid = txtWeiXiuXiangMuGuid;
+	public void setTxtGuid(String txtGuid) {
+		this.txtGuid = txtGuid;
 	}
-
-	public String getTxtWeiXiuXiangMuBianHao() {
-		return txtWeiXiuXiangMuBianHao;
+	public String getTxtCode() {
+		return txtCode;
 	}
-
-	public void setTxtWeiXiuXiangMuBianHao(String txtWeiXiuXiangMuBianHao) {
-		this.txtWeiXiuXiangMuBianHao = txtWeiXiuXiangMuBianHao;
+	public void setTxtCode(String txtCode) {
+		this.txtCode = txtCode;
 	}
-
-	public float getTxtGongShi() {
-		return txtGongShi;
+	public String getTxtName() {
+		return txtName;
 	}
-
-	public void setTxtGongShi(float txtGongShi) {
-		this.txtGongShi = txtGongShi;
+	public void setTxtName(String txtName) {
+		this.txtName = txtName;
 	}
-
-	public String getDdlSuoShuGongDuan() {
-		return ddlSuoShuGongDuan;
+	public String getTxtNeiRong() {
+		return txtNeiRong;
 	}
-
-	public void setDdlSuoShuGongDuan(String ddlSuoShuGongDuan) {
-		this.ddlSuoShuGongDuan = ddlSuoShuGongDuan;
+	public void setTxtNeiRong(String txtNeiRong) {
+		this.txtNeiRong = txtNeiRong;
 	}
-
-	public String getTxtWeiXiuNeiRong() {
-		return txtWeiXiuNeiRong;
+	public float getTxtFeiYong() {
+		return txtFeiYong;
 	}
-
-	public void setTxtWeiXiuNeiRong(String txtWeiXiuNeiRong) {
-		this.txtWeiXiuNeiRong = txtWeiXiuNeiRong;
+	public void setTxtFeiYong(float txtFeiYong) {
+		this.txtFeiYong = txtFeiYong;
 	}
-
-	public String getDdlSuoShuZhangTao() {
-		return ddlSuoShuZhangTao;
+	public String getDdlGongDuan() {
+		return ddlGongDuan;
 	}
-
-	public void setDdlSuoShuZhangTao(String ddlSuoShuZhangTao) {
-		this.ddlSuoShuZhangTao = ddlSuoShuZhangTao;
+	public void setDdlGongDuan(String ddlGongDuan) {
+		this.ddlGongDuan = ddlGongDuan;
 	}
 
 }

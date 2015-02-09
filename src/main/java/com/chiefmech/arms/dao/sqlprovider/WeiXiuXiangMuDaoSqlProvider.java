@@ -31,13 +31,14 @@ public class WeiXiuXiangMuDaoSqlProvider {
 		SearchBean searchBean = new SearchBean() {
 			@Override
 			public void initSearchFields() {
-				this.addField(new Criteria(Action.LIKE,
-						"txtWeiXiuXiangMuBianHao", item
-								.getTxtWeiXiuXiangMuBianHao()));
-				this.addField(new Criteria(Action.LIKE, "ddlSuoShuGongDuan",
-						item.getDdlSuoShuGongDuan()));
-				this.addField(new Criteria(Action.LIKE, "txtWeiXiuNeiRong",
-						item.getTxtWeiXiuNeiRong()));
+				this.addField(new Criteria(Action.LIKE, "txtCode", item
+						.getTxtCode()));
+				this.addField(new Criteria(Action.LIKE, "ddlGongDuan", item
+						.getDdlGongDuan()));
+				this.addField(new Criteria(Action.LIKE, "txtName", item
+						.getTxtName()));
+				this.addField(new Criteria(Action.LIKE, "txtNeiRong", item
+						.getTxtNeiRong()));
 			}
 		};
 		return searchBean;

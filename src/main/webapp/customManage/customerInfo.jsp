@@ -199,10 +199,10 @@ td {
 						$.messager.alert('提示', result.errorMsg);
 					} else {
 						$.messager.alert('提示','保存信息成功！','info',function(){
-							if(result.info=='成功'){
-								location.href ='../customManage/customerInfo.action?customerId=' + result.info + '&d=' + new Date();
-							}else{
-								reloadCurentPage(); // reload data							
+							if(result.info=='update'){
+								reloadCurentPage(); // reload data	
+							}else{		
+								location.href ='../customManage/customerInfo.action?customerId=' + result.info + '&d=' + new Date();				
 							}
 						});
 					}

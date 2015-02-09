@@ -49,7 +49,7 @@
 						<thead>
 							<tr>
 								<th width="20" data-options="field:'txtGongDanId',checkbox:true"></th>
-								<th width="100" data-options="field:'txtBillNo'" sortable="true">工单号</th>
+								<th width="150" data-options="field:'txtBillNo'" sortable="true">工单号</th>
 								<th width="100" data-options="field:'txtXieYiBillNo1'">协议单号</th>
 								<th width="100" data-options="field:'txtGongDanStatus'">当前状态</th>
 								<th width="100" data-options="field:'ddlWeiXiuSort'">维修类型</th>
@@ -163,7 +163,7 @@
 			if (thisGuid != "" && thisGuid != undefined) {
 				var url = 'saleAfterIndex.action?saleAfterWeiXiuGuid='
 						+ thisGuid + '&d=' + new Date();
-				var features = 'height=600,width=990,top=100,left=50,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no';
+				var features = 'height=800,width=1000,top=100,left=50,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no';
 				z = window.open(url, '_blank', features);
 				z.focus();
 			}

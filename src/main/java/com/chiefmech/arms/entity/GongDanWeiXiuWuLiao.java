@@ -26,7 +26,6 @@ public class GongDanWeiXiuWuLiao {
 		this.txtWuLiaoName = item.getTxtWuLiaoName();
 		this.ddlCangKu = item.getDdlCangKu();
 		this.txtPrice = item.getTxtSalePrice();
-		this.ddlZhangTao = "正常维修";
 	}
 
 	public String getTxtWuLiaoGuid() {

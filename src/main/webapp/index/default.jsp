@@ -114,15 +114,6 @@
 										},
 										children : [
 												{
-													name : "帐套",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('11213585-967e-42e6-9e4c-2a2f1dc88sac','帐套管理','../webSetup/zhangTao.action');"
-												},
-												{
 													name : "配件仓库",
 													font : {
 														'font-style' : '微软雅黑'
@@ -147,16 +138,16 @@
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('7acf3c55-3939-41ba-b525-3a1dfa035ce9','维修项目','../webSetup/saleAfterWeiXiuXiangMuSet.action');"
+													click : "mdfMenu('7acf3c55-3939-41ba-b525-3a1dfa035ce9','维修项目','../webSetup/weiXiuXiangMuManage.action?action=addXiangMu');"
 												},
 												{
-													name : "维修组管理",
+													name : "维修组",
 													font : {
 														'font-style' : '微软雅黑'
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('7acf3c55-3939-41ba-b525-3a1dfa035c88','维修组管理','../webSetup/weiXiuZhuManage.action');"
+													click : "mdfMenu('7acf3c55-3939-41ba-b525-3a1dfa035c88','维修组','../webSetup/weiXiuZhuManage.action');"
 												}, ],
 										url : "",
 										target : "_blank"

@@ -15,7 +15,7 @@ public interface CustomerInfoService {
 
 	public CustomerInfo findCustomerInfoById(String txtCustId);
 
-	public VKeHuCheLiang findVKeHuCheLiangByCheLiangId(String txtVehicleId);
+	public VKeHuCheLiang findVKeHuCheLiangByCheLiangId(String txtCheLiangId);
 
 	public List<VKeHuCheLiang> queryVKeHuCheLiang(VKeHuCheLiang query);
 

@@ -28,22 +28,24 @@ td {
 <body>
 	<table border="0" style="width: 100%;">
 		<tr>
-			<td class="titlebg"><span>维修设置</span> <span class="titleSpan">(维修项目管理)</span>
+			<td class="titlebg"><span>维修项目</span> <span class="titleSpan">(维修项目管理)</span>
 			</td>
 		</tr>
 	</table>
 	<form name="fmSearch" method="post" id="fmSearch">
 		<table id="searchPanel" class="searchPanel" style="display: none;">
 			<tr>
-				<td>维修项目编号:</td>
-				<td><input name="txtWeiXiuXiangMuBianHao" type="text"
-					maxlength="20" id="txtWeiXiuXiangMuBianHao" style="width: 120px;" /></td>
+				<td>项目编号:</td>
+				<td><input name="txtCode" type="text" maxlength="20"
+					id="txtCode" class="easyui-textbox" style="width: 120px;" /></td>
+				<td>项目名称:</td>
+				<td><input name="txtName" type="text" maxlength="20"
+					id="txtName" class="easyui-textbox" style="width: 120px;" /></td>
 				<td>工段名称:</td>
-				<td><input name="ddlSuoShuGongDuan" type="text" maxlength="20"
-					id="ddlSuoShuGongDuan" style="width: 120px;" /></td>
-				<td>维修内容:</td>
-				<td><input name="txtWeiXiuNeiRong" type="text" maxlength="20"
-					id="txtWeiXiuNeiRong" style="width: 120px;" /></td>
+				<td><input name="ddlGongDuan" id="ddlGongDuan"
+					class="easyui-combobox"
+					data-options="editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuGongDuanOption.action'"
+					style="width: 120px;" /></td>
 				<td><a id="lnkSearch" class="easyui-linkbutton"
 					href="javascript:doSearch()">查询项目</a>&nbsp;&nbsp;&nbsp;<a
 					id="lnkSearch" class="easyui-linkbutton"
@@ -54,27 +56,37 @@ td {
 	<table id="mydg" class="easyui-datagrid"
 		data-options="url:'weiXiuXiangMuSearch.action',
 							rownumbers:true,
-							singleSelect:true,
+							<s:if test="action=='addXiangMu'">singleSelect:true,</s:if>
 							toolbar:'#toolbar',
 							pagination:true">
 		<thead>
 			<tr>
-				<th data-options="field:'txtWeiXiuXiangMuBianHao',width:120"
-					sortable="true">维修项目编号</th>
-				<th data-options="field:'txtGongShi',width:80">工时</th>
-				<th data-options="field:'ddlSuoShuGongDuan',width:80">工段名称</th>
-				<th data-options="field:'txtWeiXiuNeiRong',width:370">维修内容</th>
-				<th data-options="field:'ddlSuoShuZhangTao',width:80">所属帐套</th>
-				<th field="action" width="100" align="center"
-					formatter="formatAction">操作</th>
+				<s:if test="action=='pickXiangMu'">
+					<th field="ck" checkbox="true" width="20"></th>
+				</s:if>
+				<th width="100" data-options="field:'ddlGongDuan'">所属工段</th>
+				<th width="100" data-options="field:'txtCode'">项目编号</th>
+				<th width="100" data-options="field:'txtName'">项目名称</th>
+				<th width="80" data-options="field:'txtFeiYong'">费用</th>
+				<th width="250" data-options="field:'txtNeiRong'">维修内容</th>
+				<s:if test="action=='addXiangMu'">
+					<th field="action" width="100" align="center"
+						formatter="formatAction">操作</th>
+				</s:if>
 			</tr>
 		</thead>
 	</table>
-
 	<div id="toolbar">
+		<s:if test="action=='addXiangMu'">
+			<a href="javascript:void(0)" class="easyui-linkbutton"
+				iconCls="icon-add" plain="true" onclick="addItem()">新增</a>
+		</s:if>
+		<s:if test="action=='pickXiangMu'">
+			<a href="javascript:void(0)" class="easyui-linkbutton"
+				data-options="iconCls:'icon-add',plain:true"
+				onClick="addCheckedItems()">添加选中维修项目</a>
+		</s:if>
 		<a href="javascript:void(0)" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true" onclick="addItem()">新增</a> <a
-			href="javascript:void(0)" class="easyui-linkbutton"
 			iconCls="icon-search" plain="true" onclick="toggleSearchPanel()">查询</a>
 	</div>
 	<div id="mydlg" class="easyui-dialog" closed="true"
@@ -82,44 +94,34 @@ td {
 		<form name="fm" method="post" id="fm">
 			<table border="0" cellpadding="0" cellspacing="0" width="280px">
 				<tr>
-					<td><span class="requireSpan">*&nbsp;</span>维修编号:</td>
-					<td><input name="txtWeiXiuXiangMuBianHao" type="text"
-						id="txtWeiXiuXiangMuBianHao" class="easyui-validatebox"
-						data-options="required:true,missingMessage:'维修编号为必填项'" /></td>
+					<td><span class="requireSpan">*&nbsp;</span>项目编号:</td>
+					<td><input name="txtCode" type="text" id="txtCode"
+						class="easyui-textbox" data-options="required:true" /></td>
+				</tr>
+				<tr>
+					<td><span class="requireSpan">*&nbsp;</span>项目名称:</td>
+					<td><input name="txtName" type="text" id="txtName"
+						class="easyui-textbox" data-options="required:true" /></td>
+				</tr>
+				<tr>
+					<td><span class="requireSpan">*&nbsp;</span>费用:</td>
+					<td><input name="txtFeiYong" type="text" id="txtFeiYong"
+						class="easyui-numberbox"
+						data-options="min:0,precision:2,required:true" /></td>
 				</tr>
 				<tr>
 					<td><span class="requireSpan">*&nbsp;</span>所属工段:</td>
-					<td><select name="ddlSuoShuGongDuan" id="ddlSuoShuGongDuan"
-						style="width: 138px;" class="easyui-validatebox"
-						data-options="required:true">
-							<option value="机电">机电</option>
-							<option value="保养">保养</option>
-							<option value="钣金">钣金</option>
-							<option value="美容">美容</option>
-							<option value="喷漆">喷漆</option>
-
-					</select></td>
-				</tr>
-				<tr>
-					<td><span class="requireSpan">*&nbsp;</span>所属帐套:</td>
-					<td><select id="ddlSuoShuZhangTao" name="ddlSuoShuZhangTao"
-						style="width: 138px;">
-							<s:iterator value="ZhangTaoLst">
-								<option value="<s:property value='txtZhangTaoMing' />"><s:property
-										value='txtZhangTaoMing' /></option>							
-							</s:iterator>
-					</select></td>                  
-				</tr>
-					<td><span class="requireSpan">*&nbsp;</span>工时:</td>
-					<td><input name="txtGongShi" type="text" id="txtGongShi"
-						class="easyui-numberbox"
-						data-options="min:0,max:9000,precision:2,required:true" /></td>
+					<td><input name="ddlGongDuan" id="ddlGongDuan"
+						class="easyui-combobox"
+						data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuGongDuanOption.action'" /></td>
 				</tr>
 				<tr>
 					<td><span class="requireSpan">*&nbsp;</span>维修内容:</td>
-					<td style="height: 55px;"><textarea name="txtWeiXiuNeiRong"
-							rows="2" cols="20" id="txtWeiXiuNeiRong"
-							class="easyui-validatebox" data-options="required:true"></textarea></td>
+					<td><input name="txtNeiRong" type="text" id="txtNeiRong"
+						class="easyui-textbox" data-options="required:true" /></td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><br /> <a onclick="saveItem()"
@@ -132,6 +134,7 @@ td {
 	</div>
 
 	<script type="text/javascript">
+		<s:if test="action=='addXiangMu'">
 		var url;
 		function addItem() {
 			$('#mydlg').dialog('open').dialog('setTitle', '添加维修项目');
@@ -143,8 +146,7 @@ td {
 			if (row) {
 				$('#mydlg').dialog('open').dialog('setTitle', '修改维修项目');
 				$('#fm').form('load', row);
-				url = 'updateWeiXiuXiangMu.action?txtWeiXiuXiangMuGuid='
-						+ row.txtWeiXiuXiangMuGuid;
+				url = 'updateWeiXiuXiangMu.action?txtGuid=' + row.txtGuid;
 			}
 		}
 		function deleteItem(clickevent) {
@@ -153,7 +155,7 @@ td {
 				$.messager.confirm('确认', '确定要删除选中维修项目吗?', function(r) {
 					if (r) {
 						$.post('deleteWeiXiuXiangMu.action', {
-							"txtWeiXiuXiangMuGuid" : row.txtWeiXiuXiangMuGuid
+							"txtGuid" : row.txtGuid
 						}, function(result) {
 							if (result.errorMsg) {
 								$.messager.alert('出错啦', result.errorMsg);
@@ -182,6 +184,27 @@ td {
 				}
 			});
 		}
+		</s:if>
+
+		<s:if test="action=='pickXiangMu'">
+		function addCheckedItems() {
+			var checkedRows = $('#mydg').datagrid('getChecked');
+			if (checkedRows.length == 0) {
+				$.messager.alert('提示', '请先选中要插入的维修项目');
+			} else {
+				$.post("../webSetup/addGongDanWeiXiuXiangMu.action?d=" + new Date(), {
+					"saleAfterGuid" : '<s:property value="saleAfterGuid" />',
+					"easyUiJSonData" : JsonToString(checkedRows)
+				}, function(result) {
+					if (result.errorMsg) {
+						$.messager.alert('出错啦', result.errorMsg);
+					} else {
+						winThisClose();
+					}
+				}, "json");
+			}
+		}
+		</s:if>
 
 		function doSearch() {
 			$("#fmSearch").form('submit', {

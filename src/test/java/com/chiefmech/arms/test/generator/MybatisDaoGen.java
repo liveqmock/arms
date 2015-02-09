@@ -4,25 +4,13 @@ import java.lang.reflect.Field;
 
 import junit.framework.TestCase;
 
-import com.chiefmech.arms.entity.CarBrand;
-import com.chiefmech.arms.entity.CustomerInfo;
-import com.chiefmech.arms.entity.CheLiangInfo;
-import com.chiefmech.arms.entity.GongDan;
-import com.chiefmech.arms.entity.Maill;
-import com.chiefmech.arms.entity.Store;
-import com.chiefmech.arms.entity.Supplier;
-import com.chiefmech.arms.entity.Unit;
-import com.chiefmech.arms.entity.VehiCleType;
-import com.chiefmech.arms.entity.WeiXiuXiangMu;
-import com.chiefmech.arms.entity.ZhangTao;
-import com.chiefmech.arms.entity.ZheKou;
-import com.chiefmech.arms.entity.view.CarMoDelView;
+import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
 
 public class MybatisDaoGen extends TestCase {
 
 	public static void main(String[] args) {
 
-		Object[][] beans = {{"customvehicle", "txtVehicleId", CheLiangInfo.class}};
+		Object[][] beans = {{"gongdanxiangmu", "txtWeiXiuXiangMuId", GongDanWeiXiuXiangMu.class}};
 
 		StringBuffer sb = new StringBuffer();
 		String fieldInfo = "";
@@ -52,8 +40,8 @@ public class MybatisDaoGen extends TestCase {
 				fieldInfo += "#{" + field.getName() + "}";
 			}
 			sb.append(fieldInfo).append(")\")\n");
-			sb.append(String.format("public int insert%s(%s item);\n",
-					"Item", entityName));
+			sb.append(String.format("public int insert%s(%s item);\n", "Item",
+					entityName));
 			System.out.println(sb.toString());
 
 			// sql for action update
@@ -71,8 +59,8 @@ public class MybatisDaoGen extends TestCase {
 			}
 			sb.append(fieldInfo).append(" where ").append(fieldId)
 					.append("=#{").append(fieldId).append("}\")\n");
-			sb.append(String.format("public int update%s(%s item);\n",
-					"Item", entityName));
+			sb.append(String.format("public int update%s(%s item);\n", "Item",
+					entityName));
 			System.out.println(sb.toString());
 
 			// sql for action delete
@@ -80,8 +68,8 @@ public class MybatisDaoGen extends TestCase {
 			sb.append("@Delete(\"delete from ").append(tableName)
 					.append(" where ").append(fieldId).append("=#{")
 					.append(fieldId).append("}\")\n");
-			sb.append(String.format("public int delete%s(String id);\n",
-					"Item"));
+			sb.append(String
+					.format("public int delete%s(String id);\n", "Item"));
 			System.out.println(sb.toString());
 
 			// sql for action select

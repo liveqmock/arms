@@ -167,11 +167,11 @@ function reloadCurentPage(){
  }
  
 function updateGongDanStatus(saleAfterWeiXiuGuid, newGongDanStatus){
-	$.messager.confirm('提示', newGongDanStatus+'后本页面信息不能被修改，确定要'+newGongDanStatus+'吗?', function(r) {
+	$.messager.confirm('提示', '确认<span  style="color: blue; font-weight: bold;">'+newGongDanStatus+'</span>后本页面信息不能被修改，确定要'+newGongDanStatus+'吗?', function(r) {
 		if (r) {
 			$.post('updateGongDanStatus.action', {
 				"saleAfterWeiXiuGuid" : saleAfterWeiXiuGuid,
-				"txtGongDanStatus" : newGongDanStatus
+				"gongDanStatus" : newGongDanStatus
 			}, function(result) {
 				if (result.errorMsg) {
 					$.messager.alert('出错啦', result.errorMsg);

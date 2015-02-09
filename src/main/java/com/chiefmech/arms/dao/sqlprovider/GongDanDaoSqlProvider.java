@@ -10,7 +10,7 @@ public class GongDanDaoSqlProvider {
 	public String getGongDanListForEasyUi(Map<String, Object> param) {
 		SearchBean query = (SaleAfterGongDanSearchBean) param.get("item");
 
-		return String.format("select * from gongdan %s %s",
+		return String.format("select * from gongdan %s order by txtBillNo %s",
 				query.getWhereSql(), query.getLimitSql());
 	}
 

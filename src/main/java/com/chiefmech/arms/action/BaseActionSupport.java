@@ -15,11 +15,16 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.chiefmech.arms.common.util.Constants;
 import com.chiefmech.arms.entity.User;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
-public class BaseActionSupport extends ActionSupport implements SessionAware,
-		RequestAware, ServletResponseAware, ServletRequestAware {
+public class BaseActionSupport extends ActionSupport
+		implements
+			SessionAware,
+			RequestAware,
+			ServletResponseAware,
+			ServletRequestAware {
 	private static Logger logger = Logger.getLogger(BaseActionSupport.class
 			.getName());
 
@@ -61,6 +66,11 @@ public class BaseActionSupport extends ActionSupport implements SessionAware,
 		return (User) session.get(Constants.KEY_USER_SESSION);
 	}
 
+	public String getActionName() {
+		return ActionContext.getContext().getActionInvocation().getProxy()
+				.getActionName();
+	}
+
 	protected void transmitXML(String xmlStr) {
 		transmitText(xmlStr, "application/xml");
 	}
@@ -92,8 +102,8 @@ public class BaseActionSupport extends ActionSupport implements SessionAware,
 	}
 
 	protected String getCrudJsonResponse(int rowAffected, String info) {
-		String jsonStr = String.format(
-				"{\"status\":\"ok\", \"info\":\"%s\"}", info);
+		String jsonStr = String.format("{\"status\":\"ok\", \"info\":\"%s\"}",
+				info);
 		if (rowAffected != 1) {
 			jsonStr = String.format("{\"errorMsg\":\"%s数据失败\"}", info);
 		}

@@ -7,12 +7,11 @@ public class GongDanWeiXiuXiangMu {
 	private String txtWeiXiuXiangMuId;
 	private String txtGongDanGuid;
 	private String txtXiangMuCode;
+	private String txtXiangMuName;
 	private String txtGongDuanName;
 	private String txtWeiXiuNeiRong;
-	private float txtGongShi;
-	private float txtGongShiFei;
+	private float txtFeiYong;
 	private String ddlZhangTao;
-	private String ddlSubZhangTao;
 	private String txtBanZu;
 	private String txtZhuXiuRen;
 	private String txtWanJianStatus;
@@ -25,13 +24,12 @@ public class GongDanWeiXiuXiangMu {
 
 	public GongDanWeiXiuXiangMu(String saleAfterWeiXiuGuid, WeiXiuXiangMu item) {
 		this.txtWeiXiuXiangMuId = IDGen.getUUID();
-		this.ddlZhangTao = "正常维修";
 		this.txtGongDanGuid = saleAfterWeiXiuGuid;
-		this.txtXiangMuCode = item.getTxtWeiXiuXiangMuBianHao();
-		this.txtGongDuanName = item.getDdlSuoShuGongDuan();
-		this.txtGongShi = item.getTxtGongShi();
-		this.txtGongShiFei = this.txtGongShi * 100;
-		this.txtWeiXiuNeiRong = item.getTxtWeiXiuNeiRong();
+		this.txtXiangMuCode = item.getTxtCode();
+		this.txtXiangMuName = item.getTxtName();
+		this.txtGongDuanName = item.getDdlGongDuan();
+		this.txtFeiYong = item.getTxtFeiYong();
+		this.txtWeiXiuNeiRong = item.getTxtNeiRong();
 	}
 
 	public String getTxtWeiXiuXiangMuId() {
@@ -74,20 +72,20 @@ public class GongDanWeiXiuXiangMu {
 		this.txtWeiXiuNeiRong = txtWeiXiuNeiRong;
 	}
 
-	public float getTxtGongShi() {
-		return txtGongShi;
+	public String getTxtXiangMuName() {
+		return txtXiangMuName;
 	}
 
-	public void setTxtGongShi(float txtGongShi) {
-		this.txtGongShi = txtGongShi;
+	public void setTxtXiangMuName(String txtXiangMuName) {
+		this.txtXiangMuName = txtXiangMuName;
 	}
 
-	public float getTxtGongShiFei() {
-		return txtGongShiFei;
+	public float getTxtFeiYong() {
+		return txtFeiYong;
 	}
 
-	public void setTxtGongShiFei(float txtGongShiFei) {
-		this.txtGongShiFei = txtGongShiFei;
+	public void setTxtFeiYong(float txtFeiYong) {
+		this.txtFeiYong = txtFeiYong;
 	}
 
 	public String getDdlZhangTao() {
@@ -96,14 +94,6 @@ public class GongDanWeiXiuXiangMu {
 
 	public void setDdlZhangTao(String ddlZhangTao) {
 		this.ddlZhangTao = ddlZhangTao;
-	}
-
-	public String getDdlSubZhangTao() {
-		return ddlSubZhangTao;
-	}
-
-	public void setDdlSubZhangTao(String ddlSubZhangTao) {
-		this.ddlSubZhangTao = ddlSubZhangTao;
 	}
 
 	public String getTxtBanZu() {

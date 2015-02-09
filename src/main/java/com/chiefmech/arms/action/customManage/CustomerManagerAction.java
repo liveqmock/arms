@@ -61,7 +61,7 @@ public class CustomerManagerAction extends BaseActionSupport implements
 			info = item.getTxtCustId();
 		} else {
 			rowsAffected = customerInfoService.updateCustomerInfo(item);
-			info = "保存";
+			info = "update";
 		}
 		this.transmitJson(getCrudJsonResponse(rowsAffected, info));
 	}

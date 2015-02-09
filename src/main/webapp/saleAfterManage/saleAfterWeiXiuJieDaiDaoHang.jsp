@@ -135,7 +135,7 @@ td {
 					<td colspan="2" align="center">
 						<div
 							style="border: 1px dashed gray; width: 200px; height: 180px; text-align: center;">
-							<br /> <a onClick="saleAfterShow();return false;"
+							<br /> <a onClick="newWeiXiuJieDai();return false;"
 								class="easyui-linkbutton" href="javascript:void(0)">维修接待</a>
 						</div>
 
@@ -187,8 +187,8 @@ td {
 	</form>
 
 	<script language="javascript" type="text/javascript">
-        function saleAfterShow() {
-            var z = window.open('saleAfterIndex.action?cheLiangId=<s:property value="customer.txtCheLiangId" />&d=' + new Date(), '_blank', 'height=600, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
+        function newWeiXiuJieDai() {
+            var z = window.open('saleAfterIndex.action?cheLiangId=<s:property value="customer.txtCheLiangId" />&d=' + new Date(), '_blank', 'height=800, width=1000, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
             z.focus();
 
             window.opener = null;

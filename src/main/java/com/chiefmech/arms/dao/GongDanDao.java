@@ -40,10 +40,10 @@ public interface GongDanDao {
 	public int getGongDanCountForEasyUi(
 			@Param("item") SaleAfterGongDanSearchBean query);
 
-	@Insert("insert into gongdanxiangmu(txtWeiXiuXiangMuId,txtGongDanGuid,txtXiangMuCode,txtGongDuanName,txtGongShi,txtGongShiFei,txtWeiXiuNeiRong,ddlZhangTao) values(#{txtWeiXiuXiangMuId},#{txtGongDanGuid},#{txtXiangMuCode},#{txtGongDuanName},#{txtGongShi},#{txtGongShiFei},#{txtWeiXiuNeiRong},#{ddlZhangTao})")
+	@Insert("insert into gongdanxiangmu(txtWeiXiuXiangMuId,txtGongDanGuid,txtXiangMuCode,txtXiangMuName,txtFeiYong,txtGongDuanName,txtWeiXiuNeiRong,ddlZhangTao) values(#{txtWeiXiuXiangMuId},#{txtGongDanGuid},#{txtXiangMuCode},#{txtXiangMuName},#{txtFeiYong},#{txtGongDuanName},#{txtWeiXiuNeiRong},#{ddlZhangTao})")
 	public int insertGongDanWeiXiuXiangMu(GongDanWeiXiuXiangMu item);
 
-	@Update("update gongdanxiangmu set txtGongDuanName=#{txtGongDuanName},txtGongShi=#{txtGongShi},txtGongShiFei=#{txtGongShiFei},ddlZhangTao=#{ddlZhangTao} where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
+	@Update("update gongdanxiangmu set txtGongDuanName=#{txtGongDuanName},txtFeiYong=#{txtFeiYong},ddlZhangTao=#{ddlZhangTao} where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
 	public int updateGongDanWeiXiuXiangMuWhenZhiZuo(GongDanWeiXiuXiangMu item);
 
 	@Update("update gongdanxiangmu set txtBanZu=#{txtBanZu},txtZhuXiuRen=#{txtZhuXiuRen} where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
@@ -59,11 +59,11 @@ public interface GongDanDao {
 	public List<GongDanWeiXiuXiangMu> getGongDanWeiXiuXiangMuListByGongDanId(
 			String txtGongDanGuid);
 
-	@Select("select '合计' txtGongDuanName, sum(txtGongShi) txtGongShi, sum(txtGongShiFei) txtGongShiFei from gongdanxiangmu where txtGongDanGuid=#{txtGongDanId}")
+	@Select("select '合计' txtGongDuanName, sum(txtFeiYong) txtFeiYong from gongdanxiangmu where txtGongDanGuid=#{txtGongDanId}")
 	public List<GongDanWeiXiuXiangMuFooter> getGongDanWeiXiuXiangMuFooterListByGongDanId(
 			String txtGongDanId);
 
-	@Select("select ifnull(sum(txtGongShiFei),0) GongShiFei from gongdanxiangmu where txtGongDanGuid=#{txtGongDanId}")
+	@Select("select ifnull(sum(txtFeiYong),0) txtFeiYong from gongdanxiangmu where txtGongDanGuid=#{txtGongDanId}")
 	public float getGongShiFeiZheQianByGongDanId(String txtGongDanId);
 
 	@Update("update gongdanwuliao set txtTakeQty=#{txtTakeQty},ddlZhangTao=#{ddlZhangTao} where txtWuLiaoGuid=#{txtWuLiaoGuid}")
