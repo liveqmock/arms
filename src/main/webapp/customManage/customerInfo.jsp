@@ -256,17 +256,12 @@ td {
 			});
 		}
 		
-		function updateCheXi(brandItem){
-			$('#ddlCheLiangCheXi').combobox("setValue","");
-			$('#ddlCheLiangCheXi').combobox({
-				loader:function(param,success,error){					
-					$.post('<s:property value="basePath" />/data/cheLiangCheXiOption.action', {
-						'cheLiangBrandName' : brandItem.name
-					}, function(data) {
-						$('#ddlCheLiangCheXi').combobox("loadData", data);
-					}, 'json');
-				}
-			})
+		function updateCheXi(brandItem){		
+			$.post('<s:property value="basePath" />/data/cheLiangCheXiOption.action', {
+				'cheLiangBrandName' : brandItem.name
+			}, function(data) {
+				$('#ddlCheLiangCheXi').combobox("loadData", data);
+			}, 'json');
 		}
 
 		function winClose() {
