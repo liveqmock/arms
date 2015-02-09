@@ -29,6 +29,8 @@ public class CommonDataAction extends BaseActionSupport {
 	@Resource()
 	private CommonDataService commonDataService;
 
+	private String cheLiangBrandName;
+
 	@Action(value = "weiXiuGongDuanOption")
 	public void weiXiuGongDuan() {
 		this.transmitJson(getJsonData("data/weiXiuGongDuan.json"));
@@ -85,6 +87,21 @@ public class CommonDataAction extends BaseActionSupport {
 				commonDataService.getOptionBean("JiGou")).toString());
 	}
 
+	@Action(value = "cheLiangPingPaiOption")
+	public void cheLiangPingPai() {
+		this.transmitJson(JSONArray.fromObject(
+				commonDataService.getOptionBean("CheLiangPingPai")).toString());
+	}
+
+	@Action(value = "cheLiangCheXiOption")
+	public void cheLiangCheXi() {
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("CheLiangBrandName", cheLiangBrandName);
+		this.transmitJson(JSONArray.fromObject(
+				commonDataService.getOptionBean("CheLiangCheXi", param))
+				.toString());
+	}
+
 	private String getJsonData(String path) {
 		String jsonStr = "[]";
 		try {
@@ -96,4 +113,9 @@ public class CommonDataAction extends BaseActionSupport {
 		}
 		return jsonStr;
 	}
+
+	public void setCheLiangBrandName(String cheLiangBrandName) {
+		this.cheLiangBrandName = cheLiangBrandName;
+	}
+
 }

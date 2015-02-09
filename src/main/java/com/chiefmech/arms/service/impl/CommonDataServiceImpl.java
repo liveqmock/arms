@@ -1,5 +1,6 @@
 package com.chiefmech.arms.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +19,7 @@ public class CommonDataServiceImpl implements CommonDataService {
 
 	@Override
 	public List<OptionBean> getOptionBean(String target) {
-		return getOptionBean(target);
+		return getOptionBean(target, null);
 	}
 
 	@Override
@@ -33,6 +34,11 @@ public class CommonDataServiceImpl implements CommonDataService {
 			lst = commonDataDao.getWeiXiuZuOptionBean(param.get("SuoShuJiGou"));
 		} else if ("JiGou".equals(target)) {
 			lst = commonDataDao.getJiGouOptionBean();
+		} else if ("CheLiangPingPai".equals(target)) {
+			lst = commonDataDao.getCheLiangPingPaiOptionBean();
+		} else if ("CheLiangCheXi".equals(target)) {
+			lst = commonDataDao.getCheLiangCheXiOptionBean(param
+					.get("CheLiangBrandName"));
 		}
 		return lst;
 	}

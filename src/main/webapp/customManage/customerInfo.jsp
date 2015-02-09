@@ -15,7 +15,6 @@
 <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="../js/frame/underscore-min.js" type="text/javascript"></script>
 <link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
-<script src="../js/birthDate.js" type="text/javascript"></script>
 <script src="../js/common.js" type="text/javascript"></script>
 <script src="../js/frame/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
@@ -117,9 +116,6 @@ td {
 					<td align="right">发动机号：</td>
 					<td><s:property value="txtCheLiangFaDongJiHao" /></td>
 				</tr>
-				<tr>
-					<td colspan="6">&nbsp;</td>
-				</tr>
 				</s:iterator></s:if>
 			</table>
 			<!--联系人信息 end-->
@@ -135,12 +131,13 @@ td {
 					style="border-collapse: collapse;">
 					<tr>
 						<td width="100" align="right">品牌：</td>
-						<td><input name="ddlCheLiangZhiZaoShang"
-							id="ddlCheLiangZhiZaoShang" class="easyui-textbox"
-							data-options="required:true" /></td>
+						<td><input name="ddlCheLiangZhiZaoShang" id="ddlCheLiangZhiZaoShang"
+								class="easyui-combobox"
+								data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/cheLiangPingPaiOption.action',onSelect:updateCheXi" /></td>
 						<td width="100" align="right">车系：</td>
 						<td><input name="ddlCheLiangCheXi" id="ddlCheLiangCheXi"
-							class="easyui-textbox" data-options="required:true" /></td>
+								class="easyui-combobox"
+								data-options="editable:false,required:true,valueField:'code',textField:'name'" /></td>
 
 					</tr>
 					<tr>
@@ -179,8 +176,7 @@ td {
 		<!--按钮区域 start-->
 		<div align="center" id="btnBottomDiv" style="margin-top: 10px;">
 			<a class="easyui-linkbutton" href="javascript:saveCustInfo()">保存客户信息</a><s:if test="customerId!=''">
-			<a class="easyui-linkbutton" href="javascript:addItem()">新增车辆信息</a></s:if> <a
-				class="easyui-linkbutton" href="javascript:winClose()">取消</a>
+			<a class="easyui-linkbutton" href="javascript:addItem()">新增车辆信息</a></s:if>
 		</div>
 	</div>
 	<script language="javascript" type="text/javascript">
@@ -258,6 +254,19 @@ td {
 					}
 				}
 			});
+		}
+		
+		function updateCheXi(brandItem){
+			$('#ddlCheLiangCheXi').combobox("setValue","");
+			$('#ddlCheLiangCheXi').combobox({
+				loader:function(param,success,error){					
+					$.post('<s:property value="basePath" />/data/cheLiangCheXiOption.action', {
+						'cheLiangBrandName' : brandItem.name
+					}, function(data) {
+						$('#ddlCheLiangCheXi').combobox("loadData", data);
+					}, 'json');
+				}
+			})
 		}
 
 		function winClose() {
