@@ -1,5 +1,7 @@
 package com.chiefmech.arms.entity;
 
+import com.chiefmech.arms.common.util.HuiYuanUtil;
+
 public class CustomerInfo {
 	private String txtCustId;
 	private String ddlCustSort;
@@ -15,18 +17,7 @@ public class CustomerInfo {
 	private String txtHuiYuanDengJi;
 
 	public String getTxtHuiYuanDengJi() {
-		if (txtHuiYuanJiFen <= 0) {
-			txtHuiYuanDengJi = "注册会员";
-		} else if (txtHuiYuanJiFen < 2000) {
-			txtHuiYuanDengJi = "铜牌用户";
-		} else if (txtHuiYuanJiFen < 10000) {
-			txtHuiYuanDengJi = "银牌用户";
-		} else if (txtHuiYuanJiFen < 30000) {
-			txtHuiYuanDengJi = "金牌用户";
-		} else {
-			txtHuiYuanDengJi = "钻石用户";
-		}
-		return txtHuiYuanDengJi;
+		return HuiYuanUtil.getHuiYuanDengJi(this.txtHuiYuanJiFen);
 	}
 
 	public void setTxtHuiYuanDengJi(String txtHuiYuanDengJi) {

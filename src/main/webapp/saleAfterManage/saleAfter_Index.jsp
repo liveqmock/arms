@@ -154,7 +154,7 @@ td,div {
 		}
 		var url = action + "?saleAfterWeiXiuGuid="	+ saleAfterWeiXiuGuid + "&flag=" + garyBgFlag + "&d=" + new Date();
 		if((tabName == "维修接待" && saleAfterWeiXiuGuid == "") || (tabName == "维修历史")){
-			url = action + "?cheLiangId=" + cheLiangId + "&flag=" + garyBgFlag + "&d=" + new Date();
+			url = action + "?cheLiangId=<s:property	value='gongDan.txtCheLiangId' />&flag=" + garyBgFlag + "&d=" + new Date();
 		}
 		
 		$("#tab" + preTabIndex).removeClass();

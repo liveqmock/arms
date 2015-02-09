@@ -251,11 +251,9 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 							<s:if test="actionName=='gongDanWeiXiuJieDai'">
 						data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/zhangTaoOption.action'}}"</s:if>>帐套</th>
 						<s:if
-							test="actionName=='gongDanWeiXiuPaiGong' || actionName=='gongDanWeiXiuWanJian' || actionName=='gongDanWeiXiuJieSuan'">
+							test="actionName=='gongDanWeiXiuPaiGong' || actionName=='gongDanLingQuWuLiao' || actionName=='gongDanWeiXiuWanJian' || actionName=='gongDanWeiXiuJieSuan'">
 							<th field="txtBanZu" width="100"
 								data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuBanZuOption.action',onChange:updateZhuXiuRen}}">维修班组</th>
-						</s:if>
-						<s:if test="actionName=='gongDanWeiXiuWanJian'">
 							<th field="txtZhuXiuRen" width="80"
 								data-options="editor:{type:'textbox'}">主修人</th>
 						</s:if>
@@ -316,16 +314,14 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			</div>
 		</s:if>
 		<s:if test="actionName=='gongDanWeiXiuJieSuan'">
-			<div style="height: 10px;"></div>
+            <div style="width:100%;background-color: white; margin-top:10px; border:solid 1px #95b8e7;">
 			<table border="1" id="jieSuanList"
-				style="background-color: white; border-collapse: collapse; border: 1px solid #d6d3ce;"
+				style="border-collapse: collapse; border: 1px solid #ddd;"
 				cellpadding="5">
 				<tr>
 					<td colspan="6">会员等级：<span
 						style="color: Blue; font-weight: bold; padding-right: 10px;"><s:property
-								value='gongDan.txtHuiYuanDengJi' /></span> 会员卡号：<span
-						style="color: Blue; font-weight: bold; padding-right: 10px;"><s:property
-								value='gongDan.txtHuiYuanHao' /></span> 工时折扣:<span
+								value='gongDan.txtHuiYuanDengJi' /></span> 工时折扣:<span
 						style="color: Blue; font-weight: bold; padding-right: 10px;"><s:property
 								value='gongDan.txtGongShiZheKou' /></span>材料折扣:<span
 						style="color: Blue; font-weight: bold;"><s:property
@@ -333,21 +329,21 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 
 				</tr>
 				<tr>
-					<td width="80">工时费(折前)</td>
+					<td width="100">项目维修费(折前)</td>
 					<td width="100" style="color: blue; font-weight: bold;"><s:property
 							value='gongDan.txtGongShiZheQian' /></td>
-					<td width="80">材料费(折前)</td>
+					<td width="100">配件费用(折前)</td>
 					<td width="100" style="color: blue; font-weight: bold;"><s:property
 							value='gongDan.txtCaiLiaoZheQian' /></td>
-					<td width="80">合计(折前)</td>
+					<td width="100">合计(折前)</td>
 					<td width="100" style="color: blue; font-weight: bold;"><s:property
 							value='gongDan.txtZheQianHeJi' /></td>
 				</tr>
 				<tr>
-					<td>工时费(折后)</td>
+					<td>项目维修费(折后)</td>
 					<td style="color: blue; font-weight: bold;"><s:property
 							value='gongDan.txtGongShiZheHou' /></td>
-					<td>材料费(折后)</td>
+					<td>配件费用(折后)</td>
 					<td style="color: blue; font-weight: bold;"><s:property
 							value='gongDan.txtCaiLiaoZheHou' /></td>
 					<td>合计(折后)</td>
@@ -357,7 +353,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 
 
 			</table>
-			<div style="height: 10px;"></div>
+            </div>
 		</s:if>
 	</div>
 

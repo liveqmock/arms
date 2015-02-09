@@ -3,8 +3,7 @@ package com.chiefmech.arms.entity.footer;
 public class GongDanWeiXiuXiangMuFooter {
 
 	private String txtGongDuanName;
-	private float txtGongShi;
-	private float txtGongShiFei;
+	private float txtFeiYong;
 
 	public String getTxtGongDuanName() {
 		return txtGongDuanName;
@@ -14,20 +13,12 @@ public class GongDanWeiXiuXiangMuFooter {
 		this.txtGongDuanName = txtGongDuanName;
 	}
 
-	public float getTxtGongShi() {
-		return txtGongShi;
+	public float getTxtFeiYong() {
+		return txtFeiYong;
 	}
 
-	public void setTxtGongShi(float txtGongShi) {
-		this.txtGongShi = txtGongShi;
-	}
-
-	public float getTxtGongShiFei() {
-		return txtGongShiFei;
-	}
-
-	public void setTxtGongShiFei(float txtGongShiFei) {
-		this.txtGongShiFei = txtGongShiFei;
+	public void setTxtFeiYong(float txtFeiYong) {
+		this.txtFeiYong = txtFeiYong;
 	}
 
 }

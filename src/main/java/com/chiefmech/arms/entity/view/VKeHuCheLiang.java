@@ -1,5 +1,7 @@
 package com.chiefmech.arms.entity.view;
 
+import com.chiefmech.arms.common.util.HuiYuanUtil;
+
 public class VKeHuCheLiang {
 	private String txtCustId;
 	private String ddlCustSort;
@@ -151,24 +153,7 @@ public class VKeHuCheLiang {
 	}
 
 	public String getTxtHuiYuanDengJi() {
-		if (txtHuiYuanJiFen <= 3000) {
-			txtHuiYuanDengJi = "铜卡用户";
-			return txtHuiYuanDengJi;
-		}
-		if (txtHuiYuanJiFen <= 6000) {
-			txtHuiYuanDengJi = "银卡用户";
-			return txtHuiYuanDengJi;
-		}
-		if (txtHuiYuanJiFen <= 10000) {
-			txtHuiYuanDengJi = "金卡用户";
-			return txtHuiYuanDengJi;
-		}
-		txtHuiYuanDengJi = "超级用户";
-		return txtHuiYuanDengJi;
-	}
-
-	public void setTxtHuiYuanDengJi(String txtHuiYuanDengJi) {
-		this.txtHuiYuanDengJi = txtHuiYuanDengJi;
+		return HuiYuanUtil.getHuiYuanDengJi(this.txtHuiYuanJiFen);
 	}
 
 	public String getTxtHuiYuanHao() {

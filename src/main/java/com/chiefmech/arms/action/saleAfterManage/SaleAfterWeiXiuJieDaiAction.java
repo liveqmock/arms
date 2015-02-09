@@ -26,7 +26,6 @@ import com.chiefmech.arms.entity.KuCun;
 import com.chiefmech.arms.entity.view.VKeHuCheLiang;
 import com.chiefmech.arms.service.CustomerInfoService;
 import com.chiefmech.arms.service.GongDanService;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 
 @SuppressWarnings("serial")

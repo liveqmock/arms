@@ -132,7 +132,7 @@
 
       <s:iterator value="gongDanWuLiaoLst">
       <tr class="Tablehead" height="23px" onClick="changeColor(this)">
-        <td nowrap align="center">&nbsp;<s:property value="txtWuLiaoId" /></td>
+        <td nowrap align="center">&nbsp;<s:property value="txtWuLiaoCode" /></td>
         <td nowrap align="center">&nbsp;<s:property value="txtWuLiaoName" /></td>
         <td nowrap align="center">&nbsp;<s:property value="txtTakeQty" /></td>
         <td nowrap align="center">&nbsp;<s:property value="txtPrice" /></td>
