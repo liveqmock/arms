@@ -4,6 +4,7 @@ import com.chiefmech.arms.common.util.HuiYuanUtil;
 
 public class CustomerInfo {
 	private String txtCustId;
+	private String ddlCustSort;
 	private String txtCheZhuName;
 	private String txtCheZhuTel;
 	private String txtLianXiRenName;
@@ -101,5 +102,13 @@ public class CustomerInfo {
 
 	public void setTxtCheZhuJiaZhaoDate(String txtCheZhuJiaZhaoDate) {
 		this.txtCheZhuJiaZhaoDate = txtCheZhuJiaZhaoDate;
+	}
+
+	public String getDdlCustSort() {
+		return ddlCustSort;
+	}
+
+	public void setDdlCustSort(String ddlCustSort) {
+		this.ddlCustSort = ddlCustSort;
 	}
 }

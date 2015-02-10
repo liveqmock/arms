@@ -39,6 +39,10 @@ td {
 					<td colspan="6">客户信息</td>
 				</tr>
 				<tr>
+					<td width="80" align="right">客户类别：</td>
+					<td><input name="ddlCustSort" id="ddlCustSort"
+								class="easyui-combobox"
+								data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/customerSortOption.action'" /></td>
 					<td width="80" align="right">车主名：</td>
 					<td><input name="txtCheZhuName" data-options="required:true"
 						class="easyui-textbox" type="text" id="txtCheZhuName" /></td>
@@ -46,8 +50,6 @@ td {
 					<td width="80" align="right">车主电话：</td>
 					<td><input class="easyui-textbox" name="txtCheZhuTel"
 						type="text" data-options="required:true" id="txtCheZhuTel" /></td>
-					<td width="80" align="right">&nbsp;</td>
-					<td>&nbsp;</td>
 				</tr>
 
 				<tr>
@@ -99,20 +101,36 @@ td {
 					<td colspan="6">车辆<s:property value="#status.count"/>&nbsp;&nbsp;<a href="javascript:editItem('<s:property value="txtCheLiangId" />')">修改</a>&nbsp;&nbsp;<a href="javascript:deleteItem('<s:property value="txtCheLiangId" />')">删除</a></td>
 				</tr>
 				<tr>
-					<td align="right">车牌号：</td>
-					<td><s:property value="txtCheLiangChePaiHao" /></td>
 					<td align="right">品牌：</td>
 					<td><s:property value="ddlCheLiangZhiZaoShang" /></td>
-					<td align="right">车系：</td>
+					<td align="right">车型：</td>
 					<td><s:property value="ddlCheLiangCheXi" /></td>
+					<td align="right">车辆型号：</td>
+					<td><s:property value="txtCheLiangCheXingDaiMa" /></td>
 				</tr>
 				<tr>
-					<td align="right">车型代码：</td>
-					<td><s:property value="txtCheLiangCheXingDaiMa" /></td>
+					<td align="right">车牌号：</td>
+					<td><s:property value="txtCheLiangChePaiHao" /></td>
 					<td align="right">车架号：</td>
 					<td><s:property value="txtCheLiangCheJiaHao" /></td>
 					<td align="right">发动机号：</td>
 					<td><s:property value="txtCheLiangFaDongJiHao" /></td>
+				</tr>
+				<tr>
+					<td align="right">注册登记日期：</td>
+					<td><s:property value="txtCheLiangDengJiRiQi" /></td>
+					<td align="right">年审到期日：</td>
+					<td><s:property value="txtCheLiangNianShenDaoQiRi" /></td>
+					<td align="right">保险到期日：</td>
+					<td><s:property value="txtCheLiangBaoXianDaoQiRi" /></td>
+				</tr>
+				<tr>
+					<td align="right">承保公司：</td>
+					<td><s:property value="ddlChengBaoGongSi" /></td>
+					<td align="right">&nbsp;</td>
+					<td>&nbsp;</td>
+					<td align="right">&nbsp;</td>
+					<td>&nbsp;</td>
 				</tr>
 				</s:iterator></s:if>
 			</table>
@@ -132,7 +150,7 @@ td {
 						<td><input name="ddlCheLiangZhiZaoShang" id="ddlCheLiangZhiZaoShang"
 								class="easyui-combobox"
 								data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/cheLiangPingPaiOption.action',onSelect:updateCheXi" /></td>
-						<td width="100" align="right">车系：</td>
+						<td width="100" align="right">车型：</td>
 						<td><input name="ddlCheLiangCheXi" id="ddlCheLiangCheXi"
 								class="easyui-combobox"
 								data-options="editable:false,required:true,valueField:'code',textField:'name'" /></td>
@@ -143,7 +161,7 @@ td {
 						<td><input name="txtCheLiangChePaiHao" type="text"
 							class="easyui-textbox" id="txtCheLiangChePaiHao"
 							data-options="required:true,validType:'maxLength[8]'" /></td>
-						<td align="right">车型代码：</td>
+						<td align="right">车辆型号：</td>
 						<td><input name="txtCheLiangCheXingDaiMa" type="text"
 							class="easyui-textbox" id="txtCheLiangCheXingDaiMa"
 							data-options="required:true" /></td>
@@ -159,24 +177,24 @@ td {
 							id="txtCheLiangFaDongJiHao" /></td>
 					</tr>
 					<tr>
-						<td align="right">车辆注册登记日期：</td>
+						<td align="right">注册登记日期：</td>
 						<td><input name="txtCheLiangDengJiRiQi" type="text"
-							class="easyui-textbox" data-options="required:true"
+							class="easyui-datebox" 
 							id="txtCheLiangDengJiRiQi" /></td>
 						<td align="right">年审到期日：</td>
 						<td><input name="txtCheLiangNianShenDaoQiRi" type="text"
-							class="easyui-textbox" data-options="required:true"
+							class="easyui-datebox" 
 							id="txtCheLiangNianShenDaoQiRi" /></td>
 					</tr>
 					<tr>
 						<td align="right">保险到期日：</td>
 						<td><input name="txtCheLiangBaoXianDaoQiRi" type="text"
-							class="easyui-textbox" data-options="required:true"
+							class="easyui-datebox" 
 							id="txtCheLiangBaoXianDaoQiRi" /></td>
-						<td align="right">年审到期日：</td>
-						<td><input name="txtCheLiangNianShenDaoQiRi" type="text"
-							class="easyui-textbox" data-options="required:true"
-							id="txtCheLiangNianShenDaoQiRi" /></td>
+						<td align="right">承保公司：</td>
+						<td><input name="ddlChengBaoGongSi" type="text"
+							class="easyui-textbox" 
+							id="ddlChengBaoGongSi" /></td>
 					</tr>
 					<tr>
 						<td colspan="4">&nbsp;</td>

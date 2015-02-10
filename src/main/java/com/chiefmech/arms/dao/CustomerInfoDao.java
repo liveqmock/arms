@@ -18,10 +18,10 @@ import com.chiefmech.arms.entity.view.VKeHuCheLiang;
 
 @Repository("customerInfoDao")
 public interface CustomerInfoDao {
-	@Insert("insert into customerinfo(txtCustId,txtCheZhuName,txtCheZhuTel,txtLianXiRenName,txtLianXiRenTel,txtLianXiRenAdd,txtCheZhuJiaZhaoDate,txtHuiYuanJiFen,txtGongShiZheKou,txtCaiLiaoZheKou,txtHuiYuanDengJi) values(#{txtCustId},#{txtCheZhuName},#{txtCheZhuTel},#{txtLianXiRenName},#{txtLianXiRenTel},#{txtLianXiRenAdd},#{txtCheZhuJiaZhaoDate},#{txtHuiYuanJiFen},#{txtGongShiZheKou},#{txtCaiLiaoZheKou},#{txtHuiYuanDengJi})")
+	@Insert("insert into customerinfo(txtCustId,ddlCustSort,txtCheZhuName,txtCheZhuTel,txtLianXiRenName,txtLianXiRenTel,txtLianXiRenAdd,txtCheZhuJiaZhaoDate,txtHuiYuanJiFen,txtGongShiZheKou,txtCaiLiaoZheKou,txtHuiYuanDengJi) values(#{txtCustId},#{ddlCustSort},#{txtCheZhuName},#{txtCheZhuTel},#{txtLianXiRenName},#{txtLianXiRenTel},#{txtLianXiRenAdd},#{txtCheZhuJiaZhaoDate},#{txtHuiYuanJiFen},#{txtGongShiZheKou},#{txtCaiLiaoZheKou},#{txtHuiYuanDengJi})")
 	public int insertCustomerInfo(CustomerInfo item);
 
-	@Update("update customerinfo set txtCheZhuName=#{txtCheZhuName},txtCheZhuTel=#{txtCheZhuTel},txtLianXiRenName=#{txtLianXiRenName},txtLianXiRenTel=#{txtLianXiRenTel},txtLianXiRenAdd=#{txtLianXiRenAdd},txtCheZhuJiaZhaoDate=#{txtCheZhuJiaZhaoDate},txtHuiYuanJiFen=#{txtHuiYuanJiFen},txtGongShiZheKou=#{txtGongShiZheKou},txtCaiLiaoZheKou=#{txtCaiLiaoZheKou},txtHuiYuanDengJi=#{txtHuiYuanDengJi} where txtCustId=#{txtCustId}")
+	@Update("update customerinfo set ddlCustSort=#{ddlCustSort},txtCheZhuName=#{txtCheZhuName},txtCheZhuTel=#{txtCheZhuTel},txtLianXiRenName=#{txtLianXiRenName},txtLianXiRenTel=#{txtLianXiRenTel},txtLianXiRenAdd=#{txtLianXiRenAdd},txtCheZhuJiaZhaoDate=#{txtCheZhuJiaZhaoDate},txtHuiYuanJiFen=#{txtHuiYuanJiFen},txtGongShiZheKou=#{txtGongShiZheKou},txtCaiLiaoZheKou=#{txtCaiLiaoZheKou},txtHuiYuanDengJi=#{txtHuiYuanDengJi} where txtCustId=#{txtCustId}")
 	public int updateCustomerInfo(CustomerInfo item);
 
 	@Select("select * from customerinfo where txtCustId=#{txtCustId}")
@@ -45,10 +45,10 @@ public interface CustomerInfoDao {
 	@Select("select * from customerinfo")
 	public List<CustomerInfo> selectItem();
 
-	@Insert("insert into chelianginfo(txtCustId,txtCheLiangId,ddlCheLiangZhiZaoShang,ddlCheLiangCheXi,txtCheLiangCheXingDaiMa,txtCheLiangChePaiHao,txtCheLiangCheJiaHao,txtCheLiangFaDongJiHao) values(#{txtCustId},#{txtCheLiangId},#{ddlCheLiangZhiZaoShang},#{ddlCheLiangCheXi},#{txtCheLiangCheXingDaiMa},#{txtCheLiangChePaiHao},#{txtCheLiangCheJiaHao},#{txtCheLiangFaDongJiHao})")
+	@Insert("insert into chelianginfo(txtCustId,txtCheLiangId,ddlCheLiangZhiZaoShang,ddlCheLiangCheXi,txtCheLiangCheXingDaiMa,txtCheLiangChePaiHao,txtCheLiangCheJiaHao,txtCheLiangFaDongJiHao,txtCheLiangDengJiRiQi,txtCheLiangNianShenDaoQiRi,txtCheLiangBaoXianDaoQiRi,ddlChengBaoGongSi) values(#{txtCustId},#{txtCheLiangId},#{ddlCheLiangZhiZaoShang},#{ddlCheLiangCheXi},#{txtCheLiangCheXingDaiMa},#{txtCheLiangChePaiHao},#{txtCheLiangCheJiaHao},#{txtCheLiangFaDongJiHao},#{txtCheLiangDengJiRiQi},#{txtCheLiangNianShenDaoQiRi},#{txtCheLiangBaoXianDaoQiRi},#{ddlChengBaoGongSi})")
 	public int insertCheLiangInfo(CheLiangInfo item);
 
-	@Update("update chelianginfo set txtCustId=#{txtCustId},ddlCheLiangZhiZaoShang=#{ddlCheLiangZhiZaoShang},ddlCheLiangCheXi=#{ddlCheLiangCheXi},txtCheLiangCheXingDaiMa=#{txtCheLiangCheXingDaiMa},txtCheLiangChePaiHao=#{txtCheLiangChePaiHao},txtCheLiangCheJiaHao=#{txtCheLiangCheJiaHao},txtCheLiangFaDongJiHao=#{txtCheLiangFaDongJiHao} where txtCheLiangId=#{txtCheLiangId}")
+	@Update("update chelianginfo set txtCustId=#{txtCustId},ddlCheLiangZhiZaoShang=#{ddlCheLiangZhiZaoShang},ddlCheLiangCheXi=#{ddlCheLiangCheXi},txtCheLiangCheXingDaiMa=#{txtCheLiangCheXingDaiMa},txtCheLiangChePaiHao=#{txtCheLiangChePaiHao},txtCheLiangCheJiaHao=#{txtCheLiangCheJiaHao},txtCheLiangFaDongJiHao=#{txtCheLiangFaDongJiHao},txtCheLiangDengJiRiQi=#{txtCheLiangDengJiRiQi},txtCheLiangNianShenDaoQiRi=#{txtCheLiangNianShenDaoQiRi},txtCheLiangBaoXianDaoQiRi=#{txtCheLiangBaoXianDaoQiRi},ddlChengBaoGongSi=#{ddlChengBaoGongSi} where txtCheLiangId=#{txtCheLiangId}")
 	public int updateCheLiangInfo(CheLiangInfo item);
 
 	@Select("select * from chelianginfo where txtCustId=#{txtCustId}")

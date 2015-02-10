@@ -91,36 +91,26 @@
 						<tr>
 							<td width="100" align="right">车牌号：</td>
 							<td><div id="txtChePaiHao"></div></td>
-							<td width="100" align="right">品牌：</td>
-							<td><div id="txtChangJiaPinPai"></div></td>
-							<td width="100" align="right">车系名称：</td>
-							<td><div id="txtCheXiName"></div></td>
-							<td width="100" align="right">车型代码：</td>
+							<td width="100" align="right">车辆型号：</td>
 							<td><div id="txtCheXingDaiMa"></div></td>
-						</tr>
-						<tr>
-							<td align="right">VIN：</td>
+							<td width="100" align="right">车架号：</td>
 							<td><div id="txtVin"></div></td>
 							<td align="right">发动机号：</td>
 							<td><div id="txtFaDongJiHao"></div></td>
-							<td align="right">服务顾问：</td>
-							<td><div id="txtFuWuGuWen"></div></td>
-							<td align="right">&nbsp;</td>
-							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="right">注册登记日：</td>
+							<td><div id="txtCheLiangDengJiRiQi"></div></td>
+							<td align="right">年审到期日：</td>
+							<td><div id="txtCheLiangNianShenDaoQiRi"></div></td>
+							<td align="right">保险到期日：</td>
+							<td><div id="txtCheLiangBaoXianDaoQiRi"></div></td>
+							<td align="right">承保公司：</td>
+							<td><div id="ddlChengBaoGongSi"></div></td>
 						</tr>
 						<tr>
 							<td>车主信息</td>
 							<td colspan="7"></td>
-						</tr>
-						<tr>
-							<td align="right">客户类别：</td>
-							<td><div id="txtCustSort"></div></td>
-							<td align="right">会员等级：</td>
-							<td><div id="txtHuiYuanDengJi"></div></td>
-							<td align="right">工时折扣：</td>
-							<td><div id="txtGongShiZheKou"></div></td>
-							<td align="right">材料折扣：</td>
-							<td><div id="txtCaiLiaoZheKou"></div></td>
 						</tr>
 						<tr>
 							<td align="right">车主名：</td>
@@ -135,8 +125,24 @@
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
+							<td align="right">客户类别：</td>
+							<td><div id="txtCustSort"></div></td>
 							<td align="right">联系地址：</td>
-							<td colspan="7"><div id="txtLianXiRenAdd"></div></td>
+							<td colspan="5"><div id="txtLianXiRenAdd"></div></td>
+						</tr>
+						<tr>
+							<td>会员信息</td>
+							<td colspan="7"></td>
+						</tr>
+						<tr>
+							<td align="right">会员等级：</td>
+							<td><div id="txtHuiYuanDengJi"></div></td>
+							<td align="right">维修项目折扣：</td>
+							<td><div id="txtGongShiZheKou"></div></td>
+							<td align="right">材料折扣：</td>
+							<td><div id="txtCaiLiaoZheKou"></div></td>
+							<td align="right">&nbsp;</td>
+							<td>&nbsp;</td>
 						</tr>
 						<tr>
 							<td>&nbsp;</td>
@@ -150,10 +156,16 @@
 							<td align="right"><span class="requireSpan">*</span>维修单号：</td>
 							<td><input name="txtBillNo" class="easyui-textbox"
 								type="text" data-options="editable:false" id="txtBillNo" /></td>
-							<td align="right"><span class="requireSpan">*</span>维修类别：</td>
-							<td><input name="ddlWeiXiuSort" id="ddlWeiXiuSort"
-								class="easyui-combobox"
-								data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuSortOption.action'" /></td>
+							<td align="right"><span class="requireSpan">*</span>行驶里程：</td>
+							<td><input name="txtLiCheng" type="text" id="txtLiCheng"
+								class="easyui-numberbox"
+								data-options="required:true,min:0,validType:'maxLength[10]'" /></td>
+							<td align="right">&nbsp;</td>
+							<td>&nbsp;</td>
+							<td align="right">&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
 							<td align="right"><span class="requireSpan">*</span>入厂时间：</td>
 							<td><input name="txtRuChangDate" type="text"
 								id="txtRuChangDate" class="easyui-datebox"
@@ -162,17 +174,6 @@
 							<td><input name="txtYuChuChangDate" type="text"
 								id="txtYuChuChangDate" class="easyui-datetimebox"
 								data-options="required:true" style="width: 145px;" /></td>
-						</tr>
-						<tr>
-							<td align="right"><span class="requireSpan">*</span>里程：</td>
-							<td><input name="txtLiCheng" type="text" id="txtLiCheng"
-								class="easyui-numberbox"
-								data-options="required:true,min:0,validType:'maxLength[10]'" /></td>
-							<td align="right"><span class="requireSpan">*</span>油量：</td>
-							<td><input name="txtYouLiang" type="text" id="txtYouLiang"
-								class="easyui-numberbox"
-								data-options="required:true,precision:2,min:0,validType:'maxLength[10]'" />
-							</td>
 							<td align="right"><span class="requireSpan">*</span>下次保养里程：</td>
 							<td><input type="text" id="txtNewLiCheng"
 								name="txtNewLiCheng" class="easyui-numberbox"
@@ -183,23 +184,20 @@
 								data-options="required:true" /></td>
 						</tr>
 						<tr>
+							<td align="right">维修项目抵用券：</td>
+							<td><input name="txtGongShiDiYongQuan" type="text" id="txtGongShiDiYongQuan"
+								class="easyui-numberbox"
+								data-options="required:true,min:0,validType:'maxLength[10]'" /></td>
+							<td align="right">材料抵用券：</td>
+							<td><input name="txtCaiLiaoDiYongQuan" type="text" id="txtCaiLiaoDiYongQuan"
+								class="easyui-numberbox"
+								data-options="required:true,min:0,validType:'maxLength[10]'" /></td>
 							<td align="right">协议单号：</td>
 							<td><input class="easyui-textbox"
 								data-options="validType:'maxLength[20]'" name="txtXieYiBillNo"
 								type="text" id="txtXieYiBillNo" /></td>
-							<td align="right">&nbsp;</td>
-							<td>&nbsp;</td>
-							<td align="right">&nbsp;</td>
-							<td>&nbsp;</td>
-							<td align="right">&nbsp;</td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr>
-							<td align="right">维修提示：</td>
-							<td colspan="7"><input class="easyui-textbox"
-								name="txtTiShiInfo" type="text"
-								data-options="validType:'maxLength[300]'" id="txtTiShiInfo"
-								style="width: 836px" /></td>
+							<td align="right">服务顾问：</td>
+							<td><div id="txtFuWuGuWen"></div></td>
 						</tr>
 					</table>
 					<table border="0" cellpadding="0" cellspacing="0" width="900px">
@@ -207,7 +205,7 @@
 							<td>交修原因：</td>
 							<td>故障原因：</td>
 							<td>维修措施：</td>
-						</tr>
+					  </tr>
 
 						<tr>
 							<td align="center"><textarea name="txtJiaoXiuReason"
@@ -225,8 +223,8 @@
 							<td colspan="3" style="height: 2px;"></td>
 						</tr>
 
-					</table>
-				</div>
+				  </table>
+			  </div>
 			</form>
 		</s:if>
         <s:if test="gongDan.txtBillNo!='等待生成'">
@@ -321,7 +319,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 				<tr>
 					<td colspan="6">会员等级：<span
 						style="color: Blue; font-weight: bold; padding-right: 10px;"><s:property
-								value='gongDan.txtHuiYuanDengJi' /></span> 工时折扣:<span
+								value='gongDan.txtHuiYuanDengJi' /></span>维修项目折扣:<span
 						style="color: Blue; font-weight: bold; padding-right: 10px;"><s:property
 								value='gongDan.txtGongShiZheKou' /></span>材料折扣:<span
 						style="color: Blue; font-weight: bold;"><s:property

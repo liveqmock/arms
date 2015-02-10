@@ -65,11 +65,11 @@
 				<thead>
 					<tr>
 						<th width="20" data-options="field:'txtCustId',checkbox:true"></th>
-						<th width="100" data-options="field:'txtCheLiangId',hidden:true">车辆Id</th>
 						<th width="100" data-options="field:'txtCheLiangChePaiHao'">车牌号码</th>
-						<th width="150" data-options="field:'ddlCheLiangZhiZaoShang'">车辆品牌</th>
-						<th width="150" data-options="field:'ddlCheLiangCheXi'">车系名称</th>
-						<th width="150" data-options="field:'txtCheLiangCheJiaHao'">车架号码</th>
+						<th width="150" data-options="field:'ddlCheLiangCheXi'">车型</th>
+						<th width="150" data-options="field:'txtCheLiangCheXingDaiMa'">车辆型号</th>
+						<th width="150" data-options="field:'txtCheLiangCheJiaHao'">车架号</th>
+						<th width="100" data-options="field:'ddlCustSort'">客户类别</th>
 						<th width="100" data-options="field:'txtCheZhuName'">车主</th>
 						<th width="100" data-options="field:'txtLianXiRenName'">联系人</th>
 						<th width="150" data-options="field:'txtLianXiRenTel'">联系人电话</th>

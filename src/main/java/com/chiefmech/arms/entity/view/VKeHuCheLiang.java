@@ -19,6 +19,10 @@ public class VKeHuCheLiang {
 	private String txtCheLiangFaDongJiHao;
 	private String txtHuiYuanDengJi;
 	private String txtCheZhuJiaZhaoDate;
+	private String txtCheLiangDengJiRiQi;
+	private String txtCheLiangNianShenDaoQiRi;
+	private String txtCheLiangBaoXianDaoQiRi;
+	private String ddlChengBaoGongSi;
 	private String txtHuiYuanHao;
 	private int txtHuiYuanJiFen;
 	private float txtGongShiZheKou;
@@ -178,6 +182,38 @@ public class VKeHuCheLiang {
 
 	public void setTxtCaiLiaoZheKou(float txtCaiLiaoZheKou) {
 		this.txtCaiLiaoZheKou = txtCaiLiaoZheKou;
+	}
+
+	public String getTxtCheLiangDengJiRiQi() {
+		return txtCheLiangDengJiRiQi;
+	}
+
+	public void setTxtCheLiangDengJiRiQi(String txtCheLiangDengJiRiQi) {
+		this.txtCheLiangDengJiRiQi = txtCheLiangDengJiRiQi;
+	}
+
+	public String getTxtCheLiangNianShenDaoQiRi() {
+		return txtCheLiangNianShenDaoQiRi;
+	}
+
+	public void setTxtCheLiangNianShenDaoQiRi(String txtCheLiangNianShenDaoQiRi) {
+		this.txtCheLiangNianShenDaoQiRi = txtCheLiangNianShenDaoQiRi;
+	}
+
+	public String getTxtCheLiangBaoXianDaoQiRi() {
+		return txtCheLiangBaoXianDaoQiRi;
+	}
+
+	public void setTxtCheLiangBaoXianDaoQiRi(String txtCheLiangBaoXianDaoQiRi) {
+		this.txtCheLiangBaoXianDaoQiRi = txtCheLiangBaoXianDaoQiRi;
+	}
+
+	public String getDdlChengBaoGongSi() {
+		return ddlChengBaoGongSi;
+	}
+
+	public void setDdlChengBaoGongSi(String ddlChengBaoGongSi) {
+		this.ddlChengBaoGongSi = ddlChengBaoGongSi;
 	}
 
 }
