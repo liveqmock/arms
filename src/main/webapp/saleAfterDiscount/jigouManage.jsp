@@ -173,7 +173,7 @@ td {
 
 		function doSearch() {
 			$("#fmSearch").form('submit', {
-				url : "JiGouSearch.action",
+				url : "queryJiGou.action",
 				success : function(jsonStr) {
 					$('#mydg').datagrid('loadData', $.parseJSON(jsonStr));
 				}

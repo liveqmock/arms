@@ -37,11 +37,6 @@ public class JiGouManageAction extends BaseActionSupport
 		this.transmitJson(jiGouService.getJiGouEasyUiJSon(item, page, rows));
 	}
 
-	@Action(value = "JiGouSearch")
-	public void UnitSearch() {
-		this.transmitJson(jiGouService.getJiGouEasyUiJSon(item, page, rows));
-	}
-
 	@Action(value = "insertJiGou")
 	public void insertItem() {
 		int rowAffected = jiGouService.insertItem(item);
