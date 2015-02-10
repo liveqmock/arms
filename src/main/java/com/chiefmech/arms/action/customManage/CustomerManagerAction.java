@@ -43,7 +43,6 @@ public class CustomerManagerAction extends BaseActionSupport implements
 			cheLiangInfoLst = customerInfoService
 					.queryCheLiangInfoByCustomerId(customerId);
 		} else {
-			item.setDdlCustSort("普通客户");
 			item.setTxtCaiLiaoZheKou(1);
 			item.setTxtGongShiZheKou(1);
 		}

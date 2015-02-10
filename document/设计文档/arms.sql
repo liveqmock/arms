@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 120.24.213.132
-Source Server Version : 50537
-Source Host           : 120.24.213.132:3306
+Source Server         : localhost_3306
+Source Server Version : 50540
+Source Host           : localhost:3306
 Source Database       : arms
 
 Target Server Type    : MYSQL
-Target Server Version : 50537
+Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2015-02-10 11:54:53
+Date: 2015-02-10 17:14:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -1445,12 +1445,16 @@ DROP TABLE IF EXISTS `chelianginfo`;
 CREATE TABLE `chelianginfo` (
   `txtCustId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '客户id',
   `txtCheLiangId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '车辆id',
-  `ddlCheLiangZhiZaoShang` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '制造商',
-  `ddlCheLiangCheXi` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车系',
-  `txtCheLiangCheXingDaiMa` varchar(30) COLLATE utf8_bin DEFAULT NULL COMMENT '车型代码',
   `txtCheLiangChePaiHao` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '车牌号',
+  `txtCheLiangCheXingDaiMa` varchar(30) COLLATE utf8_bin DEFAULT NULL COMMENT '车辆型号',
   `txtCheLiangCheJiaHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车架号',
+  `txtCheLiangDengJiRiQi` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车辆注册登记日期',
   `txtCheLiangFaDongJiHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '发动机号',
+  `txtCheLiangNianShenDaoQiRi` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '年审到期日',
+  `txtCheLiangBaoXianDaoQiRi` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '保险到期日',
+  `ddlCheLiangZhiZaoShang` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '品牌',
+  `ddlCheLiangCheXi` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车型',
+  `ddlChengBaoGongSi` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '承保公司',
   PRIMARY KEY (`txtCheLiangId`),
   KEY `txtCustId` (`txtCustId`) USING BTREE,
   CONSTRAINT `chelianginfo_ibfk_1` FOREIGN KEY (`txtCustId`) REFERENCES `customerinfo` (`txtCustId`)
@@ -1459,13 +1463,6 @@ CREATE TABLE `chelianginfo` (
 -- ----------------------------
 -- Records of chelianginfo
 -- ----------------------------
-INSERT INTO `chelianginfo` VALUES ('900d1e3f-2bea-46cb-a8a2-4e7917f914e9', '2a8e7665-8da2-4d2f-8a72-787de76763a6', '宝马', '宝马3系', 'ESA90987', '粤BU2755', '1234', 'DSA97901');
-INSERT INTO `chelianginfo` VALUES ('ffd9b613-1e9a-4be5-94ff-3c501321763b', '76faa59b-1ca7-4852-8d37-666d41645ea2', '北京现代', '索纳塔8', 'WES9989', '粤BT7H76', '9876', 'DAS9090');
-INSERT INTO `chelianginfo` VALUES ('a440000a-d6d7-407e-ba70-f67e111e5f2a', 'a488e09a-2e5e-4868-9c03-a645c7040436', '本田', '本田XR-V', 'xx2', '粤AU25694', '4567', '8765');
-INSERT INTO `chelianginfo` VALUES ('b6a772c0-34e9-431a-969a-b33e28174d06', 'b673457c-95b6-4af1-8a67-47edd7856e37', '奥迪', 'Q7', 'DSA1239', '粤B27666', '4567', 'DAS1234');
-INSERT INTO `chelianginfo` VALUES ('c50bdddb-91d1-4d62-8536-56f2a4073f51', 'b8bb8911-43ef-4cbf-b6af-02055fe6192a', '福特', '经典福克斯', 'ZZE122', '粤BU276E', 'LDC99999999888888', '2467647');
-INSERT INTO `chelianginfo` VALUES ('c50bdddb-91d1-4d62-8536-56f2a4073f51', 'c6b53331-bbdf-45f6-afbd-426c5ae87a79', '江淮', '同悦', 'WSA555', '粤BT2758', '0789', '4567890');
-INSERT INTO `chelianginfo` VALUES ('900d1e3f-2bea-46cb-a8a2-4e7917f914e9', 'd02168b5-e171-455b-8cd3-de3716e4f07c', '标致', '标致407SW', 'xx12', '粤B26894', '1234', '4321');
 
 -- ----------------------------
 -- Table structure for `customerinfo`
@@ -1473,7 +1470,6 @@ INSERT INTO `chelianginfo` VALUES ('900d1e3f-2bea-46cb-a8a2-4e7917f914e9', 'd021
 DROP TABLE IF EXISTS `customerinfo`;
 CREATE TABLE `customerinfo` (
   `txtCustId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '客户id',
-  `ddlCustSort` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '客户类型',
   `txtCheZhuName` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '车主名',
   `txtCheZhuTel` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车主电话',
   `txtCheZhuPwd` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '密码',
@@ -1492,13 +1488,14 @@ CREATE TABLE `customerinfo` (
 -- ----------------------------
 -- Records of customerinfo
 -- ----------------------------
-INSERT INTO `customerinfo` VALUES ('734c0bbd-bd23-4c0e-a329-f8d1ad77104e', null, '小明', '13569863254', '5688', null, null, '地址地址', '2015-02-02', null, null, null, null, '0');
-INSERT INTO `customerinfo` VALUES ('900d1e3f-2bea-46cb-a8a2-4e7917f914e9', '普通客户', '韩梅梅', '13800138001', '3688', '韩梅梅', '13800138000', '深圳市宝安区西乡大道大宇广场', '2015-02-05', '0', '1.00', '1.00', '注册会员', null);
-INSERT INTO `customerinfo` VALUES ('a440000a-d6d7-407e-ba70-f67e111e5f2a', '人保客户', '张东子', '13800138002', '4255', '小张', '13800138001', '广东省深圳市宝安区西乡立交万骏汇大厦1031室', '2013-08-15', '0', '1.00', '1.00', '注册会员', null);
-INSERT INTO `customerinfo` VALUES ('b6a772c0-34e9-431a-969a-b33e28174d06', '普通客户', '范兵', '13800138000', null, '范兵', '13800138000', '深圳市宝安区西乡大道西乡汽车客运站', '2013-02-13', '0', '1.00', '1.00', '注册会员', null);
-INSERT INTO `customerinfo` VALUES ('c50bdddb-91d1-4d62-8536-56f2a4073f51', '普通客户', '王涛', '18033050001', '7633', '小李', '18033050001', '深圳市宝安区西乡大道大益广场', '2014-06-20', '0', '1.00', '1.00', '注册会员', null);
-INSERT INTO `customerinfo` VALUES ('e6953489-7909-4b86-be47-94db235c6ff1', '普通客户', '张月华', '13800138003', '4533', '张月华', '13800138000', '广东省深圳市宝安区西乡大道', '2012-07-11', '0', '1.00', '1.00', '注册会员', null);
-INSERT INTO `customerinfo` VALUES ('ffd9b613-1e9a-4be5-94ff-3c501321763b', '普通客户', '张月华', '13800138004', '4777', '张月华', '13800138000', '广东省深圳市宝安区西乡大道', '2012-07-11', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('17fffbf3-0159-4e4b-801f-ba0deb401969', 'a', 'a', null, 'ab', 'a', 'a', '2015-02-17', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('734c0bbd-bd23-4c0e-a329-f8d1ad77104e', '小明', '13569863254', '5688', null, null, '地址地址', '2015-02-02', null, null, null, null, '0');
+INSERT INTO `customerinfo` VALUES ('900d1e3f-2bea-46cb-a8a2-4e7917f914e9', '韩梅梅', '13800138001', '3688', '韩梅梅', '13800138000', '深圳市宝安区西乡大道大宇广场', '2015-02-05', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('a440000a-d6d7-407e-ba70-f67e111e5f2a', '张东子', '13800138002', '4255', '小张', '13800138001', '广东省深圳市宝安区西乡立交万骏汇大厦1031室', '2013-08-15', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('b6a772c0-34e9-431a-969a-b33e28174d06', '范兵', '13800138000', null, '范兵', '13800138000', '深圳市宝安区西乡大道西乡汽车客运站', '2013-02-13', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('c50bdddb-91d1-4d62-8536-56f2a4073f51', '王涛', '18033050001', '7633', '小李', '18033050001', '深圳市宝安区西乡大道大益广场', '2014-06-20', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('e6953489-7909-4b86-be47-94db235c6ff1', '张月华', '13800138003', '4533', '张月华', '13800138000', '广东省深圳市宝安区西乡大道', '2012-07-11', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('ffd9b613-1e9a-4be5-94ff-3c501321763b', '张月华', '13800138004', '4777', '张月华', '13800138000', '广东省深圳市宝安区西乡大道', '2012-07-11', '0', '1.00', '1.00', '注册会员', null);
 
 -- ----------------------------
 -- Table structure for `department`
@@ -1743,12 +1740,11 @@ CREATE TABLE `jigou` (
 -- ----------------------------
 INSERT INTO `jigou` VALUES ('b7b8787b-ee3d-480f-98b7-084481a8010a', '007', '八路通深圳钟屋店', null, '★导航标记：明天西部酒店', '八路通深圳钟屋店成立于2014年,维修师傅曾就职比亚迪、上海大众、丰田、奥迪、宝马捷豹4S店。熟悉德系、日系、韩系等常用车型。 美容师傅有五年以上工作经验，擅长镀晶、打蜡、贴膜等项目。\r\n', '18822807738', '');
 INSERT INTO `jigou` VALUES ('b7b8787b-ee3d-480f-98b7-084481a8010d', '001', '八路通深圳西乡店', 'shop1.png', '深圳市宝安五十区宝安大道开屏路1-3号', '八路通深圳西乡店成立于2008年，维修师傅曾就职上海大众、奔驰、别克4S店。熟悉德系、日系、韩系等常用车型。 美容师傅有五年以上工作经验，擅长镀晶、打蜡、贴膜等项目。', '13538046066', '');
-INSERT INTO `jigou` VALUES ('b7b8787b-ee3d-480f-98b7-084481a8010e', '002', '八路通深圳红岭店', 'shop2.png', '深圳市福田区红岭北路3001号先科大院3栋108号（泥岗西路与红岭北路交界处）', '八路通深圳红岭店成立于2004年，维修师傅曾就职本田、丰田、奥迪、奔驰大兴4S店。熟悉欧洲系及国产车系列常用车型。\r\n', '13392809689', '123');
+INSERT INTO `jigou` VALUES ('b7b8787b-ee3d-480f-98b7-084481a8010e', '002', '八路通深圳红岭店', null, '深圳市福田区红岭北路3001号先科大院3栋108号（泥岗西路与红岭北路交界处）', '八路通深圳红岭店成立于2004年，维修师傅曾就职本田、丰田、奥迪、奔驰大兴4S店。熟悉欧洲系及国产车系列常用车型。\r\n', '13392809689', '');
 INSERT INTO `jigou` VALUES ('b7b8787b-ee3d-480f-98b7-084481a8010f', '003', '八路通深圳横岗店', 'shop3.png', '深圳市龙岗区龙岗大道转入荷康路200米（导航荷坳地铁站B出口)', '八路通深圳横岗店成立于2014年，维修师傅曾就职一汽大众、马自达、奔驰、宝马、奥迪、路虎、保时捷4S店。熟悉德系、日系、韩系等常用车型。美容师傅有10年以上的工作经验，擅长镀金、打蜡、贴膜等项目。\r\n', '13510171260', '');
 INSERT INTO `jigou` VALUES ('b7b8787b-ee3d-480f-98b7-084481a8010g', '004', '八路通深圳罗芳店', 'shop4.png', '深圳市罗湖区罗芳路91号二楼', '八路通深圳罗芳店成立于1998年,维修师傅曾就职奔驰、宝马、奥迪、4S店。熟悉德系、日系、韩系等常用车型。', '13510020009', '');
 INSERT INTO `jigou` VALUES ('b7b8787b-ee3d-480f-98b7-084481a8010h', '005', '八路通深圳新洲店', 'shop5.png', '深圳市福田区下梅林梅华路217号嘉梅小区1号商铺', '八路通深圳新洲店成立于2014年,维修师傅曾就职比亚迪、上海大众、丰田、奥迪、宝马捷豹4S店。熟悉德系、日系、韩系等常用车型。 美容师傅有五年以上工作经验，擅长镀晶、打蜡、贴膜等项目。\r\n ', '18038033335', '');
 INSERT INTO `jigou` VALUES ('b7b8787b-ee3d-480f-98b7-084481a8010i', '006', '八路通深圳龙岗店', null, '深圳市龙岗区南通道爱南路353号（永茂行汽车服务有限公司隔壁）', '八路通深圳龙岗店成立于2014年,维修师傅曾就职风行、荣威、丰田4S店。熟悉德系、日系、韩系等常用车型。 \r\n', '15012936204', '');
-INSERT INTO `jigou` VALUES ('b7b8787b-ee3d-480f-98b7-084481a8010j', '008', '总部', null, '深圳市西乡立交万骏汇商务大厦10楼', '深圳市八路通汽车科技有限公司总部所在', '', null);
 
 -- ----------------------------
 -- Table structure for `kucun`
@@ -2087,8 +2083,8 @@ CREATE TABLE `users` (
   `loginName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '用户登录名',
   `displayName` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '显示的用户名称',
   `password` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '用户密码',
-  `lastLoginTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '上次登录时间',
-  `isLimit` varchar(10) COLLATE utf8_bin NOT NULL DEFAULT '1' COMMENT '是否受权限限制，0为受限制，1为不受限制',
+  `lastLoginTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '上次登录时间',
+  `expirydate` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '账号有效期',
   `jigouName` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '机构名称',
   `departName` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '部门名称',
   PRIMARY KEY (`userId`)
@@ -2097,20 +2093,20 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', 'yangxy', '小院', 'a', '2015-02-07 23:08:01', '1', '八路通深圳西乡店', 'IT部');
-INSERT INTO `users` VALUES ('10', 'dashi', '大师', 'dashi', '2015-02-09 16:21:06', '1', '八路通深圳西乡店', 'IT部');
-INSERT INTO `users` VALUES ('2', 'leh', '小乐', 'leh', '2015-02-02 08:35:47', '1', '总部', 'IT部');
-INSERT INTO `users` VALUES ('22897e49-c92e-4c20-b8a6-da676bc2851b', 'zhouxj', '邹新现', '123', '2015-01-27 09:59:52', '1', '总部', '业务部');
-INSERT INTO `users` VALUES ('3', 'dengsj', '小邓', 'dengsj', '2015-01-27 09:59:54', '1', '总部', 'IT部');
-INSERT INTO `users` VALUES ('41a53bd3-b6e8-477a-96e3-c5755139a3d7', 'pengsm', '彭世明', '123', '2015-01-27 09:59:55', '1', '总部', '业务部');
-INSERT INTO `users` VALUES ('47ff59ac-9904-44d3-9cab-7d2509fc97f3', 'xiaom', '小明', '123', '2015-01-26 12:26:23', '1', '八路通深圳横岗店', '业务部');
-INSERT INTO `users` VALUES ('5c519165-4f57-4edc-b05f-80bbe40d7df0', 'chenh', '陈浩', '123', '2015-01-27 09:59:57', '1', '总部', '业务部');
-INSERT INTO `users` VALUES ('7bc9942a-63de-4b45-b939-e5d8574951db', 'chengc', '程晨', '123', '2015-01-26 12:26:23', '1', '八路通深圳横岗店', '业务部');
-INSERT INTO `users` VALUES ('7c1af8e8-7c8a-49ac-9e18-f7a597ced597', 'songtf', '宋腾飞', '123', '2015-01-26 12:26:24', '1', '八路通深圳横岗店', '业务部');
-INSERT INTO `users` VALUES ('92c36efe-f2b0-4f11-962d-7134058b8179', 'lengyq', '冷勇强', '123', '2015-01-27 09:59:58', '1', '总部', '业务部');
-INSERT INTO `users` VALUES ('bd69461a-f527-4c6d-be54-f1c54a6cfdc6', 'zhouy', '周艳', '123', '2015-01-27 09:59:59', '1', '总部', '业务部');
-INSERT INTO `users` VALUES ('c7ce4da6-7a20-4858-9626-be3835c58be4', 'sz', '沈总', '123', '2015-01-27 10:00:01', '0', '总部', '业务部');
-INSERT INTO `users` VALUES ('fdb8cb6c-cbfa-40fe-a9c8-faba52bb3c5a', 'xiaogp', '肖高平', '123', '2015-01-27 10:00:02', '1', '总部', '业务部');
+INSERT INTO `users` VALUES ('1', 'yangxy', '小院', 'a', null, '2015-12-23', '八路通深圳罗芳店', 'IT部');
+INSERT INTO `users` VALUES ('10', 'dashi', '大师', 'dashi', '2015-02-10 15:39:36', '2015-12-30', '八路通深圳西乡店', 'IT部');
+INSERT INTO `users` VALUES ('2', 'leh', '小乐', 'leh', '2015-02-10 15:39:36', '2015-12-30', '总部', 'IT部');
+INSERT INTO `users` VALUES ('22897e49-c92e-4c20-b8a6-da676bc2851b', 'zhouxj', '邹新现', '123', '2015-02-10 15:39:36', '2015-12-30', '总部', '业务部');
+INSERT INTO `users` VALUES ('3', 'dengsj', '小邓', 'dengsj', '2015-02-10 15:39:36', '2015-12-30', '总部', 'IT部');
+INSERT INTO `users` VALUES ('41a53bd3-b6e8-477a-96e3-c5755139a3d7', 'pengsm', '彭世明', '123', '2015-02-10 15:39:36', '2015-12-30', '总部', '业务部');
+INSERT INTO `users` VALUES ('47ff59ac-9904-44d3-9cab-7d2509fc97f3', 'xiaom', '小明', '123', '2015-02-10 15:39:36', '2015-12-30', '八路通深圳横岗店', '业务部');
+INSERT INTO `users` VALUES ('5c519165-4f57-4edc-b05f-80bbe40d7df0', 'chenh', '陈浩', '123', '2015-02-10 15:39:36', '2015-12-30', '总部', '业务部');
+INSERT INTO `users` VALUES ('7bc9942a-63de-4b45-b939-e5d8574951db', 'chengc', '程晨', '123', '2015-02-10 15:39:36', '2015-12-30', '八路通深圳横岗店', '业务部');
+INSERT INTO `users` VALUES ('7c1af8e8-7c8a-49ac-9e18-f7a597ced597', 'songtf', '宋腾飞', '123', null, '2015-12-24', '八路通深圳横岗店', '业务部');
+INSERT INTO `users` VALUES ('92c36efe-f2b0-4f11-962d-7134058b8179', 'lengyq', '冷勇强', '123', '2015-02-10 15:39:36', '2015-12-30', '总部', '业务部');
+INSERT INTO `users` VALUES ('bd69461a-f527-4c6d-be54-f1c54a6cfdc6', 'zhouy', '周艳', '123', '2015-02-10 15:39:36', '2015-12-30', '总部', '业务部');
+INSERT INTO `users` VALUES ('c7ce4da6-7a20-4858-9626-be3835c58be4', 'sz', '沈总', '123', '2015-02-10 15:39:36', '2015-12-30', '总部', '业务部');
+INSERT INTO `users` VALUES ('fdb8cb6c-cbfa-40fe-a9c8-faba52bb3c5a', 'xiaogp', '肖高平', '123', '2015-02-10 15:39:36', '2015-12-30', '总部', '业务部');
 
 -- ----------------------------
 -- Table structure for `user_group`
@@ -2218,13 +2214,7 @@ DROP VIEW IF EXISTS `view_carmodel`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`%` SQL SECURITY DEFINER VIEW `view_carmodel` AS select `t1`.`brandId` AS `brandId`,`t1`.`brandName` AS `brandName`,`t1`.`brandLogo` AS `brandLogo`,`t2`.`modelId` AS `modelId`,`t2`.`modelName` AS `modelName`,`t2`.`id` AS `id` from (`carbrand` `t1` join `carmodel` `t2`) where (`t1`.`brandId` = `t2`.`brandId`) ;
 
 -- ----------------------------
--- View structure for `view_zhekou`
--- ----------------------------
-DROP VIEW IF EXISTS `view_zhekou`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`%` SQL SECURITY DEFINER VIEW `view_zhekou` AS select `t1`.`txtZheKouGuId` AS `txtZheKouGuId`,`t2`.`userId` AS `userId`,`t2`.`displayName` AS `displayName`,`t2`.`departName` AS `departName`,`t2`.`jigouName` AS `jigouName`,`t1`.`txtGongShiZheKou` AS `txtGongShiZheKou`,`t1`.`txtMeiRongZheKou` AS `txtMeiRongZheKou`,`t1`.`txtJiDianZheKou` AS `txtJiDianZheKou`,`t1`.`txtBaoYangZheKou` AS `txtBaoYangZheKou`,`t1`.`txtBanJinZheKou` AS `txtBanJinZheKou`,`t1`.`txtPenQiZheKou` AS `txtPenQiZheKou`,`t1`.`txtCaiLiaoZheKou` AS `txtCaiLiaoZheKou` from (`zhekou` `t1` left join `users` `t2` on((`t2`.`userId` = `t1`.`userId`))) ;
-
--- ----------------------------
 -- View structure for `v_kehu_cheliang`
 -- ----------------------------
 DROP VIEW IF EXISTS `v_kehu_cheliang`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`%` SQL SECURITY DEFINER VIEW `v_kehu_cheliang` AS select `customerinfo`.`txtCustId` AS `txtCustId`,`customerinfo`.`ddlCustSort` AS `ddlCustSort`,`customerinfo`.`txtCheZhuName` AS `txtCheZhuName`,`customerinfo`.`txtCheZhuTel` AS `txtCheZhuTel`,`customerinfo`.`txtLianXiRenName` AS `txtLianXiRenName`,`customerinfo`.`txtLianXiRenTel` AS `txtLianXiRenTel`,`customerinfo`.`txtLianXiRenAdd` AS `txtLianXiRenAdd`,`customerinfo`.`txtHuiYuanJiFen` AS `txtHuiYuanJiFen`,`customerinfo`.`txtGongShiZheKou` AS `txtGongShiZheKou`,`customerinfo`.`txtCaiLiaoZheKou` AS `txtCaiLiaoZheKou`,`customerinfo`.`txtHuiYuanDengJi` AS `txtHuiYuanDengJi`,`customerinfo`.`txtCheZhuJiaZhaoDate` AS `txtCheZhuJiaZhaoDate`,`chelianginfo`.`txtCheLiangId` AS `txtCheLiangId`,`chelianginfo`.`txtCheLiangChePaiHao` AS `txtCheLiangChePaiHao`,`chelianginfo`.`ddlCheLiangZhiZaoShang` AS `ddlCheLiangZhiZaoShang`,`chelianginfo`.`ddlCheLiangCheXi` AS `ddlCheLiangCheXi`,`chelianginfo`.`txtCheLiangCheXingDaiMa` AS `txtCheLiangCheXingDaiMa`,`chelianginfo`.`txtCheLiangCheJiaHao` AS `txtCheLiangCheJiaHao`,`chelianginfo`.`txtCheLiangFaDongJiHao` AS `txtCheLiangFaDongJiHao` from (`customerinfo` left join `chelianginfo` on((`customerinfo`.`txtCustId` = `chelianginfo`.`txtCustId`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`%` SQL SECURITY DEFINER VIEW `v_kehu_cheliang` AS select `customerinfo`.`txtCustId` AS `txtCustId`,`customerinfo`.`txtCheZhuName` AS `txtCheZhuName`,`customerinfo`.`txtCheZhuTel` AS `txtCheZhuTel`,`customerinfo`.`txtLianXiRenName` AS `txtLianXiRenName`,`customerinfo`.`txtLianXiRenTel` AS `txtLianXiRenTel`,`customerinfo`.`txtLianXiRenAdd` AS `txtLianXiRenAdd`,`customerinfo`.`txtHuiYuanJiFen` AS `txtHuiYuanJiFen`,`customerinfo`.`txtGongShiZheKou` AS `txtGongShiZheKou`,`customerinfo`.`txtCaiLiaoZheKou` AS `txtCaiLiaoZheKou`,`customerinfo`.`txtHuiYuanDengJi` AS `txtHuiYuanDengJi`,`customerinfo`.`txtCheZhuJiaZhaoDate` AS `txtCheZhuJiaZhaoDate`,`chelianginfo`.`txtCheLiangId` AS `txtCheLiangId`,`chelianginfo`.`txtCheLiangChePaiHao` AS `txtCheLiangChePaiHao`,`chelianginfo`.`ddlCheLiangZhiZaoShang` AS `ddlCheLiangZhiZaoShang`,`chelianginfo`.`ddlCheLiangCheXi` AS `ddlCheLiangCheXi`,`chelianginfo`.`txtCheLiangCheXingDaiMa` AS `txtCheLiangCheXingDaiMa`,`chelianginfo`.`txtCheLiangCheJiaHao` AS `txtCheLiangCheJiaHao`,`chelianginfo`.`txtCheLiangFaDongJiHao` AS `txtCheLiangFaDongJiHao` from (`customerinfo` left join `chelianginfo` on((`customerinfo`.`txtCustId` = `chelianginfo`.`txtCustId`))) ;

@@ -39,10 +39,6 @@ td {
 					<td colspan="6">客户信息</td>
 				</tr>
 				<tr>
-					<td width="80" align="right">客户类型：</td>
-					<td><input name="ddlCustSort" id="ddlCustSort"
-						class="easyui-combobox"
-						data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/customerSortOption.action'" /></td>
 					<td width="80" align="right">车主名：</td>
 					<td><input name="txtCheZhuName" data-options="required:true"
 						class="easyui-textbox" type="text" id="txtCheZhuName" /></td>
@@ -50,6 +46,8 @@ td {
 					<td width="80" align="right">车主电话：</td>
 					<td><input class="easyui-textbox" name="txtCheZhuTel"
 						type="text" data-options="required:true" id="txtCheZhuTel" /></td>
+					<td width="80" align="right">&nbsp;</td>
+					<td>&nbsp;</td>
 				</tr>
 
 				<tr>
@@ -83,7 +81,7 @@ td {
 					<td align="right">会员积分：</td>
 					<td><input class="easyui-numberbox" name="txtHuiYuanJiFen"
 						data-options="required:true" type="text" id="txtHuiYuanJiFen" /></td>
-					<td align="right">工时折扣：</td>
+					<td align="right">维修项目折扣：</td>
 					<td><input class="easyui-numberbox" name="txtGongShiZheKou"
 						type="text" id="txtGongShiZheKou"
 						data-options="required:true,precision:2,max:1,min:0" /></td>
@@ -159,6 +157,26 @@ td {
 						<td><input name="txtCheLiangFaDongJiHao" type="text"
 							class="easyui-textbox" data-options="required:true"
 							id="txtCheLiangFaDongJiHao" /></td>
+					</tr>
+					<tr>
+						<td align="right">车辆注册登记日期：</td>
+						<td><input name="txtCheLiangDengJiRiQi" type="text"
+							class="easyui-textbox" data-options="required:true"
+							id="txtCheLiangDengJiRiQi" /></td>
+						<td align="right">年审到期日：</td>
+						<td><input name="txtCheLiangNianShenDaoQiRi" type="text"
+							class="easyui-textbox" data-options="required:true"
+							id="txtCheLiangNianShenDaoQiRi" /></td>
+					</tr>
+					<tr>
+						<td align="right">保险到期日：</td>
+						<td><input name="txtCheLiangBaoXianDaoQiRi" type="text"
+							class="easyui-textbox" data-options="required:true"
+							id="txtCheLiangBaoXianDaoQiRi" /></td>
+						<td align="right">年审到期日：</td>
+						<td><input name="txtCheLiangNianShenDaoQiRi" type="text"
+							class="easyui-textbox" data-options="required:true"
+							id="txtCheLiangNianShenDaoQiRi" /></td>
 					</tr>
 					<tr>
 						<td colspan="4">&nbsp;</td>
