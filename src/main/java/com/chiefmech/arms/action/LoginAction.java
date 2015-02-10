@@ -1,5 +1,7 @@
 package com.chiefmech.arms.action;
 
+import java.sql.Date;
+
 import javax.annotation.Resource;
 
 import org.apache.commons.lang.StringUtils;
@@ -27,7 +29,7 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 
 	@Action(value = "login", results = {
 			@Result(name = "success", type = "redirectAction", location = "index/default"),
-			@Result(name = "input", location = "login.jsp") })
+			@Result(name = "input", location = "login.jsp")})
 	public String login() {
 		this.clearFieldErrors();
 		if (StringUtils.isBlank(user.getLoginName())
@@ -35,18 +37,29 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 			// 跳转到登录页面
 			return INPUT;
 		} else {
-			User userInfo = userService.findUser(user);
+			User userInfo = userService
+					.findUserByLoginName(user.getLoginName());
+			String error_msg = "";
 			if (userInfo != null) {
+				if (!user.getPassword().equals(userInfo.getPassword())) {
+					error_msg = "亲，密码错误！";
+				} else if (Date.valueOf(userInfo.getExpirydate()).before(
+						new Date(System.currentTimeMillis()))) {
+					error_msg = "亲，账号已过期，请联系管理员！";
+				}
+			} else {
+				error_msg = String.format("亲，用户名%s不存在！", user.getLoginName());
+			}
+			if (error_msg.length() > 0) {
+				this.addFieldError("message_login_failed", error_msg);
+				return INPUT;
+			} else {
 				servletRequest.getSession().setAttribute(
 						Constants.KEY_USER_SESSION, userInfo);
 				return SUCCESS;
-			} else {
-				this.addFieldError("error_username_password", "用户名或密码错误");
-				return INPUT;
 			}
 		}
 	}
-
 	@Override
 	public User getModel() {
 		return user;

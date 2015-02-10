@@ -10,8 +10,8 @@ import com.chiefmech.arms.entity.User;
 @Repository("userDao")
 public interface UserDao {
 
-	@Select("select * from users where loginName = #{loginName} and password = #{password} and isLimit = 1")
-	public User findUser(User user);
+	@Select("select * from users where loginName = #{loginName}")
+	public User findUserByLoginName(String loginName);
 
 	@Select("select count(*) from users where userId = #{userId} and password = #{password}")
 	public boolean isPwdMatched(@Param("userId") String userId,

@@ -5,7 +5,7 @@ import com.chiefmech.arms.entity.UserPersonalInfo;
 
 public interface UserService {
 
-	public User findUser(User user);
+	public User findUserByLoginName(String loginName);
 
 	public String updateUserPersonalInfo(UserPersonalInfo personalInfo);
 

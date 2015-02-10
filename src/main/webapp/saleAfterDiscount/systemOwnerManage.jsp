@@ -57,13 +57,12 @@ td {
 						   pagination:true">
 		<thead>
 			<tr>
-				<th data-options="field:'loginName',width:180,sortable:true">用户登录名</th>
-				<th data-options="field:'displayName',width:180,sortable:true">显示的用户名称</th>
-				<th data-options="field:'password',width:180,sortable:true">用户密码</th>
-				<!--  <th data-options="field:'lastLoginTime',width:300,sortable:true">上次登录时间</th>-->
-				<th data-options="field:'isLimit',width:100,sortable:true">是否受权限限制</th>
-				<th data-options="field:'jigouName',width:220,sortable:true">所属机构</th>
-				<th data-options="field:'departName',width:220,sortable:true">所属部门</th>
+				<th width="150" data-options="field:'loginName'">用户登录名</th>
+				<th width="150" data-options="field:'displayName'">显示的用户名称</th>
+				<th width="150" data-options="field:'password'">用户密码</th>
+				<th width="150" data-options="field:'expirydate'">账号有效期</th>
+				<th width="200" data-options="field:'jigouName'">所属店铺</th>
+				<th width="200" data-options="field:'departName'">所属部门</th>
 				<th field="action" width="100" align="center"
 					formatter="formatAction">操作</th>
 			</tr>
@@ -82,36 +81,29 @@ td {
 				<tr>
 					<td>用户登录名:</td>
 					<td><input name="loginName" type="text" maxlength="15"
-						id="loginName" style="width: 250px;" class="easyui-validatebox"
-						data-options="required:true,missingMessage:'此项为必填项'" /></td>
+						id="loginName" style="width: 250px;" class="easyui-textbox"
+						data-options="required:true" /></td>
 				</tr>
 				<tr>
 					<td>显示的用户名称:</td>
 					<td><input name="displayName" type="text" maxlength="15"
-						id="displayName" style="width: 250px;" class="easyui-validatebox"
-						data-options="required:true,missingMessage:'此项为必填项'" /></td>
+						id="displayName" style="width: 250px;" class="easyui-textbox"
+						data-options="required:true" /></td>
 				</tr>
 				<tr>
 					<td>用户密码:</td>
 					<td><input name="password" type="text" maxlength="15"
-						id="password" style="width: 250px;" class="easyui-validatebox"
-						data-options="required:true,missingMessage:'此项为必填项'" /></td>
-				</tr>
-				<!-- 
-				<tr>
-					<td>上次登录时间:</td>
-					<td><input name="lastLoginTime" type="text" maxlength="15"
-						id="lastLoginTime" style="width: 250px;" class="easyui-validatebox"
-						data-options="required:true,missingMessage:'此项为必填项'" /></td>
-				</tr>
-				 -->
-				<tr>
-					<td>是否受权限限制:</td>
-					<td><input name="isLimit" type="text" maxlength="15"
-						id="isLimit" style="width: 250px;" /></td>
+						id="password" style="width: 250px;" class="easyui-textbox"
+						data-options="required:true" /></td>
 				</tr>
 				<tr>
-					<td>所属机构</td>
+					<td>账号有效期:</td>
+					<td><input name="expirydate" type="text" maxlength="15"
+						id="expirydate" style="width: 250px;"  class="easyui-datebox"
+						data-options="required:true"/></td>
+				</tr>
+				<tr>
+					<td>所属店铺</td>
 					<td><select id="jigouName" name="jigouName"
 						style="width: 250px;">
 							<s:iterator value="JiGouList">

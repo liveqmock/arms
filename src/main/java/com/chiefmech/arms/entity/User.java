@@ -10,7 +10,7 @@ public class User {
 	private String displayName;
 	private String password;
 	private Timestamp lastLoginTime;
-	private String isLimit;
+	private String expirydate;
 	private String departName;
 	private List<String> privilegeLst;
 	private String jigouName;
@@ -71,12 +71,12 @@ public class User {
 		this.lastLoginTime = lastLoginTime;
 	}
 
-	public String getIsLimit() {
-		return isLimit;
+	public String getExpirydate() {
+		return expirydate;
 	}
 
-	public void setIsLimit(String isLimit) {
-		this.isLimit = isLimit;
+	public void setExpirydate(String expirydate) {
+		this.expirydate = expirydate;
 	}
 
 	public List<String> getPrivilegeLst() {

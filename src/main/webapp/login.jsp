@@ -194,7 +194,7 @@ body {
 									style="border-width: 0px; width: 100px; height: 100px;" />
 							</div>
 							<span style="color: red; font-weight: bold;" id="spanErr"><s:fielderror
-									fieldName="error_username_password" /></span>
+									fieldName="message_login_failed" /></span>
 						</div>
 						<div id="loginTishi">
 							<p>
@@ -211,6 +211,9 @@ body {
 <script language="javascript" type="text/javascript">
 	//登录框绝对定位
 	$(function() {
+		if(top.location != location){ 
+			top.location.href= location.href; 
+		} 
 		//加载cookies
 		if ($.cookie('txtUserName') != undefined
 				&& $.cookie('txtUserName') != ""

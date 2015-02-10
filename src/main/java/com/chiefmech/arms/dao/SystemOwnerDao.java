@@ -24,10 +24,10 @@ public interface SystemOwnerDao {
 	@SelectProvider(type = SystemOwnerDaoSqlProvider.class, method = "getSystemOwnerListCount")
 	public int getSystemOwnerListCount(@Param("item") SystemOwner query);
 
-	@Insert("insert into users(userId,loginName,displayName,password,lastLoginTime,isLimit,jigouName,departName) values(#{userId},#{loginName},#{displayName},#{password},#{lastLoginTime},#{isLimit},#{jigouName},#{departName})")
+	@Insert("insert into users(userId,loginName,displayName,password,lastLoginTime,expirydate,jigouName,departName) values(#{userId},#{loginName},#{displayName},#{password},#{lastLoginTime},#{expirydate},#{jigouName},#{departName})")
 	public int insertItem(SystemOwner item);
 
-	@Update("update users set loginName=#{loginName},displayName=#{displayName},password=#{password},lastLoginTime=#{lastLoginTime},isLimit=#{isLimit},jigouName=#{jigouName},departName=#{departName} where userId=#{userId}")
+	@Update("update users set loginName=#{loginName},displayName=#{displayName},password=#{password},lastLoginTime=#{lastLoginTime},expirydate=#{expirydate},jigouName=#{jigouName},departName=#{departName} where userId=#{userId}")
 	public int updateItem(SystemOwner item);
 
 	@Delete("delete from users where userId=#{userId}")

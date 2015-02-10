@@ -15,9 +15,8 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 
 	@Override
-	public User findUser(User condition) {
-		User user = this.userDao.findUser(condition);
-		return user;
+	public User findUserByLoginName(String loginName) {
+		return this.userDao.findUserByLoginName(loginName);
 	}
 
 	@Override

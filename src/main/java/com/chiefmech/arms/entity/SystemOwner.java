@@ -8,7 +8,7 @@ public class SystemOwner {
 	private String displayName;
 	private String password;
 	private Timestamp lastLoginTime;
-	private String isLimit;
+	private String expirydate;
 	private String jigouName;
 	private String departName;
 	public String getJigouName() {
@@ -53,12 +53,11 @@ public class SystemOwner {
 	public void setLastLoginTime(Timestamp lastLoginTime) {
 		this.lastLoginTime = lastLoginTime;
 	}
-	public String getIsLimit() {
-		return isLimit;
+	public String getExpirydate() {
+		return expirydate;
 	}
-	public void setIsLimit(String isLimit) {
-		this.isLimit = isLimit;
+	public void setExpirydate(String expirydate) {
+		this.expirydate = expirydate;
 	}
 
-	
 }
