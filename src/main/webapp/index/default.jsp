@@ -159,13 +159,13 @@
 										},
 										children : [
 												{
-													name : "机构管理",
+													name : "店铺管理",
 													font : {
 														'font-style' : '微软雅黑'
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('6aebe08f-9fff-4492-885f-a207c1e78888','机构管理','../saleAfterDiscount/jiGouManage.action');"
+													click : "mdfMenu('6aebe08f-9fff-4492-885f-a207c1e78888','店铺管理','../saleAfterDiscount/jiGouManage.action');"
 												},
 												{
 													name : "部门管理",
