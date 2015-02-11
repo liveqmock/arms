@@ -23,10 +23,10 @@ public interface WeiXiuXiangMuDao {
 	@SelectProvider(type = WeiXiuXiangMuDaoSqlProvider.class, method = "getWeiXiuXiangMuListCount")
 	public int getWeiXiuXiangMuListCount(@Param("item") WeiXiuXiangMu query);
 
-	@Insert("insert into weixiuxiangmu(txtGuid,txtCode,txtName,txtNeiRong,txtFeiYong,ddlGongDuan) values(#{txtGuid},#{txtCode},#{txtName},#{txtNeiRong},#{txtFeiYong},#{ddlGongDuan})")
+	@Insert("insert into weixiuxiangmu(txtGuid,txtCode,txtName,txtNeiRong,txtFeiYong,ddlGongDuan,ddlDianPu,txtRemark) values(#{txtGuid},#{txtCode},#{txtName},#{txtNeiRong},#{txtFeiYong},#{ddlGongDuan},#{ddlDianPu},#{txtRemark})")
 	public int insertItem(WeiXiuXiangMu item);
 
-	@Update("update weixiuxiangmu set txtCode=#{txtCode},txtName=#{txtName},txtNeiRong=#{txtNeiRong},txtFeiYong=#{txtFeiYong},ddlGongDuan=#{ddlGongDuan} where txtGuid=#{txtGuid}")
+	@Update("update weixiuxiangmu set txtCode=#{txtCode},txtName=#{txtName},txtNeiRong=#{txtNeiRong},txtFeiYong=#{txtFeiYong},ddlGongDuan=#{ddlGongDuan},ddlDianPu=#{ddlDianPu},txtRemark=#{txtRemark} where txtGuid=#{txtGuid}")
 	public int updateItem(WeiXiuXiangMu item);
 
 	@Delete("delete from weixiuxiangmu where txtGuid=#{txtGuid}")

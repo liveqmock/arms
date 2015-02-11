@@ -7,6 +7,8 @@ public class WeiXiuXiangMu {
 	private String txtNeiRong;
 	private float txtFeiYong;
 	private String ddlGongDuan;
+	private String ddlDianPu;
+	private String txtRemark;
 	public String getTxtGuid() {
 		return txtGuid;
 	}
@@ -42,6 +44,18 @@ public class WeiXiuXiangMu {
 	}
 	public void setDdlGongDuan(String ddlGongDuan) {
 		this.ddlGongDuan = ddlGongDuan;
+	}
+	public String getDdlDianPu() {
+		return ddlDianPu;
+	}
+	public void setDdlDianPu(String ddlDianPu) {
+		this.ddlDianPu = ddlDianPu;
+	}
+	public String getTxtRemark() {
+		return txtRemark;
+	}
+	public void setTxtRemark(String txtRemark) {
+		this.txtRemark = txtRemark;
 	}
 
 }

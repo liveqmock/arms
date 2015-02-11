@@ -20,6 +20,7 @@ import com.chiefmech.arms.action.BaseActionSupport;
 import com.chiefmech.arms.common.util.DateUtil;
 import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.entity.GongDan;
+import com.chiefmech.arms.entity.GongDanCheLiangJianCe;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
 import com.chiefmech.arms.entity.KuCun;
@@ -55,6 +56,14 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 	private List<GongDanWeiXiuXiangMu> gongDanXiangMuLst;
 	private List<GongDanWeiXiuWuLiao> gongDanWuLiaoLst;
 	private GongDan gongDan = new GongDan();
+	String[] jianCeLstRenBao = {"检测发动机机油", "检查发动机空气滤清器", "检查发动机冷却系统",
+			"蓄电池及起动机检查", "各种橡胶软管的检查", "怠速及火花塞", "检查动力转向系统", "检查制动系统", "制动液检查",
+			"球头节和防尘套", "发动机外观检查", "前后悬挂装置及底盘", "检查制冷剂", "轮胎和充气气压", "空调滤清器",
+			"雨刮器和玻璃水"};
+	String[] jianCeLstPuTong = {"检测发动机控制模块系统", "检查发动机机油液位", "检查发动机冷却系统",
+			"检查发动机空气滤芯", "检查挡风玻璃清洁剂液位", "检查刮水器刮片", "检查车辆底部", "检查灯光系统",
+			"检查制动系统", "检查动力转向系统", "检查发动机附件皮带", "检查空调系统", "检查冷却风扇", "检查反光镜、后视镜",
+			"检查车轮", "检查蓄电池"};
 
 	@Action(value = "saleAfterIndex", results = {@Result(name = "input", location = "saleAfter_Index.jsp")})
 	public String saleAfterIndex() {
@@ -64,7 +73,8 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 
 	@Actions({
 			@Action(value = "gongDanWeiXiuJieDai", results = {@Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp")}),
-			@Action(value = "gongDanWuLiaoXuanQu", results = {@Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp")}),
+			@Action(value = "gongDanCheLiangJianCe", results = {@Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp")}),
+			@Action(value = "gongDanWuLiaoCaiGou", results = {@Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp")}),
 			@Action(value = "gongDanWeiXiuPaiGong", results = {@Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp")}),
 			@Action(value = "gongDanLingQuWuLiao", results = {@Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp")}),
 			@Action(value = "gongDanWeiXiuWanJian", results = {@Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp")}),
@@ -80,6 +90,7 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 					.findVKeHuCheLiangByCheLiangId(cheLiangId);
 			gongDan = new GongDan(customer);
 			gongDan.setTxtFuWuGuWen(this.getUser().getDisplayName());
+			gongDan.setDdlDianPu(this.getUser().getJigouName());
 		} else {
 			gongDan = gongDanService
 					.findGongDanByWeiXiuGuid(saleAfterWeiXiuGuid);
@@ -115,7 +126,24 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 			gongDan.setTxtGongDanId(IDGen.getUUID());
 			gongDan.setTxtBillNo(gongDanService.getNewBillNo());
 			gongDan.setTxtFuWuGuWen(this.getUser().getDisplayName());
+			gongDan.setDdlDianPu(this.getUser().getJigouName());
 			rowsAffected = gongDanService.insertWeiXiuJieDai(gongDan);
+
+			String[] jianCeLst = "人保客户".equals(gongDan.getTxtCustSort())
+					? jianCeLstRenBao
+					: jianCeLstPuTong;
+			int size = jianCeLst.length;
+			for (int i = 0; i < size; i++) {
+				String jianCeNeiRong = jianCeLst[i];
+				GongDanCheLiangJianCe item = new GongDanCheLiangJianCe();
+				item.setTxtJianceGuid(IDGen.getUUID());
+				item.setTxtGongDanGuid(gongDan.getTxtGongDanId());
+				item.setTxtNeiRong(jianCeNeiRong);
+				item.setTxtZhuangTai("未检测");
+				item.setTxtXuHao(i);
+
+				gongDanService.insertCheLiangJianCe(item);
+			}
 		} else {
 			rowsAffected = gongDanService.updateWeiXiuJieDai(gongDan);
 		}
@@ -128,7 +156,6 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 		this.transmitJson(String.format(
 				"{\"statusCode\":\"%s\", \"info\":'%s'}", statusCode, info));
 	}
-
 	@Action(value = "queryGongDanWeiXiuXiangMu")
 	public void queryGongDanWeiXiuXiangMu() {
 		this.transmitJson(easyUiJSonData = gongDanService
@@ -151,6 +178,17 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 				.toBean(jsonObject, GongDanWeiXiuXiangMu.class);
 		int rowAffected = gongDanService
 				.updateGongDanWeiXiuXiangMuWhenZhiZuo(gongDanWeiXiuXiangMu);
+		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
+
+		this.transmitJson(jsonStr);
+	}
+
+	@Action(value = "updateGongDanCheLiangJianCeRow")
+	public void updateGongDanCheLiangJianCeRow() {
+		JSONObject jsonObject = JSONObject.fromObject(easyUiJSonData);
+		GongDanCheLiangJianCe item = (GongDanCheLiangJianCe) JSONObject.toBean(
+				jsonObject, GongDanCheLiangJianCe.class);
+		int rowAffected = gongDanService.updateGongDanCheLiangJianCeRow(item);
 		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
 
 		this.transmitJson(jsonStr);
@@ -202,6 +240,12 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 		String jsonStr = getCrudJsonResponse(rowAffected, "新增");
 
 		this.transmitJson(jsonStr);
+	}
+
+	@Action(value = "queryGongDanCheLiangJianCe")
+	public void queryGongDanCheLiangJianCe() {
+		this.transmitJson(easyUiJSonData = gongDanService
+				.getGongDanCheLiangJianCeEasyUiJSonByGongDanId(saleAfterWeiXiuGuid));
 	}
 
 	@Action(value = "queryGongDanWeiXiuWuLiao")

@@ -12,11 +12,13 @@ public class GongDanWeiXiuXiangMu {
 	private String txtWeiXiuNeiRong;
 	private float txtFeiYong;
 	private String ddlZhangTao;
+	private String txtRemark;
 	private String txtBanZu;
 	private String txtZhuXiuRen;
 	private String txtWanJianStatus;
 	private String txtWanJianRen;
-	private String txtWanJianShiJian;
+	private String txtWanJianShiJian;	
+	
 
 	public GongDanWeiXiuXiangMu() {
 
@@ -30,6 +32,7 @@ public class GongDanWeiXiuXiangMu {
 		this.txtGongDuanName = item.getDdlGongDuan();
 		this.txtFeiYong = item.getTxtFeiYong();
 		this.txtWeiXiuNeiRong = item.getTxtNeiRong();
+		this.ddlZhangTao = "付费";
 	}
 
 	public String getTxtWeiXiuXiangMuId() {
@@ -94,6 +97,14 @@ public class GongDanWeiXiuXiangMu {
 
 	public void setDdlZhangTao(String ddlZhangTao) {
 		this.ddlZhangTao = ddlZhangTao;
+	}
+
+	public String getTxtRemark() {
+		return txtRemark;
+	}
+
+	public void setTxtRemark(String txtRemark) {
+		this.txtRemark = txtRemark;
 	}
 
 	public String getTxtBanZu() {

@@ -6,6 +6,8 @@ import com.chiefmech.arms.entity.view.VKeHuCheLiang;
 public class GongDan {
 	/** 工单唯一编号 */
 	private String txtGongDanId;
+	/** 所属店铺 */
+	private String ddlDianPu;
 	/** 客户id */
 	private String txtCustId;
 	/** 车辆id */
@@ -485,6 +487,14 @@ public class GongDan {
 
 	public void setDdlChengBaoGongSi(String ddlChengBaoGongSi) {
 		this.ddlChengBaoGongSi = ddlChengBaoGongSi;
+	}
+
+	public String getDdlDianPu() {
+		return ddlDianPu;
+	}
+
+	public void setDdlDianPu(String ddlDianPu) {
+		this.ddlDianPu = ddlDianPu;
 	}
 
 	public String getTxtGongShiZheHou() {

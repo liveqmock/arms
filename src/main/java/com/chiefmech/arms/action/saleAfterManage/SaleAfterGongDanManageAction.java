@@ -43,6 +43,7 @@ public class SaleAfterGongDanManageAction extends BaseActionSupport
 
 	@Override
 	public SaleAfterGongDanSearchBean getModel() {
+		query.setDdlDianPu(this.getUser().getJigouName());
 		return query;
 	}
 

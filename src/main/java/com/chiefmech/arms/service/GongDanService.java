@@ -3,6 +3,7 @@ package com.chiefmech.arms.service;
 import java.util.List;
 
 import com.chiefmech.arms.entity.GongDan;
+import com.chiefmech.arms.entity.GongDanCheLiangJianCe;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
 import com.chiefmech.arms.entity.KuCun;
@@ -65,4 +66,11 @@ public interface GongDanService {
 			String saleAfterWeiXiuGuid);
 
 	public String queryZhuXiuRen(String weiXiuBanZu);
+
+	public String getGongDanCheLiangJianCeEasyUiJSonByGongDanId(
+			String saleAfterWeiXiuGuid);
+
+	public int insertCheLiangJianCe(GongDanCheLiangJianCe item);
+
+	public int updateGongDanCheLiangJianCeRow(GongDanCheLiangJianCe item);
 }

@@ -33,7 +33,7 @@ td {
 		</tr>
 	</table>
 	<form name="fmSearch" method="post" id="fmSearch">
-		<table id="searchPanel" class="searchPanel" style="display: none;">
+		<table id="searchPanel" class="searchPanel" style="display: block;">
 			<tr>
 				<td>项目编号:</td>
 				<td><input name="txtCode" type="text" maxlength="20"
@@ -47,14 +47,12 @@ td {
 					data-options="editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuGongDuanOption.action'"
 					style="width: 120px;" /></td>
 				<td><a id="lnkSearch" class="easyui-linkbutton"
-					href="javascript:doSearch()">查询项目</a>&nbsp;&nbsp;&nbsp;<a
-					id="lnkSearch" class="easyui-linkbutton"
-					href="javascript:clearSearchFrm()">清空查询</a></td>
+					href="javascript:doSearch()">查询项目</a></td>
 			</tr>
 		</table>
 	</form>
 	<table id="mydg" class="easyui-datagrid"
-		data-options="url:'weiXiuXiangMuSearch.action',
+		data-options="url:'weiXiuXiangMuSearch.action?action=<s:property value='action' />',
 							rownumbers:true,
 							<s:if test="action=='addXiangMu'">singleSelect:true,</s:if>
 							toolbar:'#toolbar',
@@ -64,11 +62,15 @@ td {
 				<s:if test="action=='pickXiangMu'">
 					<th field="ck" checkbox="true" width="20"></th>
 				</s:if>
-				<th width="100" data-options="field:'ddlGongDuan'">所属工段</th>
+                <s:if test="action=='addXiangMu'">
+					<th width="150" data-options="field:'ddlDianPu'">所属店铺</th>
+				</s:if>
+				<th width="80" data-options="field:'ddlGongDuan'">所属工段</th>
 				<th width="100" data-options="field:'txtCode'">项目编号</th>
-				<th width="100" data-options="field:'txtName'">项目名称</th>
-				<th width="80" data-options="field:'txtFeiYong'">费用</th>
+				<th width="150" data-options="field:'txtName'">项目名称</th>
 				<th width="250" data-options="field:'txtNeiRong'">维修内容</th>
+				<th width="80" data-options="field:'txtFeiYong'">费用</th>
+				<th width="100" data-options="field:'txtRemark'">备注</th>
 				<s:if test="action=='addXiangMu'">
 					<th field="action" width="100" align="center"
 						formatter="formatAction">操作</th>
@@ -84,10 +86,8 @@ td {
 		<s:if test="action=='pickXiangMu'">
 			<a href="javascript:void(0)" class="easyui-linkbutton"
 				data-options="iconCls:'icon-add',plain:true"
-				onClick="addCheckedItems()">添加选中维修项目</a>
+				onClick="addCheckedXiangMu()">添加选中维修项目</a>
 		</s:if>
-		<a href="javascript:void(0)" class="easyui-linkbutton"
-			iconCls="icon-search" plain="true" onclick="toggleSearchPanel()">查询</a>
 	</div>
 	<div id="mydlg" class="easyui-dialog" closed="true"
 		style="width: 450px; height: 300px; padding: 10px 20px;">
@@ -104,6 +104,11 @@ td {
 						class="easyui-textbox" data-options="required:true" /></td>
 				</tr>
 				<tr>
+					<td><span class="requireSpan">*&nbsp;</span>维修内容:</td>
+					<td><input name="txtNeiRong" type="text" id="txtNeiRong"
+						class="easyui-textbox" data-options="required:true" /></td>
+				</tr>
+				<tr>
 					<td><span class="requireSpan">*&nbsp;</span>费用:</td>
 					<td><input name="txtFeiYong" type="text" id="txtFeiYong"
 						class="easyui-numberbox"
@@ -116,9 +121,15 @@ td {
 						data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuGongDuanOption.action'" /></td>
 				</tr>
 				<tr>
-					<td><span class="requireSpan">*&nbsp;</span>维修内容:</td>
-					<td><input name="txtNeiRong" type="text" id="txtNeiRong"
-						class="easyui-textbox" data-options="required:true" /></td>
+					<td><span class="requireSpan">*&nbsp;</span>所属店铺:</td>
+					<td><input name="ddlDianPu" id="ddlDianPu"
+						class="easyui-combobox"
+						data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/jiGouOption.action'" /></td>
+				</tr>
+				<tr>
+					<td><span class="requireSpan">*&nbsp;</span>备注:</td>
+					<td><input name="txtRemark" type="text" id="txtRemark"
+						class="easyui-textbox"/></td>
 				</tr>
 				<tr>
 					<td colspan="2">&nbsp;</td>
@@ -187,7 +198,7 @@ td {
 		</s:if>
 
 		<s:if test="action=='pickXiangMu'">
-		function addCheckedItems() {
+		function addCheckedXiangMu() {
 			var checkedRows = $('#mydg').datagrid('getChecked');
 			if (checkedRows.length == 0) {
 				$.messager.alert('提示', '请先选中要插入的维修项目');
@@ -208,7 +219,7 @@ td {
 
 		function doSearch() {
 			$("#fmSearch").form('submit', {
-				url : "weiXiuXiangMuSearch.action",
+				url : "weiXiuXiangMuSearch.action?action=<s:property value='action' />",
 				success : function(jsonStr) {
 					$('#mydg').datagrid('loadData', $.parseJSON(jsonStr));
 				}

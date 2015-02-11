@@ -38,7 +38,7 @@ public class SaleAftertaoCanManageAction extends BaseActionSupport implements Mo
 	}
 
 	@Action(value = "TaoCanSearch")
-	public void weiXiuXiangMuSearch() {
+	public void TaoCanSearch() {
 		this.transmitJson(taoCanService.getTaoCanEasyUiJSon(item,
 				page, rows));
 	}

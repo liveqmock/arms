@@ -25,7 +25,7 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/webSetup")
 @Controller()
 @Scope("prototype")
-public class WeiXiuXiangMunanagerAction extends BaseActionSupport
+public class WeiXiuXiangMunanageAction extends BaseActionSupport
 		implements
 			ModelDriven<WeiXiuXiangMu> {
 
@@ -46,14 +46,11 @@ public class WeiXiuXiangMunanagerAction extends BaseActionSupport
 		return INPUT;
 	}
 
-	@Action(value = "queryWeiXiuXiangMu")
-	public void queryWeiXiuXiangMu() {
-		this.transmitJson(weiXiuXiangMuService.getWeiXiuXiangMuEasyUiJSon(item,
-				page, rows));
-	}
-
 	@Action(value = "weiXiuXiangMuSearch")
 	public void weiXiuXiangMuSearch() {
+		if ("pickXiangMu".equals(action)) {
+			item.setDdlDianPu(this.getUser().getJigouName());
+		}
 		this.transmitJson(weiXiuXiangMuService.getWeiXiuXiangMuEasyUiJSon(item,
 				page, rows));
 	}

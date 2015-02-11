@@ -84,7 +84,7 @@ td,div {
 		<table border="0"
 			style="width: 100%; border-bottom: 2px dotted #dddddd;">
 			<tr>
-				<td class="titlebg"><span>售后管理</span> (<span class="titleSpan1"></span>)</td>
+				<td class="titlebg"><span>维修接待</span> (<span class="titleSpan1"></span>)</td>
 				<td align="right"
 					style="padding-right: 20px; color: Blue; font-weight: bold;">
 					维修单号:<s:property value='gongDan.txtBillNo' />&nbsp;车牌号:<s:property
@@ -99,12 +99,13 @@ td,div {
 	<div id="tabs" class="tabs">
 		<ul>
 			<li id="tab0"><a href="javascript:void(0)" onClick="show(0)">维修接待</a></li>
-			<li id="tab1"><a href="javascript:void(0)" onClick="show(1)">选取物料</a></li>
-			<li id="tab2"><a href="javascript:void(0)" onClick="show(2)">维修派工</a></li>
-			<li id="tab3"><a href="javascript:void(0)" onClick="show(3)">领取物料</a></li>
-			<li id="tab4"><a href="javascript:void(0)" onClick="show(4)">维修完检</a></li>
-			<li id="tab5"><a href="javascript:void(0)" onClick="show(5)">费用结算</a></li>
-			<li id="tab6"><a href="javascript:void(0)" onClick="show(6)">维修历史</a></li>
+			<li id="tab1"><a href="javascript:void(0)" onClick="show(1)">车辆检测</a></li>
+			<li id="tab2"><a href="javascript:void(0)" onClick="show(2)">物料采购</a></li>
+			<li id="tab3"><a href="javascript:void(0)" onClick="show(3)">维修派工</a></li>
+			<li id="tab4"><a href="javascript:void(0)" onClick="show(4)">领取物料</a></li>
+			<li id="tab5"><a href="javascript:void(0)" onClick="show(5)">维修完检</a></li>
+			<li id="tab6"><a href="javascript:void(0)" onClick="show(6)">费用结算</a></li>
+			<li id="tab7"><a href="javascript:void(0)" onClick="show(7)">维修历史</a></li>
 
 		</ul>
 
@@ -121,7 +122,8 @@ td,div {
 	var cheLiangId = "<s:property value='cheLiangId' />";
 	var saleAfterWeiXiuGuid = "<s:property value='saleAfterWeiXiuGuid' />";
 	var tabInfo = [ [ 'gongDanWeiXiuJieDai.action', '维修接待' ],
-			[ 'gongDanWuLiaoXuanQu.action', '选取物料' ],
+			[ 'gongDanCheLiangJianCe.action', '车辆检测' ],
+			[ 'gongDanWuLiaoCaiGou.action', '物料采购' ],
 			[ 'gongDanWeiXiuPaiGong.action', '维修派工' ],
 			[ 'gongDanLingQuWuLiao.action', '领取物料' ],
 			[ 'gongDanWeiXiuWanJian.action', '维修完检' ],

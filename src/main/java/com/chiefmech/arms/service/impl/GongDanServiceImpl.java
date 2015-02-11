@@ -13,6 +13,7 @@ import com.chiefmech.arms.dao.GongDanDao;
 import com.chiefmech.arms.dao.WeiXiuWuLiaoDao;
 import com.chiefmech.arms.dao.WeiXiuXiangMuDao;
 import com.chiefmech.arms.entity.GongDan;
+import com.chiefmech.arms.entity.GongDanCheLiangJianCe;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
 import com.chiefmech.arms.entity.KuCun;
@@ -125,7 +126,6 @@ public class GongDanServiceImpl implements GongDanService {
 		}
 		return rowAffected;
 	}
-
 	@Override
 	public int deleteGongDanWeiXiuXiangMu(String txtWeiXiuXiangMuId) {
 		return gongDanDao.deleteGongDanWeiXiuXiangMu(txtWeiXiuXiangMuId);
@@ -160,6 +160,19 @@ public class GongDanServiceImpl implements GongDanService {
 	@Override
 	public int deleteGongDanWeiXiuWuLiao(String txtWeiXiuWuLiaoId) {
 		return gongDanDao.deleteGongDanWeiXiuWuLiao(txtWeiXiuWuLiaoId);
+	}
+
+	@Override
+	public String getGongDanCheLiangJianCeEasyUiJSonByGongDanId(
+			String txtGongDanId) {
+		List<GongDanCheLiangJianCe> lst = gongDanDao
+				.getGongDanCheLiangJianCeListByGongDanId(txtGongDanId);
+		int total = lst.size();
+
+		String lstJson = JSONArray.fromObject(lst).toString();
+		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
+				lstJson);
+		return jsonStr;
 	}
 
 	@Override
@@ -230,6 +243,16 @@ public class GongDanServiceImpl implements GongDanService {
 	@Override
 	public String queryZhuXiuRen(String weiXiuBanZu) {
 		return gongDanDao.queryZhuXiuRen(weiXiuBanZu);
+	}
+
+	@Override
+	public int insertCheLiangJianCe(GongDanCheLiangJianCe item) {
+		return gongDanDao.insertCheLiangJianCe(item);
+	}
+
+	@Override
+	public int updateGongDanCheLiangJianCeRow(GongDanCheLiangJianCe item) {
+		return gongDanDao.updateCheLiangJianCe(item);
 	}
 
 }

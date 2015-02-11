@@ -121,10 +121,13 @@
 		function editCustomerInfo(customerId) {
 			var url = '../customManage/customerInfo.action?customerId='
 					+ customerId + '&d=' + new Date();
-			var name = '客户信息';
+			/*var name = '客户信息';
 			var features = 'height=550,width=730,center=yes,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no, status=no';
 			var z = window.open(url, name, features);
-			z.focus();
+			z.focus();*/
+			var sFeatures = "dialogWidth:730px;dialogHeight:550px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
+			window.showModalDialog(url, window, sFeatures);
+			myTable.datagrid('reload');
 		}
 
 		function showWeiXiuLiShiList() {

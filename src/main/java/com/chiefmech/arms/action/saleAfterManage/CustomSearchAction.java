@@ -41,6 +41,7 @@ public class CustomSearchAction extends BaseActionSupport
 
 	@Override
 	public SaleAfterCustomSearchBean getModel() {
+		query.setDdlDianPu(this.getUser().getJigouName());
 		return query;
 	}
 

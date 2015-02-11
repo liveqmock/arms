@@ -9,15 +9,38 @@ public class SaleAfterGongDanSearchBean extends SearchBean {
 	private String txtXieYiBillNo;
 	private String txtVin;
 	private String txtGongDanStatus;
-	private String ddlWeiXiuSort;
+	private String txtCustSort;
 	private String txtChuChangDate1;
 	private String txtChuChangDate2;
 	private String txtChePaiHao;
 	private String txtCheZhuName;
 	private String txtCheZhuTel;
-	private String txtFuWuUserId;
+	private String txtFuWuGuWen;
+	private String ddlDianPu;
 	private int start = 1;
 	private int rows = 15;
+
+	@Override
+	public void initSearchFields() {
+		this.addField(new Criteria(Action.STR_BETWEEN, "txtRuChangDate",
+				txtRuChangDate1, txtRuChangDate2));
+		this.addField(new Criteria(Action.STR_BETWEEN, "txtChuChangDate",
+				txtChuChangDate1, txtChuChangDate2));
+		this.addField(new Criteria(Action.LIKE, "txtBillNo", txtBillNo));
+		this.addField(new Criteria(Action.LIKE, "txtXieYiBillNo",
+				txtXieYiBillNo));
+		this.addField(new Criteria(Action.LIKE, "txtVin", txtVin));
+		this.addField(new Criteria(Action.LIKE, "txtGongDanStatus",
+				txtGongDanStatus));
+		this.addField(new Criteria(Action.STR_EQUAL, "txtCustSort", txtCustSort));
+		this.addField(new Criteria(Action.LIKE, "txtChePaiHao", txtChePaiHao));
+		this.addField(new Criteria(Action.LIKE, "txtCheZhuName", txtCheZhuName));
+		this.addField(new Criteria(Action.LIKE, "txtCheZhuTel", txtCheZhuTel));
+		this.addField(new Criteria(Action.LIKE, "txtFuWuGuWen", txtFuWuGuWen));
+		this.addField(new Criteria(Action.STR_EQUAL, "ddlDianPu", ddlDianPu));
+		this.addLimitInfo(this.getStart(), this.getRows());
+	}
+
 	public String getTxtRuChangDate1() {
 		return txtRuChangDate1;
 	}
@@ -66,12 +89,14 @@ public class SaleAfterGongDanSearchBean extends SearchBean {
 	public void setTxtGongDanStatus(String txtGongDanStatus) {
 		this.txtGongDanStatus = txtGongDanStatus;
 	}
-	public String getDdlWeiXiuSort() {
-		return ddlWeiXiuSort;
+	public String getTxtCustSort() {
+		return txtCustSort;
 	}
-	public void setDdlWeiXiuSort(String ddlWeiXiuSort) {
-		this.ddlWeiXiuSort = ddlWeiXiuSort;
+
+	public void setTxtCustSort(String txtCustSort) {
+		this.txtCustSort = txtCustSort;
 	}
+
 	public String getTxtChePaiHao() {
 		return txtChePaiHao;
 	}
@@ -90,11 +115,17 @@ public class SaleAfterGongDanSearchBean extends SearchBean {
 	public void setTxtCheZhuTel(String txtCheZhuTel) {
 		this.txtCheZhuTel = txtCheZhuTel;
 	}
-	public String getTxtFuWuUserId() {
-		return txtFuWuUserId;
+	public String getTxtFuWuGuWen() {
+		return txtFuWuGuWen;
 	}
-	public void setTxtFuWuUserId(String txtFuWuUserId) {
-		this.txtFuWuUserId = txtFuWuUserId;
+	public void setTxtFuWuGuWen(String txtFuWuGuWen) {
+		this.txtFuWuGuWen = txtFuWuGuWen;
+	}
+	public String getDdlDianPu() {
+		return ddlDianPu;
+	}
+	public void setDdlDianPu(String ddlDianPu) {
+		this.ddlDianPu = ddlDianPu;
 	}
 	public int getStart() {
 		return start;
@@ -107,25 +138,6 @@ public class SaleAfterGongDanSearchBean extends SearchBean {
 	}
 	public void setRows(int rows) {
 		this.rows = rows;
-	}
-	@Override
-	public void initSearchFields() {
-		this.addField(new Criteria(Action.STR_BETWEEN, "txtRuChangDate",
-				txtRuChangDate1, txtRuChangDate2));
-		this.addField(new Criteria(Action.STR_BETWEEN, "txtChuChangDate",
-				txtChuChangDate1, txtChuChangDate2));
-		this.addField(new Criteria(Action.LIKE, "txtBillNo", txtBillNo));
-		this.addField(new Criteria(Action.LIKE, "txtXieYiBillNo",
-				txtXieYiBillNo));
-		this.addField(new Criteria(Action.LIKE, "txtVin", txtVin));
-		this.addField(new Criteria(Action.LIKE, "txtGongDanStatus",
-				txtGongDanStatus));
-		this.addField(new Criteria(Action.LIKE, "ddlWeiXiuSort", ddlWeiXiuSort));
-		this.addField(new Criteria(Action.LIKE, "txtChePaiHao", txtChePaiHao));
-		this.addField(new Criteria(Action.LIKE, "txtCheZhuName", txtCheZhuName));
-		this.addField(new Criteria(Action.LIKE, "txtCheZhuTel", txtCheZhuTel));
-		this.addField(new Criteria(Action.LIKE, "txtFuWuUserId", txtFuWuUserId));
-		this.addLimitInfo(this.getStart(), this.getRows());
 	}
 
 }

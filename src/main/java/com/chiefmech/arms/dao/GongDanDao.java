@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.chiefmech.arms.dao.sqlprovider.GongDanDaoSqlProvider;
 import com.chiefmech.arms.entity.GongDan;
+import com.chiefmech.arms.entity.GongDanCheLiangJianCe;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
 import com.chiefmech.arms.entity.footer.GongDanWeiXiuWuLiaoFooter;
@@ -23,7 +24,7 @@ public interface GongDanDao {
 	@Select("select * from gongdan where txtGongDanId=#{txtGongDanId}")
 	public GongDan findGongDanByWeiXiuGuid(String txtGongDanId);
 
-	@Insert("insert into gongdan(txtGongDanId,txtCustId,txtCheLiangId,txtGongDanStatus,txtChePaiHao,txtLiCheng,txtVin,txtFaDongJiHao,txtChangJiaPinPai,txtCheXiName,txtCheXingDaiMa,txtCustSort,txtCheZhuName,txtCheZhuTel,txtHuiYuanDengJi,txtLianXiRenName,txtLianXiRenTel,txtLianXiRenAdd,txtBillNo,txtXieYiBillNo,txtRuChangDate,txtYuChuChangDate,txtFuWuGuWen,txtGongShiDiYongQuan,txtCaiLiaoDiYongQuan,txtNewLiCheng,txtNewRuChangDate,txtJiaoXiuReason,txtGuZhangReason,txtWeiXiuCuoShi,txtYuYueId,txtJieSuanDate,txtChuChangDate,txtGongShiZheKou,txtCaiLiaoZheKou,txtCheLiangDengJiRiQi,txtCheLiangNianShenDaoQiRi,txtCheLiangBaoXianDaoQiRi,ddlChengBaoGongSi) values(#{txtGongDanId},#{txtCustId},#{txtCheLiangId},#{txtGongDanStatus},#{txtChePaiHao},#{txtLiCheng},#{txtVin},#{txtFaDongJiHao},#{txtChangJiaPinPai},#{txtCheXiName},#{txtCheXingDaiMa},#{txtCustSort},#{txtCheZhuName},#{txtCheZhuTel},#{txtHuiYuanDengJi},#{txtLianXiRenName},#{txtLianXiRenTel},#{txtLianXiRenAdd},#{txtBillNo},#{txtXieYiBillNo},#{txtRuChangDate},#{txtYuChuChangDate},#{txtFuWuGuWen},#{txtGongShiDiYongQuan},#{txtCaiLiaoDiYongQuan},#{txtNewLiCheng},#{txtNewRuChangDate},#{txtJiaoXiuReason},#{txtGuZhangReason},#{txtWeiXiuCuoShi},#{txtYuYueId},#{txtJieSuanDate},#{txtChuChangDate},#{txtGongShiZheKou},#{txtCaiLiaoZheKou},#{txtCheLiangDengJiRiQi},#{txtCheLiangNianShenDaoQiRi},#{txtCheLiangBaoXianDaoQiRi},#{ddlChengBaoGongSi})")
+	@Insert("insert into gongdan(txtGongDanId,ddlDianPu,txtCustId,txtCheLiangId,txtGongDanStatus,txtChePaiHao,txtLiCheng,txtVin,txtFaDongJiHao,txtChangJiaPinPai,txtCheXiName,txtCheXingDaiMa,txtCustSort,txtCheZhuName,txtCheZhuTel,txtHuiYuanDengJi,txtLianXiRenName,txtLianXiRenTel,txtLianXiRenAdd,txtBillNo,txtXieYiBillNo,txtRuChangDate,txtYuChuChangDate,txtFuWuGuWen,txtGongShiDiYongQuan,txtCaiLiaoDiYongQuan,txtNewLiCheng,txtNewRuChangDate,txtJiaoXiuReason,txtGuZhangReason,txtWeiXiuCuoShi,txtYuYueId,txtJieSuanDate,txtChuChangDate,txtGongShiZheKou,txtCaiLiaoZheKou,txtCheLiangDengJiRiQi,txtCheLiangNianShenDaoQiRi,txtCheLiangBaoXianDaoQiRi,ddlChengBaoGongSi) values(#{txtGongDanId},#{ddlDianPu},#{txtCustId},#{txtCheLiangId},#{txtGongDanStatus},#{txtChePaiHao},#{txtLiCheng},#{txtVin},#{txtFaDongJiHao},#{txtChangJiaPinPai},#{txtCheXiName},#{txtCheXingDaiMa},#{txtCustSort},#{txtCheZhuName},#{txtCheZhuTel},#{txtHuiYuanDengJi},#{txtLianXiRenName},#{txtLianXiRenTel},#{txtLianXiRenAdd},#{txtBillNo},#{txtXieYiBillNo},#{txtRuChangDate},#{txtYuChuChangDate},#{txtFuWuGuWen},#{txtGongShiDiYongQuan},#{txtCaiLiaoDiYongQuan},#{txtNewLiCheng},#{txtNewRuChangDate},#{txtJiaoXiuReason},#{txtGuZhangReason},#{txtWeiXiuCuoShi},#{txtYuYueId},#{txtJieSuanDate},#{txtChuChangDate},#{txtGongShiZheKou},#{txtCaiLiaoZheKou},#{txtCheLiangDengJiRiQi},#{txtCheLiangNianShenDaoQiRi},#{txtCheLiangBaoXianDaoQiRi},#{ddlChengBaoGongSi})")
 	public int insertWeiXiuJieDai(GongDan item);
 
 	@Update("update gongdan set txtBillNo=#{txtBillNo},txtGongShiDiYongQuan=#{txtGongShiDiYongQuan},txtCaiLiaoDiYongQuan=#{txtCaiLiaoDiYongQuan},txtRuChangDate=#{txtRuChangDate},txtYuChuChangDate=#{txtYuChuChangDate},txtLiCheng=#{txtLiCheng},txtNewLiCheng=#{txtNewLiCheng},txtNewRuChangDate=#{txtNewRuChangDate},txtXieYiBillNo=#{txtXieYiBillNo},txtJiaoXiuReason=#{txtJiaoXiuReason},txtGuZhangReason=#{txtGuZhangReason},txtWeiXiuCuoShi=#{txtWeiXiuCuoShi} where txtGongDanId=#{txtGongDanId}")
@@ -43,7 +44,7 @@ public interface GongDanDao {
 	@Insert("insert into gongdanxiangmu(txtWeiXiuXiangMuId,txtGongDanGuid,txtXiangMuCode,txtXiangMuName,txtFeiYong,txtGongDuanName,txtWeiXiuNeiRong,ddlZhangTao) values(#{txtWeiXiuXiangMuId},#{txtGongDanGuid},#{txtXiangMuCode},#{txtXiangMuName},#{txtFeiYong},#{txtGongDuanName},#{txtWeiXiuNeiRong},#{ddlZhangTao})")
 	public int insertGongDanWeiXiuXiangMu(GongDanWeiXiuXiangMu item);
 
-	@Update("update gongdanxiangmu set txtGongDuanName=#{txtGongDuanName},txtFeiYong=#{txtFeiYong},ddlZhangTao=#{ddlZhangTao} where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
+	@Update("update gongdanxiangmu set txtGongDuanName=#{txtGongDuanName},txtFeiYong=#{txtFeiYong},ddlZhangTao=#{ddlZhangTao},txtRemark=#{txtRemark} where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
 	public int updateGongDanWeiXiuXiangMuWhenZhiZuo(GongDanWeiXiuXiangMu item);
 
 	@Update("update gongdanxiangmu set txtBanZu=#{txtBanZu},txtZhuXiuRen=#{txtZhuXiuRen} where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
@@ -107,5 +108,15 @@ public interface GongDanDao {
 
 	@Select("select zhuxiuRen from weixiuzu where weixiuzuName=#{weixiuzuName}")
 	public String queryZhuXiuRen(String weixiuzuName);
+
+	@Select("select * from gongdanjiance where txtGongDanGuid=#{txtGongDanGuid} order by txtXuHao asc")
+	public List<GongDanCheLiangJianCe> getGongDanCheLiangJianCeListByGongDanId(
+			String txtGongDanId);
+
+	@Insert("insert into gongdanjiance(txtJianceGuid,txtGongDanGuid,txtXuHao,txtNeiRong,txtZhuangTai,txtRemark) values(#{txtJianceGuid},#{txtGongDanGuid},#{txtXuHao},#{txtNeiRong},#{txtZhuangTai},#{txtRemark})")
+	public int insertCheLiangJianCe(GongDanCheLiangJianCe item);
+
+	@Update("update gongdanjiance set txtZhuangTai=#{txtZhuangTai},txtRemark=#{txtRemark} where txtJianceGuid=#{txtJianceGuid}")
+	public int updateCheLiangJianCe(GongDanCheLiangJianCe item);
 
 }
