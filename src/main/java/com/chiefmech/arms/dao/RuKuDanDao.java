@@ -13,17 +13,17 @@ import org.springframework.stereotype.Repository;
 import com.chiefmech.arms.dao.sqlprovider.RuKuDanDaoSqlProvider;
 import com.chiefmech.arms.entity.RuKuDan;
 import com.chiefmech.arms.entity.RuKuDanWuLiao;
-import com.chiefmech.arms.entity.query.RuKuDanSearchBean;
+import com.chiefmech.arms.entity.query.CaiGouWuLiaoSearchBean;
 import com.chiefmech.arms.entity.view.VCaiGouWuLiao;
 
 @Repository("ruKuDanDao")
 public interface RuKuDanDao {
 
 	@SelectProvider(type = RuKuDanDaoSqlProvider.class, method = "getVCaiGouWuLiaoList")
-	public List<VCaiGouWuLiao> getVCaiGouWuLiaoList(@Param("item") RuKuDanSearchBean query);
+	public List<VCaiGouWuLiao> getVCaiGouWuLiaoList(@Param("item") CaiGouWuLiaoSearchBean query);
 
 	@SelectProvider(type = RuKuDanDaoSqlProvider.class, method = "getVCaiGouWuLiaoListCount")
-	public int getVCaiGouWuLiaoListCount(@Param("item") RuKuDanSearchBean query);
+	public int getVCaiGouWuLiaoListCount(@Param("item") CaiGouWuLiaoSearchBean query);
 
 	@Select("select concat(date_format(now(),'%Y%m%d'),LPAD(ifnull(max(right(txtBillNo,3)+1),1),3,'0')) newTxtBillNo from rukudan where txtBillNo like date_format(now(),'____%Y%m%d%%')")
 	public String getNewBillNo();

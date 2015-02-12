@@ -51,10 +51,10 @@ td {
 							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','维修接待');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
 						<a
-							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','物料采购');return false;"
-							class="easyui-linkbutton" href="javascript:void(0)">物料采购</a>
+							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','物料登记');return false;"
+							class="easyui-linkbutton" href="javascript:void(0)">物料登记</a>
 					</s:if> <s:if
-						test="gongDanStatus=='物料采购' && actionName=='gongDanWuLiaoCaiGou'">
+						test="gongDanStatus=='物料登记' && actionName=='gongDanWuLiaoDengJi'">
 						<a
 							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','车辆检测');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
@@ -64,7 +64,7 @@ td {
 					</s:if> <s:if
 						test="gongDanStatus=='维修派工' && actionName=='gongDanWeiXiuPaiGong'">
 						<a
-							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','物料采购');return false;"
+							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','物料登记');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
 						<a
 							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','领取物料');return false;"
@@ -288,7 +288,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 						<th field="ddlZhangTao" width="80"
 							<s:if test="actionName in {'gongDanWeiXiuJieDai', 'gongDanCheLiangJianCe'}">
 						data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/zhangTaoOption.action'}}"</s:if>>帐套</th>
-						<s:if test="actionName in {'gongDanWeiXiuJieDai','gongDanWuLiaoCaiGou','gongDanCheLiangJianCe'}">
+						<s:if test="actionName in {'gongDanWeiXiuJieDai','gongDanWuLiaoDengJi','gongDanCheLiangJianCe'}">
                         <th field="txtRemark" width="150"					
 						data-options="editor:{type:'textbox'}">备注</th>
                         </s:if>
@@ -326,7 +326,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			<div style="height: 10px;"></div>
 		</s:if>
 		<s:if
-			test="actionName in {'gongDanWuLiaoCaiGou', 'gongDanLingQuWuLiao', 'gongDanWeiXiuJieSuan'}">
+			test="actionName in {'gongDanWuLiaoDengJi', 'gongDanLingQuWuLiao', 'gongDanWeiXiuJieSuan'}">
 			<table id="datagridWuLiao" class="easyui-datagrid"
 				data-options="url:'queryGongDanWeiXiuWuLiao.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />',toolbar:'#tb2',singleSelect:true,rownumbers:true,showFooter:true">
 				<thead>
@@ -343,7 +343,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 						<th field="ddlStatus" width="60">状态</th>
 						<th field="txtRemark" width="100" data-options="editor:{type:'textbox'}">备注</th>
 						<s:if
-							test="(gongDanStatus=='物料采购' && actionName=='gongDanWuLiaoCaiGou') || (gongDanStatus=='领取物料' && actionName=='gongDanLingQuWuLiao')">
+							test="(gongDanStatus=='物料登记' && actionName=='gongDanWuLiaoDengJi') || (gongDanStatus=='领取物料' && actionName=='gongDanLingQuWuLiao')">
 							<th field="action" width="150" align="center"
 								formatter="formatAction2">操作</th>
 						</s:if>
@@ -352,7 +352,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			</table>
 		</s:if>
 		<s:if
-			test="gongDanStatus=='物料采购' && actionName=='gongDanWuLiaoCaiGou'">
+			test="gongDanStatus=='物料登记' && actionName=='gongDanWuLiaoDengJi'">
 			<div id="tb2" style="height: auto">
 				<a href="javascript:void(0)" class="easyui-linkbutton"
 					data-options="iconCls:'icon-add',plain:true"
@@ -362,7 +362,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 					onClick="addWulaoFromCaiGou()">添加采购物料</a>
 				<a href="javascript:void(0)" class="easyui-linkbutton"
 					data-options="iconCls:'icon-add',plain:true"
-					onClick="openRuKuDan()">物料采购</a>
+					onClick="openRuKuDan()">临时采购</a>
 			</div>
 		</s:if>
 		<s:if test="actionName=='gongDanWeiXiuJieSuan'">
@@ -610,7 +610,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 		function addWulaoFromKuCun() {
 			var sURL = "<s:property value='basePath' />/storeOtherManage/kuCunManage.action?action=addWuLiao&saleAfterWeiXiuGuid="
 					+ saleAfterGuid + "&d=" + new Date();
-			var sFeatures = "dialogWidth:900px;dialogHeight:700px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
+			var sFeatures = "dialogWidth:800px;dialogHeight:600px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
 			window.showModalDialog(sURL, window, sFeatures);
 			myTable2.datagrid('reload');
 		}
@@ -618,7 +618,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 		function addWulaoFromCaiGou() {
 			var sURL = "<s:property value='basePath' />/storeOtherManage/storeOtherInsertBillManage.action?action=addWuLiao&saleAfterWeiXiuGuid="
 					+ saleAfterGuid + "&d=" + new Date();
-			var sFeatures = "dialogWidth:900px;dialogHeight:700px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
+			var sFeatures = "dialogWidth:800px;dialogHeight:600px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
 			window.showModalDialog(sURL, window, sFeatures);
 			myTable2.datagrid('reload');
 		}		
@@ -766,7 +766,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 		
 		 //新增入库单
         function openRuKuDan() {			
-			var sURL = '../storeOtherManage/rukudanDetail.action?flag=1&d=' + new Date()
+			var sURL = '../storeOtherManage/rukudanDetail.action?flag=2&d=' + new Date()
 			var sFeatures = "dialogWidth:960px;dialogHeight:500px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
 			window.showModalDialog(sURL, window, sFeatures);
         }

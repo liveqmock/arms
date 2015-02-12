@@ -17,11 +17,14 @@ public interface WeiXiuXiangMuDao {
 
 	@SelectProvider(type = WeiXiuXiangMuDaoSqlProvider.class, method = "getWeiXiuXiangMuList")
 	public List<WeiXiuXiangMu> getWeiXiuXiangMuList(
+			@Param("txtGongDanId") String saleAfterGuid,
 			@Param("item") WeiXiuXiangMu query, @Param("page") int page,
 			@Param("rows") int rows);
 
 	@SelectProvider(type = WeiXiuXiangMuDaoSqlProvider.class, method = "getWeiXiuXiangMuListCount")
-	public int getWeiXiuXiangMuListCount(@Param("item") WeiXiuXiangMu query);
+	public int getWeiXiuXiangMuListCount(
+			@Param("txtGongDanId") String saleAfterGuid,
+			@Param("item") WeiXiuXiangMu query);
 
 	@Insert("insert into weixiuxiangmu(txtGuid,txtCode,txtName,txtNeiRong,txtFeiYong,ddlGongDuan,ddlDianPu,txtRemark) values(#{txtGuid},#{txtCode},#{txtName},#{txtNeiRong},#{txtFeiYong},#{ddlGongDuan},#{ddlDianPu},#{txtRemark})")
 	public int insertItem(WeiXiuXiangMu item);

@@ -10,7 +10,7 @@ public interface WeiXiuXiangMuService {
 
 	public int deleteItem(String id);
 
-	public String getWeiXiuXiangMuEasyUiJSon(WeiXiuXiangMu query, int page,
-			int rows);
+	public String getWeiXiuXiangMuEasyUiJSon(String saleAfterGuid,
+			WeiXiuXiangMu query, int page, int rows);
 
 }

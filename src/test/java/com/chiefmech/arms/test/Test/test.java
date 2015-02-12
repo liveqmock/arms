@@ -13,7 +13,7 @@ import com.chiefmech.arms.entity.JiShiKuCun;
 import com.chiefmech.arms.entity.Maill;
 import com.chiefmech.arms.entity.RuKuDan;
 import com.chiefmech.arms.entity.User;
-import com.chiefmech.arms.entity.query.RuKuDanSearchBean;
+import com.chiefmech.arms.entity.query.CaiGouWuLiaoSearchBean;
 import com.chiefmech.arms.entity.query.KuCunOperLogSearchBean;
 import com.chiefmech.arms.entity.query.WeiXiuChuTuiKuSearchBean;
 import com.chiefmech.arms.entity.view.ZheKouView;

@@ -52,7 +52,7 @@ td {
 		</table>
 	</form>
 	<table id="mydg" class="easyui-datagrid"
-		data-options="url:'weiXiuXiangMuSearch.action?action=<s:property value='action' />',
+		data-options="url:'weiXiuXiangMuSearch.action?saleAfterGuid=<s:property value='saleAfterGuid' />&action=<s:property value='action' />',
 							rownumbers:true,
 							<s:if test="action=='addXiangMu'">singleSelect:true,</s:if>
 							toolbar:'#toolbar',
@@ -219,7 +219,7 @@ td {
 
 		function doSearch() {
 			$("#fmSearch").form('submit', {
-				url : "weiXiuXiangMuSearch.action?action=<s:property value='action' />",
+				url : "weiXiuXiangMuSearch.action?saleAfterGuid=<s:property value='saleAfterGuid' />&action=<s:property value='action' />",
 				success : function(jsonStr) {
 					$('#mydg').datagrid('loadData', $.parseJSON(jsonStr));
 				}

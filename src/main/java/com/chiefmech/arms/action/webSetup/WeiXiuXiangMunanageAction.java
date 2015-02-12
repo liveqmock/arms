@@ -25,9 +25,8 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/webSetup")
 @Controller()
 @Scope("prototype")
-public class WeiXiuXiangMunanageAction extends BaseActionSupport
-		implements
-			ModelDriven<WeiXiuXiangMu> {
+public class WeiXiuXiangMunanageAction extends BaseActionSupport implements
+		ModelDriven<WeiXiuXiangMu> {
 
 	@Resource()
 	private GongDanService gongDanService;
@@ -41,7 +40,7 @@ public class WeiXiuXiangMunanageAction extends BaseActionSupport
 	private int page = 1;
 	private int rows = 10;
 
-	@Action(value = "weiXiuXiangMuManage", results = {@Result(name = "input", location = "weiXiuXiangMuManage.jsp")})
+	@Action(value = "weiXiuXiangMuManage", results = { @Result(name = "input", location = "weiXiuXiangMuManage.jsp") })
 	public String saleAfterWeiXiuXiangMuSet() {
 		return INPUT;
 	}
@@ -51,8 +50,8 @@ public class WeiXiuXiangMunanageAction extends BaseActionSupport
 		if ("pickXiangMu".equals(action)) {
 			item.setDdlDianPu(this.getUser().getJigouName());
 		}
-		this.transmitJson(weiXiuXiangMuService.getWeiXiuXiangMuEasyUiJSon(item,
-				page, rows));
+		this.transmitJson(weiXiuXiangMuService.getWeiXiuXiangMuEasyUiJSon(
+				saleAfterGuid, item, page, rows));
 	}
 
 	@Action(value = "insertWeiXiuXiangMu")
@@ -122,6 +121,7 @@ public class WeiXiuXiangMunanageAction extends BaseActionSupport
 	public void setAction(String action) {
 		this.action = action;
 	}
+
 	public String getSaleAfterGuid() {
 		return saleAfterGuid;
 	}

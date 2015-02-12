@@ -22,6 +22,7 @@ import com.chiefmech.arms.entity.WeiXiuXiangMu;
 import com.chiefmech.arms.entity.footer.GongDanWeiXiuWuLiaoFooter;
 import com.chiefmech.arms.entity.footer.GongDanWeiXiuXiangMuFooter;
 import com.chiefmech.arms.entity.query.SaleAfterGongDanSearchBean;
+import com.chiefmech.arms.entity.view.VCaiGouWuLiao;
 import com.chiefmech.arms.service.GongDanService;
 
 @Service("gongDanService")
@@ -70,19 +71,6 @@ public class GongDanServiceImpl implements GongDanService {
 	}
 
 	@Override
-	public String getWeiXiuXiangMuEasyUiJSon(WeiXiuXiangMu query, int page,
-			int rows) {
-		List<WeiXiuXiangMu> lst = weiXiuXiangMuDao.getWeiXiuXiangMuList(query,
-				page, rows);
-		int total = weiXiuXiangMuDao.getWeiXiuXiangMuListCount(query);
-
-		String lstJson = JSONArray.fromObject(lst).toString();
-		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
-				lstJson);
-		return jsonStr;
-	}
-
-	@Override
 	public int insertGongDanWeiXiuXiangMu(String saleAfterGuid,
 			List<WeiXiuXiangMu> weiXiuXiangMuLst) {
 		boolean isAllItemInserted = true;
@@ -102,7 +90,8 @@ public class GongDanServiceImpl implements GongDanService {
 	}
 
 	@Override
-	public int updateGongDanWeiXiuXiangMuWhenAddXiangMu(GongDanWeiXiuXiangMu item) {
+	public int updateGongDanWeiXiuXiangMuWhenAddXiangMu(
+			GongDanWeiXiuXiangMu item) {
 		return gongDanDao.updateGongDanWeiXiuXiangMuWhenAddXiangMu(item);
 	}
 
@@ -126,6 +115,7 @@ public class GongDanServiceImpl implements GongDanService {
 		}
 		return rowAffected;
 	}
+
 	@Override
 	public int deleteGongDanWeiXiuXiangMu(String txtWeiXiuXiangMuId) {
 		return gongDanDao.deleteGongDanWeiXiuXiangMu(txtWeiXiuXiangMuId);
@@ -212,8 +202,25 @@ public class GongDanServiceImpl implements GongDanService {
 		for (KuCun item : weiXiuWuLiaoLst) {
 			GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao = new GongDanWeiXiuWuLiao(
 					saleAfterGuid, item);
-			gongDanWeiXiuWuLiao.setDdlStatus("未出库");
-			gongDanWeiXiuWuLiao.setDdlZhangTao("免费");
+			rowAffected = gongDanDao
+					.insertGongDanWeiXiuWuLiao(gongDanWeiXiuWuLiao);
+			if (rowAffected != 1) {
+				isAllItemInserted = false;
+				break;
+			}
+		}
+
+		return isAllItemInserted ? 1 : 0;
+	}
+
+	@Override
+	public int addGongDanWeiXiuWuLiaoFromCaiGou(String saleAfterGuid,
+			List<VCaiGouWuLiao> weiXiuWuLiaoLst) {
+		boolean isAllItemInserted = true;
+		int rowAffected = 0;
+		for (VCaiGouWuLiao item : weiXiuWuLiaoLst) {
+			GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao = new GongDanWeiXiuWuLiao(
+					saleAfterGuid, item);
 			rowAffected = gongDanDao
 					.insertGongDanWeiXiuWuLiao(gongDanWeiXiuWuLiao);
 			if (rowAffected != 1) {

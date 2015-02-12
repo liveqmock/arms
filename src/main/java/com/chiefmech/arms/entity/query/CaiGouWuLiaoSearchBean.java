@@ -2,11 +2,14 @@ package com.chiefmech.arms.entity.query;
 
 import com.chiefmech.arms.entity.query.Criteria.Action;
 
-public class RuKuDanSearchBean extends SearchBean {
+public class CaiGouWuLiaoSearchBean extends SearchBean {
+	private String saleAfterWeiXiuGuid;
 	private String txtRuKuDateBegin;
 	private String txtRuKuDateEnd;
+	private String txtRuKuDanGuid;
 	private String txtBillNo;
 	private String txtSuppName;
+	private String ddlRuKuSort;
 	private String txtStatus;
 	private String ddlDianPu;
 	private String txtWuLiaoCode;
@@ -19,12 +22,39 @@ public class RuKuDanSearchBean extends SearchBean {
 		this.addField(new Criteria(Action.STR_BETWEEN, "txtRuKuDate",
 				txtRuKuDateBegin, txtRuKuDateEnd));
 		this.addField(new Criteria(Action.LIKE, "txtBillNo", txtBillNo));
+		this.addField(new Criteria(Action.STR_EQUAL, "txtRuKuDanGuid",
+				txtRuKuDanGuid));
 		this.addField(new Criteria(Action.STR_EQUAL, "txtSuppName", txtSuppName));
+		this.addField(new Criteria(Action.STR_EQUAL, "ddlRuKuSort", ddlRuKuSort));
 		this.addField(new Criteria(Action.STR_EQUAL, "txtStatus", txtStatus));
 		this.addField(new Criteria(Action.STR_EQUAL, "ddlDianPu", ddlDianPu));
 		this.addField(new Criteria(Action.LIKE, "txtWuLiaoCode", txtWuLiaoCode));
 		this.addField(new Criteria(Action.LIKE, "txtWuLiaoName", txtWuLiaoName));
 		this.addLimitInfo(this.getStart(), this.getRows());
+	}
+
+	public String getSaleAfterWeiXiuGuid() {
+		return saleAfterWeiXiuGuid;
+	}
+
+	public void setSaleAfterWeiXiuGuid(String saleAfterWeiXiuGuid) {
+		this.saleAfterWeiXiuGuid = saleAfterWeiXiuGuid;
+	}
+
+	public String getDdlRuKuSort() {
+		return ddlRuKuSort;
+	}
+
+	public void setDdlRuKuSort(String ddlRuKuSort) {
+		this.ddlRuKuSort = ddlRuKuSort;
+	}
+
+	public String getTxtRuKuDanGuid() {
+		return txtRuKuDanGuid;
+	}
+
+	public void setTxtRuKuDanGuid(String txtRuKuDanGuid) {
+		this.txtRuKuDanGuid = txtRuKuDanGuid;
 	}
 
 	public String getTxtWuLiaoCode() {

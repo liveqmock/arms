@@ -1,6 +1,7 @@
 package com.chiefmech.arms.entity;
 
 import com.chiefmech.arms.common.util.IDGen;
+import com.chiefmech.arms.entity.view.VCaiGouWuLiao;
 
 public class GongDanWeiXiuWuLiao {
 
@@ -30,8 +31,23 @@ public class GongDanWeiXiuWuLiao {
 		this.txtWuLiaoName = item.getTxtWuLiaoName();
 		this.txtSuppName = item.getTxtSuppName();
 		this.txtPrice = item.getTxtSalePrice();
-		this.txtLaiYuan = "库存";
 		this.txtLaiYuanGuid = item.getTxtKuCunGuid();
+		this.txtLaiYuan = "库存";
+		this.ddlStatus = "未出库";
+		this.ddlZhangTao = "免费";
+	}
+
+	public GongDanWeiXiuWuLiao(String saleAfterGuid, VCaiGouWuLiao item) {
+		this.txtWuLiaoGuid = IDGen.getUUID();
+		this.txtWuLiaoCode = item.getTxtWuLiaoCode();
+		this.txtGongDanGuid = saleAfterGuid;
+		this.txtWuLiaoName = item.getTxtWuLiaoName();
+		this.txtSuppName = item.getTxtSuppName();
+		this.txtPrice = item.getTxtPrice();
+		this.txtLaiYuanGuid = item.getTxtWuLiaoGuid();
+		this.txtLaiYuan = "采购";
+		this.ddlStatus = "已下单";
+		this.ddlZhangTao = "免费";
 	}
 
 	public String getTxtWuLiaoGuid() {

@@ -72,12 +72,14 @@ td {
                 <s:if test="action=='addWuLiao'">
 				<th field="ck" checkbox="true" width="20"></th>
 				</s:if>
-				<th width="150" data-options="field:'txtWuLiaoCode'">物料编号</th>
+				<th width="150" data-options="field:'txtWuLiaoCode'">物料编码</th>
 				<th width="150" data-options="field:'txtWuLiaoName'">名称及规格</th>
-				<th width="100" data-options="field:'txtSuppName'">供应商</th>
-				<th width="100" data-options="field:'txtQty'">物料库存数量</th>
+				<th width="150" data-options="field:'txtSuppName'">供应商</th>
+				<th width="100" data-options="field:'txtQty'">库存数量</th>
+                <s:if test="action=='updateKuCun'">
 				<th width="100" data-options="field:'txtChengBenJia'">成本单价</th>
-				<th width="100" data-options="field:'txtSalePrice',align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">售价单价</th>
+				</s:if>
+			  <th width="100" data-options="field:'txtSalePrice',align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">售价单价</th>
                 <s:if test="action=='updateKuCun'">
                 <th field="action" width="150" align="center"
 								formatter="formatAction">操作</th>

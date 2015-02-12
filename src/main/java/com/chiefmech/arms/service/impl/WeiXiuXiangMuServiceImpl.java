@@ -33,11 +33,12 @@ public class WeiXiuXiangMuServiceImpl implements WeiXiuXiangMuService {
 	}
 
 	@Override
-	public String getWeiXiuXiangMuEasyUiJSon(WeiXiuXiangMu query, int page,
-			int rows) {
-		List<WeiXiuXiangMu> lst = weiXiuXiangMuDao.getWeiXiuXiangMuList(query,
-				page, rows);
-		int total = weiXiuXiangMuDao.getWeiXiuXiangMuListCount(query);
+	public String getWeiXiuXiangMuEasyUiJSon(String saleAfterGuid,
+			WeiXiuXiangMu query, int page, int rows) {
+		List<WeiXiuXiangMu> lst = weiXiuXiangMuDao.getWeiXiuXiangMuList(
+				saleAfterGuid, query, page, rows);
+		int total = weiXiuXiangMuDao.getWeiXiuXiangMuListCount(saleAfterGuid,
+				query);
 
 		String lstJson = JSONArray.fromObject(lst).toString();
 		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,

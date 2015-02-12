@@ -12,7 +12,7 @@ import com.chiefmech.arms.dao.RuKuDanDao;
 import com.chiefmech.arms.entity.KuCunOperLog;
 import com.chiefmech.arms.entity.RuKuDan;
 import com.chiefmech.arms.entity.RuKuDanWuLiao;
-import com.chiefmech.arms.entity.query.RuKuDanSearchBean;
+import com.chiefmech.arms.entity.query.CaiGouWuLiaoSearchBean;
 import com.chiefmech.arms.entity.view.VCaiGouWuLiao;
 import com.chiefmech.arms.service.KuCunService;
 import com.chiefmech.arms.service.RuKuDanService;
@@ -26,7 +26,7 @@ public class RuKuDanServiceImpl implements RuKuDanService {
 	private KuCunService kuCunService;
 
 	@Override
-	public String getRuKuDanEasyUiJSon(RuKuDanSearchBean query) {
+	public String getRuKuDanEasyUiJSon(CaiGouWuLiaoSearchBean query) {
 		List<VCaiGouWuLiao> lst = ruKuDanDao.getVCaiGouWuLiaoList(query);
 		int total = ruKuDanDao.getVCaiGouWuLiaoListCount(query);
 

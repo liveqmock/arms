@@ -2,11 +2,11 @@ package com.chiefmech.arms.service;
 
 import com.chiefmech.arms.entity.RuKuDan;
 import com.chiefmech.arms.entity.RuKuDanWuLiao;
-import com.chiefmech.arms.entity.query.RuKuDanSearchBean;
+import com.chiefmech.arms.entity.query.CaiGouWuLiaoSearchBean;
 
 public interface RuKuDanService {
 
-	public String getRuKuDanEasyUiJSon(RuKuDanSearchBean query);
+	public String getRuKuDanEasyUiJSon(CaiGouWuLiaoSearchBean query);
 
 	public String getNewBillNo();
 

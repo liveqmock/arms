@@ -10,6 +10,7 @@ import com.chiefmech.arms.entity.KuCun;
 import com.chiefmech.arms.entity.WeiXiuWuLiao;
 import com.chiefmech.arms.entity.WeiXiuXiangMu;
 import com.chiefmech.arms.entity.query.SaleAfterGongDanSearchBean;
+import com.chiefmech.arms.entity.view.VCaiGouWuLiao;
 
 public interface GongDanService {
 
@@ -23,13 +24,11 @@ public interface GongDanService {
 
 	public String getSaleAfterGongDanEasyUiJSon(SaleAfterGongDanSearchBean query);
 
-	public String getWeiXiuXiangMuEasyUiJSon(WeiXiuXiangMu query, int page,
-			int rows);
-
 	public int insertGongDanWeiXiuXiangMu(String saleAfterGuid,
 			List<WeiXiuXiangMu> weiXiuXiangMuLst);
 
-	public int updateGongDanWeiXiuXiangMuWhenAddXiangMu(GongDanWeiXiuXiangMu item);
+	public int updateGongDanWeiXiuXiangMuWhenAddXiangMu(
+			GongDanWeiXiuXiangMu item);
 
 	public int deleteGongDanWeiXiuXiangMu(String txtWeiXiuXiangMuId);
 
@@ -73,4 +72,7 @@ public interface GongDanService {
 	public int insertCheLiangJianCe(GongDanCheLiangJianCe item);
 
 	public int updateGongDanCheLiangJianCeRow(GongDanCheLiangJianCe item);
+
+	public int addGongDanWeiXiuWuLiaoFromCaiGou(String saleAfterWeiXiuGuid,
+			List<VCaiGouWuLiao> weiXiuWuLiaoLst);
 }

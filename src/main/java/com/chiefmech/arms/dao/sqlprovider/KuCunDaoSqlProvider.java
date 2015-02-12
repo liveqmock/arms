@@ -34,7 +34,7 @@ public class KuCunDaoSqlProvider {
 
 	public String getWhereSql(SearchBean searchBean, String txtGongDanId) {
 		String sql = String
-				.format("txtWuLiaoCode not in(select txtWuLiaoCode from gongdanwuliao where txtGongDanGuid='%s')",
+				.format("txtWuLiaoName not in(select txtWuLiaoName from gongdanwuliao where txtGongDanGuid='%s')",
 						txtGongDanId);
 		String where = searchBean.getWhereSql();
 

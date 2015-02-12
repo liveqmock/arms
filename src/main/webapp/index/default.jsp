@@ -84,7 +84,7 @@
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('aef416a9-a829-4b9d-acb1-d31d4e2e1ef4','物料管理','../storeOtherManage/storeOtherInsertBillManage.action?action=updateWuLiao');"
+													click : "mdfMenu('aef416a9-a829-4b9d-acb1-d31d4e2e1ef4','物料管理','../storeOtherManage/storeOtherInsertBillManage.action?action=updateCaiGou');"
 												},
 												{
 													name : "库存管理",
