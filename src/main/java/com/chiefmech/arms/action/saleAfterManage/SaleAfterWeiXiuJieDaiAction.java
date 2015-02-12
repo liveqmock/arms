@@ -177,7 +177,7 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 		GongDanWeiXiuXiangMu gongDanWeiXiuXiangMu = (GongDanWeiXiuXiangMu) JSONObject
 				.toBean(jsonObject, GongDanWeiXiuXiangMu.class);
 		int rowAffected = gongDanService
-				.updateGongDanWeiXiuXiangMuWhenZhiZuo(gongDanWeiXiuXiangMu);
+				.updateGongDanWeiXiuXiangMuWhenAddXiangMu(gongDanWeiXiuXiangMu);
 		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
 
 		this.transmitJson(jsonStr);
@@ -230,12 +230,12 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 		this.transmitJson(jsonStr);
 	}
 
-	@Action(value = "addGongDanWeiXiuWuLiao")
-	public void addGongDanWeiXiuWuLiao() {
+	@Action(value = "addGongDanWeiXiuWuLiaoFromKuCun")
+	public void addGongDanWeiXiuWuLiaoFromKuCun() {
 		JSONArray jsonArray = JSONArray.fromObject(easyUiJSonData);
 		List<KuCun> weiXiuWuLiaoLst = (List<KuCun>) JSONArray.toList(jsonArray,
 				KuCun.class);
-		int rowAffected = gongDanService.insertGongDanWeiXiuWuLiao(
+		int rowAffected = gongDanService.addGongDanWeiXiuWuLiaoFromKuCun(
 				saleAfterWeiXiuGuid, weiXiuWuLiaoLst);
 		String jsonStr = getCrudJsonResponse(rowAffected, "新增");
 
@@ -263,13 +263,13 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 		this.transmitJson(jsonStr);
 	}
 
-	@Action(value = "updateGongDanWeiXiuWuLiao")
-	public void updateGongDanWeiXiuWuLiao() {
+	@Action(value = "updateGongDanWeiXiuWuLiaoWhenAddWuLiao")
+	public void updateGongDanWeiXiuWuLiaoWhenAddWuLiao() {
 		JSONObject jsonObject = JSONObject.fromObject(easyUiJSonData);
 		GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao = (GongDanWeiXiuWuLiao) JSONObject
 				.toBean(jsonObject, GongDanWeiXiuWuLiao.class);
 		int rowAffected = gongDanService
-				.updateGongDanWeiXiuWuLiaoWhenZhiZuo(gongDanWeiXiuWuLiao);
+				.updateGongDanWeiXiuWuLiaoWhenAddWuLiao(gongDanWeiXiuWuLiao);
 		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
 
 		this.transmitJson(jsonStr);

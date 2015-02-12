@@ -33,7 +33,7 @@ td {
 <body>
 	<table border="0" style="width: 100%;">
 		<tr>
-			<td class="titlebg"><span>配件管理</span> <span class="titleSpan">(操作日志查询)</span>
+			<td class="titlebg"><span>物料管理</span> <span class="titleSpan">(操作日志查询)</span>
 			</td>
 		</tr>
 	</table>
@@ -55,7 +55,7 @@ td {
                         class="easyui-combobox"	data-options="editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/chuRuKuSortOption.action'" style="width: 100px;"/></td>
 				<td>物料编码:</td>
 				<td><input name="txtWuLiaoCode" id="txtWuLiaoCode" type="text" class="easyui-textbox" maxlength="20" style="width: 100px;" /></td>
-				<td>物料名称:</td>
+				<td>名称及规格:</td>
 				<td><input name="txtWuLiaoName" type="text" class="easyui-textbox" maxlength="20"
 					id="txtWuLiaoName" style="width: 100px;" /></td>
 				<td>业务单号:</td>
@@ -77,7 +77,7 @@ td {
 			<tr>
 				<th width="100" data-options="field:'ddlCangKu'">所属仓库</th>
 				<th width="100" data-options="field:'txtWuLiaoCode'">物料编码</th>
-				<th width="150" data-options="field:'txtWuLiaoName'">物料名称</th>
+				<th width="150" data-options="field:'txtWuLiaoName'">名称及规格</th>
 				<th width="100" data-options="field:'txtChengBenJia'">成本价格</th>
 				<th width="100" data-options="field:'txtSalePrice'">销售价格</th>
 				<th width="100" data-options="field:'txtQty'">数量</th>

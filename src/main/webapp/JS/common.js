@@ -281,7 +281,7 @@ $(function () {
  function flowStatus(val, row, index) {
 //     if (row.status == undefined) { return ""; }
 //     if (row.status == "0") {
-//         return "<span style='color:red;font-weight:blod;'>待提交审核</span>";
+//         return "<span style='color:red;font-weight:blod;'>准备单据</span>";
 //     }
 //     if (row.status == "1") {
 //         return "<span >审核中</span>";
@@ -299,7 +299,7 @@ $(function () {
      //上述当status命别名后不起作用（韦2013-06-17）
      if (val == undefined) { return ""; }
      if (val == "0") {
-         return "<span style='color:red;font-weight:blod;'>待提交审核</span>";
+         return "<span style='color:red;font-weight:blod;'>准备单据</span>";
      }
      if (val == "1") {
          return "<span >审核中</span>";

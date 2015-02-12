@@ -33,7 +33,7 @@ td {
 <body>
 	<table border="0" style="width: 100%;">
 		<tr>
-			<td class="titlebg"><span>配件管理</span> <span class="titleSpan">(即时库存管理)</span>
+			<td class="titlebg"><span>物料管理</span> <span class="titleSpan">(即时库存管理)</span>
 			</td>
 		</tr>
 	</table>

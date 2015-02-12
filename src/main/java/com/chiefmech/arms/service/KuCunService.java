@@ -8,7 +8,8 @@ public interface KuCunService {
 
 	public int updateKuCun(KuCunOperLog operLog);
 
-	public String getKuCunEasyUiJSon(KuCun item, int page, int rows);
+	public String getKuCunEasyUiJSon(String saleAfterWeiXiuGuid, KuCun item,
+			int page, int rows);
 
 	public int updateJiShiKuCun(KuCun item);
 

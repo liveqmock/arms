@@ -42,7 +42,8 @@ public class KuCunManageAction extends BaseActionSupport
 	}
 	@Action(value = "queryKuCun")
 	public void queryJiShiKuCun() {
-		this.transmitJson(kuCunService.getKuCunEasyUiJSon(item, page, rows));
+		this.transmitJson(kuCunService.getKuCunEasyUiJSon(saleAfterWeiXiuGuid,
+				item, page, rows));
 	}
 
 	@Action(value = "updateJiShiKuCun")

@@ -123,8 +123,8 @@
    <table  border="1" cellspacing="1" cellpadding="0" style="border:1px solid gray;border-collapse:collapse;width:98%;font-size:9px;"  >
      <!--维修物料明细-->
      <tr class="Tablehead" height="23px">
-       <td nowrap align="center">&nbsp;配件编号</td>
-       <td nowrap align="center">&nbsp;配件名称</td>
+       <td nowrap align="center">&nbsp;物料编号</td>
+       <td nowrap align="center">&nbsp;名称及规格</td>
        <td nowrap align="center">&nbsp;数量</td>
        <td nowrap align="center">&nbsp;单价</td>
        <td nowrap align="center">&nbsp;帐套</td>       
@@ -134,7 +134,7 @@
       <tr class="Tablehead" height="23px" onClick="changeColor(this)">
         <td nowrap align="center">&nbsp;<s:property value="txtWuLiaoCode" /></td>
         <td nowrap align="center">&nbsp;<s:property value="txtWuLiaoName" /></td>
-        <td nowrap align="center">&nbsp;<s:property value="txtTakeQty" /></td>
+        <td nowrap align="center">&nbsp;<s:property value="txtQty" /></td>
         <td nowrap align="center">&nbsp;<s:property value="txtPrice" /></td>
         <td nowrap align="center">&nbsp;<s:property value="ddlZhangTao" /></td>       
      </tr>   

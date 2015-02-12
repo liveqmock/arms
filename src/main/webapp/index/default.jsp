@@ -72,19 +72,19 @@
 										target : "_blank"
 									},
 									{
-										name : "配件管理",
+										name : "物料管理",
 										font : {
 											'font-style' : '微软雅黑'
 										},
 										children : [
 												{
-													name : "出入库管理",
+													name : "物料管理",
 													font : {
 														'font-style' : '微软雅黑'
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('aef416a9-a829-4b9d-acb1-d31d4e2e1ef4','出入库管理','../storeOtherManage/storeOtherInsertBillManage.action');"
+													click : "mdfMenu('aef416a9-a829-4b9d-acb1-d31d4e2e1ef4','物料管理','../storeOtherManage/storeOtherInsertBillManage.action?action=updateWuLiao');"
 												},
 												{
 													name : "库存管理",
@@ -114,7 +114,7 @@
 										},
 										children : [
 												{
-													name : "配件仓库",
+													name : "物料仓库",
 													font : {
 														'font-style' : '微软雅黑'
 													},

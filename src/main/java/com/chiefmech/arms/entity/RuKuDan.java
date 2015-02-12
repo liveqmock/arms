@@ -1,53 +1,20 @@
 package com.chiefmech.arms.entity;
 
 public class RuKuDan {
-	/**
-	 * 入库guid
-	 */
 	private String txtGuid;
-	/**
-	 * 入库单号
-	 */
+	private String ddlDianPu;
 	private String txtBillNo;
-	/**
-	 * 入库日期
-	 */
 	private String txtRuKuDate;
-	/**
-	 * 供应商名称
-	 */
 	private String txtSuppName;
-	/**
-	 * 经手人
-	 */
 	private String txtJingShouRen;
-	/**
-	 * 入库类型
-	 */
 	private String ddlRuKuSort;
-	/**
-	 * 所属仓库
-	 */
 	private String ddlCangKu;
-	/**
-	 * 发票类型
-	 */
 	private String ddlFaPiaoType;
-	/**
-	 * 发票号
-	 */
 	private String txtFaPiaoHao;
-	/**
-	 * 单据备注
-	 */
 	private String txtRemarks;
-	/**
-	 * 审核状态
-	 */
 	private String txtStatus;
 
 	private String txtShenHeRen;
-
 	private String txtShenHeShiJian;
 
 	public String getTxtGuid() {
@@ -55,6 +22,12 @@ public class RuKuDan {
 	}
 	public void setTxtGuid(String txtGuid) {
 		this.txtGuid = txtGuid;
+	}
+	public String getDdlDianPu() {
+		return ddlDianPu;
+	}
+	public void setDdlDianPu(String ddlDianPu) {
+		this.ddlDianPu = ddlDianPu;
 	}
 	public String getTxtBillNo() {
 		return txtBillNo;

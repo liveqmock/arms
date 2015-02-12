@@ -44,8 +44,9 @@ public interface GongDanDao {
 	@Insert("insert into gongdanxiangmu(txtWeiXiuXiangMuId,txtGongDanGuid,txtXiangMuCode,txtXiangMuName,txtFeiYong,txtGongDuanName,txtWeiXiuNeiRong,ddlZhangTao) values(#{txtWeiXiuXiangMuId},#{txtGongDanGuid},#{txtXiangMuCode},#{txtXiangMuName},#{txtFeiYong},#{txtGongDuanName},#{txtWeiXiuNeiRong},#{ddlZhangTao})")
 	public int insertGongDanWeiXiuXiangMu(GongDanWeiXiuXiangMu item);
 
-	@Update("update gongdanxiangmu set txtGongDuanName=#{txtGongDuanName},txtFeiYong=#{txtFeiYong},ddlZhangTao=#{ddlZhangTao},txtRemark=#{txtRemark} where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
-	public int updateGongDanWeiXiuXiangMuWhenZhiZuo(GongDanWeiXiuXiangMu item);
+	@Update("update gongdanxiangmu set txtGongDuanName=#{txtGongDuanName},txtFeiYong=#{txtFeiYong},ddlZhangTao=#{ddlZhangTao},ddlSuoSuXiangMu=#{ddlSuoSuXiangMu},txtRemark=#{txtRemark} where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
+	public int updateGongDanWeiXiuXiangMuWhenAddXiangMu(
+			GongDanWeiXiuXiangMu item);
 
 	@Update("update gongdanxiangmu set txtBanZu=#{txtBanZu},txtZhuXiuRen=#{txtZhuXiuRen} where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
 	public int updateGongDanWeiXiuXiangMuWhenPaiGong(GongDanWeiXiuXiangMu item);
@@ -67,8 +68,8 @@ public interface GongDanDao {
 	@Select("select ifnull(sum(txtFeiYong),0) txtFeiYong from gongdanxiangmu where txtGongDanGuid=#{txtGongDanId}")
 	public float getGongShiFeiZheQianByGongDanId(String txtGongDanId);
 
-	@Update("update gongdanwuliao set txtTakeQty=#{txtTakeQty},ddlZhangTao=#{ddlZhangTao} where txtWuLiaoGuid=#{txtWuLiaoGuid}")
-	public int updateGongDanWeiXiuWuLiaoWhenZhiZuo(GongDanWeiXiuWuLiao item);
+	@Update("update gongdanwuliao set txtQty=#{txtQty},ddlSuoSuXiangMu=#{ddlSuoSuXiangMu},ddlZhangTao=#{ddlZhangTao},txtRemark=#{txtRemark} where txtWuLiaoGuid=#{txtWuLiaoGuid}")
+	public int updateGongDanWeiXiuWuLiaoWhenAddWuLiao(GongDanWeiXiuWuLiao item);
 
 	@Delete("delete from gongdanwuliao where txtWuLiaoGuid=#{txtWuLiaoGuid}")
 	public int deleteGongDanWeiXiuWuLiao(String txtWeiXiuWuLiaoId);
@@ -77,14 +78,14 @@ public interface GongDanDao {
 	public List<GongDanWeiXiuWuLiao> getGongDanWeiXiuWuLiaoListByGongDanId(
 			String txtGongDanGuid);
 
-	@Select("select '合计' txtWuLiaoCode, sum(txtTakeQty) txtTakeQty, sum(txtPrice*txtTakeQty) txtPaid from gongdanwuliao where txtGongDanGuid=#{txtGongDanId}")
+	@Select("select '合计' txtWuLiaoCode, sum(txtQty) txtQty, sum(txtPrice*txtQty) txtPaid from gongdanwuliao where txtGongDanGuid=#{txtGongDanId}")
 	public List<GongDanWeiXiuWuLiaoFooter> getGongDanWeiXiuWuLiaoFooterListByGongDanId(
 			String txtGongDanId);
 
-	@Select("select ifnull(sum(txtPrice*txtTakeQty),0) CaiLiaoFei from gongdanwuliao where txtGongDanGuid=#{txtGongDanId}")
+	@Select("select ifnull(sum(txtPrice*txtQty),0) CaiLiaoFei from gongdanwuliao where txtGongDanGuid=#{txtGongDanId}")
 	public float getCaiLiaoFeiZheQianByGongDanId(String txtGongDanId);
 
-	@Insert("insert into gongdanwuliao(txtWuLiaoGuid,txtWuLiaoCode,txtGongDanGuid,txtWuLiaoName,ddlCangKu,txtPrice,ddlZhangTao) values(#{txtWuLiaoGuid},#{txtWuLiaoCode},#{txtGongDanGuid},#{txtWuLiaoName},#{ddlCangKu},#{txtPrice},#{ddlZhangTao})")
+	@Insert("insert into gongdanwuliao(txtWuLiaoGuid,txtWuLiaoCode,txtGongDanGuid,txtWuLiaoName,txtSuppName,txtPrice,ddlZhangTao,ddlStatus,txtRemark,txtLaiYuan,txtLaiYuanGuid) values(#{txtWuLiaoGuid},#{txtWuLiaoCode},#{txtGongDanGuid},#{txtWuLiaoName},#{txtSuppName},#{txtPrice},#{ddlZhangTao},#{ddlStatus},#{txtRemark},#{txtLaiYuan},#{txtLaiYuanGuid})")
 	public int insertGongDanWeiXiuWuLiao(GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao);
 
 	@Update("update gongdan set txtGongDanStatus=#{txtGongDanStatus} where txtGongDanId=#{txtGongDanId}")

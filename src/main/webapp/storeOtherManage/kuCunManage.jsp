@@ -33,7 +33,7 @@ td {
 <body>
 	<table border="0" style="width: 100%;">
 		<tr>
-			<td class="titlebg"><span>配件管理</span> <span class="titleSpan">(库存管理)</span>
+			<td class="titlebg"><span>物料管理</span> <span class="titleSpan">(库存管理)</span>
 			</td><td align="right">
 		      <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'" onclick="toggleSearchPanel();">查询</a>
 		      <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'" onclick="reloadCurentPage();">刷新</a>
@@ -46,7 +46,7 @@ td {
 				<td>物料编码:</td>
 				<td><input name="txtWuLiaoCode" type="text" class="easyui-textbox" maxlength="20"
 					id="txtWuLiaoCode" style="width: 120px;" /></td>
-				<td>物料名称:</td>
+				<td>名称及规格:</td>
 				<td><input name="txtWuLiaoName" type="text" class="easyui-textbox" maxlength="20"
 					id="txtWuLiaoName" style="width: 120px;" /></td>			
 					<td>所属仓库:</td>
@@ -61,7 +61,7 @@ td {
 		</table>
 	</form>
 	<table id="mydg" class="easyui-datagrid"
-		data-options="url:'queryKuCun.action',
+		data-options="url:'queryKuCun.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />',
 						   rownumbers:true,
                            <s:if test="action=='updateKuCun'">singleSelect:true,</s:if>
 						   toolbar:'#tb',
@@ -73,8 +73,8 @@ td {
 				<th field="ck" checkbox="true" width="20"></th>
 				</s:if>
 				<th width="150" data-options="field:'txtWuLiaoCode'">物料编号</th>
-				<th width="150" data-options="field:'txtWuLiaoName'">物料名称</th>
-				<th width="100" data-options="field:'ddlCangKu'">所属仓库</th>
+				<th width="150" data-options="field:'txtWuLiaoName'">名称及规格</th>
+				<th width="100" data-options="field:'txtSuppName'">供应商</th>
 				<th width="100" data-options="field:'txtQty'">物料库存数量</th>
 				<th width="100" data-options="field:'txtChengBenJia'">成本单价</th>
 				<th width="100" data-options="field:'txtSalePrice',align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">售价单价</th>
@@ -97,7 +97,7 @@ td {
 		
 		function doSearch() {
 			$("#fmSearch").form('submit', {
-				url : "queryKuCun.action",
+				url : "queryKuCun.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />",
 				success : function(jsonStr) {
 					$('#mydg').datagrid('loadData', $.parseJSON(jsonStr));
 				}
@@ -161,7 +161,7 @@ td {
 			if (checkedRows.length == 0) {
 				$.messager.alert('提示', '请先选中要插入的维修项目');
 			} else {
-				$.post("<s:property value='basePath' />/saleAfterManage/addGongDanWeiXiuWuLiao.action?d=" + new Date(), {
+				$.post("<s:property value='basePath' />/saleAfterManage/addGongDanWeiXiuWuLiaoFromKuCun.action?d=" + new Date(), {
 					"saleAfterWeiXiuGuid" : "<s:property value='saleAfterWeiXiuGuid' />",
 					"easyUiJSonData" : JsonToString(checkedRows)
 				}, function(result) {

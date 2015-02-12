@@ -13,6 +13,7 @@ import com.chiefmech.arms.entity.KuCunOperLog;
 import com.chiefmech.arms.entity.RuKuDan;
 import com.chiefmech.arms.entity.RuKuDanWuLiao;
 import com.chiefmech.arms.entity.query.RuKuDanSearchBean;
+import com.chiefmech.arms.entity.view.VCaiGouWuLiao;
 import com.chiefmech.arms.service.KuCunService;
 import com.chiefmech.arms.service.RuKuDanService;
 
@@ -26,8 +27,8 @@ public class RuKuDanServiceImpl implements RuKuDanService {
 
 	@Override
 	public String getRuKuDanEasyUiJSon(RuKuDanSearchBean query) {
-		List<RuKuDan> lst = ruKuDanDao.getRuKuDanList(query);
-		int total = ruKuDanDao.getRuKuDanListCount(query);
+		List<VCaiGouWuLiao> lst = ruKuDanDao.getVCaiGouWuLiaoList(query);
+		int total = ruKuDanDao.getVCaiGouWuLiaoListCount(query);
 
 		String lstJson = JSONArray.fromObject(lst).toString();
 		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,

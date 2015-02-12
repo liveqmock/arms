@@ -51,7 +51,7 @@
 					<td>单据状态:</td>
 					<td><select name="danjuState" id="danjuState" style="width: 100px;">
 							<option selected="selected" value="">全部</option>
-							<option value="待提交审核">待提交审核</option>
+							<option value="准备单据">准备单据</option>
 							<option value="审核中">审核中</option>
 							<option value="审核完毕">审核完毕</option>
 							<option value="单据退回处理">单据退回处理</option>

@@ -222,49 +222,21 @@ function saveRuKuDan() {
 }
 
 function updateRuKuDanStatus(ruKuDanGuid, newStatus){
-	$.messager.confirm('提示', '确定要'+newStatus+'吗?', function(r) {
+	$.messager.confirm('提示', '确认<span  style="color: blue; font-weight: bold;">'+newStatus+'</span>后本页面信息不能被修改，确定要'+newStatus+'吗?', function(r) {
 		if (r) {
-			var oldStatus = $("#txtStatus").textbox("getValue");
-			$("#txtStatus").textbox("setValue", newStatus);
+			$("#txtStatus").val(newStatus);
 			$("#form1").form('submit',{
 				url : "updateRuKuDanStatus.action",
 				success : function(result) {
 					var result = eval('(' + result + ')');
 					if (result.errorMsg) {
-						$("#txtStatus").textbox("setValue", oldStatus);
 						$.messager.alert('出错啦', result.errorMsg);
-					} else {
-						updatePage(ruKuDanGuid,getTabId(newStatus));
 					}
+					refreshRuKuDan(ruKuDanGuid);
 				}
 			});
 		}
 	});
-}
-
-function getTabId(gongDanStatus){
-	var tabId = 1;
-	switch(gongDanStatus){
-	case "维修接待":
-		tabId = 1;
-		break;
-	case "工单制作":
-		tabId = 2;
-		break;
-	case "维修派工":
-		tabId = 3;
-		break;
-	case "完工确认":
-		tabId = 4;
-		break;
-	case "费用结算":
-		tabId = 5;
-		break;
-	case "维修历史":
-		tabId = 6;
-		break;
-	}
-	return tabId;
 }
 
 function deleteRuKuDan() {

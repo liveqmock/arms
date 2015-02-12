@@ -25,4 +25,7 @@ public interface CommonDataDao {
 
 	@Select("select modelName name, modelName code from view_carmodel where brandName=#{cheLiangBrandName}")
 	List<OptionBean> getCheLiangCheXiOptionBean(String cheLiangBrandName);
+
+	@Select("select txtXiangMuName name, txtXiangMuName code from gongdanxiangmu where txtGongDanGuid=#{txtGongDanGuid}")
+	List<OptionBean> getGongDanXiangMuOptionBean(String txtGongDanGuid);
 }

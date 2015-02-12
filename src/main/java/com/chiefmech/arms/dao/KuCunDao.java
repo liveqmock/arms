@@ -37,11 +37,15 @@ public interface KuCunDao {
 	public int updateJiShiKuCun(KuCun item);
 
 	@SelectProvider(type = KuCunDaoSqlProvider.class, method = "getKuCunList")
-	public List<KuCun> getKuCunList(@Param("item") KuCun query,
-			@Param("page") int page, @Param("rows") int rows);
+	public List<KuCun> getKuCunList(
+			@Param("txtGongDanId") String saleAfterWeiXiuGuid,
+			@Param("item") KuCun query, @Param("page") int page,
+			@Param("rows") int rows);
 
 	@SelectProvider(type = KuCunDaoSqlProvider.class, method = "getKuCunListCount")
-	public int getKuCunListCount(@Param("item") KuCun query);
+	public int getKuCunListCount(
+			@Param("txtGongDanId") String saleAfterWeiXiuGuid,
+			@Param("item") KuCun query);
 
 	@SelectProvider(type = KuCunDaoSqlProvider.class, method = "getKuCunOperLogList")
 	public List<KuCunOperLog> getKuCunOperLogList(

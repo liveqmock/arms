@@ -8,8 +8,40 @@ public class RuKuDanSearchBean extends SearchBean {
 	private String txtBillNo;
 	private String txtSuppName;
 	private String txtStatus;
+	private String ddlDianPu;
+	private String txtWuLiaoCode;
+	private String txtWuLiaoName;
 	private int start = 1;
 	private int rows = 15;
+
+	@Override
+	public void initSearchFields() {
+		this.addField(new Criteria(Action.STR_BETWEEN, "txtRuKuDate",
+				txtRuKuDateBegin, txtRuKuDateEnd));
+		this.addField(new Criteria(Action.LIKE, "txtBillNo", txtBillNo));
+		this.addField(new Criteria(Action.STR_EQUAL, "txtSuppName", txtSuppName));
+		this.addField(new Criteria(Action.STR_EQUAL, "txtStatus", txtStatus));
+		this.addField(new Criteria(Action.STR_EQUAL, "ddlDianPu", ddlDianPu));
+		this.addField(new Criteria(Action.LIKE, "txtWuLiaoCode", txtWuLiaoCode));
+		this.addField(new Criteria(Action.LIKE, "txtWuLiaoName", txtWuLiaoName));
+		this.addLimitInfo(this.getStart(), this.getRows());
+	}
+
+	public String getTxtWuLiaoCode() {
+		return txtWuLiaoCode;
+	}
+
+	public void setTxtWuLiaoCode(String txtWuLiaoCode) {
+		this.txtWuLiaoCode = txtWuLiaoCode;
+	}
+
+	public String getTxtWuLiaoName() {
+		return txtWuLiaoName;
+	}
+
+	public void setTxtWuLiaoName(String txtWuLiaoName) {
+		this.txtWuLiaoName = txtWuLiaoName;
+	}
 
 	public String getTxtBillNo() {
 		return txtBillNo;
@@ -17,6 +49,14 @@ public class RuKuDanSearchBean extends SearchBean {
 
 	public void setTxtBillNo(String txtBillNo) {
 		this.txtBillNo = txtBillNo;
+	}
+
+	public String getDdlDianPu() {
+		return ddlDianPu;
+	}
+
+	public void setDdlDianPu(String ddlDianPu) {
+		this.ddlDianPu = ddlDianPu;
 	}
 
 	public String getTxtSuppName() {
@@ -65,16 +105,6 @@ public class RuKuDanSearchBean extends SearchBean {
 
 	public void setRows(int rows) {
 		this.rows = rows;
-	}
-
-	@Override
-	public void initSearchFields() {
-		this.addField(new Criteria(Action.STR_BETWEEN, "txtRuKuDate",
-				txtRuKuDateBegin, txtRuKuDateEnd));
-		this.addField(new Criteria(Action.LIKE, "txtBillNo", txtBillNo));
-		this.addField(new Criteria(Action.LIKE, "txtSuppName", txtSuppName));
-		this.addField(new Criteria(Action.LIKE, "txtStatus", txtStatus));
-		this.addLimitInfo(this.getStart(), this.getRows());
 	}
 
 }

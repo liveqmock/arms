@@ -8,12 +8,16 @@ public class GongDanWeiXiuWuLiao {
 	private String txtWuLiaoCode;
 	private String txtGongDanGuid;
 	private String txtWuLiaoName;
-	private String ddlCangKu;
-	private float txtTakeQty;
+	private String txtSuppName;
+	private float txtQty;
 	private float txtPrice;
 	private float txtPaid;
+	private String ddlSuoSuXiangMu;
 	private String ddlZhangTao;
-	private String ddlSubZhangTao;
+	private String ddlStatus;
+	private String txtRemark;
+	private String txtLaiYuan;
+	private String txtLaiYuanGuid;
 
 	public GongDanWeiXiuWuLiao() {
 
@@ -24,8 +28,10 @@ public class GongDanWeiXiuWuLiao {
 		this.txtWuLiaoCode = item.getTxtWuLiaoCode();
 		this.txtGongDanGuid = saleAfterGuid;
 		this.txtWuLiaoName = item.getTxtWuLiaoName();
-		this.ddlCangKu = item.getDdlCangKu();
+		this.txtSuppName = item.getTxtSuppName();
 		this.txtPrice = item.getTxtSalePrice();
+		this.txtLaiYuan = "库存";
+		this.txtLaiYuanGuid = item.getTxtKuCunGuid();
 	}
 
 	public String getTxtWuLiaoGuid() {
@@ -34,6 +40,30 @@ public class GongDanWeiXiuWuLiao {
 
 	public void setTxtWuLiaoGuid(String txtWuLiaoGuid) {
 		this.txtWuLiaoGuid = txtWuLiaoGuid;
+	}
+
+	public String getDdlSuoSuXiangMu() {
+		return ddlSuoSuXiangMu;
+	}
+
+	public void setDdlSuoSuXiangMu(String ddlSuoSuXiangMu) {
+		this.ddlSuoSuXiangMu = ddlSuoSuXiangMu;
+	}
+
+	public String getTxtLaiYuan() {
+		return txtLaiYuan;
+	}
+
+	public void setTxtLaiYuan(String txtLaiYuan) {
+		this.txtLaiYuan = txtLaiYuan;
+	}
+
+	public String getTxtLaiYuanGuid() {
+		return txtLaiYuanGuid;
+	}
+
+	public void setTxtLaiYuanGuid(String txtLaiYuanGuid) {
+		this.txtLaiYuanGuid = txtLaiYuanGuid;
 	}
 
 	public String getTxtWuLiaoCode() {
@@ -60,12 +90,12 @@ public class GongDanWeiXiuWuLiao {
 		this.txtWuLiaoName = txtWuLiaoName;
 	}
 
-	public float getTxtTakeQty() {
-		return txtTakeQty;
+	public float getTxtQty() {
+		return txtQty;
 	}
 
-	public void setTxtTakeQty(float txtTakeQty) {
-		this.txtTakeQty = txtTakeQty;
+	public void setTxtQty(float txtQty) {
+		this.txtQty = txtQty;
 	}
 
 	public float getTxtPrice() {
@@ -77,7 +107,7 @@ public class GongDanWeiXiuWuLiao {
 	}
 
 	public float getTxtPaid() {
-		return this.txtTakeQty * this.txtPrice;
+		return this.txtQty * this.txtPrice;
 	}
 
 	public String getDdlZhangTao() {
@@ -88,20 +118,28 @@ public class GongDanWeiXiuWuLiao {
 		this.ddlZhangTao = ddlZhangTao;
 	}
 
-	public String getDdlSubZhangTao() {
-		return ddlSubZhangTao;
+	public String getTxtSuppName() {
+		return txtSuppName;
 	}
 
-	public void setDdlSubZhangTao(String ddlSubZhangTao) {
-		this.ddlSubZhangTao = ddlSubZhangTao;
+	public void setTxtSuppName(String txtSuppName) {
+		this.txtSuppName = txtSuppName;
 	}
 
-	public String getDdlCangKu() {
-		return ddlCangKu;
+	public String getDdlStatus() {
+		return ddlStatus;
 	}
 
-	public void setDdlCangKu(String ddlCangKu) {
-		this.ddlCangKu = ddlCangKu;
+	public void setDdlStatus(String ddlStatus) {
+		this.ddlStatus = ddlStatus;
+	}
+
+	public String getTxtRemark() {
+		return txtRemark;
+	}
+
+	public void setTxtRemark(String txtRemark) {
+		this.txtRemark = txtRemark;
 	}
 
 }

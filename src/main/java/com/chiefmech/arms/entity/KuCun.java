@@ -9,6 +9,7 @@ public class KuCun {
 	private float txtChengBenJia;
 	private float txtSalePrice;
 	private String ddlCangKu;
+	private String txtSuppName;
 
 	public KuCun(KuCunOperLog operLog) {
 		this.txtKuCunGuid = operLog.getTxtKuCunGuid();
@@ -70,6 +71,14 @@ public class KuCun {
 	}
 	public void setTxtSalePrice(float txtSalePrice) {
 		this.txtSalePrice = txtSalePrice;
+	}
+
+	public String getTxtSuppName() {
+		return txtSuppName;
+	}
+
+	public void setTxtSuppName(String txtSuppName) {
+		this.txtSuppName = txtSuppName;
 	}
 
 }

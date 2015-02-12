@@ -4,7 +4,7 @@ public class GongDanWeiXiuWuLiaoFooter {
 
 	private String txtWuLiaoCode;
 	private float txtRegQty;
-	private float txtTakeQty;
+	private float txtQty;
 	private float txtReturnQty;
 	private float txtPaid;
 
@@ -24,12 +24,12 @@ public class GongDanWeiXiuWuLiaoFooter {
 		this.txtRegQty = txtRegQty;
 	}
 
-	public float getTxtTakeQty() {
-		return txtTakeQty;
+	public float getTxtQty() {
+		return txtQty;
 	}
 
-	public void setTxtTakeQty(float txtTakeQty) {
-		this.txtTakeQty = txtTakeQty;
+	public void setTxtQty(float txtQty) {
+		this.txtQty = txtQty;
 	}
 
 	public float getTxtReturnQty() {

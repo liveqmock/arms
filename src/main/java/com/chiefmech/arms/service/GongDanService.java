@@ -29,7 +29,7 @@ public interface GongDanService {
 	public int insertGongDanWeiXiuXiangMu(String saleAfterGuid,
 			List<WeiXiuXiangMu> weiXiuXiangMuLst);
 
-	public int updateGongDanWeiXiuXiangMuWhenZhiZuo(GongDanWeiXiuXiangMu item);
+	public int updateGongDanWeiXiuXiangMuWhenAddXiangMu(GongDanWeiXiuXiangMu item);
 
 	public int deleteGongDanWeiXiuXiangMu(String txtWeiXiuXiangMuId);
 
@@ -38,7 +38,7 @@ public interface GongDanService {
 
 	public String getWeiXiuXiangMuEasyUiJSonByGongDanId(String txtGongDanId);
 
-	public int updateGongDanWeiXiuWuLiaoWhenZhiZuo(GongDanWeiXiuWuLiao item);
+	public int updateGongDanWeiXiuWuLiaoWhenAddWuLiao(GongDanWeiXiuWuLiao item);
 
 	public int updateGongDanWeiXiuXiangMuWhenPaiGong(GongDanWeiXiuXiangMu item);
 
@@ -51,7 +51,7 @@ public interface GongDanService {
 	public String getWeiXiuWuLiaoEasyUiJSon(WeiXiuWuLiao item, int page,
 			int rows);
 
-	public int insertGongDanWeiXiuWuLiao(String saleAfterGuid,
+	public int addGongDanWeiXiuWuLiaoFromKuCun(String saleAfterGuid,
 			List<KuCun> weiXiuWuLiaoLst);
 
 	public int updateGongDanStatus(String saleAfterWeiXiuGuid,

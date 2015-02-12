@@ -102,8 +102,8 @@ public class GongDanServiceImpl implements GongDanService {
 	}
 
 	@Override
-	public int updateGongDanWeiXiuXiangMuWhenZhiZuo(GongDanWeiXiuXiangMu item) {
-		return gongDanDao.updateGongDanWeiXiuXiangMuWhenZhiZuo(item);
+	public int updateGongDanWeiXiuXiangMuWhenAddXiangMu(GongDanWeiXiuXiangMu item) {
+		return gongDanDao.updateGongDanWeiXiuXiangMuWhenAddXiangMu(item);
 	}
 
 	@Override
@@ -148,8 +148,8 @@ public class GongDanServiceImpl implements GongDanService {
 	}
 
 	@Override
-	public int updateGongDanWeiXiuWuLiaoWhenZhiZuo(GongDanWeiXiuWuLiao item) {
-		return gongDanDao.updateGongDanWeiXiuWuLiaoWhenZhiZuo(item);
+	public int updateGongDanWeiXiuWuLiaoWhenAddWuLiao(GongDanWeiXiuWuLiao item) {
+		return gongDanDao.updateGongDanWeiXiuWuLiaoWhenAddWuLiao(item);
 	}
 
 	@Override
@@ -205,13 +205,15 @@ public class GongDanServiceImpl implements GongDanService {
 	}
 
 	@Override
-	public int insertGongDanWeiXiuWuLiao(String saleAfterGuid,
+	public int addGongDanWeiXiuWuLiaoFromKuCun(String saleAfterGuid,
 			List<KuCun> weiXiuWuLiaoLst) {
 		boolean isAllItemInserted = true;
 		int rowAffected = 0;
 		for (KuCun item : weiXiuWuLiaoLst) {
 			GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao = new GongDanWeiXiuWuLiao(
 					saleAfterGuid, item);
+			gongDanWeiXiuWuLiao.setDdlStatus("未出库");
+			gongDanWeiXiuWuLiao.setDdlZhangTao("免费");
 			rowAffected = gongDanDao
 					.insertGongDanWeiXiuWuLiao(gongDanWeiXiuWuLiao);
 			if (rowAffected != 1) {

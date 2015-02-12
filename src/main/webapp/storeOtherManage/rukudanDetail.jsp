@@ -28,19 +28,19 @@
 			<table border="0"
 				style="width: 900px; border-bottom: 1px solid #b8b8b8;"">
 				<tr>
-					<td class="titlebg"><span>配件管理</span></td>
-					<td align="right"><s:if test="ruKuDan.txtStatus=='待提交审核' || ruKuDan.txtStatus=='单据退回'">
+					<td class="titlebg"><span>物料管理(<span style="color: blue; font-weight: bold;"><s:property value='ruKuDan.txtStatus' /></span>)</span></td>
+					<td align="right"><s:if test="ruKuDan.txtStatus=='准备单据'">
 							<a onClick="saveRuKuDan();return false;"
-								class="easyui-linkbutton" href="javascript:void(0)">保存出入库单</a>
+								class="easyui-linkbutton" href="javascript:void(0)">保存单据</a>
 							<a
-								onClick="updateRuKuDanStatus('<s:property value='ruKuDanGuid' />','审核中');return false;"
+								onClick="updateRuKuDanStatus('<s:property value='ruKuDanGuid' />','提交审核');return false;"
 								class="easyui-linkbutton" href="javascript:void(0)">提交审核</a>
-						</s:if> <s:elseif test="ruKuDan.txtStatus=='审核中'">
+						</s:if> <s:elseif test="ruKuDan.txtStatus=='提交审核'">
 							<a
 								onClick="updateRuKuDanStatus('<s:property value='ruKuDanGuid' />','审核完毕');return false;"
 								class="easyui-linkbutton" href="javascript:void(0)">审核完毕</a>
 							<a
-								onClick="updateRuKuDanStatus('<s:property value='ruKuDanGuid' />','单据退回');return false;"
+								onClick="updateRuKuDanStatus('<s:property value='ruKuDanGuid' />','准备单据');return false;"
 								class="easyui-linkbutton" href="javascript:void(0)">单据退回</a>
 						</s:elseif></td>
 				</tr>
@@ -49,78 +49,57 @@
 		<div id="divMain">
 			<form name="form1" method="post" id="form1">
 				<input name="txtGuid" type="hidden" id="txtGuid" />
+				<input name="txtStatus" type="hidden" id="txtStatus" value="<s:property value='ruKuDan.txtStatus' />" />
 				<table border="0" width="900px">
 					<tr>
-						<td style="text-align: right;">单号:</td>
+                    	<td align="right">类型:</td>
+						<td><input name="ddlRuKuSort" type="text" id="ddlRuKuSort"
+							class="easyui-textbox"
+							data-options="editable:false,required:true" /></td>
+                    	<td align="right"><span class="requireSpan">*</span>单号:</td>
 						<td><input name="txtBillNo" type="text" id="txtBillNo"
 							class="easyui-textbox"
 							data-options="editable:false,required:true" /></td>
-						<td style="text-align: right;">入库日期:</td>
+						<td align="right"><span class="requireSpan">*</span>日期:</td>
 						<td><input name="txtRuKuDate" type="text" id="txtRuKuDate"
 							class="easyui-datebox" data-options="required:true" /></td>
-						<td style="text-align: right;"><span class="requireSpan">*&nbsp;</span>供应商:</td>
+						<td align="right"><span class="requireSpan">*&nbsp;</span>供应商:</td>
 						<td><input name="txtSuppName" type="text" id="txtSuppName"
 							class="easyui-combobox"
 							data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/gongYingShangOption.action'" /></td>
-						<td style="text-align: right;">经手人:</td>
+					</tr>
+					<tr>
+                    	<td style="text-align: right;">采购人:</td>
 						<td><input name="txtJingShouRen" type="text"
 							id="txtJingShouRen" class="easyui-textbox"
-							data-options="required:true" /></td>
-					</tr>
-					<tr>
-						<td style="text-align: right;"><span class="requireSpan">*&nbsp;</span>出入库类型:</td>
-						<td><input name="ddlRuKuSort" id="ddlRuKuSort"
-                        <s:if test="ruKuDan.txtGuid==null">
-							class="easyui-combobox"	data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/chuRuKuSortOption.action'"
-                         </s:if>
-                         <s:else>
-                         class="easyui-textbox" data-options="editable:false,required:true"
-                         </s:else> /></td>
-						<td style="text-align: right;"><span class="requireSpan">*&nbsp;</span>所属仓库:</td>
-						<td><input name="ddlCangKu" id="ddlCangKu"
-							class="easyui-combobox"
-							data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/peiJianChangKuOption.action'" /></td>
-						<td style="text-align: right;"><span class="requireSpan">*&nbsp;</span>收票类型:</td>
-						<td><input name="ddlFaPiaoType" id="ddlFaPiaoType"
-							class="easyui-combobox"
-							data-options="editable:false,required:true,valueField: 'label',textField: 'value',data: [{label: '收据',value: '收据'},{label: '增值税发票',value: '增值税发票'}]" /></td>
-						<td style="text-align: right;"><span class="requireSpan">*&nbsp;</span>发票号:</td>
-						<td><input name="txtFaPiaoHao" type="text" id="txtFaPiaoHao"
-							class="easyui-textbox"
-							data-options="required:true,validType:'maxLength[40]'" /></td>
-					</tr>
-					<tr>
-						<td style="text-align: right;">备注:</td>
+							data-options="editable:false,required:true" /></td>
+						<td align="right">备注:</td>
 						<td colspan="5"><input name="txtRemarks" type="text"
 							id="txtRemarks" class="easyui-textbox"
 							data-options="validType:'maxLength[100]'" style="width: 100%;" /></td>
-						<td style="text-align: right;">状态:</td>
-						<td style="text-align: left;"><input name="txtStatus"
-							type="text" id="txtStatus" class="easyui-textbox"
-							data-options="editable:false" /></td>
 					</tr>
 				</table>
 			</form>
 		</div>
 
-		<div id="divBtnInfo" style="margin-top:10px;">
+		<div id="divBtnInfo" style="margin-top:5px;">
             <table id="datagridWuLiao" class="easyui-datagrid"
 				data-options="url:'queryRuKuDanWuLiao.action?ruKuDanGuid=<s:property value='ruKuDan.txtGuid' />',toolbar:'#tb',singleSelect:true,rownumbers:true,showFooter:true">
 				<thead>
 					<tr>
 						<th field="txtWuLiaoCode" width="100" data-options="editor:{type:'textbox',options:{required:true}}">物料编码</th>
-						<th field="txtWuLiaoName" width="200" data-options="editor:{type:'textbox',options:{required:true}}">物料名称</th>
+						<th field="txtWuLiaoName" width="200" data-options="editor:{type:'textbox',options:{required:true}}">名称及规格</th>
 						<th field="txtQty" width="60"
 							data-options="align:'right',editor:{type:'numberbox',options:{required:true}}">数量</th>
-						<th field="txtPrice" width="100" data-options="align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">入库价</th>
-                        <s:if test="ruKuDan.txtStatus=='待提交审核' || ruKuDan.txtStatus=='单据退回'">
+						<th field="txtPrice" width="100" data-options="align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">单价</th>
+                        <s:if test="ruKuDan.txtStatus!='审核完毕'">
 						<th field="action" width="150" align="center"
 								formatter="formatAction">操作</th>
                          </s:if>
 					</tr>
 				</thead>
 			</table>
-            <s:if test="ruKuDan.txtStatus=='待提交审核' || ruKuDan.txtStatus=='单据退回'">
+            <s:if test="ruKuDan.txtStatus!='审核完毕'">
             <div id="tb" style="height: auto">
 				<a href="javascript:void(0)" class="easyui-linkbutton"
 					data-options="iconCls:'icon-add',plain:true"
@@ -134,11 +113,23 @@
 
 	<script language="javascript" type="text/javascript">
 		var myTable = $('#datagridWuLiao');
+		var txtGuid = "<s:property value='ruKuDan.txtGuid' />";
 			
 		$(function() {
 			var formJson = eval('('
 					+ '<s:property value="jsonData" escape="false"/>' + ')');
 			initFormData(formJson);
+			
+			<s:if test="ruKuDan.txtStatus=='审核完毕'">
+			_.each(formJson, function(value, key) {
+				var el = $("#" + key);
+				if(_.size(el) > 0){
+					if ((el[0].tagName == "INPUT" || el[0].tagName == "TEXTAREA") && el.attr("type")!="hidden") {
+						$(el).parent().html(value);
+					}
+				}
+			});
+			</s:if>
 		});
 
 		function formatAction(value, row, index) {
@@ -162,6 +153,11 @@
 		}
 		
 		function appendRow(){
+			if (txtGuid == "") {
+				$.messager.alert('提示', "请先保存表头信息！");
+				return false;
+			}
+			
 			if (myTable.datagrid('hasEditingRow')) {
 				$.messager.alert('提示', '请先处理尚未完成的编辑行信息');
 			} else {

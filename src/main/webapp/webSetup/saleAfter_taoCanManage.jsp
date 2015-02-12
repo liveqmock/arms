@@ -60,7 +60,7 @@ td {
 				<th data-options="field:'txtTaoCanBianHao',width:120">套餐编号</th>
 				<th data-options="field:'txtTaoCanMingCheng',width:80">套餐名称</th>
 				<th data-options="field:'gongshizonge',width:80">工时总额</th>
-				<th data-options="field:'peijianzonge',width:370">配件总额</th>
+				<th data-options="field:'peijianzonge',width:370">物料总额</th>
 				<th field="action" width="100" align="center"
 					formatter="formatAction">操作</th>
 			</tr>
@@ -95,10 +95,10 @@ td {
 						class="easyui-validatebox"
 						data-options="required:true,missingMessage:'工时总额为必填项'"
 						id="gongshizonge" style="width: 250px;" /></td>
-					<td>配件总额:</td>
+					<td>物料总额:</td>
 					<td><input name="peijianzonge" type="text" maxlength="15"
 						class="easyui-validatebox"
-						data-options="required:true,missingMessage:'配件总额为必填项'"
+						data-options="required:true,missingMessage:'物料总额为必填项'"
 						id="peijianzonge" style="width: 250px;" /></td>
 				</tr>
 				<tr>

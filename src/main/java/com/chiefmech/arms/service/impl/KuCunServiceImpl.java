@@ -57,9 +57,11 @@ public class KuCunServiceImpl implements KuCunService {
 	}
 
 	@Override
-	public String getKuCunEasyUiJSon(KuCun query, int page, int rows) {
-		List<KuCun> lst = kuCunDao.getKuCunList(query, page, rows);
-		int total = kuCunDao.getKuCunListCount(query);
+	public String getKuCunEasyUiJSon(String saleAfterWeiXiuGuid, KuCun query,
+			int page, int rows) {
+		List<KuCun> lst = kuCunDao.getKuCunList(saleAfterWeiXiuGuid, query,
+				page, rows);
+		int total = kuCunDao.getKuCunListCount(saleAfterWeiXiuGuid, query);
 
 		String lstJson = JSONArray.fromObject(lst).toString();
 		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,

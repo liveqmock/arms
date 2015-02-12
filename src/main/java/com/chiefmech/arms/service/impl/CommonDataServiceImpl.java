@@ -39,6 +39,9 @@ public class CommonDataServiceImpl implements CommonDataService {
 		} else if ("CheLiangCheXi".equals(target)) {
 			lst = commonDataDao.getCheLiangCheXiOptionBean(param
 					.get("CheLiangBrandName"));
+		} else if ("GongDanXiangMu".equals(target)) {
+			lst = commonDataDao.getGongDanXiangMuOptionBean(param
+					.get("saleAfterWeiXiuGuid"));
 		}
 		return lst;
 	}

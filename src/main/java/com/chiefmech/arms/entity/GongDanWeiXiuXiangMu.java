@@ -11,14 +11,14 @@ public class GongDanWeiXiuXiangMu {
 	private String txtGongDuanName;
 	private String txtWeiXiuNeiRong;
 	private float txtFeiYong;
+	private String ddlSuoSuXiangMu;
 	private String ddlZhangTao;
 	private String txtRemark;
 	private String txtBanZu;
 	private String txtZhuXiuRen;
 	private String txtWanJianStatus;
 	private String txtWanJianRen;
-	private String txtWanJianShiJian;	
-	
+	private String txtWanJianShiJian;
 
 	public GongDanWeiXiuXiangMu() {
 
@@ -33,6 +33,14 @@ public class GongDanWeiXiuXiangMu {
 		this.txtFeiYong = item.getTxtFeiYong();
 		this.txtWeiXiuNeiRong = item.getTxtNeiRong();
 		this.ddlZhangTao = "付费";
+	}
+
+	public String getDdlSuoSuXiangMu() {
+		return ddlSuoSuXiangMu;
+	}
+
+	public void setDdlSuoSuXiangMu(String ddlSuoSuXiangMu) {
+		this.ddlSuoSuXiangMu = ddlSuoSuXiangMu;
 	}
 
 	public String getTxtWeiXiuXiangMuId() {

@@ -25,23 +25,30 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/storeOtherManage")
 @Controller()
 @Scope("prototype")
-public class StoreRuKuDetailManageAction extends BaseActionSupport implements
-		ModelDriven<RuKuDan> {
+public class RuKuDetailManageAction extends BaseActionSupport
+		implements
+			ModelDriven<RuKuDan> {
 
 	@Resource()
 	private RuKuDanService ruKuDanService;
 
 	private RuKuDan ruKuDan = new RuKuDan();
 	private String ruKuDanGuid;
+	private String flag;
 	private String txtWuLiaoGuid;
 	private String rowJsonData;
 
-	@Action(value = "rukudanDetail", results = { @Result(name = "input", location = "rukudanDetail.jsp") })
+	@Action(value = "rukudanDetail", results = {@Result(name = "input", location = "rukudanDetail.jsp")})
 	public String rukudanDetail() {
 
 		if (StringUtils.isBlank(ruKuDanGuid)) {
+			String ddlRuKuSort = "";
+			if ("1".equals(flag)) {
+				ddlRuKuSort = "采购入库单";
+			}
 			ruKuDan.setTxtBillNo("等待生成");
-			ruKuDan.setTxtStatus("待提交审核");
+			ruKuDan.setTxtStatus("准备单据");
+			ruKuDan.setDdlRuKuSort(ddlRuKuSort);
 			ruKuDan.setTxtRuKuDate(DateUtil.getCurrentDate());
 			ruKuDan.setTxtJingShouRen(this.getUser().getDisplayName());
 		} else {
@@ -61,15 +68,10 @@ public class StoreRuKuDetailManageAction extends BaseActionSupport implements
 			ruKuDan.setTxtGuid(IDGen.getUUID());
 			String ruKuDanSort = ruKuDan.getDdlRuKuSort();
 			String prefix = "";
-			if (ruKuDanSort.equals("入库单")) {
-				prefix = "RKD";
-			} else if (ruKuDanSort.equals("出库单")) {
-				prefix = "CKD";
-			} else if (ruKuDanSort.equals("例外入库")) {
-				prefix = "LWRKD";
-			} else if (ruKuDanSort.equals("例外出库")) {
-				prefix = "LWCKD";
+			if (ruKuDanSort.equals("采购入库单")) {
+				prefix = "CGRK";
 			}
+			ruKuDan.setDdlDianPu(this.getUser().getJigouName());
 
 			ruKuDan.setTxtBillNo(prefix + ruKuDanService.getNewBillNo());
 			rowsAffected = ruKuDanService.insertRuKuDan(ruKuDan);
@@ -88,7 +90,7 @@ public class StoreRuKuDetailManageAction extends BaseActionSupport implements
 	@Action(value = "updateRuKuDanStatus")
 	public void updateRuKuDanStatus() {
 		String status = ruKuDan.getTxtStatus();
-		if (status.equals("审核完毕") || status.equals("单据退回")) {
+		if (status.equals("审核完毕")) {
 			ruKuDan.setTxtShenHeRen(this.getUser().getDisplayName());
 			ruKuDan.setTxtShenHeShiJian(DateUtil.getCurrentDate());
 		}
@@ -96,12 +98,6 @@ public class StoreRuKuDetailManageAction extends BaseActionSupport implements
 		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
 
 		this.transmitJson(jsonStr);
-	}
-
-	@Action(value = "queryRuKuDanWuLiao")
-	public void queryRuKuDanWuLiao() {
-		this.transmitJson(ruKuDanService
-				.getRuKuDanWuLiaoEasyUiJSon(ruKuDanGuid));
 	}
 
 	@Action(value = "saveRuKuDanWuLiao")
@@ -164,6 +160,10 @@ public class StoreRuKuDetailManageAction extends BaseActionSupport implements
 
 	public void setRowJsonData(String rowJsonData) {
 		this.rowJsonData = rowJsonData;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
 	}
 
 }
