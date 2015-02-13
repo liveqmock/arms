@@ -125,7 +125,7 @@ td {
 									</td>
 								</tr>
 								<tr>
-									<td>材料折扣：[<s:property value='customer.txtCaiLiaoZheKou' />]
+									<td>物料折扣：[<s:property value='customer.txtCaiLiaoZheKou' />]
 									</td>
 								</tr>
 							</table>

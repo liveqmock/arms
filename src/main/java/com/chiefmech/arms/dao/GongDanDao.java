@@ -24,10 +24,10 @@ public interface GongDanDao {
 	@Select("select * from gongdan where txtGongDanId=#{txtGongDanId}")
 	public GongDan findGongDanByWeiXiuGuid(String txtGongDanId);
 
-	@Insert("insert into gongdan(txtGongDanId,ddlDianPu,txtCustId,txtCheLiangId,txtGongDanStatus,txtChePaiHao,txtLiCheng,txtVin,txtFaDongJiHao,txtChangJiaPinPai,txtCheXiName,txtCheXingDaiMa,txtCustSort,txtCheZhuName,txtCheZhuTel,txtHuiYuanDengJi,txtLianXiRenName,txtLianXiRenTel,txtLianXiRenAdd,txtBillNo,txtXieYiBillNo,txtRuChangDate,txtYuChuChangDate,txtFuWuGuWen,txtGongShiDiYongQuan,txtCaiLiaoDiYongQuan,txtNewLiCheng,txtNewRuChangDate,txtJiaoXiuReason,txtGuZhangReason,txtWeiXiuCuoShi,txtYuYueId,txtJieSuanDate,txtChuChangDate,txtGongShiZheKou,txtCaiLiaoZheKou,txtCheLiangDengJiRiQi,txtCheLiangNianShenDaoQiRi,txtCheLiangBaoXianDaoQiRi,ddlChengBaoGongSi) values(#{txtGongDanId},#{ddlDianPu},#{txtCustId},#{txtCheLiangId},#{txtGongDanStatus},#{txtChePaiHao},#{txtLiCheng},#{txtVin},#{txtFaDongJiHao},#{txtChangJiaPinPai},#{txtCheXiName},#{txtCheXingDaiMa},#{txtCustSort},#{txtCheZhuName},#{txtCheZhuTel},#{txtHuiYuanDengJi},#{txtLianXiRenName},#{txtLianXiRenTel},#{txtLianXiRenAdd},#{txtBillNo},#{txtXieYiBillNo},#{txtRuChangDate},#{txtYuChuChangDate},#{txtFuWuGuWen},#{txtGongShiDiYongQuan},#{txtCaiLiaoDiYongQuan},#{txtNewLiCheng},#{txtNewRuChangDate},#{txtJiaoXiuReason},#{txtGuZhangReason},#{txtWeiXiuCuoShi},#{txtYuYueId},#{txtJieSuanDate},#{txtChuChangDate},#{txtGongShiZheKou},#{txtCaiLiaoZheKou},#{txtCheLiangDengJiRiQi},#{txtCheLiangNianShenDaoQiRi},#{txtCheLiangBaoXianDaoQiRi},#{ddlChengBaoGongSi})")
+	@Insert("insert into gongdan(txtGongDanId,ddlDianPu,txtCustId,txtCheLiangId,txtGongDanStatus,txtChePaiHao,txtLiCheng,txtVin,txtFaDongJiHao,txtChangJiaPinPai,txtCheXiName,txtCheXingDaiMa,txtCustSort,txtCheZhuName,txtCheZhuTel,txtHuiYuanDengJi,txtLianXiRenName,txtLianXiRenTel,txtLianXiRenAdd,txtBillNo,txtXieYiBillNo,txtRuChangDate,txtYuChuChangDate,txtFuWuGuWen,txtNewLiCheng,txtNewRuChangDate,txtJiaoXiuReason,txtGuZhangReason,txtWeiXiuCuoShi,txtYuYueId,txtJieSuanDate,txtChuChangDate,txtGongShiZheKou,txtCaiLiaoZheKou,txtCheLiangDengJiRiQi,txtCheLiangNianShenDaoQiRi,txtCheLiangBaoXianDaoQiRi,ddlChengBaoGongSi) values(#{txtGongDanId},#{ddlDianPu},#{txtCustId},#{txtCheLiangId},#{txtGongDanStatus},#{txtChePaiHao},#{txtLiCheng},#{txtVin},#{txtFaDongJiHao},#{txtChangJiaPinPai},#{txtCheXiName},#{txtCheXingDaiMa},#{txtCustSort},#{txtCheZhuName},#{txtCheZhuTel},#{txtHuiYuanDengJi},#{txtLianXiRenName},#{txtLianXiRenTel},#{txtLianXiRenAdd},#{txtBillNo},#{txtXieYiBillNo},#{txtRuChangDate},#{txtYuChuChangDate},#{txtFuWuGuWen},#{txtNewLiCheng},#{txtNewRuChangDate},#{txtJiaoXiuReason},#{txtGuZhangReason},#{txtWeiXiuCuoShi},#{txtYuYueId},#{txtJieSuanDate},#{txtChuChangDate},#{txtGongShiZheKou},#{txtCaiLiaoZheKou},#{txtCheLiangDengJiRiQi},#{txtCheLiangNianShenDaoQiRi},#{txtCheLiangBaoXianDaoQiRi},#{ddlChengBaoGongSi})")
 	public int insertWeiXiuJieDai(GongDan item);
 
-	@Update("update gongdan set txtBillNo=#{txtBillNo},txtGongShiDiYongQuan=#{txtGongShiDiYongQuan},txtCaiLiaoDiYongQuan=#{txtCaiLiaoDiYongQuan},txtRuChangDate=#{txtRuChangDate},txtYuChuChangDate=#{txtYuChuChangDate},txtLiCheng=#{txtLiCheng},txtNewLiCheng=#{txtNewLiCheng},txtNewRuChangDate=#{txtNewRuChangDate},txtXieYiBillNo=#{txtXieYiBillNo},txtJiaoXiuReason=#{txtJiaoXiuReason},txtGuZhangReason=#{txtGuZhangReason},txtWeiXiuCuoShi=#{txtWeiXiuCuoShi} where txtGongDanId=#{txtGongDanId}")
+	@Update("update gongdan set txtBillNo=#{txtBillNo},txtRuChangDate=#{txtRuChangDate},txtYuChuChangDate=#{txtYuChuChangDate},txtLiCheng=#{txtLiCheng},txtNewLiCheng=#{txtNewLiCheng},txtNewRuChangDate=#{txtNewRuChangDate},txtXieYiBillNo=#{txtXieYiBillNo},txtJiaoXiuReason=#{txtJiaoXiuReason},txtGuZhangReason=#{txtGuZhangReason},txtWeiXiuCuoShi=#{txtWeiXiuCuoShi} where txtGongDanId=#{txtGongDanId}")
 	public int updateWeiXiuJieDai(GongDan item);
 
 	@Select("select concat(date_format(now(),'JDD%Y%m%d'),LPAD(ifnull(max(right(txtBillNo,3)+1),1),3,'0')) newTxtBillNo from gongdan where txtBillNo like date_format(now(),'JDD%Y%m%d%%')")
@@ -119,5 +119,24 @@ public interface GongDanDao {
 
 	@Update("update gongdanjiance set txtZhuangTai=#{txtZhuangTai},txtRemark=#{txtRemark} where txtJianceGuid=#{txtJianceGuid}")
 	public int updateCheLiangJianCe(GongDanCheLiangJianCe item);
+
+	@Update("update rukudanwuliao set ddlStatus=#{ddlStatus} where txtWuLiaoGuid=#{txtLaiYuanGuid}")
+	public int updateRuKuDanWuLiaoWhenLingQuWuLiao(GongDanWeiXiuWuLiao item);
+
+	@Update("update gongdanwuliao set ddlStatus=#{ddlStatus} where txtWuLiaoGuid=#{txtWuLiaoGuid}")
+	public int updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao(
+			GongDanWeiXiuWuLiao item);
+
+	@Select("select ifnull(sum(txtFeiYong),0) from gongdanxiangmu where txtGongDanGuid=#{gongDanId} and ddlZhangTao='免费'")
+	public float getWeiXiuFeiFree(String gongDanId);
+
+	@Select("select ifnull(sum(txtFeiYong),0) from gongdanxiangmu where txtGongDanGuid=#{gongDanId} and ddlZhangTao='付费'")
+	public float getWeiXiuFeiPaid(String gongDanId);
+
+	@Select("select ifnull(sum(txtPrice*txtQty),0) from gongdanwuliao where txtGongDanGuid=#{gongDanId} and ddlZhangTao='免费'")
+	public float getWuLiaoFeiFree(String gongDanId);
+
+	@Select("select ifnull(sum(txtPrice*txtQty),0) from gongdanwuliao where txtGongDanGuid=#{gongDanId} and ddlZhangTao='付费'")
+	public float getWuLiaoFeiPaid(String gongDanId);
 
 }

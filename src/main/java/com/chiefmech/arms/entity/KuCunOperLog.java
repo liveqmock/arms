@@ -5,11 +5,10 @@ import com.chiefmech.arms.common.util.IDGen;
 
 public class KuCunOperLog {
 	private String txtLogGuid;
-	private String txtBillNo;
+	private String txtBillGuid;
 	private String txtBillSort;
 	private String txtLogDate;
 
-	private String txtKuCunGuid;
 	private String txtWuLiaoGuid;
 	private String txtWuLiaoCode;
 	private String txtWuLiaoName;
@@ -17,13 +16,14 @@ public class KuCunOperLog {
 	private float txtChengBenJia;
 	private float txtSalePrice;
 	private String ddlCangKu;
+	private String txtSuppName;
 
 	public KuCunOperLog() {
 	}
 
 	public KuCunOperLog(RuKuDan ruKuDan, RuKuDanWuLiao ruKuDanWuLiao) {
 		this.txtLogGuid = IDGen.getUUID();
-		this.txtBillNo = ruKuDan.getTxtBillNo();
+		this.txtBillGuid = ruKuDan.getTxtGuid();
 		this.txtBillSort = ruKuDan.getDdlRuKuSort();
 		this.txtLogDate = DateUtil.getCurrentDateTime();
 
@@ -33,11 +33,34 @@ public class KuCunOperLog {
 		this.txtQty = ruKuDanWuLiao.getTxtQty();
 		this.txtChengBenJia = ruKuDanWuLiao.getTxtPrice();
 		this.ddlCangKu = ruKuDan.getDdlCangKu();
+		this.txtSuppName = ruKuDan.getTxtSuppName();
+	}
+
+	public KuCunOperLog(GongDanWeiXiuWuLiao gongDanWuLiao) {
+		this.txtLogGuid = IDGen.getUUID();
+		this.txtBillGuid = gongDanWuLiao.getTxtGongDanGuid();
+		this.txtBillSort = "维修出库";
+		this.txtLogDate = DateUtil.getCurrentDateTime();
+
+		this.txtWuLiaoGuid = gongDanWuLiao.getTxtLaiYuanGuid();
+		this.txtWuLiaoCode = gongDanWuLiao.getTxtWuLiaoCode();
+		this.txtWuLiaoName = gongDanWuLiao.getTxtWuLiaoName();
+		this.txtQty = (int) gongDanWuLiao.getTxtQty();
+		this.txtChengBenJia = gongDanWuLiao.getTxtPrice();
+		this.txtSuppName = gongDanWuLiao.getTxtSuppName();
 	}
 
 	public boolean isKuCunPlusRequire() {
-		return this.txtBillSort.equals("入库单")
-				|| this.txtBillSort.equals("例外入库");
+		return this.txtBillSort.equals("日常采购")
+				|| this.txtBillSort.equals("临时采购");
+	}
+
+	public String getTxtSuppName() {
+		return txtSuppName;
+	}
+
+	public void setTxtSuppName(String txtSuppName) {
+		this.txtSuppName = txtSuppName;
 	}
 
 	public String getTxtLogGuid() {
@@ -48,12 +71,12 @@ public class KuCunOperLog {
 		this.txtLogGuid = txtLogGuid;
 	}
 
-	public String getTxtBillNo() {
-		return txtBillNo;
+	public String getTxtBillGuid() {
+		return txtBillGuid;
 	}
 
-	public void setTxtBillNo(String txtBillNo) {
-		this.txtBillNo = txtBillNo;
+	public void setTxtBillGuid(String txtBillGuid) {
+		this.txtBillGuid = txtBillGuid;
 	}
 
 	public String getTxtBillSort() {
@@ -70,14 +93,6 @@ public class KuCunOperLog {
 
 	public void setTxtLogDate(String txtLogDate) {
 		this.txtLogDate = txtLogDate;
-	}
-
-	public String getTxtKuCunGuid() {
-		return txtKuCunGuid;
-	}
-
-	public void setTxtKuCunGuid(String txtKuCunGuid) {
-		this.txtKuCunGuid = txtKuCunGuid;
 	}
 
 	public String getTxtWuLiaoGuid() {

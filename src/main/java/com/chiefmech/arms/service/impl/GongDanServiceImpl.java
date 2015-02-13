@@ -14,16 +14,17 @@ import com.chiefmech.arms.dao.WeiXiuWuLiaoDao;
 import com.chiefmech.arms.dao.WeiXiuXiangMuDao;
 import com.chiefmech.arms.entity.GongDan;
 import com.chiefmech.arms.entity.GongDanCheLiangJianCe;
+import com.chiefmech.arms.entity.GongDanJieSuan;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
 import com.chiefmech.arms.entity.KuCun;
+import com.chiefmech.arms.entity.KuCunOperLog;
 import com.chiefmech.arms.entity.WeiXiuWuLiao;
 import com.chiefmech.arms.entity.WeiXiuXiangMu;
-import com.chiefmech.arms.entity.footer.GongDanWeiXiuWuLiaoFooter;
-import com.chiefmech.arms.entity.footer.GongDanWeiXiuXiangMuFooter;
 import com.chiefmech.arms.entity.query.SaleAfterGongDanSearchBean;
 import com.chiefmech.arms.entity.view.VCaiGouWuLiao;
 import com.chiefmech.arms.service.GongDanService;
+import com.chiefmech.arms.service.KuCunService;
 
 @Service("gongDanService")
 public class GongDanServiceImpl implements GongDanService {
@@ -34,14 +35,12 @@ public class GongDanServiceImpl implements GongDanService {
 	@Resource()
 	private WeiXiuWuLiaoDao weiXiuWuLiaoDao;
 
+	@Resource()
+	private KuCunService kuCunService;
+
 	@Override
 	public GongDan findGongDanByWeiXiuGuid(String txtGongDanId) {
-		GongDan gongDan = gongDanDao.findGongDanByWeiXiuGuid(txtGongDanId);
-		gongDan.setTxtGongShiZheQian(gongDanDao
-				.getGongShiFeiZheQianByGongDanId(txtGongDanId));
-		gongDan.setTxtCaiLiaoZheQian(gongDanDao
-				.getCaiLiaoFeiZheQianByGongDanId(txtGongDanId));
-		return gongDan;
+		return gongDanDao.findGongDanByWeiXiuGuid(txtGongDanId);
 	}
 
 	@Override
@@ -126,14 +125,15 @@ public class GongDanServiceImpl implements GongDanService {
 		List<GongDanWeiXiuXiangMu> lst = gongDanDao
 				.getGongDanWeiXiuXiangMuListByGongDanId(txtGongDanId);
 		int total = lst.size();
-		List<GongDanWeiXiuXiangMuFooter> footerLst = gongDanDao
-				.getGongDanWeiXiuXiangMuFooterListByGongDanId(txtGongDanId);
+		/*
+		 * List<GongDanWeiXiuXiangMuFooter> footerLst = gongDanDao
+		 * .getGongDanWeiXiuXiangMuFooterListByGongDanId(txtGongDanId);
+		 */
 
 		String lstJson = JSONArray.fromObject(lst).toString();
-		String footerJson = JSONArray.fromObject(footerLst).toString();
-		String jsonStr = String.format(
-				"{\"total\":\"%d\",\"rows\":%s,\"footer\":%s}", total, lstJson,
-				footerJson);
+		// String footerJson = JSONArray.fromObject(footerLst).toString();
+		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
+				lstJson);
 		return jsonStr;
 	}
 
@@ -170,14 +170,19 @@ public class GongDanServiceImpl implements GongDanService {
 		List<GongDanWeiXiuWuLiao> lst = gongDanDao
 				.getGongDanWeiXiuWuLiaoListByGongDanId(txtGongDanId);
 		int total = lst.size();
-		List<GongDanWeiXiuWuLiaoFooter> footerLst = gongDanDao
-				.getGongDanWeiXiuWuLiaoFooterListByGongDanId(txtGongDanId);
+		/*
+		 * List<GongDanWeiXiuWuLiaoFooter> footerLst = gongDanDao
+		 * .getGongDanWeiXiuWuLiaoFooterListByGongDanId(txtGongDanId);
+		 */
 
 		String lstJson = JSONArray.fromObject(lst).toString();
-		String footerJson = JSONArray.fromObject(footerLst).toString();
-		String jsonStr = String.format(
-				"{\"total\":\"%d\",\"rows\":%s,\"footer\":%s}", total, lstJson,
-				footerJson);
+		/*
+		 * String footerJson = JSONArray.fromObject(footerLst).toString();
+		 * String jsonStr = String.format(
+		 * "{\"total\":\"%d\",\"rows\":%s,\"footer\":%s}", total, lstJson);
+		 */
+		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
+				lstJson);
 		return jsonStr;
 	}
 
@@ -264,4 +269,43 @@ public class GongDanServiceImpl implements GongDanService {
 		return gongDanDao.updateCheLiangJianCe(item);
 	}
 
+	@Override
+	public int updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao(
+			GongDanWeiXiuWuLiao item) {
+		int rowAffected = 0;
+		String wuLiaoLaiYuan = item.getTxtLaiYuan();
+		if ("采购".equals(wuLiaoLaiYuan)) {
+			item.setDdlStatus("已收货");
+			rowAffected = gongDanDao
+					.updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao(item);
+			if (rowAffected != -1) {
+				rowAffected = gongDanDao
+						.updateRuKuDanWuLiaoWhenLingQuWuLiao(item);
+			}
+		} else if ("库存".equals(wuLiaoLaiYuan)) {
+			item.setDdlStatus("已出库");
+			rowAffected = gongDanDao
+					.updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao(item);
+			if (rowAffected != -1) {
+				KuCunOperLog operLog = new KuCunOperLog(item);
+				rowAffected = kuCunService.updateKuCun(operLog);
+			}
+		}
+		return rowAffected;
+	}
+
+	@Override
+	public GongDanJieSuan getGongDanJieSuanXinXi(GongDan gongDan) {
+		String gongDanId = gongDan.getTxtGongDanId();
+		float xiangMuZheHou = gongDan.getTxtGongShiZheKou();
+		float wuLiaoZheHou = gongDan.getTxtCaiLiaoZheKou();
+
+		float weiXiuFeiFree = gongDanDao.getWeiXiuFeiFree(gongDanId);
+		float wuLiaoFeiFree = gongDanDao.getWuLiaoFeiFree(gongDanId);
+		float weiXiuFeiPaid = gongDanDao.getWeiXiuFeiPaid(gongDanId);
+		float wuLiaoFeiPaid = gongDanDao.getWuLiaoFeiPaid(gongDanId);
+
+		return new GongDanJieSuan(xiangMuZheHou, wuLiaoZheHou, weiXiuFeiFree,
+				wuLiaoFeiFree, weiXiuFeiPaid, wuLiaoFeiPaid);
+	}
 }

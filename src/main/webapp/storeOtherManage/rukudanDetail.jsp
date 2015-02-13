@@ -23,18 +23,23 @@
 </head>
 
 <body>
-	<div style="margin:0 5px;">
+	<div style="margin: 0 5px;">
 		<div>
 			<table border="0"
 				style="width: 900px; border-bottom: 1px solid #b8b8b8;"">
 				<tr>
-					<td class="titlebg"><span>物料管理(<span style="color: blue; font-weight: bold;"><s:property value='ruKuDan.txtStatus' /></span>)</span></td>
+					<td class="titlebg"><span>物料管理(<span
+							style="color: blue; font-weight: bold;"><s:property
+									value='ruKuDan.txtStatus' /></span>)
+					</span></td>
 					<td align="right"><s:if test="ruKuDan.txtStatus=='准备单据'">
 							<a onClick="saveRuKuDan();return false;"
 								class="easyui-linkbutton" href="javascript:void(0)">保存单据</a>
-							<a
-								onClick="updateRuKuDanStatus('<s:property value='ruKuDanGuid' />','提交审核');return false;"
-								class="easyui-linkbutton" href="javascript:void(0)">提交审核</a>
+							<s:if test="ruKuDanGuid!=''">
+								<a
+									onClick="updateRuKuDanStatus('<s:property value='ruKuDanGuid' />','提交审核');return false;"
+									class="easyui-linkbutton" href="javascript:void(0)">提交审核</a>
+							</s:if>
 						</s:if> <s:elseif test="ruKuDan.txtStatus=='提交审核'">
 							<a
 								onClick="updateRuKuDanStatus('<s:property value='ruKuDanGuid' />','审核完毕');return false;"
@@ -48,15 +53,16 @@
 		</div>
 		<div id="divMain">
 			<form name="form1" method="post" id="form1">
-				<input name="txtGuid" type="hidden" id="txtGuid" />
-				<input name="txtStatus" type="hidden" id="txtStatus" value="<s:property value='ruKuDan.txtStatus' />" />
+				<input name="txtGuid" type="hidden" id="txtGuid" /> <input
+					name="txtStatus" type="hidden" id="txtStatus"
+					value="<s:property value='ruKuDan.txtStatus' />" />
 				<table border="0" width="900px">
 					<tr>
-                    	<td align="right">类型:</td>
+						<td align="right">类型:</td>
 						<td><input name="ddlRuKuSort" type="text" id="ddlRuKuSort"
 							class="easyui-textbox"
 							data-options="editable:false,required:true" /></td>
-                    	<td align="right"><span class="requireSpan">*</span>单号:</td>
+						<td align="right"><span class="requireSpan">*</span>单号:</td>
 						<td><input name="txtBillNo" type="text" id="txtBillNo"
 							class="easyui-textbox"
 							data-options="editable:false,required:true" /></td>
@@ -69,7 +75,7 @@
 							data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/gongYingShangOption.action'" /></td>
 					</tr>
 					<tr>
-                    	<td style="text-align: right;">采购人:</td>
+						<td style="text-align: right;">采购人:</td>
 						<td><input name="txtJingShouRen" type="text"
 							id="txtJingShouRen" class="easyui-textbox"
 							data-options="editable:false,required:true" /></td>
@@ -82,30 +88,32 @@
 			</form>
 		</div>
 
-		<div id="divBtnInfo" style="margin-top:5px;">
-            <table id="datagridWuLiao" class="easyui-datagrid"
+		<div id="divBtnInfo" style="margin-top: 5px;">
+			<table id="datagridWuLiao" class="easyui-datagrid"
 				data-options="url:'queryRuKuDanWuLiao.action?ruKuDanGuid=<s:property value='ruKuDan.txtGuid' />',toolbar:'#tb',singleSelect:true,rownumbers:true,showFooter:true">
 				<thead>
 					<tr>
-						<th field="txtWuLiaoCode" width="100" data-options="editor:{type:'textbox',options:{required:true}}">物料编码</th>
-						<th field="txtWuLiaoName" width="200" data-options="editor:{type:'textbox',options:{required:true}}">名称及规格</th>
+						<th field="txtWuLiaoCode" width="100"
+							data-options="editor:{type:'textbox',options:{required:true}}">物料编码</th>
+						<th field="txtWuLiaoName" width="200"
+							data-options="editor:{type:'textbox',options:{required:true}}">名称及规格</th>
 						<th field="txtQty" width="60"
 							data-options="align:'right',editor:{type:'numberbox',options:{required:true}}">数量</th>
-						<th field="txtPrice" width="100" data-options="align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">单价</th>
-                        <s:if test="ruKuDan.txtStatus!='审核完毕'">
-						<th field="action" width="150" align="center"
+						<th field="txtPrice" width="100"
+							data-options="align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">单价</th>
+						<s:if test="ruKuDan.txtStatus!='审核完毕'">
+							<th field="action" width="150" align="center"
 								formatter="formatAction">操作</th>
-                         </s:if>
+						</s:if>
 					</tr>
 				</thead>
 			</table>
-            <s:if test="ruKuDan.txtStatus!='审核完毕'">
-            <div id="tb" style="height: auto">
-				<a href="javascript:void(0)" class="easyui-linkbutton"
-					data-options="iconCls:'icon-add',plain:true"
-					onClick="appendRow()">添加物料</a>
-			</div>
-            </s:if>
+			<s:if test="ruKuDan.txtStatus!='审核完毕'">
+				<div id="tb" style="height: auto">
+					<a href="javascript:void(0)" class="easyui-linkbutton"
+						data-options="iconCls:'icon-add',plain:true" onClick="appendRow()">添加物料</a>
+				</div>
+			</s:if>
 		</div>
 
 	</div>

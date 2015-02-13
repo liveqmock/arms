@@ -49,10 +49,10 @@ td {
 				<td>名称及规格:</td>
 				<td><input name="txtWuLiaoName" type="text" class="easyui-textbox" maxlength="20"
 					id="txtWuLiaoName" style="width: 120px;" /></td>			
-					<td>所属仓库:</td>
-					<td><input name="ddlCangKu" id="ddlCangKu"
+					<td>供应商:</td>
+					<td><input name="txtSuppName" id="txtSuppName"
 							class="easyui-combobox"
-							data-options="editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/peiJianChangKuOption.action'" /></td>
+							data-options="editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/gongYingShangOption.action'" /></td>
 					<td  style="text-align: center;"><a id="lnkSearch"
 					class="easyui-linkbutton" href="javascript:doSearch()">查询</a></td>
 				<td><a id="lnkSearch" class="easyui-linkbutton"

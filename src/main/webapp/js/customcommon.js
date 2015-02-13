@@ -76,6 +76,44 @@ function initFormData(formJson) {
 			updateEditRow(this,index,{});
 		}
 	});
+	
+	$.extend($.fn.datagrid.defaults.editors, {
+		radiobox: {
+			defaultValue:"",
+			init: function(container, options){
+				this.defaultValue = options.defaultValue;				
+				var html = "<span style='text-align:center;'>";
+				_.each(options.values, function(value, index){
+					html += '<input type="radio" id="myRadio'+index+'" name="myRadio" value="'+value+'" /><label for="myRadio'+index+'">'+value+"</label>";
+					if(index < _.size(options.values)-1){
+						html += "&nbsp;&nbsp;";
+					}
+				});
+				html += "</span>";
+				return $(html).appendTo(container);
+			},
+			destroy: function(target){
+				$(target).remove();
+			},
+			getValue: function(target){
+				var radioGroup = $(target).find(":radio[checked='checked']");
+				var value = this.defaultValue;
+				if(_.size(radioGroup)>0){
+					value = $(radioGroup[0]).attr("value");
+				}
+				return value;
+			},
+			setValue: function(target, value){
+				var radioGroup = $(target).find(":radio[value='"+value+"']");
+				if(_.size(radioGroup)>0){
+					$(radioGroup[0]).attr("checked","checked");
+				}				
+			},
+			resize: function(target, width){
+				$(target)._outerWidth(width);
+			}
+		}
+	});
 })(jQuery);
 
 

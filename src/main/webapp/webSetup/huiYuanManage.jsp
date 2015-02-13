@@ -63,7 +63,7 @@ td {
 				<th data-options="field:'txtHuiYuanJiFen',width:120">会员积分</th>
 				<th data-options="field:'txtShenQingRiQi',width:120">申请日期</th>
 				<th data-options="field:'txtGongShiZheKou',width:120">工时折扣</th>
-				<th data-options="field:'txtCaiLiaoZheKou',width:120">材料折扣</th>
+				<th data-options="field:'txtCaiLiaoZheKou',width:120">物料折扣</th>
 				<th field="action" width="120" align="center"
 					formatter="formatAction">操作</th>
 			</tr>
@@ -109,7 +109,7 @@ td {
 				<tr>
 					<td style="width:60px">工时折扣:</td>
 					<td><input name="txtGongShiZheKou" type="text" maxlength="15" /></td>
-					<td style="width:60px">材料折扣:</td>
+					<td style="width:60px">物料折扣:</td>
 					<td><input name="txtCaiLiaoZheKou" type="text" maxlength="15" /></td>
 				</tr>
 				<tr>

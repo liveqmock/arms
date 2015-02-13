@@ -21,6 +21,7 @@ import com.chiefmech.arms.common.util.DateUtil;
 import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.entity.GongDan;
 import com.chiefmech.arms.entity.GongDanCheLiangJianCe;
+import com.chiefmech.arms.entity.GongDanJieSuan;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
 import com.chiefmech.arms.entity.KuCun;
@@ -56,6 +57,8 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport implements
 	private List<GongDanWeiXiuXiangMu> gongDanXiangMuLst;
 	private List<GongDanWeiXiuWuLiao> gongDanWuLiaoLst;
 	private GongDan gongDan = new GongDan();
+	private GongDanJieSuan jieSuanInfo;
+
 	String[] jianCeLstRenBao = { "检测发动机机油", "检查发动机空气滤清器", "检查发动机冷却系统",
 			"蓄电池及起动机检查", "各种橡胶软管的检查", "怠速及火花塞", "检查动力转向系统", "检查制动系统", "制动液检查",
 			"球头节和防尘套", "发动机外观检查", "前后悬挂装置及底盘", "检查制冷剂", "轮胎和充气气压", "空调滤清器",
@@ -81,6 +84,9 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport implements
 			@Action(value = "gongDanWeiXiuJieSuan", results = { @Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp") }) })
 	public String saleAfterWeiXiuJieDai() {
 		initGongDan();
+		if ("gongDanWeiXiuJieSuan".equals(this.getActionName())) {
+			jieSuanInfo = gongDanService.getGongDanJieSuanXinXi(gongDan);
+		}
 		return INPUT;
 	}
 
@@ -201,6 +207,18 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport implements
 				.toBean(jsonObject, GongDanWeiXiuXiangMu.class);
 		int rowAffected = gongDanService
 				.updateGongDanWeiXiuXiangMuWhenPaiGong(gongDanWeiXiuXiangMu);
+		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
+
+		this.transmitJson(jsonStr);
+	}
+
+	@Action(value = "updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao")
+	public void updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao() {
+		JSONObject jsonObject = JSONObject.fromObject(easyUiJSonData);
+		GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao = (GongDanWeiXiuWuLiao) JSONObject
+				.toBean(jsonObject, GongDanWeiXiuWuLiao.class);
+		int rowAffected = gongDanService
+				.updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao(gongDanWeiXiuWuLiao);
 		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
 
 		this.transmitJson(jsonStr);
@@ -368,6 +386,10 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport implements
 	@Override
 	public GongDan getModel() {
 		return gongDan;
+	}
+
+	public GongDanJieSuan getJieSuanInfo() {
+		return jieSuanInfo;
 	}
 
 	public String getGongDanJsonData() {

@@ -1,6 +1,5 @@
 package com.chiefmech.arms.entity.view;
 
-
 public class VCaiGouWuLiao {
 	private String ddlDianPu;
 	private String txtBillNo;
@@ -15,11 +14,33 @@ public class VCaiGouWuLiao {
 	private String txtWuLiaoName;
 	private int txtQty;
 	private float txtPrice;
+	private String ddlStatus;
+	private String txtShenHeRen;
+	private String txtShenHeShiJian;
+
+	public String getTxtShenHeRen() {
+		return txtShenHeRen;
+	}
+	public void setTxtShenHeRen(String txtShenHeRen) {
+		this.txtShenHeRen = txtShenHeRen;
+	}
+	public String getTxtShenHeShiJian() {
+		return txtShenHeShiJian;
+	}
+	public void setTxtShenHeShiJian(String txtShenHeShiJian) {
+		this.txtShenHeShiJian = txtShenHeShiJian;
+	}
 	public String getDdlDianPu() {
 		return ddlDianPu;
 	}
 	public void setDdlDianPu(String ddlDianPu) {
 		this.ddlDianPu = ddlDianPu;
+	}
+	public String getDdlStatus() {
+		return ddlStatus;
+	}
+	public void setDdlStatus(String ddlStatus) {
+		this.ddlStatus = ddlStatus;
 	}
 	public String getTxtBillNo() {
 		return txtBillNo;

@@ -78,13 +78,13 @@
 										},
 										children : [
 												{
-													name : "物料管理",
+													name : "采购管理",
 													font : {
 														'font-style' : '微软雅黑'
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('aef416a9-a829-4b9d-acb1-d31d4e2e1ef4','物料管理','../storeOtherManage/storeOtherInsertBillManage.action?action=updateCaiGou');"
+													click : "mdfMenu('aef416a9-a829-4b9d-acb1-d31d4e2e1ef4','采购管理','../storeOtherManage/storeOtherInsertBillManage.action?action=updateCaiGou');"
 												},
 												{
 													name : "库存管理",
@@ -113,15 +113,6 @@
 											'font-style' : '微软雅黑'
 										},
 										children : [
-												{
-													name : "物料仓库",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('4ab70d55-4c40-40bd-9849-b7a72c85f4d9','仓库管理','../webSetup/storeOtherSetManage.action');"
-												},
 												{
 													name : "供应商",
 													font : {

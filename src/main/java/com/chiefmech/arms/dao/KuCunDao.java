@@ -12,25 +12,24 @@ import org.springframework.stereotype.Repository;
 import com.chiefmech.arms.dao.sqlprovider.KuCunDaoSqlProvider;
 import com.chiefmech.arms.entity.KuCun;
 import com.chiefmech.arms.entity.KuCunOperLog;
-import com.chiefmech.arms.entity.Store;
 import com.chiefmech.arms.entity.query.KuCunOperLogSearchBean;
 
 @Repository("kuCunDao")
 public interface KuCunDao {
 
-	@Select("select count(*) from kucun where txtWuLiaoCode = #{txtWuLiaoCode} and ddlCangKu = #{ddlCangKu}")
+	@Select("select count(*) from kucun where txtWuLiaoGuid = #{txtWuLiaoGuid}")
 	public boolean isKuCunExist(KuCun item);
 
-	@Select("select * from kucun where txtWuLiaoCode = #{txtWuLiaoCode} and ddlCangKu = #{ddlCangKu}")
+	@Select("select * from kucun where txtWuLiaoGuid = #{txtWuLiaoGuid}")
 	public KuCun findExistKuCun(KuCun item);
 
-	@Insert("insert into kucun(txtKuCunGuid,txtWuLiaoGuid,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,ddlCangKu) values(#{txtKuCunGuid},#{txtWuLiaoGuid},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{ddlCangKu})")
+	@Insert("insert into kucun(txtKuCunGuid,txtWuLiaoGuid,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,ddlCangKu,txtSuppName) values(#{txtKuCunGuid},#{txtWuLiaoGuid},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{ddlCangKu},#{txtSuppName})")
 	public int insertKuCun(KuCun item);
 
 	@Update("update kucun set txtQty=#{txtQty},txtChengBenJia=#{txtChengBenJia} where txtKuCunGuid=#{txtKuCunGuid}")
 	public int updateKuCun(KuCun item);
 
-	@Insert("insert into kucunoperlog(txtLogGuid,txtBillNo,txtBillSort,txtLogDate,txtKuCunGuid,txtWuLiaoGuid,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,ddlCangKu) values(#{txtLogGuid},#{txtBillNo},#{txtBillSort},#{txtLogDate},#{txtKuCunGuid},#{txtWuLiaoGuid},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{ddlCangKu})")
+	@Insert("insert into kucunoperlog(txtLogGuid,txtBillGuid,txtBillSort,txtLogDate,txtWuLiaoGuid,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,ddlCangKu,txtSuppName) values(#{txtLogGuid},#{txtBillGuid},#{txtBillSort},#{txtLogDate},#{txtWuLiaoGuid},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{ddlCangKu},#{txtSuppName})")
 	public int insertKuCunOperLog(KuCunOperLog item);
 
 	@Update("update kucun set txtSalePrice=#{txtSalePrice} where txtKuCunGuid=#{txtKuCunGuid}")

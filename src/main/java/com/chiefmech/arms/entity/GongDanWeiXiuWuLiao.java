@@ -31,7 +31,7 @@ public class GongDanWeiXiuWuLiao {
 		this.txtWuLiaoName = item.getTxtWuLiaoName();
 		this.txtSuppName = item.getTxtSuppName();
 		this.txtPrice = item.getTxtSalePrice();
-		this.txtLaiYuanGuid = item.getTxtKuCunGuid();
+		this.txtLaiYuanGuid = item.getTxtWuLiaoGuid();
 		this.txtLaiYuan = "库存";
 		this.ddlStatus = "未出库";
 		this.ddlZhangTao = "免费";
@@ -45,8 +45,8 @@ public class GongDanWeiXiuWuLiao {
 		this.txtSuppName = item.getTxtSuppName();
 		this.txtPrice = item.getTxtPrice();
 		this.txtLaiYuanGuid = item.getTxtWuLiaoGuid();
+		this.ddlStatus = item.getDdlStatus();
 		this.txtLaiYuan = "采购";
-		this.ddlStatus = "已下单";
 		this.ddlZhangTao = "免费";
 	}
 

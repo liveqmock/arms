@@ -59,11 +59,17 @@ public class RuKuDanServiceImpl implements RuKuDanService {
 	@Override
 	public int updateRuKuDanStatus(RuKuDan ruKuDan) {
 		if (ruKuDan.getTxtStatus().equals("审核完毕")) {
-			List<RuKuDanWuLiao> lst = ruKuDanDao.getRuKuDanWuLiaoList(ruKuDan
-					.getTxtGuid());
-			for (RuKuDanWuLiao ruKuDanWuLiao : lst) {
-				KuCunOperLog operLog = new KuCunOperLog(ruKuDan, ruKuDanWuLiao);
-				kuCunService.updateKuCun(operLog);
+			String ruKuSort = ruKuDan.getDdlRuKuSort();
+			if ("日常采购".equals(ruKuSort)) {
+				List<RuKuDanWuLiao> lst = ruKuDanDao
+						.getRuKuDanWuLiaoList(ruKuDan.getTxtGuid());
+				for (RuKuDanWuLiao ruKuDanWuLiao : lst) {
+					KuCunOperLog operLog = new KuCunOperLog(ruKuDan,
+							ruKuDanWuLiao);
+					kuCunService.updateKuCun(operLog);
+				}
+			} else if ("临时采购".equals(ruKuSort)) {
+				ruKuDanDao.updateCaiGouWuLiaoStatus(ruKuDan.getTxtGuid(),"已下单");
 			}
 		}
 		return ruKuDanDao.updateRuKuDanStatus(ruKuDan);

@@ -74,15 +74,6 @@ public class GongDan {
 
 	private float txtGongShiZheKou;
 	private float txtCaiLiaoZheKou;
-	private float txtGongShiZheQian;
-	private float txtCaiLiaoZheQian;
-	private float txtGongShiZheHou;
-	private float txtCaiLiaoZheHou;
-	private float txtZheQianHeJi;
-	private float txtZheHouHeJi;
-
-	private float txtGongShiDiYongQuan;
-	private float txtCaiLiaoDiYongQuan;
 
 	private String txtCheLiangDengJiRiQi;
 	private String txtCheLiangNianShenDaoQiRi;
@@ -145,22 +136,6 @@ public class GongDan {
 		this.txtGongDanId = txtGongDanId;
 	}
 
-	public float getTxtGongShiDiYongQuan() {
-		return txtGongShiDiYongQuan;
-	}
-
-	public void setTxtGongShiDiYongQuan(float txtGongShiDiYongQuan) {
-		this.txtGongShiDiYongQuan = txtGongShiDiYongQuan;
-	}
-
-	public float getTxtCaiLiaoDiYongQuan() {
-		return txtCaiLiaoDiYongQuan;
-	}
-
-	public void setTxtCaiLiaoDiYongQuan(float txtCaiLiaoDiYongQuan) {
-		this.txtCaiLiaoDiYongQuan = txtCaiLiaoDiYongQuan;
-	}
-
 	public String getTxtGongDanStatus() {
 		return txtGongDanStatus;
 	}
@@ -179,22 +154,6 @@ public class GongDan {
 
 	public void setTxtNewRuChangDate(String txtNewRuChangDate) {
 		this.txtNewRuChangDate = txtNewRuChangDate;
-	}
-
-	public void setTxtGongShiZheHou(float txtGongShiZheHou) {
-		this.txtGongShiZheHou = txtGongShiZheHou;
-	}
-
-	public void setTxtCaiLiaoZheHou(float txtCaiLiaoZheHou) {
-		this.txtCaiLiaoZheHou = txtCaiLiaoZheHou;
-	}
-
-	public void setTxtZheQianHeJi(float txtZheQianHeJi) {
-		this.txtZheQianHeJi = txtZheQianHeJi;
-	}
-
-	public void setTxtZheHouHeJi(float txtZheHouHeJi) {
-		this.txtZheHouHeJi = txtZheHouHeJi;
 	}
 
 	public void setTxtGongDanStatus(String txtGongDanStatus) {
@@ -441,22 +400,6 @@ public class GongDan {
 		this.txtCaiLiaoZheKou = txtCaiLiaoZheKou;
 	}
 
-	public float getTxtGongShiZheQian() {
-		return txtGongShiZheQian;
-	}
-
-	public void setTxtGongShiZheQian(float txtGongShiZheQian) {
-		this.txtGongShiZheQian = txtGongShiZheQian;
-	}
-
-	public float getTxtCaiLiaoZheQian() {
-		return txtCaiLiaoZheQian;
-	}
-
-	public void setTxtCaiLiaoZheQian(float txtCaiLiaoZheQian) {
-		this.txtCaiLiaoZheQian = txtCaiLiaoZheQian;
-	}
-
 	public String getTxtCheLiangDengJiRiQi() {
 		return txtCheLiangDengJiRiQi;
 	}
@@ -495,27 +438,6 @@ public class GongDan {
 
 	public void setDdlDianPu(String ddlDianPu) {
 		this.ddlDianPu = ddlDianPu;
-	}
-
-	public String getTxtGongShiZheHou() {
-		return String.format("%.2f", this.txtGongShiZheQian
-				* this.txtGongShiZheKou);
-	}
-
-	public String getTxtCaiLiaoZheHou() {
-		return String.format("%.2f", this.txtCaiLiaoZheQian
-				* this.txtCaiLiaoZheKou);
-	}
-
-	public String getTxtZheQianHeJi() {
-		return String.format("%.2f", this.txtCaiLiaoZheQian
-				+ this.txtGongShiZheQian);
-	}
-
-	public String getTxtZheHouHeJi() {
-		return String.format("%.2f", this.txtGongShiZheQian
-				* this.txtGongShiZheKou + this.txtCaiLiaoZheQian
-				* this.txtCaiLiaoZheKou);
 	}
 
 }

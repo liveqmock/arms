@@ -87,7 +87,7 @@ td {
 					<td><input class="easyui-numberbox" name="txtGongShiZheKou"
 						type="text" id="txtGongShiZheKou"
 						data-options="required:true,precision:2,max:1,min:0" /></td>
-					<td align="right">材料折扣：</td>
+					<td align="right">物料折扣：</td>
 					<td><input class="easyui-numberbox" name="txtCaiLiaoZheKou"
 						type="text" id="txtCaiLiaoZheKou"
 						data-options="required:true,precision:2,max:1,min:0"

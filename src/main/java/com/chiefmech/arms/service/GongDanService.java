@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.chiefmech.arms.entity.GongDan;
 import com.chiefmech.arms.entity.GongDanCheLiangJianCe;
+import com.chiefmech.arms.entity.GongDanJieSuan;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
 import com.chiefmech.arms.entity.KuCun;
@@ -75,4 +76,9 @@ public interface GongDanService {
 
 	public int addGongDanWeiXiuWuLiaoFromCaiGou(String saleAfterWeiXiuGuid,
 			List<VCaiGouWuLiao> weiXiuWuLiaoLst);
+
+	public int updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao(
+			GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao);
+
+	public GongDanJieSuan getGongDanJieSuanXinXi(GongDan gongDan);
 }

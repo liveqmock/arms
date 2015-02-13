@@ -75,7 +75,7 @@ td {
 						   pagination:true">
 		<thead>
 			<tr>
-				<th width="100" data-options="field:'ddlCangKu'">所属仓库</th>
+				<th width="200" data-options="field:'txtSuppName'">供应商</th>
 				<th width="100" data-options="field:'txtWuLiaoCode'">物料编码</th>
 				<th width="150" data-options="field:'txtWuLiaoName'">名称及规格</th>
 				<th width="100" data-options="field:'txtChengBenJia'">成本价格</th>

@@ -19,8 +19,9 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/storeOtherManage")
 @Controller()
 @Scope("prototype")
-public class RuKuListManageAction extends BaseActionSupport implements
-		ModelDriven<CaiGouWuLiaoSearchBean> {
+public class RuKuListManageAction extends BaseActionSupport
+		implements
+			ModelDriven<CaiGouWuLiaoSearchBean> {
 
 	@Resource()
 	private RuKuDanService ruKuDanService;
@@ -30,7 +31,7 @@ public class RuKuListManageAction extends BaseActionSupport implements
 	private String ruKuDanGuid;
 	private String action;
 
-	@Action(value = "storeOtherInsertBillManage", results = { @Result(name = "input", location = "storeOtherInsertBillManage.jsp") })
+	@Action(value = "storeOtherInsertBillManage", results = {@Result(name = "input", location = "storeOtherInsertBillManage.jsp")})
 	public String storeOtherInsertBillManage() {
 		return INPUT;
 	}
@@ -39,6 +40,7 @@ public class RuKuListManageAction extends BaseActionSupport implements
 	public void queryRuKuDanWuLiao() {
 		query.setTxtRuKuDanGuid(ruKuDanGuid);
 		if ("addWuLiao".equals(action)) {
+			query.setDdlRuKuSort("临时采购");
 			query.setTxtStatus("审核完毕");
 		}
 		this.transmitJson(ruKuDanService.getRuKuDanEasyUiJSon(query));

@@ -12,7 +12,6 @@ import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.dao.KuCunDao;
 import com.chiefmech.arms.entity.KuCun;
 import com.chiefmech.arms.entity.KuCunOperLog;
-import com.chiefmech.arms.entity.Store;
 import com.chiefmech.arms.entity.query.KuCunOperLogSearchBean;
 import com.chiefmech.arms.service.KuCunService;
 
@@ -50,7 +49,6 @@ public class KuCunServiceImpl implements KuCunService {
 			rowAffected = kuCunDao.insertKuCun(logKuCun);
 		}
 		if (rowAffected == 1) {
-			operLog.setTxtKuCunGuid(logKuCun.getTxtKuCunGuid());
 			rowAffected = kuCunDao.insertKuCunOperLog(operLog);
 		}
 		return rowAffected;

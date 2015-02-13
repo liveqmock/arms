@@ -25,8 +25,9 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/storeOtherManage")
 @Controller()
 @Scope("prototype")
-public class RuKuDetailManageAction extends BaseActionSupport implements
-		ModelDriven<RuKuDan> {
+public class RuKuDetailManageAction extends BaseActionSupport
+		implements
+			ModelDriven<RuKuDan> {
 
 	@Resource()
 	private RuKuDanService ruKuDanService;
@@ -37,7 +38,7 @@ public class RuKuDetailManageAction extends BaseActionSupport implements
 	private String txtWuLiaoGuid;
 	private String rowJsonData;
 
-	@Action(value = "rukudanDetail", results = { @Result(name = "input", location = "rukudanDetail.jsp") })
+	@Action(value = "rukudanDetail", results = {@Result(name = "input", location = "rukudanDetail.jsp")})
 	public String rukudanDetail() {
 
 		if (StringUtils.isBlank(ruKuDanGuid)) {
@@ -92,8 +93,7 @@ public class RuKuDetailManageAction extends BaseActionSupport implements
 
 	@Action(value = "updateRuKuDanStatus")
 	public void updateRuKuDanStatus() {
-		if (ruKuDan.getDdlRuKuSort().equals("日常采购")
-				&& ruKuDan.getTxtStatus().equals("审核完毕")) {
+		if (ruKuDan.getTxtStatus().equals("审核完毕")) {
 			ruKuDan.setTxtShenHeRen(this.getUser().getDisplayName());
 			ruKuDan.setTxtShenHeShiJian(DateUtil.getCurrentDate());
 		}

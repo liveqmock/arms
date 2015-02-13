@@ -12,13 +12,13 @@ public class KuCun {
 	private String txtSuppName;
 
 	public KuCun(KuCunOperLog operLog) {
-		this.txtKuCunGuid = operLog.getTxtKuCunGuid();
 		this.txtWuLiaoGuid = operLog.getTxtWuLiaoGuid();
 		this.txtWuLiaoCode = operLog.getTxtWuLiaoCode();
 		this.txtWuLiaoName = operLog.getTxtWuLiaoName();
 		this.txtQty = operLog.getTxtQty();
 		this.txtChengBenJia = operLog.getTxtChengBenJia();
 		this.ddlCangKu = operLog.getDdlCangKu();
+		this.txtSuppName = operLog.getTxtSuppName();
 	}
 
 	public KuCun() {

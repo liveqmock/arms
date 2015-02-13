@@ -55,8 +55,8 @@ public class KuCunDaoSqlProvider {
 						.getTxtWuLiaoCode()));
 				this.addField(new Criteria(Action.LIKE, "txtWuLiaoName", item
 						.getTxtWuLiaoName()));
-				this.addField(new Criteria(Action.LIKE, "ddlCangKu", item
-						.getDdlCangKu()));
+				this.addField(new Criteria(Action.LIKE, "txtSuppName", item
+						.getTxtSuppName()));
 			}
 		};
 		return searchBean;

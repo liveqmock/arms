@@ -69,7 +69,7 @@ td {
 				<th data-options="field:'txtBaoYangZheKou',width:120">保养折扣</th>
 				<th data-options="field:'txtBanJinZheKou',width:120">钣金折扣</th>
 				<th data-options="field:'txtPenQiZheKou',width:120">喷漆折扣</th>
-				<th data-options="field:'txtCaiLiaoZheKou',width:120">材料折扣</th>
+				<th data-options="field:'txtCaiLiaoZheKou',width:120">物料折扣</th>
 				<th field="action" width="100" align="center"
 					formatter="formatAction">操作</th>
 			</tr>
@@ -132,7 +132,7 @@ td {
 						data-options="precision:2" /></td>
 				</tr>
 				<tr>
-					<td>材料折扣:</td>
+					<td>物料折扣:</td>
 					<td><input name="txtCaiLiaoZheKou" type="text"
 						id="txtCaiLiaoZheKou" class="easyui-numberbox"
 						data-options="precision:2" /></td>
