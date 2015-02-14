@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50537
 File Encoding         : 65001
 
-Date: 2015-02-14 00:30:14
+Date: 2015-02-14 16:57:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -1463,13 +1463,14 @@ CREATE TABLE `chelianginfo` (
 -- ----------------------------
 -- Records of chelianginfo
 -- ----------------------------
-INSERT INTO `chelianginfo` VALUES ('589f74a2-a7b5-46c8-8471-34d5148c26e6', '1402fb17-f5d6-475c-a0e5-08b05c0c1349', '粤B-7H675', '未设置', '12345678901234567', '2014-05-20', '', '2016-05-19', '2015-05-19', '凯迪拉克', '凯迪拉克XTS', '人保');
+INSERT INTO `chelianginfo` VALUES ('589f74a2-a7b5-46c8-8471-34d5148c26e6', '1402fb17-f5d6-475c-a0e5-08b05c0c1349', '粤B-7H676', '未设置', '12345678901234567', '2014-05-20', '44789632589632589', '2016-05-19', '2015-05-19', '凯迪拉克', '凯迪拉克ATS-L', '人保');
 INSERT INTO `chelianginfo` VALUES ('3cbe3be8-d9b5-4206-9bda-ddcea5fffe51', '1591b22a-aa08-4112-83ac-bc1e188d57bc', '粤B T917B', 'DSA11', '12345678901234567', '2015-02-13', 'dsa11', '2017-02-12', '2016-02-12', '标致', '标致408', '人保');
+INSERT INTO `chelianginfo` VALUES ('5369902e-6eb5-4510-a4d5-31f9e5059858', '2315307f-1c0b-45f6-9ea6-f21097384aa7', '粤B 9PL99', 'EWE12', '12345678901234567', '2015-02-14', 'EWE11', '2021-02-10', '2016-02-10', '五菱', '宏光', '人保');
 INSERT INTO `chelianginfo` VALUES ('aaae6691-4b58-40a6-b65d-0f61a7a722c2', '27f30924-93de-4c7c-8a2b-e3a691780d75', '粤B E3U05', 'DSA22', '12345678901234567', '2015-02-04', 'dsa11', '2021-02-03', '2016-02-04', '本田', '奥德赛', '人保');
 INSERT INTO `chelianginfo` VALUES ('5b987c5c-5ea3-45b2-8e5e-a2facdcaa808', '9f102241-b403-4388-bc38-d82aa2aec0f5', '粤BE691Q', 'DAA11', '12345678901234567', '2015-02-04', 'DSA11', '2021-02-03', '2016-02-03', '丰田', '卡罗拉', '平安保险');
 INSERT INTO `chelianginfo` VALUES ('e16e79bb-5893-46ca-a5f3-e8d1f93d3755', 'a804654f-555b-4abc-9e6b-a6e1784b953d', '闽J-63258', '未设置', '未设置', null, '', '', '', '道奇', '酷威', null);
-INSERT INTO `chelianginfo` VALUES ('589f74a2-a7b5-46c8-8471-34d5148c26e6', 'c5f952bf-64f3-4592-bd26-07c729e7e587', '贵N-32658', '未设置', '未设置', null, '', '', '', '海马汽车', '福仕达新鸿达', null);
-INSERT INTO `chelianginfo` VALUES ('03cb524f-f6b2-4233-afff-cdd8d332444f', 'db3ece1e-02c8-4adf-91d9-e2f69488ded2', '津F-69452', '未设置', '未设置', null, '', '', '', '克莱斯勒', '大捷龙(进口)', null);
+INSERT INTO `chelianginfo` VALUES ('589f74a2-a7b5-46c8-8471-34d5148c26e6', 'c5f952bf-64f3-4592-bd26-07c729e7e587', '贵N-32658', '未设置', '56329633259963258', null, 'DFASFS56325696325', '2016-05-06', '2016-08-11', '菲亚特', '派朗', null);
+INSERT INTO `chelianginfo` VALUES ('03cb524f-f6b2-4233-afff-cdd8d332444f', 'db3ece1e-02c8-4adf-91d9-e2f69488ded2', '津F-69452', '未设置', '55555', '2015-02-14', 'DSA11', '2021-02-13', '2015-02-15', '克莱斯勒', '克莱斯勒300C(进口)', '人保');
 
 -- ----------------------------
 -- Table structure for `customerinfo`
@@ -1497,12 +1498,15 @@ CREATE TABLE `customerinfo` (
 -- ----------------------------
 -- Records of customerinfo
 -- ----------------------------
-INSERT INTO `customerinfo` VALUES ('03cb524f-f6b2-4233-afff-cdd8d332444f', '八路通深圳西乡店', null, '陈先生', '13333333333', '888888', null, null, '深圳', '2015-05-06', '0', '1.00', '1.00', null, '0');
+INSERT INTO `customerinfo` VALUES ('03cb524f-f6b2-4233-afff-cdd8d332444f', '八路通深圳西乡店', '会员', '陈先生', '13333333333', '888888', null, null, '深圳', '2015-05-06', '0', '1.00', '1.00', null, '0');
 INSERT INTO `customerinfo` VALUES ('3cbe3be8-d9b5-4206-9bda-ddcea5fffe51', '八路通深圳西乡店', '人保客户', '赵绍国', '18038023056', '888888', '赵绍国', '18038023056', '深圳市宝安区', '2013-02-12', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('5369902e-6eb5-4510-a4d5-31f9e5059858', '八路通深圳西乡店', '人保客户', '杨丙友', '15118073359', '888888', '杨丙友', '15118073359', '深圳', '2013-02-13', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('589f74a2-a7b5-46c8-8471-34d5148c26e6', '八路通深圳西乡店', '合作商户', '德明士', '13316982760', '888888', '小邓', '13316982760', '深圳市宝安区西乡', '2013-08-20', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('5b7c12b1-878b-4afd-adf3-e9e103cf2d3f', '八路通深圳西乡店', '会员', '徐芹富', '13530414086', '888666', '徐芹富', '13530414086', '港隆城', '未设置', '0', '1.00', '1.00', null, '0');
 INSERT INTO `customerinfo` VALUES ('5b987c5c-5ea3-45b2-8e5e-a2facdcaa808', '八路通深圳西乡店', '人保客户', '韩艳芳', '13590218250', '888888', '韩艳芳', '13590218250', '深圳市宝安区', '2015-02-04', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('aaae6691-4b58-40a6-b65d-0f61a7a722c2', '八路通深圳西乡店', '人保客户', '王书', '18676666525', '888888', '王书', '18676666525', '深圳宝安', '2015-02-04', '0', '1.00', '1.00', '注册会员', null);
-INSERT INTO `customerinfo` VALUES ('e16e79bb-5893-46ca-a5f3-e8d1f93d3755', '八路通深圳横岗店', null, '黄先生', '13569856325', '888888', null, null, '长沙', '2012-06-12', '0', '1.00', '1.00', null, '0');
+INSERT INTO `customerinfo` VALUES ('d19d8b35-27c1-484d-a011-373dc5c65b7f', '八路通深圳西乡店', '会员', '王先生', '13999999999', '888888', '王先生', '13999999999', '深圳', '2014-02-06', '0', '1.00', '1.00', null, '0');
+INSERT INTO `customerinfo` VALUES ('e16e79bb-5893-46ca-a5f3-e8d1f93d3755', '八路通深圳横岗店', '会员', '黄先生', '13569856325', '888888', null, null, '长沙', '2012-06-12', '0', '1.00', '1.00', null, '0');
 
 -- ----------------------------
 -- Table structure for `department`
@@ -1595,15 +1599,21 @@ CREATE TABLE `gongdan` (
 -- ----------------------------
 -- Records of gongdan
 -- ----------------------------
-INSERT INTO `gongdan` VALUES ('0934bc98-53cb-4043-a8c6-7ff5f267b920', '八路通深圳西乡店', 'JDD20150213003', '', '2015-02-13', '2015-02-26 11:57:45', '邓思杰', '正常保养', '', '', '589f74a2-a7b5-46c8-8471-34d5148c26e6', 'c5f952bf-64f3-4592-bd26-07c729e7e587', null, '贵N-32658', '2000', '未设置', '', '海马汽车', '福仕达新腾达', '未设置', '人保客户', '德明士', '13316982760', '小邓', '13316982760', '深圳市宝安区西乡', '领取物料', null, null, '5000', '2015-03-13', null, '注册会员', '0.80', '0.80', null, '', '', null, '0.00', '0.00');
+INSERT INTO `gongdan` VALUES ('0934bc98-53cb-4043-a8c6-7ff5f267b920', '八路通深圳西乡店', 'JDD20150213003', '', '2015-02-13', '2015-02-26 11:57:45', '邓思杰', '正常保养', '', '', '589f74a2-a7b5-46c8-8471-34d5148c26e6', 'c5f952bf-64f3-4592-bd26-07c729e7e587', null, '贵N-32658', '2000', '未设置', '', '海马汽车', '福仕达新腾达', '未设置', '人保客户', '德明士', '13316982760', '小邓', '13316982760', '深圳市宝安区西乡', '车辆检测', null, null, '5000', '2015-03-13', null, '注册会员', '0.80', '0.80', null, '', '', null, '0.00', '0.00');
 INSERT INTO `gongdan` VALUES ('2950f42a-f826-4680-99a3-e36904f78408', '八路通深圳西乡店', 'JDD20150213001', '', '2015-02-13', '2015-02-13 09:07:02', '邓思杰', '正常保养', '', '', '589f74a2-a7b5-46c8-8471-34d5148c26e6', '1402fb17-f5d6-475c-a0e5-08b05c0c1349', null, '粤B 7H67', '76739', '12345678901234567', '45845', '江淮', '和悦A13 RS', 'DSD12', '人保客户', '德明士', '13316982760', '小邓', '13316982760', '深圳市宝安区西乡', '出库', null, '2015-02-13', '80000', '2015-05-12', null, '注册会员', '0.80', '0.80', '2014-05-20', '2016-05-19', '2015-05-19', '人保', '0.00', '0.00');
 INSERT INTO `gongdan` VALUES ('3b8a2ec5-3883-4212-a934-1747e794f74e', '八路通深圳西乡店', 'JDD20150213002', '', '2015-02-13', '2015-02-13', '邓思杰', '常规保养', '', '', '3cbe3be8-d9b5-4206-9bda-ddcea5fffe51', '1591b22a-aa08-4112-83ac-bc1e188d57bc', null, '粤B T917B', '35518', '12345678901234567', 'dsa11', '标致', '标致408', 'DSA11', '人保客户', '赵绍国', '18038023056', '赵绍国', '18038023056', '深圳市宝安区', '费用结算', null, null, '40000', '2015-05-13', null, '注册会员', '1.00', '1.00', '2015-02-13', '2017-02-12', '2016-02-12', '人保', '0.00', '0.00');
 INSERT INTO `gongdan` VALUES ('3b8a2ec5-3883-4212-a934-1747e794f74k', '八路通深圳西乡店', 'JDD20150213004', null, '2015-02-13', '2015-02-13', '邓思杰', '常规保养', null, null, '589f74a2-a7b5-46c8-8471-34d5148c26e6', 'c5f952bf-64f3-4592-bd26-07c729e7e587', null, '贵N-32658', '2000', '未设置', null, '海马汽车', '福仕达新腾达', '未设置', '人保客户', '德明士', '13316982760', '小邓', '13316982760', '深圳市宝安区西乡', '费用结算', null, null, '10000', '2015-05-13', null, '注册会员', '0.80', '0.80', '2014-05-20', '2016-05-19', '2015-05-19', '人保', '0.00', '0.00');
+INSERT INTO `gongdan` VALUES ('437e42e9-01c3-43a2-b42d-d5c4a217d536', '八路通深圳西乡店', 'JDD20150214005', '', '2015-02-14', '2015-02-14 16:13:57', '杨小院', 'aaa', null, null, '3cbe3be8-d9b5-4206-9bda-ddcea5fffe51', '1591b22a-aa08-4112-83ac-bc1e188d57bc', null, '粤B T917B', '13000', '12345678901234567', 'dsa11', '标致', '标致408', 'DSA11', '人保客户', '赵绍国', '18038023056', '赵绍国', '18038023056', '深圳市宝安区', '维修接待', null, null, '18000', '2015-05-14', null, '注册会员', '1.00', '1.00', '2015-02-13', '2017-02-12', '2016-02-12', '人保', null, null);
 INSERT INTO `gongdan` VALUES ('5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '八路通深圳西乡店', 'JDD20150213009', '', '2015-02-13', '2015-02-17', '杨小院', '', '', '', '589f74a2-a7b5-46c8-8471-34d5148c26e6', 'c5f952bf-64f3-4592-bd26-07c729e7e587', null, '贵N-32658', '7000', '未设置', '', '海马汽车', '福仕达新鸿达', '未设置', '合作商户', '德明士', '13316982760', '小邓', '13316982760', '深圳市宝安区西乡', '费用结算', null, null, '12000', '2015-02-26', null, '注册会员', '1.00', '1.00', null, '', '', null, '0.00', '0.00');
+INSERT INTO `gongdan` VALUES ('639c2676-554d-480f-b5af-decf3188708b', '八路通深圳西乡店', 'JDD20150214004', '', '2015-02-14', '2015-02-14 15:44:28', '杨小院', 'sfdsdf', null, null, '3cbe3be8-d9b5-4206-9bda-ddcea5fffe51', '1591b22a-aa08-4112-83ac-bc1e188d57bc', null, '粤B T917B', '0', '12345678901234567', 'dsa11', '标致', '标致408', 'DSA11', '人保客户', '赵绍国', '18038023056', '赵绍国', '18038023056', '深圳市宝安区', '维修接待', null, null, '20000', '2015-02-25', null, '注册会员', '1.00', '1.00', '2015-02-13', '2017-02-12', '2016-02-12', '人保', null, null);
+INSERT INTO `gongdan` VALUES ('81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', '八路通深圳西乡店', 'JDD20150214002', '', '2015-02-14', '2015-02-14 13:52:19', '杨小院', '保养', '', '', '5b987c5c-5ea3-45b2-8e5e-a2facdcaa808', '9f102241-b403-4388-bc38-d82aa2aec0f5', null, '粤BE691Q', '15000', '12345678901234567', 'DSA11', '丰田', '卡罗拉', 'DAA11', '人保客户', '韩艳芳', '13590218250', '韩艳芳', '13590218250', '深圳市宝安区', '维修派工', null, null, '20000', '2015-05-15', null, '注册会员', '1.00', '1.00', '2015-02-04', '2021-02-03', '2016-02-03', '平安保险', null, null);
 INSERT INTO `gongdan` VALUES ('87e54a26-e5d4-42ac-9b5a-2f7071088ae1', '八路通深圳西乡店', 'JDD20150213006', '', '2015-02-13', '2015-02-13 16:14:57', '邓思杰', '正常保养', '', '', 'aaae6691-4b58-40a6-b65d-0f61a7a722c2', '27f30924-93de-4c7c-8a2b-e3a691780d75', null, '粤B E3U05', '59588', '12345678901234567', 'dsa11', '本田', '奥德赛', 'DSA22', '人保客户', '王书', '18676666525', '王书', '18676666525', '深圳宝安', '费用结算', null, null, '65000', '2015-05-06', null, '注册会员', '1.00', '1.00', '2015-02-04', '2021-02-03', '2016-02-04', '人保', '0.00', '0.00');
+INSERT INTO `gongdan` VALUES ('9740f20d-a82e-46fc-9217-9672a4bd3da6', '八路通深圳西乡店', 'JDD20150214003', '', '2015-02-14', '2015-02-14 14:52:25', '邓思杰', '正常保养', '', '洗车，消毒', '5369902e-6eb5-4510-a4d5-31f9e5059858', '2315307f-1c0b-45f6-9ea6-f21097384aa7', null, '粤B 9PL99', '29788', '12345678901234567', 'EWE11', '五菱', '宏光', 'EWE12', '人保客户', '杨丙友', '15118073359', '杨丙友', '15118073359', '深圳', '出库', null, '2015-02-14', '35000', '2015-05-12', null, '注册会员', '1.00', '1.00', '2015-02-14', '2021-02-10', '2016-02-10', '人保', null, null);
 INSERT INTO `gongdan` VALUES ('d073a433-a64d-4a87-b999-9227aa928fb3', '八路通深圳西乡店', 'JDD20150213005', '', '2015-02-13', '2015-02-13', '邓思杰', '正常保养', '', '', '5b987c5c-5ea3-45b2-8e5e-a2facdcaa808', '9f102241-b403-4388-bc38-d82aa2aec0f5', null, '粤BE691Q', '49219', '12345678901234567', 'DSA11', '丰田', '卡罗拉', 'DAA11', '人保客户', '韩艳芳', '13590218250', '韩艳芳', '13590218250', '深圳市宝安区', '出库', null, '2015-02-13', '53000', '2015-05-13', null, '注册会员', '1.00', '1.00', '2015-02-04', '2021-02-03', '2016-02-03', '平安保险', '0.00', '0.00');
+INSERT INTO `gongdan` VALUES ('db2398f1-f8f6-4318-8cfd-ebb1c8794b79', '八路通深圳西乡店', 'JDD20150214001', '', '2015-02-14', '2015-02-15 13:39:16', '杨小院', '保养，故障灯亮', '', '', '3cbe3be8-d9b5-4206-9bda-ddcea5fffe51', '1591b22a-aa08-4112-83ac-bc1e188d57bc', null, '粤B T917B', '15000', '12345678901234567', 'dsa11', '标致', '标致408', 'DSA11', '人保客户', '赵绍国', '18038023056', '赵绍国', '18038023056', '深圳市宝安区', '维修接待', null, null, '20000', '2015-05-15', null, '注册会员', '1.00', '1.00', '2015-02-13', '2017-02-12', '2016-02-12', '人保', null, null);
 INSERT INTO `gongdan` VALUES ('e47fb62f-6625-4fdc-bd82-884673c5f983', '八路通深圳西乡店', 'JDD20150213007', '', '2015-02-13', '2015-02-13', '邓思杰', '正常保养', '', '', 'aaae6691-4b58-40a6-b65d-0f61a7a722c2', '27f30924-93de-4c7c-8a2b-e3a691780d75', null, '粤B E3U05', '59000', '12345678901234567', 'dsa11', '本田', '奥德赛', 'DSA22', '人保客户', '王书', '18676666525', '王书', '18676666525', '深圳宝安', '出库', null, '2015-02-13', '65000', '2015-02-13', null, '注册会员', '1.00', '1.00', '2015-02-04', '2021-02-03', '2016-02-04', '人保', '0.00', '0.00');
 INSERT INTO `gongdan` VALUES ('f3989f79-a939-40a1-8a19-e57a2b598246', '八路通深圳西乡店', 'JDD20150213008', '', '2015-02-13', '2015-02-13 17:07:09', '邓思杰', '正常保养', '', '', 'aaae6691-4b58-40a6-b65d-0f61a7a722c2', '27f30924-93de-4c7c-8a2b-e3a691780d75', null, '粤B E3U05', '59588', '12345678901234567', 'dsa11', '本田', '奥德赛', 'DSA22', '人保客户', '王书', '18676666525', '王书', '18676666525', '深圳宝安', '维修接待', null, null, '65000', '2015-02-13', null, '注册会员', '1.00', '1.00', '2015-02-04', '2021-02-03', '2016-02-04', '人保', '0.00', '0.00');
+INSERT INTO `gongdan` VALUES ('fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', '八路通深圳西乡店', 'JDD20150214006', '', '2015-02-14', '2015-02-14', '杨小院', 'aaa', null, null, '3cbe3be8-d9b5-4206-9bda-ddcea5fffe51', '1591b22a-aa08-4112-83ac-bc1e188d57bc', null, '粤B T917B', '13000', '12345678901234567', 'dsa11', '标致', '标致408', 'DSA11', '人保客户', '赵绍国', '18038023056', '赵绍国', '18038023056', '深圳市宝安区', '领取物料', null, null, '18000', '2015-05-14', null, '注册会员', '1.00', '1.00', '2015-02-13', '2017-02-12', '2016-02-12', '人保', null, null);
 
 -- ----------------------------
 -- Table structure for `gongdanjiance`
@@ -1626,70 +1636,135 @@ CREATE TABLE `gongdanjiance` (
 -- ----------------------------
 INSERT INTO `gongdanjiance` VALUES ('025084da-9f07-4436-8059-a3ebbe15c212', 'e47fb62f-6625-4fdc-bd82-884673c5f983', '10', '发动机外观检查', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('04072698-7c19-4cb1-ad2f-17ba36847345', '2950f42a-f826-4680-99a3-e36904f78408', '0', '检测发动机控制模块系统', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('0456dc6d-874a-4c34-a5ce-cb80e1e28822', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', '11', '前后悬挂装置及底盘', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('04e4a0d0-999f-47c7-969f-db44e5e9568e', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '0', '检测发动机控制模块系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('06461b26-70fe-427b-b5d1-6dd036e88a45', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '14', '检查车轮', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('09853779-dcd3-4978-a363-7e48d38acf94', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', '1', '检查发动机空气滤清器', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('0ab4701d-72d4-4bfa-9b1e-da8fddf7ef34', '3b8a2ec5-3883-4212-a934-1747e794f74e', '4', '各种橡胶软管的检查', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('0b051185-48ab-426a-8159-b693060aed65', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', '2', '检查发动机冷却系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('0c59f4d0-880e-4bfe-9983-389c7571a1a9', 'db2398f1-f8f6-4318-8cfd-ebb1c8794b79', '0', '检测发动机机油', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('1078d42c-63a7-4847-826d-e30129dc1ba4', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', '0', '检测发动机机油', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('12414409-c7dd-4e06-8945-574ead2d3f85', '9740f20d-a82e-46fc-9217-9672a4bd3da6', '9', '球头节和防尘套', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('126dd3a3-4972-405a-bd25-2325984102d9', '9740f20d-a82e-46fc-9217-9672a4bd3da6', '3', '蓄电池及起动机检查', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('12cdce33-40e2-4b72-b405-f34ebfeda9f8', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '6', '检查车辆底部', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('132b19a0-c1ad-48d9-9080-4c2ac208c759', '2950f42a-f826-4680-99a3-e36904f78408', '8', '检查制动系统', '异常', '');
 INSERT INTO `gongdanjiance` VALUES ('144076ce-d9aa-4605-8584-20f0a2cfe039', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '14', '检查车轮', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('17ee5687-dff5-4efa-ac10-3f7d3fde7687', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', '14', '空调滤清器', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('190bd59b-c8fb-4319-887f-c6870da2f8fe', '639c2676-554d-480f-b5af-decf3188708b', '11', '前后悬挂装置及底盘', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('1a721812-cf40-4b74-af83-ceff95298ed1', '9740f20d-a82e-46fc-9217-9672a4bd3da6', '14', '空调滤清器', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('1a9644c7-a157-4b91-9e06-ca85ac5eaa4b', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '13', '检查反光镜、后视镜', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('1a9de8fa-c64b-4fd6-8fc5-ffedcea46a71', 'f3989f79-a939-40a1-8a19-e57a2b598246', '6', '检查动力转向系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('1d3f9f58-cb38-4bb6-be33-cff765c713a9', 'db2398f1-f8f6-4318-8cfd-ebb1c8794b79', '9', '球头节和防尘套', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('1d5c89b1-b010-406f-b9a0-74292507e83d', '437e42e9-01c3-43a2-b42d-d5c4a217d536', '12', '检查制冷剂', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('1f1b24ec-1016-4520-b415-b7f41569f978', '3b8a2ec5-3883-4212-a934-1747e794f74e', '0', '检测发动机机油', '异常', '更换机油及机油格');
+INSERT INTO `gongdanjiance` VALUES ('1f86794e-59fd-4918-9837-15d7ee30f091', '639c2676-554d-480f-b5af-decf3188708b', '13', '轮胎和充气气压', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('21b690d2-891b-4db9-b844-74df95224c89', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '5', '检查刮水器刮片', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('22206a85-361c-4803-b072-50c39536b485', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', '3', '蓄电池及起动机检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('227c74e0-47a8-4a95-b139-71e9515cfdfd', '2950f42a-f826-4680-99a3-e36904f78408', '14', '检查车轮', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('238b91e3-e129-47f2-8bbd-b14e258897d1', '437e42e9-01c3-43a2-b42d-d5c4a217d536', '10', '发动机外观检查', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('26847374-2e9d-4418-904d-1feb2b7bb3a1', '639c2676-554d-480f-b5af-decf3188708b', '5', '怠速及火花塞', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('27821bcf-9168-4e71-83ab-bfa753071436', 'f3989f79-a939-40a1-8a19-e57a2b598246', '1', '检查发动机空气滤清器', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('28456ce3-5db6-40a0-bc21-bafa84f4572c', '437e42e9-01c3-43a2-b42d-d5c4a217d536', '9', '球头节和防尘套', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('29143bd9-5be4-4e34-a229-cfbc542d45e1', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', '1', '检查发动机空气滤清器', '异常', '清洁');
+INSERT INTO `gongdanjiance` VALUES ('29c74634-c598-4fcf-8115-a5cb7ec89528', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', '9', '球头节和防尘套', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('2aa9bee1-4856-4934-abd5-35eeef065180', 'db2398f1-f8f6-4318-8cfd-ebb1c8794b79', '14', '空调滤清器', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('2b46d8ae-4a3f-46c0-92ac-49aed792b150', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', '14', '空调滤清器', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('2b4d462f-46d5-4c89-8f67-22e7d50f3c17', 'f3989f79-a939-40a1-8a19-e57a2b598246', '12', '检查制冷剂', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('2c83dcb4-e588-4e17-b14b-8b061235400d', '9740f20d-a82e-46fc-9217-9672a4bd3da6', '5', '怠速及火花塞', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('2eaa0735-1af4-48d8-978c-2fa1459ec1b3', 'd073a433-a64d-4a87-b999-9227aa928fb3', '11', '前后悬挂装置及底盘', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('2ecb5fe4-35d6-4e0e-ae19-0de5f28ca05b', '639c2676-554d-480f-b5af-decf3188708b', '12', '检查制冷剂', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('308a2559-da82-4e5c-9464-222d2c6f3340', '437e42e9-01c3-43a2-b42d-d5c4a217d536', '13', '轮胎和充气气压', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('311fb649-da40-4bd4-8cc9-78001523523a', '3b8a2ec5-3883-4212-a934-1747e794f74e', '2', '检查发动机冷却系统', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('32f66eab-22d6-4e4b-a629-02d71d57917d', 'db2398f1-f8f6-4318-8cfd-ebb1c8794b79', '13', '轮胎和充气气压', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('34190a93-f996-434f-a957-e0e1c49d9c5a', 'd073a433-a64d-4a87-b999-9227aa928fb3', '0', '检测发动机机油', '异常', '更换机油及机油格');
 INSERT INTO `gongdanjiance` VALUES ('37eac3ef-acb1-4b6d-ab0b-c17680429c80', '2950f42a-f826-4680-99a3-e36904f78408', '10', '检查发动机附件皮带', '异常', '');
 INSERT INTO `gongdanjiance` VALUES ('3832af3e-d355-4e4d-801a-569916ddaf0e', 'e47fb62f-6625-4fdc-bd82-884673c5f983', '4', '各种橡胶软管的检查', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('3c3fd6fa-6047-48c4-9029-1192d79f8eae', 'db2398f1-f8f6-4318-8cfd-ebb1c8794b79', '7', '检查制动系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('4139c0d6-f347-436f-90c6-7038a31eecfb', '2950f42a-f826-4680-99a3-e36904f78408', '15', '检查蓄电池', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('41963753-660a-4297-ad26-77e9cff8693e', 'db2398f1-f8f6-4318-8cfd-ebb1c8794b79', '1', '检查发动机空气滤清器', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('42169e78-9834-46b0-9f14-31f7d6651e7a', '639c2676-554d-480f-b5af-decf3188708b', '1', '检查发动机空气滤清器', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('423aa912-2369-4bd2-a14b-5e5d1ca0b918', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', '7', '检查制动系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('43fa1a39-1441-4f9a-8038-acf719eb2fd1', '3b8a2ec5-3883-4212-a934-1747e794f74e', '12', '检查制冷剂', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('44c5845e-f1c6-44bd-aefe-396c6c887940', 'f3989f79-a939-40a1-8a19-e57a2b598246', '2', '检查发动机冷却系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('462b5e54-f5b1-44cc-a080-145dc6029da3', '9740f20d-a82e-46fc-9217-9672a4bd3da6', '2', '检查发动机冷却系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('46f01cc5-9c32-493b-946d-55c19d26576f', 'e47fb62f-6625-4fdc-bd82-884673c5f983', '7', '检查制动系统', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('48254a40-4fca-4bc0-83e8-19e92ef2b78f', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', '9', '球头节和防尘套', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('48d479e7-418a-47a7-af6c-cde1170e6ee7', 'db2398f1-f8f6-4318-8cfd-ebb1c8794b79', '2', '检查发动机冷却系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('498068e7-8e2d-40d2-b172-e3d0e8da70f6', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', '6', '检查动力转向系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('49f53e9e-9942-489c-877c-9567dc62a6b9', '9740f20d-a82e-46fc-9217-9672a4bd3da6', '13', '轮胎和充气气压', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('4afa161e-ed45-47ca-baea-8682f17a6a23', '639c2676-554d-480f-b5af-decf3188708b', '8', '制动液检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('4b8d946a-0b2e-4717-a1b2-89e78a77cc56', 'd073a433-a64d-4a87-b999-9227aa928fb3', '6', '检查动力转向系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('4cc4815a-401f-435d-8cae-21078b446b43', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '11', '检查空调系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('4daa151b-7955-4fda-bda8-2a049f0c1163', '639c2676-554d-480f-b5af-decf3188708b', '14', '空调滤清器', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('4db4e406-555b-409e-a384-a2e8978d5e97', 'e47fb62f-6625-4fdc-bd82-884673c5f983', '2', '检查发动机冷却系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('4e296a9a-57f3-4c44-8261-048b691f7434', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', '12', '检查制冷剂', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('4e8780ab-f857-40cf-a8ae-21c555bd7d48', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', '1', '检查发动机空气滤清器', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('4efdcc10-a7f3-4235-ac2f-d6f0d0e7f102', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '9', '检查动力转向系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('50cac263-7b48-4e62-b433-cf21c625269f', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '3', '检查发动机空气滤芯', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('5254afa6-a93a-4374-91bd-f40a76f53ab9', 'f3989f79-a939-40a1-8a19-e57a2b598246', '0', '检测发动机机油', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('525945cc-25de-4b98-989c-0e5c46c47d47', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '4', '检查挡风玻璃清洁剂液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('53d2326c-91c1-4f91-8d6b-05d1cb0394fa', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', '4', '各种橡胶软管的检查', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('54b9b935-2733-4c1d-8773-4cff50925c7b', '437e42e9-01c3-43a2-b42d-d5c4a217d536', '6', '检查动力转向系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('54cc3027-c308-4980-adef-dfa5f40f3ae6', '9740f20d-a82e-46fc-9217-9672a4bd3da6', '7', '检查制动系统', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('5580fd38-c694-4b14-9294-9ee48dd89d89', '639c2676-554d-480f-b5af-decf3188708b', '0', '检测发动机机油', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('57fd9e3b-f493-441d-8038-5966deae80f2', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '1', '检查发动机机油液位', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('58e048fc-2e15-4dd4-9142-e8940fd48669', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', '3', '蓄电池及起动机检查', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('5a829bcd-456d-43cb-b88f-3a75a5dcefda', '9740f20d-a82e-46fc-9217-9672a4bd3da6', '1', '检查发动机空气滤清器', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('5bdf1a87-283c-4ce6-ac90-112ec50526ca', 'd073a433-a64d-4a87-b999-9227aa928fb3', '5', '怠速及火花塞', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('5c28ab03-6419-4952-882e-335bcbbba767', 'd073a433-a64d-4a87-b999-9227aa928fb3', '7', '检查制动系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('5c7c32c0-5732-447a-b4bc-f290544f362b', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '11', '检查空调系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('5e79a544-a8b4-49b0-abed-15ab9b2575d5', '639c2676-554d-480f-b5af-decf3188708b', '4', '各种橡胶软管的检查', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('60730c9f-2f9f-4552-ab96-fa7ac2fcbde1', '9740f20d-a82e-46fc-9217-9672a4bd3da6', '6', '检查动力转向系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('64272023-bea9-4088-bbb7-3e2344002de5', 'e47fb62f-6625-4fdc-bd82-884673c5f983', '3', '蓄电池及起动机检查', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('65e4dfb4-9b93-4162-8b45-11a020b93e67', '3b8a2ec5-3883-4212-a934-1747e794f74e', '3', '蓄电池及起动机检查', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('67743edf-16d1-417a-bbf4-87c96e256f77', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', '13', '轮胎和充气气压', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('69683c12-8929-4922-9ee8-2d2b4fd99e81', 'd073a433-a64d-4a87-b999-9227aa928fb3', '2', '检查发动机冷却系统', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('6a598c83-7376-44dd-916d-d72bd91a59b5', 'db2398f1-f8f6-4318-8cfd-ebb1c8794b79', '5', '怠速及火花塞', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('6af8eb09-be08-4fba-b47e-9598700f1e42', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '2', '检查发动机冷却系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('6b15ed40-a0b1-468c-b94c-37bfa7e1408e', '437e42e9-01c3-43a2-b42d-d5c4a217d536', '5', '怠速及火花塞', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('6b47ab2d-551f-4c81-822c-875d6f768c2c', '639c2676-554d-480f-b5af-decf3188708b', '6', '检查动力转向系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('6c067f3f-5d4c-4e74-8974-bfe1c1e23ecc', '9740f20d-a82e-46fc-9217-9672a4bd3da6', '12', '检查制冷剂', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('6ce39906-df8f-4709-acf5-eeb131e01c74', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', '4', '各种橡胶软管的检查', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('6f23a5cb-b27c-4992-8f9b-44407630df76', '437e42e9-01c3-43a2-b42d-d5c4a217d536', '4', '各种橡胶软管的检查', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('7146c2dd-2f4b-401a-be48-a280d8077b12', '9740f20d-a82e-46fc-9217-9672a4bd3da6', '4', '各种橡胶软管的检查', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('7236d676-2d64-486b-a28c-e0a05fe8b4e3', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '1', '检查发动机机油液位', '异常', '');
+INSERT INTO `gongdanjiance` VALUES ('726b9d36-c01d-496c-b234-fd25370cdfa6', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', '8', '制动液检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('73858b08-0906-4459-91d0-8c4071295108', '2950f42a-f826-4680-99a3-e36904f78408', '1', '检查发动机机油液位', '异常', '需更换机油及机油格');
 INSERT INTO `gongdanjiance` VALUES ('73a104a2-02bf-4682-8f08-f7352deae3d6', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', '5', '怠速及火花塞', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('73bc05f2-c918-4dbb-aa9d-e154241f77ef', 'd073a433-a64d-4a87-b999-9227aa928fb3', '12', '检查制冷剂', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('742a775b-6b47-4bba-8ade-b4dd02b6b3a6', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', '0', '检测发动机机油', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('747e0fb9-3609-4eb3-961d-3525ba5f1300', 'f3989f79-a939-40a1-8a19-e57a2b598246', '9', '球头节和防尘套', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('76040024-c3db-4c4f-8f96-25c58988c937', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', '8', '制动液检查', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('775eb9d4-d8a9-409b-887a-74f81a854b09', 'db2398f1-f8f6-4318-8cfd-ebb1c8794b79', '8', '制动液检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('785682cd-e88d-41e2-8c6f-0383f5fb84e6', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', '0', '检测发动机机油', '异常', '');
+INSERT INTO `gongdanjiance` VALUES ('799457d4-7767-4fe7-a956-8702d0cda52f', 'db2398f1-f8f6-4318-8cfd-ebb1c8794b79', '6', '检查动力转向系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('7a7c3bd8-e9e7-46f4-817a-03f041391436', '2950f42a-f826-4680-99a3-e36904f78408', '2', '检查发动机冷却系统', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('7ac25709-d6e2-4604-a502-8ebaf115aecb', '639c2676-554d-480f-b5af-decf3188708b', '3', '蓄电池及起动机检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('7ddacb8e-99e7-4884-b16d-69e04f225056', '2950f42a-f826-4680-99a3-e36904f78408', '5', '检查刮水器刮片', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('7f92d8a7-1b4c-4e3f-bfa7-a7294721f449', '639c2676-554d-480f-b5af-decf3188708b', '9', '球头节和防尘套', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('803a3540-9bcf-4e13-ab57-87fe78106537', 'db2398f1-f8f6-4318-8cfd-ebb1c8794b79', '3', '蓄电池及起动机检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('81e35c2e-345b-48f0-8de8-2c2375953215', 'd073a433-a64d-4a87-b999-9227aa928fb3', '1', '检查发动机空气滤清器', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('827fc7e9-cae6-435d-b8dc-51bca6e50057', 'f3989f79-a939-40a1-8a19-e57a2b598246', '7', '检查制动系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('82f61a38-0ec2-4e24-bc10-9055aec0cc07', '437e42e9-01c3-43a2-b42d-d5c4a217d536', '7', '检查制动系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('8445cc0e-7446-44c6-9975-2407c91db4d0', '437e42e9-01c3-43a2-b42d-d5c4a217d536', '3', '蓄电池及起动机检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('84f67846-e1a8-4b7b-9926-be6566acf546', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', '13', '轮胎和充气气压', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('8580791e-15d1-4d53-b7fc-e486e1ece332', '3b8a2ec5-3883-4212-a934-1747e794f74e', '13', '轮胎和充气气压', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('85f37e65-3419-4564-b1c6-3d0095e4628c', '2950f42a-f826-4680-99a3-e36904f78408', '13', '检查反光镜、后视镜', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('8733d2b3-014c-4d67-bb6d-db19f609781f', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', '11', '前后悬挂装置及底盘', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('882fbb97-efbb-448c-afdc-93c70755f986', 'f3989f79-a939-40a1-8a19-e57a2b598246', '14', '空调滤清器', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('8a977614-e880-4a49-9512-819a768c7411', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', '12', '检查制冷剂', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('8ad699cc-dcb1-46bc-84f9-988ed6657645', 'f3989f79-a939-40a1-8a19-e57a2b598246', '3', '蓄电池及起动机检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('8f49e32f-03a5-4080-98ca-8f2ef193af3d', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '12', '检查冷却风扇', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('8f7108b5-ab74-4bb8-aaec-f23ccdc92af2', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '10', '检查发动机附件皮带', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('90168635-90cf-438d-8286-5fa6902a7b78', '3b8a2ec5-3883-4212-a934-1747e794f74e', '9', '球头节和防尘套', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('9310bd24-c476-4819-9fc1-ef81f695de98', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', '15', '雨刮器和玻璃水', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('9475492d-2ee2-4a67-846c-cb1cee017929', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', '10', '发动机外观检查', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('953c99a2-f7c2-414f-b7d4-9040d9b6750e', '2950f42a-f826-4680-99a3-e36904f78408', '4', '检查挡风玻璃清洁剂液位', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('966447d4-3916-4883-a151-2123074cd154', '3b8a2ec5-3883-4212-a934-1747e794f74e', '11', '前后悬挂装置及底盘', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('96985532-b704-4be1-8e12-241ecb5e1780', 'db2398f1-f8f6-4318-8cfd-ebb1c8794b79', '10', '发动机外观检查', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('96fc5da1-f5a1-4cd3-b748-88c1e7c5c93b', '9740f20d-a82e-46fc-9217-9672a4bd3da6', '0', '检测发动机机油', '正常', '机油1系及机油格');
 INSERT INTO `gongdanjiance` VALUES ('9775354e-9381-4215-a82a-a0ffe6cc0eeb', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '7', '检查灯光系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('9829a20d-853d-419f-9288-50970b5fd546', 'db2398f1-f8f6-4318-8cfd-ebb1c8794b79', '4', '各种橡胶软管的检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('98642653-fb81-4362-bc6f-413096fdad30', '3b8a2ec5-3883-4212-a934-1747e794f74e', '10', '发动机外观检查', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('99fe70eb-dad6-4165-948d-4799f4f6b1cd', 'f3989f79-a939-40a1-8a19-e57a2b598246', '11', '前后悬挂装置及底盘', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('9af07286-c9e4-4748-8cf8-75632560a9a0', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '10', '检查发动机附件皮带', '未检测', null);
@@ -1698,23 +1773,33 @@ INSERT INTO `gongdanjiance` VALUES ('9db399a4-da3a-4b1a-9693-29e454104b81', '87e
 INSERT INTO `gongdanjiance` VALUES ('9e4d85a4-f0eb-4a5c-97bb-4d6911275e74', 'd073a433-a64d-4a87-b999-9227aa928fb3', '4', '各种橡胶软管的检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('9e50edef-9db8-47c4-b3ed-2e58a57c16a1', 'e47fb62f-6625-4fdc-bd82-884673c5f983', '0', '检测发动机机油', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('9f32c0ba-4ca2-4e27-aef1-4639c5730626', 'e47fb62f-6625-4fdc-bd82-884673c5f983', '14', '空调滤清器', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('9f330056-ed49-4cf1-af74-ef9be8d6eae7', '437e42e9-01c3-43a2-b42d-d5c4a217d536', '15', '雨刮器和玻璃水', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('9fd7bbf0-69c8-4675-a1c1-3b7e30fc117e', '437e42e9-01c3-43a2-b42d-d5c4a217d536', '11', '前后悬挂装置及底盘', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('a07d0513-eebd-42dc-9923-f092b7c78be5', '3b8a2ec5-3883-4212-a934-1747e794f74e', '8', '制动液检查', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('a2c99745-30e2-49e8-b366-b50a76d4fb3f', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', '9', '球头节和防尘套', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('a5fa7995-5cce-4222-8d1d-a9538b7f6773', 'e47fb62f-6625-4fdc-bd82-884673c5f983', '9', '球头节和防尘套', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('a852af4d-87b2-4f64-8802-a967fa14fe2d', '437e42e9-01c3-43a2-b42d-d5c4a217d536', '0', '检测发动机机油', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('a863f323-d22b-477a-bee9-6abc72b31793', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', '2', '检查发动机冷却系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('abfc4b42-bdf4-44eb-8221-940dc078b44f', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '2', '检查发动机冷却系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('acccb86f-7a97-4ede-91ce-fadb045e1cf9', 'db2398f1-f8f6-4318-8cfd-ebb1c8794b79', '15', '雨刮器和玻璃水', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('adc47720-9862-4248-8adb-65595cbd0499', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', '7', '检查制动系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('b3b0c4ec-76b0-4c03-ba51-af457c0edc52', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '15', '检查蓄电池', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('b3fbeea5-ef6b-46a3-a1fe-fe70e5b51592', 'd073a433-a64d-4a87-b999-9227aa928fb3', '9', '球头节和防尘套', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('b476d801-29e4-428a-b837-1b9f2a791925', '437e42e9-01c3-43a2-b42d-d5c4a217d536', '14', '空调滤清器', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('b51ae8a1-4784-491e-ac0f-ca7ff9ef7055', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', '15', '雨刮器和玻璃水', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('b68aa4bc-8e84-40a9-a87d-2e9dc3d0204d', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '8', '检查制动系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('b6f4d570-e865-4a9a-a942-ff1e3ed19a77', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '13', '检查反光镜、后视镜', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('b74dd8cf-dd22-483a-8a1c-97050e617740', '3b8a2ec5-3883-4212-a934-1747e794f74e', '7', '检查制动系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('b785fecd-59e1-43fe-96dd-fd46dd6278bf', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', '6', '检查动力转向系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('b7e6944f-fd36-4376-b225-de6bb1f58039', 'e47fb62f-6625-4fdc-bd82-884673c5f983', '11', '前后悬挂装置及底盘', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('b895ece3-2abc-43c4-be7a-7a16ee4e53f6', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', '10', '发动机外观检查', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('b9760b82-48d6-40e7-87c7-450e0a13971d', 'db2398f1-f8f6-4318-8cfd-ebb1c8794b79', '11', '前后悬挂装置及底盘', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('ba30fcf9-a6e2-46b4-b6bd-5218e3ce24a0', 'f3989f79-a939-40a1-8a19-e57a2b598246', '13', '轮胎和充气气压', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('ba36d44d-1193-4e40-a81e-07ee14994871', '2950f42a-f826-4680-99a3-e36904f78408', '9', '检查动力转向系统', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('ba4134ed-73e2-424c-8c5c-308623a42f8d', '639c2676-554d-480f-b5af-decf3188708b', '10', '发动机外观检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('baa7f2d0-0dc5-4408-9266-152584f72e2f', 'e47fb62f-6625-4fdc-bd82-884673c5f983', '12', '检查制冷剂', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('baf86399-520b-408d-8afc-2ca06930c253', '3b8a2ec5-3883-4212-a934-1747e794f74e', '14', '空调滤清器', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('bb01136a-8c86-499c-840a-8f6ae9965c43', '437e42e9-01c3-43a2-b42d-d5c4a217d536', '1', '检查发动机空气滤清器', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('bb562aec-f7e9-40fa-8ac9-fa12377bbdc1', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '3', '检查发动机空气滤芯', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('bca56558-167d-4e49-9ed0-af4711fcabe2', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '0', '检测发动机控制模块系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('be48a744-42af-427c-be11-cb1129de8a46', 'f3989f79-a939-40a1-8a19-e57a2b598246', '10', '发动机外观检查', '未检测', null);
@@ -1725,33 +1810,54 @@ INSERT INTO `gongdanjiance` VALUES ('bf3d2d56-18f1-4aca-8497-e9a8165e889f', 'd07
 INSERT INTO `gongdanjiance` VALUES ('c309107e-793a-445e-9cd4-356a854a0c3b', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '15', '检查蓄电池', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('c3b6e545-16a7-42f2-ac60-5da28f40ba60', '3b8a2ec5-3883-4212-a934-1747e794f74e', '15', '雨刮器和玻璃水', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('c43d8b12-3f02-459b-b89f-f9aa28b51063', '2950f42a-f826-4680-99a3-e36904f78408', '3', '检查发动机空气滤芯', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('c7a7b14a-9185-42ed-a558-b9a300a6a786', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', '14', '空调滤清器', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('c9c9dd27-74f5-418a-b54e-ef849e2dcbd9', 'd073a433-a64d-4a87-b999-9227aa928fb3', '10', '发动机外观检查', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('cc3bc967-2200-449d-84a6-be48bd34f763', 'e47fb62f-6625-4fdc-bd82-884673c5f983', '13', '轮胎和充气气压', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('cc50f0bf-2f27-4d7c-978e-dfae716dfe85', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '4', '检查挡风玻璃清洁剂液位', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('cdaee4bc-58af-4d6f-9b70-d9cd77bc7df8', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', '11', '前后悬挂装置及底盘', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('cdd1f8de-0007-4f1b-b59f-334d1b7402dd', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '9', '检查动力转向系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('cf58f813-434f-482f-b636-2875ac2ad7d4', 'e47fb62f-6625-4fdc-bd82-884673c5f983', '5', '怠速及火花塞', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('d174e726-fa60-4fd0-8533-065193d6de97', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', '7', '检查制动系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('d1b0a17c-89b6-44bf-89d1-9be5ceecef66', '639c2676-554d-480f-b5af-decf3188708b', '7', '检查制动系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('d327f01a-8c19-4750-98ed-c93aae6ff6fb', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', '13', '轮胎和充气气压', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('d3424d46-9b6a-4edd-bfc0-32643c083943', 'f3989f79-a939-40a1-8a19-e57a2b598246', '8', '制动液检查', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('d5118ccd-9565-4b2d-9166-e8c6f0c2d455', 'db2398f1-f8f6-4318-8cfd-ebb1c8794b79', '12', '检查制冷剂', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('d57ba069-3b33-48e7-b86e-04aa6c8e2d79', '2950f42a-f826-4680-99a3-e36904f78408', '6', '检查车辆底部', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('d61a83f4-4864-4edb-b5bb-8190bbb9a003', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', '3', '蓄电池及起动机检查', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('d63faed1-3d68-4f62-b385-9a7c43b0c00f', '3b8a2ec5-3883-4212-a934-1747e794f74e', '1', '检查发动机空气滤清器', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('d68e705b-0b4d-4500-bdf7-d611c7c6ad0d', '9740f20d-a82e-46fc-9217-9672a4bd3da6', '8', '制动液检查', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('d85c118c-7924-4ce1-aaa5-735f4668bc11', 'd073a433-a64d-4a87-b999-9227aa928fb3', '15', '雨刮器和玻璃水', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('de2b8bce-c4a9-44db-a2ea-733f5ef5f808', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '12', '检查冷却风扇', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('dff8aee5-6384-4b4e-9d41-073d3966ccf1', '3b8a2ec5-3883-4212-a934-1747e794f74e', '6', '检查动力转向系统', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('e02b3c75-6cd1-4e4a-9bdb-06dde51eaf67', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', '5', '怠速及火花塞', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('e06eff67-bdc7-441e-be92-6713d4ae2b51', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', '5', '怠速及火花塞', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('e1b1fbd8-d439-4fb3-a3a1-fc8a8711275e', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', '4', '各种橡胶软管的检查', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('e27a010d-1e67-44e8-8928-d7fa8f78f0e4', '437e42e9-01c3-43a2-b42d-d5c4a217d536', '8', '制动液检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('e498e194-9fc7-42f2-9b9a-95de6381d44b', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '5', '检查刮水器刮片', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('e58a28d7-c2c3-46e8-a739-4da00403aeb3', '437e42e9-01c3-43a2-b42d-d5c4a217d536', '2', '检查发动机冷却系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('e703c623-e3ce-443b-9b65-2be07c96adc4', '2950f42a-f826-4680-99a3-e36904f78408', '7', '检查灯光系统', '异常', '');
 INSERT INTO `gongdanjiance` VALUES ('e72a1ef5-fad5-4161-980f-682da8e2a44a', 'e47fb62f-6625-4fdc-bd82-884673c5f983', '6', '检查动力转向系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('e79ca26c-33af-4838-82b3-20bf5229a249', 'd073a433-a64d-4a87-b999-9227aa928fb3', '8', '制动液检查', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('e85c0583-b1b0-45d4-82e5-1b09e293843b', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', '15', '雨刮器和玻璃水', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('e8817c19-2e5a-4492-bb8e-a93d1ed9d2fb', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', '2', '检查发动机冷却系统', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('e985b020-85a6-4357-bc17-b07566a37469', '9740f20d-a82e-46fc-9217-9672a4bd3da6', '11', '前后悬挂装置及底盘', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('e98b792a-75a2-463c-b9e9-4fbbe8b1e268', '639c2676-554d-480f-b5af-decf3188708b', '2', '检查发动机冷却系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('ea0fd2d8-3808-433f-87bb-dbad985768c4', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '6', '检查车辆底部', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('ea22f186-52b1-436e-8819-74a9106669db', 'e47fb62f-6625-4fdc-bd82-884673c5f983', '15', '雨刮器和玻璃水', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('ebc7e8ac-0145-4a91-8d33-6503800dfdf2', '2950f42a-f826-4680-99a3-e36904f78408', '12', '检查冷却风扇', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('ee71d4fe-57be-47d7-9898-5c0c1f0a40de', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', '6', '检查动力转向系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('eed7abe2-4c9e-4281-86c0-47ef7404c885', '3b8a2ec5-3883-4212-a934-1747e794f74e', '5', '怠速及火花塞', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('f1bfe79a-0129-4f3c-95c2-58c7d409ce6d', 'f3989f79-a939-40a1-8a19-e57a2b598246', '5', '怠速及火花塞', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('f1fc14af-c1fc-462a-940c-4b0531d0e12c', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', '10', '发动机外观检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('f30c604a-a185-469c-b515-fa0622d6361a', 'f3989f79-a939-40a1-8a19-e57a2b598246', '15', '雨刮器和玻璃水', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('f33a0015-3a24-415b-847f-607477c98e3f', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '8', '检查制动系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('f45e6825-c32d-4328-9e61-6f7855e67f14', '9740f20d-a82e-46fc-9217-9672a4bd3da6', '10', '发动机外观检查', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('f99ed778-5b78-4e43-b105-b4bdf0e8111c', '9740f20d-a82e-46fc-9217-9672a4bd3da6', '15', '雨刮器和玻璃水', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('fb23c9e9-eab5-4336-aa5c-8fbb93ae4429', 'd073a433-a64d-4a87-b999-9227aa928fb3', '13', '轮胎和充气气压', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('fb5d2aee-b996-43f1-b9cb-0aa4d37b1275', '639c2676-554d-480f-b5af-decf3188708b', '15', '雨刮器和玻璃水', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('fb673f6d-1df3-494d-b90b-17d6f83d1184', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '7', '检查灯光系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('fbbdd4f6-a18a-488d-ae43-347d09a7f086', 'e47fb62f-6625-4fdc-bd82-884673c5f983', '1', '检查发动机空气滤清器', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('fce3f78f-c813-4ef8-a30f-16487d2a48ae', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', '12', '检查制冷剂', '未检测', null);
 
 -- ----------------------------
 -- Table structure for `gongdanwuliao`
@@ -1780,6 +1886,7 @@ CREATE TABLE `gongdanwuliao` (
 -- Records of gongdanwuliao
 -- ----------------------------
 INSERT INTO `gongdanwuliao` VALUES ('03388e69-7aa0-40e1-9e72-423423bbb6df', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', 'FXJY001', '方向机油', '', '1.00', '0.00', null, '免费', '未出库', null, '库存', '802a3c29-979a-4072-9d8d-a47a41a3efb9');
+INSERT INTO `gongdanwuliao` VALUES ('05a469c8-d027-4fec-8fdf-649b4367fbd2', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', 'CGQ0001', '20T高压室传感器', '鑫润汽车配件', '1.00', '0.00', null, '免费', '未出库', null, '库存', 'fd7f18bf-2a3c-4922-8eeb-e2750ad6302c');
 INSERT INTO `gongdanwuliao` VALUES ('1341b641-47bc-4df5-a8f2-8d61ff5c64fa', '0934bc98-53cb-4043-a8c6-7ff5f267b920', 'JYG01', '小型车机油格', '', '1.00', '0.00', '', '免费', '未出库', '', '库存', '262fc95d-f957-4580-a208-f36e0c256456');
 INSERT INTO `gongdanwuliao` VALUES ('19b3461f-5450-4030-80ab-f48a8246b399', 'd073a433-a64d-4a87-b999-9227aa928fb3', 'JYG01', '小型车机油格', '深圳市德明士贸易有限公司', '1.00', '0.00', null, '免费', '未出库', null, '库存', '262fc95d-f957-4580-a208-f36e0c256456');
 INSERT INTO `gongdanwuliao` VALUES ('1ae850b9-2f12-46d7-b68f-1fcd7e2fc8fd', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', 'ZC001', '机油6系及机油格', '', '1.00', '0.00', null, '免费', '未出库', null, '库存', '8efde635-c25b-40ca-aec2-7d16e6903508');
@@ -1790,7 +1897,11 @@ INSERT INTO `gongdanwuliao` VALUES ('2e71f989-29aa-474d-95d0-4dbf9a703fa6', '87e
 INSERT INTO `gongdanwuliao` VALUES ('3f79397b-3723-436e-b366-c0e4072e2a64', '2950f42a-f826-4680-99a3-e36904f78408', 'JY', '机油*7', '', '1.00', '100.00', null, '免费', '未出库', null, '库存', '6b35cec7-015f-4470-ab85-bda702643fad');
 INSERT INTO `gongdanwuliao` VALUES ('5eb2b335-6e38-4751-b6bf-b04b41fd1c05', '0934bc98-53cb-4043-a8c6-7ff5f267b920', 'KTG001', '空调格', '深圳市德明士贸易有限公司', '3.00', '60.00', '', '免费', '已下单', '', '采购', '87f25467-642c-4d0d-871b-9c636159e31c');
 INSERT INTO `gongdanwuliao` VALUES ('6674a766-4ab4-4c00-888e-86c3bfa79c2f', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', 'SCY001', '刹车油', '', '1.00', '0.00', null, '免费', '未出库', null, '库存', '100351d0-ccef-4a67-b133-2bc52679a23b');
+INSERT INTO `gongdanwuliao` VALUES ('66b76b97-52e2-432c-b2e7-f3b6d2bea40e', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', 'LT0001', '米其林215/50/17', '鑫润汽车配件', '1.00', '0.00', null, '免费', '未出库', null, '库存', '8a65c4cc-7aee-4547-92ea-5bc6935be0bb');
+INSERT INTO `gongdanwuliao` VALUES ('6bcc736f-08f4-4d9b-a0a9-d0683ebcbef3', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', 'JYG01', '小型车机油格', '深圳市德明士贸易有限公司', '1.00', '0.00', '300元服务券', '免费', '未出库', '', '库存', '0027f107-4f0f-42f7-bb8b-35ffb1c27f29');
+INSERT INTO `gongdanwuliao` VALUES ('7fb8d978-c608-4afb-bd1b-9a0b6f3227dd', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', 'JY', '机油*7', '深圳市德明士贸易有限公司', '1.00', '0.00', null, '免费', '未出库', null, '库存', 'fdfbfd53-4888-4140-91cf-013be2b4a08c');
 INSERT INTO `gongdanwuliao` VALUES ('840a646b-f975-45a1-a27f-db8ebe677e09', '0934bc98-53cb-4043-a8c6-7ff5f267b920', 'LT0001', '米其林215/50/17', '鑫润汽车配件', '1.00', '880.00', null, '免费', '已下单', null, '采购', '8a65c4cc-7aee-4547-92ea-5bc6935be0bb');
+INSERT INTO `gongdanwuliao` VALUES ('9c767280-daea-49b6-8785-0353ff5eef44', '9740f20d-a82e-46fc-9217-9672a4bd3da6', 'JYG001', '机油格', '深圳市德明士贸易有限公司', '1.00', '0.00', null, '免费', '已出库', null, '库存', '17e342cb-445d-4080-a094-51674f5157bc');
 INSERT INTO `gongdanwuliao` VALUES ('a4c68633-c7e1-43a1-ac58-2695c0b0f0b7', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', 'SCY001', '刹车油', '', '1.00', '0.00', '更换小车雨刮片', '免费', '已出库', '', '库存', 'b6e79af3-fda1-4e43-9e6a-faa0a49171c6');
 INSERT INTO `gongdanwuliao` VALUES ('af559d87-15fe-4356-800d-37725a924cff', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', 'KTG001', '空调格', '深圳市德明士贸易有限公司', '1.00', '0.00', null, '免费', '未出库', null, '库存', 'bdf4272b-413c-4f4a-a3a2-77e00d770574');
 INSERT INTO `gongdanwuliao` VALUES ('cc373970-e8b1-4e0c-8af5-63b04b558daa', '0934bc98-53cb-4043-a8c6-7ff5f267b920', 'JY', '机油*7', '深圳市德明士贸易有限公司', '1.00', '180.00', null, '免费', '已下单', null, '采购', 'fdfbfd53-4888-4140-91cf-013be2b4a08c');
@@ -1799,6 +1910,7 @@ INSERT INTO `gongdanwuliao` VALUES ('f5a7a7fb-78bd-480d-a7ec-d9d6a62311c4', '093
 INSERT INTO `gongdanwuliao` VALUES ('f60dd831-33c4-49af-919f-a351ccc1f47a', '0934bc98-53cb-4043-a8c6-7ff5f267b920', 'CGQ0001', '20T高压室传感器', '', '1.00', '0.00', null, '免费', '未出库', null, '库存', '4b9543d2-bf5c-41bc-9905-14cc47f7c8e7');
 INSERT INTO `gongdanwuliao` VALUES ('fb12a5e4-4584-46ce-bf88-f5fc8e06cd27', '3b8a2ec5-3883-4212-a934-1747e794f74e', 'JY', '机油*7', '', '1.00', '0.00', null, '免费', '未出库', null, '库存', '6b35cec7-015f-4470-ab85-bda702643fad');
 INSERT INTO `gongdanwuliao` VALUES ('fb12a5e4-4584-46ce-bf88-f5fc8e06cd28', '3b8a2ec5-3883-4212-a934-1747e794f74k', 'LT0001', '米其林215/50/17', '鑫润汽车配件', '1.00', '880.00', null, '免费', '已下单', null, null, '8a65c4cc-7aee-4547-92ea-5bc6935be0bb');
+INSERT INTO `gongdanwuliao` VALUES ('fba60317-e8ba-4d9c-9af9-27cd61a28f01', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', 'JYG01', '小型车机油格', '深圳市德明士贸易有限公司', '1.00', '0.00', null, '免费', '未出库', null, '库存', '0027f107-4f0f-42f7-bb8b-35ffb1c27f29');
 
 -- ----------------------------
 -- Table structure for `gongdanxiangmu`
@@ -1828,17 +1940,23 @@ CREATE TABLE `gongdanxiangmu` (
 -- Records of gongdanxiangmu
 -- ----------------------------
 INSERT INTO `gongdanxiangmu` VALUES ('0c4c787e-c053-4656-9c04-79d3d0f19d8b', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '3', '更换小车雨刮片', '雨刮片', '快修', '60.00', null, '付费', null, '机修一组', '李晓明', '完检', '杨小院', '2015-02-13 23:16:45');
+INSERT INTO `gongdanxiangmu` VALUES ('16aa806a-0971-4424-aa59-4be1e7865deb', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', 'YHQ003', '800元服务券', '喷漆一副（20万以内车辆油漆一副，超20万以上车辆及特殊油漆，客户需增加费用）；精细洗车1次；汽车室内消毒一次；', '快修', '130.00', null, '付费', null, '机修一组', '李晓明', null, null, null);
+INSERT INTO `gongdanxiangmu` VALUES ('38e9e045-a781-40aa-93f6-37d268c2a4b6', '9740f20d-a82e-46fc-9217-9672a4bd3da6', 'YHQ002', '500元服务券', '保养一次（更换机油和机油格）；16项常规检测；精洗洗车1次；汽车室内消毒一次；', '快修', '100.00', null, '付费', null, '机修一组', '李晓明', '完检', '邓思杰', '2015-02-14 15:01:47');
 INSERT INTO `gongdanxiangmu` VALUES ('527180fb-574f-41fa-8b12-0975917577f8', '87e54a26-e5d4-42ac-9b5a-2f7071088ae1', 'YHQ002', '500元服务券', '保养一次（更换机油和机油格）；16项常规检测；精洗洗车1次；汽车室内消毒一次；', '快修', '100.00', null, '付费', null, '机修二组', '陈超', '完检', '邓思杰', '2015-02-13 16:24:07');
+INSERT INTO `gongdanxiangmu` VALUES ('6f13f445-196f-4200-bbfa-24712a83f55e', '81ca6c77-c283-4dd3-b658-3ab8e4eff8fe', 'YHQ001', '300元服务券', '更换机油一次（壳牌统一合能SJ合成技术润滑油）和机油格', '快修', '100.00', null, '付费', null, null, null, null, null, null);
 INSERT INTO `gongdanxiangmu` VALUES ('77645dc0-8491-463c-98e7-b74744486f25', '2950f42a-f826-4680-99a3-e36904f78408', '1', '更换小型车机油*7及机油格', '机油及机油格', '快修', '280.00', null, '付费', null, '机修一组', '李晓明', '完检', '邓思杰', '2015-02-13 11:09:12');
 INSERT INTO `gongdanxiangmu` VALUES ('77645dc0-8491-463c-98e7-b74744486f3b', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '2', '更换刹车油', '机油及机油格', '快修', '280.00', null, '付费', null, '机修一组', '李晓明', '完检', '邓思杰', '2015-02-13 11:49:06');
 INSERT INTO `gongdanxiangmu` VALUES ('7e573d4a-330c-4657-b081-2273ebbc54ac', 'e47fb62f-6625-4fdc-bd82-884673c5f983', '4', '更换机油6系及机油格', '换机油', '快修', '180.00', null, '付费', null, '机修二组', '陈超', '返修', '邓思杰', '2015-02-13 17:18:39');
+INSERT INTO `gongdanxiangmu` VALUES ('91372cd0-fb7c-4aa0-887d-b9c5ef44703b', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '1', '更换小型车机油*7及机油格', '机油及机油格', '快修', '280.00', null, '付费', null, null, null, null, null, null);
 INSERT INTO `gongdanxiangmu` VALUES ('abc9a3a0-913f-4818-9de6-8086bc3687833', '3b8a2ec5-3883-4212-a934-1747e794f74k', '1', '更换小型车机油*7及机油格', '机油及机油格', '快修', '280.00', null, '付费', null, '机修一组', '李晓明', '完检', '邓思杰', '2015-02-13 11:49:06');
 INSERT INTO `gongdanxiangmu` VALUES ('abc9a3a0-913f-4818-9de6-8086bc36a52a', '3b8a2ec5-3883-4212-a934-1747e794f74k', '3', '更换小车雨刮片', '雨刮片', '快修', '60.00', null, '付费', null, '机修一组', '李晓明', '完检', '邓思杰', '2015-02-13 11:49:06');
 INSERT INTO `gongdanxiangmu` VALUES ('abc9a3a0-913f-4818-9de6-8086bc36a52e', '3b8a2ec5-3883-4212-a934-1747e794f74e', '1', '更换小型车机油*7及机油格', '机油及机油格', '快修', '280.00', null, '付费', null, '机修一组', '李晓明', '完检', '邓思杰', '2015-02-13 11:49:06');
 INSERT INTO `gongdanxiangmu` VALUES ('abc9a3a0-913f-4818-9de6-8086bc36a633', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '3', '更换小车雨刮片', '雨刮片', '快修', '60.00', null, '付费', null, '机修一组', '李晓明', '完检', '邓思杰', '2015-02-13 11:09:12');
+INSERT INTO `gongdanxiangmu` VALUES ('ae78bf6e-bc05-4307-a30e-aa867f40eb8b', 'fa6a2bf2-0d7c-444e-aad2-2d9f6e0953a6', '5', '更换空气格', '空气格', '快修', '60.00', null, '付费', null, null, null, null, null, null);
 INSERT INTO `gongdanxiangmu` VALUES ('b3a0d724-523a-456d-a58c-a7f0fa5cf21f', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', 'YHQ001', '300元服务券', '更换机油一次（壳牌统一合能SJ合成技术润滑油）和机油格', '快修', '100.00', '', '免费', '', '美容一组', '大刘', '返修', '杨小院', '2015-02-13 23:16:47');
 INSERT INTO `gongdanxiangmu` VALUES ('c1b19298-f99c-4c36-a14f-2fd9eced6723', 'e47fb62f-6625-4fdc-bd82-884673c5f983', '5', '更换空气格', '空气格', '快修', '60.00', null, '付费', null, '机修一组', '大刘', '返修', '邓思杰', '2015-02-13 17:18:48');
 INSERT INTO `gongdanxiangmu` VALUES ('ca72090e-224b-4686-86ab-638e3056cb97', 'd073a433-a64d-4a87-b999-9227aa928fb3', 'YHQ002', '500元服务券', '保养一次（更换机油和机油格）；16项常规检测；精洗洗车1次；汽车室内消毒一次；', '快修', '100.00', null, '付费', null, '机修一组', '李晓明', '完检', '邓思杰', '2015-02-13 15:47:31');
+INSERT INTO `gongdanxiangmu` VALUES ('ced42ec4-4701-4c0d-b08e-e5806d6d880c', '0934bc98-53cb-4043-a8c6-7ff5f267b920', '4', '更换机油6系及机油格', '换机油', '快修', '180.00', null, '付费', null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `groups`
@@ -1929,7 +2047,9 @@ INSERT INTO `kucun` VALUES ('6b35cec7-015f-4470-ab85-bda702643fad', 'fdfbfd53-48
 INSERT INTO `kucun` VALUES ('802a3c29-979a-4072-9d8d-a47a41a3efb9', '3eed70b2-bb0a-4c03-981d-3093588999fd', 'FXJY001', '方向机油', '100', '160.0000', '', '0.0000', null, null, null);
 INSERT INTO `kucun` VALUES ('8bec132c-c7ef-4d44-ba0c-cbd9dc2092d1', 'd254bd79-2cb3-4127-97f8-746b3bc1bb99', 'KQG001', '空气格', '100', '60.0000', '', '0.0000', null, null, null);
 INSERT INTO `kucun` VALUES ('8efde635-c25b-40ca-aec2-7d16e6903508', '564762d4-2d28-43e9-8ab2-19752802e6e5', 'ZC001', '机油6系及机油格', '100', '100.0000', '', '0.0000', null, null, null);
+INSERT INTO `kucun` VALUES ('a401e96b-4c96-47bb-b34e-6029439f1425', 'd1d7c5d4-f201-4213-96f9-f89e3a4dc193', 'JY001', '机油1系', '100', '100.0000', '深圳市德明士贸易有限公司', '0.0000', null, null, null);
 INSERT INTO `kucun` VALUES ('ae752414-79ee-4ea0-91b1-7e5072d4b5e4', '565ec80e-d31a-4f53-a25d-ad01f650d8f8', 'JQG0001', '20T气门室', '1', '45.0000', '鑫润汽车配件', '0.0000', null, null, null);
+INSERT INTO `kucun` VALUES ('b7c5a708-a2c1-40a8-bd7d-352eacc730ab', '17e342cb-445d-4080-a094-51674f5157bc', 'JYG001', '机油格', '99', '30.3030', '深圳市德明士贸易有限公司', '0.0000', null, null, null);
 INSERT INTO `kucun` VALUES ('bdf4272b-413c-4f4a-a3a2-77e00d770574', '87f25467-642c-4d0d-871b-9c636159e31c', 'KTG001', '空调格', '50', '60.0000', '深圳市德明士贸易有限公司', '0.0000', null, null, null);
 
 -- ----------------------------
@@ -1959,8 +2079,10 @@ CREATE TABLE `kucunoperlog` (
 -- ----------------------------
 -- Records of kucunoperlog
 -- ----------------------------
+INSERT INTO `kucunoperlog` VALUES ('0416f126-f278-4359-abff-e8043ddc2cbf', null, '17e342cb-445d-4080-a094-51674f5157bc', 'JYG001', '机油格', '1', '0.00', null, '深圳市德明士贸易有限公司', '0.00', '9740f20d-a82e-46fc-9217-9672a4bd3da6', '维修出库', '2015-02-14 15:01:21');
 INSERT INTO `kucunoperlog` VALUES ('113b1bd5-e0b4-4439-a864-c77f06d3e5db', '4b9543d2-bf5c-41bc-9905-14cc47f7c8e7', 'fd7f18bf-2a3c-4922-8eeb-e2750ad6302c', 'CGQ0001', '20T高压室传感器', '1', '60.00', null, '鑫润汽车配件', '0.00', 'RCCG20150213001', '日常采购', '2015-02-13 10:27:47');
 INSERT INTO `kucunoperlog` VALUES ('1737ac61-dbdd-46d9-b70b-ccf36701a9de', '8bec132c-c7ef-4d44-ba0c-cbd9dc2092d1', 'd254bd79-2cb3-4127-97f8-746b3bc1bb99', 'KQG001', '空气格', '100', '60.00', null, null, '0.00', 'RCCG20150213005', '日常采购', '2015-02-13 16:21:18');
+INSERT INTO `kucunoperlog` VALUES ('273f7ac2-fb92-41b5-996e-fd67f1edaa81', null, '17e342cb-445d-4080-a094-51674f5157bc', 'JYG001', '机油格', '100', '30.00', null, '深圳市德明士贸易有限公司', '0.00', '8c20875e-1ec2-40b1-899f-a2780b6ebf8c', '日常采购', '2015-02-14 14:58:19');
 INSERT INTO `kucunoperlog` VALUES ('44586ddf-06d3-4001-97ae-0aec86b541f9', 'ae752414-79ee-4ea0-91b1-7e5072d4b5e4', '565ec80e-d31a-4f53-a25d-ad01f650d8f8', 'JQG0001', '20T气门室', '1', '45.00', null, '鑫润汽车配件', '0.00', 'RCCG20150213001', '日常采购', '2015-02-13 10:27:47');
 INSERT INTO `kucunoperlog` VALUES ('44ab00c0-fa4b-4624-b185-e9604055957f', '100351d0-ccef-4a67-b133-2bc52679a23b', 'b6e79af3-fda1-4e43-9e6a-faa0a49171c6', 'SCY001', '刹车油', '100', '180.00', null, null, '0.00', 'RCCG20150213005', '日常采购', '2015-02-13 16:21:18');
 INSERT INTO `kucunoperlog` VALUES ('73c52781-3fc3-44a1-9fe5-081a59970917', '802a3c29-979a-4072-9d8d-a47a41a3efb9', '3eed70b2-bb0a-4c03-981d-3093588999fd', 'FXJY001', '方向机油', '100', '160.00', null, null, '0.00', 'RCCG20150213005', '日常采购', '2015-02-13 16:21:18');
@@ -1969,6 +2091,7 @@ INSERT INTO `kucunoperlog` VALUES ('97ffbd5c-8166-4fa3-98db-f7b2f922f9a6', '6b35
 INSERT INTO `kucunoperlog` VALUES ('a0fa251e-94c4-48db-9899-f92dd5c4001a', 'bdf4272b-413c-4f4a-a3a2-77e00d770574', '87f25467-642c-4d0d-871b-9c636159e31c', 'KTG001', '空调格', '50', '60.00', null, '深圳市德明士贸易有限公司', '0.00', 'RCCG20150213002', '日常采购', '2015-02-13 10:44:42');
 INSERT INTO `kucunoperlog` VALUES ('b8176d0b-b4fe-4120-9375-531fc98a9d4e', null, 'b6e79af3-fda1-4e43-9e6a-faa0a49171c6', 'SCY001', '刹车油', '1', '0.00', null, '', '0.00', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '维修出库', '2015-02-13 23:15:40');
 INSERT INTO `kucunoperlog` VALUES ('c7069ff2-3ecb-4288-9913-af8529d39094', '4749f434-b563-4638-9e79-4466a49ea650', '8a65c4cc-7aee-4547-92ea-5bc6935be0bb', 'LT0001', '米其林215/50/17', '1', '880.00', null, '鑫润汽车配件', '0.00', 'RCCG20150213001', '日常采购', '2015-02-13 10:27:47');
+INSERT INTO `kucunoperlog` VALUES ('cd25dfca-7c8e-492a-8fe2-8f58e15f5e17', null, 'd1d7c5d4-f201-4213-96f9-f89e3a4dc193', 'JY001', '机油1系', '100', '100.00', null, '深圳市德明士贸易有限公司', '0.00', 'ead134ab-1cdc-44df-808c-ab06289d4e90', '日常采购', '2015-02-14 14:57:38');
 INSERT INTO `kucunoperlog` VALUES ('cfab539a-147d-4335-a6ce-7b5f751277cf', null, 'b6e79af3-fda1-4e43-9e6a-faa0a49171c6', 'SCY001', '刹车油', '1', '0.00', null, '', '0.00', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '维修出库', '2015-02-13 23:11:36');
 INSERT INTO `kucunoperlog` VALUES ('e619d270-7ce7-48d4-8874-43488e6f762c', '262fc95d-f957-4580-a208-f36e0c256456', '0027f107-4f0f-42f7-bb8b-35ffb1c27f29', 'JYG01', '小型车机油格', '100', '50.00', null, '深圳市德明士贸易有限公司', '0.00', 'RCCG20150213003', '日常采购', '2015-02-13 11:08:00');
 INSERT INTO `kucunoperlog` VALUES ('f77a7e3b-13cc-4f1e-892b-e8cff983e46a', null, '100351d0-ccef-4a67-b133-2bc52679a23b', 'SCY001', '刹车油', '1', '0.00', null, '', '0.00', '5c08739b-e145-4fb1-944e-8a2e5c73ec4f', '维修出库', '2015-02-13 23:01:35');
@@ -2037,7 +2160,10 @@ INSERT INTO `rukudan` VALUES ('00c54980-bab1-4be2-9bdd-fa76e7e074de', '八路通
 INSERT INTO `rukudan` VALUES ('361ad919-1564-4108-acdb-8b0182ff6b89', '八路通深圳西乡店', 'RCCG20150213001', '2015-02-13', '鑫润汽车配件', '邓思杰', '日常采购', '', '审核完毕', '邓思杰', '2015-02-13');
 INSERT INTO `rukudan` VALUES ('662c5964-9d51-4bfd-9bf0-3ee5096b4781', '八路通深圳西乡店', 'LSCG20150213006', '2015-02-13', '锐兴达汽车配件', '杨小院', '临时采购', '', '审核完毕', '杨小院', '2015-02-13');
 INSERT INTO `rukudan` VALUES ('7b9f15dd-5765-4fe7-9e6b-6ddfc82079e9', '八路通深圳西乡店', 'RCCG20150213004', '2015-02-13', '深圳市德明士贸易有限公司', '邓思杰', '日常采购', '', '审核完毕', '邓思杰', '2015-02-13');
+INSERT INTO `rukudan` VALUES ('8c20875e-1ec2-40b1-899f-a2780b6ebf8c', '八路通深圳西乡店', 'RCCG20150214002', '2015-02-14', '深圳市德明士贸易有限公司', '邓思杰', '日常采购', '', '审核完毕', '邓思杰', '2015-02-14');
+INSERT INTO `rukudan` VALUES ('b039d076-4c24-4616-b987-a12d70c0a2fe', '八路通深圳西乡店', 'LSCG20150214003', '2015-02-14', '锐兴达汽车配件', '邓思杰', '临时采购', '', '准备单据', null, null);
 INSERT INTO `rukudan` VALUES ('c03546ed-1d56-4ec8-aec4-95628c0131fd', '八路通深圳西乡店', 'RCCG20150213002', '2015-02-13', '深圳市德明士贸易有限公司', '邓思杰', '日常采购', '', '审核完毕', '邓思杰', '2015-02-13');
+INSERT INTO `rukudan` VALUES ('ead134ab-1cdc-44df-808c-ab06289d4e90', '八路通深圳西乡店', 'RCCG20150214001', '2015-02-14', '深圳市德明士贸易有限公司', '邓思杰', '日常采购', '', '审核完毕', '邓思杰', '2015-02-14');
 INSERT INTO `rukudan` VALUES ('ff4dea6a-fbc2-494e-b6e5-5a3f76d3bf9c', '八路通深圳西乡店', 'RCCG20150213005', '2015-02-13', '深圳市德明士贸易有限公司', '邓思杰', '日常采购', '', '审核完毕', '邓思杰', '2015-02-13');
 
 -- ----------------------------
@@ -2061,6 +2187,7 @@ CREATE TABLE `rukudanwuliao` (
 -- Records of rukudanwuliao
 -- ----------------------------
 INSERT INTO `rukudanwuliao` VALUES ('0027f107-4f0f-42f7-bb8b-35ffb1c27f29', '00c54980-bab1-4be2-9bdd-fa76e7e074de', 'JYG01', '小型车机油格', '100', '50.00', null);
+INSERT INTO `rukudanwuliao` VALUES ('17e342cb-445d-4080-a094-51674f5157bc', '8c20875e-1ec2-40b1-899f-a2780b6ebf8c', 'JYG001', '机油格', '100', '30.00', null);
 INSERT INTO `rukudanwuliao` VALUES ('1aeed9d8-3cd3-4393-9869-90b450e754ee', '662c5964-9d51-4bfd-9bf0-3ee5096b4781', 'a', 'a', '1', '40.00', '已收货');
 INSERT INTO `rukudanwuliao` VALUES ('3eed70b2-bb0a-4c03-981d-3093588999fd', 'ff4dea6a-fbc2-494e-b6e5-5a3f76d3bf9c', 'FXJY001', '方向机油', '100', '160.00', null);
 INSERT INTO `rukudanwuliao` VALUES ('564762d4-2d28-43e9-8ab2-19752802e6e5', '7b9f15dd-5765-4fe7-9e6b-6ddfc82079e9', 'ZC001', '机油6系及机油格', '100', '100.00', null);
@@ -2068,6 +2195,7 @@ INSERT INTO `rukudanwuliao` VALUES ('565ec80e-d31a-4f53-a25d-ad01f650d8f8', '361
 INSERT INTO `rukudanwuliao` VALUES ('87f25467-642c-4d0d-871b-9c636159e31c', 'c03546ed-1d56-4ec8-aec4-95628c0131fd', 'KTG001', '空调格', '50', '60.00', null);
 INSERT INTO `rukudanwuliao` VALUES ('8a65c4cc-7aee-4547-92ea-5bc6935be0bb', '361ad919-1564-4108-acdb-8b0182ff6b89', 'LT0001', '米其林215/50/17', '1', '880.00', null);
 INSERT INTO `rukudanwuliao` VALUES ('b6e79af3-fda1-4e43-9e6a-faa0a49171c6', 'ff4dea6a-fbc2-494e-b6e5-5a3f76d3bf9c', 'SCY001', '刹车油', '100', '180.00', null);
+INSERT INTO `rukudanwuliao` VALUES ('d1d7c5d4-f201-4213-96f9-f89e3a4dc193', 'ead134ab-1cdc-44df-808c-ab06289d4e90', 'JY001', '机油1系', '100', '100.00', null);
 INSERT INTO `rukudanwuliao` VALUES ('d254bd79-2cb3-4127-97f8-746b3bc1bb99', 'ff4dea6a-fbc2-494e-b6e5-5a3f76d3bf9c', 'KQG001', '空气格', '100', '60.00', null);
 INSERT INTO `rukudanwuliao` VALUES ('fd7f18bf-2a3c-4922-8eeb-e2750ad6302c', '361ad919-1564-4108-acdb-8b0182ff6b89', 'CGQ0001', '20T高压室传感器', '1', '60.00', null);
 INSERT INTO `rukudanwuliao` VALUES ('fdfbfd53-4888-4140-91cf-013be2b4a08c', '00c54980-bab1-4be2-9bdd-fa76e7e074de', 'JY', '机油*7', '20', '180.00', null);

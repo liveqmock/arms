@@ -100,6 +100,7 @@ public class GongDan {
 		this.setTxtGongShiZheKou(customerInfo.getTxtGongShiZheKou());
 		this.setTxtCaiLiaoZheKou(customerInfo.getTxtCaiLiaoZheKou());
 		this.setTxtRuChangDate(DateUtil.getCurrentDateTime());
+		this.setTxtNewRuChangDate(DateUtil.getNewRuChangDate());
 		this.setTxtCheLiangDengJiRiQi(customerInfo.getTxtCheLiangDengJiRiQi());
 		this.setTxtCheLiangNianShenDaoQiRi(customerInfo
 				.getTxtCheLiangNianShenDaoQiRi());

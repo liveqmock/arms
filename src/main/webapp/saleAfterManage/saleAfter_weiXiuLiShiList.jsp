@@ -56,7 +56,6 @@ td {
 
 			<tr>
 				<td>工单号</td>
-				<td>协议单号</td>
 				<td>车牌号</td>
 				<td>服务顾问</td>
 				<td>联系人</td>
@@ -67,9 +66,8 @@ td {
 			<s:iterator value="gongDanLst">
 			<tr onclick=saleAfterLiShiShow('<s:property value="txtGongDanId" />')>
 				<td><s:property value="txtBillNo" /></td>
-				<td><s:property value="txtXieYiBillNo" /></td>
 				<td><s:property value="txtChePaiHao" /></td>
-				<td><s:property value="txtFuWuUserId" /></td>
+				<td><s:property value="txtFuWuGuWen" /></td>
 				<td><s:property value="txtLianXiRenName" /></td>
 				<td><s:property value="txtLianXiRenMob" /></td>
 				<td><s:property value="txtGongDanStatus" /></td>

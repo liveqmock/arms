@@ -205,24 +205,13 @@ td {
 								name="txtNewRuChangDate" class="easyui-datebox"
 								data-options="required:true" /></td>
 						</tr>
-					</table>
-					<table border="0" cellpadding="0" cellspacing="0" width="900px">
 						<tr>
-							<td>交修原因：</td>
-							<td>故障原因：</td>
-							<td>维修措施：</td>
+							<td colspan="8">备注：</td>
 						</tr>
-
 						<tr>
-							<td align="center"><textarea name="txtJiaoXiuReason"
+							<td colspan="8"><textarea name="txtJiaoXiuReason"
 									rows="2" cols="20" id="txtJiaoXiuReason"
-									style="height: 70px; width: 90%;"></textarea></td>
-							<td align="center"><textarea name="txtGuZhangReason"
-									rows="2" cols="20" id="txtGuZhangReason"
-									style="height: 70px; width: 90%;"></textarea></td>
-							<td align="center"><textarea name="txtWeiXiuCuoShi" rows="2"
-									cols="20" id="txtWeiXiuCuoShi"
-									style="height: 70px; width: 90%;"></textarea></td>
+									style="height: 70px; width: 100%;"></textarea></td>
 						</tr>
 
 						<tr>

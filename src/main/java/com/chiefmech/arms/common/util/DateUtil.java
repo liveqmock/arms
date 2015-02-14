@@ -1,6 +1,9 @@
 package com.chiefmech.arms.common.util;
 
+import java.util.Date;
+
 import org.apache.commons.lang.time.DateFormatUtils;
+import org.apache.commons.lang.time.DateUtils;
 
 public class DateUtil {
 
@@ -20,4 +23,10 @@ public class DateUtil {
 	public static String getCurrentTime() {
 		return DateFormatUtils.format(System.currentTimeMillis(), FORMAT_TIME);
 	}
+
+	public static String getNewRuChangDate() {
+		return DateFormatUtils.format(DateUtils.addMonths(new Date(), 3)
+				.getTime(), FORMAT_DATE);
+	}
+
 }

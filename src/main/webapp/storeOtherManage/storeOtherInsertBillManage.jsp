@@ -37,7 +37,10 @@ td {
 			<td align="right"><s:if test="action=='updateCaiGou'">
 					<a href="#" class="easyui-linkbutton"
 						data-options="plain:true,iconCls:'icon-add'"
-						onclick="openRuKuDan('','1');">日常采购</a>
+						onclick="openRuKuDan('','1');">日常采购</a> <a
+					href="javascript:void(0)" class="easyui-linkbutton"
+					data-options="iconCls:'icon-add',plain:true"
+					onClick="openRuKuDan('','2')">临时采购</a>
 					<a href="#" class="easyui-linkbutton"
 						data-options="plain:true,iconCls:'icon-search'"
 						onclick="toggleSearchPanel();">查询</a>
