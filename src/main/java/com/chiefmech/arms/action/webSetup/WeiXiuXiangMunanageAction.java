@@ -47,9 +47,6 @@ public class WeiXiuXiangMunanageAction extends BaseActionSupport implements
 
 	@Action(value = "weiXiuXiangMuSearch")
 	public void weiXiuXiangMuSearch() {
-		if ("pickXiangMu".equals(action)) {
-			item.setDdlDianPu(this.getUser().getJigouName());
-		}
 		this.transmitJson(weiXiuXiangMuService.getWeiXiuXiangMuEasyUiJSon(
 				saleAfterGuid, item, page, rows));
 	}

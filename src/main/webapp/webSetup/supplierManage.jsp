@@ -36,9 +36,9 @@ td {
 	<form name="fmSearch" method="post" id="fmSearch">
 		<table id="searchPanel" class="searchPanel" style="display: none;">
 			<tr>
-				<td>供应商编号:</td>
+				<!--<td>供应商编号:</td>
 				<td><input name="txtSuppBianHao" type="text" maxlength="20"
-					id="txtSuppBianHao" style="width: 120px;" /></td>
+					id="txtSuppBianHao" style="width: 120px;" /></td>-->
 				<td>供应商名称:</td>
 				<td><input name="txtSuppName" type="text" maxlength="20"
 					id="txtSuppName" style="width: 120px;" /></td>
@@ -57,7 +57,7 @@ td {
 						   pagination:true">
 		<thead>
 			<tr>
-				<th width="100" data-options="field:'txtSuppBianHao'" sortable="true">供应商编号</th>
+				<!--<th width="100" data-options="field:'txtSuppBianHao'" sortable="true">供应商编号</th>-->
 				<th width="200" data-options="field:'txtSuppName'">供应商名称</th>
 				<th width="200" data-options="field:'txtRemarks'">备注</th>
 				<th width="100" field="action" align="center"
@@ -74,14 +74,14 @@ td {
 	<div id="mydlg" class="easyui-dialog" closed="true"
 		style="width: 450px; height: 300px; padding: 10px 20px;">
 		<form name="fm" method="post" id="fm">
-			<table border="0">
+			<table border="0"><!--
 				<tr>
 					<td><span class="requireSpan">*&nbsp;</span>供应商编号:</td>
 					<td><input class="easyui-textbox"
 						data-options="required:true"
 						name="txtSuppBianHao" type="text" maxlength="8"
 						id="txtSuppBianHao" style="width: 150px;"/></td>
-				</tr>
+				</tr>-->
 				<tr>
 					<td><span class="requireSpan">*&nbsp;</span>供应商名称:</td>
 					<td><input class="easyui-textbox"

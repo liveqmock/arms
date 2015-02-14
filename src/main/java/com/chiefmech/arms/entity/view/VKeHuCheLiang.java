@@ -4,7 +4,6 @@ import com.chiefmech.arms.common.util.HuiYuanUtil;
 
 public class VKeHuCheLiang {
 	private String txtCustId;
-	private String ddlDianPu;
 	private String ddlCustSort;
 	private String txtCheZhuName;
 	private String txtCheZhuTel;
@@ -28,14 +27,6 @@ public class VKeHuCheLiang {
 	private int txtHuiYuanJiFen;
 	private float txtGongShiZheKou;
 	private float txtCaiLiaoZheKou;
-
-	public String getDdlDianPu() {
-		return ddlDianPu;
-	}
-
-	public void setDdlDianPu(String ddlDianPu) {
-		this.ddlDianPu = ddlDianPu;
-	}
 
 	public String getTxtCheZhuJiaZhaoDate() {
 		return txtCheZhuJiaZhaoDate;

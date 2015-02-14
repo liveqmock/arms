@@ -26,10 +26,10 @@ public interface WeiXiuXiangMuDao {
 			@Param("txtGongDanId") String saleAfterGuid,
 			@Param("item") WeiXiuXiangMu query);
 
-	@Insert("insert into weixiuxiangmu(txtGuid,txtCode,txtName,txtNeiRong,txtFeiYong,ddlGongDuan,ddlDianPu,txtRemark) values(#{txtGuid},#{txtCode},#{txtName},#{txtNeiRong},#{txtFeiYong},#{ddlGongDuan},#{ddlDianPu},#{txtRemark})")
+	@Insert("insert into weixiuxiangmu(txtGuid,txtCode,txtName,txtNeiRong,txtFeiYong,ddlGongDuan,txtRemark) values(#{txtGuid},#{txtCode},#{txtName},#{txtNeiRong},#{txtFeiYong},#{ddlGongDuan},#{txtRemark})")
 	public int insertItem(WeiXiuXiangMu item);
 
-	@Update("update weixiuxiangmu set txtCode=#{txtCode},txtName=#{txtName},txtNeiRong=#{txtNeiRong},txtFeiYong=#{txtFeiYong},ddlGongDuan=#{ddlGongDuan},ddlDianPu=#{ddlDianPu},txtRemark=#{txtRemark} where txtGuid=#{txtGuid}")
+	@Update("update weixiuxiangmu set txtCode=#{txtCode},txtName=#{txtName},txtNeiRong=#{txtNeiRong},txtFeiYong=#{txtFeiYong},ddlGongDuan=#{ddlGongDuan},txtRemark=#{txtRemark} where txtGuid=#{txtGuid}")
 	public int updateItem(WeiXiuXiangMu item);
 
 	@Delete("delete from weixiuxiangmu where txtGuid=#{txtGuid}")

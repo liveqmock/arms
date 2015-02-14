@@ -14,8 +14,8 @@ public interface CommonDataDao {
 	@Select("select txtStoreName name, txtStoreName code from store")
 	List<OptionBean> getChangKuOptionBean();
 
-	@Select("select weixiuzuName name, weixiuzuName code from weixiuzu where suoShuJiGou=#{suoShuJiGou}")
-	List<OptionBean> getWeiXiuZuOptionBean(String suoShuJiGou);
+	@Select("select weixiuzuName name, weixiuzuName code from weixiuzu")
+	List<OptionBean> getWeiXiuZuOptionBean();
 
 	@Select("select jigouName name, jigouName code from jigou")
 	List<OptionBean> getJiGouOptionBean();
@@ -28,4 +28,7 @@ public interface CommonDataDao {
 
 	@Select("select txtXiangMuName name, txtXiangMuName code from gongdanxiangmu where txtGongDanGuid=#{txtGongDanGuid}")
 	List<OptionBean> getGongDanXiangMuOptionBean(String txtGongDanGuid);
+
+	@Select("select departName name,departName code from (select distinct departName from users where departName is not null)t")
+	List<OptionBean> getDepartNameOptionBean();
 }

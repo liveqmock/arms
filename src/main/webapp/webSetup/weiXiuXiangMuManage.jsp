@@ -47,7 +47,8 @@ td {
 					data-options="editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuGongDuanOption.action'"
 					style="width: 120px;" /></td>
 				<td><a id="lnkSearch" class="easyui-linkbutton"
-					href="javascript:doSearch()">查询项目</a></td>
+					href="javascript:doSearch()">查询</a>
+		      <a href="#" class="easyui-linkbutton" onclick="reloadCurentPage();">刷新</a></td>
 			</tr>
 		</table>
 	</form>
@@ -61,9 +62,6 @@ td {
 			<tr>
 				<s:if test="action=='pickXiangMu'">
 					<th field="ck" checkbox="true" width="20"></th>
-				</s:if>
-                <s:if test="action=='addXiangMu'">
-					<th width="150" data-options="field:'ddlDianPu'">所属店铺</th>
 				</s:if>
 				<th width="80" data-options="field:'ddlGongDuan'">所属工段</th>
 				<th width="100" data-options="field:'txtCode'">项目编号</th>
@@ -121,13 +119,7 @@ td {
 						data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuGongDuanOption.action'" /></td>
 				</tr>
 				<tr>
-					<td><span class="requireSpan">*&nbsp;</span>所属店铺:</td>
-					<td><input name="ddlDianPu" id="ddlDianPu"
-						class="easyui-combobox"
-						data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/jiGouOption.action'" /></td>
-				</tr>
-				<tr>
-					<td><span class="requireSpan">*&nbsp;</span>备注:</td>
+					<td><span class="requireSpan">&nbsp;</span>备注:</td>
 					<td><input name="txtRemark" type="text" id="txtRemark"
 						class="easyui-textbox"/></td>
 				</tr>

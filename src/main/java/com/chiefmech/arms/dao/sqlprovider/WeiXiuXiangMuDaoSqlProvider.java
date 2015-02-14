@@ -57,8 +57,6 @@ public class WeiXiuXiangMuDaoSqlProvider {
 						.getTxtName()));
 				this.addField(new Criteria(Action.LIKE, "txtNeiRong", item
 						.getTxtNeiRong()));
-				this.addField(new Criteria(Action.LIKE, "ddlDianPu", item
-						.getDdlDianPu()));
 			}
 		};
 		return searchBean;

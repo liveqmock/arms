@@ -12,6 +12,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.common.util.Constants;
+import com.chiefmech.arms.common.util.ShopUtil;
+import com.chiefmech.arms.datasource.DynamicDataSource;
 import com.chiefmech.arms.entity.User;
 import com.chiefmech.arms.service.UserService;
 import com.opensymphony.xwork2.ModelDriven;
@@ -29,7 +31,7 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 
 	@Action(value = "login", results = {
 			@Result(name = "success", type = "redirectAction", location = "index/default"),
-			@Result(name = "input", location = "login.jsp")})
+			@Result(name = "input", location = "login.jsp") })
 	public String login() {
 		this.clearFieldErrors();
 		if (StringUtils.isBlank(user.getLoginName())
@@ -37,6 +39,8 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 			// 跳转到登录页面
 			return INPUT;
 		} else {
+			DynamicDataSource
+					.setLookupKey(this.servletRequest.getContextPath());
 			User userInfo = userService
 					.findUserByLoginName(user.getLoginName());
 			String error_msg = "";
@@ -54,12 +58,15 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 				this.addFieldError("message_login_failed", error_msg);
 				return INPUT;
 			} else {
+				userInfo.setShopName(ShopUtil.getShopName(this.servletRequest
+						.getContextPath()));
 				servletRequest.getSession().setAttribute(
 						Constants.KEY_USER_SESSION, userInfo);
 				return SUCCESS;
 			}
 		}
 	}
+
 	@Override
 	public User getModel() {
 		return user;

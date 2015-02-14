@@ -28,17 +28,17 @@ td {
 <body>
 	<table border="0" style="width: 100%;">
 		<tr>
-			<td class="titlebg"><span>系统设置</span> <span class="titleSpan">(系统用户管理)</span>
+			<td class="titlebg"><span>系统设置</span> <span class="titleSpan">(用户管理)</span>
 			</td>
 		</tr>
 	</table>
 	<form name="fmSearch" method="post" id="fmSearch">
 		<table id="searchPanel" class="searchPanel" style="display: none;">
 			<tr>
-				<td>按用户登录名:</td>
+				<td>登录账号:</td>
 				<td><input name="loginName" type="text" maxlength="20"
 					id="loginName" /></td>
-				<td>按显示的用户名称:</td>
+				<td>中文名称:</td>
 				<td><input name="displayName" type="text" maxlength="60"
 					id="displayName" /></td>
 				<td><a id="lnkSearch" class="easyui-linkbutton"
@@ -57,12 +57,11 @@ td {
 						   pagination:true">
 		<thead>
 			<tr>
-				<th width="150" data-options="field:'loginName'">用户登录名</th>
-				<th width="150" data-options="field:'displayName'">显示的用户名称</th>
+				<th width="150" data-options="field:'loginName'">登录账号</th>
+				<th width="150" data-options="field:'displayName'">中文名称</th>
 				<th width="150" data-options="field:'password'">用户密码</th>
 				<th width="150" data-options="field:'expirydate'">账号有效期</th>
-				<th width="200" data-options="field:'jigouName'">所属店铺</th>
-				<th width="200" data-options="field:'departName'">所属部门</th>
+				<!--<th width="200" data-options="field:'departName'">所属部门</th>-->
 				<th field="action" width="100" align="center"
 					formatter="formatAction">操作</th>
 			</tr>
@@ -79,13 +78,13 @@ td {
 		<form name="fm" method="post" id="fm">
 			<table border="0" cellpadding="0" cellspacing="0" width="100%;">
 				<tr>
-					<td>用户登录名:</td>
+					<td>登录账号:</td>
 					<td><input name="loginName" type="text" maxlength="15"
 						id="loginName" style="width: 250px;" class="easyui-textbox"
 						data-options="required:true" /></td>
 				</tr>
 				<tr>
-					<td>显示的用户名称:</td>
+					<td>中文名称:</td>
 					<td><input name="displayName" type="text" maxlength="15"
 						id="displayName" style="width: 250px;" class="easyui-textbox"
 						data-options="required:true" /></td>
@@ -102,26 +101,13 @@ td {
 						id="expirydate" style="width: 250px;"  class="easyui-datebox"
 						data-options="required:true"/></td>
 				</tr>
-				<tr>
-					<td>所属店铺</td>
-					<td><select id="jigouName" name="jigouName"
-						style="width: 250px;">
-							<s:iterator value="JiGouList">
-								<option value="<s:property value='jigouName' />"><s:property
-										value='jigouName' /></option>
-							</s:iterator>
-					</select></td>
-				</tr>
+                <!--
 				<tr>
 					<td>所属部门</td>
-					<td><select id="departName" name="departName"
-						style="width: 250px;">
-							<s:iterator value="DepartMentList">
-								<option value="<s:property value='departName' />"><s:property
-										value='departName' /></option>
-							</s:iterator>
-					</select></td>
-				</tr>
+					<td><input name="departName" type="text" id="departName"
+							class="easyui-combobox"
+							data-options="required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/departNameOption.action',onChange:function(newDep){$(this).combobox('setValue', newDep);}" style="width: 250px;"/></td>
+				</tr>-->
 				<tr>
 					<td colspan="2" align="center"><br /> <a onclick="saveItem()"
 						id="btnSave" class="easyui-linkbutton" href="javascript:void(0)">保存</a>&nbsp;&nbsp;&nbsp;<a
@@ -150,10 +136,10 @@ td {
 		function deleteItem(clickevent) {
 			var row = $('#mydg').datagrid('getEventTargetRow', clickevent);
 			if (row) {
-				$.messager.confirm('确认', '确定要删除选中部门信息吗?', function(r) {
+				$.messager.confirm('确认', '确定要删除选中信息吗?', function(r) {
 					if (r) {
-						$.post('systemOwnerManange.action', {
-							"userId" : row.departId
+						$.post('deleteSystemOwner.action', {
+							"userId" : row.userId
 						}, function(result) {
 							if (result.errorMsg) {
 								$.messager.alert('出错啦', result.errorMsg);

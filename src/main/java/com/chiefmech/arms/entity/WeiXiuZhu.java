@@ -7,8 +7,6 @@ public class WeiXiuZhu {
 	private String weixiuzuName;
 	/** 主修人 */
 	private String zhuxiuRen;
-	/** 所属机构 */
-	private String suoShuJiGou;
 	public String getWeixiuzuID() {
 		return weixiuzuID;
 	}
@@ -26,12 +24,6 @@ public class WeiXiuZhu {
 	}
 	public void setZhuxiuRen(String zhuxiuRen) {
 		this.zhuxiuRen = zhuxiuRen;
-	}
-	public String getSuoShuJiGou() {
-		return suoShuJiGou;
-	}
-	public void setSuoShuJiGou(String suoShuJiGou) {
-		this.suoShuJiGou = suoShuJiGou;
 	}
 
 }

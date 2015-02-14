@@ -40,7 +40,6 @@ td {
 						   pagination:true">
 		<thead>
 			<tr>
-				<th width="200" data-options="field:'suoShuJiGou'">所属店铺</th>
 				<th width="100" data-options="field:'weixiuzuName'">维修组名</th>
 				<th width="100" data-options="field:'zhuxiuRen'">主修人</th>
 				<th width="100" field="action"align="center"
@@ -56,12 +55,6 @@ td {
 		style="width: 450px; height: 300px; padding: 10px 20px;">
 		<form name="fm" method="post" id="fm">
 			<table border="0">
-				<tr>
-					<td align="right"><span class="requireSpan">*&nbsp;</span>所属店铺:</td>
-					<td><input name="suoShuJiGou" id="suoShuJiGou"
-							class="easyui-combobox"
-							data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/jiGouOption.action'" style="width: 250px;"/></td>
-				</tr>
 				<tr>
 					<td align="right"><span class="requireSpan">*&nbsp;</span>维修组名:</td>
 					<td><input name="weixiuzuName" type="text" maxlength="10"

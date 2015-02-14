@@ -8,14 +8,12 @@ public class SaleAfterCustomSearchBean extends SearchBean {
 	private String queryValue;
 	private int txtPageNum;
 	private int txtPageSize;
-	private String ddlDianPu;
 
 	@Override
 	public void initSearchFields() {
 		this.addField(new Criteria(Action.LIKE, this.getQueryField(), this
 				.getQueryValue()));
 		this.addLimitInfo(this.getTxtPageNum(), this.getTxtPageSize());
-		this.addField(new Criteria(Action.STR_EQUAL, "ddlDianPu", ddlDianPu));
 	}
 
 	public String getQueryField() {
@@ -41,12 +39,5 @@ public class SaleAfterCustomSearchBean extends SearchBean {
 	}
 	public void setTxtPageSize(int txtPageSize) {
 		this.txtPageSize = txtPageSize;
-	}
-
-	public String getDdlDianPu() {
-		return ddlDianPu;
-	}
-	public void setDdlDianPu(String ddlDianPu) {
-		this.ddlDianPu = ddlDianPu;
 	}
 }

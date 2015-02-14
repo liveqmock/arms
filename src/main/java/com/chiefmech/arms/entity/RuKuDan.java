@@ -2,7 +2,6 @@ package com.chiefmech.arms.entity;
 
 public class RuKuDan {
 	private String txtGuid;
-	private String ddlDianPu;
 	private String txtBillNo;
 	private String txtRuKuDate;
 	private String txtSuppName;
@@ -22,12 +21,6 @@ public class RuKuDan {
 	}
 	public void setTxtGuid(String txtGuid) {
 		this.txtGuid = txtGuid;
-	}
-	public String getDdlDianPu() {
-		return ddlDianPu;
-	}
-	public void setDdlDianPu(String ddlDianPu) {
-		this.ddlDianPu = ddlDianPu;
 	}
 	public String getTxtBillNo() {
 		return txtBillNo;

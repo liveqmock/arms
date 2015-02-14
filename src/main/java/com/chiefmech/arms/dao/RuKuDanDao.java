@@ -30,7 +30,7 @@ public interface RuKuDanDao {
 	@Select("select concat(date_format(now(),'%Y%m%d'),LPAD(ifnull(max(right(txtBillNo,3)+1),1),3,'0')) newTxtBillNo from rukudan where txtBillNo like date_format(now(),'____%Y%m%d%%')")
 	public String getNewBillNo();
 
-	@Insert("insert into rukudan(txtGuid,ddlDianPu,txtBillNo,txtRuKuDate,txtSuppName,txtJingShouRen,ddlRuKuSort,txtRemarks,txtStatus) values(#{txtGuid},#{ddlDianPu},#{txtBillNo},#{txtRuKuDate},#{txtSuppName},#{txtJingShouRen},#{ddlRuKuSort},#{txtRemarks},#{txtStatus})")
+	@Insert("insert into rukudan(txtGuid,txtBillNo,txtRuKuDate,txtSuppName,txtJingShouRen,ddlRuKuSort,txtRemarks,txtStatus) values(#{txtGuid},#{txtBillNo},#{txtRuKuDate},#{txtSuppName},#{txtJingShouRen},#{ddlRuKuSort},#{txtRemarks},#{txtStatus})")
 	public int insertRuKuDan(RuKuDan item);
 
 	@Update("update rukudan set txtBillNo=#{txtBillNo},txtRuKuDate=#{txtRuKuDate},txtSuppName=#{txtSuppName},txtJingShouRen=#{txtJingShouRen},ddlRuKuSort=#{ddlRuKuSort},txtStatus=#{txtStatus},txtRemarks=#{txtRemarks} where txtGuid=#{txtGuid}")

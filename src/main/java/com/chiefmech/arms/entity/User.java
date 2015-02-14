@@ -1,6 +1,5 @@
 package com.chiefmech.arms.entity;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 public class User {
@@ -9,22 +8,21 @@ public class User {
 	private String loginName;
 	private String displayName;
 	private String password;
-	private Timestamp lastLoginTime;
 	private String expirydate;
 	private String departName;
 	private List<String> privilegeLst;
-	private String jigouName;
+	private String shopName;
 
 	public String getUserId() {
 		return userId;
 	}
 
-	public String getJigouName() {
-		return jigouName;
+	public String getShopName() {
+		return shopName;
 	}
 
-	public void setJigouName(String jigouName) {
-		this.jigouName = jigouName;
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
 	}
 
 	public void setUserId(String userId) {
@@ -61,14 +59,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public Timestamp getLastLoginTime() {
-		return lastLoginTime;
-	}
-
-	public void setLastLoginTime(Timestamp lastLoginTime) {
-		this.lastLoginTime = lastLoginTime;
 	}
 
 	public String getExpirydate() {

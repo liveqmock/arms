@@ -48,7 +48,6 @@ public class RuKuListManageAction extends BaseActionSupport
 
 	@Override
 	public CaiGouWuLiaoSearchBean getModel() {
-		query.setDdlDianPu(this.getUser().getJigouName());
 		query.setSaleAfterWeiXiuGuid(saleAfterWeiXiuGuid);
 		return query;
 	}

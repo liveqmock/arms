@@ -24,10 +24,10 @@ public interface SystemOwnerDao {
 	@SelectProvider(type = SystemOwnerDaoSqlProvider.class, method = "getSystemOwnerListCount")
 	public int getSystemOwnerListCount(@Param("item") SystemOwner query);
 
-	@Insert("insert into users(userId,loginName,displayName,password,lastLoginTime,expirydate,jigouName,departName) values(#{userId},#{loginName},#{displayName},#{password},#{lastLoginTime},#{expirydate},#{jigouName},#{departName})")
+	@Insert("insert into users(userId,loginName,displayName,password,expirydate,departName) values(#{userId},#{loginName},#{displayName},#{password},#{expirydate},#{departName})")
 	public int insertItem(SystemOwner item);
 
-	@Update("update users set loginName=#{loginName},displayName=#{displayName},password=#{password},lastLoginTime=#{lastLoginTime},expirydate=#{expirydate},jigouName=#{jigouName},departName=#{departName} where userId=#{userId}")
+	@Update("update users set loginName=#{loginName},displayName=#{displayName},password=#{password},expirydate=#{expirydate},departName=#{departName} where userId=#{userId}")
 	public int updateItem(SystemOwner item);
 
 	@Delete("delete from users where userId=#{userId}")
@@ -35,7 +35,7 @@ public interface SystemOwnerDao {
 
 	@Select("select * from users")
 	public List<SystemOwner> selectItem();
-	
+
 	@Select("select * from users where userId=#{userId}")
 	public SystemOwner findSystemOwnerById(String id);
 

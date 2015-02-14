@@ -31,7 +31,7 @@ public class CommonDataServiceImpl implements CommonDataService {
 		} else if ("ChangKu".equals(target)) {
 			lst = commonDataDao.getChangKuOptionBean();
 		} else if ("WeiXiuZu".equals(target)) {
-			lst = commonDataDao.getWeiXiuZuOptionBean(param.get("SuoShuJiGou"));
+			lst = commonDataDao.getWeiXiuZuOptionBean();
 		} else if ("JiGou".equals(target)) {
 			lst = commonDataDao.getJiGouOptionBean();
 		} else if ("CheLiangPingPai".equals(target)) {
@@ -42,6 +42,8 @@ public class CommonDataServiceImpl implements CommonDataService {
 		} else if ("GongDanXiangMu".equals(target)) {
 			lst = commonDataDao.getGongDanXiangMuOptionBean(param
 					.get("saleAfterWeiXiuGuid"));
+		} else if ("DepartName".equals(target)) {
+			lst = commonDataDao.getDepartNameOptionBean();
 		}
 		return lst;
 	}

@@ -16,7 +16,6 @@ public class SaleAfterGongDanSearchBean extends SearchBean {
 	private String txtCheZhuName;
 	private String txtCheZhuTel;
 	private String txtFuWuGuWen;
-	private String ddlDianPu;
 	private int start = 1;
 	private int rows = 15;
 
@@ -37,7 +36,6 @@ public class SaleAfterGongDanSearchBean extends SearchBean {
 		this.addField(new Criteria(Action.LIKE, "txtCheZhuName", txtCheZhuName));
 		this.addField(new Criteria(Action.LIKE, "txtCheZhuTel", txtCheZhuTel));
 		this.addField(new Criteria(Action.LIKE, "txtFuWuGuWen", txtFuWuGuWen));
-		this.addField(new Criteria(Action.STR_EQUAL, "ddlDianPu", ddlDianPu));
 		this.addLimitInfo(this.getStart(), this.getRows());
 	}
 
@@ -120,12 +118,6 @@ public class SaleAfterGongDanSearchBean extends SearchBean {
 	}
 	public void setTxtFuWuGuWen(String txtFuWuGuWen) {
 		this.txtFuWuGuWen = txtFuWuGuWen;
-	}
-	public String getDdlDianPu() {
-		return ddlDianPu;
-	}
-	public void setDdlDianPu(String ddlDianPu) {
-		this.ddlDianPu = ddlDianPu;
 	}
 	public int getStart() {
 		return start;

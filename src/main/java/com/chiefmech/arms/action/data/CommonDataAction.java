@@ -77,10 +77,8 @@ public class CommonDataAction extends BaseActionSupport {
 
 	@Action(value = "weiXiuBanZuOption")
 	public void weiXiuBanZu() {
-		Map<String, String> param = new HashMap<String, String>();
-		param.put("SuoShuJiGou", this.getUser().getJigouName());
 		this.transmitJson(JSONArray.fromObject(
-				commonDataService.getOptionBean("WeiXiuZu", param)).toString());
+				commonDataService.getOptionBean("WeiXiuZu")).toString());
 	}
 
 	@Action(value = "jiGouOption")
@@ -93,6 +91,12 @@ public class CommonDataAction extends BaseActionSupport {
 	public void cheLiangPingPai() {
 		this.transmitJson(JSONArray.fromObject(
 				commonDataService.getOptionBean("CheLiangPingPai")).toString());
+	}
+
+	@Action(value = "departNameOption")
+	public void departNameOption() {
+		this.transmitJson(JSONArray.fromObject(
+				commonDataService.getOptionBean("DepartName")).toString());
 	}
 
 	@Action(value = "cheLiangCheXiOption")

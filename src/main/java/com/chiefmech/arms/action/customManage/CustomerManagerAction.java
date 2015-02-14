@@ -56,7 +56,6 @@ public class CustomerManagerAction extends BaseActionSupport implements
 		String info;
 		if (StringUtils.isBlank(item.getTxtCustId())) {
 			item.setTxtCustId(IDGen.getUUID());
-			item.setDdlDianPu(this.getUser().getJigouName());
 			rowsAffected = customerInfoService.insertCustomerInfo(item);
 			info = item.getTxtCustId();
 		} else {

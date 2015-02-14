@@ -13,21 +13,26 @@
 	<context:annotation-config />
 	<context:component-scan base-package="com.chiefmech.arms.*" />
 
-	<!-- dataSource-p6spy -->      
-	<bean id="dataSource" class="com.p6spy.engine.spy.P6DataSource">  
-		<constructor-arg>  
-			<ref local="dataSourceTarget"/>  
-		</constructor-arg>  
-	</bean>  
-	
-	<bean id="dataSourceTarget" class="org.apache.commons.dbcp.BasicDataSource">
+	<!-- dataSource-p6spy -->
+	<bean id="dataSource" class="com.p6spy.engine.spy.P6DataSource">
+		<constructor-arg>
+			<ref local="dataSourceTarget" />
+		</constructor-arg>
+	</bean>
+
+	<bean id="dataSourceTarget" class="com.chiefmech.arms.datasource.DynamicDataSource">
+		<property name="targetDataSources">
+			<map key-type="java.lang.String">
+				<entry key="/arms" value-ref="dataSource_arms" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="dataSource_arms" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<!--
+		<!-- <property name="url" value="jdbc:mysql://localhost:3306/arms?characterEncoding=UTF-8"></property> -->
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/arms?characterEncoding=UTF-8"></property>
-		-->
-		<property name="url"
-			value="jdbc:mysql://120.24.213.132:3306/arms3?characterEncoding=UTF-8"></property>
+			value="jdbc:mysql://120.24.213.132:3306/arms4?characterEncoding=UTF-8"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="e77a85d63e"></property>
 	</bean>

@@ -4,7 +4,6 @@ import com.chiefmech.arms.common.util.HuiYuanUtil;
 
 public class CustomerInfo {
 	private String txtCustId;
-	private String ddlDianPu;
 	private String ddlCustSort;
 	private String txtCheZhuName;
 	private String txtCheZhuTel;
@@ -16,14 +15,6 @@ public class CustomerInfo {
 	private float txtGongShiZheKou;
 	private float txtCaiLiaoZheKou;
 	private String txtHuiYuanDengJi;
-
-	public String getDdlDianPu() {
-		return ddlDianPu;
-	}
-
-	public void setDdlDianPu(String ddlDianPu) {
-		this.ddlDianPu = ddlDianPu;
-	}
 
 	public String getTxtHuiYuanDengJi() {
 		return HuiYuanUtil.getHuiYuanDengJi(this.txtHuiYuanJiFen);
