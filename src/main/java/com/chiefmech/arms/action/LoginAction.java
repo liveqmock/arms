@@ -11,9 +11,9 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.chiefmech.arms.common.util.ConfigUtil;
 import com.chiefmech.arms.common.util.Constants;
-import com.chiefmech.arms.common.util.ShopUtil;
-import com.chiefmech.arms.datasource.DynamicDataSource;
+import com.chiefmech.arms.entity.SystemInfo;
 import com.chiefmech.arms.entity.User;
 import com.chiefmech.arms.service.UserService;
 import com.opensymphony.xwork2.ModelDriven;
@@ -31,7 +31,7 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 
 	@Action(value = "login", results = {
 			@Result(name = "success", type = "redirectAction", location = "index/default"),
-			@Result(name = "input", location = "login.jsp") })
+			@Result(name = "input", location = "login.jsp")})
 	public String login() {
 		this.clearFieldErrors();
 		if (StringUtils.isBlank(user.getLoginName())
@@ -39,27 +39,34 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 			// 跳转到登录页面
 			return INPUT;
 		} else {
-			DynamicDataSource
-					.setLookupKey(this.servletRequest.getContextPath());
-			User userInfo = userService
-					.findUserByLoginName(user.getLoginName());
 			String error_msg = "";
-			if (userInfo != null) {
-				if (!user.getPassword().equals(userInfo.getPassword())) {
-					error_msg = "亲，密码错误！";
-				} else if (Date.valueOf(userInfo.getExpirydate()).before(
-						new Date(System.currentTimeMillis()))) {
-					error_msg = "亲，账号已过期，请联系管理员！";
-				}
+			User userInfo = null;
+			ConfigUtil.getInstance().initSystemInfo(
+					this.servletRequest.getContextPath().substring(1));
+			SystemInfo systemInfo = ConfigUtil.getInstance().getSystemInfo();
+			String sysExpirydate = systemInfo.getExpirydate();
+			if (Date.valueOf(sysExpirydate).before(
+					new Date(System.currentTimeMillis()))) {
+				error_msg = "亲，系統已超过使用期，请联系管理员！";
 			} else {
-				error_msg = String.format("亲，用户名%s不存在！", user.getLoginName());
+				userInfo = userService.findUserByLoginName(user.getLoginName());
+				if (userInfo != null) {
+					if (!user.getPassword().equals(userInfo.getPassword())) {
+						error_msg = "亲，密码错误！";
+					} else if (Date.valueOf(userInfo.getExpirydate()).before(
+							new Date(System.currentTimeMillis()))) {
+						error_msg = "亲，账号已超过使用期，请联系管理员！";
+					}
+				} else {
+					error_msg = String.format("亲，用户名%s不存在！",
+							user.getLoginName());
+				}
 			}
 			if (error_msg.length() > 0) {
 				this.addFieldError("message_login_failed", error_msg);
 				return INPUT;
 			} else {
-				userInfo.setShopName(ShopUtil.getShopName(this.servletRequest
-						.getContextPath()));
+				userInfo.setShopName(systemInfo.getShopName());
 				servletRequest.getSession().setAttribute(
 						Constants.KEY_USER_SESSION, userInfo);
 				return SUCCESS;
