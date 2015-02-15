@@ -9,6 +9,10 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext.xml</param-value>
 	</context-param>
+	<!-- 设置系统启动时应该设置的参数 -->
+	<listener>
+		<listener-class>com.chiefmech.arms.listener.SystemInitListener</listener-class>
+	</listener>
 	<!-- 设置spring的配置文件 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

@@ -81,6 +81,7 @@ public class ConfigUtil {
 							systemkey));
 			while (rs.next()) {
 				systemInfo = new SystemInfo();
+				systemInfo.setSystemkey(systemkey);
 				systemInfo.setDb_host(rs.getString("db_host"));
 				systemInfo.setDb_name(rs.getString("db_name"));
 				systemInfo.setDb_username(rs.getString("db_username"));
@@ -88,7 +89,7 @@ public class ConfigUtil {
 				systemInfo.setShopName(rs.getString("shopName"));
 				systemInfo.setExpirydate(rs.getString("expirydate"));
 
-				logger.info("succed to update systemInfo[new]:" + systemInfo);
+				logger.debug("succed to update systemInfo[new]:" + systemInfo);
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
