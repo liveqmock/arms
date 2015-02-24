@@ -89,7 +89,7 @@ public class ConfigUtil {
 				systemInfo.setShopName(rs.getString("shopName"));
 				systemInfo.setExpirydate(rs.getString("expirydate"));
 
-				logger.debug("succed to update systemInfo[new]:" + systemInfo);
+				logger.info("succed to update systemInfo[new]:" + systemInfo);
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
