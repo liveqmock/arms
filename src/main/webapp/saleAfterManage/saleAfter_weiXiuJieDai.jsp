@@ -40,7 +40,7 @@ td {
 						test="gongDanStatus=='维修接待' && actionName=='gongDanWeiXiuJieDai'">
 						<a onClick="saveGongDan();return false;" class="easyui-linkbutton"
 							href="javascript:void(0)">保存接待信息</a>
-						<s:if test="gongDan.txtBillNo!='等待生成'">
+						<s:if test="saleAfterWeiXiuGuid != null">
 							<a
 								onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','车辆检测');return false;"
 								class="easyui-linkbutton" href="javascript:void(0)">车辆检测</a>
@@ -242,7 +242,7 @@ td {
 			</table>
 			<div style="height: 10px;"></div>
 		</s:if>
-		<s:if test="gongDan.txtBillNo!='等待生成'">
+		<s:if test="saleAfterWeiXiuGuid != null">
 			<table id="datagridXiangMu" class="easyui-datagrid"
 				data-options="url:'queryGongDanWeiXiuXiangMu.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />',toolbar:'#tb',singleSelect:true,rownumbers:true,showFooter:true">
 				<thead>

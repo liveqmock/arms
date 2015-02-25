@@ -44,12 +44,12 @@ td {
 								class="easyui-combobox"
 								data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/customerSortOption.action'" /></td>
 					<td width="80" align="right">车主名：</td>
-					<td><input name="txtCheZhuName" data-options="required:true"
+					<td><input name="txtCheZhuName" data-options="required:true,onChange:function(newValue){$('#txtLianXiRenName').textbox('setValue', newValue);}"
 						class="easyui-textbox" type="text" id="txtCheZhuName" /></td>
 
 					<td width="80" align="right">车主电话：</td>
 					<td><input class="easyui-textbox" name="txtCheZhuTel"
-						type="text" data-options="required:true" id="txtCheZhuTel" /></td>
+						type="text" data-options="required:true,onChange:function(newValue){$('#txtLianXiRenTel').textbox('setValue', newValue);}" id="txtCheZhuTel" /></td>
 				</tr>
 
 				<tr>
@@ -64,13 +64,13 @@ td {
 					<td align="right">驾照日期：</td>
 					<td><input name="txtCheZhuJiaZhaoDate" type="text"
 						id="txtCheZhuJiaZhaoDate" class="easyui-datebox"
-						data-options="required:true" /></td>
+						data-options="required:false" /></td>
 				</tr>
 				<tr>
 					<td align="right"><span class="requireSpan"></span>联系地址：</td>
 					<td colspan="5"><input name="txtLianXiRenAdd" type="text"
 						class="easyui-textbox"
-						data-options="required:true,validType:'maxLength[200]'"
+						data-options="required:false,validType:'maxLength[200]'"
 						id="txtLianXiRenAdd" style="width: 100%;" /></td>
 				</tr>
 				<tr>
@@ -164,16 +164,16 @@ td {
 						<td align="right">车辆型号：</td>
 						<td><input name="txtCheLiangCheXingDaiMa" type="text"
 							class="easyui-textbox" id="txtCheLiangCheXingDaiMa"
-							data-options="required:true" /></td>
+							data-options="required:false" /></td>
 					</tr>
 					<tr>
 						<td align="right">车架号：</td>
 						<td><input name="txtCheLiangCheJiaHao" type="text"
-							class="easyui-textbox" data-options="required:true"
+							class="easyui-textbox" data-options="required:false"
 							id="txtCheLiangCheJiaHao" /></td>
 						<td align="right">发动机号：</td>
 						<td><input name="txtCheLiangFaDongJiHao" type="text"
-							class="easyui-textbox" data-options="required:true"
+							class="easyui-textbox" data-options="required:false"
 							id="txtCheLiangFaDongJiHao" /></td>
 					</tr>
 					<tr>
@@ -213,6 +213,7 @@ td {
 		<div align="center" id="btnBottomDiv" style="margin-top: 10px;">
 			<a class="easyui-linkbutton" href="javascript:saveCustInfo()">保存客户信息</a><s:if test="customerId!=''">
 			<a class="easyui-linkbutton" href="javascript:addItem()">新增车辆信息</a></s:if>
+            <a class="easyui-linkbutton" href="javascript:winClose()">关闭窗口</a>
 		</div>
 	</div>
 	<script language="javascript" type="text/javascript">

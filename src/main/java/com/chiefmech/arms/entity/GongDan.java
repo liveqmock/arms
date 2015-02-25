@@ -105,13 +105,13 @@ public class GongDan {
 		this.setTxtCheLiangBaoXianDaoQiRi(customerInfo
 				.getTxtCheLiangBaoXianDaoQiRi());
 		this.setDdlChengBaoGongSi(customerInfo.getDdlChengBaoGongSi());
-		this.setTxtBillNo("等待生成");
 		this.setTxtGongDanStatus("维修接待");
 	}
 
 	public GongDan(VKeHuCheLiang customer, GongDan gongDan) {
 		this(customer);
 
+		this.setTxtBillNo(gongDan.getTxtBillNo());
 		this.setTxtRuChangDate(gongDan.getTxtRuChangDate());
 		this.setTxtYuChuChangDate(gongDan.getTxtYuChuChangDate());
 		this.setTxtLiCheng(gongDan.getTxtLiCheng());

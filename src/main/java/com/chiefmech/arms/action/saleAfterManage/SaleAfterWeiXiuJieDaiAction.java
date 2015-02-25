@@ -95,6 +95,7 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport implements
 			customer = cheZhuLianXiRenService
 					.findVKeHuCheLiangByCheLiangId(cheLiangId);
 			gongDan = new GongDan(customer);
+			gongDan.setTxtBillNo(gongDanService.getNewBillNo());
 			gongDan.setTxtFuWuGuWen(this.getUser().getDisplayName());
 		} else {
 			gongDan = gongDanService
@@ -130,7 +131,6 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport implements
 					.findVKeHuCheLiangByCheLiangId(gongDan.getTxtCheLiangId());
 			gongDan = new GongDan(customer, gongDan);
 			gongDan.setTxtGongDanId(IDGen.getUUID());
-			gongDan.setTxtBillNo(gongDanService.getNewBillNo());
 			gongDan.setTxtFuWuGuWen(this.getUser().getDisplayName());
 			rowsAffected = gongDanService.insertWeiXiuJieDai(gongDan);
 
