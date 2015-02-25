@@ -93,10 +93,10 @@ public class CommonDataAction extends BaseActionSupport {
 				commonDataService.getOptionBean("CheLiangPingPai")).toString());
 	}
 
-	@Action(value = "departNameOption")
+	@Action(value = "groupNameOption")
 	public void departNameOption() {
 		this.transmitJson(JSONArray.fromObject(
-				commonDataService.getOptionBean("DepartName")).toString());
+				commonDataService.getOptionBean("GroupName")).toString());
 	}
 
 	@Action(value = "cheLiangCheXiOption")

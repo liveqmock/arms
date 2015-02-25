@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>部门管理</title>
+<title>用户组和权限</title>
 <link rel="stylesheet" type="text/css"
 	href="../style/themes/default/easyui.css" />
 <link rel="stylesheet" type="text/css" href="../style/themes/icon.css" />
@@ -28,38 +28,20 @@ td {
 <body>
 	<table border="0" style="width: 100%;">
 		<tr>
-			<td class="titlebg"><span>系统设置</span> <span class="titleSpan">(部门管理)</span>
+			<td class="titlebg"><span>系统设置</span> <span class="titleSpan">(用户组和权限)</span>
 			</td>
 		</tr>
 	</table>
-	<form name="fmSearch" method="post" id="fmSearch">
-		<table id="searchPanel" class="searchPanel" style="display: none;">
-			<tr>
-				<td>部门编号:</td>
-				<td><input name="departCode" type="text" maxlength="20"
-					id="departCode" /></td>
-				<td>部门名称:</td>
-				<td><input name="departName" type="text" maxlength="60"
-					id="departName" /></td>
-				<td><a id="lnkSearch" class="easyui-linkbutton"
-					href="javascript:doSearch()">部门查询</a>&nbsp;&nbsp;&nbsp;<a
-					id="lnkSearch" class="easyui-linkbutton"
-					href="javascript:clearSearchFrm()">清空查询</a></td>
-			</tr>
-		</table>
-	</form>
 
 	<table id="mydg" class="easyui-datagrid"
-		data-options="url:'queryDepartMent.action',
+		data-options="url:'queryGroup.action',
 						   rownumbers:true,
 						   singleSelect:true,
 						   toolbar:'#toolbar',
 						   pagination:true">
 		<thead>
 			<tr>
-				<th data-options="field:'departCode',width:150,sortable:true">部门编号</th>
-				<th data-options="field:'departName',width:150,sortable:true">部门名称</th>
-				<th data-options="field:'departDesc',width:300,sortable:true">部门描述</th>
+				<th width="300" data-options="field:'groupName'">名称</th>
 				<th field="action" width="100" align="center"
 					formatter="formatAction">操作</th>
 			</tr>
@@ -67,34 +49,25 @@ td {
 	</table>
 	<div id="toolbar">
 		<a href="javascript:void(0)" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true" onclick="addItem()">新增</a> <a
-			href="javascript:void(0)" class="easyui-linkbutton"
-			iconCls="icon-search" plain="true" onclick="toggleSearchPanel()">查询</a>
+			iconCls="icon-add" plain="true" onclick="addItem()">新增</a>
 	</div>
 	<div id="mydlg" class="easyui-dialog" closed="true"
 		style="width: 700px; height: 300px; padding: 10px 20px;">
 		<form name="fm" method="post" id="fm">
 			<table border="0" cellpadding="0" cellspacing="0" width="100%;">
-		  		<tr>
-					<td>部门代码:</td>
-					<td><input name="departCode" type="text" maxlength="15"
-						id="departCode" style="width: 250px;" class="easyui-validatebox"
-						data-options="required:true,missingMessage:'此项为必填项'" /></td>
+				<tr>
+					<td width="50" align="right">名称：</td>
+					<td><input name="groupName" type="text" maxlength="15" style="width: 250px;"
+						id="groupName" class="easyui-textbox"
+						data-options="required:true" /></td>
 				</tr>
 				<tr>
-					<td>部门名称:</td>
-					<td><input name="departName" type="text" maxlength="15"
-						id="departName" style="width: 250px; class=""
-						data-options="required:true,missingMessage:'此项为必填项'" /></td>
+					<td colspan="2">权限信息</td>
 				</tr>
 				<tr>
-					<td>部门描述:</td>
-					<td><input name="departDesc" type="text" maxlength="15"
-						id="departDesc" style="width: 250px;" /></td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center"><br /> <a onclick="saveItem()"
-						id="btnSave" class="easyui-linkbutton" href="javascript:void(0)">保存</a>&nbsp;&nbsp;&nbsp;<a
+					<td colspan="2" align="center"><br /> 
+					  <a onclick="saveItem()"
+						id="btnSave" class="easyui-linkbutton" href="javascript:void(0)">保存组名</a>&nbsp;&nbsp;&nbsp;<a
 						onclick="javascript:$('#mydlg').dialog('close')" id="btnSave"
 						class="easyui-linkbutton" href="javascript:void(0)">取消</a></td>
 				</tr>
@@ -105,25 +78,25 @@ td {
 <script type="text/javascript">
 	var url;
 	function addItem() {
-		$('#mydlg').dialog('open').dialog('setTitle', '添加部门信息');
+		$('#mydlg').dialog('open').dialog('setTitle', '添加用户组');
 		$('#fm').form('clear');
-		url = 'insertDepartMent.action';
+		url = 'insertGroup.action';
 	}
 	function editItem(clickevent) {
 		var row = $('#mydg').datagrid('getEventTargetRow', clickevent);
 		if (row) {
-			$('#mydlg').dialog('open').dialog('setTitle', '修改部门信息');
+			$('#mydlg').dialog('open').dialog('setTitle', '修改用户组信息');
 			$('#fm').form('load', row);
-			url = 'updateDepartMent.action?departId=' + row.departId;
+			url = 'updateGroup.action?groupId=' + row.groupId;
 		}
 	}
 	function deleteItem(clickevent) {
 		var row = $('#mydg').datagrid('getEventTargetRow', clickevent);
 		if (row) {
-			$.messager.confirm('确认', '确定要删除选中部门信息吗?', function(r) {
+			$.messager.confirm('确认', '确定要删除选中用户组信息吗?', function(r) {
 				if (r) {
-					$.post('deleteDepartMent.action', {
-						"departId" : row.departId
+					$.post('deleteGroup.action', {
+						"groupId" : row.groupId
 					}, function(result) {
 						if (result.errorMsg) {
 							$.messager.alert('出错啦', result.errorMsg);
@@ -151,20 +124,6 @@ td {
 				}
 			}
 		});
-	}
-
-	function doSearch() {
-		$("#fmSearch").form('submit', {
-			url : "DepartMentSearch.action",
-			success : function(jsonStr) {
-				$('#mydg').datagrid('loadData', $.parseJSON(jsonStr));
-			}
-		});
-	}
-
-	function clearSearchFrm() {
-		$("#fmSearch").form('clear');
-		doSearch();
 	}
 
 	function formatAction(value, row, index) {

@@ -32,25 +32,9 @@ td {
 			</td>
 		</tr>
 	</table>
-	<form name="fmSearch" method="post" id="fmSearch">
-		<table id="searchPanel" class="searchPanel" style="display: none;">
-			<tr>
-				<td>登录账号:</td>
-				<td><input name="loginName" type="text" maxlength="20"
-					id="loginName" /></td>
-				<td>中文名称:</td>
-				<td><input name="displayName" type="text" maxlength="60"
-					id="displayName" /></td>
-				<td><a id="lnkSearch" class="easyui-linkbutton"
-					href="javascript:doSearch()">用户查询</a>&nbsp;&nbsp;&nbsp;<a
-					id="lnkSearch" class="easyui-linkbutton"
-					href="javascript:clearSearchFrm()">清空查询</a></td>
-			</tr>
-		</table>
-	</form>
 
 	<table id="mydg" class="easyui-datagrid"
-		data-options="url:'querySystemOwner.action',
+		data-options="url:'queryUser.action',
 						   rownumbers:true,
 						   singleSelect:true,
 						   toolbar:'#toolbar',
@@ -61,7 +45,7 @@ td {
 				<th width="150" data-options="field:'displayName'">中文名称</th>
 				<th width="150" data-options="field:'password'">用户密码</th>
 				<th width="150" data-options="field:'expirydate'">账号有效期</th>
-				<!--<th width="200" data-options="field:'departName'">所属部门</th>-->
+				<th width="200" data-options="field:'groupName'">用户组</th>
 				<th field="action" width="100" align="center"
 					formatter="formatAction">操作</th>
 			</tr>
@@ -69,9 +53,7 @@ td {
 	</table>
 	<div id="toolbar">
 		<a href="javascript:void(0)" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true" onclick="addItem()">新增</a> <a
-			href="javascript:void(0)" class="easyui-linkbutton"
-			iconCls="icon-search" plain="true" onclick="toggleSearchPanel()">查询</a>
+			iconCls="icon-add" plain="true" onclick="addItem()">新增</a>
 	</div>
 	<div id="mydlg" class="easyui-dialog" closed="true"
 		style="width: 700px; height: 300px; padding: 10px 20px;">
@@ -101,13 +83,12 @@ td {
 						id="expirydate" style="width: 250px;"  class="easyui-datebox"
 						data-options="required:true"/></td>
 				</tr>
-                <!--
 				<tr>
-					<td>所属部门</td>
-					<td><input name="departName" type="text" id="departName"
+					<td>用户组</td>
+					<td><input name="groupName" type="text" id="groupName"
 							class="easyui-combobox"
-							data-options="required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/departNameOption.action',onChange:function(newDep){$(this).combobox('setValue', newDep);}" style="width: 250px;"/></td>
-				</tr>-->
+							data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/groupNameOption.action'" style="width: 250px;"/></td>
+				</tr>
 				<tr>
 					<td colspan="2" align="center"><br /> <a onclick="saveItem()"
 						id="btnSave" class="easyui-linkbutton" href="javascript:void(0)">保存</a>&nbsp;&nbsp;&nbsp;<a
@@ -123,14 +104,14 @@ td {
 		function addItem() {
 			$('#mydlg').dialog('open').dialog('setTitle', '添加系统用户信息');
 			$('#fm').form('clear');
-			url = 'insertSystemOwner.action';
+			url = 'insertUser.action';
 		}
 		function editItem(clickevent) {
 			var row = $('#mydg').datagrid('getEventTargetRow', clickevent);
 			if (row) {
 				$('#mydlg').dialog('open').dialog('setTitle', '修改系统用户信息');
 				$('#fm').form('load', row);
-				url = 'updateSystemOwner.action?userId=' + row.userId;
+				url = 'updateUser.action?userId=' + row.userId;
 			}
 		}
 		function deleteItem(clickevent) {
@@ -138,7 +119,7 @@ td {
 			if (row) {
 				$.messager.confirm('确认', '确定要删除选中信息吗?', function(r) {
 					if (r) {
-						$.post('deleteSystemOwner.action', {
+						$.post('deleteUser.action', {
 							"userId" : row.userId
 						}, function(result) {
 							if (result.errorMsg) {
@@ -167,20 +148,6 @@ td {
 					}
 				}
 			});
-		}
-
-		function doSearch() {
-			$("#fmSearch").form('submit', {
-				url : "systemOwnerSearch.action",
-				success : function(jsonStr) {
-					$('#mydg').datagrid('loadData', $.parseJSON(jsonStr));
-				}
-			});
-		}
-
-		function clearSearchFrm() {
-			$("#fmSearch").form('clear');
-			doSearch();
 		}
 
 		function formatAction(value, row, index) {

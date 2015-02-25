@@ -9,7 +9,7 @@ public class User {
 	private String displayName;
 	private String password;
 	private String expirydate;
-	private String departName;
+	private String groupName;
 	private List<String> privilegeLst;
 	private String shopName;
 
@@ -33,12 +33,12 @@ public class User {
 		return loginName;
 	}
 
-	public String getDepartName() {
-		return departName;
+	public String getGroupName() {
+		return groupName;
 	}
 
-	public void setDepartName(String departName) {
-		this.departName = departName;
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
 	}
 
 	public void setLoginName(String loginName) {

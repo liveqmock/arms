@@ -41,6 +41,11 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 		} else {
 			String error_msg = "";
 			User userInfo = null;
+
+			// 更新系统信息
+			ConfigUtil.getInstance().initSystemInfo(
+					this.servletRequest.getContextPath().substring(1));
+
 			SystemInfo systemInfo = ConfigUtil.getInstance().getSystemInfo();
 			String sysExpirydate = systemInfo.getExpirydate();
 			if (Date.valueOf(sysExpirydate).before(

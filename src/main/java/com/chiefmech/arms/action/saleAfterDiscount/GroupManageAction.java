@@ -11,8 +11,8 @@ import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.action.BaseActionSupport;
 import com.chiefmech.arms.common.util.IDGen;
-import com.chiefmech.arms.entity.User;
-import com.chiefmech.arms.service.UserService;
+import com.chiefmech.arms.entity.Group;
+import com.chiefmech.arms.service.GroupService;
 import com.opensymphony.xwork2.ModelDriven;
 
 @SuppressWarnings("serial")
@@ -20,61 +20,55 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/saleAfterDiscount")
 @Controller()
 @Scope("prototype")
-public class UserManageAction extends BaseActionSupport
+public class GroupManageAction extends BaseActionSupport
 		implements
-			ModelDriven<User> {
+			ModelDriven<Group> {
 	@Resource()
-	private UserService userService;
+	private GroupService groupService;
 
-	private User item = new User();
+	private Group item = new Group();
 	private int page = 1;
 	private int rows = 10;
 
-	@Action(value = "userManage", results = {@Result(name = "input", location = "userManage.jsp")})
-	public String userManage() {
+	@Action(value = "groupManage", results = {@Result(name = "input", location = "groupManage.jsp")})
+	public String groupManage() {
 		return INPUT;
 	}
 
-	@Action(value = "queryUser")
-	public void queryUser() {
-		this.transmitJson(userService.getUserEasyUiJSon(item, page, rows));
+	@Action(value = "queryGroup")
+	public void querygroup() {
+		this.transmitJson(groupService.getGroupEasyUiJSon(item, page, rows));
 	}
 
-	@Action(value = "userSearch")
-	public void userSearch() {
-		this.transmitJson(userService.getUserEasyUiJSon(item, page, rows));
-	}
-
-	@Action(value = "insertUser")
+	@Action(value = "insertGroup")
 	public void insertItem() {
-		item.setUserId(IDGen.getUUID());
+		item.setGroupId(IDGen.getUUID());
 		String jsonStr;
-		if (userService.isLoginNameExist(item)) {
-			jsonStr = getJsonResponse(-1, "已有同名的登录账号");
+		if (groupService.isGroupNameExist(item)) {
+			jsonStr = getJsonResponse(-1, "已有同名用户组");
 		} else {
-			int rowAffected = userService.insertItem(item);
+			int rowAffected = groupService.insertItem(item);
 			jsonStr = getJsonResponse(rowAffected, "新增数据失败");
 		}
 		this.transmitJson(jsonStr);
 	}
 
-	@Action(value = "updateUser")
+	@Action(value = "updateGroup")
 	public void updateItem() {
 		String jsonStr;
-		if (userService.isLoginNameExist(item)) {
-			jsonStr = getJsonResponse(-1, "已有同名的登录账号");
+		if (groupService.isGroupNameExist(item)) {
+			jsonStr = getJsonResponse(-1, "已有同名用户组");
 		} else {
-			int rowAffected = userService.updateItem(item);
+			int rowAffected = groupService.updateItem(item);
 			jsonStr = getJsonResponse(rowAffected, "更新数据失败");
 		}
-
 		this.transmitJson(jsonStr);
 	}
 
-	@Action(value = "deleteUser")
-	public void deleteUser() {
-		String userId = item.getUserId();
-		int rowAffected = userService.deleteItem(userId);
+	@Action(value = "deleteGroup")
+	public void deleteItem() {
+		String departId = item.getGroupId();
+		int rowAffected = groupService.deleteItem(departId);
 		String jsonStr = getJsonResponse(rowAffected, "删除数据失败");
 		this.transmitJson(jsonStr);
 	}
@@ -89,7 +83,7 @@ public class UserManageAction extends BaseActionSupport
 	}
 
 	@Override
-	public User getModel() {
+	public Group getModel() {
 		return item;
 	}
 

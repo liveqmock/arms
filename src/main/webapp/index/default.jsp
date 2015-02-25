@@ -150,13 +150,22 @@
 										},
 										children : [
 												{
+													name : "用户组和权限",
+													font : {
+														'font-style' : '微软雅黑'
+													},
+													url : "",
+													target : "_blank",
+													click : "mdfMenu('6aebe08f-9fff-4492-885f-a20712348812','用户组和权限','../saleAfterDiscount/groupManage.action');"
+												},
+												{
 													name : "用户管理",
 													font : {
 														'font-style' : '微软雅黑'
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('6aebe08f-9fff-4492-885f-a20712348899','用户管理','../saleAfterDiscount/systemOwnerManage.action');"
+													click : "mdfMenu('6aebe08f-9fff-4492-885f-a20712348899','用户管理','../saleAfterDiscount/userManage.action');"
 												} ],
 										url : "",
 										target : "_blank"
@@ -318,7 +327,7 @@
 				<td><img src="../image/ShineClubLogo.png"
 					style='margin-left: 10px;' alt='logo' /></td>
 				<td style='width: 75%; vertical-align: bottom; color: Blue;'>[<s:property
-						value='user.shopName' />] <a href='#'
+						value='user.shopName' />][<s:property value='user.groupName' />] <a href='#'
 					onclick="winopen('userPersonalChange.action','个人设置',500,300,true,true,false);"><s:property
 							value='user.displayName' /></a> &nbsp;&nbsp;<span id="time"></span></td>
 

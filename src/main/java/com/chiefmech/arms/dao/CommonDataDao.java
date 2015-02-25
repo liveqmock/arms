@@ -29,6 +29,6 @@ public interface CommonDataDao {
 	@Select("select txtXiangMuName name, txtXiangMuName code from gongdanxiangmu where txtGongDanGuid=#{txtGongDanGuid}")
 	List<OptionBean> getGongDanXiangMuOptionBean(String txtGongDanGuid);
 
-	@Select("select departName name,departName code from (select distinct departName from users where departName is not null)t")
-	List<OptionBean> getDepartNameOptionBean();
+	@Select("select groupName name,groupName code from groups")
+	List<OptionBean> getGroupNameOptionBean();
 }
