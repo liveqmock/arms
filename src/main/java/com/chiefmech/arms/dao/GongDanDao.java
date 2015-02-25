@@ -92,6 +92,11 @@ public interface GongDanDao {
 	public int updateGongDanStatus(@Param("txtGongDanId") String txtGongDanId,
 			@Param("txtGongDanStatus") String txtGongDanStatus);
 
+	@Update("update gongdan set ddlZhiFuFangShi=#{ddlZhiFuFangShi} where txtGongDanId=#{txtGongDanId}")
+	public int updateGongDanZhiFuFangShi(
+			@Param("txtGongDanId") String txtGongDanId,
+			@Param("ddlZhiFuFangShi") String ddlZhiFuFangShi);
+
 	@Update("update gongdan set txtChuChangDate=#{txtChuChangDate} where txtGongDanId=#{txtGongDanId}")
 	public int updateChuChangDate(@Param("txtGongDanId") String txtGongDanId,
 			@Param("txtChuChangDate") String txtChuChangDate);

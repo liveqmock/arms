@@ -247,6 +247,15 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport implements
 		this.transmitJson(jsonStr);
 	}
 
+	@Action(value = "updateGongDanZhiFuFangShi")
+	public void updateGongDanZhiFuFangShi() {
+		int rowAffected = gongDanService.updateGongDanZhiFuFangShi(
+				saleAfterWeiXiuGuid, gongDan.getDdlZhiFuFangShi());
+		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
+
+		this.transmitJson(jsonStr);
+	}
+
 	@Action(value = "addGongDanWeiXiuWuLiaoFromKuCun")
 	public void addGongDanWeiXiuWuLiaoFromKuCun() {
 		JSONArray jsonArray = JSONArray.fromObject(easyUiJSonData);

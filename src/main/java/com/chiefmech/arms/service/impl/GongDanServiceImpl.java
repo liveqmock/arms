@@ -116,6 +116,13 @@ public class GongDanServiceImpl implements GongDanService {
 	}
 
 	@Override
+	public int updateGongDanZhiFuFangShi(String txtGongDanId,
+			String ddlZhiFuFangShi) {
+		return gongDanDao.updateGongDanZhiFuFangShi(txtGongDanId,
+				ddlZhiFuFangShi);
+	}
+
+	@Override
 	public int deleteGongDanWeiXiuXiangMu(String txtWeiXiuXiangMuId) {
 		return gongDanDao.deleteGongDanWeiXiuXiangMu(txtWeiXiuXiangMuId);
 	}

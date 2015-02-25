@@ -78,6 +78,8 @@ public class GongDan {
 	private String txtCheLiangBaoXianDaoQiRi;
 	private String ddlChengBaoGongSi;
 
+	private String ddlZhiFuFangShi;
+
 	public GongDan(VKeHuCheLiang customerInfo) {
 		this.setTxtCustId(customerInfo.getTxtCustId());
 		this.setTxtCheLiangId(customerInfo.getTxtCheLiangId());
@@ -141,6 +143,14 @@ public class GongDan {
 
 	public String getTxtNewLiCheng() {
 		return txtNewLiCheng;
+	}
+
+	public String getDdlZhiFuFangShi() {
+		return ddlZhiFuFangShi;
+	}
+
+	public void setDdlZhiFuFangShi(String ddlZhiFuFangShi) {
+		this.ddlZhiFuFangShi = ddlZhiFuFangShi;
 	}
 
 	public void setTxtNewLiCheng(String txtNewLiCheng) {

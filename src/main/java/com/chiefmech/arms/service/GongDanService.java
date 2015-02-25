@@ -81,4 +81,7 @@ public interface GongDanService {
 			GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao);
 
 	public GongDanJieSuan getGongDanJieSuanXinXi(GongDan gongDan);
+
+	public int updateGongDanZhiFuFangShi(String saleAfterWeiXiuGuid,
+			String ddlZhiFuFangShi);
 }

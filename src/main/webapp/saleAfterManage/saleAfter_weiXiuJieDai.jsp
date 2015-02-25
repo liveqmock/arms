@@ -87,12 +87,14 @@ td {
 							class="easyui-linkbutton" href="javascript:void(0)">费用结算</a>
 					</s:elseif> <s:elseif
 						test="gongDanStatus=='费用结算' && actionName=='gongDanWeiXiuJieSuan'">
-						<a
+						<a onClick="saveZhiFuSort();return false;" class="easyui-linkbutton"
+							href="javascript:void(0)">保存支付方式</a>
+                        <a
 							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','维修完检');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
-						<a
+						<s:if test="gongDan.ddlZhiFuFangShi != null"><a
 							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','出库');return false;"
-							class="easyui-linkbutton" href="javascript:void(0)">出库</a>
+							class="easyui-linkbutton" href="javascript:void(0)">出库</a></s:if>
 					</s:elseif></td>
 			</tr>
 			<!--按钮区域 end-->
@@ -394,8 +396,14 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 						<td style="color: blue; font-weight: bold;"><s:property
 								value='jieSuanInfo.heJiDiscount' /></td>
 					</tr>
-
-
+					<tr>
+						<td>&nbsp;</td>
+						<td style="color: blue; font-weight: bold;">&nbsp;</td>
+						<td>&nbsp;</td>
+						<td style="color: blue; font-weight: bold;">&nbsp;</td>
+						<td style="color: blue; font-weight: bold;">支付方式</td>
+						<td style="color: blue; font-weight: bold;"><input name="ddlZhiFuFangShi" id="ddlZhiFuFangShi" class="easyui-combobox" data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/zhiFuSortOption.action'" /></td>
+					</tr>
 				</table>
 			</div>
 		</s:if>
@@ -410,7 +418,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 					+ '<s:property value="gongDanJsonData" escape="false"/>' + ')');
 			initFormData(formJson);
 			
-			<s:if test="gongDanStatus!='维修接待'">
+			<s:if test="gongDanStatus not in {'维修接待','费用结算'}">
 			_.each(formJson, function(value, key) {
 				var el = $("#" + key);
 				if(_.size(el) > 0){
@@ -778,6 +786,25 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			var sFeatures = "dialogWidth:960px;dialogHeight:500px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
 			window.showModalDialog(sURL, window, sFeatures);
         }
+		
+		function saveZhiFuSort(){
+			var ddlZhiFuFangShi = $("#ddlZhiFuFangShi").combobox("getValue");
+			if (ddlZhiFuFangShi!="") {				
+				$.post('updateGongDanZhiFuFangShi.action', {
+					"saleAfterWeiXiuGuid" : saleAfterGuid,
+					"ddlZhiFuFangShi" : ddlZhiFuFangShi
+				}, function(result) {
+					if (result.errorMsg) {
+						$.messager.alert('出错啦', result.errorMsg);
+					}else{
+						//$.messager.alert('提示', "支付方式保存成功");
+						reloadCurentPage();
+					}
+				}, 'json');
+			} else {
+				$.messager.alert('提示', '请先选择支付方式');
+			}
+		}
 		
 		function printThis() {
 			window.open("saleAfter_WeiXiuJieDaiPrint.aspx?saleAfterGuid="
