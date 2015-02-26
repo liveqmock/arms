@@ -1,5 +1,7 @@
 package com.chiefmech.arms.entity;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.chiefmech.arms.common.util.DateUtil;
 import com.chiefmech.arms.entity.view.VKeHuCheLiang;
 
@@ -78,7 +80,10 @@ public class GongDan {
 	private String txtCheLiangBaoXianDaoQiRi;
 	private String ddlChengBaoGongSi;
 
-	private String ddlZhiFuFangShi;
+	private String ddlZhiFuFangShi;	
+
+	private String ddlReviewStatus;
+	private String txtReviewRemark;
 
 	public GongDan(VKeHuCheLiang customerInfo) {
 		this.setTxtCustId(customerInfo.getTxtCustId());
@@ -439,6 +444,25 @@ public class GongDan {
 
 	public void setDdlChengBaoGongSi(String ddlChengBaoGongSi) {
 		this.ddlChengBaoGongSi = ddlChengBaoGongSi;
+	}
+
+	public String getDdlReviewStatus() {
+		if(StringUtils.isEmpty(ddlReviewStatus)){
+			ddlReviewStatus="未回访";
+		}
+		return ddlReviewStatus;
+	}
+
+	public void setDdlReviewStatus(String ddlReviewStatus) {
+		this.ddlReviewStatus = ddlReviewStatus;
+	}
+
+	public String getTxtReviewRemark() {
+		return txtReviewRemark;
+	}
+
+	public void setTxtReviewRemark(String txtReviewRemark) {
+		this.txtReviewRemark = txtReviewRemark;
 	}
 
 }

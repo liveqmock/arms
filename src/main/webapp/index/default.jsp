@@ -108,6 +108,24 @@
 										target : "_blank"
 									},
 									{
+										name : "客户管理",
+										font : {
+											'font-style' : '微软雅黑'
+										},
+										children : [
+												{
+													name : "客户回访",
+													font : {
+														'font-style' : '微软雅黑'
+													},
+													url : "",
+													target : "_blank",
+													click : "mdfMenu('6aebe08f-9fff-4492-885f-a20712348345','客户回访','../saleAfterManage/clientReviewManage.action');"
+												} ],
+										url : "",
+										target : "_blank"
+									},
+									{
 										name : "基础设置",
 										font : {
 											'font-style' : '微软雅黑'

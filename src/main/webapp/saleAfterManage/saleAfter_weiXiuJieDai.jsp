@@ -93,8 +93,8 @@ td {
 							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','维修完检');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
 						<s:if test="gongDan.ddlZhiFuFangShi != null"><a
-							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','出库');return false;"
-							class="easyui-linkbutton" href="javascript:void(0)">出库</a></s:if>
+							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','交车');return false;"
+							class="easyui-linkbutton" href="javascript:void(0)">交车</a></s:if>
 					</s:elseif></td>
 			</tr>
 			<!--按钮区域 end-->

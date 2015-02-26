@@ -7,6 +7,7 @@ public class CustomerInfo {
 	private String ddlCustSort;
 	private String txtCheZhuName;
 	private String txtCheZhuTel;
+	private String txtCheZhuPwd;
 	private String txtLianXiRenName;
 	private String txtLianXiRenTel;
 	private String txtLianXiRenAdd;
@@ -15,6 +16,8 @@ public class CustomerInfo {
 	private float txtGongShiZheKou;
 	private float txtCaiLiaoZheKou;
 	private String txtHuiYuanDengJi;
+	
+	private String txtHuiYuanZhangHao;
 
 	public String getTxtHuiYuanDengJi() {
 		return HuiYuanUtil.getHuiYuanDengJi(this.txtHuiYuanJiFen);
@@ -70,6 +73,18 @@ public class CustomerInfo {
 
 	public void setTxtCheZhuTel(String txtCheZhuTel) {
 		this.txtCheZhuTel = txtCheZhuTel;
+	}
+
+	public String getTxtHuiYuanZhangHao() {
+		return txtCheZhuTel;
+	}
+
+	public String getTxtCheZhuPwd() {
+		return txtCheZhuPwd;
+	}
+
+	public void setTxtCheZhuPwd(String txtCheZhuPwd) {
+		this.txtCheZhuPwd = txtCheZhuPwd;
 	}
 
 	public String getTxtLianXiRenName() {

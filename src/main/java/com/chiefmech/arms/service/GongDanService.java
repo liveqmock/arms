@@ -84,4 +84,6 @@ public interface GongDanService {
 
 	public int updateGongDanZhiFuFangShi(String saleAfterWeiXiuGuid,
 			String ddlZhiFuFangShi);
+
+	public int updateGongDanReviewStatus(GongDan item);
 }

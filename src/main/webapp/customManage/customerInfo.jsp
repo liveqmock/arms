@@ -49,7 +49,7 @@ td {
 
 					<td width="80" align="right">车主电话：</td>
 					<td><input class="easyui-textbox" name="txtCheZhuTel"
-						type="text" data-options="required:true,onChange:function(newValue){$('#txtLianXiRenTel').textbox('setValue', newValue);}" id="txtCheZhuTel" /></td>
+						type="text" data-options="required:true,validType:'mobile',onChange:function(newValue){$('#txtLianXiRenTel').textbox('setValue', newValue);$('#txtHuiYuanZhangHao').text(newValue);}" id="txtCheZhuTel" /></td>
 				</tr>
 
 				<tr>
@@ -78,6 +78,15 @@ td {
 				</tr>
 				<tr>
 					<td colspan="6">会员信息</td>
+				</tr>
+				<tr>
+					<td align="right">会员账号：</td>
+					<td><span id="txtHuiYuanZhangHao"></span></td>
+					<td align="right">会员密码：</td>
+					<td><input class="easyui-textbox" name="txtCheZhuPwd"
+						type="text" id="txtCheZhuPwd" data-options="required:true" /></td>
+					<td align="right">&nbsp;</td>
+					<td>&nbsp;</td>
 				</tr>
 				<tr>
 					<td align="right">会员积分：</td>

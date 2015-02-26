@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>维修接待</title>
+<title><s:if test="actionName=='saleAfterGongDanManage'">维修接待</s:if><s:elseif test="actionName=='clientReviewManage'">客户管理</s:elseif></title>
 <style type="text/css">
 #searchTb tb {
 	white-space: nowrap;
@@ -31,7 +31,7 @@
 	<div class="title">
 		<table border="0" style="width: 100%;">
 			<tr>
-				<td class="titlebg"><span>维修接待</span> <span class="titleSpan">(工单管理)</span>
+				<td class="titlebg"><s:if test="actionName=='saleAfterGongDanManage'"><span>维修接待</span> <span class="titleSpan">(工单管理)</span></s:if><s:elseif test="actionName=='clientReviewManage'"><span>客户管理</span> <span class="titleSpan">(客户回访)</span></s:elseif>
 				</td>
 				<td align="right"><a href="#" class="easyui-linkbutton"
 					data-options="plain:true,iconCls:'icon-search'"
@@ -92,12 +92,16 @@
 	</div>
 	<div class="region">
 		<table id="dg" class="easyui-datagrid"
-			data-options="rownumbers:true,singleSelect:true,autoRowHeight:false,pagination:true,pageList:[10,15,20,30,40,50,100],pageNumber:1,pageSize:15,onDblClickRow:showGongDan">
+			data-options="rownumbers:true,singleSelect:true,autoRowHeight:false,pagination:true,pageList:[15,20,30,50,100],pageNumber:1,pageSize:15,onDblClickRow:showGongDan">
 			<thead>
 				<tr>
+                    <s:if test="actionName=='saleAfterGongDanManage'">
 					<th width="20" data-options="field:'txtGongDanId',checkbox:true"></th>
+                    </s:if>
 					<th width="150" data-options="field:'txtBillNo'" sortable="true">工单号</th>
+                    <s:if test="actionName=='saleAfterGongDanManage'">
 					<th width="100" data-options="field:'txtGongDanStatus'">当前状态</th>
+                    </s:if>
 					<th width="100" data-options="field:'txtCustSort'">客户类别</th>
 					<th width="100" data-options="field:'txtFuWuGuWen'">服务顾问</th>
 					<th width="100" data-options="field:'txtChePaiHao'">车牌号</th>
@@ -105,9 +109,17 @@
 					<th width="100" data-options="field:'txtCheZhuName'">车主名称</th>
 					<th width="100" data-options="field:'txtCheZhuTel'">车主电话</th>
 					<th width="100" data-options="field:'txtRuChangDate'">入厂时间</th>
+                    <s:if test="actionName=='saleAfterGongDanManage'">
 					<th width="150" data-options="field:'txtYuChuChangDate'">预出厂时间</th>
 					<th width="100" data-options="field:'txtJieSuanDate'">结算时间</th>
+                    </s:if>
 					<th width="100" data-options="field:'txtChuChangDate'">出厂时间</th>
+                    <s:if test="actionName=='clientReviewManage'">
+					<th width="150" data-options="field:'ddlReviewStatus',align:'center',editor:{type:'radiobox',options:{defaultValue:'未回访',values:['已回访','未回访']}}">回访状态</th>
+					<th width="200" data-options="field:'txtReviewRemark',editor:{type:'textbox'}">回访备注</th>
+                    <th width="150" field="action" align="center"
+                        formatter="formatAction">操作</th>
+                    </s:if>
 				</tr>
 			</thead>
 		</table>
@@ -126,8 +138,9 @@
 		}
 
 		function gongDanSearch() {
+			var url = "<s:if test="actionName=='saleAfterGongDanManage'">saleAfterGongDanSearch.action</s:if><s:elseif test="actionName=='clientReviewManage'">clientReviewSearch.action</s:elseif>";
 			$("#form1").form('submit', {
-				url : "saleAfterGongDanSearch.action",
+				url : url,
 				success : function(jsonStr) {
 					setupDatagrid(jsonStr);
 				}
@@ -143,6 +156,55 @@
 				z = window.open(url, '_blank', features);
 				z.focus();
 			}
+		}
+		
+		var myTable = $('#dg');
+		function formatAction(value, row, index) {
+			if (row.editing) {
+				var s = '<a href="#" onclick="saverow(this);return false;">保存修改</a>&nbsp;&nbsp;&nbsp;&nbsp;';
+				var c = '<a href="#" onclick="cancelrow(this);return false;">取消修改</a>';
+				return s + c;
+			} else {
+				var e = '<a href="#" onclick="editrow(this);return false;">编辑本行</a>&nbsp;&nbsp;&nbsp;&nbsp;';
+				return e;
+			}
+		}
+
+		function getTargetRowIndex(target) {
+			return myTable.datagrid('getEventTargetRowIndex', target);
+		}
+
+		function editrow(target) {
+			if (myTable.datagrid('hasEditingRow')) {
+				$.messager.alert('提示', '请先处理尚未完成的编辑行信息');
+			} else {
+				myTable.datagrid('beginEdit', getTargetRowIndex(target));
+			}
+		}
+
+		function saverow(target) {
+			var rowIndex = getTargetRowIndex(target);
+			if (myTable.datagrid('validateRow', rowIndex)) {
+				myTable.datagrid('endEdit', rowIndex);
+				var editRow = myTable.datagrid('getRows')[rowIndex];
+				var url = "updateGongDanReviewStatus.action";
+				$.post(url, {
+					"easyUiJSonData" : JsonToString(editRow)
+				}, function(result) {
+					if (result.errorMsg) {
+						$.messager.alert('出错啦', result.errorMsg);
+						myTable.datagrid('cancelEdit', rowIndex);
+					} else {
+						myTable.datagrid('reload');
+					}
+				}, 'json');
+			} else {
+				$.messager.alert('提示', '请先按照提示填写行信息');
+			}
+		}
+
+		function cancelrow(target) {
+			myTable.datagrid('cancelEdit', getTargetRowIndex(target));
 		}
 	</script>
 </body>

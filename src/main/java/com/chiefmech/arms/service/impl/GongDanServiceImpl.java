@@ -277,6 +277,11 @@ public class GongDanServiceImpl implements GongDanService {
 	}
 
 	@Override
+	public int updateGongDanReviewStatus(GongDan item) {
+		return gongDanDao.updateGongDanReviewStatus(item);
+	}
+
+	@Override
 	public int updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao(
 			GongDanWeiXiuWuLiao item) {
 		int rowAffected = 0;

@@ -30,6 +30,9 @@ public interface GongDanDao {
 	@Update("update gongdan set txtBillNo=#{txtBillNo},txtRuChangDate=#{txtRuChangDate},txtYuChuChangDate=#{txtYuChuChangDate},txtLiCheng=#{txtLiCheng},txtNewLiCheng=#{txtNewLiCheng},txtNewRuChangDate=#{txtNewRuChangDate},txtXieYiBillNo=#{txtXieYiBillNo},txtJiaoXiuReason=#{txtJiaoXiuReason} where txtGongDanId=#{txtGongDanId}")
 	public int updateWeiXiuJieDai(GongDan item);
 
+	@Update("update gongdan set ddlReviewStatus=#{ddlReviewStatus},txtReviewRemark=#{txtReviewRemark} where txtGongDanId=#{txtGongDanId}")
+	public int updateGongDanReviewStatus(GongDan item);
+
 	@Select("select concat(date_format(now(),'JDD%Y%m%d'),LPAD(ifnull(max(right(txtBillNo,3)+1),1),3,'0')) newTxtBillNo from gongdan where txtBillNo like date_format(now(),'JDD%Y%m%d%%')")
 	public String getNewBillNo();
 

@@ -116,6 +116,11 @@ td {
 							<table border="0"
 								style="vertical-align: top; color: Blue; font-weight: bold;">
 								<tr>
+									<td>会员积分：[<s:property value='customer.txtHuiYuanJiFen' />
+										]
+									</td>
+								</tr>
+								<tr>
 									<td>会员等级：[<s:property value='customer.txtHuiYuanDengJi' />
 										]
 									</td>
@@ -194,7 +199,7 @@ td {
         }    
 
         function saleAfterLiShiShow(saleAfterGuid,txtGongDanStatus) {
-            if (txtGongDanStatus == '出库') {                
+            if (txtGongDanStatus == '交车') {                
 				saleAfterLiShiDetail(saleAfterGuid);
             } else {
 				saleAfterGongDanDetail(saleAfterGuid);
