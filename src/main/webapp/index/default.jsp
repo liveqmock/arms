@@ -229,12 +229,15 @@
 	var setting = {};
 	//tab自动添加
 	function mdfMenu(menuGuid, t, url) {
-		if (url == "" || url.length < 4) {
+		if (url == "" || url.length < 5) {
 			hideMenu(); //隐藏菜单
 			return;
 		}
 		//判断Tab是否存在
 		url1 = url;
+		//先关闭已经存在的
+		$("#tabList").tabs('close', t);
+		//添加新的
 		$("#tabList")
 				.tabs(
 						'add',
