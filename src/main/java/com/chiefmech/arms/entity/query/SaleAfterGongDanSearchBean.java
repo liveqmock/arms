@@ -31,7 +31,7 @@ public class SaleAfterGongDanSearchBean extends SearchBean {
 		this.addField(new Criteria(Action.LIKE, "txtVin", txtVin));
 		this.addField(new Criteria(Action.LIKE, "txtGongDanStatus",
 				txtGongDanStatus));
-		this.addField(new Criteria(Action.STR_EQUAL, "txtCustSort", txtCustSort));
+		this.addField(new Criteria(Action.LIKE, "txtCustSort", txtCustSort));
 		this.addField(new Criteria(Action.LIKE, "txtChePaiHao", txtChePaiHao));
 		this.addField(new Criteria(Action.LIKE, "txtCheZhuName", txtCheZhuName));
 		this.addField(new Criteria(Action.LIKE, "txtCheZhuTel", txtCheZhuTel));

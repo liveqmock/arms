@@ -18,7 +18,7 @@ public class WeiXiuXiangMuDaoSqlProvider {
 		searchBean.addLimitInfo(page, rows);
 
 		return String
-				.format("select * from weixiuxiangmu %s %s",
+				.format("select * from weixiuxiangmu %s order by txtCode %s",
 						getWhereSql(searchBean, txtGongDanId),
 						searchBean.getLimitSql());
 	}

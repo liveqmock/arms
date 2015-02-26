@@ -42,9 +42,9 @@
 			</tr>
 		</table>
 	</div>
-	<div id="searchPanel" style="display: none;">
-		<form name="form1" method="post"
-			action="saleAfterGongDanManage.action" id="form1">
+	<div id="searchPanel" style="display: block;">
+		<form name="fmSearch" method="post"
+			action="saleAfterGongDanManage.action" id="fmSearch">
 			<table border='0' id="searchTb">
 				<tr>
 					<td nowrap>入厂时间:</td>
@@ -84,7 +84,9 @@
 						class="easyui-textbox" maxlength="18" id="txtCheZhuTel"
 						style="width: 150px;" /></td>
 					<td nowrap><a id="lnkSearch" class="easyui-linkbutton"
-						href="javascript:gongDanSearch()">查询</a></td>
+						href="javascript:doSearch()">查询</a>&nbsp;&nbsp;&nbsp;<a
+					id="lnkSearch" class="easyui-linkbutton"
+					href="javascript:clearSearchFrm()">清空查询</a></td>
 
 				</tr>
 			</table>
@@ -137,22 +139,31 @@
 			$('#dg').datagrid('loadData', jsonStrData);
 		}
 
-		function gongDanSearch() {
+		function doSearch() {
 			var url = "<s:if test="actionName=='saleAfterGongDanManage'">saleAfterGongDanSearch.action</s:if><s:elseif test="actionName=='clientReviewManage'">clientReviewSearch.action</s:elseif>";
-			$("#form1").form('submit', {
+			$("#fmSearch").form('submit', {
 				url : url,
 				success : function(jsonStr) {
 					setupDatagrid(jsonStr);
 				}
 			});
 		}
+		function clearSearchFrm() {
+			$("#fmSearch").form('clear');
+			doSearch();
+		}
 
 		function showGongDan(index) {
 			var thisGuid = $('#dg').datagrid('getRows')[index]['txtGongDanId'];
 			if (thisGuid != "" && thisGuid != undefined) {
-				var url = 'saleAfterIndex.action?saleAfterWeiXiuGuid='
-						+ thisGuid + '&d=' + new Date();
-				var features = 'height=800,width=1000,top=100,left=50,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no';
+				<s:if test="actionName=='saleAfterGongDanManage'">
+				var url = 'saleAfterIndex.action?saleAfterWeiXiuGuid=' + thisGuid + '&d=' + new Date();
+				var features = 'height=800, width=1000, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';
+				</s:if>
+				<s:elseif test="actionName=='clientReviewManage'">
+				var url = 'weiXiuLiShiDetail.action?saleAfterWeiXiuGuid=' + thisGuid + '&d=' + new Date();
+				var features = 'height=900, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';
+				</s:elseif>
 				z = window.open(url, '_blank', features);
 				z.focus();
 			}
