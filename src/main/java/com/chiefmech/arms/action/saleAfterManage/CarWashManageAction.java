@@ -3,6 +3,7 @@ package com.chiefmech.arms.action.saleAfterManage;
 import javax.annotation.Resource;
 
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Actions;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
@@ -29,11 +30,17 @@ public class CarWashManageAction extends BaseActionSupport
 	private CarWashService carWashService;
 
 	private CarWash item = new CarWash();
+	private String action;
 	private int page = 1;
 	private int rows = 10;
 
 	@Action(value = "carWashManage", results = {@Result(name = "input", location = "carWashManage.jsp")})
 	public String saleAfterCustomSearch() {
+		return INPUT;
+	}
+
+	@Action(value = "carWashInfo", results = {@Result(name = "input", location = "carWashInfo.jsp")})
+	public String carWashInfo() {
 		return INPUT;
 	}
 
@@ -87,6 +94,14 @@ public class CarWashManageAction extends BaseActionSupport
 
 	public void setRows(int rows) {
 		this.rows = rows;
+	}
+
+	public String getAction() {
+		return action;
+	}
+
+	public void setAction(String action) {
+		this.action = action;
 	}
 
 }

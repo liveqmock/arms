@@ -51,135 +51,23 @@ td {
 	</table>
 	<div id="toolbar">
 		<a href="javascript:void(0)" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true" onclick="addItem()">新增洗车信息</a></div>
-<div id="mydlg" class="easyui-dialog" closed="true"
-		style="width: 700px; height: 500px; padding: 10px 20px;">
-	  <form name="fm" method="post" id="fm">
-			<table border="0" cellpadding="0" cellspacing="0" width="100%;">
-				<tr>
-                	<td colspan="2" style="color: Blue; font-weight: bold;">当前状态:	<span id="txtStatus"></span></td>
-					<td colspan="2" style="height:30px;">
-                    <a onclick="saveItem()" class="easyui-linkbutton" href="javascript:void(0)">保存洗车信息</a>
-                    <a onclick="updateStatus('洗车接待')" class="easyui-linkbutton" href="javascript:void(0)">派工</a>
-                    <a onclick="updateStatus('派工')" class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
-                    <a onclick="updateStatus('完检')" class="easyui-linkbutton" href="javascript:void(0)">完检</a>
-                    <a onclick="updateStatus('完检')" class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
-                    <a onclick="updateStatus('收银')" class="easyui-linkbutton" href="javascript:void(0)">收银</a>
-                    <a onclick="updateStatus('收银')" class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
-                    <a onclick="updateStatus('交车')" class="easyui-linkbutton" href="javascript:void(0)">交车</a></td>
-				</tr>
-				<tr>
-					<td align="right">品牌：</td>
-					<td><input name="ddlCheLiangPingPai" id="ddlCheLiangPingPai"
-								class="easyui-combobox"
-								data-options="editable:true,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/cheLiangPingPaiOption.action',onSelect:updateCheXi" /></td>
-					<td align="right">车型：</td>
-					<td><input name="ddlCheLiangCheXi" id="ddlCheLiangCheXi"
-								class="easyui-combobox"
-								data-options="editable:true,required:true,valueField:'code',textField:'name'" /></td>
-				</tr>
-				<tr>
-					<td align="right">车牌号：</td>
-					<td><input name="txtChePaiHao" type="text" maxlength="15"
-						id="txtChePaiHao" class="easyui-textbox"
-						data-options="required:true" /></td>
-					<td align="right">洗车类型：</td>
-					<td><input name="ddlXiCheLeiXing" type="text" maxlength="15"
-						id="ddlXiCheLeiXing" class="easyui-textbox"
-						data-options="required:true" /></td>
-				</tr>
-				<tr>
-					<td align="right">车主名：</td>
-					<td><input name="txtCheZhuName" type="text" maxlength="15"
-						id="txtCheZhuName" class="easyui-textbox"
-						data-options="required:false" /></td>
-					<td align="right">车主电话：</td>
-					<td><input name="txtCheZhuTel" type="text" maxlength="15"
-						id="txtCheZhuTel" class="easyui-textbox"
-						data-options="required:false" /></td>
-				</tr>
-				<tr>
-					<td align="right">支付方式：</td>
-					<td><input name="ddlZhiFuFangShi" id="ddlZhiFuFangShi" class="easyui-combobox" data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/zhiFuSortOption.action'" /></td>
-					<td align="right">费用：</td>
-					<td><input name="txtFeiYong" type="text" maxlength="15"
-						id="txtFeiYong" class="easyui-numberbox"
-						data-options="required:true,precision:2,min:0" /></td>
-				</tr>
-			</table>
-	  </form>
-	</div>
+			iconCls="icon-add" plain="true" onclick="openCarWashDialog('newCarWash')">新增洗车信息</a></div>
 
 <script type="text/javascript">
-		var url;
-		function addItem() {
-			$('#mydlg').dialog('open').dialog('setTitle', '添加洗车信息');
-			$('#fm').form('clear');
-			url = 'insertCarWash.action';
-		}
-		function editItem(clickevent) {
-			var row = $('#mydg').datagrid('getEventTargetRow', clickevent);
-			if (row) {
-				$('#mydlg').dialog('open').dialog('setTitle', '修改洗车信息');
-				$('#fm').form('load', row);
-				url = 'updateCarWash.action?txtGuid=' + row.txtGuid;
+		var myTable = $('#mydg');		
+		function openCarWashDialog(action, txtGuid) {
+			var sURL = "carWashInfo.action?action="+action;
+			if(arguments.length == 2){
+				sURL += "&txtGuid="	+ txtGuid + "&d=" + new Date();
 			}
-		}
-		function deleteItem(clickevent) {
-			var row = $('#mydg').datagrid('getEventTargetRow', clickevent);
-			if (row) {
-				$.messager.confirm('确认', '确定要删除选中信息吗?', function(r) {
-					if (r) {
-						$.post('deleteCarWash.action', {
-							"txtGuid" : row.txtGuid
-						}, function(result) {
-							if (result.errorMsg) {
-								$.messager.alert('出错啦', result.errorMsg);
-							} else {
-								$('#mydg').datagrid('reload'); // reload data
-							}
-						}, 'json');
-					}
-				});
-			}
-		}
-		function saveItem() {
-			$('#fm').form('submit', {
-				url : url,
-				onSubmit : function() {
-					return $(this).form('validate');
-				},
-				success : function(result) {
-					var result = eval('(' + result + ')');
-					if (result.errorMsg) {
-						$.messager.alert('出错啦', result.errorMsg);
-					} else {
-						$('#mydlg').dialog('close'); // close the dialog
-						$('#mydg').datagrid('reload'); // reload data
-					}
-				}
-			});
-		}
-		
-		function updateCheXi(brandItem){		
-			$.post('<s:property value="basePath" />/data/cheLiangCheXiOption.action', {
-				'cheLiangBrandName' : brandItem.name
-			}, function(data) {
-				$('#ddlCheLiangCheXi').combobox("loadData", data);
-			}, 'json');
-		}
+			var sFeatures = "dialogWidth:700px;dialogHeight:500px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
+			window.showModalDialog(sURL, window, sFeatures);
+			myTable.datagrid('reload');
+		}		
 
 		function showCarWash(index) {
 			var row = $('#mydg').datagrid('getRows')[index];
-			if (row) {
-				$('#mydlg').dialog('open').dialog('setTitle', '洗车信息');
-				$('#fm').form('load', row);
-				url = 'updateCarWash.action?txtGuid=' + row.txtGuid;
-			}
-		}
-		
-		function updateStatus(newStatus){
-			
+			openCarWashDialog('editCarWash', row.txtGuid);
 		}
 	</script>
 </body>
