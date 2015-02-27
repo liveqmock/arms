@@ -158,11 +158,11 @@ td {
 						<td width="100" align="right">品牌：</td>
 						<td><input name="ddlCheLiangZhiZaoShang" id="ddlCheLiangZhiZaoShang"
 								class="easyui-combobox"
-								data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/cheLiangPingPaiOption.action',onSelect:updateCheXi" /></td>
+								data-options="editable:true,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/cheLiangPingPaiOption.action',onSelect:updateCheXi" /></td>
 						<td width="100" align="right">车型：</td>
 						<td><input name="ddlCheLiangCheXi" id="ddlCheLiangCheXi"
 								class="easyui-combobox"
-								data-options="editable:false,required:true,valueField:'code',textField:'name'" /></td>
+								data-options="editable:true,required:true,valueField:'code',textField:'name'" /></td>
 
 					</tr>
 					<tr>

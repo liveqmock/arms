@@ -123,6 +123,7 @@ public class CommonDataAction extends BaseActionSupport {
 	}
 
 	private String getJsonData(String path) {
+		//当前调试阶段不缓存数据，直接从文件读取，后面调优时需缓存数据
 		String jsonStr = "[]";
 		try {
 			File file = new File(this.getClass().getClassLoader()

@@ -41,13 +41,13 @@ public class SaleAfterGongDanManageAction extends BaseActionSupport
 		if ("clientReviewManage".equals(this.getActionName())) {
 			query.setTxtGongDanStatus("交车");
 		}
+		query.setActionName(this.getActionName());
 		easyUiJSonData = gongDanService.getSaleAfterGongDanEasyUiJSon(query);
 		return INPUT;
 	}
 
-	@Actions({
-	@Action(value = "saleAfterGongDanSearch"),
-	@Action(value = "clientReviewSearch")})
+	@Actions({@Action(value = "saleAfterGongDanSearch"),
+			@Action(value = "clientReviewSearch")})
 	public void saleAfterGongDanSearch() {
 		if ("clientReviewSearch".equals(this.getActionName())) {
 			query.setTxtGongDanStatus("交车");
@@ -58,8 +58,7 @@ public class SaleAfterGongDanManageAction extends BaseActionSupport
 	@Action(value = "updateGongDanReviewStatus")
 	public void updateGongDanReviewStatus() {
 		JSONObject jsonObject = JSONObject.fromObject(easyUiJSonData);
-		GongDan item = (GongDan) JSONObject.toBean(
-				jsonObject, GongDan.class);
+		GongDan item = (GongDan) JSONObject.toBean(jsonObject, GongDan.class);
 		int rowAffected = gongDanService.updateGongDanReviewStatus(item);
 		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
 

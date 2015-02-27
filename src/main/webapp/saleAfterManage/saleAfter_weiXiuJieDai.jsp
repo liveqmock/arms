@@ -51,6 +51,9 @@ td {
 							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','维修接待');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
 						<a
+							onClick="saveJianCheInfo();return false;"
+							class="easyui-linkbutton" href="javascript:void(0)">保存检测信息</a>
+						<a
 							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','物料登记');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">物料登记</a>
 					</s:if> <s:if
@@ -226,19 +229,14 @@ td {
 		</s:if>
 		<s:if test="actionName=='gongDanCheLiangJianCe'">
 			<table id="datagridJianCe" class="easyui-datagrid"
-				data-options="url:'queryGongDanCheLiangJianCe.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />',singleSelect:true,rownumbers:true,showFooter:true">
+				data-options="url:'queryGongDanCheLiangJianCe.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />',singleSelect:true,rownumbers:true,showFooter:true<s:if test="gongDanStatus=='车辆检测' && actionName=='gongDanCheLiangJianCe'">,onLoadSuccess:beginEditAllRows</s:if>">
 				<thead>
 					<tr>
 						<th field="txtNeiRong" width="200">检测内容</th>
-						<th field="txtZhuangTai" width="100"
-							data-options="align:'center',editor:{type:'radiobox',options:{defaultValue:'未检测',values:['正常','异常']}}">检测状态</th>
-						<th field="txtRemark" width="150"
+						<th field="txtZhuangTai" width="150"
+							data-options="align:'center',editor:{type:'radiobox',options:{defaultValue:'未检测',values:['未检测','正常','异常']}}">检测状态</th>
+						<th field="txtRemark" width="250"
 							data-options="editor:{type:'textbox'}">备注</th>
-						<s:if
-							test="gongDanStatus=='车辆检测' && actionName=='gongDanCheLiangJianCe'">
-							<th field="action" width="150" align="center"
-								formatter="formatAction3">操作</th>
-						</s:if>
 					</tr>
 				</thead>
 			</table>
@@ -732,48 +730,44 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 
 
 		//-------------------------Datagrid3------------------------------------
-		var myTable3 = $('#datagridJianCe');
-		function formatAction3(value, row, index) {
-			if (row.editing) {
-				var s = '<a href="#" onclick="saverow3(this);return false;">保存修改</a>&nbsp;&nbsp;&nbsp;&nbsp;';
-				var c = '<a href="#" onclick="cancelrow3(this);return false;">取消修改</a>';
-				return s + c;
-			} else {
-				var e = '<a href="#" onclick="editrow3(this);return false;">编辑本行</a>&nbsp;&nbsp;&nbsp;&nbsp;';
-				return e;
-			}
+		var myTable3 = $('#datagridJianCe');		
+		
+		function beginEditAllRows() {
+			var rows = myTable3.datagrid('getRows');
+			_.each(rows, function(row, rowIndex){
+				myTable3.datagrid('beginEdit', rowIndex);
+			});	
 		}
-
-		function getTargetRowIndex3(target) {
-			return myTable2.datagrid('getEventTargetRowIndex', target);
-		}
-
-		function editrow3(target) {
-			if (myTable3.datagrid('hasEditingRow')) {
-				$.messager.alert('提示', '请先处理尚未完成的编辑行信息');
-			} else {
-				myTable3.datagrid('beginEdit', getTargetRowIndex3(target));
-			}
-		}
-
-		function saverow3(target) {
-			var rowIndex = getTargetRowIndex3(target);
-			if (myTable3.datagrid('validateRow', rowIndex)) {
+		
+		function endEditAllRows() {
+			var rows = myTable3.datagrid('getRows');
+			_.each(rows, function(row, rowIndex){
 				myTable3.datagrid('endEdit', rowIndex);
-				var editRow = myTable3.datagrid('getRows')[rowIndex];
-				$.post('updateGongDanCheLiangJianCeRow.action', {
-					"easyUiJSonData" : JsonToString(editRow)
-				}, function(result) {
-					if (result.errorMsg) {
-						$.messager.alert('出错啦', result.errorMsg);
-						myTable3.datagrid('cancelEdit', rowIndex);
-					} else {
-						myTable3.datagrid('reload');
+			});	
+		}
+
+		function saveJianCheInfo() {
+			endEditAllRows();
+			
+			var rows = myTable3.datagrid('getRows');
+			var allZhuangTai = _.pluck(rows, "txtZhuangTai");
+			if(_.some(allZhuangTai, function(value){return value=="未检测"})){
+				$.messager.confirm('提示', "还有未检测的项目，确定要保存吗？", function(r) {
+					if (r) {
+						$.post('updateGongDanCheLiangJianCe.action', {
+							"easyUiJSonData" : JsonToString(rows)
+						}, function(result) {
+							if (result.errorMsg) {
+								$.messager.alert('出错啦', result.errorMsg);
+							} else {
+								myTable3.datagrid('reload');
+							}
+						}, 'json');
+					}else{
+						beginEditAllRows();
 					}
-				}, 'json');
-			} else {
-				$.messager.alert('提示', '请先按照提示填写行信息');
-			}
+				});	
+			}			
 		}
 
 		function cancelrow3(target) {

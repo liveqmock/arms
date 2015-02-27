@@ -8,10 +8,18 @@ import com.chiefmech.arms.entity.query.SearchBean;
 public class GongDanDaoSqlProvider {
 
 	public String getGongDanListForEasyUi(Map<String, Object> param) {
-		SearchBean query = (SaleAfterGongDanSearchBean) param.get("item");
+		SaleAfterGongDanSearchBean query = (SaleAfterGongDanSearchBean) param
+				.get("item");
+		String actionName = query.getActionName();
+		String orderBy = "";
+		if ("saleAfterGongDanManage".equals(actionName)) {
+			orderBy = "order by txtRuChangDate desc";
+		} else if ("clientReviewManage".equals(actionName)) {
+			orderBy = "order by txtChuChangDate";
+		}
 
-		return String.format("select * from gongdan %s order by txtBillNo %s",
-				query.getWhereSql(), query.getLimitSql());
+		return String.format("select * from gongdan %s %s %s",
+				query.getWhereSql(), orderBy, query.getLimitSql());
 	}
 
 	public String getGongDanCountForEasyUi(Map<String, Object> param) {

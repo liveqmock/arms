@@ -77,10 +77,8 @@ td {
 		</thead>
 	</table>
 	<div id="toolbar">
-		<s:if test="action=='addXiangMu'">
 			<a href="javascript:void(0)" class="easyui-linkbutton"
-				iconCls="icon-add" plain="true" onclick="addItem()">新增</a>
-		</s:if>
+				iconCls="icon-add" plain="true" onclick="addItem()">新增维修项目</a>
 		<s:if test="action=='pickXiangMu'">
 			<a href="javascript:void(0)" class="easyui-linkbutton"
 				data-options="iconCls:'icon-add',plain:true"
@@ -137,7 +135,6 @@ td {
 	</div>
 
 	<script type="text/javascript">
-		<s:if test="action=='addXiangMu'">
 		var url;
 		function addItem() {
 			$('#mydlg').dialog('open').dialog('setTitle', '添加维修项目');
@@ -187,7 +184,6 @@ td {
 				}
 			});
 		}
-		</s:if>
 
 		<s:if test="action=='pickXiangMu'">
 		function addCheckedXiangMu() {

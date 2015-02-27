@@ -16,6 +16,7 @@ public class SaleAfterGongDanSearchBean extends SearchBean {
 	private String txtCheZhuName;
 	private String txtCheZhuTel;
 	private String txtFuWuGuWen;
+	private String actionName;
 	private int start = 1;
 	private int rows = 15;
 
@@ -130,6 +131,14 @@ public class SaleAfterGongDanSearchBean extends SearchBean {
 	}
 	public void setRows(int rows) {
 		this.rows = rows;
+	}
+
+	public String getActionName() {
+		return actionName;
+	}
+
+	public void setActionName(String actionName) {
+		this.actionName = actionName;
 	}
 
 }

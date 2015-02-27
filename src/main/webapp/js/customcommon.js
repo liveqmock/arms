@@ -79,14 +79,17 @@ function initFormData(formJson) {
 	
 	$.extend($.fn.datagrid.defaults.editors, {
 		radiobox: {
+			rowIndex:0,
 			defaultValue:"",
 			init: function(container, options){
-				this.defaultValue = options.defaultValue;				
+				this.rowIndex += 1;
+				this.defaultValue = options.defaultValue;	
+				var self = this;			
 				var html = "<span style='text-align:center;'>";
 				_.each(options.values, function(value, index){
-					html += '<input type="radio" id="myRadio'+index+'" name="myRadio" value="'+value+'" /><label for="myRadio'+index+'">'+value+"</label>";
+					html += '<input type="radio" id="myRadio_'+self.rowIndex+'_'+index+'" name="myRadio_'+self.rowIndex+'" value="'+value+'" /><label for="myRadio_'+self.rowIndex+'_'+index+'">'+value+"</label>";
 					if(index < _.size(options.values)-1){
-						html += "&nbsp;&nbsp;";
+						html += "&nbsp;&nbsp;&nbsp;";
 					}
 				});
 				html += "</span>";

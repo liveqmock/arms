@@ -72,7 +72,7 @@ public interface GongDanService {
 
 	public int insertCheLiangJianCe(GongDanCheLiangJianCe item);
 
-	public int updateGongDanCheLiangJianCeRow(GongDanCheLiangJianCe item);
+	public int updateGongDanCheLiangJianCe(List<GongDanCheLiangJianCe> itemLst);
 
 	public int addGongDanWeiXiuWuLiaoFromCaiGou(String saleAfterWeiXiuGuid,
 			List<VCaiGouWuLiao> weiXiuWuLiaoLst);

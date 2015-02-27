@@ -45,7 +45,7 @@
 							},
 							children : [
 									{
-										name : "维修接待",
+										name : "客户接待",
 										font : {
 											'font-style' : '微软雅黑'
 										},
@@ -58,6 +58,15 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('e729a493-1fe5-45f8-910c-060e7d4a4865','维修接待','../saleAfterManage/saleAfterCustomSearch.action');"
+												},
+												{
+													name : "洗车接待",
+													font : {
+														'font-style' : '微软雅黑'
+													},
+													url : "",
+													target : "_blank",
+													click : "mdfMenu('e729a493-1fe5-45f8-910c-060e7d4a2345','洗车接待','../saleAfterManage/carWashManage.action');"
 												},
 												{
 													name : "工单管理",
