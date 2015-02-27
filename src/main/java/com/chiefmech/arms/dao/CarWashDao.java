@@ -20,10 +20,10 @@ public interface CarWashDao {
 	@SelectProvider(type = CarWashDaoSqlProvider.class, method = "getCarWashListCount")
 	public int getCarWashListCount(@Param("item") CarWash query);
 
-	@Insert("insert into carwash(txtGuid,txtXiCheDate,txtChePaiHao,ddlCheLiangPingPai,ddlCheLiangCheXi,txtCheZhuName,txtCheZhuTel,ddlZhiFuFangShi,txtFeiYong,ddlXiCheLeiXing) values(#{txtGuid},#{txtXiCheDate},#{txtChePaiHao},#{ddlCheLiangPingPai},#{ddlCheLiangCheXi},#{txtCheZhuName},#{txtCheZhuTel},#{ddlZhiFuFangShi},#{txtFeiYong},#{ddlXiCheLeiXing})")
+	@Insert("insert into carwash(txtGuid,txtRuChangDate,txtChePaiHao,ddlCheLiangPingPai,ddlCheLiangCheXi,txtCheZhuName,txtCheZhuTel,ddlZhiFuFangShi,txtFeiYong,ddlXiCheLeiXing) values(#{txtGuid},#{txtRuChangDate},#{txtChePaiHao},#{ddlCheLiangPingPai},#{ddlCheLiangCheXi},#{txtCheZhuName},#{txtCheZhuTel},#{ddlZhiFuFangShi},#{txtFeiYong},#{ddlXiCheLeiXing})")
 	public int insertItem(CarWash item);
 
-	@Update("update carwash set txtXiCheDate=#{txtXiCheDate},txtChePaiHao=#{txtChePaiHao},ddlCheLiangPingPai=#{ddlCheLiangPingPai},ddlCheLiangCheXi=#{ddlCheLiangCheXi},txtCheZhuName=#{txtCheZhuName},txtCheZhuTel=#{txtCheZhuTel},ddlZhiFuFangShi=#{ddlZhiFuFangShi},txtFeiYong=#{txtFeiYong},ddlXiCheLeiXing=#{ddlXiCheLeiXing} where txtGuid=#{txtGuid}")
+	@Update("update carwash set txtChePaiHao=#{txtChePaiHao},ddlCheLiangPingPai=#{ddlCheLiangPingPai},ddlCheLiangCheXi=#{ddlCheLiangCheXi},txtCheZhuName=#{txtCheZhuName},txtCheZhuTel=#{txtCheZhuTel},ddlZhiFuFangShi=#{ddlZhiFuFangShi},txtFeiYong=#{txtFeiYong},ddlXiCheLeiXing=#{ddlXiCheLeiXing} where txtGuid=#{txtGuid}")
 	public int updateItem(CarWash item);
 
 	@Delete("delete from carwash where txtGuid=#{txtGuid}")

@@ -34,14 +34,10 @@ td {
 	</table>
 
 <table id="mydg" class="easyui-datagrid"
-		data-options="url:'queryCarWash.action',
-						   rownumbers:true,
-						   singleSelect:true,
-						   toolbar:'#toolbar',
-						   pagination:true">
+		data-options="url:'queryCarWash.action',rownumbers:true,singleSelect:true,toolbar:'#toolbar',pagination:true,onDblClickRow:showCarWash">
 		<thead>
 			<tr>
-				<th width="150" data-options="field:'txtXiCheDate'">洗车时间</th>
+				<th width="150" data-options="field:'txtRuChangDate'">入厂时间</th>
 				<th width="150" data-options="field:'txtChePaiHao'">车牌号</th>
 				<th width="150" data-options="field:'ddlCheLiangCheXi'">车型</th>
 				<th width="150" data-options="field:'txtCheZhuName'">车主名</th>
@@ -57,9 +53,21 @@ td {
 		<a href="javascript:void(0)" class="easyui-linkbutton"
 			iconCls="icon-add" plain="true" onclick="addItem()">新增洗车信息</a></div>
 <div id="mydlg" class="easyui-dialog" closed="true"
-		style="width: 500px; height: 300px; padding: 10px 20px;">
+		style="width: 700px; height: 500px; padding: 10px 20px;">
 	  <form name="fm" method="post" id="fm">
 			<table border="0" cellpadding="0" cellspacing="0" width="100%;">
+				<tr>
+                	<td colspan="2" style="color: Blue; font-weight: bold;">当前状态:	<span id="txtStatus"></span></td>
+					<td colspan="2" style="height:30px;">
+                    <a onclick="saveItem()" class="easyui-linkbutton" href="javascript:void(0)">保存洗车信息</a>
+                    <a onclick="updateStatus('洗车接待')" class="easyui-linkbutton" href="javascript:void(0)">派工</a>
+                    <a onclick="updateStatus('派工')" class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
+                    <a onclick="updateStatus('完检')" class="easyui-linkbutton" href="javascript:void(0)">完检</a>
+                    <a onclick="updateStatus('完检')" class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
+                    <a onclick="updateStatus('收银')" class="easyui-linkbutton" href="javascript:void(0)">收银</a>
+                    <a onclick="updateStatus('收银')" class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
+                    <a onclick="updateStatus('交车')" class="easyui-linkbutton" href="javascript:void(0)">交车</a></td>
+				</tr>
 				<tr>
 					<td align="right">品牌：</td>
 					<td><input name="ddlCheLiangPingPai" id="ddlCheLiangPingPai"
@@ -97,12 +105,6 @@ td {
 					<td><input name="txtFeiYong" type="text" maxlength="15"
 						id="txtFeiYong" class="easyui-numberbox"
 						data-options="required:true,precision:2,min:0" /></td>
-				</tr>
-				<tr>
-					<td colspan="4" align="center"><br /> <a onclick="saveItem()"
-						id="btnSave" class="easyui-linkbutton" href="javascript:void(0)">保存</a>&nbsp;&nbsp;&nbsp;<a
-						onclick="javascript:$('#mydlg').dialog('close')" id="btnSave"
-						class="easyui-linkbutton" href="javascript:void(0)">取消</a></td>
 				</tr>
 			</table>
 	  </form>
@@ -158,7 +160,6 @@ td {
 				}
 			});
 		}
-
 		
 		function updateCheXi(brandItem){		
 			$.post('<s:property value="basePath" />/data/cheLiangCheXiOption.action', {
@@ -166,6 +167,19 @@ td {
 			}, function(data) {
 				$('#ddlCheLiangCheXi').combobox("loadData", data);
 			}, 'json');
+		}
+
+		function showCarWash(index) {
+			var row = $('#mydg').datagrid('getRows')[index];
+			if (row) {
+				$('#mydlg').dialog('open').dialog('setTitle', '洗车信息');
+				$('#fm').form('load', row);
+				url = 'updateCarWash.action?txtGuid=' + row.txtGuid;
+			}
+		}
+		
+		function updateStatus(newStatus){
+			
 		}
 	</script>
 </body>

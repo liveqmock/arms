@@ -2,7 +2,6 @@ package com.chiefmech.arms.entity;
 
 public class CarWash {
 	private String txtGuid;
-	private String txtXiCheDate;
 	private String txtChePaiHao;
 	private String ddlCheLiangPingPai;
 	private String ddlCheLiangCheXi;
@@ -11,6 +10,9 @@ public class CarWash {
 	private String ddlZhiFuFangShi;
 	private float txtFeiYong;
 	private String ddlXiCheLeiXing;
+	private String txtRuChangDate;
+	private String txtXiCheDate;
+	private String txtJiaoCheDate;
 	private String txtStatus;
 
 	public String getTxtGuid() {
@@ -24,6 +26,18 @@ public class CarWash {
 	}
 	public void setTxtXiCheDate(String txtXiCheDate) {
 		this.txtXiCheDate = txtXiCheDate;
+	}
+	public String getTxtRuChangDate() {
+		return txtRuChangDate;
+	}
+	public void setTxtRuChangDate(String txtRuChangDate) {
+		this.txtRuChangDate = txtRuChangDate;
+	}
+	public String getTxtJiaoCheDate() {
+		return txtJiaoCheDate;
+	}
+	public void setTxtJiaoCheDate(String txtJiaoCheDate) {
+		this.txtJiaoCheDate = txtJiaoCheDate;
 	}
 	public String getTxtChePaiHao() {
 		return txtChePaiHao;

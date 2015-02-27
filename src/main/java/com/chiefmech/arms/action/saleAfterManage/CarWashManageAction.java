@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.action.BaseActionSupport;
+import com.chiefmech.arms.common.util.DateUtil;
 import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.entity.CarWash;
 import com.chiefmech.arms.service.CarWashService;
@@ -44,6 +45,7 @@ public class CarWashManageAction extends BaseActionSupport
 	@Action(value = "insertCarWash")
 	public void insertItem() {
 		item.setTxtGuid(IDGen.getUUID());
+		item.setTxtRuChangDate(DateUtil.getCurrentDate());
 		int rowAffected = carWashService.insertItem(item);
 		String jsonStr = getJsonResponse(rowAffected, "新增数据失败");
 		this.transmitJson(jsonStr);
