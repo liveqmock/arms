@@ -1,6 +1,6 @@
 package com.chiefmech.arms.entity.view;
 
-public class CarMoDelView {
+public class CarModelView {
 	/**
 	 * 车系ID
 	 */
@@ -8,6 +8,10 @@ public class CarMoDelView {
 	/**
 	 * 车系编号
 	 */
+	private String brandCode;
+	private String modelCode;
+	private String brandLogo;
+	
 	private String modelId;
 	/**
 	 * 车系名称
@@ -60,6 +64,30 @@ public class CarMoDelView {
 
 	public void setBrandName(String brandName) {
 		this.brandName = brandName;
+	}
+
+	public String getBrandCode() {
+		return brandCode;
+	}
+
+	public void setBrandCode(String brandCode) {
+		this.brandCode = brandCode;
+	}
+
+	public String getModelCode() {
+		return modelCode;
+	}
+
+	public void setModelCode(String modelCode) {
+		this.modelCode = modelCode;
+	}
+
+	public String getBrandLogo() {
+		return brandLogo;
+	}
+
+	public void setBrandLogo(String brandLogo) {
+		this.brandLogo = brandLogo;
 	}
 
 }

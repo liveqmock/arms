@@ -1,6 +1,6 @@
 package com.chiefmech.arms.entity;
 
-public class CarModel {
+public class CarModel2 {
 	private int id;
 
 	/**
@@ -49,4 +49,5 @@ public class CarModel {
 	public void setModelName(String modelName) {
 		this.modelName = modelName;
 	}
+
 }

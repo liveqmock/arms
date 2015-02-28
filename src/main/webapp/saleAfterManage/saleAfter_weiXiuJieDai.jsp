@@ -44,12 +44,18 @@ td {
 							<a
 								onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','车辆检测');return false;"
 								class="easyui-linkbutton" href="javascript:void(0)">车辆检测</a>
+							<a
+							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','费用结算');return false;"
+							class="easyui-linkbutton" href="javascript:void(0)">费用结算</a>
 						</s:if>
 					</s:if> <s:if
 						test="gongDanStatus=='车辆检测' && actionName=='gongDanCheLiangJianCe'">
 						<a
 							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','维修接待');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
+						<a
+							onClick="setAllJianCheNormal();return false;"
+							class="easyui-linkbutton" href="javascript:void(0)">检测全部正常</a>
 						<a
 							onClick="saveJianCheInfo();return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">保存检测信息</a>
@@ -233,7 +239,7 @@ td {
 				<thead>
 					<tr>
 						<th field="txtNeiRong" width="200">检测内容</th>
-						<th field="txtZhuangTai" width="150"
+						<th field="txtZhuangTai" width="180"
 							data-options="align:'center',editor:{type:'radiobox',options:{defaultValue:'未检测',values:['未检测','正常','异常']}}">检测状态</th>
 						<th field="txtRemark" width="250"
 							data-options="editor:{type:'textbox'}">备注</th>
@@ -324,7 +330,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 							data-options="editor:{type:'textbox'}">备注</th>
 						<s:if
 							test="(gongDanStatus=='物料登记' && actionName=='gongDanWuLiaoDengJi') || (gongDanStatus=='领取物料' && actionName=='gongDanLingQuWuLiao')">
-							<th field="action" width="150" align="center"
+							<th field="action" width="120" align="center"
 								formatter="formatAction2">操作</th>
 						</s:if>
 					</tr>
@@ -754,20 +760,37 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			if(_.some(allZhuangTai, function(value){return value=="未检测"})){
 				$.messager.confirm('提示', "还有未检测的项目，确定要保存吗？", function(r) {
 					if (r) {
-						$.post('updateGongDanCheLiangJianCe.action', {
-							"easyUiJSonData" : JsonToString(rows)
-						}, function(result) {
-							if (result.errorMsg) {
-								$.messager.alert('出错啦', result.errorMsg);
-							} else {
-								myTable3.datagrid('reload');
-							}
-						}, 'json');
+						doSaveJianCheInfo(rows);
 					}else{
 						beginEditAllRows();
 					}
 				});	
-			}			
+			}else{
+				doSaveJianCheInfo(rows);
+			}
+		}
+		
+		function doSaveJianCheInfo(rows){
+			$.post('updateGongDanCheLiangJianCe.action', {
+				"easyUiJSonData" : JsonToString(rows)
+			}, function(result) {
+				if (result.errorMsg) {
+					$.messager.alert('出错啦', result.errorMsg);
+				} else {
+					myTable3.datagrid('reload');
+				}
+			}, 'json');			
+		}
+		
+		function setAllJianCheNormal(){			
+			var rows = myTable3.datagrid('getRows');
+			_.each(rows, function(row, rowIndex){
+				var zhuangTaiEditor = myTable3.datagrid('getEditor', { index: rowIndex, field: 'txtZhuangTai' });
+				var radioGroup = $(zhuangTaiEditor.target).find(":radio[value='正常']");
+				if(_.size(radioGroup)>0){
+					$(radioGroup[0]).attr("checked","checked");
+				}	
+			});	
 		}
 
 		function cancelrow3(target) {

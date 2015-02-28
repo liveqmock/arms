@@ -33,6 +33,9 @@ public interface GongDanDao {
 	@Update("update gongdan set ddlReviewStatus=#{ddlReviewStatus},txtReviewRemark=#{txtReviewRemark} where txtGongDanId=#{txtGongDanId}")
 	public int updateGongDanReviewStatus(GongDan item);
 
+	@Update("update gongdan set txtDeleteFlag='1' where txtGongDanId=#{txtGongDanId}")
+	public int deleteGongDan(String txtGongDanId);
+
 	@Select("select concat(date_format(now(),'JDD%Y%m%d'),LPAD(ifnull(max(right(txtBillNo,3)+1),1),3,'0')) newTxtBillNo from gongdan where txtBillNo like date_format(now(),'JDD%Y%m%d%%')")
 	public String getNewBillNo();
 
@@ -104,7 +107,7 @@ public interface GongDanDao {
 	public int updateChuChangDate(@Param("txtGongDanId") String txtGongDanId,
 			@Param("txtChuChangDate") String txtChuChangDate);
 
-	@Select("select * from gongdan where txtCheLiangId=#{txtCheLiangId} order by txtChuChangDate desc")
+	@Select("select * from gongdan where txtCheLiangId=#{txtCheLiangId} and txtDeleteFlag='0' order by txtChuChangDate desc")
 	public List<GongDan> getGongDanListByCheLiangId(String txtCheLiangId);
 
 	@Select("select * from gongdanxiangmu where txtGongDanGuid=#{txtGongDanGuid}")

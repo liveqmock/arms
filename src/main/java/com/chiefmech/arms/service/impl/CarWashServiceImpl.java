@@ -44,4 +44,14 @@ public class CarWashServiceImpl implements CarWashService {
 		return jsonStr;
 	}
 
+	@Override
+	public CarWash findItemById(String txtGuid) {
+		return carWashDao.findItemById(txtGuid);
+	}
+
+	@Override
+	public int updateCarWashStatus(CarWash item) {
+		return carWashDao.updateCarWashStatus(item);
+	}
+
 }

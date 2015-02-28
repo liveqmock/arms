@@ -2,8 +2,10 @@ package com.chiefmech.arms.action.saleAfterManage;
 
 import javax.annotation.Resource;
 
+import net.sf.json.JSONObject;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.Actions;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
@@ -31,6 +33,7 @@ public class CarWashManageAction extends BaseActionSupport
 
 	private CarWash item = new CarWash();
 	private String action;
+	private String carWashGuid;
 	private int page = 1;
 	private int rows = 10;
 
@@ -41,6 +44,11 @@ public class CarWashManageAction extends BaseActionSupport
 
 	@Action(value = "carWashInfo", results = {@Result(name = "input", location = "carWashInfo.jsp")})
 	public String carWashInfo() {
+		if (StringUtils.isBlank(carWashGuid)) {
+			item.setTxtStatus("洗车接待");
+		} else {
+			item = carWashService.findItemById(carWashGuid);
+		}
 		return INPUT;
 	}
 
@@ -53,14 +61,26 @@ public class CarWashManageAction extends BaseActionSupport
 	public void insertItem() {
 		item.setTxtGuid(IDGen.getUUID());
 		item.setTxtRuChangDate(DateUtil.getCurrentDate());
+		item.setTxtStatus("洗车接待");
 		int rowAffected = carWashService.insertItem(item);
-		String jsonStr = getJsonResponse(rowAffected, "新增数据失败");
+		String msg = (rowAffected == 1)
+				? String.valueOf(item.getTxtGuid())
+				: "新增数据失败";
+		String jsonStr = getJsonResponse(rowAffected, msg);
 		this.transmitJson(jsonStr);
 	}
 
 	@Action(value = "updateCarWash")
 	public void updateItem() {
 		int rowAffected = carWashService.updateItem(item);
+		String jsonStr = getJsonResponse(rowAffected, "更新数据失败");
+
+		this.transmitJson(jsonStr);
+	}
+
+	@Action(value = "updateCarWashStatus")
+	public void updateCarWashStatus() {
+		int rowAffected = carWashService.updateCarWashStatus(item);
 		String jsonStr = getJsonResponse(rowAffected, "更新数据失败");
 
 		this.transmitJson(jsonStr);
@@ -75,7 +95,8 @@ public class CarWashManageAction extends BaseActionSupport
 	}
 
 	private String getJsonResponse(int rowAffected, String action) {
-		String jsonStr = "{\"status\":\"ok\"}";
+		String jsonStr = String.format(
+				"{\"status\":\"ok\",\"txtGuid\":\"%s\"}", action);
 		if (rowAffected != 1) {
 			jsonStr = String.format("{\"errorMsg\":\"%s\"}", action);
 		}
@@ -104,4 +125,19 @@ public class CarWashManageAction extends BaseActionSupport
 		this.action = action;
 	}
 
+	public String getCarWashStatus() {
+		return item.getTxtStatus();
+	}
+
+	public String getCarWashGuid() {
+		return carWashGuid;
+	}
+
+	public void setCarWashGuid(String carWashGuid) {
+		this.carWashGuid = carWashGuid;
+	}
+
+	public String getJsonData() {
+		return JSONObject.fromObject(item).toString();
+	}
 }

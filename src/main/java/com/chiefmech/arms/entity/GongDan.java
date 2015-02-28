@@ -84,6 +84,7 @@ public class GongDan {
 
 	private String ddlReviewStatus;
 	private String txtReviewRemark;
+	private String txtDeleteFlag;
 
 	public GongDan(VKeHuCheLiang customerInfo) {
 		this.setTxtCustId(customerInfo.getTxtCustId());
@@ -463,6 +464,14 @@ public class GongDan {
 
 	public void setTxtReviewRemark(String txtReviewRemark) {
 		this.txtReviewRemark = txtReviewRemark;
+	}
+
+	public String getTxtDeleteFlag() {
+		return txtDeleteFlag;
+	}
+
+	public void setTxtDeleteFlag(String txtDeleteFlag) {
+		this.txtDeleteFlag = txtDeleteFlag;
 	}
 
 }

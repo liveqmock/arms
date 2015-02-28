@@ -41,7 +41,7 @@ public class KuCunServiceImpl implements KuCunService {
 						- operLog.getTxtChengBenJia() * operLog.getTxtQty();
 			}
 			kuCun.setTxtQty(newQty);
-			kuCun.setTxtChengBenJia(totalAmount / newQty);
+			kuCun.setTxtChengBenJia(newQty == 0 ? 0 : totalAmount / newQty);
 			rowAffected = kuCunDao.updateKuCun(kuCun);
 		} else {
 			// 插入新的库存信息

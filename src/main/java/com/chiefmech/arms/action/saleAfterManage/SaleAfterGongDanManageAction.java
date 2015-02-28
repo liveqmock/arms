@@ -34,6 +34,8 @@ public class SaleAfterGongDanManageAction extends BaseActionSupport
 	private String easyUiJSonData;
 	private int tabId = 1;
 
+	private String saleAfterWeiXiuGuid;
+
 	@Actions({
 			@Action(value = "saleAfterGongDanManage", results = {@Result(name = "input", location = "saleAfter_GongDanManage.jsp")}),
 			@Action(value = "clientReviewManage", results = {@Result(name = "input", location = "saleAfter_GongDanManage.jsp")})})
@@ -65,6 +67,14 @@ public class SaleAfterGongDanManageAction extends BaseActionSupport
 		this.transmitJson(jsonStr);
 	}
 
+	@Action(value = "deleteGongDan")
+	public void deleteGongDan() {
+		int rowAffected = gongDanService.deleteGongDan(saleAfterWeiXiuGuid);
+		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
+
+		this.transmitJson(jsonStr);
+	}
+
 	@Override
 	public SaleAfterGongDanSearchBean getModel() {
 		return query;
@@ -84,6 +94,14 @@ public class SaleAfterGongDanManageAction extends BaseActionSupport
 
 	public int getTabId() {
 		return tabId;
+	}
+
+	public String getSaleAfterWeiXiuGuid() {
+		return saleAfterWeiXiuGuid;
+	}
+
+	public void setSaleAfterWeiXiuGuid(String saleAfterWeiXiuGuid) {
+		this.saleAfterWeiXiuGuid = saleAfterWeiXiuGuid;
 	}
 
 }

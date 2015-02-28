@@ -1,7 +1,5 @@
 package com.chiefmech.arms.action.webSetup;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -12,10 +10,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.action.BaseActionSupport;
-import com.chiefmech.arms.entity.CarBrand;
-import com.chiefmech.arms.entity.view.CarMoDelView;
-import com.chiefmech.arms.service.CarBrandService;
-import com.chiefmech.arms.service.CarMoDelService;
+import com.chiefmech.arms.common.util.IDGen;
+import com.chiefmech.arms.entity.view.CarModelView;
+import com.chiefmech.arms.service.CarModelService;
 import com.opensymphony.xwork2.ModelDriven;
 
 @SuppressWarnings("serial")
@@ -23,63 +20,83 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/webSetup")
 @Controller()
 @Scope("prototype")
-public class CarMoDelAction extends BaseActionSupport implements
-		ModelDriven<CarMoDelView> {
+public class CarModelAction extends BaseActionSupport implements
+		ModelDriven<CarModelView> {
 	
 	@Resource()
-	private CarMoDelService carMoDelService;
+	private CarModelService carModelService;
 	
-	@Resource()
-	private CarBrandService carBrandService;
-	
-	private CarMoDelView item = new CarMoDelView();
-	private List<CarBrand> CarBrandLst;
+	private CarModelView item = new CarModelView();
 	private int page = 1;
 	private int rows = 10;
 
-	@Action(value = "carMoDel", results = { @Result(name = "input", location = "carmodel.jsp") })
+	@Action(value = "carModel", results = { @Result(name = "input", location = "carmodel.jsp") })
 	public String carMoDel() {
-		CarBrandLst=carBrandService.findCarBrand();
 		return INPUT;
 	}
 
-	@Action(value = "queryCarMoDel")
-	public void queryZhangTao() {
-		this.transmitJson(carMoDelService.getCarMoDelEasyUiJSon(item, page,
+	@Action(value = "queryCarModel")
+	public void queryCarModel() {
+		this.transmitJson(carModelService.getCarMoDelEasyUiJSon(item, page,
 				rows));
 	}
 
-	@Action(value = "CarMoDelSearch")
-	public void ZhangTaoSearch() {
-		this.transmitJson(carMoDelService.getCarMoDelEasyUiJSon(item, page,
+	@Action(value = "CarModelSearch")
+	public void CarModelSearch() {
+		this.transmitJson(carModelService.getCarMoDelEasyUiJSon(item, page,
 				rows));
 	}
 
-	@Action(value = "insertCarMoDel")
+	@Action(value = "insertCarModel")
 	public void insertItem() {
-		int rowAffected = carMoDelService.insertItem(item);
+		item.setModelId(IDGen.getUUID());		
+		int rowAffected = carModelService.insertItem(item);
 		String jsonStr = getJsonResponse(rowAffected, "新增");
 
 		this.transmitJson(jsonStr);
 	}
 
-	@Action(value = "updateCarMoDel")
-	public void updateItem() {
-		int rowAffected = carMoDelService.updateItem(item);
+	@Action(value = "updateCarModel")
+	public void updateCarModelItem() {
+		int rowAffected = carModelService.updateItem(item);
 		String jsonStr = getJsonResponse(rowAffected, "更新");
 
 		this.transmitJson(jsonStr);
 	}
 
-	@Action(value = "deleteCarMoDel")
-	public void deleteItem() {
-		int id = item.getId();
-		int rowAffected = carMoDelService.deleteItem(id);
+	@Action(value = "deleteCarModel")
+	public void deleteCarModelItem() {
+		String id = item.getModelCode();
+		int rowAffected = carModelService.deleteItem(id);
 		String jsonStr = getJsonResponse(rowAffected, "删除");
 
 		this.transmitJson(jsonStr);
 	}
+	@Action(value = "insertCarBrand")
+	public void insertCarBrand() {
+		item.setBrandId(IDGen.getUUID());
+		int rowAffected = carModelService.insertItemCarBrand(item);
+		String jsonStr = getJsonResponse(rowAffected, "新增");
 
+		this.transmitJson(jsonStr);
+	}
+
+	@Action(value = "updateCarBrand")
+	public void updateCarBrand() {
+		int rowAffected = carModelService.updateItemCarBrand(item);
+		String jsonStr = getJsonResponse(rowAffected, "更新");		
+
+		this.transmitJson(jsonStr);
+	}
+
+	@Action(value = "deleteCarBrand")
+	public void deleteCarBrand() {
+		String id = item.getBrandId();
+		int rowAffected = carModelService.deleteItemCarBrand(id);
+		String jsonStr = getJsonResponse(rowAffected, "删除");
+
+		this.transmitJson(jsonStr);
+	}
 	private String getJsonResponse(int rowAffected, String action) {
 		String jsonStr = "{\"status\":\"ok\"}";
 		if (rowAffected != 1) {
@@ -96,17 +113,9 @@ public class CarMoDelAction extends BaseActionSupport implements
 	public void setRows(int rows) {
 		this.rows = rows;
 	}
-	
-	public List<CarBrand> getCarBrandLst() {
-		return CarBrandLst;
-	}
-
-	public void setCarBrandLst(List<CarBrand> carBrandLst) {
-		CarBrandLst = carBrandLst;
-	}
 
 	@Override
-	public CarMoDelView getModel() {
+	public CarModelView getModel() {
 		return item;
 	}
 

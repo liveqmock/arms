@@ -1,6 +1,6 @@
 package com.chiefmech.arms.entity;
 
-public class CarBrand {
+public class CarBrand2 {
 	private int id;
 	private String brandId;
 	private String brandName;

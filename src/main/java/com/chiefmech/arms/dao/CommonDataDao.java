@@ -20,10 +20,13 @@ public interface CommonDataDao {
 	@Select("select jigouName name, jigouName code from jigou")
 	List<OptionBean> getJiGouOptionBean();
 
-	@Select("select brandName name, brandName code from carbrand")
+	@Select("select brandName name, brandName code from carbrand2")
 	List<OptionBean> getCheLiangPingPaiOptionBean();
+	
+	@Select("select brandName name, brandId code from carbrand2")
+	List<OptionBean> getCarBrand();
 
-	@Select("select modelName name, modelName code from view_carmodel where brandName=#{cheLiangBrandName}")
+	@Select("select modelName name, modelName code from v_carmodel where brandName=#{cheLiangBrandName}")
 	List<OptionBean> getCheLiangCheXiOptionBean(String cheLiangBrandName);
 
 	@Select("select txtXiangMuName name, txtXiangMuName code from gongdanxiangmu where txtGongDanGuid=#{txtGongDanGuid}")

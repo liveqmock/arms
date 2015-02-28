@@ -103,7 +103,11 @@ public class CommonDataAction extends BaseActionSupport {
 		this.transmitJson(JSONArray.fromObject(
 				commonDataService.getOptionBean("GroupName")).toString());
 	}
-
+    @Action(value="getCarBrandOption")
+    public void getCarbrandOption(){
+    	this.transmitJson(JSONArray.fromObject(
+				commonDataService.getOptionBean("CarBrand")).toString());
+    }
 	@Action(value = "cheLiangCheXiOption")
 	public void cheLiangCheXi() {
 		Map<String, String> param = new HashMap<String, String>();

@@ -10,31 +10,44 @@ import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
-import com.chiefmech.arms.dao.sqlprovider.CarMoDelDaoSqlProvider;
-import com.chiefmech.arms.entity.view.CarMoDelView;
+import com.chiefmech.arms.dao.sqlprovider.CarModelDaoSqlProvider;
+import com.chiefmech.arms.entity.view.CarModelView;
 
-@Repository("carMoDelDao")
-public interface CarMoDelViewDao {
+@Repository("carModelDao")
+public interface CarModelViewDao {
 	
-	@SelectProvider(type = CarMoDelDaoSqlProvider.class, method = "getCarMoDelList")
-	public List<CarMoDelView> getCarMoDelList(
-			@Param("item") CarMoDelView query, @Param("page") int page,
+	@SelectProvider(type = CarModelDaoSqlProvider.class, method = "getCarModelList")
+	public List<CarModelView> getCarModelList(
+			@Param("item") CarModelView query, @Param("page") int page,
 			@Param("rows") int rows);
 
-	@SelectProvider(type = CarMoDelDaoSqlProvider.class, method = "getCarMoDelListCount")
-	public int getCarMoDelListCount(@Param("item") CarMoDelView query);
+	@SelectProvider(type = CarModelDaoSqlProvider.class, method = "getCarModelListCount")
+	public int getCarModelListCount(@Param("item") CarModelView query);
 	
-	@Insert("insert into carmodel(id,modelId,modelName,brandId) values(#{id},#{modelId},#{modelName},#{brandId})")
-	public int insertItem(CarMoDelView item);
+	@Insert("insert into carmodel2(modelId,modelName,brandId) values(#{modelId},#{modelName},#{brandId})")
+	public int insertItem(CarModelView item);
 
-	@Update("update carmodel set modelId=#{modelId},modelName=#{modelName},brandId=#{brandId} where id=#{id}")
-	public int updateItem(CarMoDelView item);
+	@Update("update carmodel2 set modelName=#{modelName},brandId=#{brandId} where id=#{modelCode}")
+	public int updateItem(CarModelView item);
 
-	@Delete("delete from carmodel where id=#{id}")
-	public int deleteItem(int id);
+	@Delete("delete from carmodel2 where id=#{modelCode}")
+	public int deleteItem(String id);
 
-	@Select("select * from view_carmodel")
-	public List<CarMoDelView> selectItem();
+	@Select("select * from v_carmodel")
+	public List<CarModelView> selectItem();
 
+	@Insert("insert into carbrand2(brandId,brandName,brandLogo) values(#{brandId},#{brandName},#{brandLogo})")
+	public int insertItemCarbrand(CarModelView item);
 
+	@Update("update carbrand2 set brandName=#{brandName},brandLogo=#{brandLogo} where brandId=#{brandId}")
+	public int updateItemCarbrand(CarModelView item);
+	
+	@Select("select count(*) from carbrand2 where brandName=#{brandName}")
+	public int isBrand(String brandName);
+
+	@Delete("delete from carbrand2 where brandId=#{id}")
+	public int deleteItemCarbrand(String id);
+
+	@Delete("delete from carmodel2  where brandId=#{id}")
+	public int deleteCarModelItemByBrandId(String id);
 }

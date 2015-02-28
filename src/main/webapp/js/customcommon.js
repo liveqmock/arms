@@ -13,7 +13,7 @@ function initFormData(formJson) {
 				$(el).combobox("setValue", value);
 			} else if ($(el).attr("type") == "checkbox") {
 				$(el).attr("checked", (value == "on"));
-			} else if (el[0].tagName == "DIV") {
+			} else if (el[0].tagName == "DIV" || el[0].tagName == "SPAN") {
 				$(el).html(value);
 			} else {
 				$(el).val(value);

@@ -119,9 +119,8 @@
                     <s:if test="actionName=='clientReviewManage'">
 					<th width="150" data-options="field:'ddlReviewStatus',align:'center',editor:{type:'radiobox',options:{defaultValue:'未回访',values:['已回访','未回访']}}">回访状态</th>
 					<th width="200" data-options="field:'txtReviewRemark',editor:{type:'textbox'}">回访备注</th>
-                    <th width="150" field="action" align="center"
-                        formatter="formatAction">操作</th>
                     </s:if>
+                    <th width="150" field="action" align="center" formatter="formatAction">操作</th>
 				</tr>
 			</thead>
 		</table>
@@ -170,7 +169,11 @@
 		}
 		
 		var myTable = $('#dg');
-		function formatAction(value, row, index) {
+		function formatAction(value, row, index) {			
+			<s:if test="actionName=='saleAfterGongDanManage'">
+			return '<a href="javascript:void(0)" onclick="deleteItem(this)">删除工单</a>';
+			</s:if>
+			<s:elseif test="actionName=='clientReviewManage'">
 			if (row.editing) {
 				var s = '<a href="#" onclick="saverow(this);return false;">保存修改</a>&nbsp;&nbsp;&nbsp;&nbsp;';
 				var c = '<a href="#" onclick="cancelrow(this);return false;">取消修改</a>';
@@ -179,6 +182,7 @@
 				var e = '<a href="#" onclick="editrow(this);return false;">编辑本行</a>&nbsp;&nbsp;&nbsp;&nbsp;';
 				return e;
 			}
+			</s:elseif>
 		}
 
 		function getTargetRowIndex(target) {
@@ -216,6 +220,25 @@
 
 		function cancelrow(target) {
 			myTable.datagrid('cancelEdit', getTargetRowIndex(target));
+		}
+		
+		function deleteItem(clickevent) {
+			var row = myTable.datagrid('getEventTargetRow', clickevent);
+			if (row) {
+				$.messager.confirm('确认', '确定要删除选中工单吗?', function(r) {
+					if (r) {
+						$.post('deleteGongDan.action', {
+							"saleAfterWeiXiuGuid" : row['txtGongDanId']
+						}, function(result) {
+							if (result.errorMsg) {
+								$.messager.alert('出错啦', result.errorMsg);
+							} else {
+								reloadCurentPage();
+							}
+						}, 'json');
+					}
+				});
+			}
 		}
 	</script>
 </body>

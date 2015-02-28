@@ -14,6 +14,8 @@ public class CarWash {
 	private String txtXiCheDate;
 	private String txtJiaoCheDate;
 	private String txtStatus;
+	private String txtBanZu;
+	private String txtZhuXiuRen;
 
 	public String getTxtGuid() {
 		return txtGuid;
@@ -92,6 +94,18 @@ public class CarWash {
 	}
 	public void setTxtStatus(String txtStatus) {
 		this.txtStatus = txtStatus;
+	}
+	public String getTxtBanZu() {
+		return txtBanZu;
+	}
+	public void setTxtBanZu(String txtBanZu) {
+		this.txtBanZu = txtBanZu;
+	}
+	public String getTxtZhuXiuRen() {
+		return txtZhuXiuRen;
+	}
+	public void setTxtZhuXiuRen(String txtZhuXiuRen) {
+		this.txtZhuXiuRen = txtZhuXiuRen;
 	}
 
 }

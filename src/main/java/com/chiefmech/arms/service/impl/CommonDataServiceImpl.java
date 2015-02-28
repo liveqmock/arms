@@ -44,6 +44,8 @@ public class CommonDataServiceImpl implements CommonDataService {
 					.get("saleAfterWeiXiuGuid"));
 		} else if ("GroupName".equals(target)) {
 			lst = commonDataDao.getGroupNameOptionBean();
+		} else if (("CarBrand").equals(target)) {
+			lst = commonDataDao.getCarBrand();
 		}
 		return lst;
 	}

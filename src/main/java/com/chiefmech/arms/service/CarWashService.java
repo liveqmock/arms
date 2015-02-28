@@ -10,6 +10,8 @@ public interface CarWashService {
 
 	public int deleteItem(String id);
 
+	public CarWash findItemById(String txtGuid);
+
 	public String getCarWashEasyUiJSon(CarWash query, int page, int rows);
 
 }

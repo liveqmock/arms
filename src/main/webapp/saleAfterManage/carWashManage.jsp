@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>用户接待</title>
+<title>洗车接待</title>
 <link rel="stylesheet" type="text/css"
 	href="../style/themes/default/easyui.css" />
 <link rel="stylesheet" type="text/css" href="../style/themes/icon.css" />
@@ -39,35 +39,37 @@ td {
 			<tr>
 				<th width="150" data-options="field:'txtRuChangDate'">入厂时间</th>
 				<th width="150" data-options="field:'txtChePaiHao'">车牌号</th>
+				<th width="80" data-options="field:'txtStatus'">状态</th>
 				<th width="150" data-options="field:'ddlCheLiangCheXi'">车型</th>
 				<th width="150" data-options="field:'txtCheZhuName'">车主名</th>
 				<th width="200" data-options="field:'txtCheZhuTel'">车主电话</th>
 				<th width="200" data-options="field:'ddlZhiFuFangShi'">支付方式</th>
 				<th width="200" data-options="field:'ddlXiCheLeiXing'">洗车类型</th>
-				<th width="200" data-options="field:'txtFeiYong'">费用</th>
-				<th width="200" data-options="field:'txtStatus'">状态</th>
+				<th width="100" data-options="field:'txtFeiYong'">费用</th>
+				<th width="100" data-options="field:'txtBanZu'">维修班组</th>
+				<th width="80" data-options="field:'txtZhuXiuRen'">主修人</th>
 			</tr>
 		</thead>
 	</table>
 	<div id="toolbar">
 		<a href="javascript:void(0)" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true" onclick="openCarWashDialog('newCarWash')">新增洗车信息</a></div>
+			iconCls="icon-add" plain="true" onclick="openCarWashDialog()">新增洗车信息</a></div>
 
 <script type="text/javascript">
 		var myTable = $('#mydg');		
-		function openCarWashDialog(action, txtGuid) {
-			var sURL = "carWashInfo.action?action="+action;
-			if(arguments.length == 2){
-				sURL += "&txtGuid="	+ txtGuid + "&d=" + new Date();
+		function openCarWashDialog(txtGuid) {
+			var sURL = "carWashInfo.action";
+			if(arguments.length == 1){
+				sURL += "?carWashGuid="	+ txtGuid + "&d=" + new Date();
 			}
-			var sFeatures = "dialogWidth:700px;dialogHeight:500px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
+			var sFeatures = "dialogWidth:800px;dialogHeight:500px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
 			window.showModalDialog(sURL, window, sFeatures);
 			myTable.datagrid('reload');
 		}		
 
 		function showCarWash(index) {
 			var row = $('#mydg').datagrid('getRows')[index];
-			openCarWashDialog('editCarWash', row.txtGuid);
+			openCarWashDialog(row.txtGuid);
 		}
 	</script>
 </body>

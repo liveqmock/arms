@@ -88,7 +88,8 @@
         <td nowrap align="center">&nbsp;工段名称</td>
         <td nowrap align="center">&nbsp;维修内容</td>
         <td nowrap align="center">&nbsp;费用</td>
-        <td nowrap align="center">&nbsp;帐套</td>        
+        <td nowrap align="center">&nbsp;帐套</td>  
+        <td nowrap align="center">&nbsp;备注</td>        
         <td nowrap align="center">&nbsp;维修班组</td>
         <td nowrap align="center">&nbsp;主修人</td>
         <td nowrap align="center">&nbsp;完检人</td>
@@ -99,7 +100,8 @@
         <td nowrap align="center">&nbsp;<s:property value="txtGongDuanName" /></td>
         <td nowrap align="center">&nbsp;<s:property value="txtWeiXiuNeiRong" /></td>
         <td nowrap align="center">&nbsp;<s:property value="txtFeiYong" /></td>
-        <td nowrap align="center">&nbsp;<s:property value="ddlZhangTao" /></td>        
+        <td nowrap align="center">&nbsp;<s:property value="ddlZhangTao" /></td>  
+        <td nowrap align="center">&nbsp;<s:property value="txtRemark" /></td>        
         <td nowrap align="center">&nbsp;<s:property value="txtBanZu" /></td>
         <td nowrap align="center">&nbsp;<s:property value="txtZhuXiuRen" /></td>
         <td nowrap align="center">&nbsp;<s:property value="txtWanJianRen" /></td>
@@ -118,7 +120,8 @@
        <td nowrap align="center">&nbsp;名称及规格</td>
        <td nowrap align="center">&nbsp;数量</td>
        <td nowrap align="center">&nbsp;单价</td>
-       <td nowrap align="center">&nbsp;帐套</td>       
+       <td nowrap align="center">&nbsp;帐套</td>
+       <td nowrap align="center">&nbsp;备注</td>         
      </tr> 
 
       <s:iterator value="gongDanWuLiaoLst">
@@ -127,7 +130,8 @@
         <td nowrap align="center">&nbsp;<s:property value="txtWuLiaoName" /></td>
         <td nowrap align="center">&nbsp;<s:property value="txtQty" /></td>
         <td nowrap align="center">&nbsp;<s:property value="txtPrice" /></td>
-        <td nowrap align="center">&nbsp;<s:property value="ddlZhangTao" /></td>       
+        <td nowrap align="center">&nbsp;<s:property value="ddlZhangTao" /></td>   
+        <td nowrap align="center">&nbsp;<s:property value="txtRemark" /></td>        
      </tr>   
      </s:iterator>
 

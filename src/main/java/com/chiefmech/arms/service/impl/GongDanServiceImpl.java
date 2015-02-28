@@ -60,6 +60,7 @@ public class GongDanServiceImpl implements GongDanService {
 
 	@Override
 	public String getSaleAfterGongDanEasyUiJSon(SaleAfterGongDanSearchBean query) {
+		query.setTxtDeleteFlag("0");
 		List<GongDan> lst = gongDanDao.getGongDanListForEasyUi(query);
 		int total = gongDanDao.getGongDanCountForEasyUi(query);
 
@@ -330,5 +331,10 @@ public class GongDanServiceImpl implements GongDanService {
 
 		return new GongDanJieSuan(xiangMuZheHou, wuLiaoZheHou, weiXiuFeiFree,
 				wuLiaoFeiFree, weiXiuFeiPaid, wuLiaoFeiPaid);
+	}
+
+	@Override
+	public int deleteGongDan(String txtGongDanId) {
+		return gongDanDao.deleteGongDan(txtGongDanId);
 	}
 }

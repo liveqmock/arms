@@ -150,6 +150,15 @@
 													click : "mdfMenu('aeb72bd6-5aa7-4fba-a097-9b8f0ad2b81f','供应商管理','../webSetup/supplierManage.action');"
 												},
 												{
+													name : "品牌车型",
+													font : {
+														'font-style' : '微软雅黑'
+													},
+													url : "",
+													target : "_blank",
+													click : "mdfMenu('aeb72bd6-5aa7-4fba-a097-9b8f0ad2b8a3','品牌车型','../webSetup/carModel.action');"
+												},
+												{
 													name : "维修项目",
 													font : {
 														'font-style' : '微软雅黑'

@@ -146,9 +146,12 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 			gongDan.setTxtFuWuGuWen(this.getUser().getDisplayName());
 			rowsAffected = gongDanService.insertWeiXiuJieDai(gongDan);
 
-			String[] jianCeLst = "人保客户".equals(gongDan.getTxtCustSort())
-					? jianCeLstRenBao
-					: jianCeLstPuTong;
+			// 西乡店16项检查都按普遍客户的
+			/*
+			 * String[] jianCeLst = "人保客户".equals(gongDan.getTxtCustSort()) ?
+			 * jianCeLstRenBao : jianCeLstPuTong;
+			 */
+			String[] jianCeLst = jianCeLstPuTong;
 			int size = jianCeLst.length;
 			for (int i = 0; i < size; i++) {
 				String jianCeNeiRong = jianCeLst[i];

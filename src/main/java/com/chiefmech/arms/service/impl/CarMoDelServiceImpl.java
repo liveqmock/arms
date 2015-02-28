@@ -8,35 +8,35 @@ import net.sf.json.JSONArray;
 
 import org.springframework.stereotype.Service;
 
-import com.chiefmech.arms.dao.CarMoDelViewDao;
-import com.chiefmech.arms.entity.view.CarMoDelView;
-import com.chiefmech.arms.service.CarMoDelService;
+import com.chiefmech.arms.dao.CarModelViewDao;
+import com.chiefmech.arms.entity.view.CarModelView;
+import com.chiefmech.arms.service.CarModelService;
 
-@Service("carMoDelService")
-public class CarMoDelServiceImpl implements CarMoDelService {
+@Service("carModelService")
+public class CarModelServiceImpl implements CarModelService {
 
 	@Resource()
-	private CarMoDelViewDao carMoDelDao;
+	private CarModelViewDao carModelDao;
 
 	@Override
-	public int insertItem(CarMoDelView item) {
-		return carMoDelDao.insertItem(item);
+	public int insertItem(CarModelView item) {
+		return carModelDao.insertItem(item);
 	}
 
 	@Override
-	public int updateItem(CarMoDelView item) {
-		return carMoDelDao.updateItem(item);
+	public int updateItem(CarModelView item) {
+		return carModelDao.updateItem(item);
 	}
 
 	@Override
-	public int deleteItem(int id) {
-		return carMoDelDao.deleteItem(id);
+	public int deleteItem(String id) {
+		return carModelDao.deleteItem(id);
 	}
 
 	@Override
-	public String getCarMoDelEasyUiJSon(CarMoDelView query, int page, int rows) {
-		List<CarMoDelView> lst = carMoDelDao.getCarMoDelList(query, page, rows);
-		int total = carMoDelDao.getCarMoDelListCount(query);
+	public String getCarMoDelEasyUiJSon(CarModelView query, int page, int rows) {
+		List<CarModelView> lst = carModelDao.getCarModelList(query, page, rows);
+		int total = carModelDao.getCarModelListCount(query);
 
 		String lstJson = JSONArray.fromObject(lst).toString();
 		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
@@ -45,8 +45,27 @@ public class CarMoDelServiceImpl implements CarMoDelService {
 	}
 
 	@Override
-	public List<CarMoDelView> findCarMoDel() {
-		return carMoDelDao.selectItem();
+	public List<CarModelView> findCarMoDel() {
+		return carModelDao.selectItem();
+	}
+
+	@Override
+	public int insertItemCarBrand(CarModelView item) {
+		if(carModelDao.isBrand(item.getBrandName())>=1){
+			return 0;
+		}
+		return carModelDao.insertItemCarbrand(item);
+	}
+
+	@Override
+	public int updateItemCarBrand(CarModelView item) {
+		return carModelDao.updateItemCarbrand(item);
+	}
+
+	@Override
+	public int deleteItemCarBrand(String id) {
+		carModelDao.deleteCarModelItemByBrandId(id);
+		return  carModelDao.deleteItemCarbrand(id);
 	}
 
 }

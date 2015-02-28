@@ -17,6 +17,7 @@ public class SaleAfterGongDanSearchBean extends SearchBean {
 	private String txtCheZhuTel;
 	private String txtFuWuGuWen;
 	private String actionName;
+	private String txtDeleteFlag;
 	private int start = 1;
 	private int rows = 15;
 
@@ -37,6 +38,8 @@ public class SaleAfterGongDanSearchBean extends SearchBean {
 		this.addField(new Criteria(Action.LIKE, "txtCheZhuName", txtCheZhuName));
 		this.addField(new Criteria(Action.LIKE, "txtCheZhuTel", txtCheZhuTel));
 		this.addField(new Criteria(Action.LIKE, "txtFuWuGuWen", txtFuWuGuWen));
+		this.addField(new Criteria(Action.STR_EQUAL, "txtDeleteFlag",
+				txtDeleteFlag));
 		this.addLimitInfo(this.getStart(), this.getRows());
 	}
 
@@ -139,6 +142,14 @@ public class SaleAfterGongDanSearchBean extends SearchBean {
 
 	public void setActionName(String actionName) {
 		this.actionName = actionName;
+	}
+
+	public String getTxtDeleteFlag() {
+		return txtDeleteFlag;
+	}
+
+	public void setTxtDeleteFlag(String txtDeleteFlag) {
+		this.txtDeleteFlag = txtDeleteFlag;
 	}
 
 }
