@@ -14,4 +14,6 @@ public interface CarWashService {
 
 	public String getCarWashEasyUiJSon(CarWash query, int page, int rows);
 
+	int updateCarWashStatus(CarWash item);
+
 }

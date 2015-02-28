@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>车辆管理</title>
+<title>品牌车型</title>
 <link rel="stylesheet" type="text/css"
 	href="../style/themes/default/easyui.css" />
 <link rel="stylesheet" type="text/css" href="../style/themes/icon.css" />
@@ -28,7 +28,7 @@ td {
 <body>
 	<table border="0" style="width: 100%;">
 		<tr>
-			<td class="titlebg"><span>基础设置</span> <span class="titleSpan">(品牌车型管理)</span>
+			<td class="titlebg"><span>基础设置</span> <span class="titleSpan">(品牌车型)</span>
 			</td>
 		</tr>
 	</table>
@@ -56,10 +56,10 @@ td {
 						   pagination:true">
 		<thead>
 			<tr>
-				<th data-options="field:'brandLogo',width:150">品牌Logo</th>
-				<th data-options="field:'brandName',width:150">品牌</th>
-				<th data-options="field:'modelName',width:150">车型名</th>
-				<th field="action" width="150" align="center"
+				<th width="100" data-options="field:'brandName'">品牌</th>
+				<th width="200" data-options="field:'modelName'">车型名</th>
+				<th width="100" data-options="field:'brandLogo'">品牌Logo</th>
+				<th width="150" field="action" align="center"
 					formatter="formatAction">操作</th>
 			</tr>
 		</thead>
@@ -145,6 +145,8 @@ td {
 					$('#mydlg2').dialog('open').dialog('setTitle', '修改车辆品牌信息');
 					$('#fm2').form('load', row);
 					url = 'updateCarBrand.action?brandId=' + row.brandId;
+				}else{
+					$.messager.alert('提示', "请先选中包含目标品牌的行");
 				}
 			} else {
 				var row = $('#mydg').datagrid('getEventTargetRow', clickevent);
@@ -173,6 +175,8 @@ td {
 							}, 'json');
 						}
 					});
+				}else{
+					$.messager.alert('提示', "请先选中包含目标品牌的行");
 				}
 			} else {
 				var row = $('#mydg').datagrid('getEventTargetRow', clickevent);

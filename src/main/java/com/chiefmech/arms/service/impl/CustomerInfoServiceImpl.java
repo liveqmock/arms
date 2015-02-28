@@ -37,6 +37,11 @@ public class CustomerInfoServiceImpl implements CustomerInfoService {
 	}
 
 	@Override
+	public CustomerInfo findCustomerInfoByCheZhuTel(String txtCheZhuTel) {
+		return customerInfo.findCustomerInfoByCheZhuTel(txtCheZhuTel);
+	}
+
+	@Override
 	public List<VKeHuCheLiang> queryVKeHuCheLiang(VKeHuCheLiang query) {
 		return customerInfo.queryVKeHuCheLiang(query);
 	}

@@ -36,7 +36,7 @@ td {
 			<!--车主信息 start-->
 			<table cellpadding="0" cellspacing="0">
 				<tr>
-					<td colspan="6">客户信息</td>
+					<td colspan="6">客户信息（注：车主电话为客户唯一标示）</td>
 				</tr>
 				<tr>
 					<td width="80" align="right">客户类别：</td>
@@ -48,8 +48,8 @@ td {
 						class="easyui-textbox" type="text" id="txtCheZhuName" /></td>
 
 					<td width="80" align="right">车主电话：</td>
-					<td><input class="easyui-textbox" name="txtCheZhuTel"
-						type="text" data-options="required:true,validType:'mobile',onChange:function(newValue){$('#txtLianXiRenTel').textbox('setValue', newValue);$('#txtHuiYuanZhangHao').text(newValue);}" id="txtCheZhuTel" /></td>
+					<td><input class="easyui-numberbox" name="txtCheZhuTel"
+						type="text" data-options="required:true,validType:['mobile','customerMobilUnique'],onChange:function(newValue){$('#txtLianXiRenTel').textbox('setValue', newValue);$('#txtHuiYuanZhangHao').text(newValue);}" id="txtCheZhuTel" /></td>
 				</tr>
 
 				<tr>
@@ -221,7 +221,8 @@ td {
 		<!--按钮区域 start-->
 		<div align="center" id="btnBottomDiv" style="margin-top: 10px;">
 			<a class="easyui-linkbutton" href="javascript:saveCustInfo()">保存客户信息</a><s:if test="customerId!=''">
-			<a class="easyui-linkbutton" href="javascript:addItem()">新增车辆信息</a></s:if>
+			<a class="easyui-linkbutton" href="javascript:addItem()">新增车辆信息</a>
+			<a class="easyui-linkbutton" href="javascript:addCarModel()">新增品牌车型</a></s:if>
             <a class="easyui-linkbutton" href="javascript:winClose()">关闭窗口</a>
 		</div>
 	</div>
@@ -308,6 +309,13 @@ td {
 			}, function(data) {
 				$('#ddlCheLiangCheXi').combobox("loadData", data);
 			}, 'json');
+		}
+		
+		function addCarModel(){
+			var url = '../webSetup/carModel.action?d=' + new Date();
+			var sFeatures = "dialogWidth:700px;dialogHeight:500px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
+			window.showModalDialog(url, window, sFeatures);
+			$('#ddlCheLiangZhiZaoShang').combobox("reload");
 		}
 
 		function winClose() {

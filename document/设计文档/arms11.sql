@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 120.24.213.132
+Source Server         : 120.24.213.132_3306
 Source Server Version : 50537
 Source Host           : 120.24.213.132:3306
 Source Database       : arms11
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50537
 File Encoding         : 65001
 
-Date: 2015-02-28 17:29:29
+Date: 2015-03-01 00:00:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -2935,22 +2935,33 @@ CREATE TABLE `chelianginfo` (
 -- ----------------------------
 -- Records of chelianginfo
 -- ----------------------------
+INSERT INTO `chelianginfo` VALUES ('85e519b8-0858-4778-add8-66604e242f01', '0ed53157-d272-4609-b32e-3e474671caf2', '粤B025ZV', 'CA7201AT5', 'LFPM4ACC7D1A89201', '2013-12-12', '80594836', '2015-12-12', '2015-12-12', '马自达', null, '人保');
 INSERT INTO `chelianginfo` VALUES ('70bc1161-cd6f-419b-909b-5bad7cb763b0', '132e87c5-073a-4875-a260-ad9394a5ec86', '粤B47M75', 'TV7160GMD', 'LFMAP22C180045198', '2008-03-17', 'E130266', '2015-03-17', '2015-03-17', '丰田', null, '人保');
+INSERT INTO `chelianginfo` VALUES ('e080c1c1-dd5b-4a67-8ff3-c48a878b2fa1', '186ccd1d-db92-42ca-9549-ff741c9d5630', '粤B2H0P5', 'CAF7163M4', 'LVSHCFMB6EE853635', '2014-12-25', '3708504', '2016-12-25', '2015-12-25', '大众', null, '人保');
 INSERT INTO `chelianginfo` VALUES ('71b8353d-b517-4dc5-a6dd-0f6c27d1e4bf', '2038171f-18b6-4ce0-b44c-4c1845a7d4d4', '粤B 9826U', 'CAF7180A38', 'LVSHCFAE78F332360', '2009-01-13', '8A57210', '2016-01-13', '2016-01-13', '福特', null, '人保');
+INSERT INTO `chelianginfo` VALUES ('2633fee4-ec5f-4682-be5d-7896f6352645', '29ee06f0-831f-45e6-985c-4fe47f6a0ef6', '粤B9826U', 'CAF7180A38', 'LVSHCFAE78F332360', '2009-01-13', '8A57210', '2015-01-13', '2015-01-13', '大众', null, '人保');
+INSERT INTO `chelianginfo` VALUES ('0526b134-df08-4ed0-a06e-9a76491d90b0', '39ce7e10-de46-49d7-96ae-6acc56992076', '粤B6BS78', 'SGM7169TATB', 'LSGGG54E8CS288490', '2012-12-13', '122890195', '2016-12-13', '2015-12-13', '雪佛兰', null, '人保');
 INSERT INTO `chelianginfo` VALUES ('49ccb74c-a286-450c-9fd6-1095cc7eb88a', '45d76870-3a97-4892-9112-9ee3d1d0a459', '粤BK265T', 'DFL7165VTC1', 'LGBG2NE05BY006095', '2012-04-20', '077110A', '2016-04-20', '2015-04-20', '东风', null, '人保');
 INSERT INTO `chelianginfo` VALUES ('f2bd5892-bbbd-44e7-925e-a2870225bd2c', '48263862-104b-457a-aee8-1c9cbb73d783', '粤BE301Z', 'DC7164DTAM', 'LDC933L20B1481681', '2011-01-20', '8703049', '2015-01-20', '2015-01-20', '标致', '标致206', '人保');
+INSERT INTO `chelianginfo` VALUES ('77a85973-7f35-45bf-b127-1bfdc2caeed6', '5b071bf2-ca8e-4a66-81ad-d39508ae7370', '粤BN195R', 'SQR7161M117', 'LVVDC11B6BD469190', '2012-01-04', 'AABM00285', '2016-01-04', '2016-01-04', '奇瑞', null, '人保');
 INSERT INTO `chelianginfo` VALUES ('f2bd5892-bbbd-44e7-925e-a2870225bd2c', '5c34367c-dbe3-4856-8983-fdf2aa965130', '粤BE301Z', 'DC7164DTAM', 'LDC933L20B1481681', '2011-01-20', '8703049', '2015-01-20', '2015-01-20', '标致', '标致206', '人保');
 INSERT INTO `chelianginfo` VALUES ('f2bd5892-bbbd-44e7-925e-a2870225bd2c', '5d003265-bf53-4c93-a5a0-ed3009a24676', '粤BE301Z', 'DC7164DTAM', 'LDC933L20B1481681', '2011-01-20', '8703049', '2015-01-20', '2015-01-20', '标致', '标致206', '人保');
+INSERT INTO `chelianginfo` VALUES ('d6128dbf-295d-48af-9906-03ecb93ed17e', '5dc4c553-58a5-42c2-841a-1a8973910974', '粤B977FF', 'GTM7240GB', 'LVGBE40K39G488347', '2009-12-23', 'C802201', '2015-12-23', '2015-12-23', '丰田', null, '人保');
 INSERT INTO `chelianginfo` VALUES ('d7ae8a3b-6949-4d91-9d07-a114fff572bb', '60d4c65f-6672-4465-bbf9-122cdce30744', '粤B7728Y', 'JS3JB43V', 'JS3JB43V494102860', '2009-03-12', 'M13A2134668', '2015-03-12', '2015-03-12', '铃木', null, '人保');
 INSERT INTO `chelianginfo` VALUES ('3960054a-ee2f-4c22-a953-c248c2862265', '64cbcd06-c1c3-4b98-9ae2-d4a8181f6dde', '粤BC332H', '', '', '', '', '', '', '现代', null, '人保');
+INSERT INTO `chelianginfo` VALUES ('ccf5c2b2-727a-4f93-a821-02e9c23c9854', '66894e96-e24c-469a-bb61-584c49a7c3dc', '粤B330JN', 'WBASN210', 'WBASN2100AC530258', '2010-06-01', '05447389N55B30A', '2016-06-01', '2015-06-01', '宝马', null, '人保');
 INSERT INTO `chelianginfo` VALUES ('9fd982ff-26f5-43ff-bfd3-0186ce30b07e', '68d59e9e-3259-4a4f-836f-381c5cbea080', '粤B0PW57', 'SQR7161M127', 'LVVDB11BXDD076704', '2013-07-03', 'AADA03909', '2015-07-01', '2015-07-01', '奇瑞', '奇瑞QQ', '人保');
 INSERT INTO `chelianginfo` VALUES ('8d84b051-9db6-4eb6-b60e-99d944215322', '752fa437-2401-4d49-8fe8-5dfe61d2a324', '粤B6BS78', 'SGM7169TATB', 'LSGGG54E8CS288490', '2012-12-13', '122890195', '2016-12-13', '2015-12-13', '雪佛兰', null, '人保');
 INSERT INTO `chelianginfo` VALUES ('035a46cf-b104-4bc3-907a-8548b325c795', '7f04c242-4f05-46d1-ac53-b3fdfc155507', '粤B633N5', '', '', '', '', '', '', '江淮', '瑞风', '');
 INSERT INTO `chelianginfo` VALUES ('98b4d3d6-0d26-4664-aaa7-6c41bc37e95f', '7f12e740-ff28-4418-8f28-5c665c6da00d', '粤B234D5', '', '', '', '', '', '', '比亚迪', '秦', '');
+INSERT INTO `chelianginfo` VALUES ('a5a58fe8-a42b-415f-9edf-6769288c6f02', '8097539c-9925-40da-87d8-ae2fb9dd4ecb', '粤B851UM', 'CAF7180B48', 'LVSHCAAE3BF734841', '2011-10-24', 'BA50572', '2015-10-24', '2015-10-24', '大众', null, '人保');
+INSERT INTO `chelianginfo` VALUES ('7279e3c7-11ea-4b7b-9e38-7005b4a5338b', '8ad559e4-91d6-4672-afad-e8be6287b971', '粤B07U43', 'SY7162VSB', 'LSYYBACA07K097965', '2008-08-12', 'CD70A4314', '2015-08-12', '2015-08-12', '中华', null, '人保');
 INSERT INTO `chelianginfo` VALUES ('bdd580b4-8747-4198-b7e6-ce258dc71090', '94217356-6f0b-4d52-bedd-3ac0766620e7', '粤B6804L', 'FV7142TXATG', 'LFV2A2151C3652407', '2012-10-12', 'S67098', '2016-10-12', '2015-10-12', '大众', null, '人保');
 INSERT INTO `chelianginfo` VALUES ('e00f150b-6274-40af-9844-99d64cbc1553', '9a8a5e7b-af29-4a3c-9019-de65d782284c', '粤BX652K', '蒙牌迪欧CAF7205A41', 'LVSHBFDC3CF225585', '2012-03-22', 'CA06111', '2016-03-22', '2015-03-22', '福特', '蒙迪欧', '人保');
 INSERT INTO `chelianginfo` VALUES ('287eb5d5-9919-4f67-b569-a826fd09c032', '9e845e76-0b5f-4cfd-8f67-5f4b646ccaf0', '粤BE301Z', 'DC7164DTAM', 'LDC933L20B1481681', '2011-01-20', '8703049', '2015-01-20', '2015-01-20', '东风', null, '人保');
 INSERT INTO `chelianginfo` VALUES ('7a00ba81-a555-4d78-9b37-5fd31d95ebd1', 'a532cdca-15e9-44cc-90a2-5e2b01002919', '粤BL708X', 'SGM7168ATA', 'LSGJA52U19H051654', '2009-04-24', '93080114', '2015-04-24', '2015-04-24', '别克', null, '人保');
+INSERT INTO `chelianginfo` VALUES ('531561b1-a471-4f60-963e-ecb5bbe0b4a0', 'adf4483e-17d7-4b83-9d8c-c0d624c552a3', '粤B973SF', 'DFL6460VECF', 'LGBM2DE44BS018452', '2011-06-22', '191311B', '2015-06-22', '2015-06-22', '东风', null, '人保');
+INSERT INTO `chelianginfo` VALUES ('fc7ab960-f3ed-4144-b879-a2996c76a61b', 'af9b8686-796b-42fd-9f6f-1ca82affa174', '粤BR303N', 'GTM7251GB', 'LVGBF53K6CG063663', '20152-11-28', 'H143562', '2016-11-28', '2015-11-28', '丰田', null, '人保');
 INSERT INTO `chelianginfo` VALUES ('98b4d3d6-0d26-4664-aaa7-6c41bc37e95f', 'c336c2eb-e9f6-4779-ba5c-8438f4d43e75', '赣H-85632', '未设置', '未设置', null, '', '', '', '大众', '朗逸', null);
 INSERT INTO `chelianginfo` VALUES ('91132e21-5469-4911-99d0-839779ab188b', 'c4ed58ab-d08e-4d21-b36c-0f7117fa1a35', '粤BN195R', '奇瑞牌SQR7161M117', 'LVVDC11B6BD469190', '2012-01-04', 'AABM00285', '2016-01-04', '2016-01-04', '奇瑞', null, '人保');
 INSERT INTO `chelianginfo` VALUES ('77a889d5-9bb4-4f49-ab0d-e1522d8d56b9', 'db1483b7-ef94-4ce5-b0e3-907e26650c5f', '粤B8A330', '', '', '', '', '2014-01-20', '', '大众', null, '');
@@ -2989,7 +3000,9 @@ CREATE TABLE `customerinfo` (
 -- Records of customerinfo
 -- ----------------------------
 INSERT INTO `customerinfo` VALUES ('035a46cf-b104-4bc3-907a-8548b325c795', null, '自店', '谢先生', '15851651366', '666666', '谢先生', '15851651366', '', '', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('0526b134-df08-4ed0-a06e-9a76491d90b0', null, '人保客户', '张亚光', '13925284465', '666666', '张亚光', '13925284465', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('13be5de2-57ec-4f6d-b4bf-287d7d036a81', null, '人保客户', '123', '13800138000', '666666', '123', '13800138000', '', '2015-02-10', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('2633fee4-ec5f-4682-be5d-7896f6352645', null, '人保客户', '储怀宁', '13590345132', '666666', '储怀宁', '13590345132', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('287eb5d5-9919-4f67-b569-a826fd09c032', null, '人保客户', '张文强', '13392886890', '666666', '张文强', '13392886890', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('2fe0eb0a-f8f3-4fb4-948f-04179e94097f', null, '人保客户', '邹嘉', '13798309089', '666666', '邹嘉', '13798309089', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('351489a2-1a85-4068-b8b0-cdc24e3c06fa', null, '人保客户', '邓九水', '13642887929', '666666', '邓九水', '13642887929', '', '', '0', '1.00', '1.00', '注册会员', null);
@@ -2997,26 +3010,35 @@ INSERT INTO `customerinfo` VALUES ('3960054a-ee2f-4c22-a953-c248c2862265', null,
 INSERT INTO `customerinfo` VALUES ('49ccb74c-a286-450c-9fd6-1095cc7eb88a', null, '人保客户', '罗洁义', '13480157633', '666666', '罗洁义', '13480157633', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('4d9686b3-9847-4690-93b6-96a82fba798c', null, '人保客户', '郑国华', '13725566211', '666666', '郑国华', '13725566211', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('511e1df8-0cb8-4744-acaa-4e15b0e2544c', null, '人保客户', '曾俊青', '13714637092', '666666', '曾俊青', '13714637092', '', '', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('531561b1-a471-4f60-963e-ecb5bbe0b4a0', null, '人保客户', '蔡胜锋', '13823348987', '666666', '蔡胜锋', '13823348987', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('70bc1161-cd6f-419b-909b-5bad7cb763b0', null, '人保客户', '陈蓉', '13502832024', '666666', '陈蓉', '13502832024', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('71b8353d-b517-4dc5-a6dd-0f6c27d1e4bf', null, '人保客户', '储怀宁', '13590345132', '666666', '储怀宁', '13590345132', '', '', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('7279e3c7-11ea-4b7b-9e38-7005b4a5338b', null, '人保客户', '曹春雷', '13602512009', '666666', '曹春雷', '13602512009', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('72ab36f9-7fb5-4c7b-95a2-8b80673d47ad', null, '人保客户', '胡伟强', '13725578955', '666666', '胡伟强', '13725578955', '', '', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('77a85973-7f35-45bf-b127-1bfdc2caeed6', null, '人保客户', '郭芳炳', '15989861267', '666666', '郭芳炳', '15989861267', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('77a889d5-9bb4-4f49-ab0d-e1522d8d56b9', null, '人保客户', '袁林', '15622887238', '666666', '袁林', '15622887238', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('7a00ba81-a555-4d78-9b37-5fd31d95ebd1', null, '人保客户', '刘爱华', '13715314896', '666666', '刘爱华', '13715314896', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('7eb67abb-50c4-4561-8cc4-9d89f3fd52d1', null, '人保客户', '李雪梅', '13827429239', '666666', '李雪梅', '13827429239', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('841c6988-ea07-48cb-a7f5-f31d48cc9221', null, '人保客户', '李雪梅', '13827429239', '666666', '李雪梅', '13827429239', '', '', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('85e519b8-0858-4778-add8-66604e242f01', null, '人保客户', '梁召峰', '13751104890', '666666', '梁召峰', '13751104890', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('8d84b051-9db6-4eb6-b60e-99d944215322', null, '人保客户', '张亚光', '13925284465', '666666', '张亚光', '13925284465', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('90902d15-2d06-4a83-9132-a579ccc82b63', null, '人保客户', '郑国华', '13725566211', '666666', '郑国华', '13725566211', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('91132e21-5469-4911-99d0-839779ab188b', null, '人保客户', '郭芳炳', '15989861267', '666666', '郭芳炳', '15989861267', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('98420029-3b6f-4dde-8a3a-299e05fb4153', null, '人保客户', '俞灶森', '18988770365', '666666', '俞灶森', '18988770365', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('98b4d3d6-0d26-4664-aaa7-6c41bc37e95f', null, '自店', '杨小院', '13728901234', '666666', '杨小院', '13728901234', '', '2015-02-28', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('9fd982ff-26f5-43ff-bfd3-0186ce30b07e', null, '人保客户', '罗俊勇', '13699877039', '666666', '罗俊勇', '13699877039', '', '', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('a5a58fe8-a42b-415f-9edf-6769288c6f02', null, '人保客户', '吴红成', '13751122141', '666666', '吴红成', '13751122141', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('a9d29a1f-72f5-4a34-974c-f2576f2cbbe5', null, '自店', '梁小姐', '13692170355', '666666', '梁小姐', '13692170355', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('bb93c165-7277-4dc3-bace-cc6ee5b9182e', null, '人保客户', '胡伟强', '13725578955', '666666', '胡伟强', '13725578955', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('bdd580b4-8747-4198-b7e6-ce258dc71090', null, '人保客户', '曾俊青', '13714637092', '666666', '曾俊青', '13714637092', '', '', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('ccf5c2b2-727a-4f93-a821-02e9c23c9854', null, '人保客户', '杨云安', '15626526612', '666666', '杨云安', '15626526612', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('d04931df-14af-4c19-8286-0e849bfaa9c8', null, '人保客户', '黄志花', '13825204746', '666666', '黄志花', '13825204746', '', '', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('d6128dbf-295d-48af-9906-03ecb93ed17e', null, '人保客户', '吕尚韦', '15818520206', '666666', '吕尚韦', '15818520206', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('d7ae8a3b-6949-4d91-9d07-a114fff572bb', null, '人保客户', '邹嘉', '13798309089', '666666', '邹嘉', '13798309089', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('e00f150b-6274-40af-9844-99d64cbc1553', null, '人保客户', '邓九水', '13642887929', '666666', '邓九水', '13642887929', '', '', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('e080c1c1-dd5b-4a67-8ff3-c48a878b2fa1', null, '人保客户', '邓志超', '13682418968', '666666', '邓志超', '13682418968', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('f2bd5892-bbbd-44e7-925e-a2870225bd2c', null, '人保客户', '张文强', '13392886890', '666666', '张文强', '13392886890', '', '', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('fc7ab960-f3ed-4144-b879-a2996c76a61b', null, '人保客户', '安天忠', '13760236458', '666666', '安天忠', '13760236458', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('ffc147a4-a844-40d9-b0c9-9c522660d322', null, '人保客户', '袁林', '15622887238', '666666', '袁林', '15622887238', '', '', '0', '1.00', '1.00', '注册会员', null);
 
 -- ----------------------------
@@ -3118,7 +3140,7 @@ INSERT INTO `gongdan` VALUES ('d98dac38-094c-41f5-8f9f-8b87a3b34f9a', null, 'JDD
 INSERT INTO `gongdan` VALUES ('dbc25512-1d5b-4fcd-959d-899a5b2004ae', null, 'JDD20150228009', '0006000', '2015-02-27', '2015-02-27 13:19:47', '周丽娟', '', null, null, '72ab36f9-7fb5-4c7b-95a2-8b80673d47ad', 'f1d92941-e45e-4638-8c87-911f3199cb4a', null, '粤BR273M', '26967', 'LVSHCFDB5CE090295', '3182558', '福特', null, 'CAF7163A4', '人保客户', '胡伟强', '13725578955', '胡伟强', '13725578955', '', '交车', null, null, '31967', '2015-05-28', null, '注册会员', '1.00', '1.00', '2012-10-25', '2016-10-25', '2016-10-25', '人保', null, null, null, null, null, '0');
 INSERT INTO `gongdan` VALUES ('dcb4d10e-4dc7-4c75-ad30-4199174dd2ff', null, 'JDD20150227006', '0006004', '2015-02-27', '2015-02-27', '周丽娟', '', null, null, '70bc1161-cd6f-419b-909b-5bad7cb763b0', '132e87c5-073a-4875-a260-ad9394a5ec86', null, '粤B47M75', '34464', 'LFMAP22C180045198', 'E130266', '丰田', null, 'TV7160GMD', '人保客户', '陈蓉', '13502832024', '陈蓉', '13502832024', '', '交车', null, null, '39464', '2015-05-27', null, '注册会员', '1.00', '1.00', '2008-03-17', '2015-03-17', '2015-03-17', '人保', null, null, null, null, null, '0');
 INSERT INTO `gongdan` VALUES ('e30e6e4f-14b9-49d9-81e9-700f30a29031', null, 'JDD20150228007', '0006001', '2015-02-27', '2015-02-27 11:54:36', '周丽娟', '', null, null, '90902d15-2d06-4a83-9132-a579ccc82b63', 'ddc179f2-b929-40d7-aa9c-9ce84df310b4', null, '粤B8TB56', '67667', 'LFV2A21K693001207', '255832', '大众', null, 'FV7166ATG', '人保客户', '郑国华', '13725566211', '郑国华', '13725566211', '', '交车', null, null, '72667', '2015-05-28', null, '注册会员', '1.00', '1.00', '2009-02-13', '2015-07-26', '2015-07-26', '人保', null, null, null, null, null, '0');
-INSERT INTO `gongdan` VALUES ('eb6bc524-7b20-4da5-b5d5-338e7033682a', null, 'JDD20150228016', '0005983', '2015-02-27', '2015-02-27 17:02:12', '周丽娟', '', null, null, '77a889d5-9bb4-4f49-ab0d-e1522d8d56b9', 'db1483b7-ef94-4ce5-b0e3-907e26650c5f', null, '粤B8A330', '12492', '', '', '大众', null, '', '人保客户', '袁林', '15622887238', '袁林', '15622887238', '', '费用结算', null, null, '17492', '2015-05-28', null, '注册会员', '1.00', '1.00', '', '2014-01-20', '', '', null, null, '现金支付', null, null, '0');
+INSERT INTO `gongdan` VALUES ('eb6bc524-7b20-4da5-b5d5-338e7033682a', null, 'JDD20150228016', '0005983', '2015-02-27', '2015-02-27 17:02:12', '周丽娟', '', null, null, '77a889d5-9bb4-4f49-ab0d-e1522d8d56b9', 'db1483b7-ef94-4ce5-b0e3-907e26650c5f', null, '粤B8A330', '12492', '', '', '大众', null, '', '人保客户', '袁林', '15622887238', '袁林', '15622887238', '', '交车', null, null, '17492', '2015-05-28', null, '注册会员', '1.00', '1.00', '', '2014-01-20', '', '', null, null, '现金支付', null, null, '0');
 INSERT INTO `gongdan` VALUES ('eb7a448d-264c-4b7b-ad64-3bd8bcbd956b', null, 'JDD20150228006', '0006002', '2015-02-27', '2015-02-27 00:00:00', '杨小院', '', null, null, '3960054a-ee2f-4c22-a953-c248c2862265', '64cbcd06-c1c3-4b98-9ae2-d4a8181f6dde', null, '粤BC332H', '293867', '', '', '现代', null, '', '人保客户', '黄先生', '13510250313', '黄先生', '13510250313', '', '交车', null, null, '298867', '2015-05-28', null, '注册会员', '1.00', '1.00', '', '', '', '人保', null, null, null, null, null, '0');
 
 -- ----------------------------

@@ -66,6 +66,13 @@ public class CustomerManagerAction extends BaseActionSupport implements
 		this.transmitJson(getCrudJsonResponse(rowsAffected, info));
 	}
 
+	@Action(value = "customerUniqueCheck")
+	public void customerUniqueCheck() {
+		item = customerInfoService.findCustomerInfoByCheZhuTel(item
+				.getTxtCheZhuTel());
+		this.transmitJson(JSONObject.fromObject(item).toString());
+	}
+
 	@Override
 	public CustomerInfo getModel() {
 		return item;

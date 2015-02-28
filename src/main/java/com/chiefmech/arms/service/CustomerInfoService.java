@@ -34,4 +34,6 @@ public interface CustomerInfoService {
 	public List<CheLiangInfo> queryCheLiangInfoByCustomerId(String txtCustId);
 
 	public String getCheLiangJsonData(CheLiangInfo item);
+
+	public CustomerInfo findCustomerInfoByCheZhuTel(String txtCheZhuTel);
 }

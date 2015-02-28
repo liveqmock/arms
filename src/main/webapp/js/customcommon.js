@@ -187,7 +187,13 @@ $(document).ready(function() {
 				return value == $(param[0]).val();
 			},
 			message : '字段不相同.'
-		}
+		},
+		customerMobilUnique : {
+			validator:function(value, param){
+				var serverResp=$.ajax({url:"customerUniqueCheck.action",dataType:"json",data:{"txtCheZhuTel":value},async:false,cache:false,type:"post"}).responseText;
+				return serverResp=="null";
+			},
+			message:"该手机号已经和车主绑定"}
 	});
 });
 
