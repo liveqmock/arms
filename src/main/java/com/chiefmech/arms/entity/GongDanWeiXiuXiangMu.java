@@ -1,5 +1,7 @@
 package com.chiefmech.arms.entity;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.chiefmech.arms.common.util.IDGen;
 
 public class GongDanWeiXiuXiangMu {
@@ -20,6 +22,8 @@ public class GongDanWeiXiuXiangMu {
 	private String txtWanJianRen;
 	private String txtWanJianShiJian;
 
+	private String disPlayFeiYong;
+
 	public GongDanWeiXiuXiangMu() {
 
 	}
@@ -33,6 +37,14 @@ public class GongDanWeiXiuXiangMu {
 		this.txtFeiYong = item.getTxtFeiYong();
 		this.txtWeiXiuNeiRong = item.getTxtNeiRong();
 		this.ddlZhangTao = "付费";
+	}
+
+	public String getDisPlayFeiYong() {
+		if (StringUtils.isEmpty(this.txtXiangMuName)) {
+			return "";
+		} else {
+			return String.format("%.2f", txtFeiYong);
+		}
 	}
 
 	public String getDdlSuoSuXiangMu() {

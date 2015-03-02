@@ -77,13 +77,13 @@ td {
 		</thead>
 	</table>
 	<div id="toolbar">
-			<a href="javascript:void(0)" class="easyui-linkbutton"
-				iconCls="icon-add" plain="true" onclick="addItem()">新增维修项目</a>
 		<s:if test="action=='pickXiangMu'">
 			<a href="javascript:void(0)" class="easyui-linkbutton"
 				data-options="iconCls:'icon-add',plain:true"
 				onClick="addCheckedXiangMu()">添加选中维修项目</a>
 		</s:if>
+        <a href="javascript:void(0)" class="easyui-linkbutton"
+            iconCls="icon-add" plain="true" onclick="addItem()">新增维修项目</a>
 	</div>
 	<div id="mydlg" class="easyui-dialog" closed="true"
 		style="width: 450px; height: 300px; padding: 10px 20px;">

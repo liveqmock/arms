@@ -35,5 +35,5 @@ public interface CustomerInfoService {
 
 	public String getCheLiangJsonData(CheLiangInfo item);
 
-	public CustomerInfo findCustomerInfoByCheZhuTel(String txtCheZhuTel);
+	public CustomerInfo[] findCustomerInfoByCheZhuTel(String txtCheZhuTel);
 }

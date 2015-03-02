@@ -109,7 +109,7 @@ public class GongDanServiceImpl implements GongDanService {
 	public int updateGongDanStatus(String txtGongDanId, String txtGongDanStatus) {
 		int rowAffected = gongDanDao.updateGongDanStatus(txtGongDanId,
 				txtGongDanStatus);
-		if (rowAffected == 1 && txtGongDanStatus.equals("出库")) {
+		if (rowAffected == 1 && txtGongDanStatus.equals("交车")) {
 			rowAffected = gongDanDao.updateChuChangDate(txtGongDanId,
 					DateUtil.getCurrentDate());
 		}
@@ -117,10 +117,21 @@ public class GongDanServiceImpl implements GongDanService {
 	}
 
 	@Override
-	public int updateGongDanZhiFuFangShi(String txtGongDanId,
-			String ddlZhiFuFangShi) {
+	public int revertGongDanStatus(String txtGongDanId) {
+		String statusChain = gongDanDao.getGongDanStatusChain(txtGongDanId);
+		String preStatusChain = statusChain.substring(0,
+				statusChain.lastIndexOf('|'));
+		String preStatus = preStatusChain.substring(preStatusChain
+				.lastIndexOf('|') + 1);
+
+		return gongDanDao.revertGongDanStatus(txtGongDanId, preStatus,
+				preStatusChain);
+	}
+
+	@Override
+	public int updateGongDanZhiFuFangShi(String txtGongDanId, GongDan gongDan) {
 		return gongDanDao.updateGongDanZhiFuFangShi(txtGongDanId,
-				ddlZhiFuFangShi);
+				gongDan.getDdlZhiFuFangShi(), gongDan.getTxtFinalPay());
 	}
 
 	@Override
@@ -153,6 +164,13 @@ public class GongDanServiceImpl implements GongDanService {
 	@Override
 	public int updateGongDanWeiXiuXiangMuWhenWanJian(GongDanWeiXiuXiangMu item) {
 		return gongDanDao.updateGongDanWeiXiuXiangMuWhenWanJian(item);
+	}
+
+	@Override
+	public int wanJianAllGongDanWeiXiuXiangMu(String txtGongDanId,
+			String txtWanJianRen, String txtWanJianShiJian) {
+		return gongDanDao.wanJianAllGongDanWeiXiuXiangMu(txtGongDanId,
+				txtWanJianRen, txtWanJianShiJian);
 	}
 
 	@Override

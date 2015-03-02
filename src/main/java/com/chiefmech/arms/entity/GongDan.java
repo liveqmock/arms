@@ -80,11 +80,12 @@ public class GongDan {
 	private String txtCheLiangBaoXianDaoQiRi;
 	private String ddlChengBaoGongSi;
 
-	private String ddlZhiFuFangShi;	
+	private String ddlZhiFuFangShi;
 
 	private String ddlReviewStatus;
 	private String txtReviewRemark;
 	private String txtDeleteFlag;
+	private float txtFinalPay;
 
 	public GongDan(VKeHuCheLiang customerInfo) {
 		this.setTxtCustId(customerInfo.getTxtCustId());
@@ -177,6 +178,14 @@ public class GongDan {
 
 	public String getTxtBillNo() {
 		return txtBillNo;
+	}
+
+	public float getTxtFinalPay() {
+		return txtFinalPay;
+	}
+
+	public void setTxtFinalPay(float txtFinalPay) {
+		this.txtFinalPay = txtFinalPay;
 	}
 
 	public void setTxtBillNo(String txtBillNo) {
@@ -448,8 +457,8 @@ public class GongDan {
 	}
 
 	public String getDdlReviewStatus() {
-		if(StringUtils.isEmpty(ddlReviewStatus)){
-			ddlReviewStatus="未回访";
+		if (StringUtils.isEmpty(ddlReviewStatus)) {
+			ddlReviewStatus = "未回访";
 		}
 		return ddlReviewStatus;
 	}

@@ -87,6 +87,10 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 		initGongDan();
 		if ("gongDanWeiXiuJieSuan".equals(this.getActionName())) {
 			jieSuanInfo = gongDanService.getGongDanJieSuanXinXi(gongDan);
+			if (gongDan.getTxtFinalPay() == -1) {
+				gongDan.setTxtFinalPay(Float.parseFloat(jieSuanInfo
+						.getHeJiDiscount()));
+			}
 		}
 		return INPUT;
 	}
@@ -98,6 +102,7 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 		initGongDan();
 		if ("gongDanWeiXiuJieSuan".equals(this.getActionName())) {
 			jieSuanInfo = gongDanService.getGongDanJieSuanXinXi(gongDan);
+
 		}
 		return INPUT;
 	}
@@ -255,6 +260,16 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 		this.transmitJson(jsonStr);
 	}
 
+	@Action(value = "wanJianAllGongDanWeiXiuXiangMu")
+	public void wanJianAllGongDanWeiXiuXiangMu() {
+		int rowAffected = gongDanService.wanJianAllGongDanWeiXiuXiangMu(
+				saleAfterWeiXiuGuid, this.getUser().getDisplayName(),
+				DateUtil.getCurrentDateTime());
+		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
+
+		this.transmitJson(jsonStr);
+	}
+
 	@Action(value = "updateGongDanStatus")
 	public void updateGongDanStatus() {
 		int rowAffected = gongDanService.updateGongDanStatus(
@@ -264,10 +279,19 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 		this.transmitJson(jsonStr);
 	}
 
-	@Action(value = "updateGongDanZhiFuFangShi")
-	public void updateGongDanZhiFuFangShi() {
+	@Action(value = "revertGongDanStatus")
+	public void revertGongDanStatus() {
+		int rowAffected = gongDanService
+				.revertGongDanStatus(saleAfterWeiXiuGuid);
+		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
+
+		this.transmitJson(jsonStr);
+	}
+
+	@Action(value = "updateGongDanZhiFuXinXi")
+	public void updateGongDanZhiFuXinXi() {
 		int rowAffected = gongDanService.updateGongDanZhiFuFangShi(
-				saleAfterWeiXiuGuid, gongDan.getDdlZhiFuFangShi());
+				saleAfterWeiXiuGuid, gongDan);
 		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
 
 		this.transmitJson(jsonStr);

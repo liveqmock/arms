@@ -28,7 +28,7 @@ public interface CustomerInfoDao {
 	public CustomerInfo findCustomerInfoById(String txtCustId);
 
 	@Select("select * from customerinfo where txtCheZhuTel=#{txtCheZhuTel}")
-	public CustomerInfo findCustomerInfoByCheZhuTel(String txtCheZhuTel);
+	public CustomerInfo[] findCustomerInfoByCheZhuTel(String txtCheZhuTel);
 
 	@SelectProvider(type = CheZhuLianXiRenDaoSqlProvider.class, method = "queryVKeHuCheLiang")
 	public List<VKeHuCheLiang> queryVKeHuCheLiang(

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.lang3.StringUtils;
@@ -26,8 +27,9 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/customManage")
 @Controller()
 @Scope("prototype")
-public class CustomerManagerAction extends BaseActionSupport implements
-		ModelDriven<CustomerInfo> {
+public class CustomerManagerAction extends BaseActionSupport
+		implements
+			ModelDriven<CustomerInfo> {
 
 	@Resource()
 	private CustomerInfoService customerInfoService;
@@ -36,7 +38,7 @@ public class CustomerManagerAction extends BaseActionSupport implements
 	private List<CheLiangInfo> cheLiangInfoLst;
 	private String customerId;
 
-	@Action(value = "customerInfo", results = { @Result(name = "input", location = "customerInfo.jsp") })
+	@Action(value = "customerInfo", results = {@Result(name = "input", location = "customerInfo.jsp")})
 	public String customerInfo() {
 		if (StringUtils.isNotBlank(customerId)) {
 			item = customerInfoService.findCustomerInfoById(customerId);
@@ -68,9 +70,9 @@ public class CustomerManagerAction extends BaseActionSupport implements
 
 	@Action(value = "customerUniqueCheck")
 	public void customerUniqueCheck() {
-		item = customerInfoService.findCustomerInfoByCheZhuTel(item
-				.getTxtCheZhuTel());
-		this.transmitJson(JSONObject.fromObject(item).toString());
+		CustomerInfo[] itemAry = customerInfoService
+				.findCustomerInfoByCheZhuTel(item.getTxtCheZhuTel());
+		this.transmitJson(JSONArray.fromObject(itemAry).toString());
 	}
 
 	@Override

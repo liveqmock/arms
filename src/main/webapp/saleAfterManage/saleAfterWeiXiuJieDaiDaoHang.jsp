@@ -166,8 +166,9 @@ td {
 					<td>服务顾问</td>
 					<td>联系人</td>
 					<td>联系人手机</td>
-					<td>单据状态</td>
-					<td>接车日期</td>
+                    <td>入厂时间</td>
+                    <td>交车时间</td>
+                    <td>单据状态</td>
 				</tr>
 				<s:iterator value="gongDanLst">
 					<tr onclick=saleAfterLiShiShow('<s:property value="txtGongDanId" />','<s:property value="txtGongDanStatus" />')>
@@ -175,9 +176,10 @@ td {
 						<td><s:property value="txtChePaiHao" /></td>
 						<td><s:property value="txtFuWuGuWen" /></td>
 						<td><s:property value="txtLianXiRenName" /></td>
-						<td><s:property value="txtLianXiRenMob" /></td>
-						<td><s:property value="txtGongDanStatus" /></td>
-						<td><s:property value="txtChuChangDate" /></td>
+                        <td><s:property value="txtLianXiRenTel" /></td>
+                        <td><s:property value="txtRuChangDate" /></td>
+                        <td><s:property value="txtChuChangDate" /></td>
+                        <td><s:property value="txtGongDanStatus" /></td>
 					</tr>
 				</s:iterator>
 

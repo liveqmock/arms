@@ -187,13 +187,7 @@ $(document).ready(function() {
 				return value == $(param[0]).val();
 			},
 			message : '字段不相同.'
-		},
-		customerMobilUnique : {
-			validator:function(value, param){
-				var serverResp=$.ajax({url:"customerUniqueCheck.action",dataType:"json",data:{"txtCheZhuTel":value},async:false,cache:false,type:"post"}).responseText;
-				return serverResp=="null";
-			},
-			message:"该手机号已经和车主绑定"}
+		}
 	});
 });
 
@@ -229,6 +223,22 @@ function updateGongDanStatus(saleAfterWeiXiuGuid, newGongDanStatus){
 		}
 	});
 }
+ 
+function revertGongDanStatus(saleAfterWeiXiuGuid){
+	$.messager.confirm('提示', '确认要回滚工单状态吗?', function(r) {
+		if (r) {
+			$.post('revertGongDanStatus.action', {
+				"saleAfterWeiXiuGuid" : saleAfterWeiXiuGuid
+			}, function(result) {
+				if (result.errorMsg) {
+					$.messager.alert('出错啦', result.errorMsg);
+				} else {
+					refreshGongDan(saleAfterWeiXiuGuid);
+				}
+			}, 'json');
+		}
+	});
+}
 
 function updateWanJianStatus(target, status) {
 	$.messager.confirm('提示', '确定要' + status + '吗?', function(r) {
@@ -243,6 +253,24 @@ function updateWanJianStatus(target, status) {
 					if (result.errorMsg) {
 						$.messager.alert('出错啦',result.errorMsg);
 						myTable.datagrid('cancelEdit',rowIndex);
+					} else {
+						myTable.datagrid('reload');
+					}
+				}, 'json');
+		}
+	});
+}
+
+function confirmAllWanJian(saleAfterWeiXiuGuid) {
+	$.messager.confirm('提示', '确定要完检全部项目吗?', function(r) {
+		if (r) {
+			$.post("wanJianAllGongDanWeiXiuXiangMu.action",
+				{
+					"saleAfterWeiXiuGuid" : saleAfterWeiXiuGuid
+				},
+				function(result) {
+					if (result.errorMsg) {
+						$.messager.alert('出错啦',result.errorMsg);
 					} else {
 						myTable.datagrid('reload');
 					}

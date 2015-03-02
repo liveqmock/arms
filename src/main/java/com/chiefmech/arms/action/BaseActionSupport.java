@@ -104,7 +104,7 @@ public class BaseActionSupport extends ActionSupport
 	protected String getCrudJsonResponse(int rowAffected, String info) {
 		String jsonStr = String.format("{\"status\":\"ok\", \"info\":\"%s\"}",
 				info);
-		if (rowAffected != 1) {
+		if (rowAffected < 1) {
 			jsonStr = String.format("{\"errorMsg\":\"%s数据失败\"}", info);
 		}
 
