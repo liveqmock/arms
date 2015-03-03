@@ -56,6 +56,7 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 	private VKeHuCheLiang customer;
 	private List<GongDan> gongDanLst;
 	private List<GongDanWeiXiuXiangMu> gongDanXiangMuLst;
+	private List<GongDanCheLiangJianCe> gongDanCheLiangJianCeLst;
 	private List<GongDanWeiXiuWuLiao> gongDanWuLiaoLst;
 	private GongDan gongDan = new GongDan();
 	private GongDanJieSuan jieSuanInfo;
@@ -126,12 +127,22 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 		return INPUT;
 	}
 
-	@Action(value = "weiXiuLiShiDetail", results = {@Result(name = "input", location = "saleAfter_weiXiuLiShiDetailShowBySaleAfterGuid.jsp")})
+	@Action(value = "weiXiuLiShiDetail", results = { @Result(name = "input", location = "saleAfter_GongDanPrint.jsp") })
 	public String weiXiuLiShiDetail() {
+		gongDanCheLiangJianCeLst = gongDanService
+				.getGongDanCheLiangJianCeListByGongDanId(saleAfterWeiXiuGuid);
 		gongDan = gongDanService.findGongDanByWeiXiuGuid(saleAfterWeiXiuGuid);
 		jieSuanInfo = gongDanService.getGongDanJieSuanXinXi(gongDan);
 		gongDanXiangMuLst = gongDanService
 				.findGongDanXiangMuLstByWeiXiuGuid(saleAfterWeiXiuGuid);
+		GongDanWeiXiuXiangMu emptyXiangMu = new GongDanWeiXiuXiangMu();
+		int xiangMuListSize = gongDanXiangMuLst.size();
+		if (xiangMuListSize < 16) {
+			for (int i = 0; i < 16 - xiangMuListSize; i++) {
+				gongDanXiangMuLst.add(emptyXiangMu);
+			}
+		}
+
 		gongDanWuLiaoLst = gongDanService
 				.findGongDanWuLiaoLstByWeiXiuGuid(saleAfterWeiXiuGuid);
 		return INPUT;
@@ -443,6 +454,10 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 
 	public String getGongDanJsonData() {
 		return JSONObject.fromObject(gongDan).toString();
+	}
+
+	public List<GongDanCheLiangJianCe> getGongDanCheLiangJianCeLst() {
+		return gongDanCheLiangJianCeLst;
 	}
 
 }

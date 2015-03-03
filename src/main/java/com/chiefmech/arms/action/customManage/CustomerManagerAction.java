@@ -55,24 +55,44 @@ public class CustomerManagerAction extends BaseActionSupport
 
 	@Action(value = "saveCustomerInfo")
 	public void saveCustomerInfo() {
-		int rowsAffected;
-		String info;
+		int rowsAffected = -1;
+		String info = "";
+		String msg = "保存数据失败";
 		if (StringUtils.isBlank(item.getTxtCustId())) {
-			item.setTxtCustId(IDGen.getUUID());
-			rowsAffected = customerInfoService.insertCustomerInfo(item);
-			info = item.getTxtCustId();
+			List<CustomerInfo> itemAry = customerInfoService
+					.findCustomerInfoByCheZhuTel(item.getTxtCheZhuTel());
+			if (itemAry.size() == 0) {
+				item.setTxtCustId(IDGen.getUUID());
+				rowsAffected = customerInfoService.insertCustomerInfo(item);
+				info = item.getTxtCustId();
+			} else {
+				msg = "车主电话已经存在，不能重复录入";
+			}
+
 		} else {
 			rowsAffected = customerInfoService.updateCustomerInfo(item);
 			info = "update";
 		}
-		this.transmitJson(getCrudJsonResponse(rowsAffected, info));
+		this.transmitJson(getCrudJsonResponse(rowsAffected, info, msg));
 	}
 
-	@Action(value = "customerUniqueCheck")
-	public void customerUniqueCheck() {
-		CustomerInfo[] itemAry = customerInfoService
-				.findCustomerInfoByCheZhuTel(item.getTxtCheZhuTel());
-		this.transmitJson(JSONArray.fromObject(itemAry).toString());
+	@Action(value = "deleteCustInfo")
+	public void deleteCustInfo() {
+		int rowsAffected = customerInfoService.deleteCustInfo(customerId);
+		String info = "";
+		String msg = "删除数据失败";
+		this.transmitJson(getCrudJsonResponse(rowsAffected, info, msg));
+	}
+
+	protected String getCrudJsonResponse(int rowAffected, String info,
+			String msg) {
+		String jsonStr = String.format("{\"status\":\"ok\", \"info\":\"%s\"}",
+				info);
+		if (rowAffected < 1) {
+			jsonStr = String.format("{\"errorMsg\":\"%s\"}", msg);
+		}
+
+		return jsonStr;
 	}
 
 	@Override

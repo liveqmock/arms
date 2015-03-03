@@ -37,7 +37,7 @@ public class CustomerInfoServiceImpl implements CustomerInfoService {
 	}
 
 	@Override
-	public CustomerInfo[] findCustomerInfoByCheZhuTel(String txtCheZhuTel) {
+	public List<CustomerInfo> findCustomerInfoByCheZhuTel(String txtCheZhuTel) {
 		return customerInfo.findCustomerInfoByCheZhuTel(txtCheZhuTel);
 	}
 
@@ -97,6 +97,11 @@ public class CustomerInfoServiceImpl implements CustomerInfoService {
 	public String getCheLiangJsonData(CheLiangInfo item) {
 		return JSONObject.fromObject(customerInfo.getCheLiangInfo(item))
 				.toString();
+	}
+
+	@Override
+	public int deleteCustInfo(String txtCustId) {
+		return customerInfo.deleteCustInfo(txtCustId);
 	}
 
 }

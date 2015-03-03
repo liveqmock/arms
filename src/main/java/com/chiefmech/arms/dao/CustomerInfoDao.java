@@ -28,7 +28,7 @@ public interface CustomerInfoDao {
 	public CustomerInfo findCustomerInfoById(String txtCustId);
 
 	@Select("select * from customerinfo where txtCheZhuTel=#{txtCheZhuTel}")
-	public CustomerInfo[] findCustomerInfoByCheZhuTel(String txtCheZhuTel);
+	public List<CustomerInfo> findCustomerInfoByCheZhuTel(String txtCheZhuTel);
 
 	@SelectProvider(type = CheZhuLianXiRenDaoSqlProvider.class, method = "queryVKeHuCheLiang")
 	public List<VKeHuCheLiang> queryVKeHuCheLiang(
@@ -65,4 +65,7 @@ public interface CustomerInfoDao {
 
 	@Select("select * from chelianginfo where txtCheLiangId=#{txtCheLiangId}")
 	public CheLiangInfo getCheLiangInfo(CheLiangInfo item);
+
+	@Delete("delete from customerinfo where txtCustId=#{txtCustId}")
+	public int deleteCustInfo(String txtCustId);
 }

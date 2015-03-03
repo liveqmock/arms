@@ -91,6 +91,9 @@ public interface GongDanService {
 
 	public int revertGongDanStatus(String saleAfterWeiXiuGuid);
 
-	public int wanJianAllGongDanWeiXiuXiangMu(String txtGongDanId,
+	public List<GongDanCheLiangJianCe> getGongDanCheLiangJianCeListByGongDanId(
+			String txtGongDanId);
+
+	int wanJianAllGongDanWeiXiuXiangMu(String txtGongDanId,
 			String txtWanJianRen, String txtWanJianShiJian);
 }

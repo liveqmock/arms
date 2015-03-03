@@ -223,6 +223,7 @@ td {
 			<a class="easyui-linkbutton" href="javascript:saveCustInfo()">保存客户信息</a>
 			<s:if test="customerId!=''">
 			<a class="easyui-linkbutton" href="javascript:addItem()">新增车辆信息</a>
+			<a class="easyui-linkbutton" href="javascript:deleteCustInfo('<s:property value='customerId' />')">删除客户信息</a>
 			<a class="easyui-linkbutton" href="javascript:addCarModel()">品牌车型管理</a></s:if>
             <a class="easyui-linkbutton" href="javascript:winClose()">关闭窗口</a>
 		</div>
@@ -235,41 +236,39 @@ td {
 		});	
 	
 		function saveCustInfo() {
-			var txtCheZhuTel = $("txtCheZhuTel").numberbox("getValue");
-			
-			$.post('customerUniqueCheck.action', {
-				"txtCheZhuTel" : txtCheZhuTel
-			}, function(result) {
-				var result = eval('(' + result + ')');
-				var isCheZhuTelUnique = true;
-				<s:if test="customerId==''">
-				
-				</s:if>
-				<s:else>
-					
-				</s:else>							
-				if(isCheZhuTelUnique){
-					$("#form1").form('submit', {
-						url : "saveCustomerInfo.action",
-						success : function(result) {
-							var result = eval('(' + result + ')');
-							if (result.errorMsg) {
-								$.messager.alert('提示', result.errorMsg);
-							} else {
-								$.messager.alert('提示','保存信息成功！','info',function(){
-									if(result.info=='update'){
-										reloadCurentPage(); // reload data	
-									}else{		
-										location.href ='../customManage/customerInfo.action?customerId=' + result.info + '&d=' + new Date();				
-									}
-								});
+			$("#form1").form('submit', {
+				url : "saveCustomerInfo.action",
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.errorMsg) {
+						$.messager.alert('提示', result.errorMsg);
+					} else {
+						$.messager.alert('提示','保存信息成功！','info',function(){
+							if(result.info=='update'){
+								reloadCurentPage(); // reload data	
+							}else{		
+								location.href ='../customManage/customerInfo.action?customerId=' + result.info + '&d=' + new Date();				
 							}
-						}
-					});
-				}else{
-					$.messager.alert('提示', "该手机号已经和车主绑定");
+						});
+					}
 				}
-			}, 'json');
+			});
+		}
+		
+		function deleteCustInfo(customerId){
+			$.messager.confirm('确认', '确定要删除客户及车辆信息吗?', function(r) {
+				if (r) {
+					$.post('deleteCustInfo.action', {
+						"customerId" : customerId
+					}, function(result) {
+						if (result.errorMsg) {
+							$.messager.alert('出错啦', result.errorMsg);
+						} else {
+							winClose();
+						}
+					}, 'json');
+				}
+			});			
 		}
 
 		var url;
