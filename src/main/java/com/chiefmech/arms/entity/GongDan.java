@@ -136,6 +136,10 @@ public class GongDan {
 	public GongDan() {
 	}
 
+	public String getDisplayFinalPay() {
+		return String.format("%.2f", txtFinalPay);
+	}
+
 	public String getTxtGongDanId() {
 		return txtGongDanId;
 	}

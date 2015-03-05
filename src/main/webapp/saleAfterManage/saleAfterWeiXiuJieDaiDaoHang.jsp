@@ -210,7 +210,7 @@ td {
         }    
 		
 		function saleAfterLiShiDetail(saleAfterGuid) {
-            var z = window.open('weiXiuLiShiDetail.action?saleAfterWeiXiuGuid=' + saleAfterGuid + '&d=' + new Date(), '_blank', 'height=900, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
+            var z = window.open('weiXiuLiShiDetail.action?saleAfterWeiXiuGuid=' + saleAfterGuid + '&d=' + new Date(), '_blank', 'height=900, width=720, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
             z.focus();
 			
             window.opener = null;

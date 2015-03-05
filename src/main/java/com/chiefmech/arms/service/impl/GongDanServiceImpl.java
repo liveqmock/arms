@@ -355,10 +355,4 @@ public class GongDanServiceImpl implements GongDanService {
 	public int deleteGongDan(String txtGongDanId) {
 		return gongDanDao.deleteGongDan(txtGongDanId);
 	}
-
-	@Override
-	public List<GongDanCheLiangJianCe> getGongDanCheLiangJianCeListByGongDanId(
-			String txtGongDanId) {
-		return gongDanDao.getGongDanCheLiangJianCeListByGongDanId(txtGongDanId);
-	}
 }

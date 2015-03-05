@@ -37,10 +37,7 @@ td {
 			<!--按钮区域 sart-->
 			<tr>
 				<td align="right">
-						<s:if test="gongDanStatus!='维修接待'"><a
-							onClick="revertGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />');return false;"
-							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
-                        </s:if><s:if
+						<s:if
 						test="gongDanStatus=='维修接待' && actionName=='gongDanWeiXiuJieDai'">
 						<a onClick="saveGongDan();return false;" class="easyui-linkbutton"
 							href="javascript:void(0)">保存接待信息</a>
@@ -58,6 +55,9 @@ td {
 					</s:if> <s:if
 						test="gongDanStatus=='车辆检测' && actionName=='gongDanCheLiangJianCe'">
 						<a
+							onClick="revertGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />');return false;"
+							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
+                        <a
 							onClick="setAllJianCheNormal();return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">检测全部正常</a>
 						<a
@@ -69,11 +69,17 @@ td {
 					</s:if> <s:if
 						test="gongDanStatus=='物料登记' && actionName=='gongDanWuLiaoDengJi'">
 						<a
+							onClick="revertGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />');return false;"
+							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
+                        <a
 							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','维修派工');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">维修派工</a>
 					</s:if> <s:if
 						test="gongDanStatus=='维修派工' && actionName=='gongDanWeiXiuPaiGong'">
 						<a
+							onClick="revertGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />');return false;"
+							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
+                        <a
 							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','领取物料');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">领取物料</a>
                         <a
@@ -82,11 +88,17 @@ td {
 					</s:if> <s:elseif
 						test="gongDanStatus=='领取物料' && actionName=='gongDanLingQuWuLiao'">
 						<a
+							onClick="revertGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />');return false;"
+							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
+                        <a
 							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','维修完检');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">维修完检</a>
 					</s:elseif> <s:elseif
 						test="gongDanStatus=='维修完检' && actionName=='gongDanWeiXiuWanJian'">
 						<a
+							onClick="revertGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />');return false;"
+							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
+                        <a
 							onClick="confirmAllWanJian('<s:property value='saleAfterWeiXiuGuid' />');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">全部完检</a>
 						<a
@@ -94,7 +106,10 @@ td {
 							class="easyui-linkbutton" href="javascript:void(0)">费用结算</a>
 					</s:elseif> <s:elseif
 						test="gongDanStatus=='费用结算' && actionName=='gongDanWeiXiuJieSuan'">
-						<a onClick="saveZhiFuXinXi();return false;" class="easyui-linkbutton"
+						<a
+							onClick="revertGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />');return false;"
+							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
+                        <a onClick="saveZhiFuXinXi();return false;" class="easyui-linkbutton"
 							href="javascript:void(0)">保存支付信息</a>
 						<s:if test="gongDan.ddlZhiFuFangShi != null"><a
 							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','交车');return false;"
@@ -258,7 +273,9 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 						<th field="txtXiangMuName" width="150">项目名称</th>
 						<s:if
 							test="actionName not in {'gongDanWeiXiuWanJian', 'gongDanWeiXiuJieSuan'}">
-							<th field="txtWeiXiuNeiRong" width="150">项目内容</th>
+							<th field="txtWeiXiuNeiRong" width="150"
+								<s:if test="actionName in {'gongDanWeiXiuJieDai', 'gongDanCheLiangJianCe'}">
+						data-options="align:'right',editor:{type:'textbox'}"</s:if>>项目内容</th>
 						</s:if>
 						<th field="txtFeiYong" width="80"
 							<s:if test="actionName in {'gongDanWeiXiuJieDai', 'gongDanCheLiangJianCe'}">

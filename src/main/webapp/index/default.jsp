@@ -126,6 +126,24 @@
 										target : "_blank"
 									},
 									{
+										name : "报表管理",
+										font : {
+											'font-style' : '微软雅黑'
+										},
+										children : [
+												{
+													name : "人保车险清单",
+													font : {
+														'font-style' : '微软雅黑'
+													},
+													url : "",
+													target : "_blank",
+													click : "mdfMenu('6123e08f-9fff-4492-885f-a20712348812','人保车险清单','../report/renBaoWeeklyReport.action');"
+												} ],
+										url : "",
+										target : "_blank"
+									},
+									{
 										name : "基础设置",
 										font : {
 											'font-style' : '微软雅黑'

@@ -50,7 +50,7 @@ public interface GongDanDao {
 	@Insert("insert into gongdanxiangmu(txtWeiXiuXiangMuId,txtGongDanGuid,txtXiangMuCode,txtXiangMuName,txtFeiYong,txtGongDuanName,txtWeiXiuNeiRong,ddlZhangTao) values(#{txtWeiXiuXiangMuId},#{txtGongDanGuid},#{txtXiangMuCode},#{txtXiangMuName},#{txtFeiYong},#{txtGongDuanName},#{txtWeiXiuNeiRong},#{ddlZhangTao})")
 	public int insertGongDanWeiXiuXiangMu(GongDanWeiXiuXiangMu item);
 
-	@Update("update gongdanxiangmu set txtGongDuanName=#{txtGongDuanName},txtFeiYong=#{txtFeiYong},ddlZhangTao=#{ddlZhangTao},ddlSuoSuXiangMu=#{ddlSuoSuXiangMu},txtRemark=#{txtRemark} where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
+	@Update("update gongdanxiangmu set txtGongDuanName=#{txtGongDuanName},txtWeiXiuNeiRong=#{txtWeiXiuNeiRong},txtFeiYong=#{txtFeiYong},ddlZhangTao=#{ddlZhangTao},ddlSuoSuXiangMu=#{ddlSuoSuXiangMu},txtRemark=#{txtRemark} where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")
 	public int updateGongDanWeiXiuXiangMuWhenAddXiangMu(
 			GongDanWeiXiuXiangMu item);
 

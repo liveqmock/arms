@@ -121,28 +121,18 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 		}
 	}
 
-	@Actions({@Action(value = "cheLiangWeiXiuLiShi", results = {@Result(name = "input", location = "saleAfter_weiXiuLiShiList.jsp")})})
+	@Actions({ @Action(value = "cheLiangWeiXiuLiShi", results = { @Result(name = "input", location = "saleAfter_weiXiuLiShiList.jsp") }) })
 	public String cheLiangWeiXiuLiShi() {
 		gongDanLst = gongDanService.getGongDanListByCheLiangId(cheLiangId);
 		return INPUT;
 	}
 
-	@Action(value = "weiXiuLiShiDetail", results = { @Result(name = "input", location = "saleAfter_GongDanPrint.jsp") })
+	@Action(value = "weiXiuLiShiDetail", results = { @Result(name = "input", location = "saleAfter_WeiXiuJieSuanPrint.jsp") })
 	public String weiXiuLiShiDetail() {
-		gongDanCheLiangJianCeLst = gongDanService
-				.getGongDanCheLiangJianCeListByGongDanId(saleAfterWeiXiuGuid);
 		gongDan = gongDanService.findGongDanByWeiXiuGuid(saleAfterWeiXiuGuid);
 		jieSuanInfo = gongDanService.getGongDanJieSuanXinXi(gongDan);
 		gongDanXiangMuLst = gongDanService
 				.findGongDanXiangMuLstByWeiXiuGuid(saleAfterWeiXiuGuid);
-		GongDanWeiXiuXiangMu emptyXiangMu = new GongDanWeiXiuXiangMu();
-		int xiangMuListSize = gongDanXiangMuLst.size();
-		if (xiangMuListSize < 16) {
-			for (int i = 0; i < 16 - xiangMuListSize; i++) {
-				gongDanXiangMuLst.add(emptyXiangMu);
-			}
-		}
-
 		gongDanWuLiaoLst = gongDanService
 				.findGongDanWuLiaoLstByWeiXiuGuid(saleAfterWeiXiuGuid);
 		return INPUT;

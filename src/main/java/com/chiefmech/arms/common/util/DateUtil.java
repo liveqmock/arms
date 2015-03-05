@@ -29,4 +29,9 @@ public class DateUtil {
 				.getTime(), FORMAT_DATE);
 	}
 
+	public static String getDateSinceToday(int delt) {
+		return DateFormatUtils.format(DateUtils.addDays(new Date(), delt)
+				.getTime(), FORMAT_DATE);
+	}
+
 }

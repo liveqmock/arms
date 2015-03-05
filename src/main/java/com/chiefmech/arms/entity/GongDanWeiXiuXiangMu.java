@@ -21,6 +21,7 @@ public class GongDanWeiXiuXiangMu {
 	private String txtWanJianStatus;
 	private String txtWanJianRen;
 	private String txtWanJianShiJian;
+	private String txtRemarkOmitted;
 
 	private String disPlayFeiYong;
 
@@ -165,6 +166,18 @@ public class GongDanWeiXiuXiangMu {
 
 	public void setTxtWanJianShiJian(String txtWanJianShiJian) {
 		this.txtWanJianShiJian = txtWanJianShiJian;
+	}
+
+	public String getTxtRemarkOmitted() {
+		String remark = "";
+		int LEN = 13;
+		if (txtRemark != null && txtRemark.length() > LEN) {
+			remark = txtRemark.substring(0, LEN) + "...";
+		}else{
+			remark=txtRemark;
+		}
+
+		return remark;
 	}
 
 }
