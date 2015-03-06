@@ -14,13 +14,14 @@
 <script src="../js/frame/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
 <script src="../js/common.js" type="text/javascript"></script>
+<script src="../js/customcommon.js" type="text/javascript"></script>
 <link href="../style/common.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
 </head>
 <body>
-	<form name="form1" method="post" id="form1">
+	<form name="form1" method="post" id="form1" class="searchform">
 		<div class="title">
 			<table border="0" style="width: 100%;">
 				<tr>
@@ -42,10 +43,10 @@
 							<option value="txtCheZhuName">按车主名</option>
 
 					</select></td>
-					<td style="padding-left: 5px"><input name="queryValue"
+					<td style="padding-left: 5px"><input class="easyui-textbox" name="queryValue"
 						type="text" maxlength="20" id="queryValue" style="width: 150px;" />&nbsp;&nbsp;
 					</td>
-					<td><a onclick="queryCustInfo();return false;"
+					<td><a onclick="doSearch();return false;"
 						class="easyui-linkbutton" href="javascript:void(0)">查询</a> <a
 						onclick="showCustomerInfo();return false;"
 						class="easyui-linkbutton" href="javascript:void(0)">查看修改客户信息</a> <a
@@ -91,16 +92,9 @@
 
 		$(function() {
 			$("#queryValue").focus();
-			$("#queryValue").select();
-
-			$(document).keydown(function(event) {
-				if (event.keyCode == 13) {
-					queryCustInfo();
-				}
-			});
 		});
 
-		function queryCustInfo() {
+		function doSearch() {
 			$("#form1").form('submit', {
 				url : "customerSearch.action",
 				success : function(jsonStr) {

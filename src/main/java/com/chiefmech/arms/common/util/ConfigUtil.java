@@ -88,7 +88,8 @@ public class ConfigUtil {
 				systemInfo.setDb_password(rs.getString("db_password"));
 				systemInfo.setShopName(rs.getString("shopName"));
 				systemInfo.setExpirydate(rs.getString("expirydate"));
-
+				systemInfo.setShopAdd(rs.getString("shopAdd"));
+				systemInfo.setShopTel(rs.getString("shopTel"));
 				logger.info("succed to update systemInfo[new]:" + systemInfo);
 			}
 		} catch (ClassNotFoundException e) {

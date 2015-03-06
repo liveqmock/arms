@@ -70,6 +70,8 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 				return INPUT;
 			} else {
 				userInfo.setShopName(systemInfo.getShopName());
+				userInfo.setShopAdd(systemInfo.getShopAdd());
+				userInfo.setShopTel(systemInfo.getShopTel());
 				servletRequest.getSession().setAttribute(
 						Constants.KEY_USER_SESSION, userInfo);
 				return SUCCESS;

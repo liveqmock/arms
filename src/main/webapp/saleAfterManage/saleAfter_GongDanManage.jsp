@@ -44,7 +44,7 @@
 	</div>
 	<div id="searchPanel" style="display: block;">
 		<form name="fmSearch" method="post"
-			action="saleAfterGongDanManage.action" id="fmSearch">
+			action="saleAfterGongDanManage.action" id="fmSearch" class="searchform">
 			<table border='0' id="searchTb">
 				<tr>
 					<td nowrap>入厂时间:</td>

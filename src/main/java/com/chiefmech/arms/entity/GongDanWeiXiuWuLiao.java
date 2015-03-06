@@ -1,5 +1,7 @@
 package com.chiefmech.arms.entity;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.entity.view.VCaiGouWuLiao;
 
@@ -56,6 +58,22 @@ public class GongDanWeiXiuWuLiao {
 
 	public void setTxtWuLiaoGuid(String txtWuLiaoGuid) {
 		this.txtWuLiaoGuid = txtWuLiaoGuid;
+	}
+
+	public String getDisPlayPrice() {
+		if (StringUtils.isEmpty(this.txtWuLiaoName)) {
+			return "";
+		} else {
+			return String.format("%.2f", txtPrice);
+		}
+	}
+
+	public String getDisPlayQty() {
+		if (StringUtils.isEmpty(this.txtWuLiaoName)) {
+			return "";
+		} else {
+			return String.format("%.2f", txtQty);
+		}
 	}
 
 	public String getDdlSuoSuXiangMu() {

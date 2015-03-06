@@ -34,7 +34,7 @@ td {
 	</table>
 	<div id="searchPanel" style="display: block;">
 		<form name="fmSearch" method="post"
-			action="queryRenBaoWeeklyReport.action" id="fmSearch">
+			action="queryRenBaoWeeklyReport.action" id="fmSearch" class="searchform">
 			<table border='0' id="searchTb">
 				<tr>
 					<td nowrap>消费时间:</td>
@@ -42,12 +42,15 @@ td {
 						id="txtRuChangDateBegin" class="easyui-datebox" style="width: 100px;" /></td>
 					<td><input name="txtRuChangDateEnd" type="text"
 						id="txtRuChangDateEnd" class="easyui-datebox" style="width: 100px;" /></td>
+					<td>车牌号:</td>
+					<td><input name="txtChePaiHao" type="text"
+						class="easyui-textbox" maxlength="10" id="txtChePaiHao"
+						style="width: 100px;" /></td>
 					<td>&nbsp;</td>
 					<td nowrap><a id="lnkSearch" class="easyui-linkbutton"
 						href="javascript:doSearch()">查询</a>&nbsp;&nbsp;&nbsp;<a
 					id="lnkSearch" class="easyui-linkbutton"
 					href="javascript:exportExcel()">导出到Excel表格</a></td>
-
 				</tr>
 			</table>
 		</form>
@@ -78,7 +81,7 @@ td {
 		$(function() {
 			var queryJson = eval('('
 					+ '{"txtRuChangDateBegin":"<s:property value="txtRuChangDateBegin"/>", "txtRuChangDateEnd":"<s:property value="txtRuChangDateEnd"/>"}' + ')');
-			initFormData(queryJson);
+			initializeWithJsonData(queryJson);
 			
 			var jsonStr = '<s:property value="easyUiJSonData" escape="false"/>';
 			setupDatagrid(jsonStr);

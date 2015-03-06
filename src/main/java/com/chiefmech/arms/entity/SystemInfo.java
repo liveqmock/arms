@@ -8,6 +8,8 @@ public class SystemInfo {
 	private String db_name;
 	private String db_username;
 	private String db_password;
+	private String shopAdd;
+	private String shopTel;
 
 	public String getSystemkey() {
 		return systemkey;
@@ -51,12 +53,25 @@ public class SystemInfo {
 	public void setDb_password(String db_password) {
 		this.db_password = db_password;
 	}
+	
+	public String getShopAdd() {
+		return shopAdd;
+	}
+	public void setShopAdd(String shopAdd) {
+		this.shopAdd = shopAdd;
+	}
+	public String getShopTel() {
+		return shopTel;
+	}
+	public void setShopTel(String shopTel) {
+		this.shopTel = shopTel;
+	}
 	@Override
 	public String toString() {
 		return "SystemInfo [systemkey=" + systemkey + ", shopName=" + shopName
 				+ ", expirydate=" + expirydate + ", db_host=" + db_host
 				+ ", db_name=" + db_name + ", db_username=" + db_username
-				+ ", db_password=" + db_password + "]";
+				+ ", db_password=" + db_password + ",shopAdd="+shopAdd+",shopTel="+shopTel+"]";
 	}
 
 }

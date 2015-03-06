@@ -37,7 +37,8 @@ td {
 			</td>
 		</tr>
 	</table>
-	<form name="fmSearch" method="post" id="fmSearch"><table id="searchPanel" class="searchPanel">
+	<form name="fmSearch" method="post" id="fmSearch" class="searchform">
+    	<table id="searchPanel" class="searchPanel">
 			<tr>
 				<td>操作时间:</td>
 				<td><input name="txtLogDateBegin" type="text" id="txtLogDateBegin"

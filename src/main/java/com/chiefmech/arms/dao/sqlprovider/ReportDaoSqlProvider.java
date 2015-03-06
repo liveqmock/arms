@@ -10,7 +10,7 @@ public class ReportDaoSqlProvider {
 		RenBaoWeeklyReportSearchBean query = (RenBaoWeeklyReportSearchBean) param
 				.get("item");
 
-		return String.format("select * from v_renbao_weekly_report %s order by txtRuChangDate desc %s",
+		return String.format("select * from v_renbao_weekly_report %s order by txtRuChangDate desc, txtChePaiHao %s",
 				query.getWhereSql(), query.getLimitSql());
 	}
 }

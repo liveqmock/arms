@@ -12,6 +12,8 @@ public class User {
 	private String groupName;
 	private List<String> privilegeLst;
 	private String shopName;
+	private String shopAdd;
+    private String shopTel;
 
 	public String getUserId() {
 		return userId;
@@ -76,5 +78,22 @@ public class User {
 	public void setPrivilegeLst(List<String> privilegeLst) {
 		this.privilegeLst = privilegeLst;
 	}
+
+	public String getShopAdd() {
+		return shopAdd;
+	}
+
+	public void setShopAdd(String shopAdd) {
+		this.shopAdd = shopAdd;
+	}
+
+	public String getShopTel() {
+		return shopTel;
+	}
+
+	public void setShopTel(String shopTel) {
+		this.shopTel = shopTel;
+	}
+	
 
 }

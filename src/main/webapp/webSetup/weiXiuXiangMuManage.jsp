@@ -32,7 +32,7 @@ td {
 			</td>
 		</tr>
 	</table>
-	<form name="fmSearch" method="post" id="fmSearch">
+	<form name="fmSearch" method="post" id="fmSearch" class="searchform">
 		<table id="searchPanel" class="searchPanel" style="display: block;">
 			<tr>
 				<td>项目编号:</td>

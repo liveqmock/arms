@@ -50,7 +50,7 @@ td {
 				</s:if></td>
 		</tr>
 	</table>
-	<form name="fmSearch" method="post" id="fmSearch">
+	<form name="fmSearch" method="post" id="fmSearch" class="searchform">
 		<table id="searchPanel" class="searchPanel">
 			<tr>
 				<td nowrap>出入库时间:</td>

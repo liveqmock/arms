@@ -71,7 +71,7 @@ public class GongDan {
 	public String txtJieSuanDate;
 	/** 出厂时间 */
 	public String txtChuChangDate;
-
+	  
 	private float txtGongShiZheKou;
 	private float txtCaiLiaoZheKou;
 
@@ -486,5 +486,5 @@ public class GongDan {
 	public void setTxtDeleteFlag(String txtDeleteFlag) {
 		this.txtDeleteFlag = txtDeleteFlag;
 	}
-
+	
 }

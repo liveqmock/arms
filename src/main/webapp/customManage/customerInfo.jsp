@@ -232,7 +232,7 @@ td {
 		$(function() {
 			var formJson = eval('('
 					+ '<s:property value="jsonData" escape="false"/>' + ')');
-			initFormData(formJson);
+			initializeWithJsonData(formJson);
 		});	
 	
 		function saveCustInfo() {

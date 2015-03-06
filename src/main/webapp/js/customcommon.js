@@ -1,5 +1,5 @@
-function initFormData(formJson) {
-	_.each(formJson, function(value, key) {
+function initializeWithJsonData(jsonData) {
+	_.each(jsonData, function(value, key) {
 		var el = $("#" + key);
 		if(_.size(el) > 0){		
 			if ($(el).hasClass("easyui-datetimebox")
@@ -17,6 +17,19 @@ function initFormData(formJson) {
 				$(el).html(value);
 			} else {
 				$(el).val(value);
+			}
+		}
+	});
+}
+
+function makeElementsReadonly(idAry, jsonData){
+	_.each(jsonData, function(value, key) {
+		if(_.indexOf(idAry, key) != -1){
+			var el = $("#" + key);
+			if(_.size(el) > 0){
+				if ((el[0].tagName == "INPUT" || el[0].tagName == "TEXTAREA") && el.attr("type")!="hidden") {
+					$(el).parent().html(value);
+				}
 			}
 		}
 	});
@@ -117,6 +130,22 @@ function initFormData(formJson) {
 			}
 		}
 	});
+	
+	$.extend($.fn.textbox.defaults.inputEvents,{
+		keydown:function(e){
+			if(e.keyCode==13){
+				var t=$(e.data.target);
+				t.textbox("setValue",t.textbox("getText"));
+				
+				//extends
+				var el = $(t).parentsUntil("form.searchform").last();
+				if(el[0].tagName != "HTML"){
+					doSearch();
+				}
+			}
+		}
+	});
+
 })(jQuery);
 
 
@@ -277,6 +306,13 @@ function confirmAllWanJian(saleAfterWeiXiuGuid) {
 				}, 'json');
 		}
 	});
+}
+
+
+
+function showJieSuanDan(saleAfterGuid) {
+	z = window.open('../saleAfterManage/weiXiuLiShiDetail.action?saleAfterWeiXiuGuid=' + saleAfterGuid + '&d=' + new Date(), '维修历史查看', 'height=900, width=720, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
+	z.focus();
 }
 
 //-----------入库单管理--------------

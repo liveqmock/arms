@@ -25,6 +25,7 @@ td {
 <script src="../js/frame/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
 <script src="../js/common.js" type="text/javascript"></script>
+<script src="../js/customcommon.js" type="text/javascript"></script>
 <link href="../style/common.css" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -210,8 +211,7 @@ td {
         }    
 		
 		function saleAfterLiShiDetail(saleAfterGuid) {
-            var z = window.open('weiXiuLiShiDetail.action?saleAfterWeiXiuGuid=' + saleAfterGuid + '&d=' + new Date(), '_blank', 'height=900, width=720, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
-            z.focus();
+            showJieSuanDan(saleAfterGuid);
 			
             window.opener = null;
             window.close();

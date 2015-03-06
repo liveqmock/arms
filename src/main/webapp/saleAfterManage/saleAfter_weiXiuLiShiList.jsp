@@ -19,6 +19,7 @@ td {
 	type="text/javascript"></script>
 <script src="../js/common.js"
 	type="text/javascript"></script>
+<script src="../js/customcommon.js" type="text/javascript"></script>
 <link href="../style/common.css"
 	rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
@@ -65,7 +66,7 @@ td {
 				<td>单据状态</td>
 			</tr>
 			<s:iterator value="gongDanLst">
-			<tr onclick=saleAfterLiShiShow('<s:property value="txtGongDanId" />')>
+			<tr onclick=showJieSuanDan('<s:property value="txtGongDanId" />')>
 				<td><s:property value="txtBillNo" /></td>
 				<td><s:property value="txtChePaiHao" /></td>
 				<td><s:property value="txtFuWuGuWen" /></td>
@@ -87,11 +88,6 @@ td {
         function winClose() {
             parWinClose();
             return false;
-        }
-
-        function saleAfterLiShiShow(saleAfterGuid) {
-            z = window.open('../saleAfterManage/weiXiuLiShiDetail.action?saleAfterWeiXiuGuid=' + saleAfterGuid + '&d=' + new Date(), '维修历史查看', 'height=900, width=720, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
-            z.focus();
         }
     </script>
 

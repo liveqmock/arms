@@ -32,14 +32,14 @@ td {
 			</td>
 		</tr>
 	</table>
-	<form name="fmSearch" method="post" id="fmSearch">
+	<form name="fmSearch" method="post" id="fmSearch" class="searchform">
 		<table id="searchPanel" class="searchPanel">
 			<tr>
 				<td>品牌名称:</td>
-				<td><input name="brandName" type="text" maxlength="20"
+				<td><input class="easyui-textbox" name="brandName" type="text" maxlength="20"
 					id="brandName" style="width: 120px;" /></td>
 				<td>车型名称:</td>
-				<td><input name="modelName" type="text" maxlength="20"
+				<td><input class="easyui-textbox" name="modelName" type="text" maxlength="20"
 					id="modelName" style="width: 120px;" /></td>
 				<td><a id="lnkSearch" class="easyui-linkbutton"
 					href="javascript:doSearch()">查询</a>&nbsp;&nbsp;&nbsp;<a

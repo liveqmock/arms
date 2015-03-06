@@ -40,7 +40,7 @@ td {
           </td>
 		</tr>
 	</table>
-	<form name="fmSearch" method="post" id="fmSearch">
+	<form name="fmSearch" method="post" id="fmSearch" class="searchform">
 		<table id="searchPanel" class="searchPanel">
 			<tr>
 				<td>物料编码:</td>

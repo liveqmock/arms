@@ -111,6 +111,8 @@ td {
 							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
                         <a onClick="saveZhiFuXinXi();return false;" class="easyui-linkbutton"
 							href="javascript:void(0)">保存支付信息</a>
+                        <a onClick="showJieSuanDan('<s:property value='saleAfterWeiXiuGuid' />');return false;" class="easyui-linkbutton"
+							href="javascript:void(0)">结算单信息</a>
 						<s:if test="gongDan.ddlZhiFuFangShi != null"><a
 							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','交车');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">交车</a></s:if>
@@ -249,8 +251,8 @@ td {
 				<thead>
 					<tr>
 						<th field="txtNeiRong" width="200">检测内容</th>
-						<th field="txtZhuangTai" width="180"
-							data-options="align:'center',editor:{type:'radiobox',options:{defaultValue:'未检测',values:['未检测','正常','异常']}}">检测状态</th>
+						<th field="txtZhuangTai" width="270"
+							data-options="align:'center',editor:{type:'radiobox',options:{defaultValue:'未检测',values:['未检测','正常','更换','润滑清洁或调整']}}">检测状态</th>
 						<th field="txtRemark" width="250"
 							data-options="editor:{type:'textbox'}">备注</th>
 					</tr>
@@ -432,19 +434,22 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 		var saleAfterGuid = '<s:property value="saleAfterWeiXiuGuid" />';
 		
 		$(function() {
-			var formJson = eval('('
+			var jsonData = eval('('
 					+ '<s:property value="gongDanJsonData" escape="false"/>' + ')');
-			initFormData(formJson);
+			initializeWithJsonData(jsonData);
 			
-			<s:if test="gongDanStatus not in {'维修接待','费用结算'}">
-			_.each(formJson, function(value, key) {
-				var el = $("#" + key);
-				if(_.size(el) > 0){
-					if ((el[0].tagName == "INPUT" || el[0].tagName == "TEXTAREA") && el.attr("type")!="hidden") {
-						$(el).parent().html(value);
-					}
-				}
+			var idsAllAry = [];
+			_.each(jsonData, function(value, key) {
+				idsAllAry.push(key);
 			});
+			var idsJieSuanAry = ['ddlZhiFuFangShi', 'txtFinalPay'];
+			var idsJieDaiAry = _.difference(idsAllAry, idsJieSuanAry);
+						
+			<s:if test="gongDanStatus != '维修接待'">
+			makeElementsReadonly(idsJieDaiAry, jsonData);
+			</s:if>	
+			<s:if test="gongDanStatus != '费用结算'">
+			makeElementsReadonly(idsJieSuanAry, jsonData);
 			</s:if>
 		});
 
@@ -512,13 +517,6 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 				} else {
 					var e = '<a href="#" onclick="editrow(this);return false;">编辑本行</a>&nbsp;&nbsp;&nbsp;&nbsp;';
 					var d = '<a href="#" onclick="deleterow(this);return false;">删除本行</a>';
-					if (row.txtWanJianStatus == "完检") {
-						e = '';
-						d = '';
-					}
-					<s:if test="actionName=='gongDanWeiXiuPaiGong'">
-						d = '';
-					</s:if>
 					return e + d;
 				}
 				</s:if>

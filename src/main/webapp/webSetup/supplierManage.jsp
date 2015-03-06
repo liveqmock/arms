@@ -33,14 +33,14 @@ td {
 			</td>
 		</tr>
 	</table>
-	<form name="fmSearch" method="post" id="fmSearch">
-		<table id="searchPanel" class="searchPanel" style="display: none;">
+	<form name="fmSearch" method="post" id="fmSearch" class="searchform">
+		<table id="searchPanel" class="searchPanel" style="display: block;">
 			<tr>
 				<!--<td>供应商编号:</td>
 				<td><input name="txtSuppBianHao" type="text" maxlength="20"
 					id="txtSuppBianHao" style="width: 120px;" /></td>-->
 				<td>供应商名称:</td>
-				<td><input name="txtSuppName" type="text" maxlength="20"
+				<td><input  class="easyui-textbox" name="txtSuppName" type="text" maxlength="20"
 					id="txtSuppName" style="width: 120px;" /></td>
 				<td><a id="lnkSearch" class="easyui-linkbutton"
 					href="javascript:doSearch()">查询项目</a>&nbsp;&nbsp;&nbsp;<a

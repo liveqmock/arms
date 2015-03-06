@@ -126,7 +126,7 @@
 		$(function() {
 			var formJson = eval('('
 					+ '<s:property value="jsonData" escape="false"/>' + ')');
-			initFormData(formJson);
+			initializeWithJsonData(formJson);
 			
 			<s:if test="ruKuDan.txtStatus=='审核完毕'">
 			_.each(formJson, function(value, key) {
