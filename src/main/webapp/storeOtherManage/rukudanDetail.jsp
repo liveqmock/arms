@@ -34,7 +34,7 @@
 					</span></td>
 					<td align="right"><s:if test="ruKuDan.txtStatus=='准备单据'">
 							<a onClick="saveRuKuDan();return false;"
-								class="easyui-linkbutton" href="javascript:void(0)">保存单据</a>
+								class="easyui-linkbutton" href="javascript:void(0)">保存表头</a>
 							<s:if test="ruKuDanGuid!=''">
 								<a
 									onClick="updateRuKuDanStatus('<s:property value='ruKuDanGuid' />','提交审核');return false;"
@@ -108,7 +108,7 @@
 					</tr>
 				</thead>
 			</table>
-			<s:if test="ruKuDan.txtStatus!='审核完毕'">
+			<s:if test="ruKuDanGuid != '' && ruKuDan.txtStatus!='审核完毕'">
 				<div id="tb" style="height: auto">
 					<a href="javascript:void(0)" class="easyui-linkbutton"
 						data-options="iconCls:'icon-add',plain:true" onClick="appendRow()">添加物料</a>
@@ -160,12 +160,7 @@
 			return myTable.datagrid('getEventTargetRowIndex', target);
 		}
 		
-		function appendRow(){
-			if (txtGuid == "") {
-				$.messager.alert('提示', "请先保存表头信息！");
-				return false;
-			}
-			
+		function appendRow(){			
 			if (myTable.datagrid('hasEditingRow')) {
 				$.messager.alert('提示', '请先处理尚未完成的编辑行信息');
 			} else {

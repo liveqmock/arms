@@ -83,7 +83,7 @@ td {
 				<th width="100" data-options="field:'txtSalePrice'">销售价格</th>
 				<th width="100" data-options="field:'txtQty'">数量</th>
 				<th width="150" data-options="field:'txtBillNo'">业务单号</th>
-				<th width="100" data-options="field:'txtBillSort'">业务类别</th>
+				<th width="100" data-options="field:'txtOperAction'">业务类别</th>
 				<th width="150" data-options="field:'txtLogDate'">操作时间</th>
 			</tr>
 		</thead>

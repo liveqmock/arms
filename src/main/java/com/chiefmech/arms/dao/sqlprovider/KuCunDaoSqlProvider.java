@@ -65,7 +65,7 @@ public class KuCunDaoSqlProvider {
 	public String getKuCunOperLogList(Map<String, Object> param) {
 		KuCunOperLogSearchBean searchBean = (KuCunOperLogSearchBean) param
 				.get("item");
-		return String.format("select * from kucunoperlog %s %s",
+		return String.format("select * from kucunoperlog %s order by txtLogDate desc %s",
 				searchBean.getWhereSql(), searchBean.getLimitSql());
 	}
 

@@ -11,8 +11,6 @@ public interface KuCunService {
 	public String getKuCunEasyUiJSon(String saleAfterWeiXiuGuid, KuCun item,
 			int page, int rows);
 
-	public int updateJiShiKuCun(KuCun item);
-
 	public String getKuCunOperLogEasyUiJSon(KuCunOperLogSearchBean query);
 
 }

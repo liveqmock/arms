@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>维修出退库查询</title>
+<title>即时库存</title>
 <link rel="stylesheet" type="text/css"
 	href="../style/themes/default/easyui.css" />
 <link rel="stylesheet" type="text/css" href="../style/themes/icon.css" />

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.action.BaseActionSupport;
 import com.chiefmech.arms.entity.KuCun;
+import com.chiefmech.arms.entity.KuCunOperLog;
 import com.chiefmech.arms.service.KuCunService;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -51,7 +52,8 @@ public class KuCunManageAction extends BaseActionSupport
 		JSONObject jsonObject = JSONObject.fromObject(rowJsonData);
 		item = (KuCun) JSONObject.toBean(jsonObject, KuCun.class);
 
-		int rowAffected = kuCunService.updateJiShiKuCun(item);
+		KuCunOperLog operLog = new KuCunOperLog(item);
+		int rowAffected = kuCunService.updateKuCun(operLog);
 		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
 
 		this.transmitJson(jsonStr);

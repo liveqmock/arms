@@ -8,16 +8,14 @@ public class KuCun {
 	private int txtQty;
 	private float txtChengBenJia;
 	private float txtSalePrice;
-	private String ddlCangKu;
 	private String txtSuppName;
 
 	public KuCun(KuCunOperLog operLog) {
-		this.txtWuLiaoGuid = operLog.getTxtWuLiaoGuid();
 		this.txtWuLiaoCode = operLog.getTxtWuLiaoCode();
 		this.txtWuLiaoName = operLog.getTxtWuLiaoName();
 		this.txtQty = operLog.getTxtQty();
 		this.txtChengBenJia = operLog.getTxtChengBenJia();
-		this.ddlCangKu = operLog.getDdlCangKu();
+		this.txtSalePrice = operLog.getTxtSalePrice();
 		this.txtSuppName = operLog.getTxtSuppName();
 	}
 
@@ -35,12 +33,6 @@ public class KuCun {
 	}
 	public void setTxtWuLiaoGuid(String txtWuLiaoGuid) {
 		this.txtWuLiaoGuid = txtWuLiaoGuid;
-	}
-	public String getDdlCangKu() {
-		return ddlCangKu;
-	}
-	public void setDdlCangKu(String ddlCangKu) {
-		this.ddlCangKu = ddlCangKu;
 	}
 	public String getTxtWuLiaoCode() {
 		return txtWuLiaoCode;

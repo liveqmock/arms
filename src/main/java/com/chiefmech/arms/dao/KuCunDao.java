@@ -16,24 +16,20 @@ import com.chiefmech.arms.entity.query.KuCunOperLogSearchBean;
 
 @Repository("kuCunDao")
 public interface KuCunDao {
-
-	@Select("select count(*) from kucun where txtWuLiaoGuid = #{txtWuLiaoGuid}")
-	public boolean isKuCunExist(KuCun item);
-
-	@Select("select * from kucun where txtWuLiaoGuid = #{txtWuLiaoGuid}")
+	@Select("select * from kucun where txtWuLiaoCode = #{txtWuLiaoCode}")
 	public KuCun findExistKuCun(KuCun item);
 
-	@Insert("insert into kucun(txtKuCunGuid,txtWuLiaoGuid,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,ddlCangKu,txtSuppName) values(#{txtKuCunGuid},#{txtWuLiaoGuid},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{ddlCangKu},#{txtSuppName})")
+	@Insert("insert into kucun(txtKuCunGuid,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,txtSuppName) values(#{txtKuCunGuid},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{txtSuppName})")
 	public int insertKuCun(KuCun item);
 
-	@Update("update kucun set txtQty=#{txtQty},txtChengBenJia=#{txtChengBenJia} where txtKuCunGuid=#{txtKuCunGuid}")
+	@Update("update kucun set txtQty=#{txtQty},txtChengBenJia=#{txtChengBenJia} where txtWuLiaoCode=#{txtWuLiaoCode}")
 	public int updateKuCun(KuCun item);
 
-	@Insert("insert into kucunoperlog(txtLogGuid,txtBillGuid,txtBillSort,txtLogDate,txtWuLiaoGuid,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,ddlCangKu,txtSuppName) values(#{txtLogGuid},#{txtBillGuid},#{txtBillSort},#{txtLogDate},#{txtWuLiaoGuid},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{ddlCangKu},#{txtSuppName})")
+	@Insert("insert into kucunoperlog(txtLogGuid,txtOperAction,txtLogDate,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,txtSuppName) values(#{txtLogGuid},#{txtOperAction},#{txtLogDate},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{txtSuppName})")
 	public int insertKuCunOperLog(KuCunOperLog item);
 
-	@Update("update kucun set txtSalePrice=#{txtSalePrice} where txtKuCunGuid=#{txtKuCunGuid}")
-	public int updateJiShiKuCun(KuCun item);
+	@Update("update kucun set txtSalePrice=#{txtSalePrice} where txtWuLiaoCode=#{txtWuLiaoCode}")
+	public int updateSalePrice(KuCun item);
 
 	@SelectProvider(type = KuCunDaoSqlProvider.class, method = "getKuCunList")
 	public List<KuCun> getKuCunList(

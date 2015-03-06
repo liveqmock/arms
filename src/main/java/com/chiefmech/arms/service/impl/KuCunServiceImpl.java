@@ -23,35 +23,51 @@ public class KuCunServiceImpl implements KuCunService {
 
 	@Override
 	public int updateKuCun(KuCunOperLog operLog) {
-		int rowAffected;
+		int rowAffected = -1;
+
 		KuCun logKuCun = new KuCun(operLog);
-		if (kuCunDao.isKuCunExist(logKuCun)) {
-			// 更新现有库存信息
+		String txtOperAction = operLog.getTxtOperAction();
+		if ("修改销售价".equals(txtOperAction)) {
+			rowAffected = kuCunDao.updateSalePrice(logKuCun);
+		} else if ("日常采购".equals(txtOperAction)) {
 			KuCun kuCun = kuCunDao.findExistKuCun(logKuCun);
-			logKuCun.setTxtKuCunGuid(kuCun.getTxtKuCunGuid());
-			float totalAmount;
-			int newQty;
-			if (operLog.isKuCunPlusRequire()) {
-				newQty = kuCun.getTxtQty() + operLog.getTxtQty();
-				totalAmount = kuCun.getTxtChengBenJia() * kuCun.getTxtQty()
-						+ operLog.getTxtChengBenJia() * operLog.getTxtQty();
+			if (kuCun != null) {
+				//更新现有库存
+				KuCun newKuCun = getUpdateKuCunInfo(kuCun, operLog, true);
+				rowAffected = kuCunDao.updateKuCun(newKuCun);
 			} else {
-				newQty = kuCun.getTxtQty() - operLog.getTxtQty();
-				totalAmount = kuCun.getTxtChengBenJia() * kuCun.getTxtQty()
-						- operLog.getTxtChengBenJia() * operLog.getTxtQty();
+				// 插入新的库存信息
+				logKuCun.setTxtKuCunGuid(IDGen.getUUID());
+				rowAffected = kuCunDao.insertKuCun(logKuCun);
 			}
-			kuCun.setTxtQty(newQty);
-			kuCun.setTxtChengBenJia(newQty == 0 ? 0 : totalAmount / newQty);
-			rowAffected = kuCunDao.updateKuCun(kuCun);
-		} else {
-			// 插入新的库存信息
-			logKuCun.setTxtKuCunGuid(IDGen.getUUID());
-			rowAffected = kuCunDao.insertKuCun(logKuCun);
+		} else if ("维修出库".equals(txtOperAction)) {
+			KuCun kuCun = kuCunDao.findExistKuCun(logKuCun);
+			KuCun newKuCun = getUpdateKuCunInfo(kuCun, operLog, false);
+			rowAffected = kuCunDao.updateKuCun(newKuCun);
 		}
+
 		if (rowAffected == 1) {
 			rowAffected = kuCunDao.insertKuCunOperLog(operLog);
 		}
 		return rowAffected;
+	}
+
+	private KuCun getUpdateKuCunInfo(KuCun kuCun, KuCunOperLog operLog,
+			boolean isKuCunPlusRequire) {
+		float totalAmount;
+		int newQty;
+		if (isKuCunPlusRequire) {
+			newQty = kuCun.getTxtQty() + operLog.getTxtQty();
+			totalAmount = kuCun.getTxtChengBenJia() * kuCun.getTxtQty()
+					+ operLog.getTxtChengBenJia() * operLog.getTxtQty();
+		} else {
+			newQty = kuCun.getTxtQty() - operLog.getTxtQty();
+			totalAmount = kuCun.getTxtChengBenJia() * kuCun.getTxtQty()
+					- operLog.getTxtChengBenJia() * operLog.getTxtQty();
+		}
+		kuCun.setTxtQty(newQty);
+		kuCun.setTxtChengBenJia(newQty == 0 ? 0 : totalAmount / newQty);
+		return kuCun;
 	}
 
 	@Override
@@ -65,11 +81,6 @@ public class KuCunServiceImpl implements KuCunService {
 		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
 				lstJson);
 		return jsonStr;
-	}
-
-	@Override
-	public int updateJiShiKuCun(KuCun item) {
-		return kuCunDao.updateJiShiKuCun(item);
 	}
 
 	@Override
