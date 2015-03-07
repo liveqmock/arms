@@ -19,7 +19,7 @@ public class KuCunDaoSqlProvider {
 		searchBean.addLimitInfo(page, rows);
 
 		return String
-				.format("select * from kucun %s %s",
+				.format("select * from kucun %s order by txtWuLiaoCode %s",
 						getWhereSql(searchBean, txtGongDanId),
 						searchBean.getLimitSql());
 	}
@@ -65,7 +65,8 @@ public class KuCunDaoSqlProvider {
 	public String getKuCunOperLogList(Map<String, Object> param) {
 		KuCunOperLogSearchBean searchBean = (KuCunOperLogSearchBean) param
 				.get("item");
-		return String.format("select * from kucunoperlog %s order by txtLogDate desc %s",
+		return String.format(
+				"select * from kucunoperlog %s order by txtLogDate desc %s",
 				searchBean.getWhereSql(), searchBean.getLimitSql());
 	}
 

@@ -13,14 +13,13 @@ public class GongDanWeiXiuWuLiao {
 	private String txtWuLiaoName;
 	private String txtSuppName;
 	private float txtQty;
-	private float txtPrice;
-	private float txtPaid;
+	private float txtChengBenJia;
+	private float txtSalePrice;
 	private String ddlSuoSuXiangMu;
 	private String ddlZhangTao;
 	private String ddlStatus;
 	private String txtRemark;
 	private String txtLaiYuan;
-	private String txtLaiYuanGuid;
 
 	public GongDanWeiXiuWuLiao() {
 
@@ -28,43 +27,37 @@ public class GongDanWeiXiuWuLiao {
 
 	public GongDanWeiXiuWuLiao(String saleAfterGuid, KuCun item) {
 		this.txtWuLiaoGuid = IDGen.getUUID();
-		this.txtWuLiaoCode = item.getTxtWuLiaoCode();
 		this.txtGongDanGuid = saleAfterGuid;
+		this.txtWuLiaoCode = item.getTxtWuLiaoCode();
 		this.txtWuLiaoName = item.getTxtWuLiaoName();
 		this.txtSuppName = item.getTxtSuppName();
-		this.txtPrice = item.getTxtSalePrice();
-		this.txtLaiYuanGuid = item.getTxtWuLiaoGuid();
+		this.txtChengBenJia = item.getTxtChengBenJia();
+		this.txtSalePrice = item.getTxtSalePrice();
 		this.txtLaiYuan = "库存";
 		this.ddlStatus = "未出库";
 		this.ddlZhangTao = "免费";
 	}
 
 	public GongDanWeiXiuWuLiao(String saleAfterGuid, VCaiGouWuLiao item) {
-		this.txtWuLiaoGuid = IDGen.getUUID();
-		this.txtWuLiaoCode = item.getTxtWuLiaoCode();
+		// 工单物料id和临时采购入库单物料id一致，用于同步临时采购入库物料状态
+		this.txtWuLiaoGuid = item.getTxtWuLiaoGuid();
 		this.txtGongDanGuid = saleAfterGuid;
+		this.txtWuLiaoCode = item.getTxtWuLiaoCode();
 		this.txtWuLiaoName = item.getTxtWuLiaoName();
 		this.txtSuppName = item.getTxtSuppName();
-		this.txtPrice = item.getTxtPrice();
-		this.txtLaiYuanGuid = item.getTxtWuLiaoGuid();
+		this.txtChengBenJia = item.getTxtPrice();
+		// 临时采购的销售价和成本价一样，后续按需求修改
+		this.txtSalePrice = item.getTxtPrice();
 		this.ddlStatus = item.getDdlStatus();
 		this.txtLaiYuan = "采购";
 		this.ddlZhangTao = "免费";
-	}
-
-	public String getTxtWuLiaoGuid() {
-		return txtWuLiaoGuid;
-	}
-
-	public void setTxtWuLiaoGuid(String txtWuLiaoGuid) {
-		this.txtWuLiaoGuid = txtWuLiaoGuid;
 	}
 
 	public String getDisPlayPrice() {
 		if (StringUtils.isEmpty(this.txtWuLiaoName)) {
 			return "";
 		} else {
-			return String.format("%.2f", txtPrice);
+			return String.format("%.2f", this.txtSalePrice);
 		}
 	}
 
@@ -84,20 +77,20 @@ public class GongDanWeiXiuWuLiao {
 		this.ddlSuoSuXiangMu = ddlSuoSuXiangMu;
 	}
 
+	public String getTxtWuLiaoGuid() {
+		return txtWuLiaoGuid;
+	}
+
+	public void setTxtWuLiaoGuid(String txtWuLiaoGuid) {
+		this.txtWuLiaoGuid = txtWuLiaoGuid;
+	}
+
 	public String getTxtLaiYuan() {
 		return txtLaiYuan;
 	}
 
 	public void setTxtLaiYuan(String txtLaiYuan) {
 		this.txtLaiYuan = txtLaiYuan;
-	}
-
-	public String getTxtLaiYuanGuid() {
-		return txtLaiYuanGuid;
-	}
-
-	public void setTxtLaiYuanGuid(String txtLaiYuanGuid) {
-		this.txtLaiYuanGuid = txtLaiYuanGuid;
 	}
 
 	public String getTxtWuLiaoCode() {
@@ -132,16 +125,24 @@ public class GongDanWeiXiuWuLiao {
 		this.txtQty = txtQty;
 	}
 
-	public float getTxtPrice() {
-		return txtPrice;
+	public float getTxtChengBenJia() {
+		return txtChengBenJia;
 	}
 
-	public void setTxtPrice(float txtPrice) {
-		this.txtPrice = txtPrice;
+	public void setTxtChengBenJia(float txtChengBenJia) {
+		this.txtChengBenJia = txtChengBenJia;
+	}
+
+	public float getTxtSalePrice() {
+		return txtSalePrice;
+	}
+
+	public void setTxtSalePrice(float txtSalePrice) {
+		this.txtSalePrice = txtSalePrice;
 	}
 
 	public float getTxtPaid() {
-		return this.txtQty * this.txtPrice;
+		return this.txtQty * this.txtSalePrice;
 	}
 
 	public String getDdlZhangTao() {

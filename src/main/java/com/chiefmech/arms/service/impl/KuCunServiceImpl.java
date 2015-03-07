@@ -28,7 +28,7 @@ public class KuCunServiceImpl implements KuCunService {
 		KuCun logKuCun = new KuCun(operLog);
 		String txtOperAction = operLog.getTxtOperAction();
 		if ("修改销售价".equals(txtOperAction)) {
-			rowAffected = kuCunDao.updateSalePrice(logKuCun);
+			rowAffected = kuCunDao.updateKuCunSalePrice(logKuCun);
 		} else if ("日常采购".equals(txtOperAction)) {
 			KuCun kuCun = kuCunDao.findExistKuCun(logKuCun);
 			if (kuCun != null) {

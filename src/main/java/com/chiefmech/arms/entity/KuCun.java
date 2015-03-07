@@ -2,7 +2,6 @@ package com.chiefmech.arms.entity;
 
 public class KuCun {
 	private String txtKuCunGuid;
-	private String txtWuLiaoGuid;
 	private String txtWuLiaoCode;
 	private String txtWuLiaoName;
 	private int txtQty;
@@ -27,12 +26,6 @@ public class KuCun {
 	}
 	public void setTxtKuCunGuid(String txtKuCunGuid) {
 		this.txtKuCunGuid = txtKuCunGuid;
-	}
-	public String getTxtWuLiaoGuid() {
-		return txtWuLiaoGuid;
-	}
-	public void setTxtWuLiaoGuid(String txtWuLiaoGuid) {
-		this.txtWuLiaoGuid = txtWuLiaoGuid;
 	}
 	public String getTxtWuLiaoCode() {
 		return txtWuLiaoCode;

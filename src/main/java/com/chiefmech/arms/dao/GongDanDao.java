@@ -97,7 +97,7 @@ public interface GongDanDao {
 	@Select("select ifnull(sum(txtPrice*txtQty),0) CaiLiaoFei from gongdanwuliao where txtGongDanGuid=#{txtGongDanId}")
 	public float getCaiLiaoFeiZheQianByGongDanId(String txtGongDanId);
 
-	@Insert("insert into gongdanwuliao(txtWuLiaoGuid,txtWuLiaoCode,txtGongDanGuid,txtWuLiaoName,txtSuppName,txtPrice,ddlZhangTao,ddlStatus,txtRemark,txtLaiYuan,txtLaiYuanGuid) values(#{txtWuLiaoGuid},#{txtWuLiaoCode},#{txtGongDanGuid},#{txtWuLiaoName},#{txtSuppName},#{txtPrice},#{ddlZhangTao},#{ddlStatus},#{txtRemark},#{txtLaiYuan},#{txtLaiYuanGuid})")
+	@Insert("insert into gongdanwuliao(txtWuLiaoGuid,txtWuLiaoCode,txtGongDanGuid,txtWuLiaoName,txtSuppName,txtChengBenJia,txtSalePrice,ddlZhangTao,ddlStatus,txtRemark,txtLaiYuan) values(#{txtWuLiaoGuid},#{txtWuLiaoCode},#{txtGongDanGuid},#{txtWuLiaoName},#{txtSuppName},#{txtChengBenJia},#{txtSalePrice},#{ddlZhangTao},#{ddlStatus},#{txtRemark},#{txtLaiYuan})")
 	public int insertGongDanWeiXiuWuLiao(GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao);
 
 	@Update("update gongdan set txtGongDanStatus=#{txtGongDanStatus},txtGongDanStatusChain=concat(txtGongDanStatusChain,'|',#{txtGongDanStatus}) where txtGongDanId=#{txtGongDanId}")
@@ -147,12 +147,9 @@ public interface GongDanDao {
 	@Update("update gongdanjiance set txtZhuangTai=#{txtZhuangTai},txtRemark=#{txtRemark} where txtJianceGuid=#{txtJianceGuid}")
 	public int updateCheLiangJianCe(GongDanCheLiangJianCe item);
 
-	@Update("update rukudanwuliao set ddlStatus=#{ddlStatus} where txtWuLiaoGuid=#{txtLaiYuanGuid}")
-	public int updateRuKuDanWuLiaoWhenLingQuWuLiao(GongDanWeiXiuWuLiao item);
-
-	@Update("update gongdanwuliao set ddlStatus=#{ddlStatus} where txtWuLiaoGuid=#{txtWuLiaoGuid}")
-	public int updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao(
-			GongDanWeiXiuWuLiao item);
+	@Update("update gongdanwuliao t1,rukudanwuliao t2 set t1.ddlStatus=#{ddlStatus} and t2.ddlStatus=#{ddlStatus} where t1.txtWuLiaoGuid=t2.txtWuLiaoGuid and t1.txtWuLiaoGuid=#{txtWuLiaoGuid}")
+	public int updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao(String txtWuLiaoGuid,
+			String ddlStatus);
 
 	@Select("select ifnull(sum(txtFeiYong),0) from gongdanxiangmu where txtGongDanGuid=#{gongDanId} and ddlZhangTao='免费'")
 	public float getWeiXiuFeiFree(String gongDanId);

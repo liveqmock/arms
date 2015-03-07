@@ -29,6 +29,7 @@ public class KuCunOperLog {
 		this.txtWuLiaoName = ruKuDanWuLiao.getTxtWuLiaoName();
 		this.txtQty = ruKuDanWuLiao.getTxtQty();
 		this.txtChengBenJia = ruKuDanWuLiao.getTxtPrice();
+		// this.txtSalePrice; //采购物料入库时没有成本价信息
 		this.txtSuppName = ruKuDan.getTxtSuppName();
 	}
 
@@ -41,7 +42,8 @@ public class KuCunOperLog {
 		this.txtWuLiaoCode = gongDanWuLiao.getTxtWuLiaoCode();
 		this.txtWuLiaoName = gongDanWuLiao.getTxtWuLiaoName();
 		this.txtQty = (int) gongDanWuLiao.getTxtQty();
-		this.txtChengBenJia = gongDanWuLiao.getTxtPrice();
+		this.txtChengBenJia = gongDanWuLiao.getTxtChengBenJia();
+		this.txtSalePrice = gongDanWuLiao.getTxtSalePrice();
 		this.txtSuppName = gongDanWuLiao.getTxtSuppName();
 	}
 

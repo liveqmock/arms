@@ -317,17 +317,12 @@ public class GongDanServiceImpl implements GongDanService {
 		int rowAffected = 0;
 		String wuLiaoLaiYuan = item.getTxtLaiYuan();
 		if ("采购".equals(wuLiaoLaiYuan)) {
-			item.setDdlStatus("已收货");
-			rowAffected = gongDanDao
-					.updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao(item);
-			if (rowAffected != -1) {
-				rowAffected = gongDanDao
-						.updateRuKuDanWuLiaoWhenLingQuWuLiao(item);
-			}
+			rowAffected = gongDanDao.updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao(
+					item.getTxtWuLiaoGuid(), "已收货");
 		} else if ("库存".equals(wuLiaoLaiYuan)) {
 			item.setDdlStatus("已出库");
-			rowAffected = gongDanDao
-					.updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao(item);
+			rowAffected = gongDanDao.updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao(
+					item.getTxtWuLiaoGuid(), "已出库");
 			if (rowAffected != -1) {
 				KuCunOperLog operLog = new KuCunOperLog(item);
 				rowAffected = kuCunService.updateKuCun(operLog);
