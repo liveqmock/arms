@@ -104,6 +104,7 @@ td {
 					<th width="150" data-options="field:'txtSuppName'">供应商</th>
 				<th width="80" data-options="field:'txtQty'">采购数量</th>
 				<th width="80" data-options="field:'txtPrice'">单价</th>
+                <th width="150" data-options="field:'txtRemark'">备注</th>
 				<s:if test="action=='updateCaiGou'">
 					<th width="80" data-options="field:'txtStatus'">审核状态</th>
 					<th width="80" data-options="field:'txtShenHeRen'">审核人</th>

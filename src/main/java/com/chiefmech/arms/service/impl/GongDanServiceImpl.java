@@ -321,8 +321,8 @@ public class GongDanServiceImpl implements GongDanService {
 					item.getTxtWuLiaoGuid(), "已收货");
 		} else if ("库存".equals(wuLiaoLaiYuan)) {
 			item.setDdlStatus("已出库");
-			rowAffected = gongDanDao.updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao(
-					item.getTxtWuLiaoGuid(), "已出库");
+			rowAffected = gongDanDao
+					.updateGongDanWuLiaoStatusWhenLingQuWuLiao(item);
 			if (rowAffected != -1) {
 				KuCunOperLog operLog = new KuCunOperLog(item);
 				rowAffected = kuCunService.updateKuCun(operLog);
@@ -349,5 +349,19 @@ public class GongDanServiceImpl implements GongDanService {
 	@Override
 	public int deleteGongDan(String txtGongDanId) {
 		return gongDanDao.deleteGongDan(txtGongDanId);
+	}
+
+	@Override
+	public boolean isRequestWuLiaoFree(GongDanWeiXiuWuLiao item) {
+		boolean isFree = true;
+		if ("库存".equals(item.getTxtLaiYuan())) {
+			KuCun kuCun = kuCunService.findExistKuCunByWuLiaoCode(item
+					.getTxtWuLiaoCode());
+			if (kuCun.getTxtQty() < item.getTxtQty()) {
+				isFree = false;
+			}
+		}
+
+		return isFree;
 	}
 }

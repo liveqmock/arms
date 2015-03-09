@@ -93,4 +93,6 @@ public interface GongDanService {
 
 	int wanJianAllGongDanWeiXiuXiangMu(String txtGongDanId,
 			String txtWanJianRen, String txtWanJianShiJian);
+
+	public boolean isRequestWuLiaoFree(GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao);
 }

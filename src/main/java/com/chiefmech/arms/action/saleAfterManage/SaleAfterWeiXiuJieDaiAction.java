@@ -36,8 +36,9 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/saleAfterManage")
 @Controller()
 @Scope("prototype")
-public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport implements
-		ModelDriven<GongDan> {
+public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
+		implements
+			ModelDriven<GongDan> {
 
 	@Resource()
 	private GongDanService gongDanService;
@@ -60,29 +61,29 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport implements
 	private GongDan gongDan = new GongDan();
 	private GongDanJieSuan jieSuanInfo;
 
-	String[] jianCeLstRenBao = { "检测发动机机油", "检查发动机空气滤清器", "检查发动机冷却系统",
+	String[] jianCeLstRenBao = {"检测发动机机油", "检查发动机空气滤清器", "检查发动机冷却系统",
 			"蓄电池及起动机检查", "各种橡胶软管的检查", "怠速及火花塞", "检查动力转向系统", "检查制动系统", "制动液检查",
 			"球头节和防尘套", "发动机外观检查", "前后悬挂装置及底盘", "检查制冷剂", "轮胎和充气气压", "空调滤清器",
-			"雨刮器和玻璃水" };
-	String[] jianCeLstPuTong = { "检测发动机控制模块系统", "检查发动机机油液位", "检查发动机冷却系统",
+			"雨刮器和玻璃水"};
+	String[] jianCeLstPuTong = {"检测发动机控制模块系统", "检查发动机机油液位", "检查发动机冷却系统",
 			"检查发动机空气滤芯", "检查挡风玻璃清洁剂液位", "检查刮水器刮片", "检查车辆底部", "检查灯光系统",
 			"检查制动系统", "检查动力转向系统", "检查发动机附件皮带", "检查空调系统", "检查冷却风扇", "检查反光镜、后视镜",
-			"检查车轮", "检查蓄电池" };
+			"检查车轮", "检查蓄电池"};
 
-	@Action(value = "saleAfterIndex", results = { @Result(name = "input", location = "saleAfter_Index.jsp") })
+	@Action(value = "saleAfterIndex", results = {@Result(name = "input", location = "saleAfter_Index.jsp")})
 	public String saleAfterIndex() {
 		initGongDan();
 		return INPUT;
 	}
 
 	@Actions({
-			@Action(value = "gongDanWeiXiuJieDai", results = { @Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp") }),
-			@Action(value = "gongDanCheLiangJianCe", results = { @Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp") }),
-			@Action(value = "gongDanWuLiaoDengJi", results = { @Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp") }),
-			@Action(value = "gongDanWeiXiuPaiGong", results = { @Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp") }),
-			@Action(value = "gongDanLingQuWuLiao", results = { @Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp") }),
-			@Action(value = "gongDanWeiXiuWanJian", results = { @Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp") }),
-			@Action(value = "gongDanWeiXiuJieSuan", results = { @Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp") }) })
+			@Action(value = "gongDanWeiXiuJieDai", results = {@Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp")}),
+			@Action(value = "gongDanCheLiangJianCe", results = {@Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp")}),
+			@Action(value = "gongDanWuLiaoDengJi", results = {@Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp")}),
+			@Action(value = "gongDanWeiXiuPaiGong", results = {@Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp")}),
+			@Action(value = "gongDanLingQuWuLiao", results = {@Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp")}),
+			@Action(value = "gongDanWeiXiuWanJian", results = {@Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp")}),
+			@Action(value = "gongDanWeiXiuJieSuan", results = {@Result(name = "input", location = "saleAfter_weiXiuJieDai.jsp")})})
 	public String saleAfterWeiXiuJieDai() {
 		initGongDan();
 		if ("gongDanWeiXiuJieSuan".equals(this.getActionName())) {
@@ -96,8 +97,8 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport implements
 	}
 
 	@Actions({
-			@Action(value = "printShiGongDan", results = { @Result(name = "input", location = "saleAfter_GongDanPrint.jsp") }),
-			@Action(value = "printJieSuanDan", results = { @Result(name = "input", location = "saleAfter_GongDanPrint.jsp") }) })
+			@Action(value = "printShiGongDan", results = {@Result(name = "input", location = "saleAfter_GongDanPrint.jsp")}),
+			@Action(value = "printJieSuanDan", results = {@Result(name = "input", location = "saleAfter_GongDanPrint.jsp")})})
 	public String gongDanPrint() {
 		initGongDan();
 		if ("gongDanWeiXiuJieSuan".equals(this.getActionName())) {
@@ -120,13 +121,13 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport implements
 		}
 	}
 
-	@Actions({ @Action(value = "cheLiangWeiXiuLiShi", results = { @Result(name = "input", location = "saleAfter_weiXiuLiShiList.jsp") }) })
+	@Actions({@Action(value = "cheLiangWeiXiuLiShi", results = {@Result(name = "input", location = "saleAfter_weiXiuLiShiList.jsp")})})
 	public String cheLiangWeiXiuLiShi() {
 		gongDanLst = gongDanService.getGongDanListByCheLiangId(cheLiangId);
 		return INPUT;
 	}
 
-	@Action(value = "weiXiuLiShiDetail", results = { @Result(name = "input", location = "saleAfter_WeiXiuJieSuanPrint.jsp") })
+	@Action(value = "weiXiuLiShiDetail", results = {@Result(name = "input", location = "saleAfter_WeiXiuJieSuanPrint.jsp")})
 	public String weiXiuLiShiDetail() {
 		gongDan = gongDanService.findGongDanByWeiXiuGuid(saleAfterWeiXiuGuid);
 		jieSuanInfo = gongDanService.getGongDanJieSuanXinXi(gongDan);
@@ -252,13 +253,18 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport implements
 		JSONObject jsonObject = JSONObject.fromObject(easyUiJSonData);
 		GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao = (GongDanWeiXiuWuLiao) JSONObject
 				.toBean(jsonObject, GongDanWeiXiuWuLiao.class);
-		int rowAffected = gongDanService
-				.updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao(gongDanWeiXiuWuLiao);
-		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
+		String jsonStr;
+
+		if (gongDanService.isRequestWuLiaoFree(gongDanWeiXiuWuLiao)) {
+			int rowAffected = gongDanService
+					.updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao(gongDanWeiXiuWuLiao);
+			jsonStr = getCrudJsonResponse(rowAffected, "更新");
+		} else {
+			jsonStr = "{\"errorMsg\":\"所需物料数量不足，出库失败！\"}";
+		}
 
 		this.transmitJson(jsonStr);
 	}
-
 	@Action(value = "updateGongDanWeiXiuXiangMuWhenWanJian")
 	public void updateGongDanWeiXiuXiangMuWhenWanJian() {
 		JSONObject jsonObject = JSONObject.fromObject(easyUiJSonData);

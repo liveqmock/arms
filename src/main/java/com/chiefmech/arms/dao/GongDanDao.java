@@ -147,9 +147,14 @@ public interface GongDanDao {
 	@Update("update gongdanjiance set txtZhuangTai=#{txtZhuangTai},txtRemark=#{txtRemark} where txtJianceGuid=#{txtJianceGuid}")
 	public int updateCheLiangJianCe(GongDanCheLiangJianCe item);
 
-	@Update("update gongdanwuliao t1,rukudanwuliao t2 set t1.ddlStatus=#{ddlStatus} and t2.ddlStatus=#{ddlStatus} where t1.txtWuLiaoGuid=t2.txtWuLiaoGuid and t1.txtWuLiaoGuid=#{txtWuLiaoGuid}")
-	public int updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao(String txtWuLiaoGuid,
-			String ddlStatus);
+	@Update("update gongdanwuliao set ddlStatus=#{ddlStatus} where txtWuLiaoGuid=#{txtWuLiaoGuid}")
+	public int updateGongDanWuLiaoStatusWhenLingQuWuLiao(
+			GongDanWeiXiuWuLiao item);
+
+	@Update("update gongdanwuliao t1,rukudanwuliao t2 set t1.ddlStatus=#{ddlStatus}, t2.ddlStatus=#{ddlStatus} where t1.txtWuLiaoGuid=t2.txtWuLiaoGuid and t1.txtWuLiaoGuid=#{txtWuLiaoGuid}")
+	public int updateGongDanWeiXiuWuLiaoWhenLingQuWuLiao(
+			@Param("txtWuLiaoGuid") String txtWuLiaoGuid,
+			@Param("ddlStatus") String ddlStatus);
 
 	@Select("select ifnull(sum(txtFeiYong),0) from gongdanxiangmu where txtGongDanGuid=#{gongDanId} and ddlZhangTao='免费'")
 	public float getWeiXiuFeiFree(String gongDanId);

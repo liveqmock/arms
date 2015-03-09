@@ -1,5 +1,7 @@
 package com.chiefmech.arms.entity;
 
+import com.chiefmech.arms.common.util.IDGen;
+
 public class KuCun {
 	private String txtKuCunGuid;
 	private String txtWuLiaoCode;
@@ -8,17 +10,28 @@ public class KuCun {
 	private float txtChengBenJia;
 	private float txtSalePrice;
 	private String txtSuppName;
+	private String txtRemark;
 
 	public KuCun(KuCunOperLog operLog) {
+		this.txtKuCunGuid = IDGen.getUUID();
 		this.txtWuLiaoCode = operLog.getTxtWuLiaoCode();
 		this.txtWuLiaoName = operLog.getTxtWuLiaoName();
 		this.txtQty = operLog.getTxtQty();
 		this.txtChengBenJia = operLog.getTxtChengBenJia();
 		this.txtSalePrice = operLog.getTxtSalePrice();
 		this.txtSuppName = operLog.getTxtSuppName();
+		this.txtRemark = operLog.getTxtRemark();
 	}
 
 	public KuCun() {
+	}
+
+	public String getTxtRemark() {
+		return txtRemark;
+	}
+
+	public void setTxtRemark(String txtRemark) {
+		this.txtRemark = txtRemark;
 	}
 
 	public String getTxtKuCunGuid() {

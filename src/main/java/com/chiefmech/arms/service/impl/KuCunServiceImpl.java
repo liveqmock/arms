@@ -30,18 +30,19 @@ public class KuCunServiceImpl implements KuCunService {
 		if ("修改销售价".equals(txtOperAction)) {
 			rowAffected = kuCunDao.updateKuCunSalePrice(logKuCun);
 		} else if ("日常采购".equals(txtOperAction)) {
-			KuCun kuCun = kuCunDao.findExistKuCun(logKuCun);
+			KuCun kuCun = findExistKuCunByWuLiaoCode(logKuCun
+					.getTxtWuLiaoCode());
 			if (kuCun != null) {
-				//更新现有库存
+				// 更新现有库存
 				KuCun newKuCun = getUpdateKuCunInfo(kuCun, operLog, true);
 				rowAffected = kuCunDao.updateKuCun(newKuCun);
 			} else {
 				// 插入新的库存信息
-				logKuCun.setTxtKuCunGuid(IDGen.getUUID());
 				rowAffected = kuCunDao.insertKuCun(logKuCun);
 			}
 		} else if ("维修出库".equals(txtOperAction)) {
-			KuCun kuCun = kuCunDao.findExistKuCun(logKuCun);
+			KuCun kuCun = findExistKuCunByWuLiaoCode(logKuCun
+					.getTxtWuLiaoCode());
 			KuCun newKuCun = getUpdateKuCunInfo(kuCun, operLog, false);
 			rowAffected = kuCunDao.updateKuCun(newKuCun);
 		}
@@ -52,6 +53,14 @@ public class KuCunServiceImpl implements KuCunService {
 		return rowAffected;
 	}
 
+	/**
+	 * 根据KuCunOperLog更新库存的数量和成本价信息
+	 * 
+	 * @param kuCun
+	 * @param operLog
+	 * @param isKuCunPlusRequire
+	 * @return
+	 */
 	private KuCun getUpdateKuCunInfo(KuCun kuCun, KuCunOperLog operLog,
 			boolean isKuCunPlusRequire) {
 		float totalAmount;
@@ -66,7 +75,12 @@ public class KuCunServiceImpl implements KuCunService {
 					- operLog.getTxtChengBenJia() * operLog.getTxtQty();
 		}
 		kuCun.setTxtQty(newQty);
-		kuCun.setTxtChengBenJia(newQty == 0 ? 0 : totalAmount / newQty);
+
+		if (newQty != 0) {
+			kuCun.setTxtChengBenJia(totalAmount / newQty);
+		} else {
+			// 库存为0时显示以前的成本价
+		}
 		return kuCun;
 	}
 
@@ -92,6 +106,11 @@ public class KuCunServiceImpl implements KuCunService {
 		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
 				lstJson);
 		return jsonStr;
+	}
+
+	@Override
+	public KuCun findExistKuCunByWuLiaoCode(String txtWuLiaoCode) {
+		return kuCunDao.findExistKuCunByWuLiaoCode(txtWuLiaoCode);
 	}
 
 }

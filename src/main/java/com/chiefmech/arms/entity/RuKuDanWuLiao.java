@@ -7,6 +7,15 @@ public class RuKuDanWuLiao {
 	private String txtWuLiaoName;
 	private int txtQty;
 	private float txtPrice;
+	private String txtRemark;
+
+	public String getTxtRemark() {
+		return txtRemark;
+	}
+
+	public void setTxtRemark(String txtRemark) {
+		this.txtRemark = txtRemark;
+	}
 
 	public String getTxtWuLiaoGuid() {
 		return txtWuLiaoGuid;

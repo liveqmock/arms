@@ -333,10 +333,10 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 						<th field="txtWuLiaoName" width="150">名称及规格</th>
 						<th field="txtQty" width="60"
 							data-options="align:'right',editor:{type:'numberbox',options:{required: true}}">数量</th>
-						<th field="txtPrice" width="60">单价</th>
+						<th field="txtSalePrice" width="60">单价</th>
 						<th field="ddlSuoSuXiangMu" width="150"
 							data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/gongDanXiangMuOption.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />'}}">所属项目</th>
-						<th field="ddlZhangTao" width="80"
+						<th field="ddlZhangTao" width="100"
 							data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/zhangTaoOption.action'}}">帐套</th>
 						<th field="txtLaiYuan" width="60">物料来源</th>
 						<th field="ddlStatus" width="60">状态</th>
@@ -626,7 +626,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 		function addWulaoFromKuCun() {
 			var sURL = "<s:property value='basePath' />/storeOtherManage/kuCunManage.action?action=addWuLiao&saleAfterWeiXiuGuid="
 					+ saleAfterGuid + "&d=" + new Date();
-			var sFeatures = "dialogWidth:800px;dialogHeight:600px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
+			var sFeatures = "dialogWidth:900px;dialogHeight:700px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
 			window.showModalDialog(sURL, window, sFeatures);
 			myTable2.datagrid('reload');
 		}
@@ -634,7 +634,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 		function addWulaoFromCaiGou() {
 			var sURL = "<s:property value='basePath' />/storeOtherManage/storeOtherInsertBillManage.action?action=addWuLiao&saleAfterWeiXiuGuid="
 					+ saleAfterGuid + "&d=" + new Date();
-			var sFeatures = "dialogWidth:800px;dialogHeight:600px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
+			var sFeatures = "dialogWidth:900px;dialogHeight:700px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
 			window.showModalDialog(sURL, window, sFeatures);
 			myTable2.datagrid('reload');
 		}		
@@ -662,6 +662,10 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 					} else {
 						var e = '<a href="#" onclick="editrow2(this);return false;">编辑本行</a>&nbsp;&nbsp;&nbsp;&nbsp;';
 						var d = '<a href="#" onclick="deleterow2(this);return false;">删除本行</a>';
+						if(row.ddlStatus=='已出库'){
+							e = '';
+							d = '';	
+						}
 						return e + d;
 					}
 				</s:else>
@@ -811,7 +815,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 		
 		 //新增入库单
         function openRuKuDan() {			
-			var sURL = '../storeOtherManage/rukudanDetail.action?flag=2&d=' + new Date()
+			var sURL = '../storeOtherManage/rukudanDetail.action?ruKuDanGuid=&flag=2&d=' + new Date()
 			var sFeatures = "dialogWidth:960px;dialogHeight:500px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
 			window.showModalDialog(sURL, window, sFeatures);
         }

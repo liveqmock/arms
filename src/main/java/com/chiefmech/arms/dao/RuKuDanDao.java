@@ -45,10 +45,10 @@ public interface RuKuDanDao {
 	@Select("select * from rukudanwuliao where txtRuKuDanGuid=#{txtRuKuDanGuid}")
 	public List<RuKuDanWuLiao> getRuKuDanWuLiaoList(String txtRuKuDanGuid);
 
-	@Insert("insert into rukudanwuliao(txtWuLiaoGuid,txtRuKuDanGuid,txtWuLiaoCode,txtWuLiaoName,txtQty,txtPrice) values(#{txtWuLiaoGuid},#{txtRuKuDanGuid},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtPrice})")
+	@Insert("insert into rukudanwuliao(txtWuLiaoGuid,txtRuKuDanGuid,txtWuLiaoCode,txtWuLiaoName,txtQty,txtPrice,txtRemark) values(#{txtWuLiaoGuid},#{txtRuKuDanGuid},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtPrice},#{txtRemark})")
 	public int insertRuKuDanWuLiao(RuKuDanWuLiao item);
 
-	@Update("update rukudanwuliao set txtRuKuDanGuid=#{txtRuKuDanGuid},txtWuLiaoCode=#{txtWuLiaoCode},txtWuLiaoName=#{txtWuLiaoName},txtQty=#{txtQty},txtPrice=#{txtPrice} where txtWuLiaoGuid=#{txtWuLiaoGuid}")
+	@Update("update rukudanwuliao set txtRuKuDanGuid=#{txtRuKuDanGuid},txtWuLiaoCode=#{txtWuLiaoCode},txtWuLiaoName=#{txtWuLiaoName},txtQty=#{txtQty},txtPrice=#{txtPrice},txtRemark=#{txtRemark} where txtWuLiaoGuid=#{txtWuLiaoGuid}")
 	public int updateRuKuDanWuLiao(RuKuDanWuLiao item);
 
 	@Delete("delete from rukudanwuliao where txtWuLiaoGuid=#{txtWuLiaoGuid}")

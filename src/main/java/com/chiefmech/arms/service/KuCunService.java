@@ -5,6 +5,7 @@ import com.chiefmech.arms.entity.KuCunOperLog;
 import com.chiefmech.arms.entity.query.KuCunOperLogSearchBean;
 
 public interface KuCunService {
+	public KuCun findExistKuCunByWuLiaoCode(String txtWuLiaoCode);
 
 	public int updateKuCun(KuCunOperLog operLog);
 

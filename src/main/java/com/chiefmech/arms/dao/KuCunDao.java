@@ -17,9 +17,9 @@ import com.chiefmech.arms.entity.query.KuCunOperLogSearchBean;
 @Repository("kuCunDao")
 public interface KuCunDao {
 	@Select("select * from kucun where txtWuLiaoCode = #{txtWuLiaoCode}")
-	public KuCun findExistKuCun(KuCun item);
+	public KuCun findExistKuCunByWuLiaoCode(String txtWuLiaoCode);
 
-	@Insert("insert into kucun(txtKuCunGuid,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,txtSuppName) values(#{txtKuCunGuid},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{txtSuppName})")
+	@Insert("insert into kucun(txtKuCunGuid,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,txtSuppName,txtRemark) values(#{txtKuCunGuid},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{txtSuppName},#{txtRemark})")
 	public int insertKuCun(KuCun item);
 
 	@Update("update kucun set txtQty=#{txtQty},txtChengBenJia=#{txtChengBenJia} where txtWuLiaoCode=#{txtWuLiaoCode}")
@@ -28,7 +28,7 @@ public interface KuCunDao {
 	@Update("update kucun set txtSalePrice=#{txtSalePrice} where txtWuLiaoCode=#{txtWuLiaoCode}")
 	public int updateKuCunSalePrice(KuCun item);
 
-	@Insert("insert into kucunoperlog(txtLogGuid,txtBillGuid,txtOperAction,txtLogDate,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,txtSuppName) values(#{txtLogGuid},#{txtBillGuid},#{txtOperAction},#{txtLogDate},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{txtSuppName})")
+	@Insert("insert into kucunoperlog(txtLogGuid,txtBillGuid,txtOperAction,txtLogDate,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,txtSuppName,txtRemark) values(#{txtLogGuid},#{txtBillGuid},#{txtOperAction},#{txtLogDate},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{txtSuppName},#{txtRemark})")
 	public int insertKuCunOperLog(KuCunOperLog item);
 
 	@SelectProvider(type = KuCunDaoSqlProvider.class, method = "getKuCunList")

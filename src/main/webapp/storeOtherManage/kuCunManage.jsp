@@ -80,6 +80,7 @@ td {
 				<th width="100" data-options="field:'txtChengBenJia'">成本单价</th>
 				</s:if>
 			  <th width="100" data-options="field:'txtSalePrice',align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">售价单价</th>
+				<th width="150" data-options="field:'txtRemark'">备注</th>
                 <s:if test="action=='updateKuCun'">
                 <th field="action" width="150" align="center"
 								formatter="formatAction">操作</th>

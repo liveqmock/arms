@@ -101,6 +101,8 @@
 							data-options="align:'right',editor:{type:'numberbox',options:{required:true}}">数量</th>
 						<th field="txtPrice" width="100"
 							data-options="align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">单价</th>
+						<th field="txtRemark" width="200"
+							data-options="editor:{type:'textbox',options:{required:false}}">备注</th>
 						<s:if test="ruKuDan.txtStatus!='审核完毕'">
 							<th field="action" width="150" align="center"
 								formatter="formatAction">操作</th>

@@ -16,7 +16,14 @@ public class VCaiGouWuLiao {
 	private String ddlStatus;
 	private String txtShenHeRen;
 	private String txtShenHeShiJian;
+	private String txtRemark;
 
+	public String getTxtRemark() {
+		return txtRemark;
+	}
+	public void setTxtRemark(String txtRemark) {
+		this.txtRemark = txtRemark;
+	}
 	public String getTxtShenHeRen() {
 		return txtShenHeRen;
 	}

@@ -15,6 +15,7 @@ public class KuCunOperLog {
 	private float txtChengBenJia;
 	private float txtSalePrice;
 	private String txtSuppName;
+	private String txtRemark;
 
 	public KuCunOperLog() {
 	}
@@ -31,6 +32,7 @@ public class KuCunOperLog {
 		this.txtChengBenJia = ruKuDanWuLiao.getTxtPrice();
 		// this.txtSalePrice; //采购物料入库时没有成本价信息
 		this.txtSuppName = ruKuDan.getTxtSuppName();
+		this.txtRemark = ruKuDanWuLiao.getTxtRemark();
 	}
 
 	public KuCunOperLog(GongDanWeiXiuWuLiao gongDanWuLiao) {
@@ -45,6 +47,7 @@ public class KuCunOperLog {
 		this.txtChengBenJia = gongDanWuLiao.getTxtChengBenJia();
 		this.txtSalePrice = gongDanWuLiao.getTxtSalePrice();
 		this.txtSuppName = gongDanWuLiao.getTxtSuppName();
+		this.txtRemark = gongDanWuLiao.getTxtRemark();
 	}
 
 	public KuCunOperLog(KuCun kuCun) {
@@ -59,7 +62,16 @@ public class KuCunOperLog {
 		this.txtChengBenJia = kuCun.getTxtChengBenJia();
 		this.txtSalePrice = kuCun.getTxtSalePrice();
 		this.txtSuppName = kuCun.getTxtSuppName();
+		this.txtRemark = kuCun.getTxtRemark();
 
+	}
+
+	public String getTxtRemark() {
+		return txtRemark;
+	}
+
+	public void setTxtRemark(String txtRemark) {
+		this.txtRemark = txtRemark;
 	}
 
 	public String getTxtOperAction() {
