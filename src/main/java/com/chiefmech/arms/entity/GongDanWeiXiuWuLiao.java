@@ -35,7 +35,7 @@ public class GongDanWeiXiuWuLiao {
 		this.txtSalePrice = item.getTxtSalePrice();
 		this.txtLaiYuan = "库存";
 		this.ddlStatus = "未出库";
-		this.ddlZhangTao = "免费";
+		this.ddlZhangTao = "客户自费";
 	}
 
 	public GongDanWeiXiuWuLiao(String saleAfterGuid, VCaiGouWuLiao item) {
@@ -50,7 +50,7 @@ public class GongDanWeiXiuWuLiao {
 		this.txtSalePrice = item.getTxtPrice();
 		this.ddlStatus = item.getDdlStatus();
 		this.txtLaiYuan = "采购";
-		this.ddlZhangTao = "免费";
+		this.ddlZhangTao = "客户自费";
 	}
 
 	public String getDisPlayPrice() {

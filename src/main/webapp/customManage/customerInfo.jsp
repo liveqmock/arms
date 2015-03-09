@@ -158,7 +158,7 @@ td {
 						<td width="100" align="right">品牌：</td>
 						<td><input name="ddlCheLiangZhiZaoShang" id="ddlCheLiangZhiZaoShang"
 								class="easyui-combobox"
-								data-options="editable:true,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/cheLiangPingPaiOption.action',onSelect:updateCheXi" /></td>
+								data-options="editable:true,required:true,valueField:'code',textField:'name',method:'post',url:'<s:property value='basePath' />/data/cheLiangPingPaiOption.action' " /></td>
 						<td width="100" align="right">车型：</td>
 						<td><input name="ddlCheLiangCheXi" id="ddlCheLiangCheXi"
 								class="easyui-combobox"
@@ -232,8 +232,20 @@ td {
 		$(function() {
 			var formJson = eval('('
 					+ '<s:property value="jsonData" escape="false"/>' + ')');
+			
 			initializeWithJsonData(formJson);
-		});	
+			
+		$("#ddlCheLiangZhiZaoShang").combobox({
+				onChange : function() {
+					$.post("<s:property value='basePath' />/data/cheLiangCheXiOption.action",
+							 {
+								'cheLiangBrandName' : $('#ddlCheLiangZhiZaoShang').combobox('getValue')
+										},function(modelLst) {
+											$('#ddlCheLiangCheXi').combobox("loadData",modelLst);
+										});
+							        }
+						      });
+			          });	
 	
 		function saveCustInfo() {
 			$("#form1").form('submit', {

@@ -47,10 +47,6 @@ td {
 				<td><input name="txtLogDateEnd" type="text"
 					id="txtLogDateEnd" class="easyui-datebox"
 					style="width: 100px;" /></td>
-				<td>所属仓库:</td>
-				<td><input name="ddlCangKu" id="ddlCangKu"
-							class="easyui-combobox"
-							data-options="editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/peiJianChangKuOption.action'" style="width: 100px;"/></td>
 				<td>业务类别:</td>
 				<td><input name="txtBillSort" id="txtBillSort"
                         class="easyui-combobox"	data-options="editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/chuRuKuSortOption.action'" style="width: 100px;"/></td>

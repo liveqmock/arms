@@ -234,7 +234,7 @@ td {
 						<tr>
 							<td>&nbsp;<s:property value="#index.count" /></td>
 							<td>&nbsp;<s:property value="txtWuLiaoName" /></td>
-							<td>&nbsp;<s:property value="disPlayQty" /></td>
+							<td>&nbsp;<s:property value="displayQty" /></td>
 							<td align="right">&nbsp;<s:property value="displayPrice" /></td>
 							<td>&nbsp;<s:property value="ddlSuoSuXiangMu" /></td>
 						</tr>
