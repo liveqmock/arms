@@ -14,6 +14,7 @@ public class GongDan {
 	private String txtCheLiangId;
 	/** 工单状态 */
 	private String txtGongDanStatus;
+	private String txtGongDanStatusChain;
 	/** 车牌号 */
 	private String txtChePaiHao;
 	/** 里程 */
@@ -71,7 +72,7 @@ public class GongDan {
 	public String txtJieSuanDate;
 	/** 出厂时间 */
 	public String txtChuChangDate;
-	  
+
 	private float txtGongShiZheKou;
 	private float txtCaiLiaoZheKou;
 
@@ -138,6 +139,14 @@ public class GongDan {
 
 	public String getDisplayFinalPay() {
 		return String.format("%.2f", txtFinalPay);
+	}
+
+	public String getTxtGongDanStatusChain() {
+		return txtGongDanStatusChain;
+	}
+
+	public void setTxtGongDanStatusChain(String txtGongDanStatusChain) {
+		this.txtGongDanStatusChain = txtGongDanStatusChain;
 	}
 
 	public String getTxtGongDanId() {
@@ -486,5 +495,5 @@ public class GongDan {
 	public void setTxtDeleteFlag(String txtDeleteFlag) {
 		this.txtDeleteFlag = txtDeleteFlag;
 	}
-	
+
 }

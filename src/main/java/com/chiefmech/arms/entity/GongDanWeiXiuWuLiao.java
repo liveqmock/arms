@@ -53,7 +53,7 @@ public class GongDanWeiXiuWuLiao {
 		this.ddlZhangTao = "客户自费";
 	}
 
-	public String getDisPlayPrice() {
+	public String getDisplayPrice() {
 		if (StringUtils.isEmpty(this.txtWuLiaoName)) {
 			return "";
 		} else {
@@ -61,7 +61,7 @@ public class GongDanWeiXiuWuLiao {
 		}
 	}
 
-	public String getDisPlayQty() {
+	public String getDisplayQty() {
 		if (StringUtils.isEmpty(this.txtWuLiaoName)) {
 			return "";
 		} else {

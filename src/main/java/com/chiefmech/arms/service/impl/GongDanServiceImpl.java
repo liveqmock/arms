@@ -1,6 +1,9 @@
 package com.chiefmech.arms.service.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -8,6 +11,7 @@ import net.sf.json.JSONArray;
 
 import org.springframework.stereotype.Service;
 
+import com.chiefmech.arms.action.data.CommonData;
 import com.chiefmech.arms.common.util.DateUtil;
 import com.chiefmech.arms.dao.GongDanDao;
 import com.chiefmech.arms.dao.WeiXiuWuLiaoDao;
@@ -17,6 +21,7 @@ import com.chiefmech.arms.entity.GongDanCheLiangJianCe;
 import com.chiefmech.arms.entity.GongDanJieSuan;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
+import com.chiefmech.arms.entity.JieSuanItem;
 import com.chiefmech.arms.entity.KuCun;
 import com.chiefmech.arms.entity.KuCunOperLog;
 import com.chiefmech.arms.entity.WeiXiuWuLiao;
@@ -334,16 +339,38 @@ public class GongDanServiceImpl implements GongDanService {
 	@Override
 	public GongDanJieSuan getGongDanJieSuanXinXi(GongDan gongDan) {
 		String gongDanId = gongDan.getTxtGongDanId();
-		float xiangMuZheHou = gongDan.getTxtGongShiZheKou();
-		float wuLiaoZheHou = gongDan.getTxtCaiLiaoZheKou();
+		float gongShiZheKou = gongDan.getTxtGongShiZheKou();
+		float wuLiaoZheKou = gongDan.getTxtCaiLiaoZheKou();
 
-		float weiXiuFeiFree = gongDanDao.getWeiXiuFeiFree(gongDanId);
-		float wuLiaoFeiFree = gongDanDao.getWuLiaoFeiFree(gongDanId);
-		float weiXiuFeiPaid = gongDanDao.getWeiXiuFeiPaid(gongDanId);
-		float wuLiaoFeiPaid = gongDanDao.getWuLiaoFeiPaid(gongDanId);
+		List<JieSuanItem> gongShiFeiLst = gongDanDao
+				.getGongShiFeiLst(gongDanId);
+		List<JieSuanItem> wuLiaoFeiLst = gongDanDao.getWuLiaoFeiLst(gongDanId);
 
-		return new GongDanJieSuan(xiangMuZheHou, wuLiaoZheHou, weiXiuFeiFree,
-				wuLiaoFeiFree, weiXiuFeiPaid, wuLiaoFeiPaid);
+		Map<String, Float> gongShiMap = new HashMap<String, Float>();
+		for (JieSuanItem item : gongShiFeiLst) {
+			gongShiMap.put(item.getZhangtao(), item.getGongshiFei());
+		}
+
+		Map<String, Float> wuLiaoMap = new HashMap<String, Float>();
+		for (JieSuanItem item : wuLiaoFeiLst) {
+			wuLiaoMap.put(item.getZhangtao(), item.getWuLiaoFei());
+		}
+
+		List<JieSuanItem> jieSuanLst = new ArrayList<JieSuanItem>();
+		for (String zhangTao : CommonData.zhangTaoLst) {
+			Float gongshiFeiObj = gongShiMap.get(zhangTao);
+			float gongshiFei = (gongshiFeiObj == null) ? 0 : gongshiFeiObj
+					.floatValue();
+			Float wuLiaoFeiObj = gongShiMap.get(zhangTao);
+			float wuLiaoFei = (wuLiaoFeiObj == null) ? 0 : wuLiaoFeiObj
+					.floatValue();
+
+			JieSuanItem item = new JieSuanItem(zhangTao, gongshiFei, wuLiaoFei,
+					gongShiZheKou, wuLiaoZheKou);
+			jieSuanLst.add(item);
+		}
+
+		return new GongDanJieSuan(jieSuanLst, gongShiZheKou, wuLiaoZheKou);
 	}
 
 	@Override

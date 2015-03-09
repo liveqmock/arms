@@ -15,6 +15,7 @@ import com.chiefmech.arms.entity.GongDan;
 import com.chiefmech.arms.entity.GongDanCheLiangJianCe;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
+import com.chiefmech.arms.entity.JieSuanItem;
 import com.chiefmech.arms.entity.footer.GongDanWeiXiuWuLiaoFooter;
 import com.chiefmech.arms.entity.footer.GongDanWeiXiuXiangMuFooter;
 import com.chiefmech.arms.entity.query.SaleAfterGongDanSearchBean;
@@ -90,11 +91,11 @@ public interface GongDanDao {
 	public List<GongDanWeiXiuWuLiao> getGongDanWeiXiuWuLiaoListByGongDanId(
 			String txtGongDanGuid);
 
-	@Select("select '合计' txtWuLiaoCode, sum(txtQty) txtQty, sum(txtPrice*txtQty) txtPaid from gongdanwuliao where txtGongDanGuid=#{txtGongDanId}")
+	@Select("select '合计' txtWuLiaoCode, sum(txtQty) txtQty, sum(txtSalePrice*txtQty) txtPaid from gongdanwuliao where txtGongDanGuid=#{txtGongDanId}")
 	public List<GongDanWeiXiuWuLiaoFooter> getGongDanWeiXiuWuLiaoFooterListByGongDanId(
 			String txtGongDanId);
 
-	@Select("select ifnull(sum(txtPrice*txtQty),0) CaiLiaoFei from gongdanwuliao where txtGongDanGuid=#{txtGongDanId}")
+	@Select("select ifnull(sum(txtSalePrice*txtQty),0) CaiLiaoFei from gongdanwuliao where txtGongDanGuid=#{txtGongDanId}")
 	public float getCaiLiaoFeiZheQianByGongDanId(String txtGongDanId);
 
 	@Insert("insert into gongdanwuliao(txtWuLiaoGuid,txtWuLiaoCode,txtGongDanGuid,txtWuLiaoName,txtSuppName,txtChengBenJia,txtSalePrice,ddlZhangTao,ddlStatus,txtRemark,txtLaiYuan) values(#{txtWuLiaoGuid},#{txtWuLiaoCode},#{txtGongDanGuid},#{txtWuLiaoName},#{txtSuppName},#{txtChengBenJia},#{txtSalePrice},#{ddlZhangTao},#{ddlStatus},#{txtRemark},#{txtLaiYuan})")
@@ -156,16 +157,10 @@ public interface GongDanDao {
 			@Param("txtWuLiaoGuid") String txtWuLiaoGuid,
 			@Param("ddlStatus") String ddlStatus);
 
-	@Select("select ifnull(sum(txtFeiYong),0) from gongdanxiangmu where txtGongDanGuid=#{gongDanId} and ddlZhangTao='免费'")
-	public float getWeiXiuFeiFree(String gongDanId);
+	@Select("select ddlZhangTao zhangtao, ifnull(sum(txtFeiYong),0) gongshiFei from gongdanxiangmu where txtGongDanGuid=#{txtGongDanGuid} group by ddlZhangTao")
+	public List<JieSuanItem> getGongShiFeiLst(String txtGongDanGuid);
 
-	@Select("select ifnull(sum(txtFeiYong),0) from gongdanxiangmu where txtGongDanGuid=#{gongDanId} and ddlZhangTao='付费'")
-	public float getWeiXiuFeiPaid(String gongDanId);
-
-	@Select("select ifnull(sum(txtPrice*txtQty),0) from gongdanwuliao where txtGongDanGuid=#{gongDanId} and ddlZhangTao='免费'")
-	public float getWuLiaoFeiFree(String gongDanId);
-
-	@Select("select ifnull(sum(txtPrice*txtQty),0) from gongdanwuliao where txtGongDanGuid=#{gongDanId} and ddlZhangTao='付费'")
-	public float getWuLiaoFeiPaid(String gongDanId);
+	@Select("select ddlZhangTao zhangtao, ifnull(sum(txtSalePrice*txtQty),0) wuLiaoFei from gongdanwuliao where txtGongDanGuid=#{txtGongDanGuid} group by ddlZhangTao")
+	public List<JieSuanItem> getWuLiaoFeiLst(String txtGongDanGuid);
 
 }

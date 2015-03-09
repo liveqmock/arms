@@ -24,7 +24,7 @@ import com.chiefmech.arms.service.CommonDataService;
 @Namespace("/data")
 @Controller()
 @Scope("prototype")
-public class CommonDataAction extends BaseActionSupport {
+public class CommonDataAction extends BaseActionSupport implements CommonData {
 
 	@Resource()
 	private CommonDataService commonDataService;
@@ -40,9 +40,16 @@ public class CommonDataAction extends BaseActionSupport {
 
 	@Action(value = "zhangTaoOption")
 	public void zhangTao() {
-		this.transmitJson(getJsonData("data/zhangTao.json"));
-	}
+		StringBuffer sb = new StringBuffer();
+		sb.append("[");
+		for (String zhangTao : zhangTaoLst) {
+			sb.append(String.format("{'name':'%s','code':'%s'},", zhangTao,
+					zhangTao));
 
+		}
+		sb.append("]");
+		this.transmitJson(sb.toString());
+	}
 	@Action(value = "chuRuKuSortOption")
 	public void chuRuKuSort() {
 		this.transmitJson(getJsonData("data/chuRuKuSort.json"));
@@ -103,11 +110,11 @@ public class CommonDataAction extends BaseActionSupport {
 		this.transmitJson(JSONArray.fromObject(
 				commonDataService.getOptionBean("GroupName")).toString());
 	}
-    @Action(value="getCarBrandOption")
-    public void getCarbrandOption(){
-    	this.transmitJson(JSONArray.fromObject(
+	@Action(value = "getCarBrandOption")
+	public void getCarbrandOption() {
+		this.transmitJson(JSONArray.fromObject(
 				commonDataService.getOptionBean("CarBrand")).toString());
-    }
+	}
 	@Action(value = "cheLiangCheXiOption")
 	public void cheLiangCheXi() {
 		Map<String, String> param = new HashMap<String, String>();
@@ -127,7 +134,7 @@ public class CommonDataAction extends BaseActionSupport {
 	}
 
 	private String getJsonData(String path) {
-		//当前调试阶段不缓存数据，直接从文件读取，后面调优时需缓存数据
+		// 当前调试阶段不缓存数据，直接从文件读取，后面调优时需缓存数据
 		String jsonStr = "[]";
 		try {
 			File file = new File(this.getClass().getClassLoader()

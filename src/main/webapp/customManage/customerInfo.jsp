@@ -92,7 +92,7 @@ td {
 					<td align="right">会员积分：</td>
 					<td><input class="easyui-numberbox" name="txtHuiYuanJiFen"
 						data-options="required:true" type="text" id="txtHuiYuanJiFen" /></td>
-					<td align="right">维修项目折扣：</td>
+					<td align="right">工时折扣：</td>
 					<td><input class="easyui-numberbox" name="txtGongShiZheKou"
 						type="text" id="txtGongShiZheKou"
 						data-options="required:true,precision:2,max:1,min:0" /></td>

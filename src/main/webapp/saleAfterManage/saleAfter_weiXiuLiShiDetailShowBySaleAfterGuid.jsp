@@ -147,7 +147,7 @@
 					<tr>
 						<td colspan="6">会员等级：<span
 							style="color: Blue; font-weight: bold; padding-right: 10px;"><s:property
-									value='gongDan.txtHuiYuanDengJi' /></span>维修项目折扣:<span
+									value='gongDan.txtHuiYuanDengJi' /></span>工时折扣:<span
 							style="color: Blue; font-weight: bold; padding-right: 10px;"><s:property
 									value='gongDan.txtGongShiZheKou' /></span>物料折扣:<span
 							style="color: Blue; font-weight: bold;"><s:property

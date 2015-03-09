@@ -180,7 +180,7 @@ td {
 						<tr>
 							<td align="right">会员等级：</td>
 							<td><div id="txtHuiYuanDengJi"></div></td>
-							<td align="right">维修项目折扣：</td>
+							<td align="right">工时折扣：</td>
 							<td><div id="txtGongShiZheKou"></div></td>
 							<td align="right">物料折扣：</td>
 							<td><div id="txtCaiLiaoZheKou"></div></td>
@@ -372,57 +372,42 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 					style="border-collapse: collapse; border: 1px solid #ddd;"
 					cellpadding="5">
 					<tr>
-						<td colspan="6">会员等级：<span
-							style="color: Blue; font-weight: bold; padding-right: 10px;"><s:property
-									value='gongDan.txtHuiYuanDengJi' /></span>维修项目折扣:<span
-							style="color: Blue; font-weight: bold; padding-right: 10px;"><s:property
+						<td colspan="5">会员等级：<span
+							style="font-weight: bold; padding-right: 10px;"><s:property
+									value='gongDan.txtHuiYuanDengJi' /></span>工时折扣:<span
+							style="font-weight: bold; padding-right: 10px;"><s:property
 									value='gongDan.txtGongShiZheKou' /></span>物料折扣:<span
-							style="color: Blue; font-weight: bold;"><s:property
+							style="font-weight: bold;"><s:property
 									value='gongDan.txtCaiLiaoZheKou' /></span></td>
 
 					</tr>
 					<tr>
-						<td width="100">项目维修费(免费)</td>
-						<td width="100" style="color: blue; font-weight: bold;"><s:property
-								value='jieSuanInfo.weiXiuFeiFree' /></td>
-						<td width="100">物料费用(免费)</td>
-						<td width="100" style="color: blue; font-weight: bold;"><s:property
-								value='jieSuanInfo.wuLiaoFeiFree' /></td>
-						<td width="100">合计(免费)</td>
-						<td width="100" style="color: blue; font-weight: bold;"><s:property
-								value='jieSuanInfo.heJiFree' /></td>
+						<td width="100" style="font-weight:bold;">帐套</td>
+						<td width="100" style="font-weight:bold;">工时费（折前）</td>
+						<td width="100" style="font-weight:bold;">工时费（折后）</td>
+						<td width="100" style="font-weight:bold;">物料费（折前）</td>
+						<td width="100" style="font-weight:bold;">物料费（折后）</td>
+					</tr>
+                    <s:iterator value="jieSuanInfo.jieSuanLst">                    
+					<tr>
+						<td>&nbsp;<s:property value="zhangtao" />&nbsp;</td>
+						<td align="right">&nbsp;<s:property value="gongshiFeiZheQian" />&nbsp;</td>
+						<td align="right">&nbsp;<s:property value="gongshiFeiZheHou" />&nbsp;</td>
+						<td align="right">&nbsp;<s:property value="wuLiaoFeiZheQian" />&nbsp;</td>
+						<td align="right">&nbsp;<s:property value="wuLiaoFeiZheHou" />&nbsp;</td>
+					</tr>
+                    </s:iterator>                  
+					<tr>
+						<td>&nbsp;合计&nbsp;</td>
+						<td align="right">&nbsp;<s:property value="jieSuanInfo.gongshiFeiZheQianHeJi" />&nbsp;</td>
+						<td align="right">&nbsp;<s:property value="jieSuanInfo.gongshiFeiZheHouHeJi" />&nbsp;</td>
+						<td align="right">&nbsp;<s:property value="jieSuanInfo.wuLiaoFeiZheQianHeJi" />&nbsp;</td>
+						<td align="right">&nbsp;<s:property value="jieSuanInfo.wuLiaoFeiZheHouHeJi" />&nbsp;</td>
 					</tr>
 					<tr>
-						<td>项目维修费(付费)</td>
-						<td style="color: blue; font-weight: bold;"><s:property
-								value='jieSuanInfo.weiXiuFeiPaid' /></td>
-						<td>物料费用(付费)</td>
-						<td style="color: blue; font-weight: bold;"><s:property
-								value='jieSuanInfo.wuLiaoFeiPaid' /></td>
-						<td>合计(付费)</td>
-						<td style="color: blue; font-weight: bold;"><s:property
-								value='jieSuanInfo.heJiPaid' /></td>
-					</tr>
-					<tr>
-						<td>项目维修费(客户支付)</td>
-						<td style="color: blue; font-weight: bold;"><s:property
-								value='jieSuanInfo.weiXiuFeiDiscount' /></td>
-						<td>物料费用(客户支付)</td>
-						<td style="color: blue; font-weight: bold;"><s:property
-								value='jieSuanInfo.wuLiaoFeiDiscount' /></td>
-						<td>合计(客户支付)</td>
-						<td style="color: blue; font-weight: bold;"><s:property
-								value='jieSuanInfo.heJiDiscount' /></td>
-					</tr>
-					<tr>
-						<td>&nbsp;</td>
-						<td style="color: blue; font-weight: bold;">&nbsp;</td>
-						<td align="right" style="color: blue; font-weight: bold;">支付方式</td>
-						<td style="color: blue; font-weight: bold;"><input name="ddlZhiFuFangShi" id="ddlZhiFuFangShi" class="easyui-combobox" data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/zhiFuSortOption.action'" /></td>
-						<td align="right" style="color: blue; font-weight: bold;">实付金额</td>
-						<td style="color: blue; font-weight: bold;"><input class="easyui-numberbox" name="txtFinalPay"
-						type="text" id="txtFinalPay"
-						data-options="required:true,precision:2,min:0" /></td>
+						<td colspan="5">合计(客户支付)：<span>&nbsp;<s:property value="jieSuanInfo.gongDanHeJi" />&nbsp;</span>&nbsp;&nbsp;&nbsp;
+                        支付方式：&nbsp;<span><input name="ddlZhiFuFangShi" id="ddlZhiFuFangShi" class="easyui-combobox" data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/zhiFuSortOption.action'" style="width:100px;"/></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        实付金额：&nbsp;<span><input class="easyui-numberbox" name="txtFinalPay" type="text" id="txtFinalPay" data-options="required:true,precision:2,min:0" style="width:80px;" /></span></td>
 					</tr>
 				</table>
 			</div>
@@ -834,8 +819,9 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 					if (result.errorMsg) {
 						$.messager.alert('出错啦', result.errorMsg);
 					}else{
-						//$.messager.alert('提示', "支付方式保存成功");
-						reloadCurentPage();
+						$.messager.alert('提示', "支付方式保存成功",'info',function(){
+							reloadCurentPage();
+						});
 					}
 				}, 'json');
 			}

@@ -252,56 +252,45 @@ td {
 				<table border="2" id="billHuiZong"
 					style="border: 2px solid black; width: 100%; border-collapse: collapse;">
 					<tr>
-						<td width="5%" rowspan="5">单<br />据<br />汇<br />总<br />
+						<td width="5%" rowspan="<s:property value='jieSuanInfo.jieSuanLst.size + 5' />">单 <br />据<br />汇<br />总<br />
 						</td>
-						<td colspan="6" style="border-right: none;"><div
-								style="width: 100%; text-align: left;">
-								维修项目折扣：
-								<s:property value='gongDan.txtGongShiZheKou' />
-								&nbsp;&nbsp;&nbsp;&nbsp; 物料折扣：
-								<s:property value='gongDan.txtCaiLiaoZheKou' />
-								&nbsp;
-							</div></td>
+						<tr>
+						<td colspan="5">会员等级：<span
+							style="font-weight: bold; padding-right: 10px;"><s:property
+									value='gongDan.txtHuiYuanDengJi' /></span>工时折扣:<span
+							style="font-weight: bold; padding-right: 10px;"><s:property
+									value='gongDan.txtGongShiZheKou' /></span>物料折扣:<span
+							style="font-weight: bold;"><s:property
+									value='gongDan.txtCaiLiaoZheKou' /></span></td>
+
 					</tr>
 					<tr>
-						<td width="24%">项目维修费(免费)</td>
-						<td width="9%" align="right">&nbsp;<s:property
-								value='jieSuanInfo.weiXiuFeiFree' /></td>
-						<td width="24%">物料费用(免费)</td>
-						<td width="10%" align="right">&nbsp;<s:property
-								value='jieSuanInfo.wuLiaoFeiFree' /></td>
-						<td width="19%">合计(免费)</td>
-						<td width="9%" align="right">&nbsp;<s:property
-								value='jieSuanInfo.heJiFree' /></td>
+						<td width="100" style="font-weight:bold;">帐套</td>
+						<td width="100" style="font-weight:bold;">工时费（折前）</td>
+						<td width="100" style="font-weight:bold;">工时费（折后）</td>
+						<td width="100" style="font-weight:bold;">物料费（折前）</td>
+						<td width="100" style="font-weight:bold;">物料费（折后）</td>
+					</tr>
+                    <s:iterator value="jieSuanInfo.jieSuanLst">                    
+					<tr>
+						<td>&nbsp;<s:property value="zhangtao" />&nbsp;</td>
+						<td align="right">&nbsp;<s:property value="gongshiFeiZheQian" />&nbsp;</td>
+						<td align="right">&nbsp;<s:property value="gongshiFeiZheHou" />&nbsp;</td>
+						<td align="right">&nbsp;<s:property value="wuLiaoFeiZheQian" />&nbsp;</td>
+						<td align="right">&nbsp;<s:property value="wuLiaoFeiZheHou" />&nbsp;</td>
+					</tr>
+                    </s:iterator>                  
+					<tr>
+						<td>&nbsp;合计&nbsp;</td>
+						<td align="right">&nbsp;<s:property value="jieSuanInfo.gongshiFeiZheQianHeJi" />&nbsp;</td>
+						<td align="right">&nbsp;<s:property value="jieSuanInfo.gongshiFeiZheHouHeJi" />&nbsp;</td>
+						<td align="right">&nbsp;<s:property value="jieSuanInfo.wuLiaoFeiZheQianHeJi" />&nbsp;</td>
+						<td align="right">&nbsp;<s:property value="jieSuanInfo.wuLiaoFeiZheHouHeJi" />&nbsp;</td>
 					</tr>
 					<tr>
-						<td>项目维修费(付费)</td>
-						<td align="right">&nbsp;<s:property
-								value='jieSuanInfo.weiXiuFeiPaid' /></td>
-						<td>物料费用(付费)</td>
-						<td align="right">&nbsp;<s:property
-								value='jieSuanInfo.wuLiaoFeiPaid' /></td>
-						<td>合计(付费)</td>
-						<td align="right">&nbsp;<s:property
-								value='jieSuanInfo.heJiPaid' /></td>
-					</tr>
-					<tr>
-						<td>项目维修费(客户支付)</td>
-						<td align="right">&nbsp;<s:property
-								value='jieSuanInfo.weiXiuFeiDiscount' /></td>
-						<td>物料费用(客户支付)</td>
-						<td align="right">&nbsp;<s:property
-								value='jieSuanInfo.wuLiaoFeiDiscount' /></td>
-						<td>合计(客户支付)</td>
-						<td align="right">&nbsp;<s:property
-								value='jieSuanInfo.heJiDiscount' /></td>
-					</tr>
-					<tr>
-						<td colspan="2" style="border-right: none;">&nbsp;</td>
-						<td colspan="2" style="border-left: none; border-right: none;">支付方式：<s:property
-								value='gongDan.ddlZhiFuFangShi' /></td>
-						<td colspan="2" style="border-left: none; border-right: none;">实付金额：<s:property
-								value='gongDan.displayFinalPay' /></td>
+						<td colspan="5">合计(客户支付)：<span>&nbsp;<s:property value="jieSuanInfo.gongDanHeJi" />&nbsp;</span>&nbsp;&nbsp;&nbsp;
+                        支付方式：&nbsp;<span><s:property value="gongDan.ddlZhiFuFangShi" /></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        实付金额：&nbsp;<span><s:property value="gongDan.displayFinalPay" /></span></td>
 					</tr>
 				</table> <!--费用合计 end-->
 			</td>

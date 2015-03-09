@@ -90,7 +90,7 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 			jieSuanInfo = gongDanService.getGongDanJieSuanXinXi(gongDan);
 			if (gongDan.getTxtFinalPay() == -1) {
 				gongDan.setTxtFinalPay(Float.parseFloat(jieSuanInfo
-						.getHeJiDiscount()));
+						.getGongDanHeJi()));
 			}
 		}
 		return INPUT;
@@ -135,19 +135,11 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 				.findGongDanXiangMuLstByWeiXiuGuid(saleAfterWeiXiuGuid);
 		gongDanWuLiaoLst = gongDanService
 				.findGongDanWuLiaoLstByWeiXiuGuid(saleAfterWeiXiuGuid);
-		int gongDanxiangmuSize = gongDanXiangMuLst.size();
-		int gongDanwuliaoSize = gongDanWuLiaoLst.size();
-		GongDanWeiXiuXiangMu xm = new GongDanWeiXiuXiangMu();
-		GongDanWeiXiuWuLiao wl = new GongDanWeiXiuWuLiao();
-		if (gongDanxiangmuSize == 0) {
-			for (int i = 0; i < 1; i++) {
-				gongDanXiangMuLst.add(xm);
-			}
+		if (gongDanXiangMuLst.size() == 0) {
+			gongDanXiangMuLst.add(new GongDanWeiXiuXiangMu());
 		}
-		if (gongDanwuliaoSize == 0) {
-			for (int i = 0; i < 1; i++) {
-				gongDanWuLiaoLst.add(wl);
-			}
+		if (gongDanWuLiaoLst.size() == 0) {
+			gongDanWuLiaoLst.add(new GongDanWeiXiuWuLiao());
 		}
 		return INPUT;
 	}

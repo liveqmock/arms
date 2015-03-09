@@ -1,105 +1,83 @@
 package com.chiefmech.arms.entity;
 
-public class GongDanJieSuan {
-	private String weiXiuFeiFree;
-	private String weiXiuFeiPaid;
-	private String weiXiuFeiDiscount;
-	private String wuLiaoFeiFree;
-	private String wuLiaoFeiPaid;
-	private String wuLiaoFeiDiscount;
-	private String heJiFree;
-	private String heJiPaid;
-	private String heJiDiscount;
+import java.util.List;
 
-	public GongDanJieSuan(float xiangMuZheHou, float wuLiaoZheHou,
-			float weiXiuFeiFree2, float wuLiaoFeiFree2, float weiXiuFeiPaid2,
-			float wuLiaoFeiPaid2) {
-		this.weiXiuFeiFree = formatMoney(weiXiuFeiFree2);
-		this.weiXiuFeiPaid = formatMoney(weiXiuFeiPaid2);
-		this.weiXiuFeiDiscount = formatMoney(weiXiuFeiPaid2 * xiangMuZheHou);
-		this.wuLiaoFeiFree = formatMoney(wuLiaoFeiFree2);
-		this.wuLiaoFeiPaid = formatMoney(wuLiaoFeiPaid2);
-		this.wuLiaoFeiDiscount = formatMoney(wuLiaoFeiPaid2 * wuLiaoZheHou);
-		this.heJiFree = formatMoney(weiXiuFeiFree2 + wuLiaoFeiFree2);
-		this.heJiPaid = formatMoney(weiXiuFeiPaid2 + wuLiaoFeiPaid2);
-		this.heJiDiscount = formatMoney(weiXiuFeiPaid2 * xiangMuZheHou
-				+ wuLiaoFeiPaid2 * wuLiaoZheHou);
+public class GongDanJieSuan {
+	private List<JieSuanItem> jieSuanLst;
+	private String gongshiFeiZheQianHeJi;
+	private String gongshiFeiZheHouHeJi;
+	private String wuLiaoFeiZheQianHeJi;
+	private String wuLiaoFeiZheHouHeJi;
+	private String gongDanHeJi;
+
+	public GongDanJieSuan(List<JieSuanItem> jieSuanLst, float gongShiZheKou,
+			float wuLiaoZheKou) {
+		this.jieSuanLst = jieSuanLst;
+
+		int gongshiFeiHeJi = 0;
+		int wuLiaoFeiHeJi = 0;
+		for (JieSuanItem item : jieSuanLst) {
+			gongshiFeiHeJi += item.getGongshiFei();
+			wuLiaoFeiHeJi += item.getWuLiaoFei();
+		}
+		this.gongshiFeiZheQianHeJi = formatMoney(gongshiFeiHeJi);
+		this.gongshiFeiZheHouHeJi = formatMoney(gongshiFeiHeJi * gongShiZheKou);
+		this.wuLiaoFeiZheQianHeJi = formatMoney(wuLiaoFeiHeJi);
+		this.wuLiaoFeiZheHouHeJi = formatMoney(wuLiaoFeiHeJi * wuLiaoZheKou);
+		this.gongDanHeJi = formatMoney(gongshiFeiHeJi * gongShiZheKou
+				+ wuLiaoFeiHeJi * wuLiaoZheKou);
 	}
 
 	private String formatMoney(float money) {
 		return String.format("%.2f", money);
 	}
 
-	public String getWeiXiuFeiFree() {
-		return weiXiuFeiFree;
+	public List<JieSuanItem> getJieSuanLst() {
+		return jieSuanLst;
 	}
 
-	public void setWeiXiuFeiFree(String weiXiuFeiFree) {
-		this.weiXiuFeiFree = weiXiuFeiFree;
+	public void setJieSuanLst(List<JieSuanItem> jieSuanLst) {
+		this.jieSuanLst = jieSuanLst;
 	}
 
-	public String getWeiXiuFeiPaid() {
-		return weiXiuFeiPaid;
+	public String getGongshiFeiZheQianHeJi() {
+		return gongshiFeiZheQianHeJi;
 	}
 
-	public void setWeiXiuFeiPaid(String weiXiuFeiPaid) {
-		this.weiXiuFeiPaid = weiXiuFeiPaid;
+	public void setGongshiFeiZheQianHeJi(String gongshiFeiZheQianHeJi) {
+		this.gongshiFeiZheQianHeJi = gongshiFeiZheQianHeJi;
 	}
 
-	public String getWeiXiuFeiDiscount() {
-		return weiXiuFeiDiscount;
+	public String getGongshiFeiZheHouHeJi() {
+		return gongshiFeiZheHouHeJi;
 	}
 
-	public void setWeiXiuFeiDiscount(String weiXiuFeiDiscount) {
-		this.weiXiuFeiDiscount = weiXiuFeiDiscount;
+	public void setGongshiFeiZheHouHeJi(String gongshiFeiZheHouHeJi) {
+		this.gongshiFeiZheHouHeJi = gongshiFeiZheHouHeJi;
 	}
 
-	public String getWuLiaoFeiFree() {
-		return wuLiaoFeiFree;
+	public String getWuLiaoFeiZheQianHeJi() {
+		return wuLiaoFeiZheQianHeJi;
 	}
 
-	public void setWuLiaoFeiFree(String wuLiaoFeiFree) {
-		this.wuLiaoFeiFree = wuLiaoFeiFree;
+	public void setWuLiaoFeiZheQianHeJi(String wuLiaoFeiZheQianHeJi) {
+		this.wuLiaoFeiZheQianHeJi = wuLiaoFeiZheQianHeJi;
 	}
 
-	public String getWuLiaoFeiPaid() {
-		return wuLiaoFeiPaid;
+	public String getWuLiaoFeiZheHouHeJi() {
+		return wuLiaoFeiZheHouHeJi;
 	}
 
-	public void setWuLiaoFeiPaid(String wuLiaoFeiPaid) {
-		this.wuLiaoFeiPaid = wuLiaoFeiPaid;
+	public void setWuLiaoFeiZheHouHeJi(String wuLiaoFeiZheHouHeJi) {
+		this.wuLiaoFeiZheHouHeJi = wuLiaoFeiZheHouHeJi;
 	}
 
-	public String getWuLiaoFeiDiscount() {
-		return wuLiaoFeiDiscount;
+	public String getGongDanHeJi() {
+		return gongDanHeJi;
 	}
 
-	public void setWuLiaoFeiDiscount(String wuLiaoFeiDiscount) {
-		this.wuLiaoFeiDiscount = wuLiaoFeiDiscount;
-	}
-
-	public String getHeJiFree() {
-		return heJiFree;
-	}
-
-	public void setHeJiFree(String heJiFree) {
-		this.heJiFree = heJiFree;
-	}
-
-	public String getHeJiPaid() {
-		return heJiPaid;
-	}
-
-	public void setHeJiPaid(String heJiPaid) {
-		this.heJiPaid = heJiPaid;
-	}
-
-	public String getHeJiDiscount() {
-		return heJiDiscount;
-	}
-
-	public void setHeJiDiscount(String heJiDiscount) {
-		this.heJiDiscount = heJiDiscount;
+	public void setGongDanHeJi(String gongDanHeJi) {
+		this.gongDanHeJi = gongDanHeJi;
 	}
 
 }
