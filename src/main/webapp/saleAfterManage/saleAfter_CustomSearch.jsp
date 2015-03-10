@@ -121,7 +121,8 @@
 			z.focus();*/
 			var sFeatures = "dialogWidth:730px;dialogHeight:550px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
 			window.showModalDialog(url, window, sFeatures);
-			myTable.datagrid('reload');
+			//myTable.datagrid('reload');
+			doSearch();
 		}
 
 		function showWeiXiuLiShiList() {

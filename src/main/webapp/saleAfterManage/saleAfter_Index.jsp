@@ -98,13 +98,27 @@ td,div {
 
 	<div id="tabs" class="tabs">
 		<ul>
+        	<s:if test="gongDan.txtGongDanStatusChain.indexOf('维修接待') != -1">
 			<li id="tab0"><a href="javascript:void(0)" onClick="show(0)">维修接待</a></li>
+            </s:if>
+        	<s:if test="gongDan.txtGongDanStatusChain.indexOf('车辆检测') != -1">
 			<li id="tab1"><a href="javascript:void(0)" onClick="show(1)">车辆检测</a></li>
+            </s:if>
+        	<s:if test="gongDan.txtGongDanStatusChain.indexOf('物料登记') != -1">
 			<li id="tab2"><a href="javascript:void(0)" onClick="show(2)">物料登记</a></li>
+            </s:if>
+        	<s:if test="gongDan.txtGongDanStatusChain.indexOf('维修派工') != -1">
 			<li id="tab3"><a href="javascript:void(0)" onClick="show(3)">维修派工</a></li>
+            </s:if>
+        	<s:if test="gongDan.txtGongDanStatusChain.indexOf('领取物料') != -1">
 			<li id="tab4"><a href="javascript:void(0)" onClick="show(4)">领取物料</a></li>
+            </s:if>
+        	<s:if test="gongDan.txtGongDanStatusChain.indexOf('维修完检') != -1">
 			<li id="tab5"><a href="javascript:void(0)" onClick="show(5)">维修完检</a></li>
+            </s:if>
+        	<s:if test="gongDan.txtGongDanStatusChain.indexOf('费用结算') != -1">
 			<li id="tab6"><a href="javascript:void(0)" onClick="show(6)">费用结算</a></li>
+            </s:if>
 			<li id="tab7"><a href="javascript:void(0)" onClick="show(7)">维修历史</a></li>
 
 		</ul>
