@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50537
 File Encoding         : 65001
 
-Date: 2015-03-06 14:48:28
+Date: 2015-03-10 10:41:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -157,6 +157,6 @@ CREATE TABLE `systeminfo` (
 -- Records of systeminfo
 -- ----------------------------
 INSERT INTO `systeminfo` VALUES ('1', '八路通深圳西乡店', '2015-05-20', 'arms', 'arms11', '120.24.213.132', 'root', 'e77a85d63e', '深圳市宝安五十区海景花园一层(宝安大道与开屏路交界处)', '29971491/18038094463');
-INSERT INTO `systeminfo` VALUES ('2', '八路通深圳西乡店', '2015-05-20', 'arms1', 'arms11', '120.24.213.132', 'root', 'e77a85d63e', '', '');
-INSERT INTO `systeminfo` VALUES ('3', '八路通深圳西乡店', '2015-05-20', 'arms2', 'arms11', '120.24.213.132', 'root', 'e77a85d63e', null, null);
-INSERT INTO `systeminfo` VALUES ('4', '八路通深圳西乡店', '2015-05-20', 'arms3', 'arms11', '120.24.213.132', 'root', 'e77a85d63e', null, null);
+INSERT INTO `systeminfo` VALUES ('2', '八路通深圳西乡店', '2015-05-20', 'arms1', 'arms11', '120.24.213.132', 'root', 'e77a85d63e', '深圳市宝安五十区海景花园一层(宝安大道与开屏路交界处)', '29971491/18038094463');
+INSERT INTO `systeminfo` VALUES ('3', '八路通深圳西乡店', '2015-05-20', 'arms2', 'arms11', '120.24.213.132', 'root', 'e77a85d63e', '', '');
+INSERT INTO `systeminfo` VALUES ('4', '八路通深圳西乡店', '2015-05-20', 'arms3', 'arms11', '120.24.213.132', 'root', 'e77a85d63e', '', '');
