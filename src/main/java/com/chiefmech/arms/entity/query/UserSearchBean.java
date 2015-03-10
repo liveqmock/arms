@@ -2,7 +2,7 @@ package com.chiefmech.arms.entity.query;
 
 import com.chiefmech.arms.entity.query.Criteria.Action;
 
-public class SaleAfterCustomSearchBean extends SearchBean {
+public class UserSearchBean extends SearchBean {
 
 	private String queryField;
 	private String queryValue;

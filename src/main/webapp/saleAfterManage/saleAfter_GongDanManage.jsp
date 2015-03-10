@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title><s:if test="actionName=='saleAfterGongDanManage'">维修接待</s:if><s:elseif test="actionName=='clientReviewManage'">客户管理</s:elseif></title>
+<title><s:if test="actionName=='saleAfterGongDanManage'">工单管理</s:if><s:elseif test="actionName=='clientReviewManage'">客户管理</s:elseif></title>
 <style type="text/css">
 #searchTb tb {
 	white-space: nowrap;

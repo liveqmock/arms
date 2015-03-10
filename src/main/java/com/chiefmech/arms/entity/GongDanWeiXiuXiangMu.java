@@ -36,7 +36,7 @@ public class GongDanWeiXiuXiangMu {
 		this.txtGongDuanName = item.getDdlGongDuan();
 		this.txtFeiYong = item.getTxtFeiYong();
 		this.txtWeiXiuNeiRong = item.getTxtNeiRong();
-		this.ddlZhangTao = "付费";
+		this.ddlZhangTao = "客户自费";
 	}
 
 	public String getDisPlayFeiYong() {

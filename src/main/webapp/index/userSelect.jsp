@@ -35,14 +35,14 @@
 				<ul class="easyui-tree" treeHeight='300px'>			
 					<li><span>深圳市八路通汽车科技有限公司</span>
 					<ul>    					
-					<s:iterator value='jigouList' id="jigou" >				
-							<li><span><s:property value="jigouName" /></span>
+					<s:iterator value='shopList' id="shop" >				
+							<li><span><s:property value="shopName" /></span>
 								<ul>
 								<s:iterator value='departMentList' id="departMent" >
 									<li><span><s:property value="departName" /></span>
 										<ul>	
 												<s:iterator value='systemOwnerList' id="systemOwner" >	
-														<s:if test="#jigou.jigouName==#systemOwner.jigouName && #departMent.departName ==#systemOwner.departName">	
+														<s:if test="#shop.shopName==#systemOwner.shopName && #departMent.departName ==#systemOwner.departName">	
 													<li><span><input type='checkbox'
 															name='selected' value="<s:property value="#systemOwner.displayName" />" id='<s:property value="#systemOwner.userId" />' /><s:property value="#systemOwner.displayName" /></span>												
 															</li>

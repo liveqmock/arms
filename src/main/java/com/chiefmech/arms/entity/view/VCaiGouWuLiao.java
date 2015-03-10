@@ -2,6 +2,7 @@ package com.chiefmech.arms.entity.view;
 
 public class VCaiGouWuLiao {
 	private String txtBillNo;
+	private String txtShopCode;
 	private String txtRuKuDate;
 	private String txtSuppName;
 	private String txtJingShouRen;
@@ -18,6 +19,12 @@ public class VCaiGouWuLiao {
 	private String txtShenHeShiJian;
 	private String txtRemark;
 
+	public String getTxtShopCode() {
+		return txtShopCode;
+	}
+	public void setTxtShopCode(String txtShopCode) {
+		this.txtShopCode = txtShopCode;
+	}
 	public String getTxtRemark() {
 		return txtRemark;
 	}

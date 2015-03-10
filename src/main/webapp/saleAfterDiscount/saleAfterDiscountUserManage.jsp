@@ -40,8 +40,8 @@ td {
 				<td><input name="displayName" type="text" maxlength="20"
 					id="displayName" style="width: 120px;" /></td>
 				<td>机构名称:</td>
-				<td><input name="jigouName" type="text" maxlength="20"
-					id="jigouName" style="width: 120px;" /></td>
+				<td><input name="shopName" type="text" maxlength="20"
+					id="shopName" style="width: 120px;" /></td>
 				<td>部门名称:</td>
 				<td><input name="departName" type="text" maxlength="20"
 					id="departName" style="width: 120px;" /></td>
@@ -61,7 +61,7 @@ td {
 		<thead>
 			<tr>
 				<th data-options="field:'displayName',width:120">用户名</th>
-				<th data-options="field:'jigouName',width:170">机构</th>
+				<th data-options="field:'shopName',width:170">机构</th>
 				<th data-options="field:'departName',width:170">部门</th>
 				<th data-options="field:'txtGongShiZheKou',width:120">工时折扣</th>
 				<th data-options="field:'txtMeiRongZheKou',width:120">美容折扣</th>

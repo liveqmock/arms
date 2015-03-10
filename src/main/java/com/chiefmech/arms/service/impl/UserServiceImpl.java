@@ -45,11 +45,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> selectItem() {
-		return userDao.selectItem();
-	}
-
-	@Override
 	public User findUserById(String id) {
 		return userDao.findUserById(id);
 	}

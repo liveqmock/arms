@@ -11,20 +11,10 @@ public class User {
 	private String expirydate;
 	private String groupName;
 	private List<String> privilegeLst;
-	private String shopName;
-	private String shopAdd;
-    private String shopTel;
+	private String shopCode;
 
 	public String getUserId() {
 		return userId;
-	}
-
-	public String getShopName() {
-		return shopName;
-	}
-
-	public void setShopName(String shopName) {
-		this.shopName = shopName;
 	}
 
 	public void setUserId(String userId) {
@@ -79,21 +69,12 @@ public class User {
 		this.privilegeLst = privilegeLst;
 	}
 
-	public String getShopAdd() {
-		return shopAdd;
+	public String getShopCode() {
+		return shopCode;
 	}
 
-	public void setShopAdd(String shopAdd) {
-		this.shopAdd = shopAdd;
+	public void setShopCode(String shopCode) {
+		this.shopCode = shopCode;
 	}
-
-	public String getShopTel() {
-		return shopTel;
-	}
-
-	public void setShopTel(String shopTel) {
-		this.shopTel = shopTel;
-	}
-	
 
 }

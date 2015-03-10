@@ -1,5 +1,7 @@
 package com.chiefmech.arms.entity;
 
+import com.chiefmech.arms.common.util.ConfigUtil;
+
 public class WeiXiuXiangMu {
 	private String txtGuid;
 	private String txtCode;
@@ -8,6 +10,17 @@ public class WeiXiuXiangMu {
 	private float txtFeiYong;
 	private String ddlGongDuan;
 	private String txtRemark;
+
+	private String txtShopCode = ConfigUtil.getInstance().getShopInfo()
+			.getShopCode();
+
+	public String getTxtShopCode() {
+		return txtShopCode;
+	}
+
+	public void setTxtShopCode(String txtShopCode) {
+		this.txtShopCode = txtShopCode;
+	}
 
 	public String getTxtGuid() {
 		return txtGuid;

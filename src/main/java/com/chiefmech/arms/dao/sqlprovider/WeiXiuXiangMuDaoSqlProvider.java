@@ -2,6 +2,7 @@ package com.chiefmech.arms.dao.sqlprovider;
 
 import java.util.Map;
 
+import com.chiefmech.arms.common.util.ConfigUtil;
 import com.chiefmech.arms.entity.WeiXiuXiangMu;
 import com.chiefmech.arms.entity.query.Criteria;
 import com.chiefmech.arms.entity.query.Criteria.Action;
@@ -57,6 +58,9 @@ public class WeiXiuXiangMuDaoSqlProvider {
 						.getTxtName()));
 				this.addField(new Criteria(Action.LIKE, "txtNeiRong", item
 						.getTxtNeiRong()));
+				// 只查找属于当前店铺的维修组
+				this.addField(new Criteria(Action.STR_EQUAL, "txtShopCode",
+						ConfigUtil.getInstance().getShopInfo().getShopCode()));
 			}
 		};
 		return searchBean;

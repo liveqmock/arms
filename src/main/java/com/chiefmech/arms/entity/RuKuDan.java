@@ -1,5 +1,7 @@
 package com.chiefmech.arms.entity;
 
+import com.chiefmech.arms.common.util.ConfigUtil;
+
 public class RuKuDan {
 	private String txtGuid;
 	private String txtBillNo;
@@ -15,12 +17,20 @@ public class RuKuDan {
 
 	private String txtShenHeRen;
 	private String txtShenHeShiJian;
+	private String txtShopCode = ConfigUtil.getInstance().getShopInfo()
+			.getShopCode();
 
 	public String getTxtGuid() {
 		return txtGuid;
 	}
 	public void setTxtGuid(String txtGuid) {
 		this.txtGuid = txtGuid;
+	}
+	public String getTxtShopCode() {
+		return txtShopCode;
+	}
+	public void setTxtShopCode(String txtShopCode) {
+		this.txtShopCode = txtShopCode;
 	}
 	public String getTxtBillNo() {
 		return txtBillNo;

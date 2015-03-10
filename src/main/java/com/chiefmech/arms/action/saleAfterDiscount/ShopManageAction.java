@@ -9,8 +9,8 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import com.chiefmech.arms.action.BaseActionSupport;
-import com.chiefmech.arms.entity.JiGou;
-import com.chiefmech.arms.service.JiGouService;
+import com.chiefmech.arms.entity.Shop;
+import com.chiefmech.arms.service.ShopService;
 import com.opensymphony.xwork2.ModelDriven;
 
 @SuppressWarnings("serial")
@@ -18,45 +18,45 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/saleAfterDiscount")
 @Controller()
 @Scope("prototype")
-public class JiGouManageAction extends BaseActionSupport
+public class ShopManageAction extends BaseActionSupport
 		implements
-			ModelDriven<JiGou> {
+			ModelDriven<Shop> {
 	@Resource()
-	private JiGouService jiGouService;
-	private JiGou item = new JiGou();
+	private ShopService shopService;
+	private Shop item = new Shop();
 	private int page = 1;
 	private int rows = 10;
 
-	@Action(value = "jiGouManage", results = {@Result(name = "input", location = "jigouManage.jsp")})
-	public String jiGouManage() {
+	@Action(value = "shopManage", results = {@Result(name = "input", location = "shopManage.jsp")})
+	public String shopManage() {
 		return INPUT;
 	}
 
-	@Action(value = "queryJiGou")
+	@Action(value = "queryShop")
 	public void queryUnit() {
-		this.transmitJson(jiGouService.getJiGouEasyUiJSon(item, page, rows));
+		this.transmitJson(shopService.getShopEasyUiJSon(item, page, rows));
 	}
 
-	@Action(value = "insertJiGou")
+	@Action(value = "insertShop")
 	public void insertItem() {
-		int rowAffected = jiGouService.insertItem(item);
+		int rowAffected = shopService.insertItem(item);
 		String jsonStr = getJsonResponse(rowAffected, "新增");
 
 		this.transmitJson(jsonStr);
 	}
 
-	@Action(value = "updateJiGou")
+	@Action(value = "updateShop")
 	public void updateItem() {
-		int rowAffected = jiGouService.updateItem(item);
+		int rowAffected = shopService.updateItem(item);
 		String jsonStr = getJsonResponse(rowAffected, "更新");
 
 		this.transmitJson(jsonStr);
 	}
 
-	@Action(value = "deleteJiGou")
+	@Action(value = "deleteShop")
 	public void deleteItem() {
-		String id = item.getJigouGuid();
-		int rowAffected = jiGouService.deleteItem(id);
+		String id = item.getShopGuid();
+		int rowAffected = shopService.deleteItem(id);
 		String jsonStr = getJsonResponse(rowAffected, "删除");
 
 		this.transmitJson(jsonStr);
@@ -72,7 +72,7 @@ public class JiGouManageAction extends BaseActionSupport
 	}
 
 	@Override
-	public JiGou getModel() {
+	public Shop getModel() {
 		return item;
 	}
 

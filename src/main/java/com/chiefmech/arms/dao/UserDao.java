@@ -32,9 +32,6 @@ public interface UserDao {
 	@Delete("delete from users where userId=#{userId}")
 	public int deleteItem(String id);
 
-	@Select("select * from users")
-	public List<User> selectItem();
-
 	@Select("select * from users where userId=#{userId}")
 	public User findUserById(String id);
 

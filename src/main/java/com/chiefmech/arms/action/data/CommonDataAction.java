@@ -93,10 +93,10 @@ public class CommonDataAction extends BaseActionSupport implements CommonData {
 				commonDataService.getOptionBean("WeiXiuZu")).toString());
 	}
 
-	@Action(value = "jiGouOption")
-	public void jiGou() {
+	@Action(value = "shopOption")
+	public void shop() {
 		this.transmitJson(JSONArray.fromObject(
-				commonDataService.getOptionBean("JiGou")).toString());
+				commonDataService.getOptionBean("Shop")).toString());
 	}
 
 	@Action(value = "cheLiangPingPaiOption")

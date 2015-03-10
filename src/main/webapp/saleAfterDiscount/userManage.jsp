@@ -35,6 +35,7 @@ td {
 
 	<table id="mydg" class="easyui-datagrid"
 		data-options="url:'queryUser.action',
+        				   pageList:[20,30,50,100],
 						   rownumbers:true,
 						   singleSelect:true,
 						   toolbar:'#toolbar',

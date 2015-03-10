@@ -35,8 +35,8 @@ public class ZheKouViewDaoSqlProvider {
 						.getDisplayName()));
 				this.addField(new Criteria(Action.LIKE, "departName", item
 						.getDepartName()));
-				this.addField(new Criteria(Action.LIKE, "jigouName", item
-						.getJigouName()));
+				this.addField(new Criteria(Action.LIKE, "shopName", item
+						.getShopName()));
 			}
 		};
 		return searchBean;

@@ -16,10 +16,12 @@ import com.chiefmech.arms.entity.query.KuCunOperLogSearchBean;
 
 @Repository("kuCunDao")
 public interface KuCunDao {
-	@Select("select * from kucun where txtWuLiaoCode = #{txtWuLiaoCode}")
-	public KuCun findExistKuCunByWuLiaoCode(String txtWuLiaoCode);
+	@Select("select * from kucun where txtShopCode=#{txtShopCode} and txtWuLiaoCode = #{txtWuLiaoCode}")
+	public KuCun findExistKuCunByWuLiaoCode(
+			@Param("txtShopCode") String txtShopCode,
+			@Param("txtWuLiaoCode") String txtWuLiaoCode);
 
-	@Insert("insert into kucun(txtKuCunGuid,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,txtSuppName,txtRemark) values(#{txtKuCunGuid},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{txtSuppName},#{txtRemark})")
+	@Insert("insert into kucun(txtKuCunGuid,txtShopCode,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,txtSuppName,txtRemark) values(#{txtKuCunGuid},#{txtShopCode},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{txtSuppName},#{txtRemark})")
 	public int insertKuCun(KuCun item);
 
 	@Update("update kucun set txtQty=#{txtQty},txtChengBenJia=#{txtChengBenJia} where txtWuLiaoCode=#{txtWuLiaoCode}")
@@ -28,7 +30,7 @@ public interface KuCunDao {
 	@Update("update kucun set txtSalePrice=#{txtSalePrice} where txtWuLiaoCode=#{txtWuLiaoCode}")
 	public int updateKuCunSalePrice(KuCun item);
 
-	@Insert("insert into kucunoperlog(txtLogGuid,txtBillGuid,txtOperAction,txtLogDate,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,txtSuppName,txtRemark) values(#{txtLogGuid},#{txtBillGuid},#{txtOperAction},#{txtLogDate},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{txtSuppName},#{txtRemark})")
+	@Insert("insert into kucunoperlog(txtLogGuid,txtShopCode,txtBillGuid,txtOperAction,txtLogDate,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,txtSuppName,txtRemark) values(#{txtLogGuid},#{txtShopCode},#{txtBillGuid},#{txtOperAction},#{txtLogDate},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{txtSuppName},#{txtRemark})")
 	public int insertKuCunOperLog(KuCunOperLog item);
 
 	@SelectProvider(type = KuCunDaoSqlProvider.class, method = "getKuCunList")

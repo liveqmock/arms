@@ -1,5 +1,6 @@
 package com.chiefmech.arms.entity.query;
 
+import com.chiefmech.arms.common.util.ConfigUtil;
 import com.chiefmech.arms.entity.query.Criteria.Action;
 
 public class RenBaoWeeklyReportSearchBean extends SearchBean {
@@ -13,6 +14,9 @@ public class RenBaoWeeklyReportSearchBean extends SearchBean {
 		this.addField(new Criteria(Action.LIKE, "txtChePaiHao", txtChePaiHao));
 		this.addField(new Criteria(Action.STR_BETWEEN, "txtRuChangDate",
 				txtRuChangDateBegin, txtRuChangDateEnd));
+		// 只查找属于当前店铺的工单
+		this.addField(new Criteria(Action.STR_EQUAL, "txtShopCode", ConfigUtil
+				.getInstance().getShopInfo().getShopCode()));
 	}
 
 	public String getTxtChePaiHao() {

@@ -16,7 +16,7 @@ public class ZheKouView {
 	/**
 	 * 所属机构
 	 */
-	private String jigouName;
+	private String shopName;
 	/**
 	 * 所属部门
 	 */
@@ -67,11 +67,11 @@ public class ZheKouView {
 	public void setDisplayName(String displayName) {
 		this.displayName = displayName;
 	}
-	public String getJigouName() {
-		return jigouName;
+	public String getShopName() {
+		return shopName;
 	}
-	public void setJigouName(String jigouName) {
-		this.jigouName = jigouName;
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
 	}
 	public String getDepartName() {
 		return departName;

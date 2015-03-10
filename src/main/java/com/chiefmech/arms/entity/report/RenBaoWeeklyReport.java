@@ -1,7 +1,10 @@
 package com.chiefmech.arms.entity.report;
 
+import com.chiefmech.arms.common.util.ConfigUtil;
+
 public class RenBaoWeeklyReport {
 	private String txtGongDanId;
+	private String txtShopCode;
 	private String txtXiangMuName;
 	private String txtRemark;
 	private String txtChePaiHao;
@@ -56,6 +59,12 @@ public class RenBaoWeeklyReport {
 		}
 	}
 
+	public String getTxtShopCode() {
+		return txtShopCode;
+	}
+	public void setTxtShopCode(String txtShopCode) {
+		this.txtShopCode = txtShopCode;
+	}
 	public String getTxtGongDanId() {
 		return txtGongDanId;
 	}

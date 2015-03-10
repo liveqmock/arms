@@ -36,11 +36,11 @@ td {
 		<table id="searchPanel" class="searchPanel" style="display: none;">
 			<tr>
 				<td>店铺编码:</td>
-				<td><input name="jigouCode" type="text" maxlength="20"
-					id="jigouCode" /></td>
+				<td><input name="shopCode" type="text" maxlength="20"
+					id="shopCode" /></td>
 				<td>店铺名称:</td>
-				<td><input name="jigouName" type="text" maxlength="60"
-					id="jigouName" /></td>
+				<td><input name="shopName" type="text" maxlength="60"
+					id="shopName" /></td>
 				<td><a id="lnkSearch" class="easyui-linkbutton"
 					href="javascript:doSearch()">店铺查询</a>&nbsp;&nbsp;&nbsp;<a
 					id="lnkSearch" class="easyui-linkbutton"
@@ -50,18 +50,20 @@ td {
 	</form>
 
 	<table id="mydg" class="easyui-datagrid"
-		data-options="url:'queryJiGou.action',
+		data-options="url:'queryShop.action',
 						   rownumbers:true,
 						   singleSelect:true,
 						   toolbar:'#toolbar',
 						   pagination:true">
 		<thead>
 			<tr>
-				<th width="100" data-options="field:'jigouCode'">店铺编码</th>
-				<th width="150" data-options="field:'jigouName'">店铺名称</th>
-				<th width="400" data-options="field:'jigouAddr'">店铺地址</th>
-				<th width="100" data-options="field:'jigouTel'">店铺电话</th>
-				<th width="100" data-options="field:'jigouFax'">店铺传真</th>
+				<th width="100" data-options="field:'shopCode'">店铺编码</th>
+				<th width="150" data-options="field:'shopName'">店铺名称</th>
+				<th width="400" data-options="field:'shopAddr'">店铺地址</th>
+				<th width="100" data-options="field:'shopTel'">店铺电话</th>
+				<th width="100" data-options="field:'shopFax'">店铺传真</th>
+				<th width="150" data-options="field:'complaintCall'">投诉电话</th>
+				<th width="100" data-options="field:'expirydate'">系统有效期</th>
 				<th width="100" field="action" align="center"
 					formatter="formatAction">操作</th>
 			</tr>
@@ -72,41 +74,48 @@ td {
 			iconCls="icon-add" plain="true" onclick="addItem()">新增</a>
 	</div>
 	<div id="mydlg" class="easyui-dialog" closed="true"
-		style="width: 700px; height: 300px; padding: 10px 20px;">
+		style="width: 700px; height: 400px; padding: 10px 20px;">
 		<form name="fm" method="post" id="fm">
 			<table border="0" cellpadding="0" cellspacing="0" width="100%;">
 				<tr>
-					<td width="80">店铺编码:</td>
-					<td width="250"><input name="jigouCode" type="text"
-						maxlength="15" id="jigouCode" style="width: 100%;"
+					<td width="80" nowrap="nowrap">店铺编码:</td>
+					<td width="250"><input name="shopCode" type="text"
+						maxlength="15" id="shopCode" 
 						class="easyui-textbox" data-options="required:true" /></td>
 					<td width="80" align="right">店铺名称:</td>
-					<td width="250"><input name="jigouName" type="text"
-						maxlength="15" id="jigouName" style="width: 100%;"
+					<td width="250"><input name="shopName" type="text"
+						maxlength="15" id="shopName" 
 						class="easyui-textbox" data-options="required:true" /></td>
-				</tr>
-				<tr>
-					<td>店铺地址:</td>
-					<td colspan="3"><input name="jigouAddr" type="text"
-						maxlength="15" id="jigouAddr" style="width: 100%;"
-						class="easyui-textbox" data-options="required:true" /></td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
 				</tr>
 				<tr>
 					<td>店铺电话:</td>
-					<td><input name="jigouTel" type="text" maxlength="15"
-						id="jigouTel" style="width: 100%;" class="easyui-textbox"
+					<td><input name="shopTel" type="text" maxlength="15"
+						id="shopTel"  class="easyui-textbox"
 						data-options="required:true" /></td>
 					<td align="right">店铺传真:</td>
-					<td><input name="jigouFax" type="text" maxlength="15"
-						id="jigouFax" style="width: 100%;" class="easyui-textbox" /></td>
+					<td><input name="shopFax" type="text" maxlength="15"
+						id="shopFax"  class="easyui-textbox" /></td>
+				</tr>
+				<tr>
+					<td>投诉电话:</td>
+					<td><input name="complaintCall" type="text" maxlength="15"
+						id="complaintCall"  class="easyui-textbox"
+						data-options="required:true" /></td>
+					<td align="right">系统有效期:</td>
+					<td><input name="expirydate" type="text" maxlength="15"
+						id="expirydate"  class="easyui-datebox" /></td>
+				</tr>
+				<tr>
+					<td>店铺地址:</td>
+					<td colspan="3"><input name="shopAddr" type="text"
+						maxlength="15" id="shopAddr" style=" width:100%;"
+						class="easyui-textbox" data-options="required:true" /></td>
 				</tr>
 				<tr>
 					<td colspan="4">店铺描述:</td>
 				</tr>
 				<tr>
-					<td colspan="4"><input name="jigouDesc" id="jigouDesc"
+					<td colspan="4"><input name="shopDesc" id="shopDesc"
 						class="easyui-textbox" data-options="multiline:true"
 						style="width: 100%; height: 100px" /></td>
 				</tr>
@@ -125,14 +134,14 @@ td {
 		function addItem() {
 			$('#mydlg').dialog('open').dialog('setTitle', '添加店铺信息');
 			$('#fm').form('clear');
-			url = 'insertJiGou.action';
+			url = 'insertShop.action';
 		}
 		function editItem(clickevent) {
 			var row = $('#mydg').datagrid('getEventTargetRow', clickevent);
 			if (row) {
 				$('#mydlg').dialog('open').dialog('setTitle', '修改店铺信息');
 				$('#fm').form('load', row);
-				url = 'updateJiGou.action?jigouGuid=' + row.jigouGuid;
+				url = 'updateShop.action?shopGuid=' + row.shopGuid;
 			}
 		}
 		function deleteItem(clickevent) {
@@ -140,8 +149,8 @@ td {
 			if (row) {
 				$.messager.confirm('确认', '确定要删除选中店铺信息吗?', function(r) {
 					if (r) {
-						$.post('deleteJiGou.action', {
-							"jigouGuid" : row.jigouGuid
+						$.post('deleteShop.action', {
+							"shopGuid" : row.shopGuid
 						}, function(result) {
 							if (result.errorMsg) {
 								$.messager.alert('出错啦', result.errorMsg);
@@ -173,7 +182,7 @@ td {
 
 		function doSearch() {
 			$("#fmSearch").form('submit', {
-				url : "queryJiGou.action",
+				url : "queryShop.action",
 				success : function(jsonStr) {
 					$('#mydg').datagrid('loadData', $.parseJSON(jsonStr));
 				}

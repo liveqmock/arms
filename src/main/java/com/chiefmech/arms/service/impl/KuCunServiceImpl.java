@@ -30,10 +30,10 @@ public class KuCunServiceImpl implements KuCunService {
 		if ("修改销售价".equals(txtOperAction)) {
 			rowAffected = kuCunDao.updateKuCunSalePrice(logKuCun);
 		} else if ("日常采购".equals(txtOperAction)) {
-			KuCun kuCun = findExistKuCunByWuLiaoCode(logKuCun
-					.getTxtWuLiaoCode());
+			KuCun kuCun = findExistKuCunByWuLiaoCode(logKuCun.getTxtShopCode(),
+					logKuCun.getTxtWuLiaoCode());
 			if (kuCun != null) {
-				// 更新现有库存
+				// 更新现有库存的数量和成本价
 				KuCun newKuCun = getUpdateKuCunInfo(kuCun, operLog, true);
 				rowAffected = kuCunDao.updateKuCun(newKuCun);
 			} else {
@@ -41,9 +41,10 @@ public class KuCunServiceImpl implements KuCunService {
 				rowAffected = kuCunDao.insertKuCun(logKuCun);
 			}
 		} else if ("维修出库".equals(txtOperAction)) {
-			KuCun kuCun = findExistKuCunByWuLiaoCode(logKuCun
-					.getTxtWuLiaoCode());
+			KuCun kuCun = findExistKuCunByWuLiaoCode(logKuCun.getTxtShopCode(),
+					logKuCun.getTxtWuLiaoCode());
 			KuCun newKuCun = getUpdateKuCunInfo(kuCun, operLog, false);
+			// 更新现有库存的数量和成本价
 			rowAffected = kuCunDao.updateKuCun(newKuCun);
 		}
 
@@ -109,8 +110,9 @@ public class KuCunServiceImpl implements KuCunService {
 	}
 
 	@Override
-	public KuCun findExistKuCunByWuLiaoCode(String txtWuLiaoCode) {
-		return kuCunDao.findExistKuCunByWuLiaoCode(txtWuLiaoCode);
+	public KuCun findExistKuCunByWuLiaoCode(String txtShopCode,
+			String txtWuLiaoCode) {
+		return kuCunDao.findExistKuCunByWuLiaoCode(txtShopCode, txtWuLiaoCode);
 	}
 
 }

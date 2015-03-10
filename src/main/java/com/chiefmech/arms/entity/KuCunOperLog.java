@@ -5,6 +5,7 @@ import com.chiefmech.arms.common.util.IDGen;
 
 public class KuCunOperLog {
 	private String txtLogGuid;
+	private String txtShopCode;
 	private String txtBillGuid;
 	private String txtOperAction;
 	private String txtLogDate;
@@ -22,6 +23,7 @@ public class KuCunOperLog {
 
 	public KuCunOperLog(RuKuDan ruKuDan, RuKuDanWuLiao ruKuDanWuLiao) {
 		this.txtLogGuid = IDGen.getUUID();
+		this.txtShopCode = ruKuDan.getTxtShopCode();
 		this.txtBillGuid = ruKuDan.getTxtGuid();
 		this.txtOperAction = "日常采购";
 		this.txtLogDate = DateUtil.getCurrentDateTime();
@@ -37,6 +39,7 @@ public class KuCunOperLog {
 
 	public KuCunOperLog(GongDanWeiXiuWuLiao gongDanWuLiao) {
 		this.txtLogGuid = IDGen.getUUID();
+		this.txtShopCode = gongDanWuLiao.getTxtShopCode();
 		this.txtBillGuid = gongDanWuLiao.getTxtGongDanGuid();
 		this.txtOperAction = "维修出库";
 		this.txtLogDate = DateUtil.getCurrentDateTime();
@@ -52,6 +55,7 @@ public class KuCunOperLog {
 
 	public KuCunOperLog(KuCun kuCun) {
 		this.txtLogGuid = IDGen.getUUID();
+		this.txtShopCode = kuCun.getTxtShopCode();
 		this.txtBillGuid = "";
 		this.txtOperAction = "修改销售价";
 		this.txtLogDate = DateUtil.getCurrentDateTime();
@@ -64,6 +68,14 @@ public class KuCunOperLog {
 		this.txtSuppName = kuCun.getTxtSuppName();
 		this.txtRemark = kuCun.getTxtRemark();
 
+	}
+
+	public String getTxtShopCode() {
+		return txtShopCode;
+	}
+
+	public void setTxtShopCode(String txtShopCode) {
+		this.txtShopCode = txtShopCode;
 	}
 
 	public String getTxtRemark() {

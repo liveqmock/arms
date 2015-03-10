@@ -35,7 +35,7 @@ public class CheZhuLianXiRenDaoSqlProvider {
 
 	public String getVKeHuCheLiangListForEasyUi(Map<String, Object> param) {
 		SearchBean query = (SaleAfterCustomSearchBean) param.get("item");
-		return String.format("select * from v_kehu_cheliang %s %s",
+		return String.format("select * from v_kehu_cheliang %s order by txtCheZhuName %s",
 				query.getWhereSql(), query.getLimitSql());
 	}
 

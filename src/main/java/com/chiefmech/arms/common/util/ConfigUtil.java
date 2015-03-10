@@ -3,22 +3,21 @@ package com.chiefmech.arms.common.util;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
-import com.chiefmech.arms.entity.SystemInfo;
+import com.chiefmech.arms.entity.Shop;
+import com.chiefmech.arms.entity.User;
 
 public class ConfigUtil {
 	private static Logger logger = Logger.getLogger(ConfigUtil.class.getName());
 
 	private static ConfigUtil instance = new ConfigUtil();
 	private Properties props = null;
-	private SystemInfo systemInfo;
+
+	private User userInfo = null;
+	private Shop shopInfo = null;
 
 	private ConfigUtil() {
 		initialize();
@@ -69,45 +68,20 @@ public class ConfigUtil {
 		return val;
 	}
 
-	public void initSystemInfo(String systemkey) {
-		logger.info("try to update systemInfo:" + systemkey);
-		Connection conn = null;
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection(getStringProperty("portalUrl"));
-			ResultSet rs = conn.createStatement().executeQuery(
-					String.format(
-							"select * from systeminfo where systemkey='%s'",
-							systemkey));
-			while (rs.next()) {
-				systemInfo = new SystemInfo();
-				systemInfo.setSystemkey(systemkey);
-				systemInfo.setDb_host(rs.getString("db_host"));
-				systemInfo.setDb_name(rs.getString("db_name"));
-				systemInfo.setDb_username(rs.getString("db_username"));
-				systemInfo.setDb_password(rs.getString("db_password"));
-				systemInfo.setShopName(rs.getString("shopName"));
-				systemInfo.setExpirydate(rs.getString("expirydate"));
-				systemInfo.setShopAdd(rs.getString("shopAdd"));
-				systemInfo.setShopTel(rs.getString("shopTel"));
-				logger.info("succed to update systemInfo[new]:" + systemInfo);
-			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+	public User getUserInfo() {
+		return userInfo;
 	}
 
-	public SystemInfo getSystemInfo() {
-		return systemInfo;
+	public void setUserInfo(User userInfo) {
+		this.userInfo = userInfo;
 	}
+
+	public Shop getShopInfo() {
+		return shopInfo;
+	}
+
+	public void setShopInfo(Shop shopInfo) {
+		this.shopInfo = shopInfo;
+	}
+
 }

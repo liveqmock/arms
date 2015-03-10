@@ -19,14 +19,17 @@
 			<ref local="dataSourceTarget" />
 		</constructor-arg>
 	</bean>
-
-	<bean id="dataSourceTarget" class="com.chiefmech.arms.datasource.DynamicDataSource">
+	
+	<bean id="dataSourceTarget" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<!-- <property name="url" value="jdbc:mysql://localhost:3306/arms?characterEncoding=UTF-8"></property>
+		<!--
 			<property name="url"
-				value="jdbc:mysql://120.24.213.132:3306/arms4?characterEncoding=UTF-8"></property>
-			<property name="username" value="root"></property>
-			<property name="password" value="e77a85d63e"></property> -->
+				value="jdbc:mysql://120.24.213.132:3306/arms?characterEncoding=UTF-8"></property>
+			-->
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/arms11?characterEncoding=UTF-8"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="e77a85d63e"></property>
 	</bean>
 
 	<!-- SqlSessionFactory -->

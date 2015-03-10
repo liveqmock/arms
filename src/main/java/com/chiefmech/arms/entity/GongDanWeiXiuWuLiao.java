@@ -8,6 +8,7 @@ import com.chiefmech.arms.entity.view.VCaiGouWuLiao;
 public class GongDanWeiXiuWuLiao {
 
 	private String txtWuLiaoGuid;
+	private String txtShopCode;
 	private String txtWuLiaoCode;
 	private String txtGongDanGuid;
 	private String txtWuLiaoName;
@@ -27,6 +28,7 @@ public class GongDanWeiXiuWuLiao {
 
 	public GongDanWeiXiuWuLiao(String saleAfterGuid, KuCun item) {
 		this.txtWuLiaoGuid = IDGen.getUUID();
+		this.txtShopCode = item.getTxtShopCode();
 		this.txtGongDanGuid = saleAfterGuid;
 		this.txtWuLiaoCode = item.getTxtWuLiaoCode();
 		this.txtWuLiaoName = item.getTxtWuLiaoName();
@@ -41,6 +43,7 @@ public class GongDanWeiXiuWuLiao {
 	public GongDanWeiXiuWuLiao(String saleAfterGuid, VCaiGouWuLiao item) {
 		// 工单物料id和临时采购入库单物料id一致，用于同步临时采购入库物料状态
 		this.txtWuLiaoGuid = item.getTxtWuLiaoGuid();
+		this.txtShopCode = item.getTxtShopCode();
 		this.txtGongDanGuid = saleAfterGuid;
 		this.txtWuLiaoCode = item.getTxtWuLiaoCode();
 		this.txtWuLiaoName = item.getTxtWuLiaoName();
@@ -67,6 +70,14 @@ public class GongDanWeiXiuWuLiao {
 		} else {
 			return String.format("%.2f", txtQty);
 		}
+	}
+
+	public String getTxtShopCode() {
+		return txtShopCode;
+	}
+
+	public void setTxtShopCode(String txtShopCode) {
+		this.txtShopCode = txtShopCode;
 	}
 
 	public String getDdlSuoSuXiangMu() {

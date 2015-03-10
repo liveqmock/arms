@@ -2,6 +2,7 @@ package com.chiefmech.arms.dao.sqlprovider;
 
 import java.util.Map;
 
+import com.chiefmech.arms.common.util.ConfigUtil;
 import com.chiefmech.arms.entity.User;
 import com.chiefmech.arms.entity.query.Criteria;
 import com.chiefmech.arms.entity.query.Criteria.Action;
@@ -30,10 +31,9 @@ public class UserDaoSqlProvider {
 		SearchBean searchBean = new SearchBean() {
 			@Override
 			public void initSearchFields() {
-				this.addField(new Criteria(Action.LIKE, "userId", item
-						.getUserId()));
-				this.addField(new Criteria(Action.LIKE, "loginname", item
-						.getLoginName()));
+				// 只查找属于当前店铺的用户
+				this.addField(new Criteria(Action.STR_EQUAL, "shopCode",
+						ConfigUtil.getInstance().getShopInfo().getShopCode()));
 			}
 		};
 		return searchBean;

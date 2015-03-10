@@ -14,6 +14,7 @@ import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.chiefmech.arms.common.util.Constants;
+import com.chiefmech.arms.entity.Shop;
 import com.chiefmech.arms.entity.User;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -64,6 +65,10 @@ public class BaseActionSupport extends ActionSupport
 
 	public User getUser() {
 		return (User) session.get(Constants.KEY_USER_SESSION);
+	}
+
+	public Shop getShop() {
+		return (Shop) session.get(Constants.KEY_SHOP_SESSION);
 	}
 
 	public String getActionName() {

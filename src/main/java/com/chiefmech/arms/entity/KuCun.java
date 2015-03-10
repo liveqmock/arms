@@ -4,6 +4,7 @@ import com.chiefmech.arms.common.util.IDGen;
 
 public class KuCun {
 	private String txtKuCunGuid;
+	private String txtShopCode;
 	private String txtWuLiaoCode;
 	private String txtWuLiaoName;
 	private int txtQty;
@@ -14,6 +15,7 @@ public class KuCun {
 
 	public KuCun(KuCunOperLog operLog) {
 		this.txtKuCunGuid = IDGen.getUUID();
+		this.txtShopCode = operLog.getTxtShopCode();
 		this.txtWuLiaoCode = operLog.getTxtWuLiaoCode();
 		this.txtWuLiaoName = operLog.getTxtWuLiaoName();
 		this.txtQty = operLog.getTxtQty();
@@ -24,6 +26,14 @@ public class KuCun {
 	}
 
 	public KuCun() {
+	}
+
+	public String getTxtShopCode() {
+		return txtShopCode;
+	}
+
+	public void setTxtShopCode(String txtShopCode) {
+		this.txtShopCode = txtShopCode;
 	}
 
 	public String getTxtRemark() {

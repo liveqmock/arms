@@ -361,7 +361,7 @@ public class GongDanServiceImpl implements GongDanService {
 			Float gongshiFeiObj = gongShiMap.get(zhangTao);
 			float gongshiFei = (gongshiFeiObj == null) ? 0 : gongshiFeiObj
 					.floatValue();
-			Float wuLiaoFeiObj = gongShiMap.get(zhangTao);
+			Float wuLiaoFeiObj = wuLiaoMap.get(zhangTao);
 			float wuLiaoFei = (wuLiaoFeiObj == null) ? 0 : wuLiaoFeiObj
 					.floatValue();
 
@@ -382,8 +382,8 @@ public class GongDanServiceImpl implements GongDanService {
 	public boolean isRequestWuLiaoFree(GongDanWeiXiuWuLiao item) {
 		boolean isFree = true;
 		if ("库存".equals(item.getTxtLaiYuan())) {
-			KuCun kuCun = kuCunService.findExistKuCunByWuLiaoCode(item
-					.getTxtWuLiaoCode());
+			KuCun kuCun = kuCunService.findExistKuCunByWuLiaoCode(
+					item.getTxtShopCode(), item.getTxtWuLiaoCode());
 			if (kuCun.getTxtQty() < item.getTxtQty()) {
 				isFree = false;
 			}

@@ -40,11 +40,6 @@ public class UserManageAction extends BaseActionSupport
 		this.transmitJson(userService.getUserEasyUiJSon(item, page, rows));
 	}
 
-	@Action(value = "userSearch")
-	public void userSearch() {
-		this.transmitJson(userService.getUserEasyUiJSon(item, page, rows));
-	}
-
 	@Action(value = "insertUser")
 	public void insertItem() {
 		item.setUserId(IDGen.getUUID());

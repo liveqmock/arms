@@ -2,6 +2,7 @@ package com.chiefmech.arms.dao.sqlprovider;
 
 import java.util.Map;
 
+import com.chiefmech.arms.common.util.ConfigUtil;
 import com.chiefmech.arms.entity.KuCun;
 import com.chiefmech.arms.entity.query.Criteria;
 import com.chiefmech.arms.entity.query.Criteria.Action;
@@ -57,6 +58,9 @@ public class KuCunDaoSqlProvider {
 						.getTxtWuLiaoName()));
 				this.addField(new Criteria(Action.LIKE, "txtSuppName", item
 						.getTxtSuppName()));
+				// 只查找属于当前店铺的库存
+				this.addField(new Criteria(Action.STR_EQUAL, "txtShopCode",
+						ConfigUtil.getInstance().getShopInfo().getShopCode()));
 			}
 		};
 		return searchBean;

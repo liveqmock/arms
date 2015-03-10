@@ -1,5 +1,6 @@
 package com.chiefmech.arms.entity.query;
 
+import com.chiefmech.arms.common.util.ConfigUtil;
 import com.chiefmech.arms.entity.query.Criteria.Action;
 
 public class CaiGouWuLiaoSearchBean extends SearchBean {
@@ -28,6 +29,9 @@ public class CaiGouWuLiaoSearchBean extends SearchBean {
 		this.addField(new Criteria(Action.LIKE, "txtStatus", txtStatus));
 		this.addField(new Criteria(Action.LIKE, "txtWuLiaoCode", txtWuLiaoCode));
 		this.addField(new Criteria(Action.LIKE, "txtWuLiaoName", txtWuLiaoName));
+		// 只查找属于当前店铺的入库单
+		this.addField(new Criteria(Action.STR_EQUAL, "txtShopCode", ConfigUtil
+				.getInstance().getShopInfo().getShopCode()));
 		this.addLimitInfo(this.getStart(), this.getRows());
 	}
 

@@ -1,5 +1,7 @@
 package com.chiefmech.arms.entity;
 
+import com.chiefmech.arms.common.util.ConfigUtil;
+
 public class Supplier {
 	/**
 	 * 供应商Id
@@ -17,6 +19,17 @@ public class Supplier {
 	 * 备注
 	 */
 	private String txtRemarks;
+
+	private String txtShopCode = ConfigUtil.getInstance().getShopInfo()
+			.getShopCode();
+
+	public String getTxtShopCode() {
+		return txtShopCode;
+	}
+
+	public void setTxtShopCode(String txtShopCode) {
+		this.txtShopCode = txtShopCode;
+	}
 
 	public String getTxtSuppId() {
 		return txtSuppId;
