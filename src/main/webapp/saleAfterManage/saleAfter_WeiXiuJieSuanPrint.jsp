@@ -316,10 +316,10 @@ td {
 				<!--公司地址 start-->
 				<table border='0' style='font-weight: bold; padding-top: 3px;'>
 					<tr>
-						<td>投诉热线:<s:property	value='user.shopTel' /></td>
+						<td>投诉热线:<s:property	value='shop.complaintCall' /></td>
 					</tr>
 					<tr>
-						<td>公司地址:<s:property	value='user.shopAdd' /></td>
+						<td>公司地址:<s:property	value='shop.shopAddr' /></td>
 					</tr>
 				</table> <!--公司地址 end-->
 			</td>

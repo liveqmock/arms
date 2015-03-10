@@ -384,7 +384,7 @@ public class GongDanServiceImpl implements GongDanService {
 		if ("库存".equals(item.getTxtLaiYuan())) {
 			KuCun kuCun = kuCunService.findExistKuCunByWuLiaoCode(
 					item.getTxtShopCode(), item.getTxtWuLiaoCode());
-			if (kuCun.getTxtQty() < item.getTxtQty()) {
+			if (kuCun == null || kuCun.getTxtQty() < item.getTxtQty()) {
 				isFree = false;
 			}
 		}

@@ -120,6 +120,7 @@ public class GongDan {
 				.getTxtCheLiangBaoXianDaoQiRi());
 		this.setDdlChengBaoGongSi(customerInfo.getDdlChengBaoGongSi());
 		this.setTxtGongDanStatus("维修接待");
+		this.setTxtGongDanStatusChain("|维修接待");
 	}
 
 	public GongDan(VKeHuCheLiang customer, GongDan gongDan) {

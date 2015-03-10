@@ -124,7 +124,7 @@ public interface GongDanDao {
 	public int updateChuChangDate(@Param("txtGongDanId") String txtGongDanId,
 			@Param("txtChuChangDate") String txtChuChangDate);
 
-	@Select("select * from gongdan where txtCheLiangId=#{txtCheLiangId} and txtDeleteFlag='0' order by txtChuChangDate desc")
+	@Select("select * from gongdan where txtCheLiangId=#{txtCheLiangId} and txtDeleteFlag='0' and txtGongDanStatus='交车' order by txtChuChangDate desc")
 	public List<GongDan> getGongDanListByCheLiangId(String txtCheLiangId);
 
 	@Select("select * from gongdanxiangmu where txtGongDanGuid=#{txtGongDanGuid}")

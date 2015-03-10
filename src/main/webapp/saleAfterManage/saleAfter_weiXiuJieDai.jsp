@@ -111,8 +111,10 @@ td {
 							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
                         <a onClick="saveZhiFuXinXi();return false;" class="easyui-linkbutton"
 							href="javascript:void(0)">保存支付信息</a>
+                        <s:if test="gongDan.ddlZhiFuFangShi != null">
                         <a onClick="showJieSuanDan('<s:property value='saleAfterWeiXiuGuid' />');return false;" class="easyui-linkbutton"
 							href="javascript:void(0)">结算单信息</a>
+                        </s:if>
 						<s:if test="gongDan.ddlZhiFuFangShi != null"><a
 							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','交车');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">交车</a></s:if>
