@@ -13,6 +13,8 @@ import org.springframework.stereotype.Repository;
 import com.chiefmech.arms.dao.sqlprovider.CheZhuLianXiRenDaoSqlProvider;
 import com.chiefmech.arms.entity.CheLiangInfo;
 import com.chiefmech.arms.entity.CustomerInfo;
+import com.chiefmech.arms.entity.CustomerTaoKaItem;
+import com.chiefmech.arms.entity.TaoKaItem;
 import com.chiefmech.arms.entity.query.SaleAfterCustomSearchBean;
 import com.chiefmech.arms.entity.view.VKeHuCheLiang;
 
@@ -68,4 +70,30 @@ public interface CustomerInfoDao {
 
 	@Delete("delete from customerinfo where txtCustId=#{txtCustId}")
 	public int deleteCustInfo(String txtCustId);
+
+	@Select("select * from taoka where txtTaoKaSort=#{txtTaoKaSort} order by txtXiangMuCode")
+	public List<TaoKaItem> queryTaoKaByName(String txtTaoKaSort);
+
+	@Select("select * from customertaoka where txtCustId=#{txtCustId} and txtTaoKaSort=#{txtTaoKaSort} order by txtXiangMuCode")
+	public List<CustomerTaoKaItem> queryCustomerTaoKaItem(
+			@Param("txtCustId") String txtCustId,
+			@Param("txtTaoKaSort") String txtTaoKaSort);
+
+	@Insert("insert into customertaoka(txtGuid,txtCustId,txtTaoKaSort,txtXiangMuCode,txtXiangMuName,txtTotalTimes,txtRestTimes) values(#{txtGuid},#{txtCustId},#{txtTaoKaSort},#{txtXiangMuCode},#{txtXiangMuName},#{txtTotalTimes},#{txtRestTimes})")
+	public int insertCustomerTaoKaItem(CustomerTaoKaItem item);
+
+	@Update("update customertaoka set txtTotalTimes=#{txtTotalTimes},txtRestTimes=#{txtRestTimes} where txtGuid=#{txtGuid}")
+	public int updateCustomerTaoKaItem(CustomerTaoKaItem customerTaoKaItem);
+
+	@Update("update customertaoka set txtRestTimes=#{txtRestTimes} where txtGuid=#{txtGuid}")
+	public int modifyRestTimes(@Param("txtGuid") String txtGuid,
+			@Param("txtRestTimes") int txtRestTimes);
+
+	@Delete("delete from customertaoka where txtCustId=#{txtCustId} and txtTaoKaSort=#{txtTaoKaSort}")
+	public int deleteCustomerTaoKaItem(@Param("txtCustId") String txtCustId,
+			@Param("txtTaoKaSort") String txtTaoKaSort);
+
+	@Select("select * from customertaoka where txtCustId=#{txtCustId} order by txtTaoKaSort, txtXiangMuCode")
+	public List<CustomerTaoKaItem> queryCustomerTaoKaItemLstByCustomerId(
+			String txtCustId);
 }

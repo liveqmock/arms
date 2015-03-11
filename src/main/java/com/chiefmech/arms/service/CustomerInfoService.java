@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.chiefmech.arms.entity.CheLiangInfo;
 import com.chiefmech.arms.entity.CustomerInfo;
+import com.chiefmech.arms.entity.CustomerTaoKaItem;
+import com.chiefmech.arms.entity.TaoKaItem;
 import com.chiefmech.arms.entity.query.SaleAfterCustomSearchBean;
 import com.chiefmech.arms.entity.view.VKeHuCheLiang;
 
@@ -38,4 +40,15 @@ public interface CustomerInfoService {
 	public List<CustomerInfo> findCustomerInfoByCheZhuTel(String txtCheZhuTel);
 
 	public int deleteCustInfo(String txtCustId);
+
+	public List<TaoKaItem> queryTaoKaByName(String txtTaoKaSort);
+
+	public int addTaoKa(String txtCustId, String txtTaoKaSort);
+
+	public int deleteCustomerTaoKaItem(String txtCustId, String txtTaoKaSort);
+
+	public List<CustomerTaoKaItem> queryCustomerTaoKaItemLstByCustomerId(
+			String customerId);
+
+	public int modifyRestTimes(String txtGuid, int txtRestTimes);
 }

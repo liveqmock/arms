@@ -380,9 +380,37 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 							style="font-weight: bold; padding-right: 10px;"><s:property
 									value='gongDan.txtGongShiZheKou' /></span>物料折扣:<span
 							style="font-weight: bold;"><s:property
-									value='gongDan.txtCaiLiaoZheKou' /></span></td>
+									value='gongDan.txtCaiLiaoZheKou' /></span><s:property value="customerTaoKaItemLst.size" /></td>
 
 					</tr>
+                    <s:if test="customerTaoKaItemLst.size > 0">
+                    <tr>
+                        <td colspan="5">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th width="100" align="left">套卡类型</th>
+                                        <th width="100" align="left">业务名称</th>
+                                        <th width="80" align="center">服务次数</th>
+                                        <th width="80" align="center">剩余次数</th>
+                                        <th width="80" align="center">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <s:iterator value="customerTaoKaItemLst" status="status">
+                                    <tr>
+                                        <td align="left"><s:property value="txtTaoKaSort" /></td>
+                                        <td align="left"><s:property value="txtXiangMuName" /></td>
+                                        <td align="center"><s:property value="txtTotalTimes" /></td>
+                                        <td align="center"><s:property value="txtRestTimes" /></td>
+                                        <td align="center"><a href="javascript:modifyRestTimes('<s:property value='txtXiangMuName' />', '<s:property value='txtGuid' />', '<s:property value='txtRestTimes' />')">套卡支付</a></td>
+                                    </tr>
+                                </s:iterator>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </s:if>
 					<tr>
 						<td width="100" style="font-weight:bold;">帐套</td>
 						<td width="100" style="font-weight:bold;">工时费（折前）</td>
@@ -826,6 +854,25 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 						});
 					}
 				}, 'json');
+			}
+		}	
+	
+		function modifyRestTimes(txtXiangMuName, txtGuid, txtRestTimes) {
+			if (txtRestTimes >= 1) {
+				$.messager.prompt('确认', '确定使用套卡项目<span  style="color: blue; font-weight: bold;">' + txtXiangMuName + '</span>的剩余次数支付吗?', function(data) {
+					$.post('modifyRestTimes.action', {
+						"customerTaoKaItemGuid" : txtGuid,
+						"txtRestTimes" : txtRestTimes - 1
+					}, function(result) {
+						if (result.errorMsg) {
+							$.messager.alert('出错啦', result.errorMsg);
+						} else {
+							reloadCurentPage();
+						}
+					}, 'json');	
+				});
+			}else {
+				$.messager.alert('提示', '套卡项目剩余次数不足，请使用其他方式支付');
 			}
 		}
 		

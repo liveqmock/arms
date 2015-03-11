@@ -40,18 +40,7 @@ public class CommonDataAction extends BaseActionSupport implements CommonData {
 
 	@Action(value = "zhangTaoOption")
 	public void zhangTao() {
-		StringBuffer sb = new StringBuffer();
-		sb.append("[");
-		for (String zhangTao : zhangTaoLst) {
-			if (sb.length() > 1) {
-				sb.append(",");
-			}
-			sb.append(String.format("{\"name\":\"%s\",\"code\":\"%s\"}",
-					zhangTao, zhangTao));
-
-		}
-		sb.append("]");
-		this.transmitJson(sb.toString());
+		this.transmitJson(getOptionJsonFronLst(zhangTaoLst));
 	}
 	@Action(value = "chuRuKuSortOption")
 	public void chuRuKuSort() {
@@ -76,6 +65,21 @@ public class CommonDataAction extends BaseActionSupport implements CommonData {
 	@Action(value = "zhiFuSortOption")
 	public void zhiFuSort() {
 		this.transmitJson(getJsonData("data/zhiFuSort.json"));
+	}
+
+	private String getOptionJsonFronLst(String[] itemLst) {
+		StringBuffer sb = new StringBuffer();
+		sb.append("[");
+		for (String item : itemLst) {
+			if (sb.length() > 1) {
+				sb.append(",");
+			}
+			sb.append(String.format("{\"name\":\"%s\",\"code\":\"%s\"}", item,
+					item));
+
+		}
+		sb.append("]");
+		return sb.toString();
 	}
 
 	@Action(value = "peiJianChangKuOption")
@@ -134,6 +138,12 @@ public class CommonDataAction extends BaseActionSupport implements CommonData {
 		this.transmitJson(JSONArray.fromObject(
 				commonDataService.getOptionBean("GongDanXiangMu", param))
 				.toString());
+	}
+
+	@Action(value = "taoKaSortOption")
+	public void taoKaSortOption() {
+		this.transmitJson(JSONArray.fromObject(
+				commonDataService.getOptionBean("TaoKaSort")).toString());
 	}
 
 	private String getJsonData(String path) {

@@ -233,7 +233,7 @@
 							if (result.errorMsg) {
 								$.messager.alert('出错啦', result.errorMsg);
 							} else {
-								reloadCurentPage();
+								doSearch();
 							}
 						}, 'json');
 					}

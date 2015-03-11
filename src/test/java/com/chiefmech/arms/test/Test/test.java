@@ -4,6 +4,11 @@ import com.chiefmech.arms.common.util.IDGen;
 
 public class test {
 	public static void main(String[] args) {
-		System.out.println(IDGen.getUUID());
+		for (int i = 0; i < 30; i++) {
+			System.out
+					.println(String.format(
+							"insert into taoka(txtguid)values('%s');",
+							IDGen.getUUID()));
+		}
 	}
 }

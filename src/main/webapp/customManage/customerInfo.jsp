@@ -77,7 +77,7 @@ td {
 					<td colspan="6">&nbsp;</td>
 				</tr>
 				<tr>
-					<td colspan="6">会员信息</td>
+					<td colspan="6">会员信息&nbsp;&nbsp;<a href="javascript:showTaoKaoDialog()">新增套卡</a></td>
 				</tr>
 				<tr>
 					<td align="right">会员账号：</td>
@@ -102,6 +102,34 @@ td {
 						data-options="required:true,precision:2,max:1,min:0"
 						style="text-align: right;" /></td>
 				</tr>
+                <s:if test="customerTaoKaItemLst.size > 0">
+				<tr>
+					<td colspan="6">
+                    	<table>
+                            <thead>
+                                <tr>
+                                    <th width="100" align="left">套卡类型</th>
+                                    <th width="100" align="left">业务名称</th>
+                                    <th width="80" align="center">服务次数</th>
+                                    <th width="80" align="center">剩余次数</th>
+                                    <th width="80" align="center">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <s:iterator value="customerTaoKaItemLst" status="status">
+                            	<tr>
+                                	<td align="left"><s:property value="txtTaoKaSort" /></td>
+                                	<td align="left"><s:property value="txtXiangMuName" /></td>
+                                	<td align="center"><s:property value="txtTotalTimes" /></td>
+                                	<td align="center"><s:property value="txtRestTimes" /></td>
+                                	<td align="center"><a href="javascript:deleteTaoKaSort('<s:property value='txtTaoKaSort' />')">删除套卡类型</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:modifyRestTimes('<s:property value='txtXiangMuName' />', '<s:property value='txtGuid' />')">调整剩余次数</a></td>
+                                </tr>
+                            </s:iterator>
+                            </tbody>
+                        </table>
+                    </td>
+				</tr>
+                </s:if>
 				<tr>
 					<td colspan="6">&nbsp;</td>
 				</tr><s:if test="cheLiangInfoLst.size>0">
@@ -145,7 +173,32 @@ td {
 			</table>
 			<!--联系人信息 end-->
 		</form>
-
+		<div id="dlgTaoKa" class="easyui-dialog" closed="true"
+			style="width: 450px; height: 300px; padding: 10px 20px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%;">
+            	<tr>
+                	<td>套卡类型：<input name="txtTaoKaSort" id="txtTaoKaSort"
+								class="easyui-combobox"
+								data-options="editable:false,required:false,valueField:'code',textField:'name',method:'post',url:'<s:property value='basePath' />/data/taoKaSortOption.action',onSelect:previewTaoKaoInfo" /></td>
+                </tr>
+				<tr>
+                	<td style="padding:5px 0 15px;">    
+                        <table id="datagridTaoKa" class="easyui-datagrid" data-options="rownumbers:true" width="350">
+                            <thead>
+                                <tr>
+                                    <th field="txtXiangMuName" width="200">业务名称</th>
+                                    <th field="txtTotalTimes" width="80">服务次数</th>
+                                </tr>
+                            </thead>
+                        </table>
+            		</td>
+           		</tr>
+                <tr>
+                	<td align="center"><a onclick="addTaoKa()" class="easyui-linkbutton" href="javascript:void(0)">添加选中套卡</a>&nbsp;&nbsp;&nbsp;<a onclick="javascript:$('#dlgTaoKa').dialog('close')" class="easyui-linkbutton" href="javascript:void(0)">取消</a></td>
+                </tr>
+				
+            </table>
+        </div>
 		<!--按钮区域 end-->
 		<div id="mydlg" class="easyui-dialog" closed="true"
 			style="width: 500px; height: 250px; padding: 10px 20px;">
@@ -341,6 +394,81 @@ td {
 			window.opener = null;
 			window.close();
 		}
+		
+		function showTaoKaoDialog(){
+			$("#txtTaoKaSort").combobox("setValue", "短期洁车方案");
+			$('#dlgTaoKa').dialog('open').dialog('setTitle', '套卡信息');
+			previewTaoKaoInfo();
+		}
+		
+		function previewTaoKaoInfo(){
+			var taoKaSort = $("#txtTaoKaSort").combobox("getValue");
+			var taoKaDlg = $('#datagridTaoKa');
+			taoKaDlg.datagrid({
+				url:"queryTaoKaByName.action",
+				queryParams:{"txtTaoKaSort" : taoKaSort}
+			});
+		}
+		
+	
+		function addTaoKa() {
+			var taoKaSort = $("#txtTaoKaSort").combobox("getValue");
+			$.messager.confirm('确认', '确定要添加套卡<span  style="color: blue; font-weight: bold;">' + taoKaSort + '</span>吗?', function(r) {
+				if (r) {
+					$.post('addTaoKa.action', {
+						"customerId" : '<s:property value="customerId" />',
+						"txtTaoKaSort" : taoKaSort
+					}, function(result) {
+						if (result.errorMsg) {
+							$.messager.alert('出错啦', result.errorMsg);
+						} else {
+							reloadCurentPage();
+						}
+					}, 'json');
+				}
+			});
+		}		
+	
+		function deleteTaoKaSort(taoKaSort) {
+			$.messager.confirm('确认', '确定要删除套卡<span  style="color: blue; font-weight: bold;">' + taoKaSort + '</span>吗?', function(r) {
+				if (r) {
+					$.post('deleteCustomerTaoKaItem.action', {
+						"customerId" : '<s:property value="customerId" />',
+						"txtTaoKaSort" : taoKaSort
+					}, function(result) {
+						if (result.errorMsg) {
+							$.messager.alert('出错啦', result.errorMsg);
+						} else {
+							reloadCurentPage();
+						}
+					}, 'json');
+				}
+			});
+		}		
+	
+		function modifyRestTimes(taoKaSort, txtGuid) {
+			$.messager.prompt('确认', '确定要调整套卡项目<span  style="color: blue; font-weight: bold;">' + taoKaSort + '</span>的剩余次数吗?', function(data) {
+				if (data) {
+					if(/^\d+$/.test(data)){
+						$.post('modifyRestTimes.action', {
+							"customerTaoKaItemGuid" : txtGuid,
+							"txtRestTimes" : data
+						}, function(result) {
+							if (result.errorMsg) {
+								$.messager.alert('出错啦', result.errorMsg);
+							} else {
+								reloadCurentPage();
+							}
+						}, 'json');
+					}else{
+						$.messager.alert('提示', '调整次数只能是数字');
+					}					
+				}else if(typeof(data) != "undefined"){
+					$.messager.alert('提示', '请输入需要调整的次数');
+				}
+			});
+		}
+		
 	</script>
 </body>
 </html>
