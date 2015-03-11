@@ -26,7 +26,7 @@ public interface WeiXiuXiangMuDao {
 			@Param("txtGongDanId") String saleAfterGuid,
 			@Param("item") WeiXiuXiangMu query);
 
-	@Insert("insert into weixiuxiangmu(txtGuid,txtCode,txtName,txtNeiRong,txtFeiYong,ddlGongDuan,txtRemark) values(#{txtGuid},#{txtCode},#{txtName},#{txtNeiRong},#{txtFeiYong},#{ddlGongDuan},#{txtRemark})")
+	@Insert("insert into weixiuxiangmu(txtGuid,txtShopCode,txtCode,txtName,txtNeiRong,txtFeiYong,ddlGongDuan,txtRemark) values(#{txtGuid},#{txtShopCode},#{txtCode},#{txtName},#{txtNeiRong},#{txtFeiYong},#{ddlGongDuan},#{txtRemark})")
 	public int insertItem(WeiXiuXiangMu item);
 
 	@Update("update weixiuxiangmu set txtCode=#{txtCode},txtName=#{txtName},txtNeiRong=#{txtNeiRong},txtFeiYong=#{txtFeiYong},ddlGongDuan=#{ddlGongDuan},txtRemark=#{txtRemark} where txtGuid=#{txtGuid}")

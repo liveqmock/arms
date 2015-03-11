@@ -22,7 +22,7 @@ public interface SupplierDao {
 	@SelectProvider(type = SupplierDaoSqlProvider.class, method = "getSupplierListCount")
 	public int getSupplierListCount(@Param("item") Supplier query);
 
-	@Insert("insert into supplier(txtSuppId,txtSuppBianHao,txtSuppName,txtRemarks) values(#{txtSuppId},#{txtSuppBianHao},#{txtSuppName},#{txtRemarks})")
+	@Insert("insert into supplier(txtSuppId,txtShopCode,txtSuppBianHao,txtSuppName,txtRemarks) values(#{txtSuppId},#{txtShopCode},#{txtSuppBianHao},#{txtSuppName},#{txtRemarks})")
 	public int insertItem(Supplier item);
 
 	@Update("update supplier set txtSuppBianHao=#{txtSuppBianHao},txtSuppName=#{txtSuppName},txtRemarks=#{txtRemarks} where txtSuppId=#{txtSuppId}")

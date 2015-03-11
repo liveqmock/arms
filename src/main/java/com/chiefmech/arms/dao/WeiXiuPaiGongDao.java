@@ -23,7 +23,7 @@ public interface WeiXiuPaiGongDao {
 	@SelectProvider(type = WeiXiuPaiGongDaoSqlProvider.class, method = "getWeiXiuPaiGongListCount")
 	public int getWeiXiuPaiGongListCount(@Param("item") WeiXiuZhu query);
 
-	@Insert("insert into weixiuzu(weixiuzuID,weixiuzuName,zhuxiuRen) values(#{weixiuzuID},#{weixiuzuName},#{zhuxiuRen})")
+	@Insert("insert into weixiuzu(weixiuzuID,txtShopCode,weixiuzuName,zhuxiuRen) values(#{weixiuzuID},#{txtShopCode},#{weixiuzuName},#{zhuxiuRen})")
 	public int insertItem(WeiXiuZhu item);
 
 	@Update("update weixiuzu set weixiuzuName=#{weixiuzuName},zhuxiuRen=#{zhuxiuRen} where weixiuzuID=#{weixiuzuID}")

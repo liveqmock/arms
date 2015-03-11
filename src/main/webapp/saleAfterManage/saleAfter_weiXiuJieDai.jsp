@@ -284,7 +284,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 						<th field="txtFeiYong" width="80"
 							<s:if test="actionName in {'gongDanWeiXiuJieDai', 'gongDanCheLiangJianCe'}">
 						data-options="align:'right',editor:{type:'numberbox',options:{precision:2,required:true}}"</s:if>>费用</th>
-						<th field="ddlZhangTao" width="80"
+						<th field="ddlZhangTao" width="100"
 							<s:if test="actionName in {'gongDanWeiXiuJieDai', 'gongDanCheLiangJianCe'}">
 						data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/zhangTaoOption.action'}}"</s:if>>帐套</th>
 						<s:if

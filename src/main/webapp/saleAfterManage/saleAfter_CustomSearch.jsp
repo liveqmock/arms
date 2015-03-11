@@ -54,6 +54,8 @@
 						class="easyui-linkbutton" href="javascript:void(0)">维修历史</a> <a
 						onclick="jieDaiDaoHang();return false;" class="easyui-linkbutton"
 						href="javascript:void(0)">维修接待</a> <a
+						onclick="gongDanManage();return false;" class="easyui-linkbutton"
+						href="javascript:void(0)">工单管理</a> <a
 						onclick="editCustomerInfo('');return false;"
 						class="easyui-linkbutton" href="javascript:void(0)">新增客户信息</a></td>
 
@@ -152,6 +154,10 @@
 			} else {
 				$.messager.alert('提示', '请先选中目标车辆');
 			}
+		}
+		
+		function gongDanManage(){
+			parent.gongDanManage();
 		}
 	</script>
 

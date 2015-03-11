@@ -98,7 +98,7 @@ public interface GongDanDao {
 	@Select("select ifnull(sum(txtSalePrice*txtQty),0) CaiLiaoFei from gongdanwuliao where txtGongDanGuid=#{txtGongDanId}")
 	public float getCaiLiaoFeiZheQianByGongDanId(String txtGongDanId);
 
-	@Insert("insert into gongdanwuliao(txtWuLiaoGuid,txtWuLiaoCode,txtGongDanGuid,txtWuLiaoName,txtSuppName,txtChengBenJia,txtSalePrice,ddlZhangTao,ddlStatus,txtRemark,txtLaiYuan) values(#{txtWuLiaoGuid},#{txtWuLiaoCode},#{txtGongDanGuid},#{txtWuLiaoName},#{txtSuppName},#{txtChengBenJia},#{txtSalePrice},#{ddlZhangTao},#{ddlStatus},#{txtRemark},#{txtLaiYuan})")
+	@Insert("insert into gongdanwuliao(txtWuLiaoGuid,txtShopCode,txtWuLiaoCode,txtGongDanGuid,txtWuLiaoName,txtSuppName,txtChengBenJia,txtSalePrice,ddlZhangTao,ddlStatus,txtRemark,txtLaiYuan) values(#{txtWuLiaoGuid},#{txtShopCode},#{txtWuLiaoCode},#{txtGongDanGuid},#{txtWuLiaoName},#{txtSuppName},#{txtChengBenJia},#{txtSalePrice},#{ddlZhangTao},#{ddlStatus},#{txtRemark},#{txtLaiYuan})")
 	public int insertGongDanWeiXiuWuLiao(GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao);
 
 	@Update("update gongdan set txtGongDanStatus=#{txtGongDanStatus},txtGongDanStatusChain=concat(txtGongDanStatusChain,'|',#{txtGongDanStatus}) where txtGongDanId=#{txtGongDanId}")

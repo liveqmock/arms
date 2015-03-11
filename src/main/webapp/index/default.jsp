@@ -370,6 +370,10 @@
 	function winClose() {
 		$('#winDiv').window('close');
 	}
+	
+	function gongDanManage(){
+		mdfMenu('e3f0fe70-9e54-4fe5-9fbc-a0004af38ab5','工单管理','../saleAfterManage/saleAfterGongDanManage.action');
+	}
 </script>
 
 

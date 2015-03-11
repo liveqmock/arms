@@ -43,8 +43,11 @@ public class CommonDataAction extends BaseActionSupport implements CommonData {
 		StringBuffer sb = new StringBuffer();
 		sb.append("[");
 		for (String zhangTao : zhangTaoLst) {
-			sb.append(String.format("{'name':'%s','code':'%s'},", zhangTao,
-					zhangTao));
+			if (sb.length() > 1) {
+				sb.append(",");
+			}
+			sb.append(String.format("{\"name\":\"%s\",\"code\":\"%s\"}",
+					zhangTao, zhangTao));
 
 		}
 		sb.append("]");
