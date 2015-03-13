@@ -35,6 +35,6 @@ public interface CommonDataDao {
 	@Select("select groupName name,groupName code from groups")
 	List<OptionBean> getGroupNameOptionBean();
 
-	@Select("select distinct txtTaoKaSort name,txtTaoKaSort code from taoka")
-	List<OptionBean> getTaoKaSort();
+	@Select("select distinct txtTaoKaName name,txtGuid code from taokasort where txtShopCode=#{txtShopCode}")
+	List<OptionBean> getTaoKaSortGuid(String txtShopCode);
 }

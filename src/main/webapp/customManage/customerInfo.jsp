@@ -177,9 +177,9 @@ td {
 			style="width: 450px; height: 300px; padding: 10px 20px;">
             <table border="0" cellpadding="0" cellspacing="0" width="100%;">
             	<tr>
-                	<td>套卡类型：<input name="txtTaoKaSort" id="txtTaoKaSort"
+                	<td>套卡类型：<input name="txtTaoKaSortGuid" id="txtTaoKaSortGuid"
 								class="easyui-combobox"
-								data-options="editable:false,required:false,valueField:'code',textField:'name',method:'post',url:'<s:property value='basePath' />/data/taoKaSortOption.action',onSelect:previewTaoKaoInfo" /></td>
+								data-options="editable:false,required:false,valueField:'code',textField:'name',method:'post',url:'<s:property value='basePath' />/data/taoKaSortGuidOption.action',onSelect:previewTaoKaoInfo" /></td>
                 </tr>
 				<tr>
                 	<td style="padding:5px 0 15px;">    
@@ -194,7 +194,7 @@ td {
             		</td>
            		</tr>
                 <tr>
-                	<td align="center"><a onclick="addTaoKa()" class="easyui-linkbutton" href="javascript:void(0)">添加选中套卡</a>&nbsp;&nbsp;&nbsp;<a onclick="javascript:$('#dlgTaoKa').dialog('close')" class="easyui-linkbutton" href="javascript:void(0)">取消</a></td>
+                	<td align="center"><a onclick="addTaoKaSort()" class="easyui-linkbutton" href="javascript:void(0)">添加选中套卡</a>&nbsp;&nbsp;&nbsp;<a onclick="javascript:$('#dlgTaoKa').dialog('close')" class="easyui-linkbutton" href="javascript:void(0)">取消</a></td>
                 </tr>
 				
             </table>
@@ -402,22 +402,21 @@ td {
 		}
 		
 		function previewTaoKaoInfo(){
-			var taoKaSort = $("#txtTaoKaSort").combobox("getValue");
+			var txtTaoKaSortGuid = $("#txtTaoKaSortGuid").combobox("getValue");
 			var taoKaDlg = $('#datagridTaoKa');
 			taoKaDlg.datagrid({
-				url:"queryTaoKaByName.action",
-				queryParams:{"txtTaoKaSort" : taoKaSort}
+				url:"queryTaoKaByTaoKaSortGuid.action",
+				queryParams:{"txtTaoKaSortGuid" : txtTaoKaSortGuid}
 			});
 		}
 		
 	
-		function addTaoKa() {
-			var taoKaSort = $("#txtTaoKaSort").combobox("getValue");
-			$.messager.confirm('确认', '确定要添加套卡<span  style="color: blue; font-weight: bold;">' + taoKaSort + '</span>吗?', function(r) {
+		function addTaoKaSort() {
+			$.messager.confirm('确认', '确定要添加当前的套卡吗?', function(r) {
 				if (r) {
-					$.post('addTaoKa.action', {
+					$.post('addTaoKaSort.action', {
 						"customerId" : '<s:property value="customerId" />',
-						"txtTaoKaSort" : taoKaSort
+						"txtTaoKaSortGuid" : $("#txtTaoKaSortGuid").combobox("getValue")
 					}, function(result) {
 						if (result.errorMsg) {
 							$.messager.alert('出错啦', result.errorMsg);

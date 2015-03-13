@@ -193,7 +193,16 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('7acf3c55-3939-41ba-b525-3a1dfa035c88','维修组','../webSetup/weiXiuZhuManage.action');"
-												}, ],
+												},
+												{
+													name : "套卡管理",
+													font : {
+														'font-style' : '微软雅黑'
+													},
+													url : "",
+													target : "_blank",
+													click : "mdfMenu('7acf3c55-3939-41ba-s135-3a1dfa035c88','套卡管理','../webSetup/taoKaManage.action');"
+												} ],
 										url : "",
 										target : "_blank"
 									},

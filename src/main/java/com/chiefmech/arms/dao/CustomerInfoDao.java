@@ -75,8 +75,8 @@ public interface CustomerInfoDao {
 	@Delete("delete from customerinfo where txtCustId=#{txtCustId}")
 	public int deleteCustInfo(String txtCustId);
 
-	@Select("select * from taoka where txtTaoKaSort=#{txtTaoKaSort} order by txtXiangMuCode")
-	public List<TaoKaItem> queryTaoKaByName(String txtTaoKaSort);
+	@Select("select * from v_taokaitem where txtTaoKaSortGuid=#{txtTaoKaSortGuid} order by txtXiangMuCode")
+	public List<TaoKaItem> queryTaoKaByTaoKaSortGuid(String txtTaoKaSortGuid);
 
 	@Select("select * from customertaoka where txtCustId=#{txtCustId} and txtTaoKaSort=#{txtTaoKaSort} order by txtXiangMuCode")
 	public List<CustomerTaoKaItem> queryCustomerTaoKaItem(

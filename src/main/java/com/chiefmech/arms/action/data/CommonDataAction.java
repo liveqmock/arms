@@ -140,10 +140,10 @@ public class CommonDataAction extends BaseActionSupport implements CommonData {
 				.toString());
 	}
 
-	@Action(value = "taoKaSortOption")
-	public void taoKaSortOption() {
+	@Action(value = "taoKaSortGuidOption")
+	public void taoKaSortGuidOption() {
 		this.transmitJson(JSONArray.fromObject(
-				commonDataService.getOptionBean("TaoKaSort")).toString());
+				commonDataService.getOptionBean("TaoKaSortGuid")).toString());
 	}
 
 	private String getJsonData(String path) {

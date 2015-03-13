@@ -1,5 +1,6 @@
 package com.chiefmech.arms.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -110,15 +111,20 @@ public class CustomerInfoServiceImpl implements CustomerInfoService {
 	}
 
 	@Override
-	public List<TaoKaItem> queryTaoKaByName(String txtTaoKaSort) {
-		return customerInfoDao.queryTaoKaByName(txtTaoKaSort);
+	public List<TaoKaItem> queryTaoKaByTaoKaSortGuid(String txtTaoKaSortGuid) {
+		return customerInfoDao.queryTaoKaByTaoKaSortGuid(txtTaoKaSortGuid);
 	}
 
 	@Override
-	public int addTaoKa(String txtCustId, String txtTaoKaSort) {
-		List<TaoKaItem> taoKaItemLst = queryTaoKaByName(txtTaoKaSort);
-		List<CustomerTaoKaItem> customerTaoKaItemLst = customerInfoDao
-				.queryCustomerTaoKaItem(txtCustId, txtTaoKaSort);
+	public int addTaoKaSort(String txtCustId, String txtTaoKaSortGuid) {
+		// 查询到套卡模板
+		List<TaoKaItem> taoKaItemLst = queryTaoKaByTaoKaSortGuid(txtTaoKaSortGuid);
+		// 查询客户已有的套卡信息
+		List<CustomerTaoKaItem> customerTaoKaItemLst = new ArrayList<CustomerTaoKaItem>();
+		if (taoKaItemLst.size() > 0) {
+			customerTaoKaItemLst = customerInfoDao.queryCustomerTaoKaItem(
+					txtCustId, taoKaItemLst.get(0).getTxtTaoKaSort());
+		}
 		int rowAffected = 0;
 		for (TaoKaItem itemTpl : taoKaItemLst) {
 			boolean isTaoKaSortExist = false;
@@ -154,7 +160,6 @@ public class CustomerInfoServiceImpl implements CustomerInfoService {
 
 		return rowAffected;
 	}
-
 	@Override
 	public int deleteCustomerTaoKaItem(String txtCustId, String txtTaoKaSort) {
 		int rowAffected = customerInfoDao.deleteCustomerTaoKaItem(txtCustId,

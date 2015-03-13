@@ -148,6 +148,36 @@ function makeElementsReadonly(idAry, jsonData){
 
 })(jQuery);
 
+		
+function mergeGridColCells(grid, rowFildName) {
+	var rows = grid.datagrid('getRows');
+	if (rows.length < 1) {
+		return;
+	}
+	
+	var startIndex = 0;
+	var endIndex = 0;
+	$.each(rows, function(i, row) {
+		if (row[rowFildName] == rows[startIndex][rowFildName]) {
+			endIndex = i;
+		} else {
+			grid.datagrid('mergeCells', {
+				index : startIndex,
+				field : rowFildName,
+				rowspan : endIndex - startIndex + 1
+			});
+			startIndex = i;
+			endIndex = i;
+		}
+	});
+	
+	grid.datagrid('mergeCells', {
+		index : startIndex,
+		field : rowFildName,
+		rowspan : endIndex - startIndex + 1
+	});
+}
+	
 
 //custom validate rule
 (function($) {

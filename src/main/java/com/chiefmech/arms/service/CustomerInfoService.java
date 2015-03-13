@@ -42,9 +42,9 @@ public interface CustomerInfoService {
 
 	public int deleteCustInfo(String txtCustId);
 
-	public List<TaoKaItem> queryTaoKaByName(String txtTaoKaSort);
+	public List<TaoKaItem> queryTaoKaByTaoKaSortGuid(String txtTaoKaSort);
 
-	public int addTaoKa(String txtCustId, String txtTaoKaSort);
+	public int addTaoKaSort(String txtCustId, String txtTaoKaSortGuid);
 
 	public int deleteCustomerTaoKaItem(String txtCustId, String txtTaoKaSort);
 

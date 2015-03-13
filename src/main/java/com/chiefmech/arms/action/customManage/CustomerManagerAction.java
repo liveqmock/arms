@@ -42,6 +42,7 @@ public class CustomerManagerAction extends BaseActionSupport
 	private List<CustomerTaoKaItem> customerTaoKaItemLst;
 	private String customerId;
 	private String txtTaoKaSort;
+	private String txtTaoKaSortGuid;
 	private String customerTaoKaItemGuid;
 	private String flag;
 	private int txtRestTimes;
@@ -111,10 +112,10 @@ public class CustomerManagerAction extends BaseActionSupport
 		this.transmitJson(getCrudJsonResponse(rowsAffected, info, msg));
 	}
 
-	@Action(value = "queryTaoKaByName")
-	public void queryTaoKaByName() {
+	@Action(value = "queryTaoKaByTaoKaSortGuid")
+	public void queryTaoKaByTaoKaSortGuid() {
 		List<TaoKaItem> lst = customerInfoService
-				.queryTaoKaByName(txtTaoKaSort);
+				.queryTaoKaByTaoKaSortGuid(txtTaoKaSortGuid);
 
 		String lstJson = JSONArray.fromObject(lst).toString();
 		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}",
@@ -122,10 +123,10 @@ public class CustomerManagerAction extends BaseActionSupport
 		this.transmitJson(jsonStr);
 	}
 
-	@Action(value = "addTaoKa")
-	public void addTaoKa() {
-		int rowsAffected = customerInfoService.addTaoKa(customerId,
-				txtTaoKaSort);
+	@Action(value = "addTaoKaSort")
+	public void addTaoKaSort() {
+		int rowsAffected = customerInfoService.addTaoKaSort(customerId,
+				txtTaoKaSortGuid);
 		String info = "";
 		String msg = "保存数据失败";
 		this.transmitJson(getCrudJsonResponse(rowsAffected, info, msg));
@@ -187,6 +188,10 @@ public class CustomerManagerAction extends BaseActionSupport
 
 	public List<CheLiangInfo> getCheLiangInfoLst() {
 		return cheLiangInfoLst;
+	}
+
+	public void setTxtTaoKaSortGuid(String txtTaoKaSortGuid) {
+		this.txtTaoKaSortGuid = txtTaoKaSortGuid;
 	}
 
 	public void setTxtTaoKaSort(String txtTaoKaSort) {
