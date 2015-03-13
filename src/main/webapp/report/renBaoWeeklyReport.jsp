@@ -56,13 +56,13 @@ td {
 		</form>
 	</div>
 <table id="mydg" class="easyui-datagrid"
-		data-options="url:'queryRenBaoWeeklyReport.action',rownumbers:true,singleSelect:true,toolbar:'#toolbar',pagination:false">
+		data-options="url:'queryRenBaoWeeklyReport.action',rownumbers:true,singleSelect:true,toolbar:'#toolbar',pagination:false,onDblClickRow:renBaoQingDan">
 		<thead>
 			<tr>
 				<th width="100" data-options="field:'txtChePaiHao'">车牌号</th>
 				<th width="100" data-options="field:'txtTicketNumber'">服务券券号</th>
 				<th width="100" data-options="field:'txtXiangMuValue'">项目价值（元）</th>
-				<th width="80" data-options="field:'txtRenBaoChaJia'">补差价(元）</th>
+				<th width="80"  data-options="field:'txtRenBaoChaJia'">补差价(元）</th>
 				<th width="100" data-options="field:'txtRuChangDate'">消费时间</th>
 				<th width="100" data-options="field:'txtCheZhuName'">车主姓名</th>
 				<th width="100" data-options="field:'txtCheZhuTel'">联系电话</th>
@@ -77,7 +77,8 @@ td {
 	</table>
 
 <script type="text/javascript">
-
+        var myTable = $('#mydg');
+        
 		$(function() {
 			var queryJson = eval('('
 					+ '{"txtRuChangDateBegin":"<s:property value="txtRuChangDateBegin"/>", "txtRuChangDateEnd":"<s:property value="txtRuChangDateEnd"/>"}' + ')');
@@ -99,6 +100,20 @@ td {
 					setupDatagrid(jsonStr);
 				}
 			});
+		}
+		function renBaoQingDan(){
+			var row = myTable.datagrid('getSelected');
+			if (row && row.txtGongDanId!="") {
+				var url = '../report/renBaoWeeklyReportPrint.action?txtGongDanId='
+						+ row.txtGongDanId + '&d=' + new Date();
+				var name = '人保清单打印';
+				var features = 'height=1000, width=730, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';
+				
+				z = window.open(url, name, features);
+				z.focus();
+			} else {
+				$.messager.alert('提示', '请先选中清单');
+			}
 		}
 		function exportExcel() {
 			$("#fmSearch").form('submit', {

@@ -450,14 +450,16 @@ td {
 			$.messager.prompt('确认', '确定要调整套卡项目<span  style="color: blue; font-weight: bold;">' + taoKaSort + '</span>的剩余次数吗?', function(data) {
 				if (data) {
 					if(/^\d+$/.test(data)){
-						$.post('modifyRestTimes.action', {
+						$.post('modifyRestTimes.action?flag=adjust', {
 							"customerTaoKaItemGuid" : txtGuid,
 							"txtRestTimes" : data
 						}, function(result) {
 							if (result.errorMsg) {
 								$.messager.alert('出错啦', result.errorMsg);
 							} else {
-								reloadCurentPage();
+								$.messager.alert('提示', "剩余次数调整成功",'info',function(){
+									reloadCurentPage();
+								});
 							}
 						}, 'json');
 					}else{

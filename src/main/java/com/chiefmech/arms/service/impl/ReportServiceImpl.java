@@ -37,4 +37,10 @@ public class ReportServiceImpl implements ReportService {
 		return reportDao.getRenBaoWeeklyReportListForEasyUi(query);
 	}
 
+	@Override
+	public List<RenBaoWeeklyReport> getRenBaoWeeklyReportListById(
+			String txtGongDanId) {	
+		return reportDao.getRenBaoWeeklyReportListById(txtGongDanId);
+	}
+
 }

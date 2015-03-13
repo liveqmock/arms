@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.action.BaseActionSupport;
+import com.chiefmech.arms.common.util.ConfigUtil;
 import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.entity.User;
 import com.chiefmech.arms.service.UserService;
@@ -47,6 +48,8 @@ public class UserManageAction extends BaseActionSupport
 		if (userService.isLoginNameExist(item)) {
 			jsonStr = getJsonResponse(-1, "已有同名的登录账号");
 		} else {
+			item.setShopCode(ConfigUtil.getInstance().getShopInfo()
+					.getShopCode());
 			int rowAffected = userService.insertItem(item);
 			jsonStr = getJsonResponse(rowAffected, "新增数据失败");
 		}

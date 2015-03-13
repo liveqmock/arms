@@ -32,6 +32,9 @@ public class ReportAction extends BaseActionSupport
 
 	@Resource()
 	private ReportService reportService;
+	
+	private String txtGongDanId;
+	private List<RenBaoWeeklyReport> renBaoWeeklyReportLst;
 
 	private RenBaoWeeklyReportSearchBean query = new RenBaoWeeklyReportSearchBean() {
 		{
@@ -71,6 +74,13 @@ public class ReportAction extends BaseActionSupport
 			this.transmitPlainText("导出报表时发生错误！");
 		}
 	}
+	
+	@Action(value = "renBaoWeeklyReportPrint", results = {@Result(name = "input", location = "renBaoPrint.jsp")})
+	public String renBaoWeeklyReportPrint() {
+		renBaoWeeklyReportLst=reportService.getRenBaoWeeklyReportListById(txtGongDanId);
+		return INPUT;
+	}
+	
 	public String getEasyUiJSonData() {
 		return easyUiJSonData;
 	}
@@ -85,6 +95,23 @@ public class ReportAction extends BaseActionSupport
 
 	public RenBaoWeeklyReportSearchBean getQuery() {
 		return query;
+	}
+
+	public String getTxtGongDanId() {
+		return txtGongDanId;
+	}
+
+	public void setTxtGongDanId(String txtGongDanId) {
+		this.txtGongDanId = txtGongDanId;
+	}
+
+	public List<RenBaoWeeklyReport> getRenBaoWeeklyReportLst() {
+		return renBaoWeeklyReportLst;
+	}
+
+	public void setRenBaoWeeklyReportLst(
+			List<RenBaoWeeklyReport> renBaoWeeklyReportLst) {
+		this.renBaoWeeklyReportLst = renBaoWeeklyReportLst;
 	}
 
 }

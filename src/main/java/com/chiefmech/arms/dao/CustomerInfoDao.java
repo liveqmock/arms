@@ -11,12 +11,16 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import com.chiefmech.arms.dao.sqlprovider.CheZhuLianXiRenDaoSqlProvider;
+import com.chiefmech.arms.dao.sqlprovider.TaoKaOperLogDaoSqlProvider;
 import com.chiefmech.arms.entity.CheLiangInfo;
 import com.chiefmech.arms.entity.CustomerInfo;
 import com.chiefmech.arms.entity.CustomerTaoKaItem;
+import com.chiefmech.arms.entity.CustomerTaoKaItemOperLog;
 import com.chiefmech.arms.entity.TaoKaItem;
 import com.chiefmech.arms.entity.query.SaleAfterCustomSearchBean;
+import com.chiefmech.arms.entity.query.TaoKaOperLogSearchBean;
 import com.chiefmech.arms.entity.view.VKeHuCheLiang;
+import com.chiefmech.arms.entity.view.VTaoKaOperLog;
 
 @Repository("customerInfoDao")
 public interface CustomerInfoDao {
@@ -82,6 +86,9 @@ public interface CustomerInfoDao {
 	@Insert("insert into customertaoka(txtGuid,txtCustId,txtTaoKaSort,txtXiangMuCode,txtXiangMuName,txtTotalTimes,txtRestTimes) values(#{txtGuid},#{txtCustId},#{txtTaoKaSort},#{txtXiangMuCode},#{txtXiangMuName},#{txtTotalTimes},#{txtRestTimes})")
 	public int insertCustomerTaoKaItem(CustomerTaoKaItem item);
 
+	@Insert("insert into customertaokaoperlog(txtLogGuid,txtAction,txtLogDate,txtNewRestTimes,txtGuid,txtCustId,txtTaoKaSort,txtXiangMuCode,txtXiangMuName,txtTotalTimes,txtRestTimes) values(#{txtLogGuid},#{txtAction},#{txtLogDate},#{txtNewRestTimes},#{txtGuid},#{txtCustId},#{txtTaoKaSort},#{txtXiangMuCode},#{txtXiangMuName},#{txtTotalTimes},#{txtRestTimes})")
+	public int insertCustomerTaoKaItemOperLog(CustomerTaoKaItemOperLog item);
+
 	@Update("update customertaoka set txtTotalTimes=#{txtTotalTimes},txtRestTimes=#{txtRestTimes} where txtGuid=#{txtGuid}")
 	public int updateCustomerTaoKaItem(CustomerTaoKaItem customerTaoKaItem);
 
@@ -96,4 +103,15 @@ public interface CustomerInfoDao {
 	@Select("select * from customertaoka where txtCustId=#{txtCustId} order by txtTaoKaSort, txtXiangMuCode")
 	public List<CustomerTaoKaItem> queryCustomerTaoKaItemLstByCustomerId(
 			String txtCustId);
+
+	@Select("select * from customertaoka where txtGuid=#{txtGuid}")
+	public CustomerTaoKaItem findCustomerTaoKaItemByGuid(String txtGuid);
+
+	@SelectProvider(type = TaoKaOperLogDaoSqlProvider.class, method = "getTaoKaOperLogListForEasyUi")
+	public List<VTaoKaOperLog> getTaoKaOperLogList(
+			@Param("item") TaoKaOperLogSearchBean query);
+
+	@SelectProvider(type = TaoKaOperLogDaoSqlProvider.class, method = "getTaoKaOperLogCountForEasyUi")
+	public int getTaoKaOperLogListCount(
+			@Param("item") TaoKaOperLogSearchBean query);
 }

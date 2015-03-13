@@ -15,6 +15,7 @@ public class CustomerTaoKaItem {
 	public CustomerTaoKaItem() {
 
 	}
+
 	public CustomerTaoKaItem(String txtCustId, TaoKaItem item) {
 		this.txtGuid = IDGen.getUUID();
 		this.txtCustId = txtCustId;
@@ -24,6 +25,17 @@ public class CustomerTaoKaItem {
 		this.txtTotalTimes = item.getTxtTotalTimes();
 		this.txtRestTimes = this.txtTotalTimes;
 	}
+
+	public CustomerTaoKaItem(CustomerTaoKaItem item) {
+		this.txtGuid = item.getTxtGuid();
+		this.txtCustId = item.getTxtCustId();
+		this.txtTaoKaSort = item.getTxtTaoKaSort();
+		this.txtXiangMuCode = item.getTxtXiangMuCode();
+		this.txtXiangMuName = item.getTxtXiangMuName();
+		this.txtTotalTimes = item.getTxtTotalTimes();
+		this.txtRestTimes = item.getTxtRestTimes();
+	}
+
 	public String getTxtGuid() {
 		return txtGuid;
 	}

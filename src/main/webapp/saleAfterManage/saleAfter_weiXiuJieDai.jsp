@@ -403,7 +403,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
                                         <td align="left"><s:property value="txtXiangMuName" /></td>
                                         <td align="center"><s:property value="txtTotalTimes" /></td>
                                         <td align="center"><s:property value="txtRestTimes" /></td>
-                                        <td align="center"><a href="javascript:modifyRestTimes('<s:property value='txtXiangMuName' />', '<s:property value='txtGuid' />', '<s:property value='txtRestTimes' />')">套卡支付</a></td>
+                                        <td align="center"><s:if test="txtRestTimes > 0"><a href="javascript:modifyRestTimes('<s:property value='txtXiangMuName' />', '<s:property value='txtGuid' />', '<s:property value='txtRestTimes' />')">套卡支付</a>&nbsp;</s:if></td>
                                     </tr>
                                 </s:iterator>
                                 </tbody>
@@ -859,17 +859,21 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 	
 		function modifyRestTimes(txtXiangMuName, txtGuid, txtRestTimes) {
 			if (txtRestTimes >= 1) {
-				$.messager.prompt('确认', '确定使用套卡项目<span  style="color: blue; font-weight: bold;">' + txtXiangMuName + '</span>的剩余次数支付吗?', function(data) {
-					$.post('modifyRestTimes.action', {
-						"customerTaoKaItemGuid" : txtGuid,
-						"txtRestTimes" : txtRestTimes - 1
-					}, function(result) {
-						if (result.errorMsg) {
-							$.messager.alert('出错啦', result.errorMsg);
-						} else {
-							reloadCurentPage();
-						}
-					}, 'json');	
+				$.messager.confirm('确认', '确定使用套卡项目<span  style="color: blue; font-weight: bold;">' + txtXiangMuName + '</span>的剩余次数支付吗?', function(r) {
+					if (r) {
+						$.post('../customManage/modifyRestTimes.action?flag=pay', {
+							"customerTaoKaItemGuid" : txtGuid,
+							"txtRestTimes" : txtRestTimes - 1
+						}, function(result) {
+							if (result.errorMsg) {
+								$.messager.alert('出错啦', result.errorMsg);
+							} else {
+								$.messager.alert('提示', "套卡支付成功",'info',function(){
+									reloadCurentPage();
+								});
+							}
+						}, 'json');		
+					}
 				});
 			}else {
 				$.messager.alert('提示', '套卡项目剩余次数不足，请使用其他方式支付');

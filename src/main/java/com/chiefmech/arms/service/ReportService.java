@@ -12,5 +12,7 @@ public interface ReportService {
 	
 	public String getRenBaoWeeklyReportEasyUiJSon(
 			RenBaoWeeklyReportSearchBean query);
+	
+	public List<RenBaoWeeklyReport> getRenBaoWeeklyReportListById(String txtGongDanId);
 
 }

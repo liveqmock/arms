@@ -14,6 +14,7 @@ public class RenBaoWeeklyReportSearchBean extends SearchBean {
 		this.addField(new Criteria(Action.LIKE, "txtChePaiHao", txtChePaiHao));
 		this.addField(new Criteria(Action.STR_BETWEEN, "txtRuChangDate",
 				txtRuChangDateBegin, txtRuChangDateEnd));
+		this.addField(new Criteria(Action.STR_EQUAL, "txtDeleteFlag", "0"));
 		// 只查找属于当前店铺的工单
 		this.addField(new Criteria(Action.STR_EQUAL, "txtShopCode", ConfigUtil
 				.getInstance().getShopInfo().getShopCode()));

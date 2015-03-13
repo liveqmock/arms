@@ -13,9 +13,12 @@ import com.chiefmech.arms.dao.CustomerInfoDao;
 import com.chiefmech.arms.entity.CheLiangInfo;
 import com.chiefmech.arms.entity.CustomerInfo;
 import com.chiefmech.arms.entity.CustomerTaoKaItem;
+import com.chiefmech.arms.entity.CustomerTaoKaItemOperLog;
 import com.chiefmech.arms.entity.TaoKaItem;
 import com.chiefmech.arms.entity.query.SaleAfterCustomSearchBean;
+import com.chiefmech.arms.entity.query.TaoKaOperLogSearchBean;
 import com.chiefmech.arms.entity.view.VKeHuCheLiang;
+import com.chiefmech.arms.entity.view.VTaoKaOperLog;
 import com.chiefmech.arms.service.CustomerInfoService;
 
 @Service("customerInfoService")
@@ -122,13 +125,11 @@ public class CustomerInfoServiceImpl implements CustomerInfoService {
 			for (CustomerTaoKaItem customerTaoKaItem : customerTaoKaItemLst) {
 				if (itemTpl.getTxtXiangMuName().equals(
 						customerTaoKaItem.getTxtXiangMuName())) {
-					// 如果存在想保存的套卡，更新总次数和剩余使用次数即可
-					customerTaoKaItem.setTxtRestTimes(customerTaoKaItem
-							.getTxtRestTimes() + itemTpl.getTxtTotalTimes());
-					customerTaoKaItem.setTxtTotalTimes(customerTaoKaItem
-							.getTxtRestTimes());
-					rowAffected = customerInfoDao
-							.updateCustomerTaoKaItem(customerTaoKaItem);
+					// 如果存在想保存的套卡，更新剩余使用次数即可
+					rowAffected = modifyRestTimes(
+							customerTaoKaItem.getTxtGuid(),
+							customerTaoKaItem.getTxtRestTimes()
+									+ itemTpl.getTxtTotalTimes(), "次数更新-新增套卡");
 					isTaoKaSortExist = true;
 					break;
 				}
@@ -140,6 +141,14 @@ public class CustomerInfoServiceImpl implements CustomerInfoService {
 						txtCustId, itemTpl);
 				rowAffected = customerInfoDao
 						.insertCustomerTaoKaItem(customerTaoKaItem);
+
+				if (rowAffected > 0) {
+					rowAffected = customerInfoDao
+							.insertCustomerTaoKaItemOperLog(new CustomerTaoKaItemOperLog(
+									"新增套卡",
+									customerTaoKaItem.getTxtRestTimes(),
+									customerTaoKaItem));
+				}
 			}
 		}
 
@@ -148,9 +157,19 @@ public class CustomerInfoServiceImpl implements CustomerInfoService {
 
 	@Override
 	public int deleteCustomerTaoKaItem(String txtCustId, String txtTaoKaSort) {
-		return customerInfoDao.deleteCustomerTaoKaItem(txtCustId, txtTaoKaSort);
-	}
+		int rowAffected = customerInfoDao.deleteCustomerTaoKaItem(txtCustId,
+				txtTaoKaSort);
+		if (rowAffected > 0) {
+			CustomerTaoKaItem item = new CustomerTaoKaItem();
+			item.setTxtCustId(txtCustId);
+			item.setTxtTaoKaSort(txtTaoKaSort);
+			rowAffected = customerInfoDao
+					.insertCustomerTaoKaItemOperLog(new CustomerTaoKaItemOperLog(
+							"删除套卡", 0, item));
+		}
+		return rowAffected;
 
+	}
 	@Override
 	public List<CustomerTaoKaItem> queryCustomerTaoKaItemLstByCustomerId(
 			String customerId) {
@@ -159,8 +178,28 @@ public class CustomerInfoServiceImpl implements CustomerInfoService {
 	}
 
 	@Override
-	public int modifyRestTimes(String txtGuid, int txtRestTimes) {
-		return customerInfoDao.modifyRestTimes(txtGuid, txtRestTimes);
+	public int modifyRestTimes(String txtGuid, int txtRestTimes, String action) {
+		CustomerTaoKaItem item = customerInfoDao
+				.findCustomerTaoKaItemByGuid(txtGuid);
+		int rowAffected = customerInfoDao
+				.modifyRestTimes(txtGuid, txtRestTimes);
+		if (rowAffected > 0) {
+			rowAffected = customerInfoDao
+					.insertCustomerTaoKaItemOperLog(new CustomerTaoKaItemOperLog(
+							action, txtRestTimes, item));
+		}
+		return rowAffected;
+	}
+
+	@Override
+	public String getTaoKaOperLogEasyUiJSon(TaoKaOperLogSearchBean query) {
+		List<VTaoKaOperLog> lst = customerInfoDao.getTaoKaOperLogList(query);
+		int total = customerInfoDao.getTaoKaOperLogListCount(query);
+
+		String lstJson = JSONArray.fromObject(lst).toString();
+		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
+				lstJson);
+		return jsonStr;
 	}
 
 }

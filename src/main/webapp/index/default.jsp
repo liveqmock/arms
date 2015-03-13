@@ -121,6 +121,15 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('6aebe08f-9fff-4492-885f-a20712348345','客户回访','../saleAfterManage/clientReviewManage.action');"
+												},
+												{
+													name : "套卡日志",
+													font : {
+														'font-style' : '微软雅黑'
+													},
+													url : "",
+													target : "_blank",
+													click : "mdfMenu('6aebe08f-9fff-4425-885f-a20712348345','套卡日志','../customManage/taoKaOperLogManage.action');"
 												} ],
 										url : "",
 										target : "_blank"

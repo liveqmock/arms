@@ -1,7 +1,5 @@
 package com.chiefmech.arms.entity.report;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
-
 public class RenBaoWeeklyReport {
 	private String txtGongDanId;
 	private String txtShopCode;
@@ -15,6 +13,11 @@ public class RenBaoWeeklyReport {
 	private String txtVin;
 	private String txtFaDongJiHao;
 	private String txtCheLiangBaoXianDaoQiRi;
+	private String txtLiCheng ;
+	private String txtCheLiangDengJiRiQi;
+	private String txtCheLiangNianShenDaoQiRi;
+	private String ddlChengBaoGongSi;
+	private String txtFuWuGuWen;
 
 	private String txtRenBaoXiangMu;
 	private int txtRenBaoChaJia;
@@ -139,6 +142,36 @@ public class RenBaoWeeklyReport {
 	}
 	public void setTxtCheLiangBaoXianDaoQiRi(String txtCheLiangBaoXianDaoQiRi) {
 		this.txtCheLiangBaoXianDaoQiRi = txtCheLiangBaoXianDaoQiRi;
+	}
+	public String getTxtLiCheng() {
+		return txtLiCheng;
+	}
+	public void setTxtLiCheng(String txtLiCheng) {
+		this.txtLiCheng = txtLiCheng;
+	}
+	public String getTxtCheLiangDengJiRiQi() {
+		return txtCheLiangDengJiRiQi;
+	}
+	public void setTxtCheLiangDengJiRiQi(String txtCheLiangDengJiRiQi) {
+		this.txtCheLiangDengJiRiQi = txtCheLiangDengJiRiQi;
+	}
+	public String getTxtCheLiangNianShenDaoQiRi() {
+		return txtCheLiangNianShenDaoQiRi;
+	}
+	public void setTxtCheLiangNianShenDaoQiRi(String txtCheLiangNianShenDaoQiRi) {
+		this.txtCheLiangNianShenDaoQiRi = txtCheLiangNianShenDaoQiRi;
+	}
+	public String getDdlChengBaoGongSi() {
+		return ddlChengBaoGongSi;
+	}
+	public void setDdlChengBaoGongSi(String ddlChengBaoGongSi) {
+		this.ddlChengBaoGongSi = ddlChengBaoGongSi;
+	}
+	public String getTxtFuWuGuWen() {
+		return txtFuWuGuWen;
+	}
+	public void setTxtFuWuGuWen(String txtFuWuGuWen) {
+		this.txtFuWuGuWen = txtFuWuGuWen;
 	}
 
 }

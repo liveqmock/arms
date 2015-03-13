@@ -255,14 +255,37 @@ td {
 						<td width="5%" rowspan="<s:property value='jieSuanInfo.jieSuanLst.size + 5' />">单 <br />据<br />汇<br />总<br />
 						</td>
 						<tr>
-						<td colspan="5">会员等级：<span
+						<td colspan="5">
+                           <s:if test="customerTaoKaItemLst.size > 0">
+                           <table>
+                                <thead>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th width="100">套卡类型</th>
+                                        <th width="100">业务名称</th>
+                                        <th width="80">服务次数</th>
+                                        <th width="80">剩余次数</th>
+                                    </tr>
+                                <s:iterator value="customerTaoKaItemLst" status="status">
+                                    <tr>
+                                        <td style="border:none;"><s:property value="txtTaoKaSort" /></td>
+                                        <td style="border:none;"><s:property value="txtXiangMuName" /></td>
+                                        <td style="border:none;"><s:property value="txtTotalTimes" /></td>
+                                        <td style="border:none;"><s:property value="txtRestTimes" /></td>
+                                    </tr>
+                                </s:iterator>
+                                </tbody>
+                            </table>
+                            </s:if>
+                            <div style="padding-top:5px;">会员等级：<span
 							style="font-weight: bold; padding-right: 10px;"><s:property
 									value='gongDan.txtHuiYuanDengJi' /></span>工时折扣:<span
 							style="font-weight: bold; padding-right: 10px;"><s:property
 									value='gongDan.txtGongShiZheKou' /></span>物料折扣:<span
 							style="font-weight: bold;"><s:property
-									value='gongDan.txtCaiLiaoZheKou' /></span></td>
-
+									value='gongDan.txtCaiLiaoZheKou' /></span></div>
+                         </td>
 					</tr>
 					<tr>
 						<td width="100" style="font-weight:bold;">帐套</td>

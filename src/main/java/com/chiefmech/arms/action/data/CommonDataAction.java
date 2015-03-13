@@ -64,7 +64,7 @@ public class CommonDataAction extends BaseActionSupport implements CommonData {
 
 	@Action(value = "zhiFuSortOption")
 	public void zhiFuSort() {
-		this.transmitJson(getJsonData("data/zhiFuSort.json"));
+		this.transmitJson(getOptionJsonFronLst(zhiFuLst));
 	}
 
 	private String getOptionJsonFronLst(String[] itemLst) {

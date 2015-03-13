@@ -87,6 +87,9 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 				gongDan.setTxtFinalPay(Float.parseFloat(jieSuanInfo
 						.getGongDanHeJi()));
 			}
+			customerTaoKaItemLst = customerInfoService
+					.queryCustomerTaoKaItemLstByCustomerId(gongDan
+							.getTxtCustId());
 		}
 		return INPUT;
 	}
@@ -138,6 +141,8 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 		if (gongDanWuLiaoLst.size() == 0) {
 			gongDanWuLiaoLst.add(new GongDanWeiXiuWuLiao());
 		}
+		customerTaoKaItemLst = customerInfoService
+				.queryCustomerTaoKaItemLstByCustomerId(gongDan.getTxtCustId());
 		return INPUT;
 	}
 

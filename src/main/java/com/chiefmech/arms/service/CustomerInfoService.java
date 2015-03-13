@@ -7,6 +7,7 @@ import com.chiefmech.arms.entity.CustomerInfo;
 import com.chiefmech.arms.entity.CustomerTaoKaItem;
 import com.chiefmech.arms.entity.TaoKaItem;
 import com.chiefmech.arms.entity.query.SaleAfterCustomSearchBean;
+import com.chiefmech.arms.entity.query.TaoKaOperLogSearchBean;
 import com.chiefmech.arms.entity.view.VKeHuCheLiang;
 
 public interface CustomerInfoService {
@@ -50,5 +51,7 @@ public interface CustomerInfoService {
 	public List<CustomerTaoKaItem> queryCustomerTaoKaItemLstByCustomerId(
 			String customerId);
 
-	public int modifyRestTimes(String txtGuid, int txtRestTimes);
+	public int modifyRestTimes(String txtGuid, int txtRestTimes, String action);
+
+	public String getTaoKaOperLogEasyUiJSon(TaoKaOperLogSearchBean query);
 }

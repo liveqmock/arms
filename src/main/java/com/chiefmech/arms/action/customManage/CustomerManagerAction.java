@@ -21,6 +21,7 @@ import com.chiefmech.arms.entity.CheLiangInfo;
 import com.chiefmech.arms.entity.CustomerInfo;
 import com.chiefmech.arms.entity.CustomerTaoKaItem;
 import com.chiefmech.arms.entity.TaoKaItem;
+import com.chiefmech.arms.entity.query.TaoKaOperLogSearchBean;
 import com.chiefmech.arms.service.CustomerInfoService;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -42,7 +43,11 @@ public class CustomerManagerAction extends BaseActionSupport
 	private String customerId;
 	private String txtTaoKaSort;
 	private String customerTaoKaItemGuid;
+	private String flag;
 	private int txtRestTimes;
+
+	private String txtLogDateBegin;
+	private String txtLogDateEnd;
 
 	@Action(value = "customerInfo", results = {@Result(name = "input", location = "customerInfo.jsp")})
 	public String customerInfo() {
@@ -59,6 +64,20 @@ public class CustomerManagerAction extends BaseActionSupport
 		}
 
 		return INPUT;
+	}
+
+	@Action(value = "taoKaOperLogManage", results = {@Result(name = "input", location = "taoKaOperLogManage.jsp")})
+	public String taoKaOperLogManage() {
+		return INPUT;
+	}
+
+	@Action(value = "queryTaoKaOperLog")
+	public void queryTaoKaOperLog() {
+		TaoKaOperLogSearchBean query = new TaoKaOperLogSearchBean();
+		query.setTxtLogDateBegin(txtLogDateBegin);
+		query.setTxtLogDateEnd(txtLogDateEnd);
+		query.setTxtCheZhuTel(item.getTxtCheZhuTel());
+		this.transmitJson(customerInfoService.getTaoKaOperLogEasyUiJSon(query));
 	}
 
 	@Action(value = "saveCustomerInfo")
@@ -123,8 +142,12 @@ public class CustomerManagerAction extends BaseActionSupport
 
 	@Action(value = "modifyRestTimes")
 	public void modifyRestTimes() {
+		String action = "次数更新-套卡支付";
+		if ("adjust".equals(flag)) {
+			action = "次数更新-调整次数";
+		}
 		int rowsAffected = customerInfoService.modifyRestTimes(
-				customerTaoKaItemGuid, txtRestTimes);
+				customerTaoKaItemGuid, txtRestTimes, action);
 		String info = "";
 		String msg = "修改套卡信息失败";
 		this.transmitJson(getCrudJsonResponse(rowsAffected, info, msg));
@@ -180,6 +203,18 @@ public class CustomerManagerAction extends BaseActionSupport
 
 	public void setCustomerTaoKaItemGuid(String customerTaoKaItemGuid) {
 		this.customerTaoKaItemGuid = customerTaoKaItemGuid;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+
+	public void setTxtLogDateBegin(String txtLogDateBegin) {
+		this.txtLogDateBegin = txtLogDateBegin;
+	}
+
+	public void setTxtLogDateEnd(String txtLogDateEnd) {
+		this.txtLogDateEnd = txtLogDateEnd;
 	}
 
 }
