@@ -100,3 +100,20 @@ textarea
 .searchPanel{
 	background: none repeat scroll 0 0 #f4f4f4;
 }
+
+
+.datagrid-cell, .datagrid-cell-group, .datagrid-header-rownumber, .datagrid-cell-rownumber {
+    font-size: 18px;
+    height: 40px;
+    line-height: 40px;
+}
+.datagrid-header .datagrid-cell span {
+    font-size: 18px;
+}
+
+.l-btn-text {
+    font-size: 18px;
+    line-height: 40px;
+    margin: 0 8px;
+    padding: 0px 10px;
+}
