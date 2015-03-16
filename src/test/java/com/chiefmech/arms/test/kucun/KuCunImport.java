@@ -48,7 +48,7 @@ public class KuCunImport {
 		// 得到总行数
 		int rowNum = sheet.getLastRowNum();
 		// 正文内容应该从第二行开始,第一行为表头的标题
-		for (int i = 1; i <= rowNum; i++) {
+		for (int i = 1; i < rowNum; i++) {
 			row = sheet.getRow(i);
 
 			KuCun item = new KuCun();
@@ -64,7 +64,7 @@ public class KuCunImport {
 
 			lst.add(item);
 
-			System.out.println(i + "  " + item.toString());
+			System.out.println((i + 1) + "  " + item.toString());
 		}
 		return lst;
 	}
