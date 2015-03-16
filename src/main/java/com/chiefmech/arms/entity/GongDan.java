@@ -112,6 +112,7 @@ public class GongDan {
 		this.setTxtGongShiZheKou(customerInfo.getTxtGongShiZheKou());
 		this.setTxtCaiLiaoZheKou(customerInfo.getTxtCaiLiaoZheKou());
 		this.setTxtRuChangDate(DateUtil.getCurrentDateTime());
+		this.setTxtYuChuChangDate(DateUtil.getDateTimeSinceNow(2 * 3600 * 1000)); // 预出厂时间默认2小时
 		this.setTxtNewRuChangDate(DateUtil.getNewRuChangDate());
 		this.setTxtCheLiangDengJiRiQi(customerInfo.getTxtCheLiangDengJiRiQi());
 		this.setTxtCheLiangNianShenDaoQiRi(customerInfo

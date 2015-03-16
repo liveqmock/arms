@@ -19,11 +19,7 @@
 <link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
-<style type="text/css">
-td {
-	height: 25px;
-}
-</style>
+
 </head>
 <body>
 	<table border="0" style="width: 100%;">
@@ -86,7 +82,7 @@ td {
             iconCls="icon-add" plain="true" onclick="addItem()">新增维修项目</a>
 	</div>
 	<div id="mydlg" class="easyui-dialog" closed="true"
-		style="width: 450px; height: 300px; padding: 10px 20px;">
+		style="width: 500px; height: 400px; padding: 10px 20px;">
 		<form name="fm" method="post" id="fm">
 			<table border="0" cellpadding="0" cellspacing="0" width="280px">
 				<tr>

@@ -20,17 +20,11 @@
 	type="text/javascript"></script>
 <script src="../js/customcommon.js" type="text/javascript"></script>
 <link href="../style/common.css" rel="stylesheet" type="text/css" />
-<style type="text/css">
-td {
-	font-size: 12px;
-	height: 25px;
-	white-space: nowrap;
-}
-</style>
+
 </head>
 
 <body>
-	<div style="width: 680px; margin: 0 10px;">
+	<div style="width: 880px; margin: 0 10px;">
 		<form name="form1" method="post" id="form1">
 			<input name="txtCustId" value="" type="hidden" id="txtCustId" />
 			<!--车主信息 start-->
@@ -118,11 +112,11 @@ td {
                             <tbody>
                             <s:iterator value="customerTaoKaItemLst" status="status">
                             	<tr>
-                                	<td align="left"><s:property value="txtTaoKaSort" /></td>
-                                	<td align="left"><s:property value="txtXiangMuName" /></td>
-                                	<td align="center"><s:property value="txtTotalTimes" /></td>
-                                	<td align="center"><s:property value="txtRestTimes" /></td>
-                                	<td align="center"><a href="javascript:deleteTaoKaSort('<s:property value='txtTaoKaSort' />')">删除套卡类型</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:modifyRestTimes('<s:property value='txtXiangMuName' />', '<s:property value='txtGuid' />')">调整剩余次数</a></td>
+                                	<td class="list" align="left"><s:property value="txtTaoKaSort" /></td>
+                                	<td class="list" align="left"><s:property value="txtXiangMuName" /></td>
+                                	<td class="list" align="center"><s:property value="txtTotalTimes" /></td>
+                                	<td class="list" align="center"><s:property value="txtRestTimes" /></td>
+                                	<td class="list" align="center"><a href="javascript:deleteTaoKaSort('<s:property value='txtTaoKaSort' />')">删除套卡类型</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:modifyRestTimes('<s:property value='txtXiangMuName' />', '<s:property value='txtGuid' />')">调整剩余次数</a></td>
                                 </tr>
                             </s:iterator>
                             </tbody>
@@ -174,8 +168,8 @@ td {
 			<!--联系人信息 end-->
 		</form>
 		<div id="dlgTaoKa" class="easyui-dialog" closed="true"
-			style="width: 450px; height: 300px; padding: 10px 20px;">
-            <table border="0" cellpadding="0" cellspacing="0" width="100%;">
+			style="width: 600px; height: 400px; padding: 10px 20px;">
+            <table border="0" cellpadding="0" cellspacing="0">
             	<tr>
                 	<td>套卡类型：<input name="txtTaoKaSortGuid" id="txtTaoKaSortGuid"
 								class="easyui-combobox"
@@ -183,10 +177,10 @@ td {
                 </tr>
 				<tr>
                 	<td style="padding:5px 0 15px;">    
-                        <table id="datagridTaoKa" class="easyui-datagrid" data-options="rownumbers:true" width="350">
+                        <table id="datagridTaoKa" class="easyui-datagrid" data-options="rownumbers:true" width="500">
                             <thead>
                                 <tr>
-                                    <th field="txtXiangMuName" width="200">业务名称</th>
+                                    <th field="txtXiangMuName" width="300">项目名称</th>
                                     <th field="txtTotalTimes" width="80">服务次数</th>
                                 </tr>
                             </thead>
@@ -201,7 +195,7 @@ td {
         </div>
 		<!--按钮区域 end-->
 		<div id="mydlg" class="easyui-dialog" closed="true"
-			style="width: 500px; height: 250px; padding: 10px 20px;">
+			style="width: 700px; height: 300px; padding: 10px 20px;">
 			<form name="fm" id="fm" method="post">
 				<input name="txtCustId" type="hidden" id="txtCustId" />
 				<input name="txtCheLiangId" type="hidden" id="txtCheLiangId" />
@@ -272,7 +266,7 @@ td {
 		<div style="height: 5px;"></div>
 
 		<!--按钮区域 start-->
-		<div align="center" id="btnBottomDiv" style="margin-top: 10px;">
+		<div align="center" id="btnBottomDiv" style="margin: 10px 5px 20px;">
 			<a class="easyui-linkbutton" href="javascript:saveCustInfo()">保存客户信息</a>
 			<s:if test="customerId!=''">
 			<a class="easyui-linkbutton" href="javascript:addItem()">新增车辆信息</a>

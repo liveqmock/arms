@@ -16,7 +16,7 @@ public interface ReportDao {
 	List<RenBaoWeeklyReport> getRenBaoWeeklyReportListForEasyUi(
 			@Param("item") RenBaoWeeklyReportSearchBean query);
 	
-	@Select(" select *   from v_renbao_weekly_report where txtGongDanId=#{txtGongDanId}")
+	@Select(" select *   from v_renbao_weekly_report where txtGongDanId=#{txtGongDanId} and txtDeleteFlag='0' ")
 	public List<RenBaoWeeklyReport> getRenBaoWeeklyReportListById(String txtGongDanId);
 
 }

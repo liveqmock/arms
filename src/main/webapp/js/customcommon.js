@@ -2,9 +2,10 @@ function initializeWithJsonData(jsonData) {
 	_.each(jsonData, function(value, key) {
 		var el = $("#" + key);
 		if(_.size(el) > 0){		
-			if ($(el).hasClass("easyui-datetimebox")
-					|| $(el).hasClass("easyui-datebox")) {
+			if ($(el).hasClass("easyui-datebox")) {
 				$(el).datebox("setValue", value);
+			} else if ($(el).hasClass("easyui-datetimebox")) {
+				$(el).datetimebox("setValue", value);
 			} else if ($(el).hasClass("easyui-textbox")) {
 				$(el).textbox("setValue", value);
 			} else if ($(el).hasClass("easyui-numberbox")) {

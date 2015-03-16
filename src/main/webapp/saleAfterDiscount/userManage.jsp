@@ -19,11 +19,7 @@
 <link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
-<style type="text/css">
-td {
-	height: 25px;
-}
-</style>
+
 </head>
 <body>
 	<table border="0" style="width: 100%;">

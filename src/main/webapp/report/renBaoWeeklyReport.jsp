@@ -61,13 +61,13 @@ td {
 			<tr>
 				<th width="100" data-options="field:'txtChePaiHao'">车牌号</th>
 				<th width="100" data-options="field:'txtTicketNumber'">服务券券号</th>
-				<th width="100" data-options="field:'txtXiangMuValue'">项目价值（元）</th>
-				<th width="80"  data-options="field:'txtRenBaoChaJia'">补差价(元）</th>
+				<th width="120" data-options="field:'txtXiangMuValue'">项目价值（元）</th>
+				<th width="100"  data-options="field:'txtRenBaoChaJia'">补差价(元）</th>
 				<th width="100" data-options="field:'txtRuChangDate'">消费时间</th>
 				<th width="100" data-options="field:'txtCheZhuName'">车主姓名</th>
-				<th width="100" data-options="field:'txtCheZhuTel'">联系电话</th>
-				<th width="150" data-options="field:'txtCheXiName'">车型</th>
-				<th width="150" data-options="field:'txtVin'">车架号</th>
+				<th width="150" data-options="field:'txtCheZhuTel'">联系电话</th>
+				<th width="180" data-options="field:'txtCheXiName'">车型</th>
+				<th width="180" data-options="field:'txtVin'">车架号</th>
 				<th width="150" data-options="field:'txtFaDongJiHao'">发动机号</th>
 				<th width="100" data-options="field:'txtCheLiangBaoXianDaoQiRi'">保险到期日</th>
 				<th width="150" data-options="field:'txtXiangMuName'">项目名称</th>

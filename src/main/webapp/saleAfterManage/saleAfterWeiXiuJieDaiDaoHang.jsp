@@ -194,7 +194,7 @@ td {
 
 	<script language="javascript" type="text/javascript">
         function newWeiXiuJieDai() {
-            var z = window.open('saleAfterIndex.action?cheLiangId=<s:property value="customer.txtCheLiangId" />&d=' + new Date(), '_blank', 'height=800, width=1000, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
+            var z = window.open('saleAfterIndex.action?cheLiangId=<s:property value="customer.txtCheLiangId" />&d=' + new Date(), '_blank', 'height=800, width=1200, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
             z.focus();
 
             window.opener = null;
@@ -218,7 +218,7 @@ td {
         }    
 		
 		function saleAfterGongDanDetail(saleAfterGuid) {
-            var z = window.open('saleAfterIndex.action?saleAfterWeiXiuGuid=' + saleAfterGuid + '&d=' + new Date(), '_blank', 'height=800, width=1000, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
+            var z = window.open('saleAfterIndex.action?saleAfterWeiXiuGuid=' + saleAfterGuid + '&d=' + new Date(), '_blank', 'height=800, width=1200, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
             z.focus();
 			
             window.opener = null;

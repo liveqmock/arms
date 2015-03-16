@@ -75,7 +75,7 @@ public class ReportAction extends BaseActionSupport
 		}
 	}
 	
-	@Action(value = "renBaoWeeklyReportPrint", results = {@Result(name = "input", location = "renBaoPrint.jsp")})
+	@Action(value = "renBaoWeeklyReportPrint", results = {@Result(name = "input", location = "renBaoCheXianPrint.jsp")})
 	public String renBaoWeeklyReportPrint() {
 		renBaoWeeklyReportLst=reportService.getRenBaoWeeklyReportListById(txtGongDanId);
 		return INPUT;

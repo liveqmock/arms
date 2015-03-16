@@ -14,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import com.chiefmech.arms.common.util.ConfigUtil;
 import com.chiefmech.arms.common.util.Constants;
 import com.chiefmech.arms.entity.Shop;
-import com.chiefmech.arms.entity.SystemInfo;
 import com.chiefmech.arms.entity.User;
 import com.chiefmech.arms.service.ShopService;
 import com.chiefmech.arms.service.UserService;

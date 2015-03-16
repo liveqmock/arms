@@ -44,7 +44,7 @@
 
 					</select></td>
 					<td style="padding-left: 5px"><input class="easyui-textbox" name="queryValue"
-						type="text" maxlength="20" id="queryValue" style="width: 150px;" />&nbsp;&nbsp;
+						type="text" maxlength="20" id="queryValue" />&nbsp;&nbsp;
 					</td>
 					<td><a onclick="doSearch();return false;"
 						class="easyui-linkbutton" href="javascript:void(0)">查询</a> <a
@@ -121,7 +121,7 @@
 			var features = 'height=550,width=730,center=yes,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no, status=no';
 			var z = window.open(url, name, features);
 			z.focus();*/
-			var sFeatures = "dialogWidth:730px;dialogHeight:550px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
+			var sFeatures = "dialogWidth:970px;dialogHeight:700px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
 			window.showModalDialog(url, window, sFeatures);
 			//myTable.datagrid('reload');
 			doSearch();

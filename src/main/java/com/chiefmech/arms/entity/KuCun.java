@@ -89,4 +89,14 @@ public class KuCun {
 		this.txtSuppName = txtSuppName;
 	}
 
+	@Override
+	public String toString() {
+		return "KuCun [txtKuCunGuid=" + txtKuCunGuid + ", txtShopCode="
+				+ txtShopCode + ", txtWuLiaoCode=" + txtWuLiaoCode
+				+ ", txtWuLiaoName=" + txtWuLiaoName + ", txtQty=" + txtQty
+				+ ", txtChengBenJia=" + txtChengBenJia + ", txtSalePrice="
+				+ txtSalePrice + ", txtSuppName=" + txtSuppName
+				+ ", txtRemark=" + txtRemark + "]";
+	}
+
 }

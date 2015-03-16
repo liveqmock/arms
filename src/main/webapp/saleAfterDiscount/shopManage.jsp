@@ -19,11 +19,7 @@
 <link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
-<style type="text/css">
-td {
-	height: 25px;
-}
-</style>
+
 </head>
 <body>
 	<table border="0" style="width: 100%;">
@@ -59,10 +55,10 @@ td {
 			<tr>
 				<th width="100" data-options="field:'shopCode'">店铺编码</th>
 				<th width="150" data-options="field:'shopName'">店铺名称</th>
-				<th width="400" data-options="field:'shopAddr'">店铺地址</th>
-				<th width="100" data-options="field:'shopTel'">店铺电话</th>
+				<th width="450" data-options="field:'shopAddr'">店铺地址</th>
+				<th width="150" data-options="field:'shopTel'">店铺电话</th>
 				<th width="100" data-options="field:'shopFax'">店铺传真</th>
-				<th width="150" data-options="field:'complaintCall'">投诉电话</th>
+				<th width="200" data-options="field:'complaintCall'">投诉电话</th>
 				<th width="100" data-options="field:'expirydate'">系统有效期</th>
 				<th width="100" field="action" align="center"
 					formatter="formatAction">操作</th>
@@ -103,7 +99,7 @@ td {
 						data-options="required:true" /></td>
 					<td align="right">系统有效期:</td>
 					<td><input name="expirydate" type="text" maxlength="15"
-						id="expirydate"  class="easyui-datebox" /></td>
+						id="expirydate"  class="easyui-datebox" data-options="required:true"/></td>
 				</tr>
 				<tr>
 					<td>店铺地址:</td>

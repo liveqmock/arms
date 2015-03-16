@@ -29,9 +29,15 @@ public class DateUtil {
 				.getTime(), FORMAT_DATE);
 	}
 
-	public static String getDateSinceToday(int delt) {
-		return DateFormatUtils.format(DateUtils.addDays(new Date(), delt)
+	public static String getDateSinceToday(int deltDay) {
+		return DateFormatUtils.format(DateUtils.addDays(new Date(), deltDay)
 				.getTime(), FORMAT_DATE);
+	}
+
+	public static String getDateTimeSinceNow(int deltMillisecond) {
+		return DateFormatUtils.format(
+				DateUtils.addMilliseconds(new Date(), deltMillisecond)
+						.getTime(), FORMAT_DATETIME);
 	}
 
 }

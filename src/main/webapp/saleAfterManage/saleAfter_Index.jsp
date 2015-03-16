@@ -54,7 +54,22 @@ td,div {
 	padding-bottom: 1px;
 	background-color: #fff;
 	border: 1px solid #aaa;
-	color: #333;
+}
+.tabs ul li.tabs_now a {
+    color: #000!important;
+}
+.tabs ul li.tabs_passed {
+	background-color: #7ab900;	
+}
+
+.tabs ul li.tabs_now {
+	background-color: #ff2525;
+	font-size:20px;
+	font-weight:bold;
+}
+
+.tabs ul li.tabs_future {
+	background-color: #feee83;	
 }
 
 .tabs ul li.tabs_hover {
@@ -73,7 +88,7 @@ td,div {
 }
 
 .tabs ul li.tabs_active a {
-	color: #555555;
+	color: #000;
 }
 </style>
 
@@ -133,7 +148,28 @@ td,div {
 	$(function() {
 		var initTabIndex = _.indexOf(_.map(tabInfo, function(tab){ return tab[1];}), "<s:property value='gongDanStatus' />");
 		show(initTabIndex);
+		
+		initTabBgColor(initTabIndex);
 	});
+	
+	function initTabBgColor(curTabIndex){
+		var statusChain = "<s:property value='gongDan.txtGongDanStatusChain' />";
+		var tabSize = _.size(tabInfo);
+		for(var i = 0; i < tabSize-1; i++){
+			if(i < curTabIndex){
+				var tabTitle = $("#tab" + i).text();
+				if(statusChain.indexOf(tabTitle) == -1){
+					$("#tab" + i).hide();
+				}else{
+					$("#tab" + i).addClass("tabs_passed");
+				}
+			}else if(i == curTabIndex){
+				$("#tab" + i).addClass("tabs_now");
+			}else{
+				$("#tab" + i).addClass("tabs_future");
+			}			
+		}
+	}
 	
 	function show(tabIndex) {
 		if(tabIndex < 0 || tabIndex >= _.size(tabInfo)){
@@ -158,7 +194,7 @@ td,div {
 			url = action + "?cheLiangId=<s:property	value='gongDan.txtCheLiangId' />&flag=" + garyBgFlag + "&d=" + new Date();
 		}
 		
-		$("#tab" + preTabIndex).removeClass();
+		$("#tab" + preTabIndex).removeClass("tabs_active");
 		$("#tab" + tabIndex).addClass("tabs_active");
 		preTabIndex = tabIndex;
 		

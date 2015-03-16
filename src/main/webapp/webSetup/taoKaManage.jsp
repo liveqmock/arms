@@ -39,7 +39,7 @@ td {
 			<tr>
 				<th width="150" data-options="field:'txtTaoKaName',editor:{type:'textbox',options:{required:true}}">套卡名称</th>
 				<th width="80" data-options="field:'txtTaoKaPrice',editor:{type:'numberbox',options:{required:true}}">套卡价格</th>
-                <th field="action" width="150" align="center" formatter="formatAction">操作</th>
+                <th field="action" width="200" align="center" formatter="formatAction">操作</th>
 			</tr>
 		</thead>
 	</table>
@@ -56,7 +56,7 @@ td {
 				<th width="60" field="txtXiangMuCode">排序序号</th>
 				<th width="150" field="txtXiangMuName">项目名称</th>
 				<th width="60" field="txtTotalTimes">服务次数</th>
-                <th field="action" width="150" align="center" formatter="formatAction2">操作</th>
+                <th field="action" width="200" align="center" formatter="formatAction2">操作</th>
 			</tr>
 		</thead>
 	</table>

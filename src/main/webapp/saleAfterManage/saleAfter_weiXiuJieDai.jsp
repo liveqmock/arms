@@ -23,9 +23,7 @@
 <meta HTTP-EQUIV="Expires" CONTENT="0">
 <style type="text/css">
 td {
-	font-size: 12px;
-	height: 25px;
-	white-space: nowrap;
+	height: 24px;
 }
 </style>
 </head>
@@ -42,6 +40,7 @@ td {
 						<a onClick="saveGongDan();return false;" class="easyui-linkbutton"
 							href="javascript:void(0)">保存接待信息</a>
 						<s:if test="saleAfterWeiXiuGuid != null">
+						    <a onClick="javascript:renBaoPrint()" class="easyui-linkbutton" > 打印施工单</a>
 							<a
 								onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','车辆检测');return false;"
 								class="easyui-linkbutton" href="javascript:void(0)">车辆检测</a>
@@ -198,7 +197,7 @@ td {
 							<td colspan="7"></td>
 						</tr>
 						<tr>
-							<td align="right">维修单号：</td>
+							<td class="input" align="right">维修单号：</td>
 							<td><input name="txtBillNo" class="easyui-textbox"
 								type="text" data-options="editable:false" id="txtBillNo" /></td>
 							<td align="right"><span class="requireSpan">*</span>行驶里程：</td>
@@ -213,9 +212,9 @@ td {
 							<td><div id="txtFuWuGuWen"></div></td>
 						</tr>
 						<tr>
-							<td align="right"><span class="requireSpan">*</span>入厂时间：</td>
+							<td class="input" align="right"><span class="requireSpan">*</span>入厂时间：</td>
 							<td><input name="txtRuChangDate" type="text"
-								id="txtRuChangDate" class="easyui-datebox"
+								id="txtRuChangDate" class="easyui-datetimebox"
 								data-options="required:true" style="width: 145px;" /></td>
 							<td align="right"><span class="requireSpan">*</span>预出厂时间：</td>
 							<td><input name="txtYuChuChangDate" type="text"
@@ -277,7 +276,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 						<th field="txtXiangMuName" width="150">项目名称</th>
 						<s:if
 							test="actionName not in {'gongDanWeiXiuWanJian', 'gongDanWeiXiuJieSuan'}">
-							<th field="txtWeiXiuNeiRong" width="150"
+							<th field="txtWeiXiuNeiRong" width="200"
 								<s:if test="actionName in {'gongDanWeiXiuJieDai', 'gongDanCheLiangJianCe'}">
 						data-options="align:'right',editor:{type:'textbox'}"</s:if>>项目内容</th>
 						</s:if>
@@ -304,7 +303,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 						</s:if>
 						<s:if
 							test="(actionName=='gongDanWeiXiuPaiGong' || actionName=='gongDanWeiXiuWanJian') && (gongDanStatus=='维修完检' || gongDanStatus=='返修')">
-							<th field="txtWanJianStatus" width="200"
+							<th field="txtWanJianStatus" width="250"
 								formatter="formatWanJianStatus">完检状态</th>
 						</s:if>
 						<s:if
@@ -331,8 +330,8 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 				data-options="url:'queryGongDanWeiXiuWuLiao.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />',toolbar:'#tb2',singleSelect:true,rownumbers:true,showFooter:true">
 				<thead>
 					<tr>
-						<th field="txtWuLiaoCode" width="80">物料编号</th>
-						<th field="txtWuLiaoName" width="150">名称及规格</th>
+						<th field="txtWuLiaoCode" width="150">物料编号</th>
+						<th field="txtWuLiaoName" width="200">名称及规格</th>
 						<th field="txtQty" width="60"
 							data-options="align:'right',editor:{type:'numberbox',options:{required: true}}">数量</th>
 						<th field="txtSalePrice" width="60">单价</th>
@@ -340,7 +339,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 							data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/gongDanXiangMuOption.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />'}}">所属项目</th>
 						<th field="ddlZhangTao" width="100"
 							data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/zhangTaoOption.action'}}">帐套</th>
-						<th field="txtLaiYuan" width="60">物料来源</th>
+						<th field="txtLaiYuan" width="80">物料来源</th>
 						<th field="ddlStatus" width="60">状态</th>
 						<th field="txtRemark" width="100"
 							data-options="editor:{type:'textbox'}">备注</th>
@@ -380,7 +379,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 							style="font-weight: bold; padding-right: 10px;"><s:property
 									value='gongDan.txtGongShiZheKou' /></span>物料折扣:<span
 							style="font-weight: bold;"><s:property
-									value='gongDan.txtCaiLiaoZheKou' /></span><s:property value="customerTaoKaItemLst.size" /></td>
+									value='gongDan.txtCaiLiaoZheKou' /></span></td>
 
 					</tr>
                     <s:if test="customerTaoKaItemLst.size > 0">
@@ -635,6 +634,19 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			myTable.datagrid('cancelEdit', getTargetRowIndex(target));
 		}
 
+		function renBaoPrint(){
+			if (saleAfterGuid !="") {
+				var url = '../saleAfterManage/shiGongDanPrint.action?saleAfterWeiXiuGuid='
+						+ saleAfterGuid + '&d=' + new Date();
+				var name = '施工单打印';
+				var features = 'height=1000, width=730, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';
+				
+				z = window.open(url, name, features);
+				z.focus();
+			} else {
+				$.messager.alert('提示', '请先保存接待信息');
+			}
+		}
 		//-------------------------Datagrid2------------------------------------
 		var myTable2 = $('#datagridWuLiao');
 

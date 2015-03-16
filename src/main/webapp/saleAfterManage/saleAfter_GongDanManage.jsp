@@ -107,12 +107,12 @@
 					<th width="100" data-options="field:'txtCustSort'">客户类别</th>
 					<th width="100" data-options="field:'txtFuWuGuWen'">服务顾问</th>
 					<th width="100" data-options="field:'txtChePaiHao'">车牌号</th>
-					<th width="100" data-options="field:'txtCheXiName'">车系名称</th>
+					<th width="150" data-options="field:'txtCheXiName'">车系名称</th>
 					<th width="100" data-options="field:'txtCheZhuName'">车主名称</th>
-					<th width="100" data-options="field:'txtCheZhuTel'">车主电话</th>
-					<th width="100" data-options="field:'txtRuChangDate'">入厂时间</th>
+					<th width="120" data-options="field:'txtCheZhuTel'">车主电话</th>
+					<th width="180" data-options="field:'txtRuChangDate'">入厂时间</th>
                     <s:if test="actionName=='saleAfterGongDanManage'">
-					<th width="150" data-options="field:'txtYuChuChangDate'">预出厂时间</th>
+					<th width="180" data-options="field:'txtYuChuChangDate'">预出厂时间</th>
 					<th width="100" data-options="field:'txtJieSuanDate'">结算时间</th>
                     </s:if>
 					<th width="100" data-options="field:'txtChuChangDate'">出厂时间</th>
@@ -157,7 +157,7 @@
 			if (thisGuid != "" && thisGuid != undefined) {
 				<s:if test="actionName=='saleAfterGongDanManage'">
 				var url = 'saleAfterIndex.action?saleAfterWeiXiuGuid=' + thisGuid + '&d=' + new Date();
-				var features = 'height=800, width=1000, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';
+				var features = 'height=800, width=1200, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';
 				</s:if>
 				<s:elseif test="actionName=='clientReviewManage'">
 				var url = 'weiXiuLiShiDetail.action?saleAfterWeiXiuGuid=' + thisGuid + '&d=' + new Date();

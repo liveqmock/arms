@@ -101,19 +101,97 @@ textarea
 	background: none repeat scroll 0 0 #f4f4f4;
 }
 
+td {
+	font-size: 16px;
+	height: 34px;
+	white-space: nowrap;
+}
 
+table#menuTb td{
+	height: 30px;	
+}
+
+td.list{
+	height: 24px;	
+}
+td.input{
+	height: 34px;	
+}
+
+/*----------改变字体大小-----begin-------*/
 .datagrid-cell, .datagrid-cell-group, .datagrid-header-rownumber, .datagrid-cell-rownumber {
-    font-size: 18px;
-    height: 40px;
-    line-height: 40px;
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+}
+.tabs {
+    font-size: 16px!important;
+    line-height: 18px!important;
+}
+.tabs ul {
+    height: 36px!important;
+}
+.calendar * {
+	font-size: 12px!important;
+}
+.calendar-day, .datebox-button td{
+  height: 12px!important;
+}
+.datebox-button a {
+    font-size: 16px;
+}
+.textbox-icon,
+.searchbox-button,
+.slider-handle,
+.menu-text,
+.combo-arrow {
+  height: 30px;
 }
 .datagrid-header .datagrid-cell span {
-    font-size: 18px;
+    font-size: 16px;
 }
-
+.textbox .textbox-text  {
+    font-size: 16px;
+}
 .l-btn-text {
-    font-size: 18px;
-    line-height: 40px;
-    margin: 0 8px;
-    padding: 0px 10px;
+    font-size: 16px;
+    line-height: 30px;
 }
+body, td, th, input, select {
+    font-size: 16px!important;
+}
+.titleSpan {
+    font-size: 16px;
+    line-height: 30px;
+}
+.pagination span {
+    font-size: 16px;
+}
+.pagination-info {
+    font-size: 16px;
+}
+.tabs-title {
+    font-size: 16px;
+}
+.combobox-item, .combobox-group {
+    font-size: 16px;
+}
+.ztree * {
+    font-size: 16px!important;
+}
+#menu {
+    width: 90px!important;
+}
+.combobox-item-hover {
+  background-color: #dbeaf9;
+}
+.datagrid-row-over, .datagrid-header td.datagrid-header-over {
+    background: none repeat scroll 0 0 #dbeaf9;
+}
+/*----JS修改-----
+1. $.fn.textbox.defaults.height
+从22修改为30
+
+*/
+
+/*----------改变字体大小-----end-------*/

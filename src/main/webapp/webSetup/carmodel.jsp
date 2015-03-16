@@ -59,7 +59,7 @@ td {
 				<th width="100" data-options="field:'brandName'">品牌</th>
 				<th width="200" data-options="field:'modelName'">车型名</th>
 				<th width="100" data-options="field:'brandLogo'">品牌Logo</th>
-				<th width="150" field="action" align="center"
+				<th width="200" field="action" align="center"
 					formatter="formatAction">操作</th>
 			</tr>
 		</thead>

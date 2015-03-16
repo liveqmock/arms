@@ -249,9 +249,9 @@ td {
 									<tr>
 										<td colspan="3" rowspan="4" class="border-black">&nbsp; <s:iterator
 												value="renBaoWeeklyReportLst" status="index">
-												<br />
+												<br />											
 												券号 ： <s:property
-													value='txtTicketNumber' />
+													value='txtTicketNumberDisplay' />											
 											</s:iterator>
 										</td>
 

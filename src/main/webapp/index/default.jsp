@@ -141,13 +141,13 @@
 										},
 										children : [
 												{
-													name : "人保车险清单",
+													name : "人保清单",
 													font : {
 														'font-style' : '微软雅黑'
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('6123e08f-9fff-4492-885f-a20712348812','人保车险清单','../report/renBaoWeeklyReport.action');"
+													click : "mdfMenu('6123e08f-9fff-4492-885f-a20712348812','人保清单','../report/renBaoWeeklyReport.action');"
 												} ],
 										url : "",
 										target : "_blank"
@@ -213,21 +213,21 @@
 										},
 										children : [
 												{
-													name : "店铺系统信息",
+													name : "系统信息",
 													font : {
 														'font-style' : '微软雅黑'
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('6aebe08f-9fff-4492-883434-a20712348812','店铺系统信息','../saleAfterDiscount/shopManage.action');"
+													click : "mdfMenu('6aebe08f-9fff-4492-883434-a20712348812','系统信息','../saleAfterDiscount/shopManage.action');"
 												},{
-													name : "用户组和权限",
+													name : "用户权限",
 													font : {
 														'font-style' : '微软雅黑'
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('6aebe08f-9fff-4492-885f-a20712348812','用户组和权限','../saleAfterDiscount/groupManage.action');"
+													click : "mdfMenu('6aebe08f-9fff-4492-885f-a20712348812','用户权限','../saleAfterDiscount/groupManage.action');"
 												},
 												{
 													name : "用户管理",
