@@ -252,7 +252,7 @@ td {
 				<thead>
 					<tr>
 						<th field="txtNeiRong" width="200">检测内容</th>
-						<th field="txtZhuangTai" width="270"
+						<th field="txtZhuangTai" width="400"
 							data-options="align:'center',editor:{type:'radiobox',options:{defaultValue:'未检测',values:['未检测','正常','更换','润滑清洁或调整']}}">检测状态</th>
 						<th field="txtRemark" width="250"
 							data-options="editor:{type:'textbox'}">备注</th>
@@ -334,7 +334,9 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 						<th field="txtWuLiaoName" width="200">名称及规格</th>
 						<th field="txtQty" width="60"
 							data-options="align:'right',editor:{type:'numberbox',options:{required: true}}">数量</th>
-						<th field="txtSalePrice" width="60">单价</th>
+						<th field="txtSalePrice" width="80">销售价</th>
+						<th field="txtPaidPrice" width="80"
+							data-options="align:'right',editor:{type:'numberbox',options:{precision:2,required:true}}">支付价格</th>
 						<th field="ddlSuoSuXiangMu" width="150"
 							data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/gongDanXiangMuOption.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />'}}">所属项目</th>
 						<th field="ddlZhangTao" width="100"
@@ -661,7 +663,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 		function addWulaoFromCaiGou() {
 			var sURL = "<s:property value='basePath' />/storeOtherManage/storeOtherInsertBillManage.action?action=addWuLiao&saleAfterWeiXiuGuid="
 					+ saleAfterGuid + "&d=" + new Date();
-			var sFeatures = "dialogWidth:900px;dialogHeight:700px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
+			var sFeatures = "dialogWidth:1000px;dialogHeight:700px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
 			window.showModalDialog(sURL, window, sFeatures);
 			myTable2.datagrid('reload');
 		}		

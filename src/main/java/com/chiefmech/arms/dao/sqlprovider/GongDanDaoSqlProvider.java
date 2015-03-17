@@ -11,11 +11,11 @@ public class GongDanDaoSqlProvider {
 		SaleAfterGongDanSearchBean query = (SaleAfterGongDanSearchBean) param
 				.get("item");
 		String actionName = query.getActionName();
-		String orderBy = "";
+		String orderBy = "order by field(txtGongDanStatus,'维修接待','车辆检测','物料登记','维修派工','领取物料','维修完检','费用结算','交车')";
 		if ("saleAfterGongDanManage".equals(actionName)) {
-			orderBy = "order by txtRuChangDate desc";
+			orderBy += ", txtRuChangDate desc";
 		} else if ("clientReviewManage".equals(actionName)) {
-			orderBy = "order by txtChuChangDate";
+			orderBy += ", txtChuChangDate";
 		}
 
 		return String.format("select * from gongdan %s %s %s",

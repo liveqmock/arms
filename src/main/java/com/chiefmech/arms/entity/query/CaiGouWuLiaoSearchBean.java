@@ -16,6 +16,7 @@ public class CaiGouWuLiaoSearchBean extends SearchBean {
 	private String txtWuLiaoName;
 	private int page = 1;
 	private int rows = 15;
+	private String action;
 
 	@Override
 	public void initSearchFields() {
@@ -33,6 +34,14 @@ public class CaiGouWuLiaoSearchBean extends SearchBean {
 		this.addField(new Criteria(Action.STR_EQUAL, "txtShopCode", ConfigUtil
 				.getInstance().getShopInfo().getShopCode()));
 		this.addLimitInfo(this.getPage(), this.getRows());
+	}
+
+	public String getAction() {
+		return action;
+	}
+
+	public void setAction(String action) {
+		this.action = action;
 	}
 
 	public String getSaleAfterWeiXiuGuid() {

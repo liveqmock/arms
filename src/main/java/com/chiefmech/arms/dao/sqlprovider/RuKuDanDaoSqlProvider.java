@@ -10,9 +10,9 @@ public class RuKuDanDaoSqlProvider {
 		CaiGouWuLiaoSearchBean query = (CaiGouWuLiaoSearchBean) param
 				.get("item");
 
-		return String.format(
-				"select * from v_caigouwuliao %s order by txtRuKuDate desc %s",
-				getWhereSql(query), query.getLimitSql());
+		return String
+				.format("select * from v_caigouwuliao %s order by field(txtStatus,'准备单据','提交审核','审核完毕'), txtRuKuDate desc %s",
+						getWhereSql(query), query.getLimitSql());
 	}
 
 	public String getVCaiGouWuLiaoListCount(Map<String, Object> param) {
@@ -24,16 +24,18 @@ public class RuKuDanDaoSqlProvider {
 	}
 
 	public String getWhereSql(CaiGouWuLiaoSearchBean searchBean) {
-		String saleAfterWeiXiuGuid = searchBean.getSaleAfterWeiXiuGuid();
-		String sql = String
-				.format("txtWuLiaoName not in(select txtWuLiaoName from gongdanwuliao where txtGongDanGuid='%s')",
-						saleAfterWeiXiuGuid);
+		String sql = "";
+		if ("addWuLiao".equals(searchBean.getAction())) {
+			sql = "txtWuLiaoGuid not in(select txtWuLiaoGuid from gongdanwuliao)";
+		}
 		String where = searchBean.getWhereSql();
 
-		if (where.length() > 0) {
-			where += " and " + sql;
-		} else {
-			where = " where " + sql;
+		if (sql.length() > 0) {
+			if (where.length() > 0) {
+				where += " and " + sql;
+			} else {
+				where = " where " + sql;
+			}
 		}
 		return where;
 	}

@@ -29,7 +29,6 @@ public class RuKuListManageAction extends BaseActionSupport
 	private CaiGouWuLiaoSearchBean query = new CaiGouWuLiaoSearchBean();
 	private String saleAfterWeiXiuGuid;
 	private String ruKuDanGuid;
-	private String action;
 
 	@Action(value = "storeOtherInsertBillManage", results = {@Result(name = "input", location = "storeOtherInsertBillManage.jsp")})
 	public String storeOtherInsertBillManage() {
@@ -39,7 +38,7 @@ public class RuKuListManageAction extends BaseActionSupport
 	@Action(value = "queryRuKuDanWuLiao")
 	public void queryRuKuDanWuLiao() {
 		query.setTxtRuKuDanGuid(ruKuDanGuid);
-		if ("addWuLiao".equals(action)) {
+		if ("addWuLiao".equals(query.getAction())) {
 			query.setDdlRuKuSort("临时采购");
 			query.setTxtStatus("审核完毕");
 		}
@@ -53,11 +52,7 @@ public class RuKuListManageAction extends BaseActionSupport
 	}
 
 	public String getAction() {
-		return action;
-	}
-
-	public void setAction(String action) {
-		this.action = action;
+		return query.getAction();
 	}
 
 	public String getSaleAfterWeiXiuGuid() {

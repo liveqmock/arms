@@ -20,7 +20,7 @@ public class SaleAfterGongDanSearchBean extends SearchBean {
 	private String actionName;
 	private String txtDeleteFlag;
 	private int start = 1;
-	private int rows = 15;
+	private int rows = 20;
 
 	@Override
 	public void initSearchFields() {

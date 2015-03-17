@@ -100,8 +100,12 @@
 						<th field="txtQty" width="60"
 							data-options="align:'right',editor:{type:'numberbox',options:{required:true}}">数量</th>
 						<th field="txtPrice" width="100"
-							data-options="align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">单价</th>
-						<th field="txtRemark" width="200"
+							data-options="align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">采购价</th>
+                        <s:if test="ruKuDan.ddlRuKuSort == '临时采购'">
+						<th field="txtSalePrice" width="100"
+							data-options="align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">销售价</th>
+                        </s:if>
+			      <th field="txtRemark" width="200"
 							data-options="editor:{type:'textbox',options:{required:false}}">备注</th>
 						<s:if test="ruKuDan.txtStatus!='审核完毕'">
 							<th field="action" width="150" align="center"

@@ -103,7 +103,8 @@ td {
 				<th width="200" data-options="field:'txtWuLiaoName'">名称及规格</th>
 					<th width="250" data-options="field:'txtSuppName'">供应商</th>
 				<th width="80" data-options="field:'txtQty'">采购数量</th>
-				<th width="80" data-options="field:'txtPrice'">单价</th>
+				<th width="80" data-options="field:'txtPrice'">采购价</th>
+				<th width="80" data-options="field:'txtSalePrice'">销售价</th>
                 <th width="150" data-options="field:'txtRemark'">备注</th>
 				<s:if test="action=='updateCaiGou'">
 					<th width="80" data-options="field:'txtStatus'">审核状态</th>

@@ -7,7 +7,16 @@ public class RuKuDanWuLiao {
 	private String txtWuLiaoName;
 	private int txtQty;
 	private float txtPrice;
+	private float txtSalePrice;
 	private String txtRemark;
+
+	public float getTxtSalePrice() {
+		return txtSalePrice;
+	}
+
+	public void setTxtSalePrice(float txtSalePrice) {
+		this.txtSalePrice = txtSalePrice;
+	}
 
 	public String getTxtRemark() {
 		return txtRemark;

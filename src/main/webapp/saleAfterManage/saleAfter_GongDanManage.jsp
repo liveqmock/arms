@@ -93,8 +93,8 @@
 		</form>
 	</div>
 	<div class="region">
-		<table id="dg" class="easyui-datagrid"
-			data-options="rownumbers:true,singleSelect:true,autoRowHeight:false,pagination:true,pageList:[15,20,30,50,100],pageNumber:1,pageSize:15,onDblClickRow:showGongDan">
+		<table id="mydg" class="easyui-datagrid"
+			data-options="rownumbers:true,singleSelect:true,autoRowHeight:false,pagination:true,onDblClickRow:showGongDan">
 			<thead>
 				<tr>
                     <s:if test="actionName=='saleAfterGongDanManage'">
@@ -135,7 +135,7 @@
 
 		function setupDatagrid(jsonStr) {
 			jsonStrData = $.parseJSON(jsonStr);
-			$('#dg').datagrid('loadData', jsonStrData);
+			$('#mydg').datagrid('loadData', jsonStrData);
 		}
 
 		function doSearch() {
@@ -153,11 +153,11 @@
 		}
 
 		function showGongDan(index) {
-			var thisGuid = $('#dg').datagrid('getRows')[index]['txtGongDanId'];
+			var thisGuid = $('#mydg').datagrid('getRows')[index]['txtGongDanId'];
 			if (thisGuid != "" && thisGuid != undefined) {
 				<s:if test="actionName=='saleAfterGongDanManage'">
 				var url = 'saleAfterIndex.action?saleAfterWeiXiuGuid=' + thisGuid + '&d=' + new Date();
-				var features = 'height=800, width=1200, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';
+				var features = 'height=825, width=1200, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';
 				</s:if>
 				<s:elseif test="actionName=='clientReviewManage'">
 				var url = 'weiXiuLiShiDetail.action?saleAfterWeiXiuGuid=' + thisGuid + '&d=' + new Date();
@@ -168,7 +168,7 @@
 			}
 		}
 		
-		var myTable = $('#dg');
+		var myTable = $('#mydg');
 		function formatAction(value, row, index) {			
 			<s:if test="actionName=='saleAfterGongDanManage'">
 			return '<a href="javascript:void(0)" onclick="deleteItem(this)">删除工单</a>';
