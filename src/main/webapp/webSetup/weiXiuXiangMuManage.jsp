@@ -63,7 +63,7 @@
 				<th width="100" data-options="field:'txtCode'">项目编号</th>
 				<th width="150" data-options="field:'txtName'">项目名称</th>
 				<th width="250" data-options="field:'txtNeiRong'">维修内容</th>
-				<th width="80" data-options="field:'txtFeiYong'">费用</th>
+				<th width="80" data-options="field:'txtFeiYong'"><span style="font-weight:bold;">工时费</span></th>
 				<th width="100" data-options="field:'txtRemark'">备注</th>
 				<s:if test="action=='addXiangMu'">
 					<th field="action" width="100" align="center"
@@ -101,7 +101,7 @@
 						class="easyui-textbox" data-options="required:true" /></td>
 				</tr>
 				<tr>
-					<td><span class="requireSpan">*&nbsp;</span>费用:</td>
+					<td><span class="requireSpan">*&nbsp;</span><span style="font-weight:bold;">工时费</span>:</td>
 					<td><input name="txtFeiYong" type="text" id="txtFeiYong"
 						class="easyui-numberbox"
 						data-options="min:0,precision:2,required:true" /></td>

@@ -110,7 +110,8 @@ td {
 							<table border="0" cellpadding="0" cellspacing="0" width="100%"
 								style="margin-top: 30px; border-collapse: collapse;">
 								<tr>
-									<td valign="bottom"  style="width: 50%;padding-bottom:5px; padding-left:35px;"><s:property
+									<td valign="bottom"
+										style="width: 50%; padding-bottom: 5px; padding-left: 35px;"><s:property
 											value='txtRuChangDate' /></td>
 								</tr>
 							</table>
@@ -248,13 +249,14 @@ td {
 									%>
 									<tr>
 										<td colspan="3" rowspan="4" class="border-black">&nbsp; <s:iterator
-												value="renBaoWeeklyReportLst" status="index">
-												<br />											
-												券号 ： <s:property
-													value='txtTicketNumberDisplay' />											
+												value="renBaoprintItemLst">
+												<s:property value="txtXiangMuValue" />券<br />
+									 券号:<s:property value="txtTicketNumberDisplay" />
+												<br />
+												<s:property value="txtWuLiaoName" />
+												<br />
 											</s:iterator>
 										</td>
-
 									</tr>
 								</table> <!--车辆检测 end-->
 							</td>
@@ -274,6 +276,5 @@ td {
 			</tr>
 		</table>
 	</form>
-
 </body>
 </html>

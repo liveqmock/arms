@@ -126,10 +126,10 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 		gongDanLst = gongDanService.getGongDanListByCheLiangId(cheLiangId);
 		return INPUT;
 	}
-	
-	@Action(value="shiGongDanPrint",results={@Result(name="input",location="shiGongDanPrint.jsp")})
-	public String ShiGongDanPrint(){
-		gongDan=gongDanService.findGongDanByWeiXiuGuid(saleAfterWeiXiuGuid);
+
+	@Action(value = "shiGongDanPrint", results = { @Result(name = "input", location = "shiGongDanPrint.jsp") })
+	public String ShiGongDanPrint() {
+		gongDan = gongDanService.findGongDanByWeiXiuGuid(saleAfterWeiXiuGuid);
 		return INPUT;
 	}
 
