@@ -9,6 +9,7 @@ public class DateUtil {
 
 	private static final String FORMAT_DATETIME = "yyyy-MM-dd HH:mm:ss";
 	private static final String FORMAT_DATE = "yyyy-MM-dd";
+	private static final String FORMAT_DATE_ID = "yyyyMMdd";
 	private static final String FORMAT_TIME = "HH:mm:ss";
 
 	public static String getCurrentDateTime() {
@@ -18,6 +19,11 @@ public class DateUtil {
 
 	public static String getCurrentDate() {
 		return DateFormatUtils.format(System.currentTimeMillis(), FORMAT_DATE);
+	}
+
+	public static String getCurrentDateID() {
+		return DateFormatUtils.format(System.currentTimeMillis(),
+				FORMAT_DATE_ID);
 	}
 
 	public static String getCurrentTime() {

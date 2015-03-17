@@ -52,7 +52,7 @@ td {
 					<td>供应商:</td>
 					<td><input name="txtSuppName" id="txtSuppName"
 							class="easyui-combobox"
-							data-options="editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/gongYingShangOption.action'" /></td>
+							data-options="editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/gongYingShangOption.action'" style="width: 250px;"/></td>
 					<td  style="text-align: center;"><a id="lnkSearch"
 					class="easyui-linkbutton" href="javascript:doSearch()">查询</a></td>
 				<td><a id="lnkSearch" class="easyui-linkbutton"
@@ -73,8 +73,8 @@ td {
 				<th field="ck" checkbox="true" width="20"></th>
 				</s:if>
 				<th width="150" data-options="field:'txtWuLiaoCode'">物料编码</th>
-				<th width="150" data-options="field:'txtWuLiaoName'">名称及规格</th>
-				<th width="150" data-options="field:'txtSuppName'">供应商</th>
+				<th width="200" data-options="field:'txtWuLiaoName'">名称及规格</th>
+				<th width="250" data-options="field:'txtSuppName'">供应商</th>
 				<th width="100" data-options="field:'txtQty'">库存数量</th>
                 <s:if test="action=='updateKuCun'">
 				<th width="100" data-options="field:'txtChengBenJia'">成本单价</th>
@@ -82,7 +82,7 @@ td {
 			  <th width="100" data-options="field:'txtSalePrice',align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">售价单价</th>
 				<th width="150" data-options="field:'txtRemark'">备注</th>
                 <s:if test="action=='updateKuCun'">
-                <th field="action" width="150" align="center"
+                <th field="action" width="200" align="center"
 								formatter="formatAction">操作</th>
 				</s:if>
 			</tr>

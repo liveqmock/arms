@@ -170,6 +170,11 @@ body, td, th, input, select {
 .pagination-info {
     font-size: 16px;
 }
+.panel-title {
+    font-size: 16px;
+    height: 20px;
+    line-height: 20px;
+}
 .tabs-title {
     font-size: 16px;
 }

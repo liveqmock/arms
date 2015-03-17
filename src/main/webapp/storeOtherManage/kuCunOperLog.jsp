@@ -48,15 +48,13 @@ td {
 					id="txtLogDateEnd" class="easyui-datebox"
 					style="width: 100px;" /></td>
 				<td>业务类别:</td>
-				<td><input name="txtBillSort" id="txtBillSort"
-                        class="easyui-combobox"	data-options="editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/chuRuKuSortOption.action'" style="width: 100px;"/></td>
+				<td><input name="txtOperAction" id="txtOperAction"
+                        class="easyui-combobox"	data-options="editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/chuRuKuSortOption.action'" style="width: 150px;"/></td>
 				<td>物料编码:</td>
 				<td><input name="txtWuLiaoCode" id="txtWuLiaoCode" type="text" class="easyui-textbox" maxlength="20" style="width: 100px;" /></td>
 				<td>名称及规格:</td>
 				<td><input name="txtWuLiaoName" type="text" class="easyui-textbox" maxlength="20"
 					id="txtWuLiaoName" style="width: 100px;" /></td>
-				<td>业务单号:</td>
-				<td><input name="txtBillNo" id="txtBillNo" type="text" class="easyui-textbox" maxlength="20" style="width: 100px;" /></td>
 				<td colspan="3" style="text-align: center;"><a id="lnkSearch"
 					class="easyui-linkbutton" href="javascript:doSearch()">查询项目</a></td>
 				<td><a id="lnkSearch" class="easyui-linkbutton"
@@ -72,15 +70,17 @@ td {
 						   pagination:true">
 		<thead>
 			<tr>
-				<th width="200" data-options="field:'txtSuppName'">供应商</th>
-				<th width="100" data-options="field:'txtWuLiaoCode'">物料编码</th>
-				<th width="150" data-options="field:'txtWuLiaoName'">名称及规格</th>
+				<th width="250" data-options="field:'txtSuppName'">供应商</th>
+				<th width="150" data-options="field:'txtWuLiaoCode'">物料编码</th>
+				<th width="200" data-options="field:'txtWuLiaoName'">名称及规格</th>
 				<th width="100" data-options="field:'txtChengBenJia'">成本价格</th>
 				<th width="100" data-options="field:'txtSalePrice'">销售价格</th>
 				<th width="100" data-options="field:'txtQty'">数量</th>
+                <!--
 				<th width="150" data-options="field:'txtBillGuid'">业务单号</th>
+                -->
 				<th width="100" data-options="field:'txtOperAction'">业务类别</th>
-				<th width="150" data-options="field:'txtLogDate'">操作时间</th>
+				<th width="200" data-options="field:'txtLogDate'">操作时间</th>
 			</tr>
 		</thead>
 	</table>

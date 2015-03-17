@@ -1,34 +1,213 @@
 package com.chiefmech.arms.test.kucun;
 
+import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
+import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.DateUtil;
 import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.entity.KuCun;
+import com.chiefmech.arms.entity.KuCunOperLog;
+import com.chiefmech.arms.entity.RuKuDan;
+import com.chiefmech.arms.entity.RuKuDanWuLiao;
+import com.chiefmech.arms.entity.Shop;
 
-/**
- * 操作Excel表格的功能类
- */
 public class KuCunImport {
-	private POIFSFileSystem fs;
-	private HSSFWorkbook wb;
-	private HSSFSheet sheet;
-	private HSSFRow row;
+	private String shopCode = "001";
+	private String fileName = "kucun/kucun_xixiang_2015-03-16.xls";
+	private String genSqlFile = "D:\\sqlFromExcel.txt";
+	private String user = "杨小院";
+
+	private List<KuCun> kuCunLst = new ArrayList<KuCun>();
+	private List<RuKuDan> ruKuDanLst = new ArrayList<RuKuDan>();
+	private List<RuKuDanWuLiao> ruKuDanWuLiaoLst = new ArrayList<RuKuDanWuLiao>();
+	private List<KuCunOperLog> kuCunOperLogLst = new ArrayList<KuCunOperLog>();
+	private List<String> supplierLst = new ArrayList<String>();
+	private StringBuffer sb = new StringBuffer();
+
+	public static void main(String[] args) {
+		ConfigUtil.getInstance().setShopInfo(new Shop()); // 避免运行出错
+
+		KuCunImport importer = new KuCunImport();
+		importer.initKuCunListFromExcel();
+		importer.initBensLst();
+
+		// 供应商
+		importer.genSupplierSqls();
+		// 入库单
+		importer.genRuKuDanSqls();
+		// 入库单物料
+		importer.genRuKuDanWuLiaoSqls();
+		// 库存
+		importer.genKuCunSqls();
+		// 库存日志
+		importer.genKuCunOperLogSqls();
+
+		importer.writeToGenSqlFile();
+	}
+
+	private void writeToGenSqlFile() {
+		try {
+			FileUtils.writeStringToFile(new File(genSqlFile), sb.toString());
+			System.out.println(sb.toString());
+			System.out.println("解析完成，sql语句汇总在" + genSqlFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void initBensLst() {
+		Set<String> set = new HashSet<String>();
+		for (KuCun item : kuCunLst) {
+			if (set.add(item.getTxtSuppName())) {
+				supplierLst.add(item.getTxtSuppName());
+			}
+		}
+
+		for (int i = 0; i < supplierLst.size(); i++) {
+			String supplier = supplierLst.get(i);
+
+			RuKuDan ruKuDan = new RuKuDan();
+			ruKuDan.setTxtGuid(IDGen.getUUID());
+			ruKuDan.setTxtShopCode(this.shopCode);
+			ruKuDan.setTxtBillNo(String.format("RCCG%s%03d",
+					DateUtil.getCurrentDateID(), i + 1));
+			ruKuDan.setTxtRuKuDate(DateUtil.getCurrentDate());
+			ruKuDan.setTxtSuppName(supplier);
+			ruKuDan.setTxtJingShouRen(this.user);
+			ruKuDan.setDdlRuKuSort("日常采购");
+			ruKuDan.setTxtRemarks("");
+			ruKuDan.setTxtStatus("审核完毕");
+			ruKuDan.setTxtShenHeRen(this.user);
+			ruKuDan.setTxtShenHeShiJian(DateUtil.getCurrentDate());
+
+			ruKuDanLst.add(ruKuDan);
+		}
+
+		for (RuKuDan ruKuDan : ruKuDanLst) {
+			for (KuCun kuCun : kuCunLst) {
+				if (kuCun.getTxtSuppName().equals(ruKuDan.getTxtSuppName())) {
+					RuKuDanWuLiao wuLiao = new RuKuDanWuLiao();
+					wuLiao.setTxtWuLiaoGuid(IDGen.getUUID());
+					wuLiao.setTxtRuKuDanGuid(ruKuDan.getTxtGuid());
+					wuLiao.setTxtWuLiaoCode(kuCun.getTxtWuLiaoCode());
+					wuLiao.setTxtWuLiaoName(kuCun.getTxtWuLiaoName());
+					wuLiao.setTxtQty(kuCun.getTxtQty());
+					wuLiao.setTxtPrice(kuCun.getTxtChengBenJia());
+					wuLiao.setTxtRemark(kuCun.getTxtRemark());
+
+					ruKuDanWuLiaoLst.add(wuLiao);
+				}
+			}
+		}
+
+		for (RuKuDan ruKuDan : ruKuDanLst) {
+			for (RuKuDanWuLiao item : ruKuDanWuLiaoLst) {
+				if (ruKuDan.getTxtGuid().equals(item.getTxtRuKuDanGuid())) {
+					KuCunOperLog log = new KuCunOperLog();
+					log.setTxtLogGuid(IDGen.getUUID());
+					log.setTxtShopCode(ruKuDan.getTxtShopCode());
+					log.setTxtWuLiaoCode(item.getTxtWuLiaoCode());
+					log.setTxtWuLiaoName(item.getTxtWuLiaoName());
+					log.setTxtQty(item.getTxtQty());
+					log.setTxtChengBenJia(item.getTxtPrice());
+					for (KuCun kuCun : kuCunLst) {
+						if (kuCun.getTxtWuLiaoCode().equals(
+								item.getTxtWuLiaoCode())) {
+							log.setTxtSalePrice(kuCun.getTxtSalePrice());
+							log.setTxtSuppName(kuCun.getTxtSuppName());
+							break;
+						}
+					}
+					log.setTxtRemark(item.getTxtRemark());
+					log.setTxtBillGuid(ruKuDan.getTxtGuid());
+					log.setTxtOperAction(ruKuDan.getDdlRuKuSort());
+					log.setTxtLogDate(DateUtil.getCurrentDateTime());
+
+					kuCunOperLogLst.add(log);
+				}
+			}
+		}
+	}
+
+	private void genKuCunOperLogSqls() {
+		for (KuCunOperLog item : this.kuCunOperLogLst) {
+			String sql = String
+					.format("insert into kucunoperlog(txtLogGuid,txtShopCode,txtBillGuid,txtOperAction,txtLogDate,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,txtSuppName,txtRemark) "
+							+ "values('%s','%s','%s','%s','%s','%s','%s',%d,%.2f,%.2f,'%s','%s');\n",
+							item.getTxtLogGuid(), item.getTxtShopCode(),
+							item.getTxtBillGuid(), item.getTxtOperAction(),
+							item.getTxtLogDate(), item.getTxtWuLiaoCode(),
+							item.getTxtWuLiaoName(), item.getTxtQty(),
+							item.getTxtChengBenJia(), item.getTxtSalePrice(),
+							item.getTxtSuppName(), item.getTxtRemark());
+			sb.append(sql);
+		}
+	}
+
+	private void genKuCunSqls() {
+		for (KuCun item : this.kuCunLst) {
+			String sql = String
+					.format("insert into kucun(txtKuCunGuid,txtShopCode,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,txtSuppName,txtRemark) "
+							+ "values('%s','%s','%s','%s',%d,%.2f,%.2f,'%s','%s');\n",
+							item.getTxtKuCunGuid(), item.getTxtShopCode(),
+							item.getTxtWuLiaoCode(), item.getTxtWuLiaoName(),
+							item.getTxtQty(), item.getTxtChengBenJia(),
+							item.getTxtSalePrice(), item.getTxtSuppName(),
+							item.getTxtRemark());
+			sb.append(sql);
+		}
+	}
+
+	private void genRuKuDanWuLiaoSqls() {
+		for (RuKuDanWuLiao item : this.ruKuDanWuLiaoLst) {
+			String sql = String
+					.format("insert into rukudanwuliao(txtWuLiaoGuid,txtRuKuDanGuid,txtWuLiaoCode,txtWuLiaoName,txtQty,txtPrice,txtRemark)"
+							+ " values('%s','%s','%s','%s',%d,%.2f,'%s');\n",
+							item.getTxtWuLiaoGuid(), item.getTxtRuKuDanGuid(),
+							item.getTxtWuLiaoCode(), item.getTxtWuLiaoName(),
+							item.getTxtQty(), item.getTxtPrice(),
+							item.getTxtRemark());
+			sb.append(sql);
+		}
+	}
+
+	private void genSupplierSqls() {
+		for (String supplier : this.supplierLst) {
+			String sql = String
+					.format("insert into supplier(txtSuppId,txtShopCode,txtSuppName) values('%s','%s','%s');\n",
+							IDGen.getUUID(), this.shopCode, supplier);
+			sb.append(sql);
+		}
+	}
+
+	private void genRuKuDanSqls() {
+		for (RuKuDan item : this.ruKuDanLst) {
+			String sql = String
+					.format("insert into rukudan(txtGuid,txtShopCode,txtBillNo,txtRuKuDate,txtSuppName,txtJingShouRen,ddlRuKuSort,txtRemarks,txtStatus,txtShenHeRen,txtShenHeShiJian) "
+							+ "values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s');\n",
+							item.getTxtGuid(), item.getTxtShopCode(),
+							item.getTxtBillNo(), item.getTxtRuKuDate(),
+							item.getTxtSuppName(), item.getTxtJingShouRen(),
+							item.getDdlRuKuSort(), item.getTxtRemarks(),
+							item.getTxtStatus(), item.getTxtShenHeRen(),
+							item.getTxtShenHeShiJian());
+			sb.append(sql);
+		}
+	}
 
 	/**
 	 * 读取Excel数据内容
@@ -36,112 +215,66 @@ public class KuCunImport {
 	 * @param InputStream
 	 * @return Map 包含单元格数据内容的Map对象
 	 */
-	public List<KuCun> readExcelContent(InputStream is) {
-		List<KuCun> lst = new ArrayList<KuCun>();
+	public void initKuCunListFromExcel() {
 		try {
-			fs = new POIFSFileSystem(is);
-			wb = new HSSFWorkbook(fs);
+			String filepath = this.getClass().getClassLoader()
+					.getResource(this.fileName).getPath();
+
+			InputStream is = new FileInputStream(filepath);
+			POIFSFileSystem fs = new POIFSFileSystem(is);
+			HSSFWorkbook wb = new HSSFWorkbook(fs);
+
+			HSSFSheet sheet = wb.getSheetAt(0);
+			int rowNum = sheet.getLastRowNum();
+			// 正文内容应该从第二行开始,第一行为表头的标题
+			for (int i = 1; i < rowNum; i++) {
+				HSSFRow row = sheet.getRow(i);
+
+				KuCun item = new KuCun();
+				item.setTxtKuCunGuid(IDGen.getUUID());
+				item.setTxtShopCode(this.shopCode);
+				item.setTxtWuLiaoCode(getCellValue(row, 2));
+				item.setTxtWuLiaoName(getCellValue(row, 3));
+				item.setTxtQty((int) Float.parseFloat(getCellValue(row, 6)));
+				item.setTxtChengBenJia(Float.parseFloat(getCellValue(row, 4)));
+				item.setTxtSalePrice(Float.parseFloat(getCellValue(row, 5)));
+				item.setTxtSuppName(getCellValue(row, 1));
+				item.setTxtRemark(getCellValue(row, 7));
+
+				kuCunLst.add(item);
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		sheet = wb.getSheetAt(0);
-		// 得到总行数
-		int rowNum = sheet.getLastRowNum();
-		// 正文内容应该从第二行开始,第一行为表头的标题
-		for (int i = 1; i < rowNum; i++) {
-			row = sheet.getRow(i);
-
-			KuCun item = new KuCun();
-			item.setTxtKuCunGuid(IDGen.getUUID());
-			item.setTxtShopCode("001");
-			item.setTxtWuLiaoCode(getCellValue(row, 2));
-			item.setTxtWuLiaoName(getCellValue(row, 3));
-			item.setTxtQty((int) Float.parseFloat(getCellValue(row, 6)));
-			item.setTxtChengBenJia(Float.parseFloat(getCellValue(row, 4)));
-			item.setTxtSalePrice(Float.parseFloat(getCellValue(row, 5)));
-			item.setTxtSuppName(getCellValue(row, 1));
-			item.setTxtRemark(getCellValue(row, 7));
-
-			lst.add(item);
-
-			System.out.println((i + 1) + "  " + item.toString());
-		}
-		return lst;
+		System.out.println("解析库存结束，总条数：" + kuCunLst.size());
 	}
+
 	/**
 	 * 
 	 * @param row
 	 * @param colIndex
-	 *            第一列index为1
-	 * @return
+	 *            第一列index为1 * @return
 	 */
 	private String getCellValue(HSSFRow row, int colIndex) {
-		return getCellFormatValue(row.getCell(colIndex - 1));
-	}
+		HSSFCell cell = row.getCell(colIndex - 1);
 
-	/**
-	 * 根据HSSFCell类型设置数据
-	 * 
-	 * @param cell
-	 * @return
-	 */
-	private String getCellFormatValue(HSSFCell cell) {
 		String cellvalue = "";
 		if (cell != null) {
-			// 判断当前Cell的Type
 			switch (cell.getCellType()) {
-			// 如果当前Cell的Type为NUMERIC
 				case HSSFCell.CELL_TYPE_NUMERIC :
-				case HSSFCell.CELL_TYPE_FORMULA : {
-					// 判断当前的cell是否为Date
-					if (HSSFDateUtil.isCellDateFormatted(cell)) {
-						// 如果是Date类型则，转化为Data格式
-
-						// 方法1：这样子的data格式是带时分秒的：2011-10-12 0:00:00
-						// cellvalue = cell.getDateCellValue().toLocaleString();
-
-						// 方法2：这样子的data格式是不带带时分秒的：2011-10-12
-						Date date = cell.getDateCellValue();
-						SimpleDateFormat sdf = new SimpleDateFormat(
-								"yyyy-MM-dd");
-						cellvalue = sdf.format(date);
-					}
-					// 如果是纯数字
-					else {
-						// 取得当前Cell的数值
-						cellvalue = String.valueOf(cell.getNumericCellValue());
-					}
+					cellvalue = String.valueOf(cell.getNumericCellValue());
 					break;
-				}
-				// 如果当前Cell的Type为STRIN
 				case HSSFCell.CELL_TYPE_STRING :
-					// 取得当前的Cell字符串
-					cellvalue = cell.getRichStringCellValue().getString();
+					cellvalue = cell.getStringCellValue();
 					break;
-				// 默认的Cell值
 				default :
 					cellvalue = "";
 			}
 		} else {
 			cellvalue = "";
 		}
+
 		return cellvalue.trim();
-
 	}
 
-	public static void main(String[] args) {
-		try {
-			KuCunImport excelReader = new KuCunImport();
-			String filepath = excelReader.getClass().getClassLoader()
-					.getResource("kucun/kucun_xixiang_2015-03-16.xls")
-					.getPath();
-			// 对读取Excel表格标题测试
-			InputStream is = new FileInputStream(filepath);
-			List<KuCun> lst = excelReader.readExcelContent(is);
-
-		} catch (FileNotFoundException e) {
-			System.out.println("未找到指定路径的文件!");
-			e.printStackTrace();
-		}
-	}
 }

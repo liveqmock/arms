@@ -7,7 +7,7 @@ public class KuCunOperLogSearchBean extends SearchBean {
 	private String txtLogDateBegin;
 	private String txtLogDateEnd;
 	private String ddlCangKu;
-	private String txtBillSort;
+	private String txtOperAction;
 	private String txtWuLiaoCode;
 	private String txtWuLiaoName;
 	private String txtBillNo;
@@ -18,8 +18,7 @@ public class KuCunOperLogSearchBean extends SearchBean {
 	public void initSearchFields() {
 		this.addField(new Criteria(Action.STR_BETWEEN, "txtLogDate",
 				txtLogDateBegin, txtLogDateEnd));
-		this.addField(new Criteria(Action.LIKE, "ddlCangKu", ddlCangKu));
-		this.addField(new Criteria(Action.LIKE, "txtBillSort", txtBillSort));
+		this.addField(new Criteria(Action.LIKE, "txtOperAction", txtOperAction));
 		this.addField(new Criteria(Action.LIKE, "txtWuLiaoCode", txtWuLiaoCode));
 		this.addField(new Criteria(Action.LIKE, "txtWuLiaoName", txtWuLiaoName));
 		this.addField(new Criteria(Action.LIKE, "txtBillNo", txtBillNo));
@@ -53,12 +52,12 @@ public class KuCunOperLogSearchBean extends SearchBean {
 		this.ddlCangKu = ddlCangKu;
 	}
 
-	public String getTxtBillSort() {
-		return txtBillSort;
+	public String getTxtOperAction() {
+		return txtOperAction;
 	}
 
-	public void setTxtBillSort(String txtBillSort) {
-		this.txtBillSort = txtBillSort;
+	public void setTxtOperAction(String txtOperAction) {
+		this.txtOperAction = txtOperAction;
 	}
 
 	public String getTxtWuLiaoCode() {

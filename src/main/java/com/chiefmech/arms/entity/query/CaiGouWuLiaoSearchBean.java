@@ -14,7 +14,7 @@ public class CaiGouWuLiaoSearchBean extends SearchBean {
 	private String txtStatus;
 	private String txtWuLiaoCode;
 	private String txtWuLiaoName;
-	private int start = 1;
+	private int page = 1;
 	private int rows = 15;
 
 	@Override
@@ -32,7 +32,7 @@ public class CaiGouWuLiaoSearchBean extends SearchBean {
 		// 只查找属于当前店铺的入库单
 		this.addField(new Criteria(Action.STR_EQUAL, "txtShopCode", ConfigUtil
 				.getInstance().getShopInfo().getShopCode()));
-		this.addLimitInfo(this.getStart(), this.getRows());
+		this.addLimitInfo(this.getPage(), this.getRows());
 	}
 
 	public String getSaleAfterWeiXiuGuid() {
@@ -115,12 +115,12 @@ public class CaiGouWuLiaoSearchBean extends SearchBean {
 		this.txtStatus = txtStatus;
 	}
 
-	public int getStart() {
-		return start;
+	public int getPage() {
+		return page;
 	}
 
-	public void setStart(int start) {
-		this.start = start;
+	public void setPage(int page) {
+		this.page = page;
 	}
 
 	public int getRows() {

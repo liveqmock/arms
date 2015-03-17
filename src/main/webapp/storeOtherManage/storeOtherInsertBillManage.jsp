@@ -66,7 +66,7 @@ td {
 				<td><input name="txtSuppName" type="text" id="txtSuppName"
 					class="easyui-combobox"
 					data-options="editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/gongYingShangOption.action'"
-					style="width: 150px;" /></td>
+					style="width: 250px;" /></td>
 				<s:if test="action=='updateCaiGou'">
 					<td nowrap>审核状态:</td>
 					<td><input name="txtStatus" id="txtStatus"
@@ -95,20 +95,20 @@ td {
 				</s:if>
 				<s:if test="action=='updateCaiGou'">
 					<th width="80" data-options="field:'ddlRuKuSort'">类型</th>
-					<th width="150" data-options="field:'txtBillNo'">单号</th>
+					<th width="180" data-options="field:'txtBillNo'">单号</th>
 					<th width="80" data-options="field:'txtJingShouRen'">采购人</th>
 				<th width="150" data-options="field:'txtRuKuDate'">日期</th>
 				</s:if>
 				<th width="100" data-options="field:'txtWuLiaoCode'">物料编码</th>
 				<th width="200" data-options="field:'txtWuLiaoName'">名称及规格</th>
-					<th width="150" data-options="field:'txtSuppName'">供应商</th>
+					<th width="250" data-options="field:'txtSuppName'">供应商</th>
 				<th width="80" data-options="field:'txtQty'">采购数量</th>
 				<th width="80" data-options="field:'txtPrice'">单价</th>
                 <th width="150" data-options="field:'txtRemark'">备注</th>
 				<s:if test="action=='updateCaiGou'">
 					<th width="80" data-options="field:'txtStatus'">审核状态</th>
 					<th width="80" data-options="field:'txtShenHeRen'">审核人</th>
-					<th width="80" data-options="field:'txtShenHeShiJian'">审核时间</th>
+					<th width="150" data-options="field:'txtShenHeShiJian'">审核时间</th>
 				</s:if>
 			</tr>
 		</thead>
@@ -151,7 +151,8 @@ td {
 					+ '&flag=' + flag + '&d=' + new Date()
 			var sFeatures = "dialogWidth:960px;dialogHeight:500px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
 			window.showModalDialog(sURL, window, sFeatures);
-			$('#mydg').datagrid('reload');
+			//$('#mydg').datagrid('reload');
+			doSearch();
 		}
 
 		function addCheckedCaiGouWuLiao() {
