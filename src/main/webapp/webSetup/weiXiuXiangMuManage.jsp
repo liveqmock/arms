@@ -31,9 +31,6 @@
 	<form name="fmSearch" method="post" id="fmSearch" class="searchform">
 		<table id="searchPanel" class="searchPanel" style="display: block;">
 			<tr>
-				<td>项目编号:</td>
-				<td><input name="txtCode" type="text" maxlength="20"
-					id="txtCode" class="easyui-textbox" style="width: 120px;" /></td>
 				<td>项目名称:</td>
 				<td><input name="txtName" type="text" maxlength="20"
 					id="txtName" class="easyui-textbox" style="width: 120px;" /></td>
@@ -60,10 +57,9 @@
 					<th field="ck" checkbox="true" width="20"></th>
 				</s:if>
 				<th width="80" data-options="field:'ddlGongDuan'">所属工段</th>
-				<th width="100" data-options="field:'txtCode'">项目编号</th>
 				<th width="150" data-options="field:'txtName'">项目名称</th>
 				<th width="250" data-options="field:'txtNeiRong'">维修内容</th>
-				<th width="80" data-options="field:'txtFeiYong'"><span style="font-weight:bold;">工时费</span></th>
+				<th width="80" data-options="field:'txtFeiYong'">工时费</th>
 				<th width="100" data-options="field:'txtRemark'">备注</th>
 				<s:if test="action=='addXiangMu'">
 					<th field="action" width="100" align="center"
@@ -78,18 +74,20 @@
 				data-options="iconCls:'icon-add',plain:true"
 				onClick="addCheckedXiangMu()">添加选中维修项目</a>
 		</s:if>
-        <a href="javascript:void(0)" class="easyui-linkbutton"
-            iconCls="icon-add" plain="true" onclick="addItem()">新增维修项目</a>
+        <s:if test="action=='addXiangMu'">
+            <a href="javascript:void(0)" class="easyui-linkbutton"
+                iconCls="icon-add" plain="true" onclick="addItem()">新增维修项目</a>
+         </s:if>
 	</div>
 	<div id="mydlg" class="easyui-dialog" closed="true"
 		style="width: 500px; height: 400px; padding: 10px 20px;">
 		<form name="fm" method="post" id="fm">
 			<table border="0" cellpadding="0" cellspacing="0" width="280px">
-				<tr>
+				<!--<tr>
 					<td><span class="requireSpan">*&nbsp;</span>项目编号:</td>
 					<td><input name="txtCode" type="text" id="txtCode"
 						class="easyui-textbox" data-options="required:true" /></td>
-				</tr>
+				</tr>-->
 				<tr>
 					<td><span class="requireSpan">*&nbsp;</span>项目名称:</td>
 					<td><input name="txtName" type="text" id="txtName"
@@ -101,7 +99,7 @@
 						class="easyui-textbox" data-options="required:true" /></td>
 				</tr>
 				<tr>
-					<td><span class="requireSpan">*&nbsp;</span><span style="font-weight:bold;">工时费</span>:</td>
+					<td><span class="requireSpan">*&nbsp;</span>工时费:</td>
 					<td><input name="txtFeiYong" type="text" id="txtFeiYong"
 						class="easyui-numberbox"
 						data-options="min:0,precision:2,required:true" /></td>

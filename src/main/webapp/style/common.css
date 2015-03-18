@@ -117,6 +117,9 @@ td.list{
 td.input{
 	height: 34px;	
 }
+td.line{
+	height: 5px;	
+}
 
 /*----------改变字体大小-----begin-------*/
 .datagrid-cell, .datagrid-cell-group, .datagrid-header-rownumber, .datagrid-cell-rownumber {
@@ -159,6 +162,9 @@ td.input{
 }
 body, td, th, input, select {
     font-size: 16px!important;
+}
+.panel-body {
+    font-size: 16px;
 }
 .titleSpan {
     font-size: 16px;

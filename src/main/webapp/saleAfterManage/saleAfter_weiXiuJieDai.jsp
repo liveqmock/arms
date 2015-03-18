@@ -130,7 +130,7 @@ td {
 
 						<tr>
 							<td>车辆信息</td>
-							<td colspan="7"></td>
+							<td colspan="7">&nbsp;</td>
 						</tr>
 						<tr>
 							<td width="100" align="right">车牌号：</td>
@@ -142,7 +142,7 @@ td {
 							<td align="right">发动机号：</td>
 							<td><div id="txtFaDongJiHao"></div></td>
 						</tr>
-						<tr>
+						<tr style="border-bottom:thin dotted #000;">
 							<td align="right">注册登记日：</td>
 							<td><div id="txtCheLiangDengJiRiQi"></div></td>
 							<td align="right">年审到期日：</td>
@@ -153,8 +153,11 @@ td {
 							<td><div id="ddlChengBaoGongSi"></div></td>
 						</tr>
 						<tr>
+							<td colspan="8" height="5" >&nbsp;</td>
+						</tr>
+						<tr>
 							<td>车主信息</td>
-							<td colspan="7"></td>
+							<td colspan="7">&nbsp;</td>
 						</tr>
 						<tr>
 							<td align="right">车主名：</td>
@@ -165,14 +168,16 @@ td {
 							<td><div id="txtLianXiRenName"></div></td>
 							<td align="right">联系人电话：</td>
 							<td><div id="txtLianXiRenTel"></div></td>
-							<td>&nbsp;</td>
-							<td>&nbsp;</td>
 						</tr>
 						<tr>
 							<td align="right">客户类别：</td>
 							<td><div id="txtCustSort"></div></td>
 							<td align="right">联系地址：</td>
 							<td colspan="5"><div id="txtLianXiRenAdd"></div></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td colspan="7">&nbsp;</td>
 						</tr>
 						<tr>
 							<td>会员信息</td>
@@ -190,11 +195,11 @@ td {
 						</tr>
 						<tr>
 							<td>&nbsp;</td>
-							<td colspan="7"></td>
+							<td colspan="7">&nbsp;</td>
 						</tr>
 						<tr>
 							<td>维修信息</td>
-							<td colspan="7"></td>
+							<td colspan="7">&nbsp;</td>
 						</tr>
 						<tr>
 							<td class="input" align="right">维修单号：</td>
@@ -252,8 +257,8 @@ td {
 				<thead>
 					<tr>
 						<th field="txtNeiRong" width="200">检测内容</th>
-						<th field="txtZhuangTai" width="400"
-							data-options="align:'center',editor:{type:'radiobox',options:{defaultValue:'未检测',values:['未检测','正常','更换','润滑清洁或调整']}}">检测状态</th>
+						<th field="txtZhuangTai" width="200"
+							data-options="align:'center',editor:{type:'radiobox',options:{defaultValue:'未检测',values:['未检测','正常','异常']}}">检测状态</th>
 						<th field="txtRemark" width="250"
 							data-options="editor:{type:'textbox'}">备注</th>
 					</tr>

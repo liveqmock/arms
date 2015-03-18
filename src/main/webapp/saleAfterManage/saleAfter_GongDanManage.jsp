@@ -163,8 +163,10 @@
 				var url = 'weiXiuLiShiDetail.action?saleAfterWeiXiuGuid=' + thisGuid + '&d=' + new Date();
 				var features = 'height=900, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';
 				</s:elseif>
-				z = window.open(url, '_blank', features);
-				z.focus();
+				//z = window.open(url, '_blank', features); //弹出窗口
+				//z.focus();
+				
+				window.open(url);	//tab页
 			}
 		}
 		

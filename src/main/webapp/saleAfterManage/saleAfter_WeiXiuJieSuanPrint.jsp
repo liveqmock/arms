@@ -75,6 +75,11 @@ td {
 	border-right: 1px dotted black;
 }
 
+#jianceList td {
+	border-bottom: 1px dotted black;
+	border-right: 1px dotted black;
+}
+
 #billHuiZong td {
 	font-weight: bold;
 	border: 2px solid black;
@@ -93,17 +98,20 @@ td {
 		window.print();
 	}
 </script>
-<body>	
+<body>
 	<table id="tbPrint" border="0" class="Noprint">
 		<tr>
-			<td><s:if test="gongDanStatus in {'费用结算','交车'}"><input type="button" value="打印结算单" onClick="javascript:show();" /></s:if><s:else>结算单预览（只能在结算或交车后打印结算单）</s:else></td>
+			<td><s:if test="gongDanStatus in {'费用结算','交车'}">
+					<input type="button" value="打印结算单" onClick="javascript:show();" />
+				</s:if>
+				<s:else>结算单预览（只能在结算或交车后打印结算单）</s:else></td>
 		</tr>
-	</table>    
-	<table border="0" cellpadding="0" cellspacing="0" width="700px" 
+	</table>
+	<table border="0" cellpadding="0" cellspacing="0" width="700px"
 		style="margin-left: 5px;">
 		<tr>
 			<td align="center"
-				style="font-size: 19px;  font-weight: bold; text-align: center;">
+				style="font-size: 19px; font-weight: bold; text-align: center;">
 				<div
 					style="width: 700px; height: 70px; margin: 0 auto; line-height: 70px;">
 					<img src="../image/BaLuTongLogo.png"
@@ -175,7 +183,8 @@ td {
 					<tr>
 						<td class="border-bottom-right-dotted">&nbsp;进厂里程:</td>
 						<td class="border-bottom-right-dotted">&nbsp;<s:property
-								value='gongDan.txtLiCheng' />KM</td>
+								value='gongDan.txtLiCheng' />KM
+						</td>
 						<td class="border-bottom-right-dotted">&nbsp;发动机:</td>
 						<td colspan="5" class="border-bottom-right-dotted">&nbsp;<s:property
 								value='gongDan.txtFaDongJiHao' /></td>
@@ -197,7 +206,7 @@ td {
 						<td width="48">序号</td>
 						<td width="105">工段名</td>
 						<td width="203">项目名称</td>
-						<td width="62">费用</td>
+						<td width="62">工时费</td>
 						<td width="63">主修人</td>
 						<td width="189" style="border-right: none;">备注</td>
 					</tr>
@@ -205,10 +214,12 @@ td {
 						<tr>
 							<td>&nbsp;<s:property value="#index.count" /></td>
 							<td>&nbsp;<s:property value="txtXiangMuName" /></td>
-							<td nowrap style="overflow:hidden;">&nbsp;<s:property value="txtWeiXiuNeiRong" /></td>
+							<td nowrap style="overflow: hidden;">&nbsp;<s:property
+									value="txtWeiXiuNeiRong" /></td>
 							<td align="right">&nbsp;<s:property value="disPlayFeiYong" /></td>
 							<td>&nbsp;<s:property value="txtZhuXiuRen" /></td>
-							<td nowrap style="overflow:hidden;">&nbsp;<s:property value="txtRemark" /></td>
+							<td nowrap style="overflow: hidden;">&nbsp;<s:property
+									value="txtRemark" /></td>
 						</tr>
 					</s:iterator>
 				</table> <!--维修项目 end-->
@@ -221,7 +232,7 @@ td {
 			<td>
 				<!--维修物料 start-->
 				<table border="0" id="wuLiaoList"
-					style="border: 2px solid black; width: 100%; border-collapse: collapse;" >
+					style="border: 2px solid black; width: 100%; border-collapse: collapse;">
 
 					<tr>
 						<td width="47">序号</td>
@@ -246,74 +257,135 @@ td {
 		<tr>
 			<td style="height: 5px;"></td>
 		</tr>
+		<tr id="jiance">
+			<td>
+				<!--维修物料 start-->
+
+				<table border="0" id="jianceList"
+					style="border: 2px solid black; width: 100%; border-collapse: collapse;">
+					<tr>				
+								<tr>
+									<td width="130">&nbsp;检测内容</td>
+									<td width="50">&nbsp;检测状态</td>
+									<td width="110">&nbsp;备注</td>
+									<td width="130">&nbsp;检测内容</td>
+									<td width="50">&nbsp;检测状态</td>
+									<td width="110">&nbsp;备注</td>
+								</tr>
+								<s:iterator value="gongDanCheLiangJianCeLst" status="index">
+									<s:if test="#index.odd||#index.first">
+										<tr>
+									</s:if>
+									<td>&nbsp; <s:property value="txtNeiRong" /></td>
+									<td>&nbsp; <s:property value="txtZhuangTai" /></td>
+									<td>&nbsp; <s:property value="txtRemark" /></td>
+									<s:if test="#index.even&&#index.last">
+										</tr>
+									</s:if>
+
+									<s:if test="#index.odd&&#index.last">
+										<td>&nbsp; <s:property value="txtNeiRong" /></td>
+										<td>&nbsp; <s:property value="txtZhuangTai" /></td>
+										<td>&nbsp; <s:property value="txtRemark" /></td>
+										</tr>
+									</s:if>
+								</s:iterator>
+				</table> <!--维修物料 end-->
+			</td>
+		</tr>
+		<tr>
+			<td style="height: 5px;"></td>
+		</tr>
 		<tr>
 			<td>
 				<!--费用合计 start-->
 				<table border="2" id="billHuiZong"
 					style="border: 2px solid black; width: 100%; border-collapse: collapse;">
 					<tr>
-						<td width="5%" rowspan="<s:property value='jieSuanInfo.jieSuanLst.size + 5' />">单 <br />据<br />汇<br />总<br />
+						<td width="5%"
+							rowspan="<s:property value='jieSuanInfo.jieSuanLst.size + 5' />">单
+							<br />据<br />汇<br />总<br />
 						</td>
+					<tr>
+						<td colspan="5"><s:if test="customerTaoKaItemLst.size > 0">
+								<table>
+									<thead>
+									</thead>
+									<tbody>
+										<tr>
+											<th width="100">套卡类型</th>
+											<th width="100">业务名称</th>
+											<th width="80">服务次数</th>
+											<th width="80">剩余次数</th>
+										</tr>
+										<s:iterator value="customerTaoKaItemLst" status="status">
+											<tr>
+												<td style="border: none;"><s:property
+														value="txtTaoKaSort" /></td>
+												<td style="border: none;"><s:property
+														value="txtXiangMuName" /></td>
+												<td style="border: none;"><s:property
+														value="txtTotalTimes" /></td>
+												<td style="border: none;"><s:property
+														value="txtRestTimes" /></td>
+											</tr>
+										</s:iterator>
+									</tbody>
+								</table>
+							</s:if>
+							<div style="padding-top: 5px;">
+								会员等级：<span style="font-weight: bold; padding-right: 10px;"><s:property
+										value='gongDan.txtHuiYuanDengJi' /></span>工时折扣:<span
+									style="font-weight: bold; padding-right: 10px;"><s:property
+										value='gongDan.txtGongShiZheKou' /></span>物料折扣:<span
+									style="font-weight: bold;"><s:property
+										value='gongDan.txtCaiLiaoZheKou' /></span>
+							</div></td>
+					</tr>
+					<tr>
+						<td width="100" style="font-weight: bold;">帐套</td>
+						<td width="100" style="font-weight: bold;">工时费（折前）</td>
+						<td width="100" style="font-weight: bold;">工时费（折后）</td>
+						<td width="100" style="font-weight: bold;">物料费（折前）</td>
+						<td width="100" style="font-weight: bold;">物料费（折后）</td>
+					</tr>
+					<s:iterator value="jieSuanInfo.jieSuanLst">
 						<tr>
-						<td colspan="5">
-                           <s:if test="customerTaoKaItemLst.size > 0">
-                           <table>
-                                <thead>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th width="100">套卡类型</th>
-                                        <th width="100">业务名称</th>
-                                        <th width="80">服务次数</th>
-                                        <th width="80">剩余次数</th>
-                                    </tr>
-                                <s:iterator value="customerTaoKaItemLst" status="status">
-                                    <tr>
-                                        <td style="border:none;"><s:property value="txtTaoKaSort" /></td>
-                                        <td style="border:none;"><s:property value="txtXiangMuName" /></td>
-                                        <td style="border:none;"><s:property value="txtTotalTimes" /></td>
-                                        <td style="border:none;"><s:property value="txtRestTimes" /></td>
-                                    </tr>
-                                </s:iterator>
-                                </tbody>
-                            </table>
-                            </s:if>
-                            <div style="padding-top:5px;">会员等级：<span
-							style="font-weight: bold; padding-right: 10px;"><s:property
-									value='gongDan.txtHuiYuanDengJi' /></span>工时折扣:<span
-							style="font-weight: bold; padding-right: 10px;"><s:property
-									value='gongDan.txtGongShiZheKou' /></span>物料折扣:<span
-							style="font-weight: bold;"><s:property
-									value='gongDan.txtCaiLiaoZheKou' /></span></div>
-                         </td>
-					</tr>
-					<tr>
-						<td width="100" style="font-weight:bold;">帐套</td>
-						<td width="100" style="font-weight:bold;">工时费（折前）</td>
-						<td width="100" style="font-weight:bold;">工时费（折后）</td>
-						<td width="100" style="font-weight:bold;">物料费（折前）</td>
-						<td width="100" style="font-weight:bold;">物料费（折后）</td>
-					</tr>
-                    <s:iterator value="jieSuanInfo.jieSuanLst">                    
-					<tr>
-						<td>&nbsp;<s:property value="zhangtao" />&nbsp;</td>
-						<td align="right">&nbsp;<s:property value="gongshiFeiZheQian" />&nbsp;</td>
-						<td align="right">&nbsp;<s:property value="gongshiFeiZheHou" />&nbsp;</td>
-						<td align="right">&nbsp;<s:property value="wuLiaoFeiZheQian" />&nbsp;</td>
-						<td align="right">&nbsp;<s:property value="wuLiaoFeiZheHou" />&nbsp;</td>
-					</tr>
-                    </s:iterator>                  
+							<td>&nbsp;<s:property value="zhangtao" />&nbsp;
+							</td>
+							<td align="right">&nbsp;<s:property
+									value="gongshiFeiZheQian" />&nbsp;
+							</td>
+							<td align="right">&nbsp;<s:property value="gongshiFeiZheHou" />&nbsp;
+							</td>
+							<td align="right">&nbsp;<s:property value="wuLiaoFeiZheQian" />&nbsp;
+							</td>
+							<td align="right">&nbsp;<s:property value="wuLiaoFeiZheHou" />&nbsp;
+							</td>
+						</tr>
+					</s:iterator>
 					<tr>
 						<td>&nbsp;合计&nbsp;</td>
-						<td align="right">&nbsp;<s:property value="jieSuanInfo.gongshiFeiZheQianHeJi" />&nbsp;</td>
-						<td align="right">&nbsp;<s:property value="jieSuanInfo.gongshiFeiZheHouHeJi" />&nbsp;</td>
-						<td align="right">&nbsp;<s:property value="jieSuanInfo.wuLiaoFeiZheQianHeJi" />&nbsp;</td>
-						<td align="right">&nbsp;<s:property value="jieSuanInfo.wuLiaoFeiZheHouHeJi" />&nbsp;</td>
+						<td align="right">&nbsp;<s:property
+								value="jieSuanInfo.gongshiFeiZheQianHeJi" />&nbsp;
+						</td>
+						<td align="right">&nbsp;<s:property
+								value="jieSuanInfo.gongshiFeiZheHouHeJi" />&nbsp;
+						</td>
+						<td align="right">&nbsp;<s:property
+								value="jieSuanInfo.wuLiaoFeiZheQianHeJi" />&nbsp;
+						</td>
+						<td align="right">&nbsp;<s:property
+								value="jieSuanInfo.wuLiaoFeiZheHouHeJi" />&nbsp;
+						</td>
 					</tr>
 					<tr>
-						<td colspan="5">合计(客户支付)：<span>&nbsp;<s:property value="jieSuanInfo.gongDanHeJi" />&nbsp;</span>&nbsp;&nbsp;&nbsp;
-                        支付方式：&nbsp;<span><s:property value="gongDan.ddlZhiFuFangShi" /></span>&nbsp;&nbsp;&nbsp;&nbsp;
-                        实付金额：&nbsp;<span><s:property value="gongDan.displayFinalPay" /></span></td>
+						<td colspan="5">合计(客户支付)：<span>&nbsp;<s:property
+									value="jieSuanInfo.gongDanHeJi" />&nbsp;
+						</span>&nbsp;&nbsp;&nbsp; 支付方式：&nbsp;<span><s:property
+									value="gongDan.ddlZhiFuFangShi" /></span>&nbsp;&nbsp;&nbsp;&nbsp;
+							实付金额：&nbsp;<span><s:property
+									value="gongDan.displayFinalPay" /></span></td>
 					</tr>
 				</table> <!--费用合计 end-->
 			</td>
@@ -331,18 +403,18 @@ td {
 			</td>
 		</tr>
 		<tr>
-			<td><br />
-			<br /></td>
+			<td><br /> <br /></td>
 		</tr>
 		<tr>
 			<td>
 				<!--公司地址 start-->
 				<table border='0' style='font-weight: bold; padding-top: 3px;'>
-					<tr>
-						<td>投诉热线:<s:property	value='shop.complaintCall' /></td>
+					<tr>					
+                        <td>咨询电话:<s:property value='shop.shopTel' /></td>
+                        <td>投诉热线:<s:property value='shop.complaintCall' /></td>
 					</tr>
 					<tr>
-						<td>公司地址:<s:property	value='shop.shopAddr' /></td>
+						<td>公司地址:<s:property value='shop.shopAddr' /></td>
 					</tr>
 				</table> <!--公司地址 end-->
 			</td>

@@ -127,7 +127,7 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 		return INPUT;
 	}
 
-	@Action(value = "shiGongDanPrint", results = { @Result(name = "input", location = "shiGongDanPrint.jsp") })
+	@Action(value = "shiGongDanPrint", results = {@Result(name = "input", location = "shiGongDanPrint.jsp")})
 	public String ShiGongDanPrint() {
 		gongDan = gongDanService.findGongDanByWeiXiuGuid(saleAfterWeiXiuGuid);
 		return INPUT;
@@ -171,7 +171,10 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 			 * String[] jianCeLst = "人保客户".equals(gongDan.getTxtCustSort()) ?
 			 * jianCeLstRenBao : jianCeLstPuTong;
 			 */
-			String[] jianCeLst = jianCeLstPuTong;
+			// String[] jianCeLst = jianCeLstPuTong;
+
+			// 张经理最新的建议
+			String[] jianCeLst = jianCeLstRenBao;
 			int size = jianCeLst.length;
 			for (int i = 0; i < size; i++) {
 				String jianCeNeiRong = jianCeLst[i];

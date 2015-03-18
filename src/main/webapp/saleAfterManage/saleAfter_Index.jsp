@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-<title>维修管理</title>
+<title><s:property value='gongDan.txtChePaiHao' />-<s:property value='gongDan.txtGongDanStatus' /></title>
 <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
 <script src="../js/frame/underscore-min.js" type="text/javascript"></script>
 <link href="../style/common.css" rel="stylesheet" type="text/css" />

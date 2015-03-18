@@ -194,8 +194,11 @@ td {
 
 	<script language="javascript" type="text/javascript">
         function newWeiXiuJieDai() {
-            var z = window.open('saleAfterIndex.action?cheLiangId=<s:property value="customer.txtCheLiangId" />&d=' + new Date(), '_blank', 'height=800, width=1200, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
-            z.focus();
+			var url = 'saleAfterIndex.action?cheLiangId=<s:property value="customer.txtCheLiangId" />&d=' + new Date();
+			var features = 'height=800, width=1200, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';
+            //var z = window.open(url, '_blank', features);
+            //z.focus();
+			window.open(url);
 
             window.opener = null;
             window.close();
