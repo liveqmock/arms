@@ -13,6 +13,24 @@ public class CheLiangInfo {
 	private String txtCheLiangNianShenDaoQiRi;
 	private String txtCheLiangBaoXianDaoQiRi;
 	private String ddlChengBaoGongSi;
+	private String ddlCheLiangNianFen;
+	private String ddlCheLiangPaiLiang;
+
+	public String getDdlCheLiangNianFen() {
+		return ddlCheLiangNianFen;
+	}
+
+	public void setDdlCheLiangNianFen(String ddlCheLiangNianFen) {
+		this.ddlCheLiangNianFen = ddlCheLiangNianFen;
+	}
+
+	public String getDdlCheLiangPaiLiang() {
+		return ddlCheLiangPaiLiang;
+	}
+
+	public void setDdlCheLiangPaiLiang(String ddlCheLiangPaiLiang) {
+		this.ddlCheLiangPaiLiang = ddlCheLiangPaiLiang;
+	}
 
 	public String getTxtCustId() {
 		return txtCustId;

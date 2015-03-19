@@ -64,20 +64,4 @@ public abstract class SearchBean {
 		return sql;
 	}
 
-	public int getPageNum() {
-		return pageNum;
-	}
-
-	public void setPageNum(int pageNum) {
-		this.pageNum = pageNum;
-	}
-
-	public int getPageRows() {
-		return pageRows;
-	}
-
-	public void setPageRows(int pageRows) {
-		this.pageRows = pageRows;
-	}
-
 }

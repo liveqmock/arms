@@ -148,20 +148,20 @@
 					<td><s:property value="txtCheLiangFaDongJiHao" /></td>
 				</tr>
 				<tr>
+					<td align="right">承保公司：</td>
+					<td><s:property value="ddlChengBaoGongSi" /></td>
+					<td align="right">车辆年份：</td>
+					<td><s:property value="ddlCheLiangNianFen" /></td>
+					<td align="right">排量：</td>
+					<td><s:property value="ddlCheLiangPaiLiang" /></td>
+				</tr>
+				<tr>
 					<td align="right">注册登记日期：</td>
 					<td><s:property value="txtCheLiangDengJiRiQi" /></td>
 					<td align="right">年审到期日：</td>
 					<td><s:property value="txtCheLiangNianShenDaoQiRi" /></td>
 					<td align="right">保险到期日：</td>
 					<td><s:property value="txtCheLiangBaoXianDaoQiRi" /></td>
-				</tr>
-				<tr>
-					<td align="right">承保公司：</td>
-					<td><s:property value="ddlChengBaoGongSi" /></td>
-					<td align="right">&nbsp;</td>
-					<td>&nbsp;</td>
-					<td align="right">&nbsp;</td>
-					<td>&nbsp;</td>
 				</tr>
 				</s:iterator></s:if>
 			</table>
@@ -195,7 +195,7 @@
         </div>
 		<!--按钮区域 end-->
 		<div id="mydlg" class="easyui-dialog" closed="true"
-			style="width: 700px; height: 300px; padding: 10px 20px;">
+			style="width: 700px; height: 340px; padding: 10px 20px;">
 			<form name="fm" id="fm" method="post">
 				<input name="txtCustId" type="hidden" id="txtCustId" />
 				<input name="txtCheLiangId" type="hidden" id="txtCheLiangId" />
@@ -231,6 +231,16 @@
 						<td><input name="txtCheLiangFaDongJiHao" type="text"
 							class="easyui-textbox" data-options="required:false"
 							id="txtCheLiangFaDongJiHao" /></td>
+					</tr>
+					<tr>
+						<td align="right">车辆年份：</td>
+						<td><input name="ddlCheLiangNianFen" type="text"
+							class="easyui-textbox" 
+							id="ddlCheLiangNianFen" /></td>
+						<td align="right">排量：</td>
+						<td><input name="ddlCheLiangPaiLiang" type="text"
+							class="easyui-textbox" 
+							id="ddlCheLiangPaiLiang" /></td>
 					</tr>
 					<tr>
 						<td align="right">注册登记日期：</td>

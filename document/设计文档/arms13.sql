@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 120.24.213.132
-Source Server Version : 50537
-Source Host           : 120.24.213.132:3306
+Source Server         : localhost_3306
+Source Server Version : 50540
+Source Host           : localhost:3306
 Source Database       : arms13
 
 Target Server Type    : MYSQL
-Target Server Version : 50537
+Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2015-03-17 09:52:15
+Date: 2015-03-19 13:47:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -929,9 +929,11 @@ CREATE TABLE `chelianginfo` (
   `txtCheLiangFaDongJiHao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '发动机号',
   `txtCheLiangNianShenDaoQiRi` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '年审到期日',
   `txtCheLiangBaoXianDaoQiRi` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '保险到期日',
-  `ddlCheLiangZhiZaoShang` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '品牌',
+  `ddlCheLiangZhiZaoShang` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '品牌',
   `ddlCheLiangCheXi` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车型',
   `ddlChengBaoGongSi` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '承保公司',
+  `ddlCheLiangNianFen` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '车辆年份',
+  `ddlCheLiangPaiLiang` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '排量',
   PRIMARY KEY (`txtCheLiangId`),
   KEY `txtCustId` (`txtCustId`) USING BTREE,
   CONSTRAINT `chelianginfo_ibfk_1` FOREIGN KEY (`txtCustId`) REFERENCES `customerinfo` (`txtCustId`) ON DELETE CASCADE
@@ -940,359 +942,361 @@ CREATE TABLE `chelianginfo` (
 -- ----------------------------
 -- Records of chelianginfo
 -- ----------------------------
-INSERT INTO `chelianginfo` VALUES ('d41660ff-b68d-4410-9482-bb3ce6443dad', '004e21b8-d3a7-4a1d-8356-5ec4fe7e8dbb', '粤BB712L', '', '', '', '', '', '', '本田', '雅阁(7代)', '');
-INSERT INTO `chelianginfo` VALUES ('d02200ec-fdbc-4a4d-82b4-1e0179ea90b5', '00a3f35c-ae0c-4d04-aeec-673ef0e4bd54', '粤B4JN50', '翼虎牌CAF6450A41', 'LVSHJCAB7DE197469', '2013-04-19', 'DA04440', '2015-04-19', '2015-04-19', '福特', '翼虎', '人保');
-INSERT INTO `chelianginfo` VALUES ('96b0b4e6-0d28-4b1d-9f5d-01aa5ef76d51', '00fa3c56-be4f-41bd-8854-fcad4d8e2afc', '粤BL571F', '东风标致牌DC7164DYDA', 'LDC963L36C1154268', '2012-09-17', '7812589', '2016-09-17', '2015-09-17', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('b9d5d9df-31f8-4e2b-a7d7-3a71e570a3f6', '01556530-8278-466c-a9a4-d765b872389b', '粤B40G52', '', '', '', '', '', '', '卡罗拉', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('24927aab-d75b-4725-8c5d-12c7417094a4', '0168533a-5fe7-4d3f-9d83-9b629bb28b1b', '粤B36U6', '', '', '', '', '', '', '丰田', '凯美瑞(第七代)', '');
-INSERT INTO `chelianginfo` VALUES ('b6596058-4cb5-4ea0-81c8-7a6d0972e304', '0275d74f-d884-45fe-82fa-7555fedea2f1', '粤B320SY', '轩逸牌DFL7162ACC', 'LGBH12E09BY187076', '2011-05-11', '500116E', '2015-05-11', '2015-05-11', '日产', '轩逸', '人保');
-INSERT INTO `chelianginfo` VALUES ('52a17a0d-5dd4-47be-91f2-ede69dfd5386', '033cb264-ec91-4551-933f-43b75b2b3fe9', '粤BC5499', '', '', '', '', '', '', '东风风神', null, '');
-INSERT INTO `chelianginfo` VALUES ('b05a021a-4434-4262-9a2d-e44c20e1e72a', '038fc0ca-fccd-4c4c-a329-07a23e88aee2', '粤BN303Q', '马自达牌CAF7151MC4', 'LVSFDFML6AN033576', '2010-05-01', '3190925', '2016-05-01', '2015-05-01', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('9d368f12-bdbc-4a50-95a9-f89f5d3ed855', '03af9540-9a97-4a51-bd4e-364da8ba7118', '粤B2953J', '', '', '', '', '', '', '北京现代', 'IX35', '');
-INSERT INTO `chelianginfo` VALUES ('5328696e-c621-4eda-876a-74c91f89011a', '03c038bc-1c71-4073-94fe-24bd1fc20901', '粤B02D71', '', '', '', '', '', '', '别克', null, '');
-INSERT INTO `chelianginfo` VALUES ('8ba762d4-d43e-4a3e-8aae-425a1081d78a', '046883c0-a081-4735-9138-de177c226e7b', '粤BD871U', '朗逸牌SVW7867NSD', 'LSVAN4180C2080195', '2012-05-16', '193271', '2016-05-16', '2015-05-16', '大众', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('759b3fab-0489-4f88-9533-56851ee836c3', '04d8288f-6d1f-4e69-a24e-bf9c010caf7e', '粤B9759B', '明锐牌SVW7166DSD', 'LSVNW41Z6A2745329', '2010-08-04', '025951', '2016-08-04', '2015-08-04', '大众', '斯柯达昊锐', '人保');
-INSERT INTO `chelianginfo` VALUES ('1bacf063-7ee7-4b36-8f16-ab2f77ad1189', '0550c1d5-f768-4dd4-97a8-9388dc798c09', '粤B7G105', '明锐牌SVW7166HSD', 'LSVN241Z5D2132313', '2014-03-29', '722710', '2016-03-31', '2015-04-30', '斯柯达', '斯柯达', '人保');
-INSERT INTO `chelianginfo` VALUES ('e2181fb0-d5ae-4e7d-8908-f4f5181942a9', '06930423-b50e-40f1-9387-2bb343931935', '粤B058JU', '', '', '', '', '', '', '丰田', null, '');
-INSERT INTO `chelianginfo` VALUES ('2a805e19-bedb-42fd-8304-1bd8ea2e8970', '06f65332-86b7-4ec2-8610-f87b95c66d4d', '粤BN946G', '福克斯牌CAF7180M', 'LVSFCFME88F266596', '2008-09-05', '8J21281', '2015-09-05', '2015-09-05', '福特', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('f2233e1d-a51e-4b4a-81bf-b5193090d674', '077a625f-3937-4194-90c2-9afbd9673409', '粤BY324Y', '福特牌CAF7152B', 'LVSHFAAL19N039666', '2009-09-23', '3140467', '2015-09-23', '2015-09-23', '福特', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('24b7cca7-355c-411c-a839-3b06ca48c3b2', '08dfcbd2-cea1-4387-8883-73c4663e503d', '粤BQ953K', '东风日产牌EQ7250AC', '', '', '', '', '', '日产', null, '');
-INSERT INTO `chelianginfo` VALUES ('441c5711-e846-49a1-acc8-d72c729fe643', '091e18ff-a4e9-4325-9f14-69f67e60612e', '粤B3AM52', '', '', '', '', '', '', '马自达', '马自达3 AXELA昂克赛拉两厢', '');
-INSERT INTO `chelianginfo` VALUES ('914733f8-56e5-457f-b43e-47dd434d3908', '099fc24a-524e-47c1-b7a1-c58dfe46d50b', '粤B73R21', '丰田牌TV7181GL  1D', 'LFMARE2CX80092287', '2008-06-17', 'E184676', '2015-06-17', '2015-06-17', '丰田', '卡罗拉', '人保');
-INSERT INTO `chelianginfo` VALUES ('2773c003-2e60-42e6-a6ea-79636c05caff', '09b58178-eb09-4761-8467-1a8b4bed8d1d', '粤BP1L95', '力帆牌LF7132C', 'LLV1C2A1XC0034241', '2012-03-09', 'Y120101799', '2016-03-09', '2016-03-09', '力帆', '力帆320', '人保');
-INSERT INTO `chelianginfo` VALUES ('bf985828-dffc-4b5b-b4af-628fcd71656b', '09f543de-c684-4367-a3b0-566553abe5d6', '粤B4N484', '起亚牌YQZ7142', 'LJDLAA294C0135206', '2012-09-11', 'C5360841', '2016-09-11', '2015-09-11', '起亚', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('24cc9bf1-3c6d-4d0b-b7d4-09514b6715ea', '0b22f094-b65e-4086-b5af-02cd0a9d2c53', '粤BU767P', '', '', '', '', '', '', '斯柯达', '斯柯达', '');
-INSERT INTO `chelianginfo` VALUES ('a7e9fa81-98ef-4752-b65a-fc591388145b', '0c5aa30d-7596-4e4a-80a0-1f04655150cb', '桂K30527', '', '', '', '', '', '', '大众', '捷达', '');
-INSERT INTO `chelianginfo` VALUES ('4aeac3e4-dee3-4b9b-8d43-ed001a00b291', '0c6f1090-7473-487e-9d4e-526fbf1cbd55', '粤BDB798', '雅阁牌HG7240A', 'LHGCM567568011949', '2006-12-14', 'K24A88611952', '2015-12-14', '2015-12-14', '本田', '雅阁(7代)', '人保');
-INSERT INTO `chelianginfo` VALUES ('3658dd72-209e-4bba-8657-795290761d89', '0cd119b0-1679-45bf-9a75-a7717dfa3237', '粤B85M42', '丰田牌TV7161GLD', 'LFMAPE2C080030807', '2008-04-02', 'E144340', '2015-04-02', '2015-04-02', '丰田', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('b1167946-84fe-4535-ab49-dd0d6a4a8029', '0d5f5f10-69ae-407b-aa69-6c864c91e1f8', '赣K95635', null, '', null, '', '', '', '标致', '标致307两厢', null);
-INSERT INTO `chelianginfo` VALUES ('213addae-5e47-4ad2-af4f-ebe8c597b145', '0e3ad3ed-a588-409f-89fd-cc456e3264c2', '粤BH916J', '', '', '', '', '', '', '奔腾', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('85e519b8-0858-4778-add8-66604e242f01', '0ed53157-d272-4609-b32e-3e474671caf2', '粤B025ZV', 'CA7201AT5', 'LFPM4ACC7D1A89201', '2013-12-12', '80594836', '2015-12-12', '2015-12-12', '马自达', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('d56d4bb9-348d-4d40-a337-2294f337a18f', '0f7ae46d-ee86-494e-87d6-84edba722308', '粤B-P28G8', '未设置', 'LFMARE0C0B0336555', '2011-09-30', 'F891154', '2015-09-30', '2015-09-30', '丰田', '卡罗拉', '太平洋');
-INSERT INTO `chelianginfo` VALUES ('f97de794-49db-46b6-b196-a7e9ad54f938', '1133dbe8-a598-411e-a8c0-7c112bb9658c', '粤B786CN', '东风标致牌DC7164BTA', 'LDC933L39A0202404', '2010-03-18', '7543058', '2016-03-18', '2015-03-18', '标致', '标致307三厢', '人保');
-INSERT INTO `chelianginfo` VALUES ('ea10b244-a6e5-4509-b41a-39ccc5818109', '11e8cab0-9457-4b61-876a-8eee71c588b8', '粤B059BY', '明锐牌SVW7166DSD', 'LSVNW41Z1A2731502', '2010-07-21', '012757', '2016-07-21', '2015-07-21', '大众', '斯柯达昊锐', '人保');
-INSERT INTO `chelianginfo` VALUES ('6d8345a5-2f20-4a99-b47e-6e335664dc6c', '12607b62-97c7-492d-b633-3740663a4378', '粤BW85N1', '', '', '', '', '', '', '日产', null, '');
-INSERT INTO `chelianginfo` VALUES ('7e321597-a5a8-4106-8502-b38feab0708f', '130a1bf7-3391-4cbb-a539-cefa8ffbd058', '粤B933LB', '昊锐牌SVW7189BJD', 'LSVCB43TX92451763', '2009-12-04', '011018', '2015-12-04', '2015-12-04', '大众', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('70bc1161-cd6f-419b-909b-5bad7cb763b0', '132e87c5-073a-4875-a260-ad9394a5ec86', '粤B47M75', 'TV7160GMD', 'LFMAP22C180045198', '2008-03-17', 'E130266', '2015-03-17', '2015-03-17', '丰田', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('58d367be-2c0e-4342-887d-08ec21d7b962', '15e5d655-5881-46a4-9980-7aae85755cac', '粤B62Q21', '', '', '', '', '', '', '日产', '天籁', '');
-INSERT INTO `chelianginfo` VALUES ('6e1b51b2-b1a0-47cf-b861-03bea9004af0', '16c559c3-30c2-4dc8-9cd7-bd829e1bb80f', '粤B073AC', '丰田牌TV7164DLXD', 'LFMAP22C8B0242151', '2011-03-02', 'F961253', '2016-03-02', '2016-03-02', '丰田', '花冠', '人保');
-INSERT INTO `chelianginfo` VALUES ('67af923c-7f20-47dd-b502-26768d0d5f83', '17ef701e-8f13-4052-9e41-e7cabd55f9ad', '粤BW1Y56', '宝来牌FV7162XATG', 'LFV2A215XC3642345', '2012-09-29', 'S83428', '2016-09-29', '2015-09-29', '', null, '');
-INSERT INTO `chelianginfo` VALUES ('e080c1c1-dd5b-4a67-8ff3-c48a878b2fa1', '186ccd1d-db92-42ca-9549-ff741c9d5630', '粤B2H0P5', 'CAF7163M4', 'LVSHCFMB6EE853635', '2014-12-25', '3708504', '2016-12-25', '2015-12-25', '大众', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('057be8f2-2083-469f-a425-81f7d7008eb2', '18826d0f-dcb7-4121-a949-ee0752bf1856', '粤BPZ098', '', '', '', '', '', '', '福特', null, '');
-INSERT INTO `chelianginfo` VALUES ('59975215-9401-448c-88df-916be5af1f09', '18a2addd-f812-48ce-8bd5-34eba014a5a6', '湘M1KH67', '', '', '', '', '', '', '大众', null, '');
-INSERT INTO `chelianginfo` VALUES ('9d34d3cc-4aa2-43c3-9961-35b6c20f987f', '1a9b5352-b6a3-4c17-9d67-bec88b8a0e55', '粤BL5Q63', '', '', '', '', '', '', '别克', '君威', '');
-INSERT INTO `chelianginfo` VALUES ('cbd573b9-4b2e-4c34-824b-55ece3c5c899', '1acb1ba1-867b-49e2-96ef-012ea8551f4d', '粤B683UB', '', '', '', '', '', '', '丰田', '花冠, 花冠', '');
-INSERT INTO `chelianginfo` VALUES ('c563036f-5530-4e2f-8e8c-eeb3ec1372d5', '1b92b116-a3a7-4dfc-9a55-e29b28dc7068', '粤BQ056T', '', '', '', '', '', '', '别克', null, '');
-INSERT INTO `chelianginfo` VALUES ('9b67af05-363a-44af-ad33-ef9ba0e997e5', '1ba33cd6-45a7-4894-a0ae-48ca61b6a7c7', '粤BX0763', '东风日产牌DFL7168VAK1', 'LGBH52E00EY169669', '2014-03-20', '599043W', '2016-03-20', '2015-03-20', '日产', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('dc7a0c1e-82ae-4af1-b3e6-37de5e06e5e2', '1c017e87-15cf-4f43-acc5-b6003d6a2fc2', '粤BR132T', '丰田牌GTM7200GB', 'LVGBH42K9BG521510', '2011-11-30', 'F812959', '2015-11-28', '2015-11-28', '丰田', '凯美瑞(第六代)', '人保');
-INSERT INTO `chelianginfo` VALUES ('32c5c391-2f3a-479d-81d3-a56a49a866e9', '1fb58d98-35f9-440a-abc4-0590e531b789', '粤BL672G', '骊威牌DFL7163AC', 'LGBK22E5XCY0900405', '2012-05-23', '722557W', '2016-05-23', '2015-05-23', '日产', '日产', '人保');
-INSERT INTO `chelianginfo` VALUES ('69c951e0-fbb2-4642-a2bb-eb39a96597f7', '2021aa15-d01f-45a5-95f6-37b259fa4358', '粤BP9Z71', '福克斯CAF7163M4', 'LVSHCFMB9CE084693', '2012-10-23', '3178516', '2016-10-23', '2015-10-23', '福特', '福克斯三厢(第二代)', '人保');
-INSERT INTO `chelianginfo` VALUES ('2633fee4-ec5f-4682-be5d-7896f6352645', '2038171f-18b6-4ce0-b44c-4c1845a7d4d4', '粤B 9826U', 'CAF7180A38', 'LVSHCFAE78F332360', '2009-01-13', '8A57210', '2016-01-13', '2016-01-13', '福特', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('2769016d-3d91-4c18-aebf-8010b32d95c5', '21799ccf-e329-4054-91b4-a2f02c1ce356', '粤B865L2', '比亚迪牌QCJ7150A6', 'LGXC16DF1A0219758', '2010-12-14', '210090705', '2016-12-14', '2015-12-14', '比亚迪', '比亚迪F3', '人保');
-INSERT INTO `chelianginfo` VALUES ('679097c6-c4f9-4432-b21b-11dd4ea31c74', '21ac740f-0522-482f-826e-7c78c8f63d9d', '粤BM952S', '宝来牌FV7162XATG', 'LFV2A2159C3528336', '2012-03-16', 'R67529', '2016-03-16', '2015-03-16', '大众', '宝来', '人保');
-INSERT INTO `chelianginfo` VALUES ('447a4065-d12c-4fe4-8861-07b8b204264a', '21ccdb53-e26b-4d80-872e-5f9873982da4', '粤BXJ663', '东风雪铁龙牌DC7202', 'LDC838W3X70568062', '2007-06-15', '8810315', '2015-07-15', '2015-06-15', '雪铁龙', '大C4毕加索', '人保');
-INSERT INTO `chelianginfo` VALUES ('2ecc040c-fb0f-426c-88bf-9706ef6ac604', '22227208-7af5-4f43-9dcc-8bad31f00f1b', '粤BZ16CY', '', '', '', '', '', '', '本田', null, '');
-INSERT INTO `chelianginfo` VALUES ('1966879b-12c2-4e68-bb69-2c1ee1e54a97', '22ca1df7-0e19-4b34-a09c-c3afd49fb9be', '粤BT8K26', '北京现代牌BH7141AY', 'LBERCADBXCX330852', '2012-12-20', 'CB550115', '2016-12-20', '2015-12-20', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('dea125b2-aec9-45d5-bba4-fe9257617ba2', '230f2369-b5a8-46f0-9296-6ccb0c7afdfb', '粤B130AY', '雪佛兰牌SGM7184ATA', 'LSGPC54RAF025109', '2010-03-04', '100270081', '2016-03-04', '2016-03-04', '雪佛兰', '新科鲁兹', '人保');
-INSERT INTO `chelianginfo` VALUES ('82907274-f4a2-4ae2-9fed-909bfa99a6ae', '243d7f67-8546-4758-a0f4-06630f5904a9', '粤BE057B', '丰田牌TV7166GD', 'LFMAP22C3C0474142', '2013-03-06', 'F187430', '2016-03-06', '2016-03-06', '丰田', '花冠', '人保');
-INSERT INTO `chelianginfo` VALUES ('573ba273-93e3-4033-99ed-0ded1d70133d', '25f296e4-d874-4a8e-8a65-99257a6c010f', '鲁L45654', null, '', null, '', '2015-03-20', '2015-03-17', '比亚迪', '比亚迪L3', null);
-INSERT INTO `chelianginfo` VALUES ('6d8345a5-2f20-4a99-b47e-6e335664dc6c', '29d4f207-8af4-4380-b32c-43a67d08d1e0', '粤B3TR77', '', '', '', '', '', '', '别克', '英朗GT', '');
-INSERT INTO `chelianginfo` VALUES ('2633fee4-ec5f-4682-be5d-7896f6352645', '29ee06f0-831f-45e6-985c-4fe47f6a0ef6', '粤B9826U', 'CAF7180A38', 'LVSHCFAE78F332360', '2009-01-13', '8A57210', '2015-01-13', '2015-01-13', '大众', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('8985763a-560d-4b7d-a859-08aa0e215498', '2b2f8b68-7e13-403e-aa69-ff396d9a4bbf', '粤B056FH', '朗逸牌SVW7167BSD', 'LSVAB4189A2354628', '2010-04-20', '888796', '2016-04-20', '2015-04-20', '大众', '朗逸', '人保');
-INSERT INTO `chelianginfo` VALUES ('e8834ad9-516f-4d71-854a-577e6ebbeeab', '2bb0105b-5507-44a2-bf79-7f5e3cc87bf9', '粤B0356V', '起亚YQZ7165EJ', 'LJDGAA226A0136116', '2010-12-01', 'AW190003', '2016-12-01', '2015-12-01', '起亚', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('006e79e0-20fb-453d-8e23-449e15e35c00', '2c183f2a-8524-4902-baf3-1a081ae03aa7', '粤B4KU87', '', '', '', '', '', '', '菲亚特', null, '');
-INSERT INTO `chelianginfo` VALUES ('7468f08a-0fce-4fbb-ad8d-8f25e21407bd', '2dd3ecd2-022e-4a96-a704-50a5d9946796', '粤BK230X', '别克牌SGM7161MTB', 'LSGPB54U6CS062499', '2012-04-01', '113011204', '2016-04-01', '2015-04-01', '别克', '英朗GT', '人保');
-INSERT INTO `chelianginfo` VALUES ('90f8061a-2566-4c4b-87c2-ae1344538ce8', '2e612214-b89e-4cf0-a38b-23d454a0b49c', '粤B406GX', '速腾牌FV7164TATG', 'LFV2A21K3B3073004', '2011-08-31', 'K32699', '2015-08-29', '2015-08-29', '大众', '速腾', '人保');
-INSERT INTO `chelianginfo` VALUES ('63267e5e-e60a-402f-9be3-5890a16fb5fa', '2f858fe4-4a3b-4e5a-bb7a-36a05077c22b', '粤B207TU', '', '', '', '', '', '', '标致', null, '');
-INSERT INTO `chelianginfo` VALUES ('96b77eb3-37ab-4107-a3aa-f20adf10d09f', '3032e145-9f14-450b-a4c6-eb74026bff27', '粤BL672C', '思域牌DHW7182FBASD', 'LVHFB2642C5044477', '2012-06-20', '1044431', '2016-06-20', '2015-06-20', '本田', '思域', '人保');
-INSERT INTO `chelianginfo` VALUES ('92add10b-ab59-4844-95ed-74e29384dfa9', '3109c3e4-a47b-4804-8de2-18475dce5b7c', '粤BLJ766', '', '', '', '', '', '', '江淮', '瑞风', '');
-INSERT INTO `chelianginfo` VALUES ('ff47dd14-0db0-4b3e-868a-bf51ee6bff39', '317824a3-c388-422e-989e-e44b5e94c95b', '粤B429TV', '', '', '', '', '', '', '雪佛兰', '新科鲁兹', '');
-INSERT INTO `chelianginfo` VALUES ('b16fb031-9f37-427e-bf8a-c9575972734b', '3509ac05-0992-4619-97a3-5969b452a93e', '粤B720E9', '', '', '', '', '', '', '日产', '日产', '');
-INSERT INTO `chelianginfo` VALUES ('39aa0d7c-8a15-4856-a015-a3ac1c7a7e66', '3627bd91-e82e-4ef3-b66c-d56990c39c73', '粤B077LY', '雪佛兰牌SGM7169ATA', 'LSGPC52U2AF120324', '2010-10-12', '102170697', '2016-10-12', '2015-10-12', '雪佛兰', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('e3614fc7-6b35-4896-8a73-0de3b03e7b28', '368003e4-ecbc-4a36-ac30-49b6c84d47cd', '粤B219GQ', '福特牌CAF6480A1', 'LVSHFSAFXAF014196', '2010-03-19', '3210756', '2016-03-19', '2015-03-19', '福特', '麦柯斯', '人保');
-INSERT INTO `chelianginfo` VALUES ('3eb9e427-3cb5-48a1-bd18-4df44c5cf353', '36b90f36-b030-4575-bdef-daaf84838f6b', '粤B9781X', '北京现牌代BH7160BMY', 'LBEHDAEB8CY805058', '2012-06-01', 'CB390358', '2016-06-01', '2015-06-01', '北京现代', '悦动', '人保');
-INSERT INTO `chelianginfo` VALUES ('ba69ccce-7aa0-401a-b2de-14858ae653ec', '375769a7-f9ed-49ca-a017-221bc837925f', '粤BW40C3', '', '', '', '', '', '', '现代', '现代', '');
-INSERT INTO `chelianginfo` VALUES ('79a43006-dc45-4bf4-b4e4-82a8e887e55d', '37f581b1-a7dc-4c8c-8ce5-87c0d9f12c0c', '粤BY030V', '比亚迪牌QCJ7240E', 'LGXC36DG491012290', '2009-07-22', 'SGD4826', '2015-07-22', '2015-07-22', '比亚迪', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('13e98977-adac-40cb-90ec-5146c91a8399', '387e5b31-e724-41d4-a297-01b3a1958eff', '粤B7KL20', '', '', '', '', '', '', '菲亚特', '菲亚特500', '');
-INSERT INTO `chelianginfo` VALUES ('afa6602d-f848-4f1b-8b29-e3d50ef719d1', '3896d0b5-fbe5-4749-b3e8-ee4cde7b796f', 'aaa', '', '', '', '', '', '', '奥迪', '奥迪A1', '');
-INSERT INTO `chelianginfo` VALUES ('550cb6ec-a3b2-4871-b65e-01b46ae918e5', '39c17ca9-6c95-4549-b984-ab46f048fd19', '粤BK256A', '', '', '', '', '', '', '丰田', '皇冠', '');
-INSERT INTO `chelianginfo` VALUES ('0526b134-df08-4ed0-a06e-9a76491d90b0', '39ce7e10-de46-49d7-96ae-6acc56992076', '粤B6BS78', 'SGM7169TATB', 'LSGGG54E8CS288490', '2012-12-13', '122890195', '2016-12-13', '2015-12-13', '雪佛兰', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('2b664d12-235e-4af7-aa2c-027b2f423f28', '3ab6f03f-edb6-40ee-b757-2795e8ce1c98', '粤BF261E', '东风日产牌DFL7151VAK2', 'LGBP12E07BY031663', '2011-06-13', '621797A', '2015-06-13', '2015-06-13', '日产', '阳光', '人保');
-INSERT INTO `chelianginfo` VALUES ('9f02cd3a-5beb-4e4d-ad05-7009cb581a77', '3b66ea4f-3312-4453-b471-86192d50b926', '粤BC8M60', '丰田牌GTM7240GB', 'LVGBE42K0BG596315', '2011-08-10', 'F697303', '2015-08-10', '2015-08-10', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('ab265bfa-2f09-4ed9-93cf-22950fadb891', '3b989901-2579-4de9-ada5-2448b8587fc8', '粤BH976V', '', '', '', '', '', '', '大众', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('27b0621e-2263-40f0-b400-24bdb02d1788', '3bb35b26-c76c-419b-91f1-ec3cf37593eb', '粤BZ7725', '', '', '', '', '', '', '江铃', null, '');
-INSERT INTO `chelianginfo` VALUES ('f55a05b4-de88-4ab6-85e6-49142cd5e2c3', '3d41eae6-8ad8-4f23-9cc2-3374fc614be8', '粤B0HY91', '大众牌FV7166FAAGG', 'LFV2A21K9D4060397', '2013-04-09', '925081', '2015-04-09', '2015-04-09', '大众', '朗逸', '人保');
-INSERT INTO `chelianginfo` VALUES ('728d6f8b-7b9d-4670-a260-161f42f371d9', '3e8610f4-01a7-4cfc-a58f-137478402f6e', '粤B4962P', '东风雪铁龙牌DC7237DT', 'LDCA13R40C2021122', '2012-07-03', '0091826', '2016-07-03', '2015-07-03', '雪铁龙', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('362045d9-95a1-4309-85e9-e1a15cb33833', '409d628e-a28d-4e0a-83fc-1e921d481ba5', '粤B1096T', '', '', '', '', '', '', '红旗', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('e2de4120-7543-4074-98c3-7a7b75fdd399', '40d221d4-9c32-4eb1-9f1e-64a0692bad52', '粤B685GX', '红旗牌CA7204MT4', 'LFPH4ACC791E73617', '2010-04-21', '80164646', '2015-04-21', '2015-04-21', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('e82740f8-8af3-4ffb-b8b9-632e1ff6fe74', '41a8de51-002c-4eec-b562-ef4e4acd6587', '粤BB618B', '纳智捷牌DYM6481BAA', 'LUXL91T00DB002005', '2013-07-10', 'AB0003771', '2015-07-10', '2015-07-10', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('966ec3a0-4797-4bcc-9052-fa7977df559e', '41b660c4-0219-4750-9ebf-5a9d821fd8a0', '粤BWG078', '', '', '', '', '', '', '别克', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('85f298bd-89f8-453d-9adb-c492f0537995', '420e296b-2868-4632-aa62-ba5dab2dedf1', '粤B8CB01', '大众汽车牌SVW7167PSD', 'LSVNM4180C2231055', '2013-01-18', '457182', '2017-01-18', '2016-01-18', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('f35690a3-198e-4868-997d-0873a52f9ac5', '44fca66f-3dcb-4933-b1c8-dc2f3e3676f0', '粤B128DE', '', '', '', '', '', '', '福克斯', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('49ccb74c-a286-450c-9fd6-1095cc7eb88a', '45d76870-3a97-4892-9112-9ee3d1d0a459', '粤BK265T', 'DFL7165VTC1', 'LGBG2NE05BY006095', '2012-04-20', '077110A', '2016-04-20', '2015-04-20', '东风', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('34e65cf1-c2b7-4149-81ad-b59312f4c007', '473fa498-4498-4c2a-a6b1-d1a2a13b169b', '粤B371SL', '', '', '', '', '', '', '丰田', null, '');
-INSERT INTO `chelianginfo` VALUES ('abde96f5-fa0d-41cb-8091-b67a9e08ec52', '4808c319-28e5-4dc0-85dc-71faeaa6d2e4', '粤B-U276E', '未设置', 'ajmpmmd1234567890', null, 'mgjwm', '2016-10-10', '2015-12-10', '福特', '福克牌CAF7163A4', null);
-INSERT INTO `chelianginfo` VALUES ('7d6fb20a-0fe3-4b53-a0ac-f18674c753cd', '493c9713-bdba-4e58-9ea1-329662923e76', '粤BV160J', '丰田牌TV7164GD', 'LFMAP22C4B0334650', '2011-12-09', 'E948932', '2015-12-09', '2015-12-09', '丰田', '花冠, 花冠', '人保');
-INSERT INTO `chelianginfo` VALUES ('0d1c8505-594a-4be2-ae11-78489e4f16c8', '49491f1e-b109-48a8-ad27-56adfe11ad54', '粤B5JE91', '北京现代牌BH7202DAY', 'LBEYFAKCODY207877', '2013-05-16', 'DW115574', '2015-05-16', '2015-05-16', '北京现代', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('a37b5786-2009-4d17-bbd9-66a4b42c3e33', '4cfc14bc-e74a-4d5a-b5b7-fab7269dddde', '粤B53Q92', '', '', '', '', '', '', '丰田', '丰田86', '');
-INSERT INTO `chelianginfo` VALUES ('46d53fcb-0ed7-4c7c-aa3d-f1b466a021d5', '4dcd8438-d58a-4821-8dcb-7f125761b395', '粤BUT107', '丰田牌TV7180GLX-L3', 'LFMAC22C470796435', '2007-01-30', 'B96162', '2016-01-30', '2016-01-30', '丰田', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('c274a7b3-8e93-4730-9099-1fafc57316a3', '4ddefea9-82f9-491e-81d9-d5b90976460a', '粤B842KS', '雅阁牌HG7203AB', 'LHGCP1681B2017169', '2011-03-28', '6117164', '2015-03-28', '2015-03-28', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('837022c7-44dc-4c48-a2ae-732e197ce1b6', '4ea372e0-4edd-480e-9d4d-a59442c1186b', '粤B723RC', '', '', '', '', '', '', '日产', null, '');
-INSERT INTO `chelianginfo` VALUES ('de1c7c48-0346-450e-999c-18375010274f', '4f6735cc-a75d-4b64-b298-3b5d9bc327df', '粤B3HF23', '', '', '', '', '', '', '标致', '标致408', '');
-INSERT INTO `chelianginfo` VALUES ('57d33652-86f8-4b06-ac88-b8ad89b28728', '4fcadd28-f65b-42e1-b08b-5f4300fb7a13', '粤B123456', '', '', '', '', '', '', '本田', '思域', '');
-INSERT INTO `chelianginfo` VALUES ('18258ab7-d358-4a9e-8ebd-e76cfcf2a0f6', '50038ebd-1947-4288-964a-dc4312caaca2', '粤B9LT50', '大众汽车牌SVW7167QSD', 'LSVNN4187DN033408', '2013-04-12', '548365', '2015-04-12', '2015-04-12', '大众', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('85659e4f-6bac-4932-9228-c88d64315900', '501f4b50-3534-4d19-b508-3be7c4643746', '粤B0GJ79', '', '', '', '', '', '', '福特', null, '');
-INSERT INTO `chelianginfo` VALUES ('51ac2de7-20da-4785-81b3-e136b0416045', '507fcdb0-3a37-49a7-a6c3-c685ba108207', '粤B98R95', '', '', '', '', '', '', '宝马', '宝马5系GT', '');
-INSERT INTO `chelianginfo` VALUES ('337e8a3d-9ec6-4fa3-b5bc-82cf1b9e8fbd', '50d69ce8-5542-4270-ac59-a89d71044094', '粤B86K01', '别克牌SGM7161MTA', 'LSGJR52UX8H046248', '2008-01-24', '7C230326', '2015-01-24', '2016-01-24', '别克', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('e25cb81a-54a0-4b18-bb3c-bfddc6cbd71b', '516fb8a2-78c0-425d-a6c4-5a13dbcef587', '粤BS4G56', '大众牌FV7187TFATG', 'LFV3A23CXC3053425', '2012-06-07', '157842', '2016-06-07', '2015-06-07', '', null, '');
-INSERT INTO `chelianginfo` VALUES ('21951c1f-b736-4982-b3b8-accac4ce6d19', '5204ca3e-ab19-427b-9b15-35742b79e6b6', '粤BX8X41', '', '', '', '', '', '', '雪铁龙', null, '');
-INSERT INTO `chelianginfo` VALUES ('3e648085-be69-4c8b-a46a-b06253780d07', '52ee9443-01fa-469e-a6fc-1b4ed31b547f', '粤B296YJ', '', '', '', '', '', '', '日产', '日产', '');
-INSERT INTO `chelianginfo` VALUES ('ba15ee05-3c8d-445f-b60f-ef2895391dc4', '533f1285-a1f0-4ee4-ba8a-751f6d7faa8e', '粤B87X16', '', '', '', '', '', '', '日产', '日产', '');
-INSERT INTO `chelianginfo` VALUES ('37d22447-5be4-4ebc-875f-e82f44d5062e', '54e3a009-6258-4852-9591-9f1d3df39652', '粤BTP940', '', '', '', '', '', '', '海马', '海马', '');
-INSERT INTO `chelianginfo` VALUES ('441d973e-eaa0-480e-8ac5-ef1afa80311a', '55ab1cfc-54d1-4e02-beb5-fbb7fffdd0cf', '粤BA967T', '', '', '', '', '', '', '本田', '歌诗图', '');
-INSERT INTO `chelianginfo` VALUES ('b1167946-84fe-4535-ab49-dd0d6a4a8029', '565c45ff-1217-45c5-9377-a45c9027a682', '粤B78542', null, 'LSGWEEW122357788', '2015-03-04', 'QFERR556332', '2015-05-21', '2015-03-27', '奥迪', '奥迪A3三厢(进口)', '');
-INSERT INTO `chelianginfo` VALUES ('e37e3ec8-4aaf-45f3-8601-4453aa85910d', '56d7b6fb-12d1-4c43-8ced-67f039fa4773', '粤ST492H', '', '', '', '', '', '', '大众', null, '');
-INSERT INTO `chelianginfo` VALUES ('e7821408-d960-4776-a54d-37d2af173340', '5749cd07-1259-4925-b656-b2981f8099eb', '粤B5NT69', '丰田牌GTM7201GS', 'LVGBH51K3DG094853', '2013-06-27', 'G201377', '2015-06-27', '2015-06-27', '丰田', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('59118983-3976-4077-9c2c-da1edc899c41', '58a92ede-056e-4087-8a89-a0524fc657b0', '粤BU469T', '', '', '', '', '', '', '丰田', null, '');
-INSERT INTO `chelianginfo` VALUES ('76f99704-ab77-431c-975b-945290450886', '5a059cf7-2419-4237-b477-c9d52fc2a37a', '粤BUV917', '海马牌HMC7162A', 'LH17CKKF16H021906', '2007-02-01', '837305', '2016-02-01', '2016-02-01', '海马', '海马', '人保');
-INSERT INTO `chelianginfo` VALUES ('a8ad5ce0-c85b-47a7-8618-4bf7dda02ab8', '5af9134f-730b-432e-b06f-15e381ef6c4b', '粤B3NY16', '', '', '', '', '', '', '雪佛兰', null, '');
-INSERT INTO `chelianginfo` VALUES ('6caaa9bc-dbb6-46da-be96-1bdb6eb087b2', '5d235d42-7ddb-4313-9881-69e9dc2a3075', '粤BJ94G6', '', 'LJ12FKT33C4100806', '', 'LJ12FKT33C4100806', '', '', '江淮', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('d6128dbf-295d-48af-9906-03ecb93ed17e', '5dc4c553-58a5-42c2-841a-1a8973910974', '粤B977FF', 'GTM7240GB', 'LVGBE40K39G488347', '2009-12-23', 'C802201', '2015-12-23', '2015-12-23', '丰田', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('11c6ab44-237f-4629-9c1c-54ff01d4ec38', '5e0f19f4-6a7f-4fdf-90eb-1a603237d0e2', '粤BT789P', '', '', '', '', '', '', '丰田', null, '');
-INSERT INTO `chelianginfo` VALUES ('c1680dcc-f0b0-4b40-b75b-80ae15c652cc', '5f0c5f10-80f8-402b-89b0-1200ddea3dd7', '粤BJ200U', '', '', '', '', '', '', '路虎', null, '');
-INSERT INTO `chelianginfo` VALUES ('891e888a-b45a-408e-9949-2efa45a2a23b', '5fa06409-0cdd-469a-8083-178b9a6c4439', '粤B312S7', '红旗牌CA7204AT4', 'LFPH4ACC281E06146', '2009-04-30', '80038160', '2015-04-30', '2015-04-30', '红旗', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('001d27bb-648c-4849-96c0-58baf84b1321', '5fda29dd-9bc7-4ee9-bb4f-8c16e9fe70cc', '粤BS7S61', '奥迪牌FV7203TFCVTG', 'LFV3A28K9C3044635', '2012-06-28', '229597', '2016-06-28', '2015-06-28', '奥迪', '奥迪A4L', '人保');
-INSERT INTO `chelianginfo` VALUES ('d7ae8a3b-6949-4d91-9d07-a114fff572bb', '60d4c65f-6672-4465-bbf9-122cdce30744', '粤B7728Y', 'JS3JB43V', 'JS3JB43V494102860', '2009-03-12', 'M13A2134668', '2015-03-12', '2015-03-12', '铃木', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('fbd7796d-c1c6-47a0-a9c8-92b04825c6d6', '62fb4949-cc36-4ec3-b273-b813bd05982d', '湘A0CM12', '轩逸牌DFL7162ACC', 'LGBH12E06AY133971', '2010-09-08', '578851D', '2016-09-09', '2015-09-09', '日产', '轩逸', '人保');
-INSERT INTO `chelianginfo` VALUES ('4b292187-d4a2-4f03-a91a-ef392db59a92', '63c0f5a3-0fcb-4241-bb68-5d4415cacd35', '粤BE167U', '明锐牌SVW7166HSD', 'LSVN221Z2C2117996', '2012-10-25', '292072', '2016-10-25', '2015-10-25', '斯柯达', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('11a7f385-1eda-4b9a-a4d5-dc02672fdb05', '63d4b364-671d-46c9-9a68-5ecb88a5daff', '湘MS1865', '', '', '', '', '', '', '五菱', '五菱之光', '');
-INSERT INTO `chelianginfo` VALUES ('2f5ee170-827b-45c6-8b20-c0b36696559b', '6443d021-3f73-445c-a96f-2b301aa490a3', '粤BA905D', '', '', '', '', '', '', '起亚', null, '');
-INSERT INTO `chelianginfo` VALUES ('54a09c1a-03d3-4691-897c-1ca858cf0cd7', '649c31c4-6e93-45a3-b991-f25ab06313a3', '粤B7GQ59', '', '', '', '', '', '', '马自达', null, '');
-INSERT INTO `chelianginfo` VALUES ('3960054a-ee2f-4c22-a953-c248c2862265', '64cbcd06-c1c3-4b98-9ae2-d4a8181f6dde', '粤BC332H', '', '', '', '', '', '', '现代', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('2b848c7b-561b-45b9-8e50-382cd03ba510', '667777c7-ac1e-4d79-82c0-b92cea97659e', '粤B95Z33', '比亚迪牌QCJ7200E3', 'LGXC16DG091004631', '2009-03-05', '0823815', '2015-03-05', '2015-05-03', '比亚迪', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('ccf5c2b2-727a-4f93-a821-02e9c23c9854', '66894e96-e24c-469a-bb61-584c49a7c3dc', '粤B330JN', 'WBASN210', 'WBASN2100AC530258', '2010-06-01', '05447389N55B30A', '2016-06-01', '2015-06-01', '宝马', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('29570b22-f6a7-4ab6-b6b1-e00781c73b13', '66a3d797-2029-4edf-a3e6-e4275870d524', '粤BP486K', '', '', '', '', '', '', '凯美瑞', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('2ce3d6f9-50ce-4617-a75b-45c9a6e016b0', '66a5974c-ae65-4a11-b2f6-96ff87af016d', '粤BM2999', '', 'WMAVL3104BVN91787', '2011-05-19', 'B2101926N46B20CC', '2015-05-19', '2015-05-19', '宝马', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('7de165d7-1bee-4e1e-87e1-6fc90655667b', '671154d3-d57a-40e2-8e8a-bae118c6c543', '粤BQ496E', '', '', '', '', '', '', '雪佛兰', null, '');
-INSERT INTO `chelianginfo` VALUES ('e88639dd-68cd-4140-b938-12bc3279e6e1', '67cc0e64-8733-4855-8f98-83cad47bb778', '粤BG21X6', '', '', '', '', '', '', '', null, '');
-INSERT INTO `chelianginfo` VALUES ('9b0020a2-9470-4c3d-8a01-351091050fe5', '6801eb91-23fb-405e-b7b8-878f7a8f58c5', '粤BV1P90', '', '', '', '', '', '', '雷克萨斯', '雷克萨斯CT200h', '');
-INSERT INTO `chelianginfo` VALUES ('9fd982ff-26f5-43ff-bfd3-0186ce30b07e', '68d59e9e-3259-4a4f-836f-381c5cbea080', '粤B0PW57', 'SQR7161M127', 'LVVDB11BXDD076704', '2013-07-03', 'AADA03909', '2015-07-01', '2015-07-01', '奇瑞', '奇瑞QQ', '人保');
-INSERT INTO `chelianginfo` VALUES ('7703ab51-213c-4868-8505-420bdbdf850b', '694baa99-fcbd-4e7f-a54e-a9b8cd9377cf', '粤BZ375C', '宝来牌FV7142TXATG', 'LFV2A215XC3614819', '2012-09-24', 'S63125', '2016-09-24', '2015-09-24', '大众', '宝来', '人保');
-INSERT INTO `chelianginfo` VALUES ('fce23866-eda3-46d0-916b-f2d6019b15c9', '699c89c9-9730-4b41-ad5c-147458bf1ba7', '粤B2411P', '北京现代BH7202DAY', 'LBEYFAKB0DY277869', '', 'DW365630', '', '', '现代', '现代', '人保');
-INSERT INTO `chelianginfo` VALUES ('88619f29-a8e9-4f15-bab1-a435ebd09194', '6a20a5c6-687b-4057-b785-14ad12e2986f', '粤G-64597', '未设置', '未设置', null, '', '', '', '宝马', '宝马2系', null);
-INSERT INTO `chelianginfo` VALUES ('cea29baa-3366-46ba-a675-fc5ed2dca514', '6db8c091-da15-4e6f-a899-f5e32b6f0115', '粤N939C', '东南牌DN7150', 'LDNM43GZX90206714', '2009-07-09', 'L029553', '2015-07-09', '2015-07-09', '东南', '东南', '人保');
-INSERT INTO `chelianginfo` VALUES ('82dc1d5b-ea48-4237-b892-2981680543e1', '6ecbd88c-250a-4eb6-b787-162f57bf4d00', '粤BG120E', '大众牌FV7207TFATG', 'LFV3A23C4C3126272', '2012-11-02', '163133', '2016-11-02', '2015-11-02', '大众', '迈腾', '人保');
-INSERT INTO `chelianginfo` VALUES ('3efc3da0-9e9a-4d8a-8bc8-84531d771f30', '6fc10235-1efd-44f2-a388-b2c557617774', '粤B850SM', '马自达JM7BL04Z', 'JM7BL04Z2B1208795', '2011-04-25', 'Z6943250', '2015-04-25', '2015-04-25', '马自达', '马自达3星骋三厢', '人保');
-INSERT INTO `chelianginfo` VALUES ('9c9c1da8-df71-4fca-8a90-9ce610ea8064', '6fda7c21-2fcf-4e28-8e5e-7a2d35786aa6', '粤BWX181', '俊逸牌DFL7180AB', 'LGBJB3E557Y008586', '2007-05-23', '010880T', '2015-05-23', '2015-05-23', '日产', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('c4850ba5-bc07-487c-b56f-9c684cf1d5e2', '706d31d8-d5f1-4c17-b03f-d66997a8b8e7', '粤BF95J9', '', '', '', '', '', '', '丰田', '花冠', '');
-INSERT INTO `chelianginfo` VALUES ('c78705e3-7161-4867-81a0-dd454e026df7', '7084814a-e0d1-4ee0-a843-ccda089849a6', '粤BZX198', '', '', '', '', '', '', '荣威', null, '');
-INSERT INTO `chelianginfo` VALUES ('e3cfea65-ee66-4f3e-abb7-d4800d9903e7', '718e404a-e424-4448-9d72-247cd6220487', '粤BS22N5', '', 'LDC828W2730004034', '', '000829', '', '', '东风', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('81c6f958-4688-4863-bdf9-f585f2814c8a', '723df19b-9e2f-4e54-af9b-c0e10ee734c1', '粤B670KP', '雪佛兰牌SGM7169MTA', 'LSGPC54U5CF067554', '2012-04-18', '120771469', '2016-04-18', '2015-04-18', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('24b4f631-6d15-4d67-9102-a10389a42026', '72782b98-631a-4426-b210-3c47b8353d90', '粤BZ028V', '东风日产牌EQ7250AC', 'LGBF1D078R141770', '2009-01-15', '412348A', '2016-01-15', '2016-01-15', '日产', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('ee0dd378-edc2-4bd6-b190-d9355292ba2f', '72e5ff88-8dce-4d8f-a37c-62fba0f7afe5', '粤B4723V', '大众牌FV7164FAAGG', 'LFV2B21K7C3278842', '2012-09-18', '588840', '2016-09-18', '2015-09-18', '大众', '高尔夫(第六代)', '人保');
-INSERT INTO `chelianginfo` VALUES ('0a2f6891-9ef0-455e-8c4f-5991e93af6e9', '734e84d6-9d8a-4efa-9272-44f1a8177891', '粤B056GE', '', '', '', '', '', '', '福特', null, '');
-INSERT INTO `chelianginfo` VALUES ('a4493ace-42da-4cf1-ace1-d4196a1c2e0d', '73a92312-1e57-4189-bdc5-ed294edad17e', '粤BR915T', '五菱牌LZW6407BF', 'LZWACAGA5B7094528', '2011-11-24', 'UB52521172', '2015-11-24', '2015-11-24', '五菱', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('ef544456-8727-4993-99a7-5c871edf2d57', '74094e8b-18fe-46b4-9ca4-0923ea1d6bd3', '粤BD66X1', '', '', '', '', '', '', '丰田', '皇冠', '');
-INSERT INTO `chelianginfo` VALUES ('0526b134-df08-4ed0-a06e-9a76491d90b0', '752fa437-2401-4d49-8fe8-5dfe61d2a324', '粤B6BS78', 'SGM7169TATB', 'LSGGG54E8CS288490', '2012-12-13', '122890195', '2016-12-13', '2015-12-13', '雪佛兰', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('56497990-0feb-48e5-b18c-7184eb03e565', '753b73da-e8c1-4af1-a569-00a525b6128b', '粤B7215U', '江铃牌JX6510H3', 'LETCJCDC1CHP19701', '2012-04-20', 'C3039730', '2015-04-20', '2015-04-20', '江铃', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('e13e48ba-8cd5-46a2-bba5-26372986155c', '757d7d95-b37f-4754-b7d8-f274a1277106', '粤B4VG00', '奥迪牌FV6461HBQWG', 'LFV3B28R6D3038206', '2013-08-16', '240172', '2015-08-16', '2015-08-16', '奥迪', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('6a76e7ec-602a-43f4-82c9-b265af691ac1', '76b2b12d-4dc5-47f0-8c18-eab4340fb347', '粤BRK325', '北京现代牌BH7162MW', 'LBEXDAEB86X404938', '2006-09-26', 'G4ED6B062881', '2015-09-26', '2015-09-26', '现代', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('f951be89-1007-45d0-8fb4-e07a486a2559', '77f5c4d8-7ca9-438a-b58b-5e2bbc2f0307', '粤BE701M', '斯柯达SVW7148PRD', 'LSVGK4556C2016505', '2012-03-31', 'B05572', '2016-03-31', '2015-03-28', '斯柯达', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('ad0c384b-013f-49e4-96d4-cd07ae37617c', '78019e92-b2d6-4518-88f0-272922c59c87', '赣F3V789', '', '', '', '', '', '', '现代', null, '');
-INSERT INTO `chelianginfo` VALUES ('bbfcbd2a-877e-4941-a446-0c10c50632d2', '781a4f67-bc98-4d94-9f7e-13fc5a451433', '粤BX13268', '', '', '', '', '', '', '丰田', null, '');
-INSERT INTO `chelianginfo` VALUES ('d98cb83d-b7af-4c37-a6aa-b6e0f8a473fc', '78acda2b-dfb1-4fb3-bee3-6325990787b0', '粤BR3W62', '东风牌LZ6460AQFE', 'LGG7B2D11CZ032594', '2012-05-17', '93D3B5071', '2016-05-17', '2015-05-17', '东风风行', '风行CM7', '人保');
-INSERT INTO `chelianginfo` VALUES ('dbbad636-cbfe-473b-a772-48d83dcfeeeb', '78eb058a-7603-4177-9125-f44464c92a8d', '粤BT7834', '', '', '', '', '', '', '皇冠', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('6c0726d8-ecbf-4834-8d4e-4a9e336e3e07', '79c37929-ece2-4726-891a-71c9a2a4ae89', '粤B70N36', '颐达牌DFL7160AC', 'LGBG12E298Y058972', '2008-04-03', '415952B', '2015-04-03', '2015-04-03', '日产', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('035a46cf-b104-4bc3-907a-8548b325c795', '7f04c242-4f05-46d1-ac53-b3fdfc155507', '粤B633N5', '', '', '', '', '', '', '江淮', '瑞风', '');
-INSERT INTO `chelianginfo` VALUES ('76e62c02-c342-401d-b5b0-ae314103eb69', '7f348760-8c42-4f54-b442-faa78a93070d', '粤B9397R', '大众牌FV7164FBDGG', 'LFV2A21K2C4062474', '2012-07-26', 'X33460', '2016-07-26', '2015-07-26', '大众', '速腾GLI', '人保');
-INSERT INTO `chelianginfo` VALUES ('65b4ddbf-5370-40f4-9126-00927550a3b1', '7f3c23b2-4220-48af-88f5-627239b4019d', '粤B675MH', '宝来牌FV7142TXATG', 'LFV2A2159B3522695', '2011-05-03', 'S35980', '2015-05-03', '2015-05-03', '大众', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('24a6e1a2-f9ab-4b65-85bf-1587fa2611f6', '7fdb6a16-1c2c-4622-abf1-363fb2ea5498', '粤BF1G60', '马自达牌CAF7151A1', 'LVSFDFAL1BN043619', '2012-02-28', '3309956', '2016-02-28', '2015-02-28', '马自达', '马自达2', '人保');
-INSERT INTO `chelianginfo` VALUES ('a5a58fe8-a42b-415f-9edf-6769288c6f02', '8097539c-9925-40da-87d8-ae2fb9dd4ecb', '粤B851UM', 'CAF7180B48', 'LVSHCAAE3BF734841', '2011-10-24', 'BA50572', '2015-10-24', '2015-10-24', '大众', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('f17fba31-7d20-4bbb-9dfc-98eda7ecdbdc', '809f0fc6-c733-420c-97e6-80e8f8d1643f', '粤BT7G38', '福克斯牌CA7163B4', 'LVSHCADB8CE115192', '2012-11-29', '3206319', '2016-11-29', '2015-11-28', '福特', '福克斯两厢(第二代)', '人保');
-INSERT INTO `chelianginfo` VALUES ('e8ff1da5-cf12-42a4-8fa2-d05791e2504a', '81040a5e-196f-483b-8799-be76e32e2249', '粤B685AY', '', '', '', '', '', '', '丰田', null, '');
-INSERT INTO `chelianginfo` VALUES ('31477cd2-6d28-4d94-a5d4-dc04af187baa', '816b33e9-fee9-499d-ac35-d9d6af69a93f', '粤BV40J0', '', '', '', '', '', '', '五菱', '五菱之光', '');
-INSERT INTO `chelianginfo` VALUES ('49db8171-f599-4e1f-983d-422205242434', '8284718c-3191-42bc-931d-4975eb2ff66c', '粤B8348Z', '骐达牌DFL7161AC', 'LGBG22E079Y21883', '2009-12-10', '607166C', '2015-12-10', '2015-12-10', '日产', '骐达', '人保');
-INSERT INTO `chelianginfo` VALUES ('20b64169-1c5e-40c7-8b97-b88d9c3d6df5', '841bafe2-a56e-4392-aece-d294ac47d560', '粤B3GW82', '高尔夫牌FV7144TFATG', 'LFV2B21K4D3513800', '2013-03-12', 'L61915', '2015-03-12', '2015-03-12', '大众', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('76c0f2e2-d3ac-4b14-bafa-f3f35ed1cc74', '841bf840-0df9-4be9-9b0a-d6735d49768b', '粤B92Q62', '', '', '', '', '', '', '五菱', '宏光', '');
-INSERT INTO `chelianginfo` VALUES ('2a98c633-89e4-4017-989c-f63ef49ae1ee', '85eaa1f5-6829-4d44-b57c-68c89da0be22', '粤B5MW15', '大众牌FV7187FBDWG', 'LFV3A23C3D3020445', '2013-05-10', '281816', '2015-05-10', '2015-05-10', '大众', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('8f2e977d-723e-4e51-bdad-517f869564b7', '85efaf4f-0040-4b92-a21d-046bcba19f16', '粤BG717E', '东风标致牌DC7202DTAA', 'LDCB13X41B2085899', '2011-12-30', '8505046', '2015-12-30', '2015-12-30', '标致', '标致508', '人保');
-INSERT INTO `chelianginfo` VALUES ('13de2124-bbfc-4628-ab8f-131572efcd24', '8704757d-8eea-4b7d-a332-6c55eaaa4d26', '粤B4D7D1', '', '', '', '', '', '', '别克', null, '');
-INSERT INTO `chelianginfo` VALUES ('930e5f6a-c6bd-4cdd-a1b5-cae1188de973', '881054c2-6638-45f9-b74e-943ff7310730', '粤BJ3S86', '五菱牌LZW6431MF', 'LZWADAGA1B8507889', '2011-03-04', 'UB12021216', '2016-03-04', '2016-03-04', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('8a489809-be26-4ebe-93f1-3283d820bb76', '89342b8d-b1d5-493b-9055-811ff1dea328', '粤BC291P', '', '', '', '', '', '', '日产', '日产', '');
-INSERT INTO `chelianginfo` VALUES ('f8ecc5fb-130a-43e3-82e8-2d4f8f366933', '897e3f33-c430-4823-aa47-276da9ffa078', '粤BC408R', '东风标致牌DC7204DTB', 'LDC943X33A0220923', '2010-04-15', '7502040', '2016-04-15', '2015-04-15', '标致', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('7279e3c7-11ea-4b7b-9e38-7005b4a5338b', '8ad559e4-91d6-4672-afad-e8be6287b971', '粤B07U43', 'SY7162VSB', 'LSYYBACA07K097965', '2008-08-12', 'CD70A4314', '2015-08-12', '2015-08-12', '中华', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('0b5a876b-f412-456f-a4d3-18da20280aa5', '8c416b5e-65be-4eea-8458-c345f3ab9739', '粤BC4E68', '', '', '', '', '', '', '江淮', '瑞风', '');
-INSERT INTO `chelianginfo` VALUES ('85a892d0-0d73-4eae-aab3-5a20f981e3a1', '8c734d40-d92a-4f49-a336-962431a443b5', '粤BE606U', '', '', '', '', '', '', '花冠', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('751f8303-50e7-4ced-ab41-f30b7289dab3', '8ce81e11-662e-4039-883a-31d6f84beb72', '粤B905UV', '高尔夫牌FV7164FATG', 'LFV2B21K0B3265123', '2011-09-28', '539255', '2015-09-28', '2015-09-28', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('663c6db7-758b-4d32-bf8c-38d055a92ae7', '8d167d39-add1-450e-a01a-bbb7586c6b2f', '粤BCOJ80', '雪佛兰牌SGM7169MTA', 'LSGPC54U9AF297675', '2012-01-11', '113461007', '2016-01-11', '2016-01-11', '雪佛兰', '新科鲁兹', '人保');
-INSERT INTO `chelianginfo` VALUES ('08a01674-1799-43ec-8f33-373d77309558', '8dc4f282-9395-403e-9a61-08965fcc4192', '粤B8NE19', '明锐牌SVW7146BBD', 'LSVNR21Z0D2017828', '2013-05-28', '395273', '2015-05-28', '2015-05-28', '斯柯达', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('dd946f75-ab94-4f75-86d1-c27c0371481d', '8e05a7b3-7232-4727-a416-76bcf800c09d', '粤B6WS89', '', '', '', '', '', '', '宝马', null, '');
-INSERT INTO `chelianginfo` VALUES ('43185508-6569-4c4f-828c-bb20a52637ee', '90e799ae-d029-4b7d-9aaa-60d5bd5e4545', '湘MKG121', '', '', '', '', '', '', '丰田', null, '');
-INSERT INTO `chelianginfo` VALUES ('09ffe172-baf6-49ff-849d-d630b6d690c0', '91a721c6-df6e-4d1c-bed3-9d67ee7337d3', '粤B6ZP35', '长城牌CC6460RM03', 'LGWEF4A58DF233088', '2013-10-09', 'SMP9902', '2015-10-09', '2015-10-09', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('8ea57fd5-c4df-45e6-a7d6-a23513a02a2f', '91d16d81-4364-49c9-b10f-f36bf212baaf', '粤B4WB46', '比亚迪牌QCJ6480S', 'LGXC14DG9C1118171', '2013-09-03', '312059721', '2015-09-03', '2015-09-03', '比亚迪', '比亚迪S6', '人保');
-INSERT INTO `chelianginfo` VALUES ('91665cbd-eaac-4af0-85c2-b2ee29ecb3ac', '93bef003-67de-4186-8dd3-9f1e25b068fc', '粤B7ZF66', '', '', '', '', '', '', '丰田', '花冠, 花冠', '');
-INSERT INTO `chelianginfo` VALUES ('bdd580b4-8747-4198-b7e6-ce258dc71090', '94217356-6f0b-4d52-bedd-3ac0766620e7', '粤B6804L', 'FV7142TXATG', 'LFV2A2151C3652407', '2012-10-12', 'S67098', '2016-10-12', '2015-10-12', '大众', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('08ccdafc-1134-4554-8e83-e76ba4677920', '955574f1-e97b-4a55-8400-b9d56ed677ae', '粤BZ923X', '东风日产牌EQ7250AC', 'LGBF1DE079R162376', '2009-05-13', '441090A', '2015-05-13', '2015-05-13', '日产', '天籁', '人保');
-INSERT INTO `chelianginfo` VALUES ('e40b39d6-90b8-4cfb-8ea4-3df3228479c6', '968f2426-d156-4471-bbb2-12325ec12340', '粤B022CZ', '', '', '', '', '', '', '皇冠', null, '');
-INSERT INTO `chelianginfo` VALUES ('3bfb325c-1fda-4474-b37d-b5921403871b', '96cf3e50-024b-48f4-9d0c-a49b495bf1e0', '粤BZ701D', '大众牌FV7187TFATG', 'LFV3A23C0C3063266', '2012-06-21', '152832', '2016-06-21', '2015-06-21', '', null, '');
-INSERT INTO `chelianginfo` VALUES ('b8ee87f7-be0f-43ba-975e-abe794ae6ecd', '978eeea3-daa3-4d54-9d1b-484b5a550bc7', '粤B0F242', '', '', '', '', '', '', '本田', null, '');
-INSERT INTO `chelianginfo` VALUES ('19eb7d1b-5869-4d78-a788-d3c83bbdc44e', '984f361b-bf90-4d9f-9cc3-8d5ef20e5714', '粤B0LN27', '启辰牌DFL7166AAD2', 'LGB612E03CS005481', '2013-05-31', '756948W', '2015-05-30', '2015-05-30', '日产', '启辰', '人保');
-INSERT INTO `chelianginfo` VALUES ('4167f7fa-eb1c-4534-8af9-a434a19a03ef', '99ac389f-6d9e-4409-a20e-dff3c9311c4e', '粤B528KH', '', '', '', '', '', '', '海马', null, '');
-INSERT INTO `chelianginfo` VALUES ('0c5cc23c-d082-4443-9010-8008ba5a6637', '9a776fcd-a827-4f82-87fa-22ebb65b7005', '湘H68749', '轩逸牌DFL7200AA', 'LGBH1AE026Y009915', '2007-08-20', '205880A', '2015-08-20', '2015-08-20', '日产', '日产', '人保');
-INSERT INTO `chelianginfo` VALUES ('e00f150b-6274-40af-9844-99d64cbc1553', '9a8a5e7b-af29-4a3c-9019-de65d782284c', '粤BX652K', '蒙牌迪欧CAF7205A41', 'LVSHBFDC3CF225585', '2012-03-22', 'CA06111', '2016-03-22', '2015-03-22', '福特', '蒙迪欧', '人保');
-INSERT INTO `chelianginfo` VALUES ('cfc5d81f-6cdc-4b95-b5e7-724000e64084', '9ac1398a-9b28-48fc-acdf-4ac0822e5096', '粤B5HN47', '长城牌CC7150QE09', 'LGWEF3K54DF049789', '2013-03-26', '1304003590', '2015-03-26', '2015-03-26', '长城', '腾翼', '人保');
-INSERT INTO `chelianginfo` VALUES ('bb47a23d-a2cc-4702-8646-6a99bd873d73', '9b0d6de6-a86e-4e17-b685-2336f2bb7d6e', '粤B591EK', '', '', '', '', '', '', '现代', '现代', '');
-INSERT INTO `chelianginfo` VALUES ('4d7fcf04-c884-4cd6-a9ec-541e535239c0', '9bfbbc9c-a7fe-4457-9d1a-d08284874be2', '粤B0RK39', '大众汽车牌SVW7147SRD', 'LSVND2185DN060453', '2013-07-15', '458881', '2015-07-15', '2015-07-15', '大众', '朗逸', '人保');
-INSERT INTO `chelianginfo` VALUES ('3db61f51-3742-4b88-b6c1-a5491bcf7298', '9c5ec304-a4a2-4d05-8d41-5cacea6312bb', '苏EEY323', '', '', '', '', '', '', '五菱', '荣光', '');
-INSERT INTO `chelianginfo` VALUES ('e6260765-416e-495d-9531-8487a5720594', '9ce02758-6d43-40b3-a502-380121abcc74', '桂C26206', '北京现代BH7270A', 'LNBSCCHK13X003253', '2003-08-19', 'G6BA3692999', '2015-08-19', '2015-08-19', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('3cda6967-b850-4747-a672-03f6e06e0789', '9ce41357-fa70-4bac-9481-73f1e5573e0c', '粤BB654H', '宝马1系', 'WBA1A1101CJ138437', '', 'A222J167M3B16A', '', '', '宝马', 'BMWwi16i', '');
-INSERT INTO `chelianginfo` VALUES ('1facc443-da5a-409d-b1ab-c0623ea4f72c', '9d4f8be4-d66c-4a20-9534-70b972d4ded8', '粤BWD546', '丰田牌TV7180GLX-13', 'LFMAC22C670815406', '2007-04-01', 'C14749', '2015-04-01', '2015-04-01', '丰田', '花冠', '人保');
-INSERT INTO `chelianginfo` VALUES ('f2bd5892-bbbd-44e7-925e-a2870225bd2c', '9e845e76-0b5f-4cfd-8f67-5f4b646ccaf0', '粤BE301Z', 'DC7164DTAM', 'LDC933L20B1481681', '2011-01-20', '8703049', '2015-01-20', '2015-01-20', '东风', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('5d078f78-6234-4a20-be47-3390a743b8f2', 'a01c42d7-851d-424d-b7a6-c6c5609a5586', '粤BX3P47', '', '', '', '', '', '', '别克', null, '');
-INSERT INTO `chelianginfo` VALUES ('4a48d2cf-f91c-4d65-af63-138ae9311c83', 'a121a6af-d805-4cc4-984b-709a461bf127', '粤B1KR15', '丰田牌GTM7201RS', 'LVGBH51K9DG070735', '2013-04-24', 'G119944', '2015-04-24', '2015-04-24', '丰田', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('49111106-62d5-4576-b67c-fb8a602178d0', 'a19a676f-f695-4e01-b44c-73ace125dae3', '粤BH603L', '', '', '', '', '', '', '日产', '日产', '');
-INSERT INTO `chelianginfo` VALUES ('0a3911e2-1d1b-4b98-b793-8ca47a855018', 'a1c2ac28-9f27-4dd9-ba57-b12041583393', '粤B294LL', '东风日产牌DFL7162AAC', 'LGBH12E0XDY271166', '2013-01-17', '233595W', '2016-01-17', '2016-01-17', '日产', '轩逸', '人保');
-INSERT INTO `chelianginfo` VALUES ('e6b7e592-3750-4f89-99cc-b0c13bee4f56', 'a2b26148-e284-494f-b3aa-764d2d1e02ee', '粤B781FJ', '', '', '', '', '', '', '卡迪拉克', null, '');
-INSERT INTO `chelianginfo` VALUES ('22a8fb82-9d69-4a37-9ed3-06bfe959e532', 'a2cce59e-5dd0-4827-9376-91dcc5f1771e', '粤B9688T', '', '', '', '', '', '', '福特', null, '');
-INSERT INTO `chelianginfo` VALUES ('963e090e-9741-4df9-b5e5-affea3c6d8e4', 'a32ae0c4-84bc-498f-8934-f1a6aa101d40', '粤B556EL', '思域牌DHW7180B', 'LVHFA1631A5030345', '2010-03-30', '5030316', '2016-03-30', '2015-03-28', '本田', '思域', '人保');
-INSERT INTO `chelianginfo` VALUES ('f83166a9-6fa3-4e8b-bf20-e2f7971f0b21', 'a36c0aff-a190-48a1-a7f2-c4ec00e34838', '粤B8G055', '', '', '', '', '', '', '雪铁龙', null, '');
-INSERT INTO `chelianginfo` VALUES ('70facc27-a865-4930-a29b-b22f02136018', 'a39799ab-7daa-447c-8ba7-799a44def3b7', '粤B271PQ', '比亚迪牌QCJ7153A', 'LGXC16DF6B0145223', '2011-08-18', '211068061', '2015-08-18', '2015-08-18', '比亚迪', '比亚迪L3', '人保');
-INSERT INTO `chelianginfo` VALUES ('c7e8772b-7d08-4c1f-8b15-704cfc36a26e', 'a3a0eebe-173f-4cdf-814d-04693ed9b174', '粤BE84J3', '', '', '', '', '', '', '雷克萨斯', null, '');
-INSERT INTO `chelianginfo` VALUES ('c90e38b5-a134-4cdc-ae38-446478bb4665', 'a47f2715-5aed-4889-a8d9-27981a4546a1', '粤B48756', '', '15663AFSAF', '2015-01-06', 'FSGE84888', '2015-03-27', '2015-03-19', '奔驰', '奔驰A级', '');
-INSERT INTO `chelianginfo` VALUES ('7a00ba81-a555-4d78-9b37-5fd31d95ebd1', 'a532cdca-15e9-44cc-90a2-5e2b01002919', '粤BL708X', 'SGM7168ATA', 'LSGJA52U19H051654', '2009-04-24', '93080114', '2015-04-24', '2015-04-24', '别克', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('26d42f10-b716-470b-95e1-8b2be002697b', 'a65c840a-32f8-42ff-aa5e-722d28ef0c25', '粤BK1C68', '夏利TJ7133UE4S', 'LFPX2ACA8B5E25560', '2012-01-01', 'HB851897', '2016-01-01', '2016-01-01', '夏利', '夏利A+三厢', '平安');
-INSERT INTO `chelianginfo` VALUES ('f04d678c-4a22-47c0-85d7-8a4e9158096e', 'a99ed46e-2475-4a77-a7df-91ad83eb4121', '粤B721RV', '丰田牌TV7163GLM', 'LFMAPE2C4B0277870', '2011-06-01', 'E798464', '2015-06-01', '2015-06-01', '丰田', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('fdfe16a9-5b15-45fd-9932-ea519fc2a302', 'a9dd36ff-c3a5-46be-99c9-56ab1c753ff1', '粤B65KB', '', '', '', '', '', '', '丰田', null, '');
-INSERT INTO `chelianginfo` VALUES ('69dfddd4-5f75-43d5-a992-6a0c609a1170', 'aa29c4b1-5de6-419b-a7c6-1bffbbb0cf18', '粤B166YY', 'BUICKSGM7160SLYAT', 'LSGSJ52N32S118065', '2001-12-12', 'L0110925220', '2015-12-12', '2015-12-12', '别克', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('a69d0c14-383f-428d-b238-ae0616e83c54', 'ad575a03-6342-45a6-906f-e2f1ed145b3e', '粤B66P05', '丰田普瑞维亚JTEGD54M68A', 'JTEGD54M68A007730', '2008-04-25', '2AZH019129', '2015-04-25', '2015-04-25', '丰田', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('f659662f-26fd-41b3-96a6-6b4257961b7e', 'ada94ff7-d237-407d-ad3a-2c2b9d899c6a', '粤BR706G', '', 'LVVDB11B8CD138759', '', 'AACC03943', '', '', '奇瑞', null, '');
-INSERT INTO `chelianginfo` VALUES ('6734ebf8-1e71-4d6c-9ebf-a7b8f3fd75e8', 'adc1d6b9-a0b2-49d0-82b2-c061215f9054', '粤B869TT', '', '', '', '', '', '', '丰田', null, '');
-INSERT INTO `chelianginfo` VALUES ('531561b1-a471-4f60-963e-ecb5bbe0b4a0', 'adf4483e-17d7-4b83-9d8c-c0d624c552a3', '粤B973SF', 'DFL6460VECF', 'LGBM2DE44BS018452', '2011-06-22', '191311B', '2015-06-22', '2015-06-22', '东风', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('e353d30e-bbe6-42a4-8a20-211630c6c285', 'ae27dc2a-1f44-4417-8300-7d58dbe8eb46', '粤BR73Y9', '蓝龙SUPTF69YD1W', 'SUPTF69YD1W139013', '2002-04-30', 'A15SMS052692R', '2015-04-30', '2015-04-30', '蓝龙', '蓝龙', '人保');
-INSERT INTO `chelianginfo` VALUES ('25d92644-0690-4895-b87f-6f5879eebcc7', 'ae5cca9d-0939-469c-a1bc-a2739ba79601', '粤BM6170', '', '', '', '', '', '', '日产', '日产', '');
-INSERT INTO `chelianginfo` VALUES ('94002239-0729-4ad2-98d6-12ee25df6911', 'aea56bac-ca06-44d7-a8aa-30d245192f52', '粤Y31F82', '', '', '', '', '', '', '起亚', null, '');
-INSERT INTO `chelianginfo` VALUES ('c2b4a18c-742a-47cc-9b75-389e6fee45ad', 'aef5ce25-6c49-47bb-aff4-df978a4ab5d9', '粤B847WZ', '东风雪铁龙牌DC7165LXBA', 'LDCC41T33D1645802', '2013-11-20', '1032768', '2015-11-20', '2015-11-20', '雪铁龙', '世嘉两厢', '人保');
-INSERT INTO `chelianginfo` VALUES ('963b1697-6606-4837-b66f-23665413e67e', 'af01db16-d4c0-4999-b092-125974fc25c3', '粤BV8J72', '比亚迪牌QCJ7150A5', 'LGXC16AF8A0024695', '2010-05-11', '4DA1A5585', '2016-05-11', '2015-05-11', '比亚迪', '比亚迪F3', '人保');
-INSERT INTO `chelianginfo` VALUES ('fc7ab960-f3ed-4144-b879-a2996c76a61b', 'af9b8686-796b-42fd-9f6f-1ca82affa174', '粤BR303N', 'GTM7251GB', 'LVGBF53K6CG063663', '20152-11-28', 'H143562', '2016-11-28', '2015-11-28', '丰田', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('02e0953a-6f3a-447e-bfc8-82a784b167fc', 'b0504aa6-747d-4150-95fe-5218929e105c', '粤B706SN', '', '', '', '', '', '', '长安', '长安CX20', '');
-INSERT INTO `chelianginfo` VALUES ('62d945a0-595b-4c03-9f76-5a718261daeb', 'b0a29bb2-cf13-4743-b2df-749ddec63706', '粤BZ596C', '蒙迪欧牌CAF7205A41', 'LVSHBFDC6BF158477', '2011-07-05', 'BA01233', '2015-07-05', '2015-07-05', '福特', '致胜', '人保');
-INSERT INTO `chelianginfo` VALUES ('516927a6-b6b0-4149-97a7-759f0e0f9d17', 'b0ce87df-e93d-49d5-a747-e19dcf99faa3', '粤BX920W', '东风标致牌DC7164DTA', 'LDC933L2390896929', '2009-03-26', '5118754', '2015-03-26', '2015-03-26', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('92cea959-822e-4980-9a15-0eb5b08be670', 'b1b3c52f-0bee-4af0-a44e-2763638bcf95', '粤B486EC', '', '', '', '', '', '', '雪铁龙', null, '');
-INSERT INTO `chelianginfo` VALUES ('8efc0970-e4bf-4a14-91c6-28b2954248c7', 'b278780f-577c-4969-9037-cfcb6e9ac66e', '粤B9GK92', '', '', '', '', '', '', '雪佛兰', null, '');
-INSERT INTO `chelianginfo` VALUES ('e40b39d6-90b8-4cfb-8ea4-3df3228479c6', 'b3aa3cc2-ea5d-4887-845d-fff592c90037', '粤B855VR', '', '', '', '', '', '', '保时捷', null, '');
-INSERT INTO `chelianginfo` VALUES ('f7b78555-ffab-46bd-857a-fd69a7119a18', 'b453f0f7-bce7-4dbe-8eba-b60d36c47387', '粤B029LN', '', '', '', '', '', '', '斯柯达', null, '');
-INSERT INTO `chelianginfo` VALUES ('a8a48d40-f9f4-427b-9f44-f4b69f80fed0', 'b543c128-51f9-43bf-a94b-6a135371dd8c', '粤BWX341', '', '', '', '', '', '', '丰田', null, '');
-INSERT INTO `chelianginfo` VALUES ('3b331451-58d4-472f-86e2-ebddf69a68c6', 'b5862da2-b810-47e2-a037-c54bd6eb3c00', '粤B428DE', '雪佛兰牌SGM7184ATA', 'LSGPC54R7AF077575', '2010-05-29', '101240566', '2016-05-28', '2015-05-30', '雪佛兰', '新科鲁兹', '人保');
-INSERT INTO `chelianginfo` VALUES ('eebb5d78-5374-4499-a39b-941a88b5d0d8', 'b60b8da0-c959-42f3-9602-7e02dd30e14a', '粤B1F11', '', '', '', '', '', '', '本田', null, '');
-INSERT INTO `chelianginfo` VALUES ('2476511d-b3a4-43f1-ba9c-95269c822a00', 'b7227e61-9fea-4ce8-9590-ba5051cf5bf0', '粤B050TL', '', '', '', '', '', '', '雪佛兰', null, '');
-INSERT INTO `chelianginfo` VALUES ('2556ede1-0ead-4dea-8f14-175255f8d80a', 'b7d3533b-4b20-4585-8ab4-c7f3e9333f0a', '粤BN716E', '', '', '', '', '', '', '奇瑞', null, '');
-INSERT INTO `chelianginfo` VALUES ('c25f85ea-8465-4ea6-8ec6-8afd0ae5e001', 'b8ba127a-032f-4c8e-bb26-99c1b6b11d37', '粤B878PE', '', '', '', '', '', '', '日产', '日产', '');
-INSERT INTO `chelianginfo` VALUES ('f0fa495b-1faf-4823-a18d-11e13f24f91c', 'b90c0d9d-1b02-42da-b172-97f56c99091a', '粤B37632', '福特牌CAF7153A4', 'LVSHFFAL5DF639493', '2013-12-17', 'DA05327', '2015-12-17', '2015-12-17', '福特', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('231365e4-5989-4672-85e0-870d25a2455e', 'baef3c52-90c1-4f3c-b516-9200a5d4d20f', '粤BN49A2', '丰田牌TV7181GL-1D', 'LFMARE2C090230050', '2009-11-20', 'E485462', '2015-11-20', '2015-11-20', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('2bf9b0d4-c3df-4b51-9514-b63739190c84', 'bc570107-4d99-4b10-b85c-8e5713fc97a5', '粤BW6T11', '吉利牌JL7152D', 'LB37624S6CL044064', '2012-09-24', 'C7L424018', '2016-09-24', '2015-09-24', '吉利', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('c56ae8e5-0b1f-4058-8c44-ecc05d93b72c', 'bc581d2c-25c3-4fa9-a98c-c41e4e5ba4f0', '粤BZ081A', '丰田牌TV6460GKX_1', 'LFMJW30F1B0120625', '2011-08-19', 'F721670', '2015-08-19', '2015-08-19', '丰田', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('9481117c-7efe-4436-aedf-d67f28e4e1a7', 'bc6580a1-ca5e-4b59-b400-d798c8729957', '粤BS4T88', '', '', '', '', '', '', '丰田', null, '');
-INSERT INTO `chelianginfo` VALUES ('928e0780-f23d-4028-97ee-ee96a343b4e2', 'bd374fc8-5b7f-4026-afd2-f250b36742eb', '粤B8064T', '起亚牌YQZ7162AE3', 'LJDDAA22780225156', '2008-03-25', '85180458', '2015-03-25', '2015-03-25', '起亚', '赛拉图三厢', '人保');
-INSERT INTO `chelianginfo` VALUES ('a553b8fd-fb90-491a-88cb-00bdb488343d', 'be03c8f9-d7c5-4a3d-9537-c45fec5dc6b2', '粤B6SX37', '东风牌EQ6394PF7', 'LVZZ32F71CC907586', '2013-07-03', '12628235', '2015-07-03', '2015-07-03', '东风', '小康K17', '人保');
-INSERT INTO `chelianginfo` VALUES ('b334812b-8c20-4563-98cb-36ff457f49d1', 'be8ca8de-7761-430e-99d3-edfce2d80525', '粤BX870X', '', '', '', '', '', '', '马自达', '马自达3经典', '人保');
-INSERT INTO `chelianginfo` VALUES ('cb0d6647-52e6-4bbb-bcb1-a5006d8dacb0', 'bed4a91a-7e3b-4bdd-8ddb-663b6ff0d832', '粤BTOG45', '北京现代牌BH7141MY', 'LBERCACB0CX374957', '2013-01-11', 'CB617571', '2017-01-17', '2016-01-17', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('0c832d20-c59f-42e5-8f49-2d5b29d754f8', 'bef38304-76d1-4f8a-aa0b-689d1c2c20ca', '粤B1273Z', '', '', '', '', '', '', '福特', null, '');
-INSERT INTO `chelianginfo` VALUES ('e3d239ae-984f-4ce8-8c4d-5d50c3b04ac0', 'bf038b5f-535f-4c76-8d1a-8e1ce5ea9029', '粤BV153C', '', '', '', '', '', '', '丰田', null, '');
-INSERT INTO `chelianginfo` VALUES ('9da51f31-33b1-4e85-aeb4-715f497f7a32', 'bf3b1f45-447d-4d52-b7a3-1ee3093bf100', '粤B0CR99', '高尔夫牌FV7144TFG', 'LFV2B11K8C3315617', '2013-01-08', 'L45199', '2016-01-08', '2016-01-08', '大众', '高尔夫R', '人保');
-INSERT INTO `chelianginfo` VALUES ('ca4264c4-aefa-4b69-8d27-cf4ac65bcdae', 'bff90503-6981-42b7-ae93-5a965610be7b', '粤B925GJ', '东风日产牌DFL7201EC', 'LGBL2AE09AY076057', '2010-07-29', '254829T', '2016-07-29', '2015-07-29', '日产', '逍客', '人保');
-INSERT INTO `chelianginfo` VALUES ('a3aea6b9-c913-4e21-88e4-63676eb17501', 'c15e89d1-770a-40b0-869e-d25e1b470fae', '粤BHQ339', '天籁牌EQ7230AA', 'LGBF1CE065R123413', '2005-07-22', 'VQ23 097647', '2015-07-22', '2015-07-22', '日产', '天籁', '人保');
-INSERT INTO `chelianginfo` VALUES ('cebae808-c489-45da-bcbe-040bba4cbd6b', 'c1ccabb3-dd5e-42dc-8d7d-ff7d7c9150ec', '粤BT5P33', '长城牌CC6460RM40', 'LGWEFEA57CF127204', '2012-11-21', '121167394', '2016-11-21', '2015-11-21', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('d5948424-f131-429d-9adf-a1b90c074907', 'c2bf6ea6-7e4c-4302-b9cf-4c730ad31b9d', '粤B4J298', '丰田（TOYOTA）GL/ECT', 'LTVBA433830008273', '2003-04-07', '5A*D127887*', '2015-04-07', '2015-04-07', '丰田', '威驰', '人保');
-INSERT INTO `chelianginfo` VALUES ('0e038d51-d5f3-4c38-b861-1b2cf149aac4', 'c30ca4d4-ee62-470a-b318-8f58732e32a8', '粤BRY023', '', '', '', '', '', '', '中华', '中华', '');
-INSERT INTO `chelianginfo` VALUES ('22aa9c52-3281-4678-9aa6-8c74d2355fd0', 'c30df3bb-2f46-47a4-a72c-75c5f6ea159f', '粤B6C1T0', '', '', '', '', '', '', '本田', null, '');
-INSERT INTO `chelianginfo` VALUES ('1574c5e2-fd01-45f6-b54b-2c1921b44186', 'c46105a5-a497-43f4-8606-854265f6fe7c', '粤B986YZ', '', '', '', '', '', '', '马自达', null, '');
-INSERT INTO `chelianginfo` VALUES ('2b295547-ae9b-4106-969a-665ed88ae6b7', 'c46209bf-c7e2-4a53-a519-7682ddf7a573', '粤BL703L', '马自达牌CA7201AT3', 'LFPH4ABC691A13186', '2009-04-29', '80057138', '2015-04-29', '2015-04-29', '马自达', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('824ed702-39be-40a0-9bc3-fb6e9e3cbbe6', 'c4d61264-a2d3-432d-8cdc-d584aa1e8700', '粤B739UC', '雅阁牌HG7241AB', 'LHGCP2689B8035518', '2011-11-03', '8135525', '2015-11-03', '2015-11-03', '本田', '雅阁(7代)', '人保');
-INSERT INTO `chelianginfo` VALUES ('77a85973-7f35-45bf-b127-1bfdc2caeed6', 'c4ed58ab-d08e-4d21-b36c-0f7117fa1a35', '粤BN195R', '奇瑞牌SQR7161M117', 'LVVDC11B6BD469190', '2012-01-04', 'AABM00285', '2016-01-04', '2016-01-04', '奇瑞', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('82334728-4e2d-4ccf-9e27-1299422d207a', 'c4f4b52c-936c-42ab-a85b-09b1a22546ae', '粤B3GB49', '朗逸牌SVW7167LSD', 'LSVAL4185D2046311', '2013-03-21', '384898', '2015-03-21', '2015-03-21', '大众', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('871f2cef-e21b-4755-ad02-321ef1b5cb16', 'c56b5987-8721-4a98-9f9e-1357672620ad', '粤BE039Y', '波罗牌SVW7144DRD', 'LSVNS29J1B2020480', '2011-06-20', '372789', '2015-06-20', '2015-06-20', '大众', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('718101eb-c5fa-4918-8055-096e434926d6', 'c8227dc3-1c2a-4973-9362-cfc4506278ea', '粤BS02K0', '东风标致牌DC7164DTDM', 'LDC953L21B1813329', '2012-02-10', '8787656', '2016-02-10', '2016-02-10', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('4ff412f8-1eb2-4cb1-9dd8-08abdf13d8bb', 'c8a88d78-e7b4-47bb-9f50-b73bfad3000a', '粤B506XS', '', '', '', '', '', '', '雪佛兰', null, '');
-INSERT INTO `chelianginfo` VALUES ('6f466552-d526-40c3-992d-9499bb35c77a', 'c8b70f8d-cd57-4c0d-8d6e-04358bb70b5d', '粤B7489N', '轩逸牌DFL7162ACC', 'LGBH12E009Y058461', '2009-06-12', '426155C', '2015-06-12', '2015-06-12', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('4c5878c7-06fa-40ab-b341-0fb359eabd5b', 'cd25a1ac-ceec-4274-bf26-3a4e76b2824a', '粤BQY506', '东风雪铁龙牌DC7205', 'LDCC43X3660412611', '2006-09-08', 'PSARFN10LH3X7006093', '2015-09-08', '2015-09-08', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('6510be80-eb98-4dde-8b97-fc967fdd5fc6', 'ceaf199e-1d4d-46db-951a-8d4d42f25134', '粤BX4R67', '', '', '', '', '', '', '本田', null, '');
-INSERT INTO `chelianginfo` VALUES ('a1a611f9-e4e0-434d-bb44-7f30187a8c28', 'cf6ae315-da45-449d-a08f-60f063e73b07', '粤B056MT', '', '', '', '', '', '', '本田', null, '');
-INSERT INTO `chelianginfo` VALUES ('fcb71abc-5716-4c1f-a747-9931fb9a2b3c', 'cff370a2-c299-412a-9439-42b3a46f315c', '粤B28A91', '五菱牌LZW6450PF', 'LZWACAGA2E7085533', '2014-07-03', 'UE60320034', '2016-07-03', '2015-07-03', '五菱', '荣光', '人保');
-INSERT INTO `chelianginfo` VALUES ('9e0dfb22-9ba8-4916-a7f2-7644abef1ddb', 'd0cb5794-a0b7-41e3-aa5a-87d988eb0db2', '粤B681HY', '朗逸牌SVW7207CPD', 'LSVAE418792761902', '2010-01-19', '033002', '2016-01-19', '2016-01-19', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('053218ec-c6d1-46e2-a9f0-f7571ae6b40f', 'd10dd106-70be-4843-815d-21c68160d3a2', '粤BL375F', '福克斯牌CAF7163A4', 'LVSHCFDB8CE097371', '2012-11-15', '3188910', '2016-11-15', '2015-11-15', '福特', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('107bcd77-3dae-4879-87c9-5f57ddc02be2', 'd17fbe16-a51b-4985-8105-de32650d2f4e', '粤BY091A', '比亚迪牌', 'LGXC16DF4C0049Z19', '2011-04-25', '212324050', '2016-04-25', '2015-04-25', '比亚迪', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('37ad1810-2393-488b-9414-e06666edcb14', 'd20c1b92-afd9-4ef4-8167-9009abc1cd9f', '粤BY6C65', '起亚牌YQZ7204A', 'LJDKAA243C0073734', '20121013', 'CW131837', '2016-10-23', '2015-10-23', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('ee74f488-7963-47c6-ac60-3cdf46197709', 'd20d5d1d-2e86-4732-9633-1765e5d60702', '粤B594CD', '福特牌CAF7152A1', 'LVSHFFAL6BN166982', '2011-08-16', '3286814', '2015-08-16', '2015-08-16', '福特', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('dd2e60f6-441d-4182-aa60-3fd1066b1c05', 'd27c85aa-6c0b-4588-a425-0ad0eb3352a5', '粤B0Q07', '', '', '', '', '', '', '本田', null, '');
-INSERT INTO `chelianginfo` VALUES ('e610c1f0-6836-424d-9dcf-0c9609e0f988', 'd308de65-ef7e-4f7d-b220-534f90ec4c5a', '粤BC039C', '', '', '', '', '', '', '本田', null, '');
-INSERT INTO `chelianginfo` VALUES ('eee7971b-3b4b-43d1-a9a6-a8736cd1033c', 'd4d80bab-e812-42bc-8759-a22b301fb647', '粤B9YU31', '福克斯牌', 'LVSHCFDBXDE363202', '2013-10-11', '3389900', '2015-10-11', '2015-10-11', '福特', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('ba086870-be9c-4dc5-8f92-017cf4f1b505', 'd5aa369e-9530-4999-b679-7383d224d918', '粤BD1C51', '日产风度牌JN1CAJA32U0', '037509', '1997-11-03', '159928', '2015-11-03', '2015-11-03', '日产', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('21ab7dd8-5807-4c7d-bb4d-bad368436d4b', 'd5eaa503-9dca-4767-b55f-aa9d72bd1963', '粤B1TH19', '', '', '', '', '', '', '奥迪', null, '');
-INSERT INTO `chelianginfo` VALUES ('4cf909e5-64a8-4833-a730-a349d4d6b2dc', 'd6903084-d1b6-4257-82ac-0585dc7372a7', '粤B6D9C2', '长安牌SC6428H4', 'LS4ASB3R4EF058199', '2014-11-28', 'E37J007490', '2016-11-28', '2015-11-28', '长安', '长安CS35', '人保');
-INSERT INTO `chelianginfo` VALUES ('3e26ea9c-ad86-4d31-ad0f-d3a040c68d4c', 'd7ab20e6-192c-43eb-a70a-2740aafd775f', '粤B686YA', '天籁牌EQ7230BB', 'LGBF1CE077R218520', '2008-02-29', '235755', '2016-02-29', '2016-02-29', '日产', '天籁', '人保');
-INSERT INTO `chelianginfo` VALUES ('f7be0a06-26c0-408a-b07a-f79d411e5689', 'da12c783-7a77-4578-ab2e-d26fd6c3c187', '粤BT191Y', '', '', '', '', '', '', '宝马', null, '');
-INSERT INTO `chelianginfo` VALUES ('9e2daf1a-14fc-41df-9024-fa965c7c1d30', 'da69df95-fdd7-4c89-9427-6b384f3eefa1', '粤B695XF', '马自达牌CAM6460B', 'LVRHDCAC6DN024821', '2013-11-29', '3115612', '2015-11-28', '2015-11-28', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('e05d6b81-7555-4e7d-8d9a-d79be6a80cb5', 'da72ea75-b485-4ab2-877e-9a693d9992c3', '粤BLL933', '丰田牌TV7250V3', 'LTVBJ222X60013962', '2006-01-23', '5GR C043195', '2016-01-23', '2016-01-23', '丰田', '锐志', '人保');
-INSERT INTO `chelianginfo` VALUES ('77a889d5-9bb4-4f49-ab0d-e1522d8d56b9', 'db1483b7-ef94-4ce5-b0e3-907e26650c5f', '粤B8A330', '', '', '', '', '2014-01-20', '', '大众', null, '');
-INSERT INTO `chelianginfo` VALUES ('292a7b8e-fc3d-4aa9-8eae-0b602d43e306', 'dba575c0-55c2-4ba1-95dc-faeb9092080b', '粤BE020G', '北京现代牌BH7141AY', 'LBERCADB9BX142600', '2011-11-11', 'BB732654', '2015-11-11', '2015-11-11', '北京现代', '瑞纳', '人保');
-INSERT INTO `chelianginfo` VALUES ('efdc5355-39e1-4ebc-bb44-ff7a03e3b5e2', 'dbc203bd-8c18-4c57-bc84-b1452cd7f679', '粤BW352R', '东风日产牌EQ7250AC', 'LGBF1DE03CR097257', '2012-05-23', '192691M', '2016-05-23', '2015-05-23', '日产', '天籁', '人保');
-INSERT INTO `chelianginfo` VALUES ('44139bc6-3477-4951-90aa-9647a7c329a1', 'dc0bfe80-f1d4-43ac-8f1c-74b7a5fb24de', '粤B926KZ', '', '', '', '', '', '', '福特', null, '');
-INSERT INTO `chelianginfo` VALUES ('c2fbbea4-9e8e-4f9f-ab14-f189d896d154', 'dc80f13e-dd8f-4eae-96d0-b174047a3e25', '粤B945CC', '东风日产牌DFL6460MECF', 'LGBM2DE62AY006104', '2010-06-03', '947625A', '2016-06-03', '2015-06-03', '日产', '奇骏', '人保');
-INSERT INTO `chelianginfo` VALUES ('df72a510-e9da-4ff6-b2fe-0cc39ce63fc6', 'dd517698-f57d-4fb9-a768-c0467e7570fb', '浙BRD750', '', '', '', '', '', '', '陆风', '陆风X8', '');
-INSERT INTO `chelianginfo` VALUES ('90902d15-2d06-4a83-9132-a579ccc82b63', 'ddc179f2-b929-40d7-aa9c-9ce84df310b4', '粤B8TB56', 'FV7166ATG', 'LFV2A21K693001207', '2009-02-13', '255832', '2015-07-26', '2015-07-26', '大众', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('2806651c-0933-4d26-a2f4-cccae5c35eb8', 'ddc48b70-7d3b-4124-b8d3-c32b889ff35c', '粤B0TZ28', '福克斯牌CAF7180B48', 'LVSFCAAE3DF555497', '2013-08-21', 'DA46851', '2015-08-21', '2015-08-21', '福特', '福克斯两厢(第二代)', '人保');
-INSERT INTO `chelianginfo` VALUES ('39935a02-2ccd-4287-b5fb-9d7c67fc29e4', 'debc683a-0c01-429f-aacc-51a3b1804c06', '粤B907VB', '雪佛兰牌SGM7209ATA', 'LSGGG54Y7DS146322', '2013-10-22', '132210143', '2015-10-22', '2015-10-22', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('a9d29a1f-72f5-4a34-974c-f2576f2cbbe5', 'df49169c-0faf-43eb-b61a-442c217a98e3', '粤BDK856', '', '', '', '', '', '', '本田', '雅阁(7代)', '');
-INSERT INTO `chelianginfo` VALUES ('09512a2b-7186-47a8-9782-f82fb5d644af', 'dfb36f01-c7c4-4157-8fb8-0fa0b0b1d240', '粤B12345', '', '', '', '', '', '', '哈飞', '路宝', '');
-INSERT INTO `chelianginfo` VALUES ('7ff9066e-be14-4fc9-af83-14b4eb5874cd', 'e0263b81-3b08-4423-81e5-04aab09cb193', '粤B526KH', '', '', '', '', '', '', '海马', null, '');
-INSERT INTO `chelianginfo` VALUES ('2de7b406-14f7-45c1-bf65-d5889b8f1b44', 'e05dec4f-ad3c-466f-9877-b5e1fa5df1d2', '粤BV15V0', '', '', '', '', '', '', '本田', '杰德', '');
-INSERT INTO `chelianginfo` VALUES ('736ee3a8-62df-4828-8da4-966aa516f5e3', 'e32c92c1-f6e2-4c0d-be80-e763fc91a5d2', '粤BD65A2', '江淮牌HFC6470A3BE3', 'LJ16AA23877038433', '2007-11-22', '73036711', '2015-11-22', '2015-11-22', '江淮', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('b1bbf5b1-6c20-4b2d-a985-24ccd085ab96', 'e384f913-abca-4ce1-a4f2-63001b2a6c86', '粤B8NW81', '起亚牌YQZ7169A', 'LJDMAA220D0073246', '2013-06-28', 'D5577202', '2015-06-28', '2015-06-28', '起亚', '起亚K3', '人保');
-INSERT INTO `chelianginfo` VALUES ('f56fc328-0e9c-490a-8b47-203a5450033b', 'e411219e-2a58-48fa-96ab-e2e0ec183e6c', '粤BQ119H', '', '', '', '', '', '', '江淮', null, '');
-INSERT INTO `chelianginfo` VALUES ('5cafab8e-fcb8-4306-b678-a94ffef922a2', 'e4904c3f-0e13-4323-b7ae-2e65c74c9ce4', '粤BV9591', '福克斯牌CAF7163A4', 'LVSHCFDB4EE541316', '2014-04-14', '3490807', '2016-04-14', '2015-04-14', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('d04931df-14af-4c19-8286-0e849bfaa9c8', 'e5479f4a-fefa-46c4-beb8-75a22812db86', 'B5HM72', '', '', '', '', '2013-03-25', '', '启辰', '晨风', '');
-INSERT INTO `chelianginfo` VALUES ('24ae628c-d5e2-4ed2-b1d3-5cb8e45472ba', 'e5d81476-1190-4e61-a7b6-b430cbff4bae', '粤BQ7P27', '雪佛兰牌SGM7187MTA', 'LSGVA54R9CY177150', '2012-04-23', '113390087', '2016-04-23', '2015-04-23', '雪佛兰', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('263213f4-e470-42a9-abf4-f199ae9b0c6f', 'e61f3127-d049-40e6-8e8b-acd2af31fca3', '粤BM846P', '', '', '', '', '', '', '日产', null, '');
-INSERT INTO `chelianginfo` VALUES ('720930ea-604f-47b1-a87b-7ee1159401ab', 'e6533af2-a273-418d-9468-7f574c9ed8d9', '粤B0949X', '', '', '', '', '', '', '宝马', null, '');
-INSERT INTO `chelianginfo` VALUES ('5adf3275-c56e-47de-b882-fc7e9506fa22', 'e7943ed8-efb0-4fe3-8115-1d03f960f42c', '粤BY5F27', '大众汽车牌SVW7147SRD', 'LSVND6186CN018606', '2012-10-31', '343916', '2016-10-29', '2015-10-31', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('dbc8dbf6-7fe4-470e-bf04-320276604f5c', 'e80ea3f5-5895-4216-beec-997c3fe0d34e', '粤B799TS', '', '', '', '', '', '', '丰田', '丰田86', '');
-INSERT INTO `chelianginfo` VALUES ('f9fa50f4-7ef2-413c-af9e-72df48b06407', 'e872aea8-8539-46f8-82e1-252e0981afe0', '粤BR68B63', '', '', '', '', '', '', '雪铁龙', null, '');
-INSERT INTO `chelianginfo` VALUES ('baa5c356-4ba4-4e31-9ea6-71fcf1fbaccb', 'e87bac56-178d-45ed-b624-0a367fc4b65b', '粤B027BL', '宝来牌FV7162XATG', 'LFV2A2153A3076218', '2010-10-18', 'N50348', '2016-10-18', '2015-10-18', '大众', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('74bf3483-65e4-4555-9d94-3e1d6b962a6a', 'e8c7702e-03b0-466b-a071-4a38f414c5c1', '粤B2JD86', '', '', '', '', '', '', '奔驰', null, '');
-INSERT INTO `chelianginfo` VALUES ('f76edcc3-76c1-4a4e-a3c0-cc845fdbc4d3', 'e9ae84c1-64b1-4fd1-8602-ae337a52f9ef', '粤B9QB65', '福克斯牌CAF7163M4', 'LVSHCFMB2DE293128', '2013-07-19', '3339984', '2015-07-19', '2015-07-19', '福特', '福克斯三厢(第三代)', '人保');
-INSERT INTO `chelianginfo` VALUES ('70c06749-0808-4165-98e2-36dd758e67b7', 'eaeb320f-8abe-449a-a7bb-fd18343138fd', '粤B845FJ', '迈腾牌FV7147TATG', 'LFV2A23C3A3050343', '2010-10-21', 'G01072', '2016-10-21', '2015-10-21', '大众', '迈腾', '人保');
-INSERT INTO `chelianginfo` VALUES ('31c5926e-4fe3-4177-8f36-630ed48b0fc7', 'eb0c09b1-a3e2-4330-9a4c-df1cf56a143b', '粤B84J62', '风神牌DFM7160B3C', 'LGJE3FE2XDM154219', '2013-04-11', '0505828', '2015-04-11', '2015-04-11', '东风风神', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('8745057a-b7dd-4a1a-a20c-f5f28e84c03e', 'eb13b341-de97-4c0c-8d94-0cc3bb7489db', '粤B136JF', '', '', '', '', '', '', '日产', '天籁', '');
-INSERT INTO `chelianginfo` VALUES ('586f1eda-0226-4f3b-8593-8fd5fb635f6d', 'eb7cd022-ac6d-4866-a6a6-72d632ae9b81', '粤BH7E94', '', '', '', '', '', '', '奔驰', null, '');
-INSERT INTO `chelianginfo` VALUES ('bf6dd86d-a08b-423f-af32-9befd9f82bcf', 'ebfa68ae-cd82-4888-adf2-67ac14c39123', '粤B422LJ', '别克牌SGM7168ATA', 'LSGJA52U3AS099874', '2010-07-26', 'A5280314', '2016-07-26', '2015-07-26', '别克', '凯越', '人保');
-INSERT INTO `chelianginfo` VALUES ('82dfb5ff-5f2a-4129-b2d6-b588d357e289', 'ec66ed35-24db-4264-8427-9b349ef879f3', '粤B6AK29', '别克牌SGM7165MTB', 'LSGJA52U0CS298285', '2012-12-03', 'CA250730', '2016-12-03', '2015-12-03', '别克', '凯越', '人保');
-INSERT INTO `chelianginfo` VALUES ('ad41a25f-670f-4204-9074-0d6a545f1209', 'eda59962-be21-451c-a50f-94234aa6fd0c', '粤B684RR', '', '', '', '', '', '', '丰田', null, '');
-INSERT INTO `chelianginfo` VALUES ('45bd946e-ccbb-4120-b6b8-5ee348efcef7', 'eddf4273-a7f7-457e-8c4f-de191ab32006', '粤BV6045', '长安牌SC6449C', 'LS4ASB3R3EA632062', '2014-04-01', 'E7TJ015176', '2016-04-01', '2015-04-01', '长安', '长安CS35', '人保');
-INSERT INTO `chelianginfo` VALUES ('3faabb12-e394-4ea3-b677-de05f026bfb3', 'eede5b4c-14b5-4c05-bc70-f837e91d3f18', '粤BL785J', '', '', '', '', '', '', '斯柯达', null, '');
-INSERT INTO `chelianginfo` VALUES ('053c7786-f3c0-4b4e-8af8-57f409828449', 'ef787b83-3179-42f5-a613-bfbba47453cd', '粤BZ53L3', '长安牌SC6399D4Y', 'LS4AAB3D9BA018930', '2011-02-22', 'B69C502041', '2016-02-22', '2016-02-22', '长安', '长安CS35', '人保');
-INSERT INTO `chelianginfo` VALUES ('bcf7cec4-ab44-4c28-81f3-d16e07c90412', 'f05d7085-e208-4a8c-a593-0e38749ad529', '粤BQ2J29', '宝来牌FV7162XATG', 'LFV2A2155C3001510', '2012-04-12', 'R77610', '2016-04-12', '2015-04-12', '大众', '宝来', '人保');
-INSERT INTO `chelianginfo` VALUES ('611745e5-02da-4a72-ad5a-959b9a3cac7b', 'f09430f5-22d7-40bf-8dca-4c5d40b984f5', '粤BVS861', '', '', '', '', '', '', '比亚迪', null, '');
-INSERT INTO `chelianginfo` VALUES ('0fd4732b-7761-437e-87db-93327d3ce120', 'f155c7a0-abd1-48f1-91a0-c2ef6cb003a6', '粤B053GE', '', '', '', '', '', '', '景程', '景程', '');
-INSERT INTO `chelianginfo` VALUES ('72ab36f9-7fb5-4c7b-95a2-8b80673d47ad', 'f1d92941-e45e-4638-8c87-911f3199cb4a', '粤BR273M', 'CAF7163A4', 'LVSHCFDB5CE090295', '2012-10-25', '3182558', '2016-10-25', '2016-10-25', '福特', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('502c8b58-95d8-47df-a187-8721222e546e', 'f24c8458-b487-456d-bbc5-6f80b5f5677b', '粤BN2F87', '雅阁牌HG7230/ACC0RD2.3VTL', 'LHGCG5664Y2022204', '2000-11-23', 'F23A37322180', '2015-11-23', '2015-11-23', '本田', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('ee74f488-7963-47c6-ac60-3cdf46197709', 'f273bad7-fad2-4b3a-9fa0-316a1eb84916', '粤B594CD', '福特牌CAF7152A1', 'LVSHFFAL6BN166982', '2011-08-16', '3286814', '2015-08-16', '2015-08-16', '福特', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('08b7f923-74d8-405e-bc26-c839dc91ad0c', 'f3b4764f-7979-4e98-99fe-84427f01df75', '粤B26N12', '', '', '', '', '', '', '日产', null, '');
-INSERT INTO `chelianginfo` VALUES ('13ed54de-3716-42b3-8407-509315e610a8', 'f447ec27-7dae-48ea-8e66-2b0107a96f7d', '粤BQ422W', '福克斯牌CAF7180B48', 'LVSHCAAE3DF450306', '2013-03-25', 'DA14982', '2015-03-25', '2015-03-25', '福特', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('ba450ef6-9cf9-4335-aecc-3f53bf6151d1', 'f44b5b2b-549c-408b-870e-8b8f4db11984', '粤BZ0J77', '江淮牌HFC7150M1F', 'LJ12GKS28C4421360', '2012-10-19', 'C3463271', '2016-10-19', '2015-10-19', '江淮', '和悦RS', '人保');
-INSERT INTO `chelianginfo` VALUES ('2d8201a5-fc77-4a37-83af-ff09d7285850', 'f4df5eff-50d1-4f17-bcdc-3a88a84f9805', '粤BKH978', '', '', '', '', '', '', '别克', null, '');
-INSERT INTO `chelianginfo` VALUES ('f295e9b0-da58-44e7-9e1b-339e55548ac8', 'f5030246-8eab-4e1e-a3a3-455ecd925c03', '粤B97J08', '丰田牌TV7252VSP', 'LFMBEC4D0D0170225', '2013-05-20', 'C715325', '2015-05-20', '2015-05-20', '丰田', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('ac2b6402-bfdb-4a80-9149-e0f37d71baba', 'f62590ab-000f-48a9-a9c1-2b8103d9d4a8', '湘M1GL77', '', '', '', '', '', '', '马自达', null, '');
-INSERT INTO `chelianginfo` VALUES ('834cdb72-a25b-4079-9c63-380b95418e2a', 'f6afa6bf-0d99-4864-bdde-0b7d409616cc', '粤B6TZ25', '一汽佳星牌CA7131', 'LFP42BJB8D6L25098', '2013-09-06', '2830588', '2015-09-06', '2015-09-06', '一汽', '森雅M80', '人保');
-INSERT INTO `chelianginfo` VALUES ('841c6988-ea07-48cb-a7f5-f31d48cc9221', 'f8a5bd64-d451-4145-a69d-b382b7aa8de3', '粤BS229L', '福克斯牌CAF7180M38', 'LVSHCFME19F375637', '2009-06-02', '9J18962', '2015-06-02', '2015-06-02', '福特', '福克斯三厢(第二代)', '人保');
-INSERT INTO `chelianginfo` VALUES ('98420029-3b6f-4dde-8a3a-299e05fb4153', 'f8fbf69d-d547-44de-8a39-697b71e2ec00', '粤B0YA72', 'SVW7167FMD', 'LSVFV2185D2198383', '2013-09-25', 'A73591', '2015-09-25', '2015-09-25', '大众', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('203a070e-a7d3-43ad-a106-d3b4484753a9', 'fafddb6a-ce12-47f2-a6fe-5b4fefa043cf', '粤BM93D6', '', '', '', '', '', '', '蒙派克', null, '');
-INSERT INTO `chelianginfo` VALUES ('2cc40ce2-fc44-4015-8b5c-0c3c3066c495', 'fb3b6211-178e-45b8-92e7-b8e8af4e81ad', '粤B8MM85', '大众', '', '', '', '', '', '大众', null, '');
-INSERT INTO `chelianginfo` VALUES ('f9643c0a-4907-4bf6-aabb-31056adad6ba', 'fc795a0e-ac77-48f5-b5c4-a565f299cbf3', '粤B28U78', '起亚牌YQZ7162AE3', 'LJDDAA22570215580', '2008-08-15', '75166642', '2015-08-15', '2015-08-15', '起亚', '赛拉图三厢', '人保');
-INSERT INTO `chelianginfo` VALUES ('3a808d3c-a331-4210-9daf-1e01abe27c95', 'fcfb9069-f788-432f-8726-8718732357ce', '456789', '', '', '', '', '', '', '奥迪', '奥迪A3两厢', '');
-INSERT INTO `chelianginfo` VALUES ('147028a5-6978-4398-8e0f-2363cc749e5a', 'fd11148c-886c-4f1f-acef-c698c5e9fd00', '粤BQ095F', '宝骏牌LZW7150ADF', 'LZWAEAGA0C8718421', '2012-03-14', '8C22420683', '2016-03-14', '2016-03-14', '宝骏', '宝骏630', '人保');
-INSERT INTO `chelianginfo` VALUES ('b6809625-9464-487a-8f4f-03264f743854', 'fde29329-944d-4957-a09b-614b1ac0aec7', '粤BMQ918', '丰田牌TV7180GLX-L3', 'LTVBR22E660733214', '2006-04-21', 'LZZ*B32743*', '2015-04-21', '2015-04-21', '丰田', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('b217aa56-220d-405a-ad89-b7fc8f8e7016', 'fe25fd38-e6ac-47c8-8722-3cb17137d220', '粤BX7C83', '吉利美日牌MR7151B4', 'L6T7824S4CN141323', '2012-09-14', 'C8NG00560', '2016-09-14', '2015-09-14', '', null, '人保');
-INSERT INTO `chelianginfo` VALUES ('4f03bc46-b18c-4d22-aa23-9262e83c8fe7', 'fefe1a78-26ad-4435-b3d9-271eadb823bc', '粤B2JM91', '五菱牌LZW6430MF', 'LZWADAGA6D8101156', '2013-06-21', 'UD42521205', '2015-06-21', '2015-06-21', '五菱', null, '人保');
+INSERT INTO `chelianginfo` VALUES ('d41660ff-b68d-4410-9482-bb3ce6443dad', '004e21b8-d3a7-4a1d-8356-5ec4fe7e8dbb', '粤BB712L', '', '', '', '', '', '', '本田', '雅阁(7代)', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('d02200ec-fdbc-4a4d-82b4-1e0179ea90b5', '00a3f35c-ae0c-4d04-aeec-673ef0e4bd54', '粤B4JN50', '翼虎牌CAF6450A41', 'LVSHJCAB7DE197469', '2013-04-19', 'DA04440', '2015-04-19', '2015-04-19', '福特', '翼虎', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('96b0b4e6-0d28-4b1d-9f5d-01aa5ef76d51', '00fa3c56-be4f-41bd-8854-fcad4d8e2afc', '粤BL571F', '东风标致牌DC7164DYDA', 'LDC963L36C1154268', '2012-09-17', '7812589', '2016-09-17', '2015-09-17', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('b9d5d9df-31f8-4e2b-a7d7-3a71e570a3f6', '01556530-8278-466c-a9a4-d765b872389b', '粤B40G52', '', '', '', '', '', '', '卡罗拉', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('24927aab-d75b-4725-8c5d-12c7417094a4', '0168533a-5fe7-4d3f-9d83-9b629bb28b1b', '粤B36U6', '', '', '', '', '', '', '丰田', '凯美瑞(第七代)', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('b6596058-4cb5-4ea0-81c8-7a6d0972e304', '0275d74f-d884-45fe-82fa-7555fedea2f1', '粤B320SY', '轩逸牌DFL7162ACC', 'LGBH12E09BY187076', '2011-05-11', '500116E', '2015-05-11', '2015-05-11', '日产', '轩逸', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('52a17a0d-5dd4-47be-91f2-ede69dfd5386', '033cb264-ec91-4551-933f-43b75b2b3fe9', '粤BC5499', '', '', '', '', '', '', '东风风神', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('b05a021a-4434-4262-9a2d-e44c20e1e72a', '038fc0ca-fccd-4c4c-a329-07a23e88aee2', '粤BN303Q', '马自达牌CAF7151MC4', 'LVSFDFML6AN033576', '2010-05-01', '3190925', '2016-05-01', '2015-05-01', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('9d368f12-bdbc-4a50-95a9-f89f5d3ed855', '03af9540-9a97-4a51-bd4e-364da8ba7118', '粤B2953J', '', '', '', '', '', '', '北京现代', 'IX35', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('5328696e-c621-4eda-876a-74c91f89011a', '03c038bc-1c71-4073-94fe-24bd1fc20901', '粤B02D71', '', '', '', '', '', '', '别克', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('8ba762d4-d43e-4a3e-8aae-425a1081d78a', '046883c0-a081-4735-9138-de177c226e7b', '粤BD871U', '朗逸牌SVW7867NSD', 'LSVAN4180C2080195', '2012-05-16', '193271', '2016-05-16', '2015-05-16', '大众', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('759b3fab-0489-4f88-9533-56851ee836c3', '04d8288f-6d1f-4e69-a24e-bf9c010caf7e', '粤B9759B', '明锐牌SVW7166DSD', 'LSVNW41Z6A2745329', '2010-08-04', '025951', '2016-08-04', '2015-08-04', '大众', '斯柯达昊锐', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('1bacf063-7ee7-4b36-8f16-ab2f77ad1189', '0550c1d5-f768-4dd4-97a8-9388dc798c09', '粤B7G105', '明锐牌SVW7166HSD', 'LSVN241Z5D2132313', '2014-03-29', '722710', '2016-03-31', '2015-04-30', '斯柯达', '斯柯达', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('e2181fb0-d5ae-4e7d-8908-f4f5181942a9', '06930423-b50e-40f1-9387-2bb343931935', '粤B058JU', '', '', '', '', '', '', '丰田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('2a805e19-bedb-42fd-8304-1bd8ea2e8970', '06f65332-86b7-4ec2-8610-f87b95c66d4d', '粤BN946G', '福克斯牌CAF7180M', 'LVSFCFME88F266596', '2008-09-05', '8J21281', '2015-09-05', '2015-09-05', '福特', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('f2233e1d-a51e-4b4a-81bf-b5193090d674', '077a625f-3937-4194-90c2-9afbd9673409', '粤BY324Y', '福特牌CAF7152B', 'LVSHFAAL19N039666', '2009-09-23', '3140467', '2015-09-23', '2015-09-23', '福特', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('24b7cca7-355c-411c-a839-3b06ca48c3b2', '08dfcbd2-cea1-4387-8883-73c4663e503d', '粤BQ953K', '东风日产牌EQ7250AC', '', '', '', '', '', '日产', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('441c5711-e846-49a1-acc8-d72c729fe643', '091e18ff-a4e9-4325-9f14-69f67e60612e', '粤B3AM52', '', '', '', '', '', '', '马自达', '马自达3 AXELA昂克赛拉两厢', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('914733f8-56e5-457f-b43e-47dd434d3908', '099fc24a-524e-47c1-b7a1-c58dfe46d50b', '粤B73R21', '丰田牌TV7181GL  1D', 'LFMARE2CX80092287', '2008-06-17', 'E184676', '2015-06-17', '2015-06-17', '丰田', '卡罗拉', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('2773c003-2e60-42e6-a6ea-79636c05caff', '09b58178-eb09-4761-8467-1a8b4bed8d1d', '粤BP1L95', '力帆牌LF7132C', 'LLV1C2A1XC0034241', '2012-03-09', 'Y120101799', '2016-03-09', '2016-03-09', '力帆', '力帆320', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('bf985828-dffc-4b5b-b4af-628fcd71656b', '09f543de-c684-4367-a3b0-566553abe5d6', '粤B4N484', '起亚牌YQZ7142', 'LJDLAA294C0135206', '2012-09-11', 'C5360841', '2016-09-11', '2015-09-11', '起亚', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('24cc9bf1-3c6d-4d0b-b7d4-09514b6715ea', '0b22f094-b65e-4086-b5af-02cd0a9d2c53', '粤BU767P', '', '', '', '', '', '', '斯柯达', '斯柯达', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('a7e9fa81-98ef-4752-b65a-fc591388145b', '0c5aa30d-7596-4e4a-80a0-1f04655150cb', '桂K30527', '', '', '', '', '', '', '大众', '捷达', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('4aeac3e4-dee3-4b9b-8d43-ed001a00b291', '0c6f1090-7473-487e-9d4e-526fbf1cbd55', '粤BDB798', '雅阁牌HG7240A', 'LHGCM567568011949', '2006-12-14', 'K24A88611952', '2015-12-14', '2015-12-14', '本田', '雅阁(7代)', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('3658dd72-209e-4bba-8657-795290761d89', '0cd119b0-1679-45bf-9a75-a7717dfa3237', '粤B85M42', '丰田牌TV7161GLD', 'LFMAPE2C080030807', '2008-04-02', 'E144340', '2015-04-02', '2015-04-02', '丰田', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('b1167946-84fe-4535-ab49-dd0d6a4a8029', '0d5f5f10-69ae-407b-aa69-6c864c91e1f8', '赣K95635', null, '', null, '', '', '', '标致', '标致307两厢', null, null, null);
+INSERT INTO `chelianginfo` VALUES ('213addae-5e47-4ad2-af4f-ebe8c597b145', '0e3ad3ed-a588-409f-89fd-cc456e3264c2', '粤BH916J', '', '', '', '', '', '', '奔腾', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('85e519b8-0858-4778-add8-66604e242f01', '0ed53157-d272-4609-b32e-3e474671caf2', '粤B025ZV', 'CA7201AT5', 'LFPM4ACC7D1A89201', '2013-12-12', '80594836', '2015-12-12', '2015-12-12', '马自达', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('d56d4bb9-348d-4d40-a337-2294f337a18f', '0f7ae46d-ee86-494e-87d6-84edba722308', '粤B-P28G8', '未设置', 'LFMARE0C0B0336555', '2011-09-30', 'F891154', '2015-09-30', '2015-09-30', '丰田', '卡罗拉', '太平洋', null, null);
+INSERT INTO `chelianginfo` VALUES ('f97de794-49db-46b6-b196-a7e9ad54f938', '1133dbe8-a598-411e-a8c0-7c112bb9658c', '粤B786CN', '东风标致牌DC7164BTA', 'LDC933L39A0202404', '2010-03-18', '7543058', '2016-03-18', '2015-03-18', '标致', '标致307三厢', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('ea10b244-a6e5-4509-b41a-39ccc5818109', '11e8cab0-9457-4b61-876a-8eee71c588b8', '粤B059BY', '明锐牌SVW7166DSD', 'LSVNW41Z1A2731502', '2010-07-21', '012757', '2016-07-21', '2015-07-21', '大众', '斯柯达昊锐', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('6d8345a5-2f20-4a99-b47e-6e335664dc6c', '12607b62-97c7-492d-b633-3740663a4378', '粤BW85N1', '', '', '', '', '', '', '日产', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('4153f44e-a734-433a-89c2-1a914943ed01', '1302c9ef-31ac-4062-93c4-ca35acde3eb9', '粤B799TS', '', '', '', '', '', '', '丰田', '锐志', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('7e321597-a5a8-4106-8502-b38feab0708f', '130a1bf7-3391-4cbb-a539-cefa8ffbd058', '粤B933LB', '昊锐牌SVW7189BJD', 'LSVCB43TX92451763', '2009-12-04', '011018', '2015-12-04', '2015-12-04', '大众', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('70bc1161-cd6f-419b-909b-5bad7cb763b0', '132e87c5-073a-4875-a260-ad9394a5ec86', '粤B47M75', 'TV7160GMD', 'LFMAP22C180045198', '2008-03-17', 'E130266', '2015-03-17', '2015-03-17', '丰田', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('58d367be-2c0e-4342-887d-08ec21d7b962', '15e5d655-5881-46a4-9980-7aae85755cac', '粤B62Q21', '', '', '', '', '', '', '日产', '天籁', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('6e1b51b2-b1a0-47cf-b861-03bea9004af0', '16c559c3-30c2-4dc8-9cd7-bd829e1bb80f', '粤B073AC', '丰田牌TV7164DLXD', 'LFMAP22C8B0242151', '2011-03-02', 'F961253', '2016-03-02', '2016-03-02', '丰田', '花冠', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('67af923c-7f20-47dd-b502-26768d0d5f83', '17ef701e-8f13-4052-9e41-e7cabd55f9ad', '粤BW1Y56', '宝来牌FV7162XATG', 'LFV2A215XC3642345', '2012-09-29', 'S83428', '2016-09-29', '2015-09-29', '', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('e080c1c1-dd5b-4a67-8ff3-c48a878b2fa1', '186ccd1d-db92-42ca-9549-ff741c9d5630', '粤B2H0P5', 'CAF7163M4', 'LVSHCFMB6EE853635', '2014-12-25', '3708504', '2016-12-25', '2015-12-25', '大众', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('057be8f2-2083-469f-a425-81f7d7008eb2', '18826d0f-dcb7-4121-a949-ee0752bf1856', '粤BPZ098', '', '', '', '', '', '', '福特', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('59975215-9401-448c-88df-916be5af1f09', '18a2addd-f812-48ce-8bd5-34eba014a5a6', '湘M1KH67', '', '', '', '', '', '', '大众', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('9d34d3cc-4aa2-43c3-9961-35b6c20f987f', '1a9b5352-b6a3-4c17-9d67-bec88b8a0e55', '粤BL5Q63', '', '', '', '', '', '', '别克', '君威', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('cbd573b9-4b2e-4c34-824b-55ece3c5c899', '1acb1ba1-867b-49e2-96ef-012ea8551f4d', '粤B683UB', '', '', '', '', '', '', '丰田', '花冠, 花冠', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('c563036f-5530-4e2f-8e8c-eeb3ec1372d5', '1b92b116-a3a7-4dfc-9a55-e29b28dc7068', '粤BQ056T', '', '', '', '', '', '', '别克', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('9b67af05-363a-44af-ad33-ef9ba0e997e5', '1ba33cd6-45a7-4894-a0ae-48ca61b6a7c7', '粤BX0763', '东风日产牌DFL7168VAK1', 'LGBH52E00EY169669', '2014-03-20', '599043W', '2016-03-20', '2015-03-20', '日产', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('dc7a0c1e-82ae-4af1-b3e6-37de5e06e5e2', '1c017e87-15cf-4f43-acc5-b6003d6a2fc2', '粤BR132T', '丰田牌GTM7200GB', 'LVGBH42K9BG521510', '2011-11-30', 'F812959', '2015-11-28', '2015-11-28', '丰田', '凯美瑞(第六代)', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('32c5c391-2f3a-479d-81d3-a56a49a866e9', '1fb58d98-35f9-440a-abc4-0590e531b789', '粤BL672G', '骊威牌DFL7163AC', 'LGBK22E5XCY0900405', '2012-05-23', '722557W', '2016-05-23', '2015-05-23', '日产', '日产', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('69c951e0-fbb2-4642-a2bb-eb39a96597f7', '2021aa15-d01f-45a5-95f6-37b259fa4358', '粤BP9Z71', '福克斯CAF7163M4', 'LVSHCFMB9CE084693', '2012-10-23', '3178516', '2016-10-23', '2015-10-23', '福特', '福克斯三厢(第二代)', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('2633fee4-ec5f-4682-be5d-7896f6352645', '2038171f-18b6-4ce0-b44c-4c1845a7d4d4', '粤B 9826U', 'CAF7180A38', 'LVSHCFAE78F332360', '2009-01-13', '8A57210', '2016-01-13', '2016-01-13', '福特', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('2769016d-3d91-4c18-aebf-8010b32d95c5', '21799ccf-e329-4054-91b4-a2f02c1ce356', '粤B865L2', '比亚迪牌QCJ7150A6', 'LGXC16DF1A0219758', '2010-12-14', '210090705', '2016-12-14', '2015-12-14', '比亚迪', '比亚迪F3', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('679097c6-c4f9-4432-b21b-11dd4ea31c74', '21ac740f-0522-482f-826e-7c78c8f63d9d', '粤BM952S', '宝来牌FV7162XATG', 'LFV2A2159C3528336', '2012-03-16', 'R67529', '2016-03-16', '2015-03-16', '大众', '宝来', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('447a4065-d12c-4fe4-8861-07b8b204264a', '21ccdb53-e26b-4d80-872e-5f9873982da4', '粤BXJ663', '东风雪铁龙牌DC7202', 'LDC838W3X70568062', '2007-06-15', '8810315', '2015-07-15', '2015-06-15', '雪铁龙', '大C4毕加索', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('2ecc040c-fb0f-426c-88bf-9706ef6ac604', '22227208-7af5-4f43-9dcc-8bad31f00f1b', '粤BZ16CY', '', '', '', '', '', '', '本田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('1966879b-12c2-4e68-bb69-2c1ee1e54a97', '22ca1df7-0e19-4b34-a09c-c3afd49fb9be', '粤BT8K26', '北京现代牌BH7141AY', 'LBERCADBXCX330852', '2012-12-20', 'CB550115', '2016-12-20', '2015-12-20', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('dea125b2-aec9-45d5-bba4-fe9257617ba2', '230f2369-b5a8-46f0-9296-6ccb0c7afdfb', '粤B130AY', '雪佛兰牌SGM7184ATA', 'LSGPC54RAF025109', '2010-03-04', '100270081', '2016-03-04', '2016-03-04', '雪佛兰', '新科鲁兹', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('82907274-f4a2-4ae2-9fed-909bfa99a6ae', '243d7f67-8546-4758-a0f4-06630f5904a9', '粤BE057B', '丰田牌TV7166GD', 'LFMAP22C3C0474142', '2013-03-06', 'F187430', '2016-03-06', '2016-03-06', '丰田', '花冠', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('573ba273-93e3-4033-99ed-0ded1d70133d', '25f296e4-d874-4a8e-8a65-99257a6c010f', '鲁L45654', null, '', null, '', '2015-03-20', '2015-03-17', '比亚迪', '比亚迪L3', null, null, null);
+INSERT INTO `chelianginfo` VALUES ('6d8345a5-2f20-4a99-b47e-6e335664dc6c', '29d4f207-8af4-4380-b32c-43a67d08d1e0', '粤B3TR77', '', '', '', '', '', '', '别克', '英朗GT', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('2633fee4-ec5f-4682-be5d-7896f6352645', '29ee06f0-831f-45e6-985c-4fe47f6a0ef6', '粤B9826U', 'CAF7180A38', 'LVSHCFAE78F332360', '2009-01-13', '8A57210', '2015-01-13', '2015-01-13', '大众', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('8985763a-560d-4b7d-a859-08aa0e215498', '2b2f8b68-7e13-403e-aa69-ff396d9a4bbf', '粤B056FH', '朗逸牌SVW7167BSD', 'LSVAB4189A2354628', '2010-04-20', '888796', '2016-04-20', '2015-04-20', '大众', '朗逸', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('e8834ad9-516f-4d71-854a-577e6ebbeeab', '2bb0105b-5507-44a2-bf79-7f5e3cc87bf9', '粤B0356V', '起亚YQZ7165EJ', 'LJDGAA226A0136116', '2010-12-01', 'AW190003', '2016-12-01', '2015-12-01', '起亚', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('006e79e0-20fb-453d-8e23-449e15e35c00', '2c183f2a-8524-4902-baf3-1a081ae03aa7', '粤B4KU87', '', '', '', '', '', '', '菲亚特', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('7468f08a-0fce-4fbb-ad8d-8f25e21407bd', '2dd3ecd2-022e-4a96-a704-50a5d9946796', '粤BK230X', '别克牌SGM7161MTB', 'LSGPB54U6CS062499', '2012-04-01', '113011204', '2016-04-01', '2015-04-01', '别克', '英朗GT', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('90f8061a-2566-4c4b-87c2-ae1344538ce8', '2e612214-b89e-4cf0-a38b-23d454a0b49c', '粤B406GX', '速腾牌FV7164TATG', 'LFV2A21K3B3073004', '2011-08-31', 'K32699', '2015-08-29', '2015-08-29', '大众', '速腾', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('63267e5e-e60a-402f-9be3-5890a16fb5fa', '2f858fe4-4a3b-4e5a-bb7a-36a05077c22b', '粤B207TU', '', '', '', '', '', '', '标致', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('96b77eb3-37ab-4107-a3aa-f20adf10d09f', '3032e145-9f14-450b-a4c6-eb74026bff27', '粤BL672C', '思域牌DHW7182FBASD', 'LVHFB2642C5044477', '2012-06-20', '1044431', '2016-06-20', '2015-06-20', '本田', '思域', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('92add10b-ab59-4844-95ed-74e29384dfa9', '3109c3e4-a47b-4804-8de2-18475dce5b7c', '粤BLJ766', '', '', '', '', '', '', '江淮', '瑞风', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('ff47dd14-0db0-4b3e-868a-bf51ee6bff39', '317824a3-c388-422e-989e-e44b5e94c95b', '粤B429TV', '', '', '', '', '', '', '雪佛兰', '新科鲁兹', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('b16fb031-9f37-427e-bf8a-c9575972734b', '3509ac05-0992-4619-97a3-5969b452a93e', '粤B720E9', '', '', '', '', '', '', '日产', '日产', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('39aa0d7c-8a15-4856-a015-a3ac1c7a7e66', '3627bd91-e82e-4ef3-b66c-d56990c39c73', '粤B077LY', '雪佛兰牌SGM7169ATA', 'LSGPC52U2AF120324', '2010-10-12', '102170697', '2016-10-12', '2015-10-12', '雪佛兰', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('e3614fc7-6b35-4896-8a73-0de3b03e7b28', '368003e4-ecbc-4a36-ac30-49b6c84d47cd', '粤B219GQ', '福特牌CAF6480A1', 'LVSHFSAFXAF014196', '2010-03-19', '3210756', '2016-03-19', '2015-03-19', '福特', '麦柯斯', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('3eb9e427-3cb5-48a1-bd18-4df44c5cf353', '36b90f36-b030-4575-bdef-daaf84838f6b', '粤B9781X', '北京现牌代BH7160BMY', 'LBEHDAEB8CY805058', '2012-06-01', 'CB390358', '2016-06-01', '2015-06-01', '北京现代', '悦动', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('ba69ccce-7aa0-401a-b2de-14858ae653ec', '375769a7-f9ed-49ca-a017-221bc837925f', '粤BW40C3', '', '', '', '', '', '', '现代', '现代', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('79a43006-dc45-4bf4-b4e4-82a8e887e55d', '37f581b1-a7dc-4c8c-8ce5-87c0d9f12c0c', '粤BY030V', '比亚迪牌QCJ7240E', 'LGXC36DG491012290', '2009-07-22', 'SGD4826', '2015-07-22', '2015-07-22', '比亚迪', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('13e98977-adac-40cb-90ec-5146c91a8399', '387e5b31-e724-41d4-a297-01b3a1958eff', '粤B7KL20', '', '', '', '', '', '', '菲亚特', '菲亚特500', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('afa6602d-f848-4f1b-8b29-e3d50ef719d1', '3896d0b5-fbe5-4749-b3e8-ee4cde7b796f', 'aaa', '', '', '', '', '', '', '奥迪', '奥迪A1', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('550cb6ec-a3b2-4871-b65e-01b46ae918e5', '39c17ca9-6c95-4549-b984-ab46f048fd19', '粤BK256A', '', '', '', '', '', '', '丰田', '皇冠', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('0526b134-df08-4ed0-a06e-9a76491d90b0', '39ce7e10-de46-49d7-96ae-6acc56992076', '粤B6BS78', 'SGM7169TATB', 'LSGGG54E8CS288490', '2012-12-13', '122890195', '2016-12-13', '2015-12-13', '雪佛兰', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('2b664d12-235e-4af7-aa2c-027b2f423f28', '3ab6f03f-edb6-40ee-b757-2795e8ce1c98', '粤BF261E', '东风日产牌DFL7151VAK2', 'LGBP12E07BY031663', '2011-06-13', '621797A', '2015-06-13', '2015-06-13', '日产', '阳光', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('9f02cd3a-5beb-4e4d-ad05-7009cb581a77', '3b66ea4f-3312-4453-b471-86192d50b926', '粤BC8M60', '丰田牌GTM7240GB', 'LVGBE42K0BG596315', '2011-08-10', 'F697303', '2015-08-10', '2015-08-10', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('ab265bfa-2f09-4ed9-93cf-22950fadb891', '3b989901-2579-4de9-ada5-2448b8587fc8', '粤BH976V', '', '', '', '', '', '', '大众', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('27b0621e-2263-40f0-b400-24bdb02d1788', '3bb35b26-c76c-419b-91f1-ec3cf37593eb', '粤BZ7725', '', '', '', '', '', '', '江铃', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('f55a05b4-de88-4ab6-85e6-49142cd5e2c3', '3d41eae6-8ad8-4f23-9cc2-3374fc614be8', '粤B0HY91', '大众牌FV7166FAAGG', 'LFV2A21K9D4060397', '2013-04-09', '925081', '2015-04-09', '2015-04-09', '大众', '朗逸', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('728d6f8b-7b9d-4670-a260-161f42f371d9', '3e8610f4-01a7-4cfc-a58f-137478402f6e', '粤B4962P', '东风雪铁龙牌DC7237DT', 'LDCA13R40C2021122', '2012-07-03', '0091826', '2016-07-03', '2015-07-03', '雪铁龙', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('362045d9-95a1-4309-85e9-e1a15cb33833', '409d628e-a28d-4e0a-83fc-1e921d481ba5', '粤B1096T', '', '', '', '', '', '', '红旗', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('e2de4120-7543-4074-98c3-7a7b75fdd399', '40d221d4-9c32-4eb1-9f1e-64a0692bad52', '粤B685GX', '红旗牌CA7204MT4', 'LFPH4ACC791E73617', '2010-04-21', '80164646', '2015-04-21', '2015-04-21', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('e82740f8-8af3-4ffb-b8b9-632e1ff6fe74', '41a8de51-002c-4eec-b562-ef4e4acd6587', '粤BB618B', '纳智捷牌DYM6481BAA', 'LUXL91T00DB002005', '2013-07-10', 'AB0003771', '2015-07-10', '2015-07-10', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('966ec3a0-4797-4bcc-9052-fa7977df559e', '41b660c4-0219-4750-9ebf-5a9d821fd8a0', '粤BWG078', '', '', '', '', '', '', '别克', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('85f298bd-89f8-453d-9adb-c492f0537995', '420e296b-2868-4632-aa62-ba5dab2dedf1', '粤B8CB01', '大众汽车牌SVW7167PSD', 'LSVNM4180C2231055', '2013-01-18', '457182', '2017-01-18', '2016-01-18', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('f35690a3-198e-4868-997d-0873a52f9ac5', '44fca66f-3dcb-4933-b1c8-dc2f3e3676f0', '粤B128DE', '', '', '', '', '', '', '福克斯', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('49ccb74c-a286-450c-9fd6-1095cc7eb88a', '45d76870-3a97-4892-9112-9ee3d1d0a459', '粤BK265T', 'DFL7165VTC1', 'LGBG2NE05BY006095', '2012-04-20', '077110A', '2016-04-20', '2015-04-20', '东风', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('34e65cf1-c2b7-4149-81ad-b59312f4c007', '473fa498-4498-4c2a-a6b1-d1a2a13b169b', '粤B371SL', '', '', '', '', '', '', '丰田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('abde96f5-fa0d-41cb-8091-b67a9e08ec52', '4808c319-28e5-4dc0-85dc-71faeaa6d2e4', '粤B-U276E', '未设置', 'ajmpmmd1234567890', null, 'mgjwm', '2016-10-10', '2015-12-10', '福特', '福克牌CAF7163A4', null, null, null);
+INSERT INTO `chelianginfo` VALUES ('7d6fb20a-0fe3-4b53-a0ac-f18674c753cd', '493c9713-bdba-4e58-9ea1-329662923e76', '粤BV160J', '丰田牌TV7164GD', 'LFMAP22C4B0334650', '2011-12-09', 'E948932', '2015-12-09', '2015-12-09', '丰田', '花冠, 花冠', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('0d1c8505-594a-4be2-ae11-78489e4f16c8', '49491f1e-b109-48a8-ad27-56adfe11ad54', '粤B5JE91', '北京现代牌BH7202DAY', 'LBEYFAKCODY207877', '2013-05-16', 'DW115574', '2015-05-16', '2015-05-16', '北京现代', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('a37b5786-2009-4d17-bbd9-66a4b42c3e33', '4cfc14bc-e74a-4d5a-b5b7-fab7269dddde', '粤B53Q92', '', '', '', '', '', '', '丰田', '丰田86', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('46d53fcb-0ed7-4c7c-aa3d-f1b466a021d5', '4dcd8438-d58a-4821-8dcb-7f125761b395', '粤BUT107', '丰田牌TV7180GLX-L3', 'LFMAC22C470796435', '2007-01-30', 'B96162', '2016-01-30', '2016-01-30', '丰田', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('c274a7b3-8e93-4730-9099-1fafc57316a3', '4ddefea9-82f9-491e-81d9-d5b90976460a', '粤B842KS', '雅阁牌HG7203AB', 'LHGCP1681B2017169', '2011-03-28', '6117164', '2015-03-28', '2015-03-28', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('837022c7-44dc-4c48-a2ae-732e197ce1b6', '4ea372e0-4edd-480e-9d4d-a59442c1186b', '粤B723RC', '', '', '', '', '', '', '日产', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('de1c7c48-0346-450e-999c-18375010274f', '4f6735cc-a75d-4b64-b298-3b5d9bc327df', '粤B3HF23', '', '', '', '', '', '', '标致', '标致408', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('57d33652-86f8-4b06-ac88-b8ad89b28728', '4fcadd28-f65b-42e1-b08b-5f4300fb7a13', '粤B123456', '', '', '', '', '', '', '本田', '思域', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('18258ab7-d358-4a9e-8ebd-e76cfcf2a0f6', '50038ebd-1947-4288-964a-dc4312caaca2', '粤B9LT50', '大众汽车牌SVW7167QSD', 'LSVNN4187DN033408', '2013-04-12', '548365', '2015-04-12', '2015-04-12', '大众', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('85659e4f-6bac-4932-9228-c88d64315900', '501f4b50-3534-4d19-b508-3be7c4643746', '粤B0GJ79', '', '', '', '', '', '', '福特', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('51ac2de7-20da-4785-81b3-e136b0416045', '507fcdb0-3a37-49a7-a6c3-c685ba108207', '粤B98R95', '', '', '', '', '', '', '宝马', '宝马5系GT', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('337e8a3d-9ec6-4fa3-b5bc-82cf1b9e8fbd', '50d69ce8-5542-4270-ac59-a89d71044094', '粤B86K01', '别克牌SGM7161MTA', 'LSGJR52UX8H046248', '2008-01-24', '7C230326', '2015-01-24', '2016-01-24', '别克', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('e25cb81a-54a0-4b18-bb3c-bfddc6cbd71b', '516fb8a2-78c0-425d-a6c4-5a13dbcef587', '粤BS4G56', '大众牌FV7187TFATG', 'LFV3A23CXC3053425', '2012-06-07', '157842', '2016-06-07', '2015-06-07', '', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('21951c1f-b736-4982-b3b8-accac4ce6d19', '5204ca3e-ab19-427b-9b15-35742b79e6b6', '粤BX8X41', '', '', '', '', '', '', '雪铁龙', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('3e648085-be69-4c8b-a46a-b06253780d07', '52ee9443-01fa-469e-a6fc-1b4ed31b547f', '粤B296YJ', '', '', '', '', '', '', '日产', '日产', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('ba15ee05-3c8d-445f-b60f-ef2895391dc4', '533f1285-a1f0-4ee4-ba8a-751f6d7faa8e', '粤B87X16', '', '', '', '', '', '', '日产', '日产', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('89078664-5a15-4a45-8b2a-870c23405119', '53f1bac7-e835-4361-b244-2d4281236468', '粤BKH426', '蒙迪欧牌CAF7250A', 'LVSHBFAD65F057814', '2005-11-23', 'DURATEC V6*5J65575*', '2015-11-23', '2015-11-23', '福特', '蒙迪欧', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('37d22447-5be4-4ebc-875f-e82f44d5062e', '54e3a009-6258-4852-9591-9f1d3df39652', '粤BTP940', '', '', '', '', '', '', '海马', '海马', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('441d973e-eaa0-480e-8ac5-ef1afa80311a', '55ab1cfc-54d1-4e02-beb5-fbb7fffdd0cf', '粤BA967T', '', '', '', '', '', '', '本田', '歌诗图', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('b1167946-84fe-4535-ab49-dd0d6a4a8029', '565c45ff-1217-45c5-9377-a45c9027a682', '粤B78542', null, 'LSGWEEW122357788', '2015-03-04', 'QFERR556332', '2015-05-21', '2015-03-27', '奥迪', '奥迪A3三厢(进口)', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('e37e3ec8-4aaf-45f3-8601-4453aa85910d', '56d7b6fb-12d1-4c43-8ced-67f039fa4773', '粤ST492H', '', '', '', '', '', '', '大众', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('e7821408-d960-4776-a54d-37d2af173340', '5749cd07-1259-4925-b656-b2981f8099eb', '粤B5NT69', '丰田牌GTM7201GS', 'LVGBH51K3DG094853', '2013-06-27', 'G201377', '2015-06-27', '2015-06-27', '丰田', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('59118983-3976-4077-9c2c-da1edc899c41', '58a92ede-056e-4087-8a89-a0524fc657b0', '粤BU469T', '', '', '', '', '', '', '丰田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('76f99704-ab77-431c-975b-945290450886', '5a059cf7-2419-4237-b477-c9d52fc2a37a', '粤BUV917', '海马牌HMC7162A', 'LH17CKKF16H021906', '2007-02-01', '837305', '2016-02-01', '2016-02-01', '海马', '海马', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('a8ad5ce0-c85b-47a7-8618-4bf7dda02ab8', '5af9134f-730b-432e-b06f-15e381ef6c4b', '粤B3NY16', '', '', '', '', '', '', '雪佛兰', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('6caaa9bc-dbb6-46da-be96-1bdb6eb087b2', '5d235d42-7ddb-4313-9881-69e9dc2a3075', '粤BJ94G6', '', 'LJ12FKT33C4100806', '', 'LJ12FKT33C4100806', '', '', '江淮', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('d6128dbf-295d-48af-9906-03ecb93ed17e', '5dc4c553-58a5-42c2-841a-1a8973910974', '粤B977FF', 'GTM7240GB', 'LVGBE40K39G488347', '2009-12-23', 'C802201', '2015-12-23', '2015-12-23', '丰田', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('11c6ab44-237f-4629-9c1c-54ff01d4ec38', '5e0f19f4-6a7f-4fdf-90eb-1a603237d0e2', '粤BT789P', '', '', '', '', '', '', '丰田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('c1680dcc-f0b0-4b40-b75b-80ae15c652cc', '5f0c5f10-80f8-402b-89b0-1200ddea3dd7', '粤BJ200U', '', '', '', '', '', '', '路虎', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('891e888a-b45a-408e-9949-2efa45a2a23b', '5fa06409-0cdd-469a-8083-178b9a6c4439', '粤B312S7', '红旗牌CA7204AT4', 'LFPH4ACC281E06146', '2009-04-30', '80038160', '2015-04-30', '2015-04-30', '红旗', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('001d27bb-648c-4849-96c0-58baf84b1321', '5fda29dd-9bc7-4ee9-bb4f-8c16e9fe70cc', '粤BS7S61', '奥迪牌FV7203TFCVTG', 'LFV3A28K9C3044635', '2012-06-28', '229597', '2016-06-28', '2015-06-28', '奥迪', '奥迪A4L', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('d7ae8a3b-6949-4d91-9d07-a114fff572bb', '60d4c65f-6672-4465-bbf9-122cdce30744', '粤B7728Y', 'JS3JB43V', 'JS3JB43V494102860', '2009-03-12', 'M13A2134668', '2015-03-12', '2015-03-12', '铃木', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('fbd7796d-c1c6-47a0-a9c8-92b04825c6d6', '62fb4949-cc36-4ec3-b273-b813bd05982d', '湘A0CM12', '轩逸牌DFL7162ACC', 'LGBH12E06AY133971', '2010-09-08', '578851D', '2016-09-09', '2015-09-09', '日产', '轩逸', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('4b292187-d4a2-4f03-a91a-ef392db59a92', '63c0f5a3-0fcb-4241-bb68-5d4415cacd35', '粤BE167U', '明锐牌SVW7166HSD', 'LSVN221Z2C2117996', '2012-10-25', '292072', '2016-10-25', '2015-10-25', '斯柯达', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('11a7f385-1eda-4b9a-a4d5-dc02672fdb05', '63d4b364-671d-46c9-9a68-5ecb88a5daff', '湘MS1865', '', '', '', '', '', '', '五菱', '五菱之光', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('2f5ee170-827b-45c6-8b20-c0b36696559b', '6443d021-3f73-445c-a96f-2b301aa490a3', '粤BA905D', '', '', '', '', '', '', '起亚', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('54a09c1a-03d3-4691-897c-1ca858cf0cd7', '649c31c4-6e93-45a3-b991-f25ab06313a3', '粤B7GQ59', '', '', '', '', '', '', '马自达', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('3960054a-ee2f-4c22-a953-c248c2862265', '64cbcd06-c1c3-4b98-9ae2-d4a8181f6dde', '粤BC332H', '', '', '', '', '', '', '现代', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('2b848c7b-561b-45b9-8e50-382cd03ba510', '667777c7-ac1e-4d79-82c0-b92cea97659e', '粤B95Z33', '比亚迪牌QCJ7200E3', 'LGXC16DG091004631', '2009-03-05', '0823815', '2015-03-05', '2015-05-03', '比亚迪', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('ccf5c2b2-727a-4f93-a821-02e9c23c9854', '66894e96-e24c-469a-bb61-584c49a7c3dc', '粤B330JN', 'WBASN210', 'WBASN2100AC530258', '2010-06-01', '05447389N55B30A', '2016-06-01', '2015-06-01', '宝马', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('29570b22-f6a7-4ab6-b6b1-e00781c73b13', '66a3d797-2029-4edf-a3e6-e4275870d524', '粤BP486K', '', '', '', '', '', '', '凯美瑞', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('2ce3d6f9-50ce-4617-a75b-45c9a6e016b0', '66a5974c-ae65-4a11-b2f6-96ff87af016d', '粤BM2999', '', 'WMAVL3104BVN91787', '2011-05-19', 'B2101926N46B20CC', '2015-05-19', '2015-05-19', '宝马', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('7de165d7-1bee-4e1e-87e1-6fc90655667b', '671154d3-d57a-40e2-8e8a-bae118c6c543', '粤BQ496E', '', '', '', '', '', '', '雪佛兰', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('e88639dd-68cd-4140-b938-12bc3279e6e1', '67cc0e64-8733-4855-8f98-83cad47bb778', '粤BG21X6', '', '', '', '', '', '', '', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('9b0020a2-9470-4c3d-8a01-351091050fe5', '6801eb91-23fb-405e-b7b8-878f7a8f58c5', '粤BV1P90', '', '', '', '', '', '', '雷克萨斯', '雷克萨斯CT200h', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('9fd982ff-26f5-43ff-bfd3-0186ce30b07e', '68d59e9e-3259-4a4f-836f-381c5cbea080', '粤B0PW57', 'SQR7161M127', 'LVVDB11BXDD076704', '2013-07-03', 'AADA03909', '2015-07-01', '2015-07-01', '奇瑞', '奇瑞QQ', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('7703ab51-213c-4868-8505-420bdbdf850b', '694baa99-fcbd-4e7f-a54e-a9b8cd9377cf', '粤BZ375C', '宝来牌FV7142TXATG', 'LFV2A215XC3614819', '2012-09-24', 'S63125', '2016-09-24', '2015-09-24', '大众', '宝来', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('fce23866-eda3-46d0-916b-f2d6019b15c9', '699c89c9-9730-4b41-ad5c-147458bf1ba7', '粤B2411P', '北京现代BH7202DAY', 'LBEYFAKB0DY277869', '', 'DW365630', '', '', '现代', '现代', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('88619f29-a8e9-4f15-bab1-a435ebd09194', '6a20a5c6-687b-4057-b785-14ad12e2986f', '粤G-64597', '未设置', '未设置', null, '', '', '', '宝马', '宝马2系', null, null, null);
+INSERT INTO `chelianginfo` VALUES ('cea29baa-3366-46ba-a675-fc5ed2dca514', '6db8c091-da15-4e6f-a899-f5e32b6f0115', '粤N939C', '东南牌DN7150', 'LDNM43GZX90206714', '2009-07-09', 'L029553', '2015-07-09', '2015-07-09', '东南', '东南', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('82dc1d5b-ea48-4237-b892-2981680543e1', '6ecbd88c-250a-4eb6-b787-162f57bf4d00', '粤BG120E', '大众牌FV7207TFATG', 'LFV3A23C4C3126272', '2012-11-02', '163133', '2016-11-02', '2015-11-02', '大众', '迈腾', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('3efc3da0-9e9a-4d8a-8bc8-84531d771f30', '6fc10235-1efd-44f2-a388-b2c557617774', '粤B850SM', '马自达JM7BL04Z', 'JM7BL04Z2B1208795', '2011-04-25', 'Z6943250', '2015-04-25', '2015-04-25', '马自达', '马自达3星骋三厢', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('9c9c1da8-df71-4fca-8a90-9ce610ea8064', '6fda7c21-2fcf-4e28-8e5e-7a2d35786aa6', '粤BWX181', '俊逸牌DFL7180AB', 'LGBJB3E557Y008586', '2007-05-23', '010880T', '2015-05-23', '2015-05-23', '日产', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('c4850ba5-bc07-487c-b56f-9c684cf1d5e2', '706d31d8-d5f1-4c17-b03f-d66997a8b8e7', '粤BF95J9', '', '', '', '', '', '', '丰田', '花冠', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('c78705e3-7161-4867-81a0-dd454e026df7', '7084814a-e0d1-4ee0-a843-ccda089849a6', '粤BZX198', '', '', '', '', '', '', '荣威', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('e3cfea65-ee66-4f3e-abb7-d4800d9903e7', '718e404a-e424-4448-9d72-247cd6220487', '粤BS22N5', '', 'LDC828W2730004034', '', '000829', '', '', '东风', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('81c6f958-4688-4863-bdf9-f585f2814c8a', '723df19b-9e2f-4e54-af9b-c0e10ee734c1', '粤B670KP', '雪佛兰牌SGM7169MTA', 'LSGPC54U5CF067554', '2012-04-18', '120771469', '2016-04-18', '2015-04-18', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('24b4f631-6d15-4d67-9102-a10389a42026', '72782b98-631a-4426-b210-3c47b8353d90', '粤BZ028V', '东风日产牌EQ7250AC', 'LGBF1D078R141770', '2009-01-15', '412348A', '2016-01-15', '2016-01-15', '日产', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('ee0dd378-edc2-4bd6-b190-d9355292ba2f', '72e5ff88-8dce-4d8f-a37c-62fba0f7afe5', '粤B4723V', '大众牌FV7164FAAGG', 'LFV2B21K7C3278842', '2012-09-18', '588840', '2016-09-18', '2015-09-18', '大众', '高尔夫(第六代)', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('0a2f6891-9ef0-455e-8c4f-5991e93af6e9', '734e84d6-9d8a-4efa-9272-44f1a8177891', '粤B056GE', '', '', '', '', '', '', '福特', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('a4493ace-42da-4cf1-ace1-d4196a1c2e0d', '73a92312-1e57-4189-bdc5-ed294edad17e', '粤BR915T', '五菱牌LZW6407BF', 'LZWACAGA5B7094528', '2011-11-24', 'UB52521172', '2015-11-24', '2015-11-24', '五菱', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('ef544456-8727-4993-99a7-5c871edf2d57', '74094e8b-18fe-46b4-9ca4-0923ea1d6bd3', '粤BD66X1', '', '', '', '', '', '', '丰田', '皇冠', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('0526b134-df08-4ed0-a06e-9a76491d90b0', '752fa437-2401-4d49-8fe8-5dfe61d2a324', '粤B6BS78', 'SGM7169TATB', 'LSGGG54E8CS288490', '2012-12-13', '122890195', '2016-12-13', '2015-12-13', '雪佛兰', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('56497990-0feb-48e5-b18c-7184eb03e565', '753b73da-e8c1-4af1-a569-00a525b6128b', '粤B7215U', '江铃牌JX6510H3', 'LETCJCDC1CHP19701', '2012-04-20', 'C3039730', '2015-04-20', '2015-04-20', '江铃', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('e13e48ba-8cd5-46a2-bba5-26372986155c', '757d7d95-b37f-4754-b7d8-f274a1277106', '粤B4VG00', '奥迪牌FV6461HBQWG', 'LFV3B28R6D3038206', '2013-08-16', '240172', '2015-08-16', '2015-08-16', '奥迪', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('6a76e7ec-602a-43f4-82c9-b265af691ac1', '76b2b12d-4dc5-47f0-8c18-eab4340fb347', '粤BRK325', '北京现代牌BH7162MW', 'LBEXDAEB86X404938', '2006-09-26', 'G4ED6B062881', '2015-09-26', '2015-09-26', '现代', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('f951be89-1007-45d0-8fb4-e07a486a2559', '77f5c4d8-7ca9-438a-b58b-5e2bbc2f0307', '粤BE701M', '斯柯达SVW7148PRD', 'LSVGK4556C2016505', '2012-03-31', 'B05572', '2016-03-31', '2015-03-28', '斯柯达', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('ad0c384b-013f-49e4-96d4-cd07ae37617c', '78019e92-b2d6-4518-88f0-272922c59c87', '赣F3V789', '', '', '', '', '', '', '现代', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('bbfcbd2a-877e-4941-a446-0c10c50632d2', '781a4f67-bc98-4d94-9f7e-13fc5a451433', '粤BX13268', '', '', '', '', '', '', '丰田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('d98cb83d-b7af-4c37-a6aa-b6e0f8a473fc', '78acda2b-dfb1-4fb3-bee3-6325990787b0', '粤BR3W62', '东风牌LZ6460AQFE', 'LGG7B2D11CZ032594', '2012-05-17', '93D3B5071', '2016-05-17', '2015-05-17', '东风风行', '风行CM7', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('dbbad636-cbfe-473b-a772-48d83dcfeeeb', '78eb058a-7603-4177-9125-f44464c92a8d', '粤BT7834', '', '', '', '', '', '', '皇冠', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('6c0726d8-ecbf-4834-8d4e-4a9e336e3e07', '79c37929-ece2-4726-891a-71c9a2a4ae89', '粤B70N36', '颐达牌DFL7160AC', 'LGBG12E298Y058972', '2008-04-03', '415952B', '2015-04-03', '2015-04-03', '日产', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('035a46cf-b104-4bc3-907a-8548b325c795', '7f04c242-4f05-46d1-ac53-b3fdfc155507', '粤B633N5', '', '', '', '', '', '', '江淮', '瑞风', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('76e62c02-c342-401d-b5b0-ae314103eb69', '7f348760-8c42-4f54-b442-faa78a93070d', '粤B9397R', '大众牌FV7164FBDGG', 'LFV2A21K2C4062474', '2012-07-26', 'X33460', '2016-07-26', '2015-07-26', '大众', '速腾GLI', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('65b4ddbf-5370-40f4-9126-00927550a3b1', '7f3c23b2-4220-48af-88f5-627239b4019d', '粤B675MH', '宝来牌FV7142TXATG', 'LFV2A2159B3522695', '2011-05-03', 'S35980', '2015-05-03', '2015-05-03', '大众', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('24a6e1a2-f9ab-4b65-85bf-1587fa2611f6', '7fdb6a16-1c2c-4622-abf1-363fb2ea5498', '粤BF1G60', '马自达牌CAF7151A1', 'LVSFDFAL1BN043619', '2012-02-28', '3309956', '2016-02-28', '2015-02-28', '马自达', '马自达2', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('a5a58fe8-a42b-415f-9edf-6769288c6f02', '8097539c-9925-40da-87d8-ae2fb9dd4ecb', '粤B851UM', 'CAF7180B48', 'LVSHCAAE3BF734841', '2011-10-24', 'BA50572', '2015-10-24', '2015-10-24', '大众', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('f17fba31-7d20-4bbb-9dfc-98eda7ecdbdc', '809f0fc6-c733-420c-97e6-80e8f8d1643f', '粤BT7G38', '福克斯牌CA7163B4', 'LVSHCADB8CE115192', '2012-11-29', '3206319', '2016-11-29', '2015-11-28', '福特', '福克斯两厢(第二代)', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('e8ff1da5-cf12-42a4-8fa2-d05791e2504a', '81040a5e-196f-483b-8799-be76e32e2249', '粤B685AY', '', '', '', '', '', '', '丰田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('31477cd2-6d28-4d94-a5d4-dc04af187baa', '816b33e9-fee9-499d-ac35-d9d6af69a93f', '粤BV40J0', '', '', '', '', '', '', '五菱', '五菱之光', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('49db8171-f599-4e1f-983d-422205242434', '8284718c-3191-42bc-931d-4975eb2ff66c', '粤B8348Z', '骐达牌DFL7161AC', 'LGBG22E079Y21883', '2009-12-10', '607166C', '2015-12-10', '2015-12-10', '日产', '骐达', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('20b64169-1c5e-40c7-8b97-b88d9c3d6df5', '841bafe2-a56e-4392-aece-d294ac47d560', '粤B3GW82', '高尔夫牌FV7144TFATG', 'LFV2B21K4D3513800', '2013-03-12', 'L61915', '2015-03-12', '2015-03-12', '大众', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('76c0f2e2-d3ac-4b14-bafa-f3f35ed1cc74', '841bf840-0df9-4be9-9b0a-d6735d49768b', '粤B92Q62', '', '', '', '', '', '', '五菱', '宏光', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('2a98c633-89e4-4017-989c-f63ef49ae1ee', '85eaa1f5-6829-4d44-b57c-68c89da0be22', '粤B5MW15', '大众牌FV7187FBDWG', 'LFV3A23C3D3020445', '2013-05-10', '281816', '2015-05-10', '2015-05-10', '大众', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('8f2e977d-723e-4e51-bdad-517f869564b7', '85efaf4f-0040-4b92-a21d-046bcba19f16', '粤BG717E', '东风标致牌DC7202DTAA', 'LDCB13X41B2085899', '2011-12-30', '8505046', '2015-12-30', '2015-12-30', '标致', '标致508', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('13de2124-bbfc-4628-ab8f-131572efcd24', '8704757d-8eea-4b7d-a332-6c55eaaa4d26', '粤B4D7D1', '', '', '', '', '', '', '别克', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('930e5f6a-c6bd-4cdd-a1b5-cae1188de973', '881054c2-6638-45f9-b74e-943ff7310730', '粤BJ3S86', '五菱牌LZW6431MF', 'LZWADAGA1B8507889', '2011-03-04', 'UB12021216', '2016-03-04', '2016-03-04', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('8a489809-be26-4ebe-93f1-3283d820bb76', '89342b8d-b1d5-493b-9055-811ff1dea328', '粤BC291P', '', '', '', '', '', '', '日产', '日产', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('f8ecc5fb-130a-43e3-82e8-2d4f8f366933', '897e3f33-c430-4823-aa47-276da9ffa078', '粤BC408R', '东风标致牌DC7204DTB', 'LDC943X33A0220923', '2010-04-15', '7502040', '2016-04-15', '2015-04-15', '标致', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('7279e3c7-11ea-4b7b-9e38-7005b4a5338b', '8ad559e4-91d6-4672-afad-e8be6287b971', '粤B07U43', 'SY7162VSB', 'LSYYBACA07K097965', '2008-08-12', 'CD70A4314', '2015-08-12', '2015-08-12', '中华', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('0b5a876b-f412-456f-a4d3-18da20280aa5', '8c416b5e-65be-4eea-8458-c345f3ab9739', '粤BC4E68', '', '', '', '', '', '', '江淮', '瑞风', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('85a892d0-0d73-4eae-aab3-5a20f981e3a1', '8c734d40-d92a-4f49-a336-962431a443b5', '粤BE606U', '', '', '', '', '', '', '花冠', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('751f8303-50e7-4ced-ab41-f30b7289dab3', '8ce81e11-662e-4039-883a-31d6f84beb72', '粤B905UV', '高尔夫牌FV7164FATG', 'LFV2B21K0B3265123', '2011-09-28', '539255', '2015-09-28', '2015-09-28', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('663c6db7-758b-4d32-bf8c-38d055a92ae7', '8d167d39-add1-450e-a01a-bbb7586c6b2f', '粤BCOJ80', '雪佛兰牌SGM7169MTA', 'LSGPC54U9AF297675', '2012-01-11', '113461007', '2016-01-11', '2016-01-11', '雪佛兰', '新科鲁兹', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('08a01674-1799-43ec-8f33-373d77309558', '8dc4f282-9395-403e-9a61-08965fcc4192', '粤B8NE19', '明锐牌SVW7146BBD', 'LSVNR21Z0D2017828', '2013-05-28', '395273', '2015-05-28', '2015-05-28', '斯柯达', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('dd946f75-ab94-4f75-86d1-c27c0371481d', '8e05a7b3-7232-4727-a416-76bcf800c09d', '粤B6WS89', '', '', '', '', '', '', '宝马', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('43185508-6569-4c4f-828c-bb20a52637ee', '90e799ae-d029-4b7d-9aaa-60d5bd5e4545', '湘MKG121', '', '', '', '', '', '', '丰田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('09ffe172-baf6-49ff-849d-d630b6d690c0', '91a721c6-df6e-4d1c-bed3-9d67ee7337d3', '粤B6ZP35', '长城牌CC6460RM03', 'LGWEF4A58DF233088', '2013-10-09', 'SMP9902', '2015-10-09', '2015-10-09', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('8ea57fd5-c4df-45e6-a7d6-a23513a02a2f', '91d16d81-4364-49c9-b10f-f36bf212baaf', '粤B4WB46', '比亚迪牌QCJ6480S', 'LGXC14DG9C1118171', '2013-09-03', '312059721', '2015-09-03', '2015-09-03', '比亚迪', '比亚迪S6', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('91665cbd-eaac-4af0-85c2-b2ee29ecb3ac', '93bef003-67de-4186-8dd3-9f1e25b068fc', '粤B7ZF66', '', '', '', '', '', '', '丰田', '花冠, 花冠', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('bdd580b4-8747-4198-b7e6-ce258dc71090', '94217356-6f0b-4d52-bedd-3ac0766620e7', '粤B6804L', 'FV7142TXATG', 'LFV2A2151C3652407', '2012-10-12', 'S67098', '2016-10-12', '2015-10-12', '大众', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('08ccdafc-1134-4554-8e83-e76ba4677920', '955574f1-e97b-4a55-8400-b9d56ed677ae', '粤BZ923X', '东风日产牌EQ7250AC', 'LGBF1DE079R162376', '2009-05-13', '441090A', '2015-05-13', '2015-05-13', '日产', '天籁', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('e40b39d6-90b8-4cfb-8ea4-3df3228479c6', '968f2426-d156-4471-bbb2-12325ec12340', '粤B022CZ', '', '', '', '', '', '', '皇冠', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('3bfb325c-1fda-4474-b37d-b5921403871b', '96cf3e50-024b-48f4-9d0c-a49b495bf1e0', '粤BZ701D', '大众牌FV7187TFATG', 'LFV3A23C0C3063266', '2012-06-21', '152832', '2016-06-21', '2015-06-21', '', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('b8ee87f7-be0f-43ba-975e-abe794ae6ecd', '978eeea3-daa3-4d54-9d1b-484b5a550bc7', '粤B0F242', '', '', '', '', '', '', '本田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('19eb7d1b-5869-4d78-a788-d3c83bbdc44e', '984f361b-bf90-4d9f-9cc3-8d5ef20e5714', '粤B0LN27', '启辰牌DFL7166AAD2', 'LGB612E03CS005481', '2013-05-31', '756948W', '2015-05-30', '2015-05-30', '日产', '启辰', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('4167f7fa-eb1c-4534-8af9-a434a19a03ef', '99ac389f-6d9e-4409-a20e-dff3c9311c4e', '粤B528KH', '', '', '', '', '', '', '海马', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('0c5cc23c-d082-4443-9010-8008ba5a6637', '9a776fcd-a827-4f82-87fa-22ebb65b7005', '湘H68749', '轩逸牌DFL7200AA', 'LGBH1AE026Y009915', '2007-08-20', '205880A', '2015-08-20', '2015-08-20', '日产', '日产', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('e00f150b-6274-40af-9844-99d64cbc1553', '9a8a5e7b-af29-4a3c-9019-de65d782284c', '粤BX652K', '蒙牌迪欧CAF7205A41', 'LVSHBFDC3CF225585', '2012-03-22', 'CA06111', '2016-03-22', '2015-03-22', '福特', '蒙迪欧', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('cfc5d81f-6cdc-4b95-b5e7-724000e64084', '9ac1398a-9b28-48fc-acdf-4ac0822e5096', '粤B5HN47', '长城牌CC7150QE09', 'LGWEF3K54DF049789', '2013-03-26', '1304003590', '2015-03-26', '2015-03-26', '长城', '腾翼', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('bb47a23d-a2cc-4702-8646-6a99bd873d73', '9b0d6de6-a86e-4e17-b685-2336f2bb7d6e', '粤B591EK', '', '', '', '', '', '', '现代', '现代', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('4d7fcf04-c884-4cd6-a9ec-541e535239c0', '9bfbbc9c-a7fe-4457-9d1a-d08284874be2', '粤B0RK39', '大众汽车牌SVW7147SRD', 'LSVND2185DN060453', '2013-07-15', '458881', '2015-07-15', '2015-07-15', '大众', '朗逸', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('3db61f51-3742-4b88-b6c1-a5491bcf7298', '9c5ec304-a4a2-4d05-8d41-5cacea6312bb', '苏EEY323', '', '', '', '', '', '', '五菱', '荣光', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('e6260765-416e-495d-9531-8487a5720594', '9ce02758-6d43-40b3-a502-380121abcc74', '桂C26206', '北京现代BH7270A', 'LNBSCCHK13X003253', '2003-08-19', 'G6BA3692999', '2015-08-19', '2015-08-19', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('3cda6967-b850-4747-a672-03f6e06e0789', '9ce41357-fa70-4bac-9481-73f1e5573e0c', '粤BB654H', '宝马1系', 'WBA1A1101CJ138437', '', 'A222J167M3B16A', '', '', '宝马', 'BMWwi16i', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('1facc443-da5a-409d-b1ab-c0623ea4f72c', '9d4f8be4-d66c-4a20-9534-70b972d4ded8', '粤BWD546', '丰田牌TV7180GLX-13', 'LFMAC22C670815406', '2007-04-01', 'C14749', '2015-04-01', '2015-04-01', '丰田', '花冠', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('f2bd5892-bbbd-44e7-925e-a2870225bd2c', '9e845e76-0b5f-4cfd-8f67-5f4b646ccaf0', '粤BE301Z', 'DC7164DTAM', 'LDC933L20B1481681', '2011-01-20', '8703049', '2015-01-20', '2015-01-20', '东风', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('5d078f78-6234-4a20-be47-3390a743b8f2', 'a01c42d7-851d-424d-b7a6-c6c5609a5586', '粤BX3P47', '', '', '', '', '', '', '别克', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('4a48d2cf-f91c-4d65-af63-138ae9311c83', 'a121a6af-d805-4cc4-984b-709a461bf127', '粤B1KR15', '丰田牌GTM7201RS', 'LVGBH51K9DG070735', '2013-04-24', 'G119944', '2015-04-24', '2015-04-24', '丰田', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('49111106-62d5-4576-b67c-fb8a602178d0', 'a19a676f-f695-4e01-b44c-73ace125dae3', '粤BH603L', '', '', '', '', '', '', '日产', '日产', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('0a3911e2-1d1b-4b98-b793-8ca47a855018', 'a1c2ac28-9f27-4dd9-ba57-b12041583393', '粤B294LL', '东风日产牌DFL7162AAC', 'LGBH12E0XDY271166', '2013-01-17', '233595W', '2016-01-17', '2016-01-17', '日产', '轩逸', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('e6b7e592-3750-4f89-99cc-b0c13bee4f56', 'a2b26148-e284-494f-b3aa-764d2d1e02ee', '粤B781FJ', '', '', '', '', '', '', '卡迪拉克', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('22a8fb82-9d69-4a37-9ed3-06bfe959e532', 'a2cce59e-5dd0-4827-9376-91dcc5f1771e', '粤B9688T', '', '', '', '', '', '', '福特', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('963e090e-9741-4df9-b5e5-affea3c6d8e4', 'a32ae0c4-84bc-498f-8934-f1a6aa101d40', '粤B556EL', '思域牌DHW7180B', 'LVHFA1631A5030345', '2010-03-30', '5030316', '2016-03-30', '2015-03-28', '本田', '思域', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('f83166a9-6fa3-4e8b-bf20-e2f7971f0b21', 'a36c0aff-a190-48a1-a7f2-c4ec00e34838', '粤B8G055', '', '', '', '', '', '', '雪铁龙', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('70facc27-a865-4930-a29b-b22f02136018', 'a39799ab-7daa-447c-8ba7-799a44def3b7', '粤B271PQ', '比亚迪牌QCJ7153A', 'LGXC16DF6B0145223', '2011-08-18', '211068061', '2015-08-18', '2015-08-18', '比亚迪', '比亚迪L3', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('c7e8772b-7d08-4c1f-8b15-704cfc36a26e', 'a3a0eebe-173f-4cdf-814d-04693ed9b174', '粤BE84J3', '', '', '', '', '', '', '雷克萨斯', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('c90e38b5-a134-4cdc-ae38-446478bb4665', 'a47f2715-5aed-4889-a8d9-27981a4546a1', '粤B48756', '', '15663AFSAF', '2015-01-06', 'FSGE84888', '2015-03-27', '2015-03-19', '奔驰', '奔驰A级', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('7a00ba81-a555-4d78-9b37-5fd31d95ebd1', 'a532cdca-15e9-44cc-90a2-5e2b01002919', '粤BL708X', 'SGM7168ATA', 'LSGJA52U19H051654', '2009-04-24', '93080114', '2015-04-24', '2015-04-24', '别克', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('26d42f10-b716-470b-95e1-8b2be002697b', 'a65c840a-32f8-42ff-aa5e-722d28ef0c25', '粤BK1C68', '夏利TJ7133UE4S', 'LFPX2ACA8B5E25560', '2012-01-01', 'HB851897', '2016-01-01', '2016-01-01', '夏利', '夏利A+三厢', '平安', null, null);
+INSERT INTO `chelianginfo` VALUES ('f04d678c-4a22-47c0-85d7-8a4e9158096e', 'a99ed46e-2475-4a77-a7df-91ad83eb4121', '粤B721RV', '丰田牌TV7163GLM', 'LFMAPE2C4B0277870', '2011-06-01', 'E798464', '2015-06-01', '2015-06-01', '丰田', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('fdfe16a9-5b15-45fd-9932-ea519fc2a302', 'a9dd36ff-c3a5-46be-99c9-56ab1c753ff1', '粤B65KB', '', '', '', '', '', '', '丰田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('69dfddd4-5f75-43d5-a992-6a0c609a1170', 'aa29c4b1-5de6-419b-a7c6-1bffbbb0cf18', '粤B166YY', 'BUICKSGM7160SLYAT', 'LSGSJ52N32S118065', '2001-12-12', 'L0110925220', '2015-12-12', '2015-12-12', '别克', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('a69d0c14-383f-428d-b238-ae0616e83c54', 'ad575a03-6342-45a6-906f-e2f1ed145b3e', '粤B66P05', '丰田普瑞维亚JTEGD54M68A', 'JTEGD54M68A007730', '2008-04-25', '2AZH019129', '2015-04-25', '2015-04-25', '丰田', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('f659662f-26fd-41b3-96a6-6b4257961b7e', 'ada94ff7-d237-407d-ad3a-2c2b9d899c6a', '粤BR706G', '', 'LVVDB11B8CD138759', '', 'AACC03943', '', '', '奇瑞', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('6734ebf8-1e71-4d6c-9ebf-a7b8f3fd75e8', 'adc1d6b9-a0b2-49d0-82b2-c061215f9054', '粤B869TT', '', '', '', '', '', '', '丰田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('531561b1-a471-4f60-963e-ecb5bbe0b4a0', 'adf4483e-17d7-4b83-9d8c-c0d624c552a3', '粤B973SF', 'DFL6460VECF', 'LGBM2DE44BS018452', '2011-06-22', '191311B', '2015-06-22', '2015-06-22', '东风', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('e353d30e-bbe6-42a4-8a20-211630c6c285', 'ae27dc2a-1f44-4417-8300-7d58dbe8eb46', '粤BR73Y9', '蓝龙SUPTF69YD1W', 'SUPTF69YD1W139013', '2002-04-30', 'A15SMS052692R', '2015-04-30', '2015-04-30', '蓝龙', '蓝龙', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('25d92644-0690-4895-b87f-6f5879eebcc7', 'ae5cca9d-0939-469c-a1bc-a2739ba79601', '粤BM6170', '', '', '', '', '', '', '日产', '日产', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('94002239-0729-4ad2-98d6-12ee25df6911', 'aea56bac-ca06-44d7-a8aa-30d245192f52', '粤Y31F82', '', '', '', '', '', '', '起亚', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('c2b4a18c-742a-47cc-9b75-389e6fee45ad', 'aef5ce25-6c49-47bb-aff4-df978a4ab5d9', '粤B847WZ', '东风雪铁龙牌DC7165LXBA', 'LDCC41T33D1645802', '2013-11-20', '1032768', '2015-11-20', '2015-11-20', '雪铁龙', '世嘉两厢', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('963b1697-6606-4837-b66f-23665413e67e', 'af01db16-d4c0-4999-b092-125974fc25c3', '粤BV8J72', '比亚迪牌QCJ7150A5', 'LGXC16AF8A0024695', '2010-05-11', '4DA1A5585', '2016-05-11', '2015-05-11', '比亚迪', '比亚迪F3', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('fc7ab960-f3ed-4144-b879-a2996c76a61b', 'af9b8686-796b-42fd-9f6f-1ca82affa174', '粤BR303N', 'GTM7251GB', 'LVGBF53K6CG063663', '20152-11-28', 'H143562', '2016-11-28', '2015-11-28', '丰田', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('02e0953a-6f3a-447e-bfc8-82a784b167fc', 'b0504aa6-747d-4150-95fe-5218929e105c', '粤B706SN', '', '', '', '', '', '', '长安', '长安CX20', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('62d945a0-595b-4c03-9f76-5a718261daeb', 'b0a29bb2-cf13-4743-b2df-749ddec63706', '粤BZ596C', '蒙迪欧牌CAF7205A41', 'LVSHBFDC6BF158477', '2011-07-05', 'BA01233', '2015-07-05', '2015-07-05', '福特', '致胜', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('516927a6-b6b0-4149-97a7-759f0e0f9d17', 'b0ce87df-e93d-49d5-a747-e19dcf99faa3', '粤BX920W', '东风标致牌DC7164DTA', 'LDC933L2390896929', '2009-03-26', '5118754', '2015-03-26', '2015-03-26', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('92cea959-822e-4980-9a15-0eb5b08be670', 'b1b3c52f-0bee-4af0-a44e-2763638bcf95', '粤B486EC', '', '', '', '', '', '', '雪铁龙', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('8efc0970-e4bf-4a14-91c6-28b2954248c7', 'b278780f-577c-4969-9037-cfcb6e9ac66e', '粤B9GK92', '', '', '', '', '', '', '雪佛兰', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('e40b39d6-90b8-4cfb-8ea4-3df3228479c6', 'b3aa3cc2-ea5d-4887-845d-fff592c90037', '粤B855VR', '', '', '', '', '', '', '保时捷', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('f7b78555-ffab-46bd-857a-fd69a7119a18', 'b453f0f7-bce7-4dbe-8eba-b60d36c47387', '粤B029LN', '', '', '', '', '', '', '斯柯达', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('a8a48d40-f9f4-427b-9f44-f4b69f80fed0', 'b543c128-51f9-43bf-a94b-6a135371dd8c', '粤BWX341', '', '', '', '', '', '', '丰田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('3b331451-58d4-472f-86e2-ebddf69a68c6', 'b5862da2-b810-47e2-a037-c54bd6eb3c00', '粤B428DE', '雪佛兰牌SGM7184ATA', 'LSGPC54R7AF077575', '2010-05-29', '101240566', '2016-05-28', '2015-05-30', '雪佛兰', '新科鲁兹', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('eebb5d78-5374-4499-a39b-941a88b5d0d8', 'b60b8da0-c959-42f3-9602-7e02dd30e14a', '粤B1F11', '', '', '', '', '', '', '本田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('2476511d-b3a4-43f1-ba9c-95269c822a00', 'b7227e61-9fea-4ce8-9590-ba5051cf5bf0', '粤B050TL', '', '', '', '', '', '', '雪佛兰', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('2556ede1-0ead-4dea-8f14-175255f8d80a', 'b7d3533b-4b20-4585-8ab4-c7f3e9333f0a', '粤BN716E', '', '', '', '', '', '', '奇瑞', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('c25f85ea-8465-4ea6-8ec6-8afd0ae5e001', 'b8ba127a-032f-4c8e-bb26-99c1b6b11d37', '粤B878PE', '', '', '', '', '', '', '日产', '日产', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('f0fa495b-1faf-4823-a18d-11e13f24f91c', 'b90c0d9d-1b02-42da-b172-97f56c99091a', '粤B37632', '福特牌CAF7153A4', 'LVSHFFAL5DF639493', '2013-12-17', 'DA05327', '2015-12-17', '2015-12-17', '福特', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('231365e4-5989-4672-85e0-870d25a2455e', 'baef3c52-90c1-4f3c-b516-9200a5d4d20f', '粤BN49A2', '丰田牌TV7181GL-1D', 'LFMARE2C090230050', '2009-11-20', 'E485462', '2015-11-20', '2015-11-20', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('2bf9b0d4-c3df-4b51-9514-b63739190c84', 'bc570107-4d99-4b10-b85c-8e5713fc97a5', '粤BW6T11', '吉利牌JL7152D', 'LB37624S6CL044064', '2012-09-24', 'C7L424018', '2016-09-24', '2015-09-24', '吉利', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('c56ae8e5-0b1f-4058-8c44-ecc05d93b72c', 'bc581d2c-25c3-4fa9-a98c-c41e4e5ba4f0', '粤BZ081A', '丰田牌TV6460GKX_1', 'LFMJW30F1B0120625', '2011-08-19', 'F721670', '2015-08-19', '2015-08-19', '丰田', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('9481117c-7efe-4436-aedf-d67f28e4e1a7', 'bc6580a1-ca5e-4b59-b400-d798c8729957', '粤BS4T88', '', '', '', '', '', '', '丰田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('928e0780-f23d-4028-97ee-ee96a343b4e2', 'bd374fc8-5b7f-4026-afd2-f250b36742eb', '粤B8064T', '起亚牌YQZ7162AE3', 'LJDDAA22780225156', '2008-03-25', '85180458', '2015-03-25', '2015-03-25', '起亚', '赛拉图三厢', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('a553b8fd-fb90-491a-88cb-00bdb488343d', 'be03c8f9-d7c5-4a3d-9537-c45fec5dc6b2', '粤B6SX37', '东风牌EQ6394PF7', 'LVZZ32F71CC907586', '2013-07-03', '12628235', '2015-07-03', '2015-07-03', '东风', '小康K17', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('b334812b-8c20-4563-98cb-36ff457f49d1', 'be8ca8de-7761-430e-99d3-edfce2d80525', '粤BX870X', '', '', '', '', '', '', '马自达', '马自达3经典', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('cb0d6647-52e6-4bbb-bcb1-a5006d8dacb0', 'bed4a91a-7e3b-4bdd-8ddb-663b6ff0d832', '粤BTOG45', '北京现代牌BH7141MY', 'LBERCACB0CX374957', '2013-01-11', 'CB617571', '2017-01-17', '2016-01-17', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('0c832d20-c59f-42e5-8f49-2d5b29d754f8', 'bef38304-76d1-4f8a-aa0b-689d1c2c20ca', '粤B1273Z', '', '', '', '', '', '', '福特', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('e3d239ae-984f-4ce8-8c4d-5d50c3b04ac0', 'bf038b5f-535f-4c76-8d1a-8e1ce5ea9029', '粤BV153C', '', '', '', '', '', '', '丰田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('9da51f31-33b1-4e85-aeb4-715f497f7a32', 'bf3b1f45-447d-4d52-b7a3-1ee3093bf100', '粤B0CR99', '高尔夫牌FV7144TFG', 'LFV2B11K8C3315617', '2013-01-08', 'L45199', '2016-01-08', '2016-01-08', '大众', '高尔夫R', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('ca4264c4-aefa-4b69-8d27-cf4ac65bcdae', 'bff90503-6981-42b7-ae93-5a965610be7b', '粤B925GJ', '东风日产牌DFL7201EC', 'LGBL2AE09AY076057', '2010-07-29', '254829T', '2016-07-29', '2015-07-29', '日产', '逍客', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('a3aea6b9-c913-4e21-88e4-63676eb17501', 'c15e89d1-770a-40b0-869e-d25e1b470fae', '粤BHQ339', '天籁牌EQ7230AA', 'LGBF1CE065R123413', '2005-07-22', 'VQ23 097647', '2015-07-22', '2015-07-22', '日产', '天籁', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('cebae808-c489-45da-bcbe-040bba4cbd6b', 'c1ccabb3-dd5e-42dc-8d7d-ff7d7c9150ec', '粤BT5P33', '长城牌CC6460RM40', 'LGWEFEA57CF127204', '2012-11-21', '121167394', '2016-11-21', '2015-11-21', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('d5948424-f131-429d-9adf-a1b90c074907', 'c2bf6ea6-7e4c-4302-b9cf-4c730ad31b9d', '粤B4J298', '丰田（TOYOTA）GL/ECT', 'LTVBA433830008273', '2003-04-07', '5A*D127887*', '2015-04-07', '2015-04-07', '丰田', '威驰', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('0e038d51-d5f3-4c38-b861-1b2cf149aac4', 'c30ca4d4-ee62-470a-b318-8f58732e32a8', '粤BRY023', '', '', '', '', '', '', '中华', '中华', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('22aa9c52-3281-4678-9aa6-8c74d2355fd0', 'c30df3bb-2f46-47a4-a72c-75c5f6ea159f', '粤B6C1T0', '', '', '', '', '', '', '本田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('1574c5e2-fd01-45f6-b54b-2c1921b44186', 'c46105a5-a497-43f4-8606-854265f6fe7c', '粤B986YZ', '', '', '', '', '', '', '马自达', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('2b295547-ae9b-4106-969a-665ed88ae6b7', 'c46209bf-c7e2-4a53-a519-7682ddf7a573', '粤BL703L', '马自达牌CA7201AT3', 'LFPH4ABC691A13186', '2009-04-29', '80057138', '2015-04-29', '2015-04-29', '马自达', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('824ed702-39be-40a0-9bc3-fb6e9e3cbbe6', 'c4d61264-a2d3-432d-8cdc-d584aa1e8700', '粤B739UC', '雅阁牌HG7241AB', 'LHGCP2689B8035518', '2011-11-03', '8135525', '2015-11-03', '2015-11-03', '本田', '雅阁(7代)', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('77a85973-7f35-45bf-b127-1bfdc2caeed6', 'c4ed58ab-d08e-4d21-b36c-0f7117fa1a35', '粤BN195R', '奇瑞牌SQR7161M117', 'LVVDC11B6BD469190', '2012-01-04', 'AABM00285', '2016-01-04', '2016-01-04', '奇瑞', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('82334728-4e2d-4ccf-9e27-1299422d207a', 'c4f4b52c-936c-42ab-a85b-09b1a22546ae', '粤B3GB49', '朗逸牌SVW7167LSD', 'LSVAL4185D2046311', '2013-03-21', '384898', '2015-03-21', '2015-03-21', '大众', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('871f2cef-e21b-4755-ad02-321ef1b5cb16', 'c56b5987-8721-4a98-9f9e-1357672620ad', '粤BE039Y', '波罗牌SVW7144DRD', 'LSVNS29J1B2020480', '2011-06-20', '372789', '2015-06-20', '2015-06-20', '大众', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('718101eb-c5fa-4918-8055-096e434926d6', 'c8227dc3-1c2a-4973-9362-cfc4506278ea', '粤BS02K0', '东风标致牌DC7164DTDM', 'LDC953L21B1813329', '2012-02-10', '8787656', '2016-02-10', '2016-02-10', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('4ff412f8-1eb2-4cb1-9dd8-08abdf13d8bb', 'c8a88d78-e7b4-47bb-9f50-b73bfad3000a', '粤B506XS', '', '', '', '', '', '', '雪佛兰', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('6f466552-d526-40c3-992d-9499bb35c77a', 'c8b70f8d-cd57-4c0d-8d6e-04358bb70b5d', '粤B7489N', '轩逸牌DFL7162ACC', 'LGBH12E009Y058461', '2009-06-12', '426155C', '2015-06-12', '2015-06-12', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('4c5878c7-06fa-40ab-b341-0fb359eabd5b', 'cd25a1ac-ceec-4274-bf26-3a4e76b2824a', '粤BQY506', '东风雪铁龙牌DC7205', 'LDCC43X3660412611', '2006-09-08', 'PSARFN10LH3X7006093', '2015-09-08', '2015-09-08', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('6510be80-eb98-4dde-8b97-fc967fdd5fc6', 'ceaf199e-1d4d-46db-951a-8d4d42f25134', '粤BX4R67', '', '', '', '', '', '', '本田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('a1a611f9-e4e0-434d-bb44-7f30187a8c28', 'cf6ae315-da45-449d-a08f-60f063e73b07', '粤B056MT', '', '', '', '', '', '', '本田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('fcb71abc-5716-4c1f-a747-9931fb9a2b3c', 'cff370a2-c299-412a-9439-42b3a46f315c', '粤B28A91', '五菱牌LZW6450PF', 'LZWACAGA2E7085533', '2014-07-03', 'UE60320034', '2016-07-03', '2015-07-03', '五菱', '荣光', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('9e0dfb22-9ba8-4916-a7f2-7644abef1ddb', 'd0cb5794-a0b7-41e3-aa5a-87d988eb0db2', '粤B681HY', '朗逸牌SVW7207CPD', 'LSVAE418792761902', '2010-01-19', '033002', '2016-01-19', '2016-01-19', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('053218ec-c6d1-46e2-a9f0-f7571ae6b40f', 'd10dd106-70be-4843-815d-21c68160d3a2', '粤BL375F', '福克斯牌CAF7163A4', 'LVSHCFDB8CE097371', '2012-11-15', '3188910', '2016-11-15', '2015-11-15', '福特', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('107bcd77-3dae-4879-87c9-5f57ddc02be2', 'd17fbe16-a51b-4985-8105-de32650d2f4e', '粤BY091A', '比亚迪牌', 'LGXC16DF4C0049Z19', '2011-04-25', '212324050', '2016-04-25', '2015-04-25', '比亚迪', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('37ad1810-2393-488b-9414-e06666edcb14', 'd20c1b92-afd9-4ef4-8167-9009abc1cd9f', '粤BY6C65', '起亚牌YQZ7204A', 'LJDKAA243C0073734', '20121013', 'CW131837', '2016-10-23', '2015-10-23', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('ee74f488-7963-47c6-ac60-3cdf46197709', 'd20d5d1d-2e86-4732-9633-1765e5d60702', '粤B594CD', '福特牌CAF7152A1', 'LVSHFFAL6BN166982', '2011-08-16', '3286814', '2015-08-16', '2015-08-16', '福特', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('dd2e60f6-441d-4182-aa60-3fd1066b1c05', 'd27c85aa-6c0b-4588-a425-0ad0eb3352a5', '粤B0Q07', '', '', '', '', '', '', '本田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('e610c1f0-6836-424d-9dcf-0c9609e0f988', 'd308de65-ef7e-4f7d-b220-534f90ec4c5a', '粤BC039C', '', '', '', '', '', '', '本田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('eee7971b-3b4b-43d1-a9a6-a8736cd1033c', 'd4d80bab-e812-42bc-8759-a22b301fb647', '粤B9YU31', '福克斯牌', 'LVSHCFDBXDE363202', '2013-10-11', '3389900', '2015-10-11', '2015-10-11', '福特', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('ba086870-be9c-4dc5-8f92-017cf4f1b505', 'd5aa369e-9530-4999-b679-7383d224d918', '粤BD1C51', '日产风度牌JN1CAJA32U0', '037509', '1997-11-03', '159928', '2015-11-03', '2015-11-03', '日产', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('21ab7dd8-5807-4c7d-bb4d-bad368436d4b', 'd5eaa503-9dca-4767-b55f-aa9d72bd1963', '粤B1TH19', '', '', '', '', '', '', '奥迪', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('4cf909e5-64a8-4833-a730-a349d4d6b2dc', 'd6903084-d1b6-4257-82ac-0585dc7372a7', '粤B6D9C2', '长安牌SC6428H4', 'LS4ASB3R4EF058199', '2014-11-28', 'E37J007490', '2016-11-28', '2015-11-28', '长安', '长安CS35', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('3e26ea9c-ad86-4d31-ad0f-d3a040c68d4c', 'd7ab20e6-192c-43eb-a70a-2740aafd775f', '粤B686YA', '天籁牌EQ7230BB', 'LGBF1CE077R218520', '2008-02-29', '235755', '2016-02-29', '2016-02-29', '日产', '天籁', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('f7be0a06-26c0-408a-b07a-f79d411e5689', 'da12c783-7a77-4578-ab2e-d26fd6c3c187', '粤BT191Y', '', '', '', '', '', '', '宝马', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('9e2daf1a-14fc-41df-9024-fa965c7c1d30', 'da69df95-fdd7-4c89-9427-6b384f3eefa1', '粤B695XF', '马自达牌CAM6460B', 'LVRHDCAC6DN024821', '2013-11-29', '3115612', '2015-11-28', '2015-11-28', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('e05d6b81-7555-4e7d-8d9a-d79be6a80cb5', 'da72ea75-b485-4ab2-877e-9a693d9992c3', '粤BLL933', '丰田牌TV7250V3', 'LTVBJ222X60013962', '2006-01-23', '5GR C043195', '2016-01-23', '2016-01-23', '丰田', '锐志', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('77a889d5-9bb4-4f49-ab0d-e1522d8d56b9', 'db1483b7-ef94-4ce5-b0e3-907e26650c5f', '粤B8A330', '', '', '', '', '2014-01-20', '', '大众', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('292a7b8e-fc3d-4aa9-8eae-0b602d43e306', 'dba575c0-55c2-4ba1-95dc-faeb9092080b', '粤BE020G', '北京现代牌BH7141AY', 'LBERCADB9BX142600', '2011-11-11', 'BB732654', '2015-11-11', '2015-11-11', '北京现代', '瑞纳', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('efdc5355-39e1-4ebc-bb44-ff7a03e3b5e2', 'dbc203bd-8c18-4c57-bc84-b1452cd7f679', '粤BW352R', '东风日产牌EQ7250AC', 'LGBF1DE03CR097257', '2012-05-23', '192691M', '2016-05-23', '2015-05-23', '日产', '天籁', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('44139bc6-3477-4951-90aa-9647a7c329a1', 'dc0bfe80-f1d4-43ac-8f1c-74b7a5fb24de', '粤B926KZ', '', '', '', '', '', '', '福特', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('c2fbbea4-9e8e-4f9f-ab14-f189d896d154', 'dc80f13e-dd8f-4eae-96d0-b174047a3e25', '粤B945CC', '东风日产牌DFL6460MECF', 'LGBM2DE62AY006104', '2010-06-03', '947625A', '2016-06-03', '2015-06-03', '日产', '奇骏', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('df72a510-e9da-4ff6-b2fe-0cc39ce63fc6', 'dd517698-f57d-4fb9-a768-c0467e7570fb', '浙BRD750', '', '', '', '', '', '', '陆风', '陆风X8', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('90902d15-2d06-4a83-9132-a579ccc82b63', 'ddc179f2-b929-40d7-aa9c-9ce84df310b4', '粤B8TB56', 'FV7166ATG', 'LFV2A21K693001207', '2009-02-13', '255832', '2015-07-26', '2015-07-26', '大众', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('2806651c-0933-4d26-a2f4-cccae5c35eb8', 'ddc48b70-7d3b-4124-b8d3-c32b889ff35c', '粤B0TZ28', '福克斯牌CAF7180B48', 'LVSFCAAE3DF555497', '2013-08-21', 'DA46851', '2015-08-21', '2015-08-21', '福特', '福克斯两厢(第二代)', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('39935a02-2ccd-4287-b5fb-9d7c67fc29e4', 'debc683a-0c01-429f-aacc-51a3b1804c06', '粤B907VB', '雪佛兰牌SGM7209ATA', 'LSGGG54Y7DS146322', '2013-10-22', '132210143', '2015-10-22', '2015-10-22', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('a9d29a1f-72f5-4a34-974c-f2576f2cbbe5', 'df49169c-0faf-43eb-b61a-442c217a98e3', '粤BDK856', '', '', '', '', '', '', '本田', '雅阁(7代)', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('09512a2b-7186-47a8-9782-f82fb5d644af', 'dfb36f01-c7c4-4157-8fb8-0fa0b0b1d240', '粤B12345', '', '', '', '', '', '', '哈飞', '路宝', '', '2013', '2.0');
+INSERT INTO `chelianginfo` VALUES ('7ff9066e-be14-4fc9-af83-14b4eb5874cd', 'e0263b81-3b08-4423-81e5-04aab09cb193', '粤B526KH', '', '', '', '', '', '', '海马', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('2de7b406-14f7-45c1-bf65-d5889b8f1b44', 'e05dec4f-ad3c-466f-9877-b5e1fa5df1d2', '粤BV15V0', '', '', '', '', '', '', '本田', '杰德', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('736ee3a8-62df-4828-8da4-966aa516f5e3', 'e32c92c1-f6e2-4c0d-be80-e763fc91a5d2', '粤BD65A2', '江淮牌HFC6470A3BE3', 'LJ16AA23877038433', '2007-11-22', '73036711', '2015-11-22', '2015-11-22', '江淮', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('b1bbf5b1-6c20-4b2d-a985-24ccd085ab96', 'e384f913-abca-4ce1-a4f2-63001b2a6c86', '粤B8NW81', '起亚牌YQZ7169A', 'LJDMAA220D0073246', '2013-06-28', 'D5577202', '2015-06-28', '2015-06-28', '起亚', '起亚K3', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('f56fc328-0e9c-490a-8b47-203a5450033b', 'e411219e-2a58-48fa-96ab-e2e0ec183e6c', '粤BQ119H', '', '', '', '', '', '', '江淮', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('5cafab8e-fcb8-4306-b678-a94ffef922a2', 'e4904c3f-0e13-4323-b7ae-2e65c74c9ce4', '粤BV9591', '福克斯牌CAF7163A4', 'LVSHCFDB4EE541316', '2014-04-14', '3490807', '2016-04-14', '2015-04-14', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('d04931df-14af-4c19-8286-0e849bfaa9c8', 'e5479f4a-fefa-46c4-beb8-75a22812db86', 'B5HM72', '', '', '', '', '2013-03-25', '', '启辰', '晨风', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('24ae628c-d5e2-4ed2-b1d3-5cb8e45472ba', 'e5d81476-1190-4e61-a7b6-b430cbff4bae', '粤BQ7P27', '雪佛兰牌SGM7187MTA', 'LSGVA54R9CY177150', '2012-04-23', '113390087', '2016-04-23', '2015-04-23', '雪佛兰', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('263213f4-e470-42a9-abf4-f199ae9b0c6f', 'e61f3127-d049-40e6-8e8b-acd2af31fca3', '粤BM846P', '', '', '', '', '', '', '日产', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('720930ea-604f-47b1-a87b-7ee1159401ab', 'e6533af2-a273-418d-9468-7f574c9ed8d9', '粤B0949X', '', '', '', '', '', '', '宝马', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('5adf3275-c56e-47de-b882-fc7e9506fa22', 'e7943ed8-efb0-4fe3-8115-1d03f960f42c', '粤BY5F27', '大众汽车牌SVW7147SRD', 'LSVND6186CN018606', '2012-10-31', '343916', '2016-10-29', '2015-10-31', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('dbc8dbf6-7fe4-470e-bf04-320276604f5c', 'e80ea3f5-5895-4216-beec-997c3fe0d34e', '粤B799TS', '', '', '', '', '', '', '丰田', '丰田86', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('f9fa50f4-7ef2-413c-af9e-72df48b06407', 'e872aea8-8539-46f8-82e1-252e0981afe0', '粤BR68B63', '', '', '', '', '', '', '雪铁龙', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('baa5c356-4ba4-4e31-9ea6-71fcf1fbaccb', 'e87bac56-178d-45ed-b624-0a367fc4b65b', '粤B027BL', '宝来牌FV7162XATG', 'LFV2A2153A3076218', '2010-10-18', 'N50348', '2016-10-18', '2015-10-18', '大众', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('74bf3483-65e4-4555-9d94-3e1d6b962a6a', 'e8c7702e-03b0-466b-a071-4a38f414c5c1', '粤B2JD86', '', '', '', '', '', '', '奔驰', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('f76edcc3-76c1-4a4e-a3c0-cc845fdbc4d3', 'e9ae84c1-64b1-4fd1-8602-ae337a52f9ef', '粤B9QB65', '福克斯牌CAF7163M4', 'LVSHCFMB2DE293128', '2013-07-19', '3339984', '2015-07-19', '2015-07-19', '福特', '福克斯三厢(第三代)', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('70c06749-0808-4165-98e2-36dd758e67b7', 'eaeb320f-8abe-449a-a7bb-fd18343138fd', '粤B845FJ', '迈腾牌FV7147TATG', 'LFV2A23C3A3050343', '2010-10-21', 'G01072', '2016-10-21', '2015-10-21', '大众', '迈腾', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('31c5926e-4fe3-4177-8f36-630ed48b0fc7', 'eb0c09b1-a3e2-4330-9a4c-df1cf56a143b', '粤B84J62', '风神牌DFM7160B3C', 'LGJE3FE2XDM154219', '2013-04-11', '0505828', '2015-04-11', '2015-04-11', '东风风神', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('8745057a-b7dd-4a1a-a20c-f5f28e84c03e', 'eb13b341-de97-4c0c-8d94-0cc3bb7489db', '粤B136JF', '', '', '', '', '', '', '日产', '天籁', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('586f1eda-0226-4f3b-8593-8fd5fb635f6d', 'eb7cd022-ac6d-4866-a6a6-72d632ae9b81', '粤BH7E94', '', '', '', '', '', '', '奔驰', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('bf6dd86d-a08b-423f-af32-9befd9f82bcf', 'ebfa68ae-cd82-4888-adf2-67ac14c39123', '粤B422LJ', '别克牌SGM7168ATA', 'LSGJA52U3AS099874', '2010-07-26', 'A5280314', '2016-07-26', '2015-07-26', '别克', '凯越', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('82dfb5ff-5f2a-4129-b2d6-b588d357e289', 'ec66ed35-24db-4264-8427-9b349ef879f3', '粤B6AK29', '别克牌SGM7165MTB', 'LSGJA52U0CS298285', '2012-12-03', 'CA250730', '2016-12-03', '2015-12-03', '别克', '凯越', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('ad41a25f-670f-4204-9074-0d6a545f1209', 'eda59962-be21-451c-a50f-94234aa6fd0c', '粤B684RR', '', '', '', '', '', '', '丰田', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('45bd946e-ccbb-4120-b6b8-5ee348efcef7', 'eddf4273-a7f7-457e-8c4f-de191ab32006', '粤BV6045', '长安牌SC6449C', 'LS4ASB3R3EA632062', '2014-04-01', 'E7TJ015176', '2016-04-01', '2015-04-01', '长安', '长安CS35', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('3faabb12-e394-4ea3-b677-de05f026bfb3', 'eede5b4c-14b5-4c05-bc70-f837e91d3f18', '粤BL785J', '', '', '', '', '', '', '斯柯达', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('053c7786-f3c0-4b4e-8af8-57f409828449', 'ef787b83-3179-42f5-a613-bfbba47453cd', '粤BZ53L3', '长安牌SC6399D4Y', 'LS4AAB3D9BA018930', '2011-02-22', 'B69C502041', '2016-02-22', '2016-02-22', '长安', '长安CS35', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('bcf7cec4-ab44-4c28-81f3-d16e07c90412', 'f05d7085-e208-4a8c-a593-0e38749ad529', '粤BQ2J29', '宝来牌FV7162XATG', 'LFV2A2155C3001510', '2012-04-12', 'R77610', '2016-04-12', '2015-04-12', '大众', '宝来', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('611745e5-02da-4a72-ad5a-959b9a3cac7b', 'f09430f5-22d7-40bf-8dca-4c5d40b984f5', '粤BVS861', '', '', '', '', '', '', '比亚迪', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('0fd4732b-7761-437e-87db-93327d3ce120', 'f155c7a0-abd1-48f1-91a0-c2ef6cb003a6', '粤B053GE', '', '', '', '', '', '', '景程', '景程', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('72ab36f9-7fb5-4c7b-95a2-8b80673d47ad', 'f1d92941-e45e-4638-8c87-911f3199cb4a', '粤BR273M', 'CAF7163A4', 'LVSHCFDB5CE090295', '2012-10-25', '3182558', '2016-10-25', '2016-10-25', '福特', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('502c8b58-95d8-47df-a187-8721222e546e', 'f24c8458-b487-456d-bbc5-6f80b5f5677b', '粤BN2F87', '雅阁牌HG7230/ACC0RD2.3VTL', 'LHGCG5664Y2022204', '2000-11-23', 'F23A37322180', '2015-11-23', '2015-11-23', '本田', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('ee74f488-7963-47c6-ac60-3cdf46197709', 'f273bad7-fad2-4b3a-9fa0-316a1eb84916', '粤B594CD', '福特牌CAF7152A1', 'LVSHFFAL6BN166982', '2011-08-16', '3286814', '2015-08-16', '2015-08-16', '福特', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('08b7f923-74d8-405e-bc26-c839dc91ad0c', 'f3b4764f-7979-4e98-99fe-84427f01df75', '粤B26N12', '', '', '', '', '', '', '日产', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('13ed54de-3716-42b3-8407-509315e610a8', 'f447ec27-7dae-48ea-8e66-2b0107a96f7d', '粤BQ422W', '福克斯牌CAF7180B48', 'LVSHCAAE3DF450306', '2013-03-25', 'DA14982', '2015-03-25', '2015-03-25', '福特', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('ba450ef6-9cf9-4335-aecc-3f53bf6151d1', 'f44b5b2b-549c-408b-870e-8b8f4db11984', '粤BZ0J77', '江淮牌HFC7150M1F', 'LJ12GKS28C4421360', '2012-10-19', 'C3463271', '2016-10-19', '2015-10-19', '江淮', '和悦RS', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('2d8201a5-fc77-4a37-83af-ff09d7285850', 'f4df5eff-50d1-4f17-bcdc-3a88a84f9805', '粤BKH978', '', '', '', '', '', '', '别克', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('f295e9b0-da58-44e7-9e1b-339e55548ac8', 'f5030246-8eab-4e1e-a3a3-455ecd925c03', '粤B97J08', '丰田牌TV7252VSP', 'LFMBEC4D0D0170225', '2013-05-20', 'C715325', '2015-05-20', '2015-05-20', '丰田', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('ac2b6402-bfdb-4a80-9149-e0f37d71baba', 'f62590ab-000f-48a9-a9c1-2b8103d9d4a8', '湘M1GL77', '', '', '', '', '', '', '马自达', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('834cdb72-a25b-4079-9c63-380b95418e2a', 'f6afa6bf-0d99-4864-bdde-0b7d409616cc', '粤B6TZ25', '一汽佳星牌CA7131', 'LFP42BJB8D6L25098', '2013-09-06', '2830588', '2015-09-06', '2015-09-06', '一汽', '森雅M80', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('841c6988-ea07-48cb-a7f5-f31d48cc9221', 'f8a5bd64-d451-4145-a69d-b382b7aa8de3', '粤BS229L', '福克斯牌CAF7180M38', 'LVSHCFME19F375637', '2009-06-02', '9J18962', '2015-06-02', '2015-06-02', '福特', '福克斯三厢(第二代)', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('98420029-3b6f-4dde-8a3a-299e05fb4153', 'f8fbf69d-d547-44de-8a39-697b71e2ec00', '粤B0YA72', 'SVW7167FMD', 'LSVFV2185D2198383', '2013-09-25', 'A73591', '2015-09-25', '2015-09-25', '大众', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('203a070e-a7d3-43ad-a106-d3b4484753a9', 'fafddb6a-ce12-47f2-a6fe-5b4fefa043cf', '粤BM93D6', '', '', '', '', '', '', '蒙派克', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('2cc40ce2-fc44-4015-8b5c-0c3c3066c495', 'fb3b6211-178e-45b8-92e7-b8e8af4e81ad', '粤B8MM85', '大众', '', '', '', '', '', '大众', null, '', null, null);
+INSERT INTO `chelianginfo` VALUES ('f9643c0a-4907-4bf6-aabb-31056adad6ba', 'fc795a0e-ac77-48f5-b5c4-a565f299cbf3', '粤B28U78', '起亚牌YQZ7162AE3', 'LJDDAA22570215580', '2008-08-15', '75166642', '2015-08-15', '2015-08-15', '起亚', '赛拉图三厢', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('3a808d3c-a331-4210-9daf-1e01abe27c95', 'fcfb9069-f788-432f-8726-8718732357ce', '456789', '', '', '', '', '', '', '奥迪', '奥迪A3两厢', '', null, null);
+INSERT INTO `chelianginfo` VALUES ('147028a5-6978-4398-8e0f-2363cc749e5a', 'fd11148c-886c-4f1f-acef-c698c5e9fd00', '粤BQ095F', '宝骏牌LZW7150ADF', 'LZWAEAGA0C8718421', '2012-03-14', '8C22420683', '2016-03-14', '2016-03-14', '宝骏', '宝骏630', '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('b6809625-9464-487a-8f4f-03264f743854', 'fde29329-944d-4957-a09b-614b1ac0aec7', '粤BMQ918', '丰田牌TV7180GLX-L3', 'LTVBR22E660733214', '2006-04-21', 'LZZ*B32743*', '2015-04-21', '2015-04-21', '丰田', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('b217aa56-220d-405a-ad89-b7fc8f8e7016', 'fe25fd38-e6ac-47c8-8722-3cb17137d220', '粤BX7C83', '吉利美日牌MR7151B4', 'L6T7824S4CN141323', '2012-09-14', 'C8NG00560', '2016-09-14', '2015-09-14', '', null, '人保', null, null);
+INSERT INTO `chelianginfo` VALUES ('4f03bc46-b18c-4d22-aa23-9262e83c8fe7', 'fefe1a78-26ad-4435-b3d9-271eadb823bc', '粤B2JM91', '五菱牌LZW6430MF', 'LZWADAGA6D8101156', '2013-06-21', 'UD42521205', '2015-06-21', '2015-06-21', '五菱', null, '人保', null, null);
 
 -- ----------------------------
 -- Table structure for `customerinfo`
@@ -1414,6 +1418,7 @@ INSERT INTO `customerinfo` VALUES ('3e648085-be69-4c8b-a46a-b06253780d07', null,
 INSERT INTO `customerinfo` VALUES ('3eb9e427-3cb5-48a1-bd18-4df44c5cf353', null, '人保客户', '刘良付', '13760213275', '666666', '刘良付', '13760213275', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('3efc3da0-9e9a-4d8a-8bc8-84531d771f30', null, '人保客户', '赵小曼', '15814059676', '666666', '赵小曼', '15814059676', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('3faabb12-e394-4ea3-b677-de05f026bfb3', null, '自店', '李先生', '13728775625', '666666', '李先生', '13728775625', '', '', '0', '1.00', '1.00', '注册会员', null);
+INSERT INTO `customerinfo` VALUES ('4153f44e-a734-433a-89c2-1a914943ed01', null, '自店', '何先生', '15915396978', '666666', '何先生', '15915396978', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('4167f7fa-eb1c-4534-8af9-a434a19a03ef', null, '自店', '廖先生', '15013711528', '666666', '廖先生', '15013711528', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('43185508-6569-4c4f-828c-bb20a52637ee', null, '现金', '李先生', '13622360708', '666666', '李先生', '13622360708', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('44139bc6-3477-4951-90aa-9647a7c329a1', null, '龙卡', '曾先生', '13760187098', '666666', '曾先生', '13760187098', '', '', '0', '1.00', '1.00', '注册会员', null);
@@ -1510,6 +1515,7 @@ INSERT INTO `customerinfo` VALUES ('85f298bd-89f8-453d-9adb-c492f0537995', null,
 INSERT INTO `customerinfo` VALUES ('871f2cef-e21b-4755-ad02-321ef1b5cb16', null, '人保客户', '盛先生', '18665955799', '666666', '盛先生', '18665955799', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('8745057a-b7dd-4a1a-a20c-f5f28e84c03e', null, '龙卡', '黄先生', '13302477136', '666666', '黄先生', '13302477136', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('88619f29-a8e9-4f15-bab1-a435ebd09194', null, '注册会员', '点点', '13649567342', '666666', '点点', '13649567342', '未设置', '未设置', '0', '1.00', '1.00', null, '0');
+INSERT INTO `customerinfo` VALUES ('89078664-5a15-4a45-8b2a-870c23405119', null, '人保客户', '邓迎辉', '13537527528', '666666', '邓迎辉', '13537527528', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('891e888a-b45a-408e-9949-2efa45a2a23b', null, '人保客户', '桂进辉', '13699824932', '666666', '桂进辉', '13699824932', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('8985763a-560d-4b7d-a859-08aa0e215498', null, '人保客户', '黄倩妮', '13428910023', '666666', '黄倩妮', '13428910023', '', '', '0', '1.00', '1.00', '注册会员', null);
 INSERT INTO `customerinfo` VALUES ('8a489809-be26-4ebe-93f1-3283d820bb76', null, '龙卡', '24', '13555555144', '666666', '24', '13555555144', '', '', '0', '1.00', '1.00', '注册会员', null);
@@ -1671,6 +1677,27 @@ INSERT INTO `customerinfo` VALUES ('fdfe16a9-5b15-45fd-9932-ea519fc2a302', null,
 INSERT INTO `customerinfo` VALUES ('ff47dd14-0db0-4b3e-868a-bf51ee6bff39', null, '自店', '李诚', '13510020050', '666666', '李诚', '13510020050', '', '', '0', '1.00', '1.00', '注册会员', null);
 
 -- ----------------------------
+-- Table structure for `customerreservation`
+-- ----------------------------
+DROP TABLE IF EXISTS `customerreservation`;
+CREATE TABLE `customerreservation` (
+  `txtReserveGuid` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '预约guid',
+  `txtCheLiangId` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '车辆guid',
+  `txtTicketInfo` varchar(10) CHARACTER SET utf8 DEFAULT NULL COMMENT '服务券信息',
+  `txtReserveDate` varchar(30) COLLATE utf8_bin DEFAULT NULL COMMENT '预约时间',
+  `txtReserveShop` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '预约店铺',
+  `txtWeiXinId` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '微信号',
+  `txtCallAddr` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '来电地址',
+  `txtCustomerServiceName` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '客服姓名',
+  `txtRemarks` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '保险到期日',
+  PRIMARY KEY (`txtReserveGuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+-- Records of customerreservation
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `customertaoka`
 -- ----------------------------
 DROP TABLE IF EXISTS `customertaoka`;
@@ -1683,7 +1710,7 @@ CREATE TABLE `customertaoka` (
   `txtTotalTimes` int(11) DEFAULT NULL COMMENT '服务次数',
   `txtRestTimes` int(11) DEFAULT NULL COMMENT '剩余次数',
   PRIMARY KEY (`txtGuid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of customertaoka
@@ -1734,7 +1761,7 @@ CREATE TABLE `customertaokaoperlog` (
   `txtTotalTimes` int(11) DEFAULT NULL COMMENT '服务次数',
   `txtRestTimes` int(11) DEFAULT NULL COMMENT '剩余次数',
   PRIMARY KEY (`txtLogGuid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of customertaokaoperlog
@@ -1890,6 +1917,7 @@ INSERT INTO `gongdan` VALUES ('0bea1d1d-c7ea-4c0b-8e13-cb625906f439', '001', 'JD
 INSERT INTO `gongdan` VALUES ('0d70881d-abac-4d7e-b0f2-543228d69414', '001', 'JDD20150309012', '0001865', '2015-03-09', '2015-03-09 17:52:46', '周丽娟', '', null, null, '0e038d51-d5f3-4c38-b861-1b2cf149aac4', 'c30ca4d4-ee62-470a-b318-8f58732e32a8', null, '粤BRY023', '12458', '', '', '中华', '中华', '', '龙卡', '124', '13544455254', '124', '13544455254', '', '|维修接待|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-09', '17458', '2015-06-09', null, '注册会员', '1.00', '1.00', '', '', '', '', null, null, '现金支付', null, null, '0', '15.00');
 INSERT INTO `gongdan` VALUES ('10241442-b366-40e7-9edd-1f31bade0f75', '001', 'JDD20150312006', '0006080', '2015-03-12', '2015-03-12', '刘全有', '', null, null, '3e26ea9c-ad86-4d31-ad0f-d3a040c68d4c', 'd7ab20e6-192c-43eb-a70a-2740aafd775f', null, '粤B686YA', '136502', 'LGBF1CE077R218520', '235755', '日产', '天籁', '天籁牌EQ7230BB', '人保客户', '丘耀革', '13510078479', '丘耀革', '13510078479', '', '|维修接待|车辆检测|物料登记|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-12', '141502', '2015-06-12', null, '注册会员', '1.00', '1.00', '2008-02-29', '2016-02-29', '2016-02-29', '人保', null, null, '现金', null, null, '0', '0.00');
 INSERT INTO `gongdan` VALUES ('106e3a63-c86d-4b30-8964-7c1e51b5c67f', '001', 'JDD20150310012', '0001772', '2015-03-10', '2015-03-10', '周丽娟', '', null, null, '4a48d2cf-f91c-4d65-af63-138ae9311c83', 'a121a6af-d805-4cc4-984b-709a461bf127', null, '粤B1KR15', '33482', 'LVGBH51K9DG070735', 'G119944', '丰田', null, '丰田牌GTM7201RS', '人保客户', '王小姐', '18680662517', '王小姐', '18680662517', '', '|维修接待|车辆检测|物料登记|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-10', '38482', '2015-06-10', null, '注册会员', '1.00', '1.00', '2013-04-24', '2015-04-24', '2015-04-24', '人保', null, null, '刷卡', null, null, '0', '260.00');
+INSERT INTO `gongdan` VALUES ('10b600cf-efdf-4c6b-863f-1cdf3356eeaa', '001', 'JDD20150318002', '', '2015-03-18 11:05:28', '2015-03-18 13:05:28', '杨小院', '', null, null, '51ac2de7-20da-4785-81b3-e136b0416045', '507fcdb0-3a37-49a7-a6c3-c685ba108207', null, '粤B98R95', '11', '', '', '宝马', '宝马5系GT', '', '现金', '08', '13536548904', '08', '13536548904', '', '|维修接待', '维修接待', null, null, '5011', '2015-06-18', null, '注册会员', '1.00', '1.00', '', '', '', '', null, null, null, null, null, '0', '-1.00');
 INSERT INTO `gongdan` VALUES ('114da5f1-37f2-4a51-9a72-97b4cf6b5d81', '001', 'JDD20150306023', '0001904', '2015-03-06', '2015-03-06 18:03:44', '周丽娟', '', null, null, '1cdeb080-07c4-4ed4-885d-22eeaa7a2d4d', '3f58fe7d-0dd2-43c4-b5f9-3d281ef7a369', null, '粤BJ26X6', '1876747', '', '', '福特', null, '', '会员', 'saf', '18511645151', 'saf', '18511645151', '', '|维修接待', '维修接待', null, null, '1881747', '2015-06-06', null, '注册会员', '1.00', '1.00', '', '', '', '', null, null, null, null, null, '0', '-1.00');
 INSERT INTO `gongdan` VALUES ('11d50658-f481-4576-94d5-f1df364c87c9', '001', 'JDD20150316004', '0005429', '2015-03-16 10:24:31', '2015-03-16 12:24:31', '潘培坤', '', null, null, '59975215-9401-448c-88df-916be5af1f09', '18a2addd-f812-48ce-8bd5-34eba014a5a6', null, '湘M1KH67', '1', '', '', '大众', null, '', '现金', '陈先生', '15116656289', '陈先生', '15116656289', '', '|维修接待|维修派工|维修完检|费用结算', '费用结算', null, null, '5001', '2015-06-16', null, '注册会员', '1.00', '1.00', '', '', '', '', null, null, '现金', null, null, '0', '35.00');
 INSERT INTO `gongdan` VALUES ('11dab6e2-3bec-42a6-ae26-0304b10b6ba8', '001', 'JDD20150303009', '0001988', '2015-02-28', '2015-03-03 13:04:54', '周丽娟', '', null, null, 'e080c1c1-dd5b-4a67-8ff3-c48a878b2fa1', '186ccd1d-db92-42ca-9549-ff741c9d5630', null, '粤B2H0P5', '3500', 'LVSHCFMB6EE853635', '3708504', '大众', null, 'CAF7163M4', '人保客户', '邓志超', '13682418968', '邓志超', '13682418968', '', '|维修接待|费用结算|交车', '交车', null, '2015-03-03', '8600', '2015-06-03', null, '注册会员', '1.00', '1.00', '2014-12-25', '2016-12-25', '2015-12-25', '人保', null, null, '现金支付', null, null, '0', '650.00');
@@ -1930,7 +1958,7 @@ INSERT INTO `gongdan` VALUES ('2916b22e-e3aa-4ee8-b2c8-375515473868', '001', 'JD
 INSERT INTO `gongdan` VALUES ('298c17d0-1a6d-4b6d-aea9-b32aff0df3d5', '001', 'JDD20150306007', '', '2015-03-06', '2015-03-06 13:48:46', '刘全有', '', null, null, '56497990-0feb-48e5-b18c-7184eb03e565', '753b73da-e8c1-4af1-a569-00a525b6128b', null, '粤B7215U', '35725', 'LETCJCDC1CHP19701', 'C3039730', '江铃', null, '江铃牌JX6510H3', '人保客户', '程启德', '13714426496', '程启德', '13714426496', '', '|维修接待|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-06', '40725', '2015-06-06', null, '注册会员', '1.00', '1.00', '2012-04-20', '2015-04-20', '2015-04-20', '人保', null, null, '现金支付', null, null, '0', '150.00');
 INSERT INTO `gongdan` VALUES ('2a10a085-d491-4f21-8f0d-96cb6f033ea7', '001', 'JDD20150302007', '0002006', '2015-03-02', '2015-03-02', '刘全有', '', null, null, 'cebae808-c489-45da-bcbe-040bba4cbd6b', 'c1ccabb3-dd5e-42dc-8d7d-ff7d7c9150ec', null, '粤BT5P33', '47182', 'LGWEFEA57CF127204', '121167394', '', null, '长城牌CC6460RM40', '人保客户', '胡领', '13332960687', '胡领', '13332960687', '', '|维修接待', '交车', null, null, '52182', '2015-06-02', null, '注册会员', '1.00', '1.00', '2012-11-21', '2016-11-21', '2015-11-21', '人保', null, null, '现金支付', null, null, '0', '-1.00');
 INSERT INTO `gongdan` VALUES ('2a5f7a1c-a437-4e81-8a98-e23eee2344d9', '001', 'JDD20150316008', '', '2015-03-16 14:01:04', '2015-03-18 14:01:10', '乐欢', '', null, null, '1facc443-da5a-409d-b1ab-c0623ea4f72c', '9d4f8be4-d66c-4a20-9534-70b972d4ded8', null, '粤BWD546', '80000', 'LFMAC22C670815406', 'C14749', '丰田', '花冠', '丰田牌TV7180GLX-13', '人保客户', '周志兴', '13823783177', '周志兴', '13823783177', '', '|维修接待', '维修接待', null, null, '85000', '2015-06-16', null, '注册会员', '1.00', '1.00', '2007-04-01', '2015-04-01', '2015-04-01', '人保', null, null, null, null, null, '1', '-1.00');
-INSERT INTO `gongdan` VALUES ('2c65ec5b-de44-437f-9b89-1b9038d1c508', '001', 'JDD20150310027', '', '2015-03-10', '2015-03-10 23:41:25', '杨小院', '', null, null, '09512a2b-7186-47a8-9782-f82fb5d644af', 'dfb36f01-c7c4-4157-8fb8-0fa0b0b1d240', null, '粤B12345', '12000', '', '', '哈飞', '路宝', '', '自店', '测试专用', '12345678901', '测试专用', '12345678901', '', '|维修接待', '维修接待', null, null, '17000', '2015-06-10', null, '注册会员', '1.00', '1.00', '', '', '', '', null, null, null, null, null, '0', '-1.00');
+INSERT INTO `gongdan` VALUES ('2c65ec5b-de44-437f-9b89-1b9038d1c508', '001', 'JDD20150310027', '', '2015-03-10 00:00:00', '2015-03-10 23:41:25', '杨小院', '测试单据', null, null, '09512a2b-7186-47a8-9782-f82fb5d644af', 'dfb36f01-c7c4-4157-8fb8-0fa0b0b1d240', null, '粤B12345', '12000', '', '', '哈飞', '路宝', '', '自店', '测试专用', '12345678901', '测试专用', '12345678901', '', '|维修接待|车辆检测|物料登记', '物料登记', null, null, '17000', '2015-06-10', null, '注册会员', '1.00', '1.00', '', '', '', '', null, null, null, null, null, '0', '-1.00');
 INSERT INTO `gongdan` VALUES ('2cbcfc38-d8d5-4b9b-a2b0-475e5329bb3a', '001', 'JDD20150311017', '0001652', '2015-03-11', '2015-03-11 16:36:42', '周丽娟', '', null, null, '2476511d-b3a4-43f1-ba9c-95269c822a00', 'b7227e61-9fea-4ce8-9590-ba5051cf5bf0', null, '粤B050TL', '42594', '', '', '雪佛兰', null, '', '自店', '陈华', '13798364501', '陈华', '13798364501', '', '|维修接待|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-11', '47594', '2015-06-11', null, '注册会员', '1.00', '1.00', '', '', '', '', null, null, '现金', null, null, '0', '290.00');
 INSERT INTO `gongdan` VALUES ('2e5165c1-53ca-40bb-97b2-868032dfe768', '001', 'JDD20150307013', '0001718', '2015-03-07', '2015-03-07', '刘全有', '', null, null, '759b3fab-0489-4f88-9533-56851ee836c3', '04d8288f-6d1f-4e69-a24e-bf9c010caf7e', null, '粤B9759B', '80115', 'LSVNW41Z6A2745329', '025951', '大众', '斯柯达昊锐', '明锐牌SVW7166DSD', '人保客户', '陈浩民 ', '13688801216', '陈浩民 ', '13688801216', '', '|维修接待|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-07', '85115', '2015-06-07', null, '注册会员', '1.00', '1.00', '2010-08-04', '2016-08-04', '2015-08-04', '人保', null, null, '现金支付', null, null, '0', '220.00');
 INSERT INTO `gongdan` VALUES ('2fd1c90d-780e-4956-a177-14618a8ef541', '001', 'JDD20150305010', '0001920', '2015-03-05', '2015-03-07 10:19:23', '刘全有', '', null, null, '4b292187-d4a2-4f03-a91a-ef392db59a92', '63c0f5a3-0fcb-4241-bb68-5d4415cacd35', null, '粤BE167U', '39662', 'LSVN221Z2C2117996', '292072', '斯柯达', null, '明锐牌SVW7166HSD', '人保客户', '罗皓斐', '18929355500', '罗皓斐', '18929355500', '', '|维修接待|维修派工', '维修派工', null, null, '44662', '2015-06-05', null, '注册会员', '1.00', '1.00', '2012-10-25', '2016-10-25', '2015-10-25', '人保', null, null, null, null, null, '0', '-1.00');
@@ -2024,6 +2052,7 @@ INSERT INTO `gongdan` VALUES ('61173166-58ec-47e3-a7cb-dcb2affad8cd', '001', 'JD
 INSERT INTO `gongdan` VALUES ('6196456b-d64e-4f54-ad30-6796ec133bbf', '001', 'JDD20150302016', '0002010', '2015-03-02', '2015-03-02', '刘全有', '', null, null, '930e5f6a-c6bd-4cdd-a1b5-cae1188de973', '881054c2-6638-45f9-b74e-943ff7310730', null, '粤BJ3S86', '51883', 'LZWADAGA1B8507889', 'UB12021216', '', null, '五菱牌LZW6431MF', '人保客户', '甘振钦', '13590141069', '甘振钦', '13590141069', '', '|维修接待', '交车', null, null, '56883', '2015-06-02', null, '注册会员', '1.00', '1.00', '2011-03-04', '2016-03-04', '2016-03-04', '人保', null, null, '现金支付', null, null, '0', '-1.00');
 INSERT INTO `gongdan` VALUES ('61bef017-0e4d-4e63-b599-f930e2c683d3', '001', 'JDD20150301003', '0001991', '2015-03-01', '2015-03-02', '刘全有', '', null, null, '39935a02-2ccd-4287-b5fb-9d7c67fc29e4', 'debc683a-0c01-429f-aacc-51a3b1804c06', null, '粤B907VB', '19043', 'LSGGG54Y7DS146322', '132210143', '', null, '雪佛兰牌SGM7209ATA', '人保客户', '李学立', '13823556100', '李学立', '13823556100', '', '|维修接待|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-07', '24043', '2015-06-01', null, '注册会员', '1.00', '1.00', '2013-10-22', '2015-10-22', '2015-10-22', '人保', null, null, '现金支付', null, null, '0', '230.00');
 INSERT INTO `gongdan` VALUES ('623abc17-4595-4e13-8dbd-5a64f82b2bb5', '001', 'JDD20150303014', '0001822', '2015-03-03', '2015-03-03', '刘全有', '', null, null, '891e888a-b45a-408e-9949-2efa45a2a23b', '5fa06409-0cdd-469a-8083-178b9a6c4439', null, '粤B312S7', '50356', 'LFPH4ACC281E06146', '80038160', '红旗', null, '红旗牌CA7204AT4', '人保客户', '桂进辉', '13699824932', '桂进辉', '13699824932', '', '|维修接待|车辆检测|物料登记|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-04', '55356', '2015-06-03', null, '注册会员', '1.00', '1.00', '2009-04-30', '2015-04-30', '2015-04-30', '人保', null, null, '现金支付', null, null, '0', '150.00');
+INSERT INTO `gongdan` VALUES ('62f71e29-177d-4a77-bdea-cc0ebdae988b', '001', 'JDD20150318001', '', '2015-03-18 09:38:06', '2015-03-18 11:38:06', '杨小院', '', null, null, '09512a2b-7186-47a8-9782-f82fb5d644af', 'dfb36f01-c7c4-4157-8fb8-0fa0b0b1d240', null, '粤B12345', '10000', '', '', '哈飞', '路宝', '', '自店', '测试专用', '12345678901', '测试专用', '12345678901', '', '|维修接待|车辆检测', '车辆检测', null, null, '15000', '2015-06-18', null, '注册会员', '1.00', '1.00', '', '', '', '', null, null, null, null, null, '0', '-1.00');
 INSERT INTO `gongdan` VALUES ('631c393b-60ae-4b9a-b633-c15fe77a3a5c', '001', 'JDD20150316020', '0005438', '2015-03-16 17:55:24', '2015-03-16 19:55:24', '潘培坤', '', null, null, '13de2124-bbfc-4628-ab8f-131572efcd24', '8704757d-8eea-4b7d-a332-6c55eaaa4d26', null, '粤B4D7D1', '21', '', '', '别克', null, '', '合作商户', '王先生', '13392811185', '王先生', '13392811185', '', '|维修接待|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-16', '5021', '2015-06-16', null, '注册会员', '1.00', '1.00', '', '', '', '', null, null, '现金', null, null, '0', '28.00');
 INSERT INTO `gongdan` VALUES ('631ef9e5-02d2-4559-88a6-c32f9951b202', '001', 'JDD20150228013', '0005995', '2015-02-27', '2015-02-27 14:32:16', '周丽娟', '', null, null, 'e00f150b-6274-40af-9844-99d64cbc1553', '9a8a5e7b-af29-4a3c-9019-de65d782284c', null, '粤BX652K', '33731', 'LVSHBFDC3CF225585', 'CA06111', '福特', '蒙迪欧', '蒙牌迪欧CAF7205A41', '人保客户', '邓九水', '13642887929', '邓九水', '13642887929', '', '|维修接待|车辆检测|物料登记|维修派工|领取物料|维修完检|费用结算|交车', '交车', null, '2015-02-27', '38731', '2015-05-28', null, '注册会员', '1.00', '1.00', '2012-03-22', '2016-03-22', '2015-03-22', '人保', null, null, '现金支付', null, null, '0', '365.00');
 INSERT INTO `gongdan` VALUES ('64a067bc-f850-4d53-b1bf-c4234ec45b18', '001', 'JDD20150306006', '0001929', '2015-03-06', '2015-03-06', '刘全有', '', null, null, 'e3614fc7-6b35-4896-8a73-0de3b03e7b28', '368003e4-ecbc-4a36-ac30-49b6c84d47cd', null, '粤B219GQ', '29211', 'LVSHFSAFXAF014196', '3210756', '福特', '麦柯斯', '福特牌CAF6480A1', '人保客户', '李国强', '13823592086', '李国强', '13823592086', '', '|维修接待|车辆检测|物料登记|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-06', '34211', '2015-06-06', null, '注册会员', '1.00', '1.00', '2010-03-19', '2016-03-19', '2015-03-19', '人保', null, null, '刷卡', null, null, '0', '260.00');
@@ -2087,6 +2116,7 @@ INSERT INTO `gongdan` VALUES ('8a748147-51dc-4e38-a07c-f5639e14ee4a', '001', 'JD
 INSERT INTO `gongdan` VALUES ('8b0ac484-8945-4566-9a37-68b1b76ebe62', '001', 'JDD20150305007', '0001916', '2015-03-05', '2015-03-09 14:40:14', '刘全有', '', null, null, '2b295547-ae9b-4106-969a-665ed88ae6b7', 'c46209bf-c7e2-4a53-a519-7682ddf7a573', null, '粤BL703L', '30000', 'LFPH4ABC691A13186', '80057138', '马自达', null, '马自达牌CA7201AT3', '人保客户', '李军胜', '13927400647', '李军胜', '13927400647', '', '|维修接待|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-09', '35000', '2015-06-05', null, '注册会员', '1.00', '1.00', '2009-04-29', '2015-04-29', '2015-04-29', '人保', null, null, '现金支付', null, null, '0', '130.00');
 INSERT INTO `gongdan` VALUES ('8c90f906-ab7f-4332-878e-1db4c24e54c3', '001', 'JDD20150314013', '0001941', '2015-03-07', '2015-03-14 16:00:16', '周丽娟', '', null, null, 'f951be89-1007-45d0-8fb4-e07a486a2559', '77f5c4d8-7ca9-438a-b58b-5e2bbc2f0307', null, '粤BE701M', '13102', 'LSVGK4556C2016505', 'B05572', '斯柯达', null, '斯柯达SVW7148PRD', '人保客户', '杨先生', '15338870879', '杨先生', '15338870879', '', '|维修接待|车辆检测|物料登记|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-14', '18102', '2015-06-14', null, '注册会员', '1.00', '1.00', '2012-03-31', '2016-03-31', '2015-03-28', '人保', null, null, '刷卡', null, null, '0', '360.00');
 INSERT INTO `gongdan` VALUES ('8ce85600-21fe-4105-a239-1b11acfc97ac', '001', 'JDD20150313012', '0001675', '2015-03-13 18:13:47', '2015-03-13 20:13:47', '周丽娟', '', null, null, 'dd2e60f6-441d-4182-aa60-3fd1066b1c05', 'd27c85aa-6c0b-4588-a425-0ad0eb3352a5', null, '粤B0Q07', '2133', '', '', '本田', null, '', '现金', '王五', '13975254552', '王五', '13975254552', '', '|维修接待|费用结算|交车', '交车', null, '2015-03-13', '7133', '2015-06-13', null, '注册会员', '1.00', '1.00', '', '', '', '', null, null, '现金', null, null, '0', '35.00');
+INSERT INTO `gongdan` VALUES ('8cf77d70-bf73-4a1c-b2b6-20fe33ceff55', '001', 'JDD20150317005', '', '2015-03-17 10:04:00', '2015-03-17 12:04:00', '刘全有', '', null, null, '89078664-5a15-4a45-8b2a-870c23405119', '53f1bac7-e835-4361-b244-2d4281236468', null, '粤BKH426', '224341', 'LVSHBFAD65F057814', 'DURATEC V6*5J65575*', '福特', '蒙迪欧', '蒙迪欧牌CAF7250A', '人保客户', '邓迎辉', '13537527528', '邓迎辉', '13537527528', '', '|维修接待', '维修接待', null, null, '229341', '2015-06-17', null, '注册会员', '1.00', '1.00', '2005-11-23', '2015-11-23', '2015-11-23', '人保', null, null, null, null, null, '0', '-1.00');
 INSERT INTO `gongdan` VALUES ('8d09dc62-7ba3-48c3-9ffc-9296e56f6de6', '001', 'JDD20150228005', '', '2015-02-28', '2015-02-28', '刘全有', '', null, null, '91132e21-5469-4911-99d0-839779ab188b', 'c4ed58ab-d08e-4d21-b36c-0f7117fa1a35', null, '粤BN195R', '49374', 'LVVDC11B6BD469190', 'AABM00285', '奇瑞', null, '奇瑞牌SQR7161M117', '人保客户', '郭芳炳', '15989861267', '郭芳炳', '15989861267', '', '|维修接待|车辆检测|物料登记|维修派工|领取物料|维修完检|费用结算|交车', '交车', null, '2015-02-28', '54374', '2015-05-28', null, '注册会员', '1.00', '1.00', '2012-01-04', '2016-01-04', '2016-01-04', '人保', null, null, '现金支付', null, null, '0', '100.00');
 INSERT INTO `gongdan` VALUES ('8d5d2cee-604f-4987-8bde-233df9f0dfce', '001', 'JDD20150310014', '', '2015-03-10', '2015-03-10 18:02:42', '刘全有', '', null, null, '928e0780-f23d-4028-97ee-ee96a343b4e2', 'bd374fc8-5b7f-4026-afd2-f250b36742eb', null, '粤B8064T', '91863', 'LJDDAA22780225156', '85180458', '起亚', '赛拉图三厢', '起亚牌YQZ7162AE3', '人保客户', '沈圣玉', '15602310088', '沈圣玉', '15602310088', '', '|维修接待|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-10', '96863', '2015-06-10', null, '注册会员', '1.00', '1.00', '2008-03-25', '2015-03-25', '2015-03-25', '人保', null, null, '现金支付', null, null, '0', '100.00');
 INSERT INTO `gongdan` VALUES ('8d5f35ac-010b-4094-a8cb-057e1e2f013a', '001', 'JDD20150311021', '0001754', '2015-03-11', '2015-03-11 16:58:58', '周丽娟', '', null, null, 'b9d5d9df-31f8-4e2b-a7d7-3a71e570a3f6', '01556530-8278-466c-a9a4-d765b872389b', null, '粤B40G52', '160759', '', '', '卡罗拉', null, '', '人保客户', '刘道天', '13502837993', '刘道天', '13502837993', '', '|维修接待', '维修接待', null, null, '165759', '2015-06-11', null, '注册会员', '1.00', '1.00', '', '', '', '人保', null, null, null, null, null, '1', '-1.00');
@@ -2109,7 +2139,7 @@ INSERT INTO `gongdan` VALUES ('943fa99e-aaf5-4196-b73d-c5baf3d8d7ac', '001', 'JD
 INSERT INTO `gongdan` VALUES ('94d316d0-16e5-405a-95c9-09585e962219', '001', 'JDD20150313014', '0001678', '2015-03-13 18:21:38', '2015-03-13 20:21:38', '周丽娟', '', null, null, '13e98977-adac-40cb-90ec-5146c91a8399', '387e5b31-e724-41d4-a297-01b3a1958eff', null, '粤B7KL20', '16526', '', '', '菲亚特', '菲亚特500', '', '现金', '卢先生', '13510232798', '卢先生', '13510232798', '', '|维修接待|费用结算|交车', '交车', null, '2015-03-13', '21526', '2015-06-13', null, '注册会员', '1.00', '1.00', '', '', '', '', null, null, '现金', null, null, '0', '35.00');
 INSERT INTO `gongdan` VALUES ('9622aa6d-aed7-48ad-9f9c-ba78ec25804d', '001', 'JDD20150314033', '0005463', '2015-03-14 19:02:00', '2015-03-14 21:02:00', '潘培坤', '', null, null, 'dd946f75-ab94-4f75-86d1-c27c0371481d', '8e05a7b3-7232-4727-a416-76bcf800c09d', null, '粤B6WS89', '24', '', '', '宝马', null, '', '龙卡', '53235', '13666544551', '53235', '13666544551', '', '|维修接待|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-14', '5024', '2015-06-14', null, '注册会员', '1.00', '1.00', '', '', '', '', null, null, '现金', null, null, '0', '0.00');
 INSERT INTO `gongdan` VALUES ('96eff754-1c56-41c4-9611-09124ec4e315', '001', 'JDD20150304034', '0002017', '2015-03-01', '2015-03-04 18:48:19', '周丽娟', '', null, null, '94002239-0729-4ad2-98d6-12ee25df6911', 'aea56bac-ca06-44d7-a8aa-30d245192f52', null, '粤Y31F82', '43561', '', '', '起亚', null, '', '自店', '陈田新', '13760228801', '陈田新', '13760228801', '', '|维修接待|费用结算|交车', '交车', null, '2015-03-04', '48561', '2015-06-04', null, '注册会员', '1.00', '1.00', '', '', '', '', null, null, '刷卡', null, null, '0', '690.00');
-INSERT INTO `gongdan` VALUES ('97442eef-ad16-4a13-9bf4-3bdf7c51ae52', '001', 'JDD20150305011', '', '2015-03-05', '2015-03-05 18:40:37', '杨小院', '清理垃圾桶', null, null, '09512a2b-7186-47a8-9782-f82fb5d644af', 'dfb36f01-c7c4-4157-8fb8-0fa0b0b1d240', null, '粤B12345', '13000', '', '', '哈飞', '路宝', '', '自店', '测试专用', '12345678901', '测试专用', '12345678901', '', '|维修接待|车辆检测|物料登记', '物料登记', null, '2015-03-05', '18000', '2015-06-05', null, '注册会员', '1.00', '1.00', '', '', '', '', null, null, '现金支付', null, null, '0', '70.00');
+INSERT INTO `gongdan` VALUES ('97442eef-ad16-4a13-9bf4-3bdf7c51ae52', '001', 'JDD20150305011', '', '2015-03-05', '2015-03-05 18:40:37', '杨小院', '清理垃圾桶', null, null, '09512a2b-7186-47a8-9782-f82fb5d644af', 'dfb36f01-c7c4-4157-8fb8-0fa0b0b1d240', null, '粤B12345', '13000', '', '', '哈飞', '路宝', '', '自店', '测试专用', '12345678901', '测试专用', '12345678901', '', '|维修接待|费用结算', '费用结算', null, '2015-03-05', '18000', '2015-06-05', null, '注册会员', '1.00', '1.00', '', '', '', '', null, null, '现金支付', null, null, '0', '70.00');
 INSERT INTO `gongdan` VALUES ('98385f67-3ae7-4e92-8bce-ee2168824b4d', '001', 'JDD20150311024', '0001755', '2015-03-11', '2015-03-11 17:12:15', '周丽娟', '', null, null, '85a892d0-0d73-4eae-aab3-5a20f981e3a1', '8c734d40-d92a-4f49-a336-962431a443b5', null, '粤BE606U', '1706', '', '', '花冠', null, '', '人保客户', '刘高明', '13502872360', '刘高明', '13502872360', '', '|维修接待|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-11', '6706', '2015-06-11', null, '注册会员', '1.00', '1.00', '', '', '', '人保', null, null, '现金', null, null, '0', '130.00');
 INSERT INTO `gongdan` VALUES ('98bc1e31-37ec-4bfb-9815-07a7a59edc34', '001', 'JDD20150304002', '0001827', '2015-03-04', '2015-03-05', '刘全有', '', null, null, '8ba762d4-d43e-4a3e-8aae-425a1081d78a', '046883c0-a081-4735-9138-de177c226e7b', null, '粤BD871U', '89877', 'LSVAN4180C2080195', '193271', '大众', null, '朗逸牌SVW7867NSD', '人保客户', '杜先生', '13725556816', '杜先生', '13725556816', '', '|维修接待|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-05', '94877', '2015-06-04', null, '注册会员', '1.00', '1.00', '2012-05-16', '2016-05-16', '2015-05-16', '人保', null, null, '刷卡', null, null, '0', '130.00');
 INSERT INTO `gongdan` VALUES ('98d80c61-3705-4b12-83fb-51b2da50a3d5', '001', 'JDD20150304021', '0001842', '2015-03-04', '2015-03-04', '刘全有', '', null, null, 'd02200ec-fdbc-4a4d-82b4-1e0179ea90b5', '00a3f35c-ae0c-4d04-aeec-673ef0e4bd54', null, '粤B4JN50', '28565', 'LVSHJCAB7DE197469', 'DA04440', '福特', '翼虎', '翼虎牌CAF6450A41', '人保客户', '谢桃霞', '18924631949', '谢桃霞', '18924631949', '', '|维修接待|车辆检测|物料登记|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-15', '33565', '2015-06-04', null, '注册会员', '1.00', '1.00', '2013-04-19', '2015-04-19', '2015-04-19', '人保', null, null, '刷卡', null, null, '0', '350.00');
@@ -2196,7 +2226,7 @@ INSERT INTO `gongdan` VALUES ('c9f0a49f-fb14-44e2-a1b4-fc22bc0dd78d', '001', 'JD
 INSERT INTO `gongdan` VALUES ('cad82b72-bee7-40f6-899c-8cc8127dd267', '001', 'JDD20150315016', '0005495', '2015-03-15 15:55:20', '2015-03-15 17:55:20', '刘全有', '', null, null, '82dfb5ff-5f2a-4129-b2d6-b588d357e289', 'ec66ed35-24db-4264-8427-9b349ef879f3', null, '粤B6AK29', '94128', 'LSGJA52U0CS298285', 'CA250730', '别克', '凯越', '别克牌SGM7165MTB', '人保客户', '刘焕生', '13530697533', '刘焕生', '13530697533', '', '|维修接待', '维修接待', null, null, '99128', '2015-06-15', null, '注册会员', '1.00', '1.00', '2012-12-03', '2016-12-03', '2015-12-03', '人保', null, null, null, null, null, '1', '-1.00');
 INSERT INTO `gongdan` VALUES ('cad87079-f759-46b8-8401-dd7feb4d06b7', '001', 'JDD20150305003', '', '2015-03-05', '2015-03-07 09:28:04', '刘全有', '', null, null, '2a98c633-89e4-4017-989c-f63ef49ae1ee', '85eaa1f5-6829-4d44-b57c-68c89da0be22', null, '粤B5MW15', '27405', 'LFV3A23C3D3020445', '281816', '大众', null, '大众牌FV7187FBDWG', '人保客户', '王双莉  蔡生', '18129931570', '王双莉  蔡生', '18129931570', '', '|维修接待|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-07', '32405', '2015-06-05', null, '注册会员', '1.00', '1.00', '2013-05-10', '2015-05-10', '2015-05-10', '人保', null, null, '刷卡', null, null, '0', '560.00');
 INSERT INTO `gongdan` VALUES ('cd356813-f322-423f-a577-63b6bd1107b8', '001', 'JDD20150309023', '0001877', '2015-03-09', '2015-03-09 19:28:56', '周丽娟', '', null, null, '54a09c1a-03d3-4691-897c-1ca858cf0cd7', '649c31c4-6e93-45a3-b991-f25ab06313a3', null, '粤B7GQ59', '24', '', '', '马自达', null, '', '现金', '22', '13588455455', '22', '13588455455', '', '|维修接待|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-09', '5024', '2015-06-09', null, '注册会员', '1.00', '1.00', '', '', '', '', null, null, '现金支付', null, null, '0', '35.00');
-INSERT INTO `gongdan` VALUES ('cef32518-6ec1-44f0-8f19-dc5788c79c4f', '001', 'JDD20150312008', '0006082', '2015-03-12', '2015-03-16', '潘培坤', '', null, null, '70c06749-0808-4165-98e2-36dd758e67b7', 'eaeb320f-8abe-449a-a7bb-fd18343138fd', null, '粤B845FJ', '31720', 'LFV2A23C3A3050343', 'G01072', '大众', '迈腾', '迈腾牌FV7147TATG', '人保客户', '周稚华', '13823199741', '周稚华', '13823199741', '', '|维修接待', '维修接待', null, null, '36720', '2015-06-12', null, '注册会员', '1.00', '1.00', '2010-10-21', '2016-10-21', '2015-10-21', '人保', null, null, null, null, null, '0', '-1.00');
+INSERT INTO `gongdan` VALUES ('cef32518-6ec1-44f0-8f19-dc5788c79c4f', '001', 'JDD20150312008', '0006082', '2015-03-12', '2015-03-16', '潘培坤', '', null, null, '70c06749-0808-4165-98e2-36dd758e67b7', 'eaeb320f-8abe-449a-a7bb-fd18343138fd', null, '粤B845FJ', '31720', 'LFV2A23C3A3050343', 'G01072', '大众', '迈腾', '迈腾牌FV7147TATG', '人保客户', '周稚华', '13823199741', '周稚华', '13823199741', '', '|维修接待|车辆检测', '车辆检测', null, null, '36720', '2015-06-12', null, '注册会员', '1.00', '1.00', '2010-10-21', '2016-10-21', '2015-10-21', '人保', null, null, null, null, null, '0', '-1.00');
 INSERT INTO `gongdan` VALUES ('cfb6325c-8140-4154-bf74-c6f8745c452d', '001', 'JDD20150305020', '0001888', '2015-03-05', '2015-03-05 18:27:08', '周丽娟', '', null, null, 'df72a510-e9da-4ff6-b2fe-0cc39ce63fc6', 'dd517698-f57d-4fb9-a768-c0467e7570fb', null, '浙BRD750', '47817', '', '', '陆风', '陆风X8', '', '自店', '赵先生', '13692190677', '赵先生', '13692190677', '', '|维修接待|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-05', '52817', '2015-06-05', null, '注册会员', '1.00', '1.00', '', '', '', '', null, null, '现金支付', null, null, '0', '320.00');
 INSERT INTO `gongdan` VALUES ('cfd04c06-2409-469c-ba75-89ed57e3172a', '001', 'JDD20150306004', '0001925', '2015-03-06', '2015-03-06', '刘全有', '', null, null, 'b6809625-9464-487a-8f4f-03264f743854', 'fde29329-944d-4957-a09b-614b1ac0aec7', null, '粤BMQ918', '89411', 'LTVBR22E660733214', 'LZZ*B32743*', '丰田', null, '丰田牌TV7180GLX-L3', '人保客户', '王宏', '13603011091', '王宏', '13603011091', '', '|维修接待|车辆检测|物料登记|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-06', '94411', '2015-06-06', null, '注册会员', '1.00', '1.00', '2006-04-21', '2015-04-21', '2015-04-21', '人保', null, null, '刷卡', null, null, '0', '460.00');
 INSERT INTO `gongdan` VALUES ('d062354c-c246-4b76-a297-a584613a0a13', '001', 'JDD20150309013', '0001866', '2015-03-09', '2015-03-09 17:56:09', '周丽娟', '', null, null, '0a2f6891-9ef0-455e-8c4f-5991e93af6e9', '734e84d6-9d8a-4efa-9272-44f1a8177891', null, '粤B056GE', '87198', '', '', '福特', null, '', '自店', '葛先生', '13823694946', '葛先生', '13823694946', '', '|维修接待|维修派工|维修完检|费用结算|交车', '交车', null, '2015-03-09', '92198', '2015-06-09', null, '注册会员', '1.00', '1.00', '', '', '', '', null, null, '刷卡', null, null, '0', '1500.00');
@@ -2337,6 +2367,7 @@ INSERT INTO `gongdanjiance` VALUES ('01e43581-8a85-4c9a-9fd3-3af882c0b675', 'bb4
 INSERT INTO `gongdanjiance` VALUES ('01f43ecd-2225-45ec-be49-9176c4532297', '70b4eb6f-71ab-4fc3-8fbb-c3b32a267253', '15', '检查蓄电池', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('01f87197-1a43-4dbb-a843-30cc64ae2f50', 'bfadb9a3-c2f1-4470-b70b-83c8ebae4dc0', '3', '检查发动机空气滤芯', '正常', '已清洁');
 INSERT INTO `gongdanjiance` VALUES ('01f876e3-da8f-4a69-8bb6-ffb442426078', '40c3aaa4-a707-4526-8a44-0634093b37a0', '7', '检查灯光系统', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('01fa307c-bec6-4ae4-8a06-a6b32378e488', '10b600cf-efdf-4c6b-863f-1cdf3356eeaa', '2', '检查发动机冷却系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('0205881b-8e70-4558-a9e8-37f5bfdf18ad', 'a4c5e034-c116-4c0e-ad41-c95566a5276c', '5', '检查刮水器刮片', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('02077f3e-a988-4ff6-81b8-873b2afab392', 'a005639e-eb39-455d-93bb-a906d7e73ac1', '8', '检查制动系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('020c4f48-98ff-432f-a251-77731bd55208', '8d5d2cee-604f-4987-8bde-233df9f0dfce', '0', '检测发动机控制模块系统', '未检测', null);
@@ -2376,6 +2407,7 @@ INSERT INTO `gongdanjiance` VALUES ('032eefa8-1d10-44ea-9eb7-fb707e850e9e', '7b1
 INSERT INTO `gongdanjiance` VALUES ('034d91eb-416b-49d4-8a0d-dcb28bdea62c', 'd6ee1640-5b7c-4e9d-bc71-42af6bf298db', '3', '检查发动机空气滤芯', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('034e9afb-9f1c-4c64-83b4-b633556947cc', '8313b136-19b9-475b-88ba-3457fee97157', '0', '检测发动机控制模块系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('037c4585-c7d8-4b8b-ab27-3bce5a06c85d', 'a4c5e034-c116-4c0e-ad41-c95566a5276c', '15', '检查蓄电池', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('037d490b-9892-4bee-bac5-220f198802b7', '62f71e29-177d-4a77-bdea-cc0ebdae988b', '15', '雨刮器和玻璃水', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('037e571f-999e-4edc-a9dc-aaea0649a264', 'e63be081-1719-4c96-9db0-7712f3e40f21', '8', '检查制动系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('038e0b94-9c7e-4cd2-874f-014570ade9f1', '1d9fa667-b423-4b81-a12f-76bfc6057173', '1', '检查发动机机油液位', '更换', '');
 INSERT INTO `gongdanjiance` VALUES ('038fc7a2-b941-477c-9cb1-572d08617347', '114da5f1-37f2-4a51-9a72-97b4cf6b5d81', '6', '检查车辆底部', '未检测', null);
@@ -2524,6 +2556,7 @@ INSERT INTO `gongdanjiance` VALUES ('090086d7-70fd-4c66-995b-e5e3585a61a5', '4c2
 INSERT INTO `gongdanjiance` VALUES ('0910bcd4-ea06-4281-90dd-09c4b54230ae', 'eb7a448d-264c-4b7b-ad64-3bd8bcbd956b', '11', '检查空调系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('09171edd-6a51-4528-981f-5f08b70eb473', 'ed91c4b4-1c3b-45b6-b699-e73350b34315', '15', '检查蓄电池', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('09201872-0801-43f8-923a-baebdaabe5ee', '139f7765-9a10-4a2a-a084-e8d383b36207', '6', '检查车辆底部', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('0920e4bc-bb8f-4403-9c21-30b362d5b2bd', '10b600cf-efdf-4c6b-863f-1cdf3356eeaa', '8', '制动液检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('093c9c1a-0051-40bd-9037-edf409c9416f', '98d80c61-3705-4b12-83fb-51b2da50a3d5', '5', '检查刮水器刮片', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('094983f7-ed5f-4d46-801d-f6cee57b389d', 'b8b5bba7-f389-43c9-8f69-7f54740bf987', '13', '检查反光镜、后视镜', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('0952c13e-6d8d-4ca9-8bc6-a40c2f34c3d0', '30f0fc21-61f5-4796-bf80-b5ce2b7cdfea', '1', '检查发动机机油液位', '未检测', null);
@@ -2548,6 +2581,7 @@ INSERT INTO `gongdanjiance` VALUES ('0a41002b-3b13-4e82-afd8-990f400f9c85', 'c37
 INSERT INTO `gongdanjiance` VALUES ('0a47ace9-82dd-4484-b133-ef6366e026d8', '5276aab9-8878-4882-bf27-9ed7ea84981d', '8', '检查制动系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('0a52ea77-3e26-4a50-a64b-9bc0153915bb', 'e39ff0fb-63a4-4a1a-b4df-b4b3cabd73cc', '7', '检查灯光系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('0a5deec9-7b75-4c3f-9f9c-52244e80a9fd', '0d70881d-abac-4d7e-b0f2-543228d69414', '11', '检查空调系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('0a618dd8-9497-4cba-a5ef-25553c0f88dc', '10b600cf-efdf-4c6b-863f-1cdf3356eeaa', '13', '轮胎和充气气压', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('0a7b178c-e90b-4746-a914-74c241cddb80', '26bddedc-231c-4749-b238-dd37a06bc341', '5', '检查刮水器刮片', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('0a7bc7d8-375f-41f6-be40-f1f9f4addd58', '472f6068-c21f-4066-af21-c81dcebaf740', '11', '检查空调系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('0a7d0374-9d08-4844-afe4-bd2223809736', '61173166-58ec-47e3-a7cb-dcb2affad8cd', '4', '检查挡风玻璃清洁剂液位', '未检测', null);
@@ -2682,6 +2716,7 @@ INSERT INTO `gongdanjiance` VALUES ('0fdc3c26-54d3-49d2-bc25-b6be40b8820f', 'b13
 INSERT INTO `gongdanjiance` VALUES ('0ffd62ed-77d4-42ba-b3f6-421ebe1e0566', '0b200411-0077-481b-a96a-894e6b3560e3', '1', '检查发动机机油液位', '更换', '');
 INSERT INTO `gongdanjiance` VALUES ('101674fc-d937-4243-ba04-876e0fb5f974', 'c7f98766-f797-4e4c-9463-763c99bb030d', '1', '检查发动机机油液位', '更换', '');
 INSERT INTO `gongdanjiance` VALUES ('1025ff06-d1ea-402e-9839-b7017ad0d973', 'a2c6650c-e702-4099-aa03-839b9de3fa9f', '5', '检查刮水器刮片', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('102d097e-96fb-4019-86c6-2d8f30053e43', '8cf77d70-bf73-4a1c-b2b6-20fe33ceff55', '0', '检测发动机控制模块系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('102d2bae-744c-4aac-8046-59bc92a18de8', 'b8b5bba7-f389-43c9-8f69-7f54740bf987', '4', '检查挡风玻璃清洁剂液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('104c6ed3-a4d9-4e1d-95f6-054d055837f1', '065e05b1-d88d-464a-8167-e8044018f939', '13', '检查反光镜、后视镜', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('104decfb-5a8a-4ad6-982b-4af5fc45d737', 'ee31d712-c23a-432e-ba0e-4b9cbebbdda0', '15', '检查蓄电池', '正常', '');
@@ -2732,6 +2767,7 @@ INSERT INTO `gongdanjiance` VALUES ('11e4b87e-a6d4-42ff-a033-4a306e687a77', '98d
 INSERT INTO `gongdanjiance` VALUES ('11e565ef-4c7f-48a6-bb36-05c8acb082da', 'fa0a06f5-e4a9-4e74-9252-7bc723319c70', '13', '检查反光镜、后视镜', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('11e58ffc-646f-4eb6-b1ad-ba882406f170', '3a40272a-7188-47c5-bfd6-0baba092fd4c', '14', '检查车轮', '正常', '2.4');
 INSERT INTO `gongdanjiance` VALUES ('11f72548-2202-41d1-86a0-0ec2f834a217', '09da1efe-dcdf-414b-bdb5-0b986bc66ede', '9', '检查动力转向系统', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('11f9b4f0-dec8-4a4e-b2bf-702c4d7b821c', '62f71e29-177d-4a77-bdea-cc0ebdae988b', '10', '发动机外观检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('11fb29f4-25c9-4afb-b6fb-fcb4e0c9a8e9', '5568304f-1081-45d5-af6f-40febbeb7e72', '15', '检查蓄电池', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('121111ad-6502-471e-a8ee-2d855bfd4ea5', 'eed50697-b0a2-4380-b192-2d7dab225bd9', '14', '检查车轮', '正常', '胎压2.5');
 INSERT INTO `gongdanjiance` VALUES ('1213dea0-6d35-45f2-8ed9-e3994600704f', '910f118a-6247-454f-9006-39a87731aa90', '0', '检测发动机控制模块系统', '正常', '');
@@ -2902,6 +2938,7 @@ INSERT INTO `gongdanjiance` VALUES ('18303a7a-5cd8-488b-9ec0-da9d9313214f', '54d
 INSERT INTO `gongdanjiance` VALUES ('183c83b0-ff1f-428c-bb4b-f5b371157640', '936af41c-3a73-4809-bf7b-ca84cbfdeabd', '4', '检查挡风玻璃清洁剂液位', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('184ee197-be6b-4c44-bea5-62cf7fd3efd9', '0bea1d1d-c7ea-4c0b-8e13-cb625906f439', '6', '检查车辆底部', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('1850e290-b6a0-44c5-bfe0-c63e3087fc92', '8f13294b-842c-43bc-bb56-c4c409d0821b', '10', '检查发动机附件皮带', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('18573574-3ae2-46c9-bcfe-449b30c620e3', '10b600cf-efdf-4c6b-863f-1cdf3356eeaa', '5', '怠速及火花塞', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('186ce20e-190f-4ea0-9b24-e1ce494024d7', '9c507831-fd8c-4257-a226-c2cecad1a3a3', '1', '检查发动机机油液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('1894312e-fda7-436d-a9d3-395a5c0bd5c0', '2c65ec5b-de44-437f-9b89-1b9038d1c508', '7', '检查灯光系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('189689c4-c3b6-4669-9b53-31d271aab25a', '472f6068-c21f-4066-af21-c81dcebaf740', '14', '检查车轮', '未检测', null);
@@ -2980,6 +3017,7 @@ INSERT INTO `gongdanjiance` VALUES ('1b93df40-4808-4529-b5a8-30e619545caf', '12f
 INSERT INTO `gongdanjiance` VALUES ('1b9c1b8b-0695-480f-96f8-610c1ca6f476', 'f7e12e74-10a1-42b6-b402-6d92caacdb87', '2', '检查发动机冷却系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('1bdfbd8a-bf36-41f6-bb5f-ab9e8b378130', '024ae4e0-a8bc-4c63-b303-eeaeb3f09c5a', '14', '检查车轮', '正常', '胎压2.4');
 INSERT INTO `gongdanjiance` VALUES ('1bec90e2-d6a7-47fa-a427-78593af42559', '98d80c61-3705-4b12-83fb-51b2da50a3d5', '3', '检查发动机空气滤芯', '更换', '');
+INSERT INTO `gongdanjiance` VALUES ('1becb2b1-6d3c-49d6-8d5b-1ccee53fbbd1', '8cf77d70-bf73-4a1c-b2b6-20fe33ceff55', '7', '检查灯光系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('1bfcec58-115b-4b49-a14b-39577b8ec1b4', '2a10a085-d491-4f21-8f0d-96cb6f033ea7', '2', '检查发动机冷却系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('1c003fbe-58be-4769-9c55-dcb0a0af6dad', 'c9b8edf3-4b22-422c-8b05-744402305a94', '12', '检查冷却风扇', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('1c011b17-2fbe-4121-af8a-a6f3cb4baa47', 'b32cedca-3a96-4d4f-8ffc-f718e8aa20c5', '15', '检查蓄电池', '未检测', null);
@@ -3300,6 +3338,7 @@ INSERT INTO `gongdanjiance` VALUES ('28a71432-277a-441b-b033-1e6d8e41d77b', 'e70
 INSERT INTO `gongdanjiance` VALUES ('28b45538-daf6-421f-a9b2-795df9f53520', 'cfd04c06-2409-469c-ba75-89ed57e3172a', '14', '检查车轮', '正常', '胎压2.5');
 INSERT INTO `gongdanjiance` VALUES ('28b82298-d9bc-4f13-a7a3-98c37a4c7bd4', '09da1efe-dcdf-414b-bdb5-0b986bc66ede', '1', '检查发动机机油液位', '更换', '');
 INSERT INTO `gongdanjiance` VALUES ('28b909c8-237e-4899-ba04-c06a944d3e71', '05225746-fc9e-421d-b63c-df99b009a0d1', '1', '检查发动机机油液位', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('28be38c2-9ba7-43b3-af98-4e2d9589e586', '8cf77d70-bf73-4a1c-b2b6-20fe33ceff55', '14', '检查车轮', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('28c00bc7-d8ee-4f31-94b5-55e716a1f91a', 'b3356b69-5298-481c-b40f-f155040d8bdb', '13', '检查反光镜、后视镜', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('28c9d6a3-b4e1-4b1a-949d-57c578d643a4', '6f5be9fb-a33c-4965-ac81-dd25f4d2e099', '12', '检查冷却风扇', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('28cd618a-e4eb-48b4-a8cf-da018f278fa2', '0852531d-3014-4b39-a2d1-32005a3f0ee9', '10', '检查发动机附件皮带', '未检测', null);
@@ -3788,6 +3827,7 @@ INSERT INTO `gongdanjiance` VALUES ('3b513d17-9a66-48d1-9056-b6b1ad717af6', '319
 INSERT INTO `gongdanjiance` VALUES ('3b5804ed-49a1-44cd-ad59-c8635399c472', '3b94cb95-7ebf-4d68-a826-29e3b6371030', '5', '检查刮水器刮片', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('3b59c986-3956-45ce-a897-9a498d287a97', 'af077378-d4bf-4242-9790-37bd4e2ee789', '13', '检查反光镜、后视镜', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('3b6bfc39-1725-49ea-be20-32e6078c6d96', '2916b22e-e3aa-4ee8-b2c8-375515473868', '11', '检查空调系统', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('3b6def6f-20de-449c-9e3c-5435526473d7', '8cf77d70-bf73-4a1c-b2b6-20fe33ceff55', '6', '检查车辆底部', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('3b6e1bf0-465b-44e8-9772-445d1409d69f', '21b1c104-c8f5-4582-8377-6ad622125fb6', '13', '检查反光镜、后视镜', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('3ba0e504-3be6-4b82-9144-c4e82e0f5c26', 'e58765a7-a631-4b5e-9578-f0db0ca13cce', '5', '检查刮水器刮片', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('3bac8e36-1496-4a33-9160-d636be2e8ce2', '1cea0d07-5160-48f8-89ed-cbb6223be95f', '11', '检查空调系统', '未检测', null);
@@ -4275,6 +4315,7 @@ INSERT INTO `gongdanjiance` VALUES ('4d75bb73-2b71-4ddb-8045-0eeaada61e91', 'd8f
 INSERT INTO `gongdanjiance` VALUES ('4d7ef7a1-f852-491c-8690-5fc4191f7e9e', '705ddb6e-8ede-43fa-8ee6-69a027e4c404', '12', '检查冷却风扇', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('4d7f771e-2ec1-497f-9dd0-df0ac7fa2461', '705ddb6e-8ede-43fa-8ee6-69a027e4c404', '10', '检查发动机附件皮带', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('4d99ff03-6837-4329-a68d-53d82e5a2ce1', 'e58765a7-a631-4b5e-9578-f0db0ca13cce', '6', '检查车辆底部', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('4daa71ef-c3cf-4c95-ba08-41e6f4a052f7', '10b600cf-efdf-4c6b-863f-1cdf3356eeaa', '11', '前后悬挂装置及底盘', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('4db0c8c6-45ee-4a81-9498-41abdd653bc6', '8249c4ef-69fe-4592-9a81-8ccf65ceb787', '10', '检查发动机附件皮带', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('4dc23cef-184b-4e88-9e87-75440e4802f2', '53085971-d38a-48bc-9531-313552e4bbf4', '4', '检查挡风玻璃清洁剂液位', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('4dd82be6-9e30-459d-8ec7-f3d8fb6b5140', '44301bef-ceb9-48b6-8f03-a13f91992843', '5', '检查刮水器刮片', '未检测', null);
@@ -4312,6 +4353,7 @@ INSERT INTO `gongdanjiance` VALUES ('4ef83a0d-2e2f-4eff-8c5f-8fc9809fa71c', 'd42
 INSERT INTO `gongdanjiance` VALUES ('4f0d5460-c404-4762-928a-be47b629d8ca', '11dab6e2-3bec-42a6-ae26-0304b10b6ba8', '12', '检查冷却风扇', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('4f1c8334-2b7f-4e4f-9341-28800040ae76', 'c6549083-25ad-42c7-b998-9672d0f86956', '1', '检查发动机机油液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('4f1d2e1e-6578-40c2-9857-20dcf9e860fd', 'f9b714a5-6f2c-49bd-a36d-29c4e0647a67', '11', '检查空调系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('4f1d7575-aa93-4953-a125-30a960e42465', '62f71e29-177d-4a77-bdea-cc0ebdae988b', '9', '球头节和防尘套', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('4f3a7249-b79a-43c5-b729-a0a3f0045a39', 'c7f98766-f797-4e4c-9463-763c99bb030d', '13', '检查反光镜、后视镜', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('4f47dd30-fb5f-4d65-bc7c-9ad74779bfe6', '5dcfa543-deb6-4ea1-b5ea-1a1e4c1e2dfc', '3', '检查发动机空气滤芯', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('4f51d7f3-e4f4-4e72-afae-6561acddff81', '89e47abb-2f15-4346-9a46-1384bd4173f5', '0', '检测发动机控制模块系统', '正常', '');
@@ -4571,6 +4613,7 @@ INSERT INTO `gongdanjiance` VALUES ('58f5b90c-aca6-4716-a807-efbf6dc2edb8', '444
 INSERT INTO `gongdanjiance` VALUES ('58f7004a-dbe6-4531-b914-40dd4798fae4', '631ef9e5-02d2-4559-88a6-c32f9951b202', '6', '检查车辆底部', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('58f8c6c9-6a75-4324-9e97-ff104350cd1e', '3db1b47a-5ea2-4184-8bdf-40a0403d0d50', '5', '检查刮水器刮片', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('59032c71-26d0-4824-ac12-fd54e62d68b7', '9b16390d-e7c1-4aa8-9500-009bd6591d21', '4', '检查挡风玻璃清洁剂液位', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('590be383-171a-48dd-b525-f17fd2f6400e', '10b600cf-efdf-4c6b-863f-1cdf3356eeaa', '9', '球头节和防尘套', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('5923df25-7960-4efd-981d-3795febd4b3d', 'b9a8af9b-d59f-4476-9114-9ff71f621151', '13', '检查反光镜、后视镜', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('592f140a-2a3e-4392-a1d2-406dee4502ba', 'a8718018-e882-480a-9e59-badb38dddc81', '7', '检查灯光系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('592fc6a0-c919-4f74-b5ea-40b0a81c4f8c', '5674f8ea-5f60-4e6d-bba7-08058e380eb6', '9', '检查动力转向系统', '未检测', null);
@@ -4742,6 +4785,7 @@ INSERT INTO `gongdanjiance` VALUES ('5f79c677-b78e-4faf-a97f-cddc8277feac', '451
 INSERT INTO `gongdanjiance` VALUES ('5f92f5e4-7f71-4c74-b51b-09b6f16111c9', 'e5914a4f-043f-4f69-9cd6-5a24398e8547', '4', '检查挡风玻璃清洁剂液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('5f9bc640-64cf-4f90-838c-61dda1d0d943', '2576af0c-68dc-4882-a01d-aa2ff4a107a2', '5', '检查刮水器刮片', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('5fa7b54f-3240-4b96-be2c-383304af23e9', '85ac0993-5e2f-421a-8e26-1f991c496bc5', '7', '检查灯光系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('5fb11b29-502b-4b66-81d4-800967336143', '62f71e29-177d-4a77-bdea-cc0ebdae988b', '7', '检查制动系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('5fb169c8-d9c7-4da3-bfb8-565cb258fd26', 'eb6bc524-7b20-4da5-b5d5-338e7033682a', '10', '检查发动机附件皮带', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('5fc149a9-fb3f-4ad8-9686-11142f731c83', '6a149962-0a2a-4c2b-9572-59a49fdeffdc', '1', '检查发动机机油液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('5fc7a5e9-36bb-4fbf-9f91-8f44a6133872', '26bddedc-231c-4749-b238-dd37a06bc341', '7', '检查灯光系统', '未检测', null);
@@ -4861,8 +4905,10 @@ INSERT INTO `gongdanjiance` VALUES ('6410c400-be48-47f1-bc95-be7b717ba847', '26b
 INSERT INTO `gongdanjiance` VALUES ('6425672e-0a97-4ee4-acb0-5ee11b33e5e6', '913df07e-9670-4955-b076-fc294693e7b5', '14', '检查车轮', '正常', '2.4');
 INSERT INTO `gongdanjiance` VALUES ('642a1e7c-e774-434a-a06d-46a3b7f17773', '8992ccbe-91bd-458f-9ced-4e2151b14155', '0', '检测发动机控制模块系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('642f9db6-10ad-49a3-8257-d17d23517917', 'c4a4c090-a9c2-44f3-9ecb-26a253771e44', '15', '检查蓄电池', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('64326a70-3bce-40f5-a26b-f1d6ba7d7906', '10b600cf-efdf-4c6b-863f-1cdf3356eeaa', '1', '检查发动机空气滤清器', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('643ebd54-fe4d-4b04-bd95-74b732dde3ae', 'e39ff0fb-63a4-4a1a-b4df-b4b3cabd73cc', '10', '检查发动机附件皮带', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('644343f9-a707-41e2-8aae-b2c5c760a540', 'b32cedca-3a96-4d4f-8ffc-f718e8aa20c5', '7', '检查灯光系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('645134c4-589b-466d-b85d-0169a0ccd58a', '8cf77d70-bf73-4a1c-b2b6-20fe33ceff55', '15', '检查蓄电池', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('6458df8f-9622-4c43-9928-c091ff8ebccd', 'ad284d06-4c59-4320-8c95-c7af0d79e0d3', '11', '检查空调系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('646fad4e-11eb-4442-9ff4-201ebcdded76', '8992ccbe-91bd-458f-9ced-4e2151b14155', '1', '检查发动机机油液位', '正常', '已更换');
 INSERT INTO `gongdanjiance` VALUES ('6475801f-943f-4e8f-8bd4-c1ad1d302b3e', '6bf2ad8b-ad89-4a39-9e8a-f1eb44d094d2', '10', '检查发动机附件皮带', '未检测', null);
@@ -4922,6 +4968,7 @@ INSERT INTO `gongdanjiance` VALUES ('673e13f7-a61d-4ad3-aed5-f6644e4d7be6', 'e30
 INSERT INTO `gongdanjiance` VALUES ('67454130-778d-41db-adf7-3489f217d177', 'c4b77ef3-87bb-4286-91fb-68c5f6554cbc', '11', '检查空调系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('67533839-bf75-44ad-a4e5-77716634b7e9', 'd424d8b8-c936-4cc7-9fa6-8522b3723f04', '9', '检查动力转向系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('67543acf-5ff0-4e65-b239-5960b7fdcf66', 'b6eba201-d80f-4883-9618-e7da30cc551a', '15', '检查蓄电池', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('675a76b2-47de-489d-ac19-493ed68ae6ca', '10b600cf-efdf-4c6b-863f-1cdf3356eeaa', '0', '检测发动机机油', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('6765734f-fa4a-4651-95a1-a2d076e02e9a', 'b39860b1-e0ec-462b-8eab-f8d23ea44ed5', '8', '检查制动系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('676831b8-4f6e-460d-a1cd-fe7d214f53a7', 'c6549083-25ad-42c7-b998-9672d0f86956', '9', '检查动力转向系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('6768c5ff-18dd-49d7-ae30-394523a0ddb6', 'c3805ed7-9445-48b1-b9fa-889131747aab', '6', '检查车辆底部', '正常', '');
@@ -4938,6 +4985,7 @@ INSERT INTO `gongdanjiance` VALUES ('67a8ee35-ba8a-4f55-b7b5-ffb0e2670268', 'e30
 INSERT INTO `gongdanjiance` VALUES ('67c38c6c-1c27-4257-b8e2-46d3db50ace9', '21b1c104-c8f5-4582-8377-6ad622125fb6', '1', '检查发动机机油液位', '正常', '已更换');
 INSERT INTO `gongdanjiance` VALUES ('67d21980-b28a-4edd-93b6-e287d198b67b', '024ae4e0-a8bc-4c63-b303-eeaeb3f09c5a', '10', '检查发动机附件皮带', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('67d3f5e6-40da-4263-9b61-22a75329314a', 'f5286f9a-daa9-4b2d-bb21-a98d6d0f1427', '1', '检查发动机机油液位', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('67da98a7-bc5b-4538-8c71-00328160fd0c', '8cf77d70-bf73-4a1c-b2b6-20fe33ceff55', '13', '检查反光镜、后视镜', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('67e0e63a-7b8d-481a-800d-075974bc4696', '828b023c-51d5-4b1d-8658-dd8ee004cfad', '3', '检查发动机空气滤芯', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('67f248ba-5eb0-4b06-a73a-6c042ab2ff51', 'b1407637-158a-49a0-8485-175ecef4ccc8', '10', '检查发动机附件皮带', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('67f26610-1ba0-406a-ab8e-1b21f52ef469', 'bf6dfff8-a04d-4eb0-aeb0-49b46171668c', '12', '检查冷却风扇', '未检测', null);
@@ -4994,6 +5042,7 @@ INSERT INTO `gongdanjiance` VALUES ('6950fecd-47c6-4c82-a502-c25662b2c7d5', 'f25
 INSERT INTO `gongdanjiance` VALUES ('69625b8c-4c84-490e-a9ca-f58d963ec02c', 'bc01f224-7344-496a-8cfb-51961b4eef78', '0', '检测发动机控制模块系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('69682684-d965-42ba-a923-339f6227bfc2', 'f37b1d05-9853-4ddf-9100-fe8c6963d318', '12', '检查冷却风扇', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('696b0ed6-9d8b-4e86-b943-d9790f088d1a', '557285b6-a3a6-420a-bfc7-2ce12ce78a3a', '11', '检查空调系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('696e5dd0-93be-4f26-82d6-40d0fdbd5c31', '62f71e29-177d-4a77-bdea-cc0ebdae988b', '11', '前后悬挂装置及底盘', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('69742bf8-b9d3-490f-a258-d7ec5e8f494a', 'c4a4c090-a9c2-44f3-9ecb-26a253771e44', '8', '检查制动系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('6979b8c3-9437-4f9a-93f9-2a358abbd1e9', 'e63be081-1719-4c96-9db0-7712f3e40f21', '6', '检查车辆底部', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('698bab0e-6346-4310-991d-f7bb962e8d4c', '32203afe-5e81-4f70-87a0-41e8b09d1b36', '6', '检查车辆底部', '正常', '');
@@ -5247,6 +5296,7 @@ INSERT INTO `gongdanjiance` VALUES ('72dd8841-181b-403b-aa6b-259100d646ca', '1ad
 INSERT INTO `gongdanjiance` VALUES ('7303c015-a5f8-4087-aed4-48b8564d6adc', '5276aab9-8878-4882-bf27-9ed7ea84981d', '9', '检查动力转向系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('730a85e3-3f8f-4d60-b1e7-0ef1326a2907', '36d74682-b1b2-4d46-a51f-487993281cbc', '4', '检查挡风玻璃清洁剂液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('73176756-b7a1-4e58-9f51-6724f3c481eb', '26bddedc-231c-4749-b238-dd37a06bc341', '4', '检查挡风玻璃清洁剂液位', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('7317fee3-f36c-4ff8-86a4-67ceb87cc280', '8cf77d70-bf73-4a1c-b2b6-20fe33ceff55', '10', '检查发动机附件皮带', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('731d84a1-b07e-4871-9054-2a5a1fdc7d9d', 'eb6bc524-7b20-4da5-b5d5-338e7033682a', '14', '检查车轮', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('732344f3-4797-4192-8a7a-f6ccd137c37d', '5099af92-af6b-4fc1-b462-4a6b7499b324', '5', '检查刮水器刮片', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('733d11cb-36ad-4882-9f2c-7cf54d3d1031', '21b1c104-c8f5-4582-8377-6ad622125fb6', '10', '检查发动机附件皮带', '正常', '');
@@ -5300,6 +5350,7 @@ INSERT INTO `gongdanjiance` VALUES ('754c2171-db4a-42e2-9916-97bb67f5ba9a', 'a4e
 INSERT INTO `gongdanjiance` VALUES ('7552407c-c3e5-42b8-abad-5ab892954e7a', '6f4f5db8-3ec0-494b-a738-d675be1f72f7', '14', '检查车轮', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('7552ffc1-df93-459f-a01d-497f76e8d9b8', '0a6c2768-c728-4f21-9a02-97e05863ca51', '6', '检查车辆底部', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('755d7649-5249-4824-af46-b300f9384c66', '5c42d6fd-f2c3-4d04-8d1c-984e68e976e3', '2', '检查发动机冷却系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('757d3588-a91f-4170-837e-41d1771affe7', '10b600cf-efdf-4c6b-863f-1cdf3356eeaa', '6', '检查动力转向系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('757ebd42-205a-4f5a-a1bf-e57bc8292786', '8f06582f-3835-4ea8-87e5-bf0a9393bef0', '9', '检查动力转向系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('7594c984-ba25-4b31-828d-d562ed6afb52', 'cad87079-f759-46b8-8401-dd7feb4d06b7', '8', '检查制动系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('75a38088-c46f-4c97-9034-ec02db5e59bd', '23e54b7d-3ae7-449c-9c98-8e80523e99c2', '1', '检查发动机机油液位', '未检测', null);
@@ -5342,6 +5393,7 @@ INSERT INTO `gongdanjiance` VALUES ('7734c9d4-953d-4a03-a6d2-dd27f39f5a37', '8a7
 INSERT INTO `gongdanjiance` VALUES ('773533ff-1bf3-431c-80af-4d49811fd1f8', '22c3b00c-035a-46e1-805f-34c4efaa87be', '13', '检查反光镜、后视镜', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('774bad59-7fce-457e-9faf-dab72bc47a18', '83ebbde1-0875-4714-b4f6-2beecf50519c', '12', '检查冷却风扇', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('77522e21-8049-4d9e-bf23-e8adfa31bf63', '3db1b47a-5ea2-4184-8bdf-40a0403d0d50', '15', '检查蓄电池', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('775fba14-bec9-405f-9efa-d8ebe1d69c04', '8cf77d70-bf73-4a1c-b2b6-20fe33ceff55', '9', '检查动力转向系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('77639541-a154-49ba-97db-16f57ac8e429', 'c3459e9d-38cf-4ea8-b971-0ccb97263e37', '1', '检查发动机机油液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('77671807-231a-4a3f-a4a8-bdfbcdd129c5', 'f2f04960-19e4-482c-81c9-133d1057f065', '5', '检查刮水器刮片', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('776be277-3512-454d-a4eb-487de07a8fdb', 'ef086691-28d0-4f75-a869-1ad4f1985f45', '11', '检查空调系统', '未检测', null);
@@ -5379,6 +5431,7 @@ INSERT INTO `gongdanjiance` VALUES ('7885505a-f918-4c02-8e71-2a96ee1ab8ac', '159
 INSERT INTO `gongdanjiance` VALUES ('78876501-2332-4b3e-a5ce-cffd3f9f774b', '02ac1605-149e-4b26-8857-c2ba8ad21e4e', '6', '检查车辆底部', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('789f4ab6-f98d-4a15-99eb-7f802796cb8a', 'a9a09324-d9ae-4190-9f2c-5aef4804a4a8', '3', '检查发动机空气滤芯', '润滑清洁或调整', '已清洁');
 INSERT INTO `gongdanjiance` VALUES ('789f915f-954f-4d38-bf0d-e5776d0591c2', '6f5be9fb-a33c-4965-ac81-dd25f4d2e099', '14', '检查车轮', '正常', '2.5');
+INSERT INTO `gongdanjiance` VALUES ('78a19ce2-6639-447f-ad5e-302053f8eea8', '62f71e29-177d-4a77-bdea-cc0ebdae988b', '2', '检查发动机冷却系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('78a2c6fd-61be-4073-abe5-6b62ef71cb25', '664a7acb-4f22-4d21-abf8-c709378d2b42', '5', '检查刮水器刮片', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('78a49644-6ec1-4df1-b6df-6274fef97424', 'f87eff4a-71e6-422f-825d-e2e5666c44ad', '12', '检查冷却风扇', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('78c1c29e-c0ad-446c-b268-d103d9351e8b', '30f8ffa9-e2b8-4629-86a4-688bc88404ab', '12', '检查冷却风扇', '未检测', null);
@@ -5488,6 +5541,7 @@ INSERT INTO `gongdanjiance` VALUES ('7c8d65fb-ed80-44a7-a4bb-ef86705d737a', 'd98
 INSERT INTO `gongdanjiance` VALUES ('7c8e55c2-a8ac-47ab-8cd2-05613cef14a7', 'c1340b8d-49b1-4294-affb-578114a6d984', '12', '检查冷却风扇', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('7c989c5d-e62c-4498-9ec1-570ee0df087c', '97442eef-ad16-4a13-9bf4-3bdf7c51ae52', '5', '检查刮水器刮片', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('7c9f338b-decb-4c56-a94f-1906a2e19f39', '139f7765-9a10-4a2a-a084-e8d383b36207', '9', '检查动力转向系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('7ca19f32-6472-48fa-bdc9-defa83b61004', '10b600cf-efdf-4c6b-863f-1cdf3356eeaa', '14', '空调滤清器', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('7ca88317-9251-43c4-bd20-c14ec3c85710', '6998c53f-c4b6-447f-9908-3c1a21c2cd11', '6', '检查车辆底部', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('7cb455c1-4c99-4edd-99f5-3895782b80e2', 'b392e22e-c7c0-45e5-b90f-969721bc4bf0', '12', '检查冷却风扇', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('7cbdea19-5d8c-4e85-8156-60807779e4bd', '3db1b47a-5ea2-4184-8bdf-40a0403d0d50', '13', '检查反光镜、后视镜', '未检测', null);
@@ -5526,6 +5580,7 @@ INSERT INTO `gongdanjiance` VALUES ('7e84b3b5-b684-4b37-8130-b1d43ac60146', '793
 INSERT INTO `gongdanjiance` VALUES ('7e8842ba-7e75-47ef-b12a-91fedd037cbb', '4c6b0111-83b0-40c1-b7ed-e4e908731e80', '14', '检查车轮', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('7e9d219d-f584-4d2c-8ebd-cbcab312356e', '882cca1e-3e8e-46b4-99bf-e418feec665d', '13', '检查反光镜、后视镜', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('7e9dde2e-3af2-4ece-ba99-ad8ac9d9bd1d', 'c760b320-d3e6-4764-951b-eb3ed5f795e2', '4', '检查挡风玻璃清洁剂液位', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('7eb066ee-01c7-443e-a559-b452d3628d2e', '10b600cf-efdf-4c6b-863f-1cdf3356eeaa', '3', '蓄电池及起动机检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('7ec6c66e-157b-4609-b7b4-04e031fb84b4', 'e39ff0fb-63a4-4a1a-b4df-b4b3cabd73cc', '2', '检查发动机冷却系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('7ecf365c-1b19-44e7-88cf-8373eaaf73ab', 'd58ff43e-2fc7-47a5-9fe3-aaf3dc3e421a', '7', '检查灯光系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('7ed177b3-854d-459b-913c-b4f13e4a40f2', '4c54e1eb-2920-48c8-bca7-46f475cef5bc', '14', '检查车轮', '未检测', null);
@@ -5664,6 +5719,7 @@ INSERT INTO `gongdanjiance` VALUES ('8424c0fa-6de8-48ef-9528-fb6a4be7f3af', 'de0
 INSERT INTO `gongdanjiance` VALUES ('843c97ab-1783-46fb-ba0c-b2567f114095', 'dbaab51f-8dac-4e6f-bb70-2c81a1e9b66d', '10', '检查发动机附件皮带', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('84444cd1-e756-4c22-a2e9-dbb0b72e7cc7', '4f9de1ec-02a9-4d34-bdbe-c0f99e272e23', '1', '检查发动机机油液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('84460136-487a-4d7d-b1f0-998ebf58c470', 'bf6dfff8-a04d-4eb0-aeb0-49b46171668c', '4', '检查挡风玻璃清洁剂液位', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('84490f77-f625-4ec4-b80e-a24c86764759', '8cf77d70-bf73-4a1c-b2b6-20fe33ceff55', '11', '检查空调系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('844e6f04-8d64-49ca-bbb0-adc7b1b7c0d4', 'f7ddf248-7bb3-4d39-bc2d-bee0cc07b6bb', '13', '检查反光镜、后视镜', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('84534e46-0891-40d9-9670-ec87a712cfa6', 'a3f389c6-f51e-4902-a893-8e647b2d5242', '12', '检查冷却风扇', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('8454ece6-92a5-4416-adcf-2ffb0e0ea809', '10241442-b366-40e7-9edd-1f31bade0f75', '14', '检查车轮', '正常', '2.4KPA');
@@ -5776,6 +5832,7 @@ INSERT INTO `gongdanjiance` VALUES ('8744bcc1-389b-432a-81f5-d6a96dcfc10c', '310
 INSERT INTO `gongdanjiance` VALUES ('874a405f-0661-4cab-969f-e5fe2bfc852c', 'a3f389c6-f51e-4902-a893-8e647b2d5242', '6', '检查车辆底部', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('874b9fde-8de7-478d-8073-0dc3879c7fb9', '380dba5d-7f46-4065-80da-f541a5e582f9', '13', '检查反光镜、后视镜', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('87585ebc-b651-4f76-9550-a4dacbacb4e2', 'd424d8b8-c936-4cc7-9fa6-8522b3723f04', '4', '检查挡风玻璃清洁剂液位', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('875cfb38-4612-4577-8a97-36a59ea8b56e', '10b600cf-efdf-4c6b-863f-1cdf3356eeaa', '7', '检查制动系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('877016a6-b131-40d2-8e08-da4faa710821', '78230c04-c635-417d-89b0-14d66f93dd64', '6', '检查车辆底部', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('877a735e-0d71-401b-b4f2-2d7555dbd1fd', '9afb3392-e311-40fc-bca8-ae19396a6cf5', '3', '检查发动机空气滤芯', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('87801ae3-d0d8-4171-b916-76a2b06e8dd4', '397cde9f-ed4c-4bc0-a214-75e0dddd0f79', '8', '检查制动系统', '未检测', null);
@@ -6038,6 +6095,7 @@ INSERT INTO `gongdanjiance` VALUES ('90edba40-a741-40c3-b052-fb67a80239f6', '114
 INSERT INTO `gongdanjiance` VALUES ('90ef2ff5-e9a3-4e51-ae17-af491ee14a0d', 'b13db9b9-0c87-4b23-8b05-a52afac957bf', '5', '检查刮水器刮片', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('90f408ed-4e2f-442b-9ab2-282338312809', 'de07a54d-9c93-4200-9837-4ff732152649', '2', '检查发动机冷却系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('90ff5270-8298-493c-9085-32262aaa1364', 'c7f98766-f797-4e4c-9463-763c99bb030d', '15', '检查蓄电池', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('91087f40-2102-40b6-9ae2-9e01f9c5f8b0', '62f71e29-177d-4a77-bdea-cc0ebdae988b', '6', '检查动力转向系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('911e3042-5450-4e2f-91bc-36b299d1e2ea', '0934c72b-68ae-46cd-ac6d-ff8f1439cdbc', '1', '检查发动机机油液位', '更换', '已更换');
 INSERT INTO `gongdanjiance` VALUES ('911e5a56-667e-4265-92ff-73114f6285fe', '74413173-2b95-4f36-97f9-bcbde0f9a492', '1', '检查发动机机油液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('9129d272-b099-47ff-990e-c765a38ef562', 'd58ff43e-2fc7-47a5-9fe3-aaf3dc3e421a', '10', '检查发动机附件皮带', '未检测', null);
@@ -6148,6 +6206,7 @@ INSERT INTO `gongdanjiance` VALUES ('9612ef7e-3a61-4ba6-9d14-98ce199d266b', '443
 INSERT INTO `gongdanjiance` VALUES ('96155c30-5fa0-45dc-adfd-c91dc518eaf3', '55ed9f3e-3b83-4bf3-a237-85db226c201e', '15', '检查蓄电池', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('96328be3-a2a8-4405-96f4-71dc2f7c2d7d', '11ebe769-913d-4b75-a672-a63434e3407a', '6', '检查车辆底部', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('9634b1dd-b265-43c3-8a17-1883b358f292', 'bb81b33a-1dcc-4e54-a10b-ad46db226f01', '11', '检查空调系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('96475a96-9358-48c4-86b2-e9398cf80d3c', '62f71e29-177d-4a77-bdea-cc0ebdae988b', '8', '制动液检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('964d7374-fb29-40dd-a2b6-f3e7d806e0e3', 'b2366f0c-07b8-485d-9331-ed26036c1773', '8', '检查制动系统', '润滑清洁或调整', '建议四轮刹车保养');
 INSERT INTO `gongdanjiance` VALUES ('96514eff-3f75-45c2-a931-47262b842e1f', '3052573c-ef87-49bc-a7bc-bced9a7e70ac', '6', '检查车辆底部', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('965d0fae-d9a3-4b3b-8853-3801ec83aa1f', 'e8483320-c482-41c6-8199-eb505903b027', '7', '检查灯光系统', '正常', '');
@@ -6158,6 +6217,7 @@ INSERT INTO `gongdanjiance` VALUES ('96708cea-c836-4f79-a4af-947c81c32776', 'd58
 INSERT INTO `gongdanjiance` VALUES ('967a7337-5f6e-4d84-8fda-9864dfc978bd', 'f7ed44fa-ae5d-475e-aa9d-45c048134ff5', '13', '检查反光镜、后视镜', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('9680e197-8f40-4b86-90e4-f59a2bc4f8ee', '86c39d67-0d65-4fcf-980f-292320263253', '13', '检查反光镜、后视镜', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('96875811-c99c-4fa7-ba92-1ebea51630ec', 'c757306b-aef8-4903-aeed-dc65b85d23d4', '9', '检查动力转向系统', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('968e1b20-7030-4359-9d51-6da45e3c2e99', '62f71e29-177d-4a77-bdea-cc0ebdae988b', '12', '检查制冷剂', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('96901c34-7f1d-40e0-988d-7a1d91d33e02', '5d8e8bca-1f18-4c18-9d70-121d28a35201', '1', '检查发动机机油液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('96905cab-b79e-4d65-a466-f16410167f43', 'ed6396c3-05ce-44ac-9dbb-260f57af6c3b', '8', '检查制动系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('96906659-f158-42d8-8248-af2335b1b951', 'a3f389c6-f51e-4902-a893-8e647b2d5242', '14', '检查车轮', '未检测', null);
@@ -6246,6 +6306,7 @@ INSERT INTO `gongdanjiance` VALUES ('99bf16b3-c84b-4168-9331-609a1a9b3e28', 'fed
 INSERT INTO `gongdanjiance` VALUES ('99c9e4ab-2475-4c55-b4cc-a7512c2f7587', 'e77de0d8-40ad-47a9-82a1-8cfb181a7c9d', '11', '检查空调系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('99d0d638-a61b-4eab-99e0-37a8024d630f', '89e47abb-2f15-4346-9a46-1384bd4173f5', '14', '检查车轮', '正常', '胎压2.5');
 INSERT INTO `gongdanjiance` VALUES ('99d61a5e-2d03-4b63-a67f-362c731b29f5', '5099af92-af6b-4fc1-b462-4a6b7499b324', '2', '检查发动机冷却系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('99de6f9e-0980-4f66-8a63-436912b36256', '62f71e29-177d-4a77-bdea-cc0ebdae988b', '1', '检查发动机空气滤清器', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('99e51ba0-3a2d-4f81-8a8a-919b263196ea', 'a2c6650c-e702-4099-aa03-839b9de3fa9f', '13', '检查反光镜、后视镜', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('99fa2d9a-364c-468c-9430-25730c4682ca', '26bddedc-231c-4749-b238-dd37a06bc341', '1', '检查发动机机油液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('9a02bd83-3e07-4e88-85b1-1f7e8321f821', '5674f8ea-5f60-4e6d-bba7-08058e380eb6', '13', '检查反光镜、后视镜', '未检测', null);
@@ -6690,6 +6751,7 @@ INSERT INTO `gongdanjiance` VALUES ('ab62035e-4507-408d-ad93-eb192f2170c1', '2fd
 INSERT INTO `gongdanjiance` VALUES ('ab6a9d76-02a8-4841-bf21-3793af239300', '1d9fa667-b423-4b81-a12f-76bfc6057173', '2', '检查发动机冷却系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('ab75bde7-d271-4b6a-b860-b76048019839', 'a67e80e8-191d-4762-b31e-dce4c7d41bf2', '10', '检查发动机附件皮带', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('ab7f831b-5e9d-4185-93cd-e07e935b18af', '64a067bc-f850-4d53-b1bf-c4234ec45b18', '10', '检查发动机附件皮带', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('ab8c232f-22bb-4554-b3c0-cdca816440ba', '62f71e29-177d-4a77-bdea-cc0ebdae988b', '0', '检测发动机机油', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('ab9648aa-a4b2-40fd-8632-ee224efaa8ac', '21b1c104-c8f5-4582-8377-6ad622125fb6', '5', '检查刮水器刮片', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('ab9857c4-ebea-4b44-a2be-ee1fe5d83b0b', '9d06ef75-ee23-475e-9cd5-dcb8c6084393', '8', '检查制动系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('ab9fd234-1678-4f60-baf5-e5207752651a', 'c760b320-d3e6-4764-951b-eb3ed5f795e2', '11', '检查空调系统', '未检测', null);
@@ -6726,6 +6788,7 @@ INSERT INTO `gongdanjiance` VALUES ('ace99558-7cd6-4ccf-aa77-b8eca04bc106', '20d
 INSERT INTO `gongdanjiance` VALUES ('acf54fdc-e96e-4b36-9eaf-6ca9a44cabfd', '47dacedc-9cca-4233-a6b5-42ab0583af6d', '8', '检查制动系统', '正常', '建议四轮刹车保养');
 INSERT INTO `gongdanjiance` VALUES ('ad15fac0-6d76-435c-ac14-e4881f9c24b8', '03aa1e87-cabd-4c71-87da-765cb91e0862', '12', '检查冷却风扇', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('ad16372c-7118-44c5-8d37-dfb8f18e047d', '201d6d2e-e50a-41ed-8ac1-c9e14cfeeebc', '0', '检测发动机控制模块系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('ad19e4ef-b80a-4994-822a-cc8be5b71904', '62f71e29-177d-4a77-bdea-cc0ebdae988b', '13', '轮胎和充气气压', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('ad276302-a3c5-4673-9ecf-100afdf5bfd0', '6f4f5db8-3ec0-494b-a738-d675be1f72f7', '7', '检查灯光系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('ad37cb2b-c0f3-44d6-a5ea-06aa8a94facf', 'c857989b-ca7c-41da-9926-9a75dee5c49e', '11', '检查空调系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('ad45e5b9-b272-4f43-9a30-5e5008b2e920', '698288cd-bc34-4bbe-ba7e-fb55701df539', '0', '检测发动机控制模块系统', '未检测', null);
@@ -6945,12 +7008,14 @@ INSERT INTO `gongdanjiance` VALUES ('b6703ed1-1862-405f-8c59-fe3f64b3eaa6', 'fa6
 INSERT INTO `gongdanjiance` VALUES ('b67cb705-bfab-42b4-8c34-2014bb44db5c', '309288d1-2bcc-4521-866a-cdc08edd979a', '4', '检查挡风玻璃清洁剂液位', '正常', '已加满');
 INSERT INTO `gongdanjiance` VALUES ('b67dd8ea-509b-4c5d-a3b5-8bdd47ed6895', '4411e1f8-c5b2-4f3e-81fe-f769b8008f0c', '11', '检查空调系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('b6807edf-edb4-44db-99a4-16bca18e5779', 'b494c44c-8ad1-4ec9-a356-5ba473000a82', '1', '检查发动机机油液位', '正常', '已更换');
+INSERT INTO `gongdanjiance` VALUES ('b6816a7e-bf6c-4d97-87dd-2f19e586ee1d', '8cf77d70-bf73-4a1c-b2b6-20fe33ceff55', '8', '检查制动系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('b682ecbd-9fc9-4cc6-9dc6-26f7b1207cb0', '32203afe-5e81-4f70-87a0-41e8b09d1b36', '1', '检查发动机机油液位', '正常', '已更换');
 INSERT INTO `gongdanjiance` VALUES ('b6848f91-21e0-4dbf-8163-4367dbf9edf1', 'ee31d712-c23a-432e-ba0e-4b9cbebbdda0', '10', '检查发动机附件皮带', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('b68d4d64-99d4-4d40-9278-af3ad7f9714c', '0bea1d1d-c7ea-4c0b-8e13-cb625906f439', '9', '检查动力转向系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('b6b823d8-07eb-4cb5-82aa-e214f8491760', '077e46e1-1a63-49e6-9bd5-eb0b43a5bc6b', '15', '检查蓄电池', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('b6bcbe09-edb2-4501-9f7f-cb8eaf9f32f6', '5b62991f-a1f0-45c8-a50c-a4b43184c551', '5', '检查刮水器刮片', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('b6c76dbb-f776-4def-b070-e3c695032a8d', 'bf6dfff8-a04d-4eb0-aeb0-49b46171668c', '0', '检测发动机控制模块系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('b6c8b57b-6008-486d-a750-624d87f3afdd', '8cf77d70-bf73-4a1c-b2b6-20fe33ceff55', '3', '检查发动机空气滤芯', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('b6cc491d-e6d6-479e-a281-3372016d5bff', 'd6ee1640-5b7c-4e9d-bc71-42af6bf298db', '11', '检查空调系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('b6cce443-f518-4b0a-a4c2-6d101e20b0d9', '47e4e108-0afa-4235-94b6-86d969639f1b', '9', '检查动力转向系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('b6d1f2dd-1dcd-4de2-aa71-9af6ecc26b24', '9cbfc955-3209-4354-b446-cb66ac3197fb', '0', '检测发动机控制模块系统', '未检测', null);
@@ -7146,6 +7211,7 @@ INSERT INTO `gongdanjiance` VALUES ('becef149-f93c-44c6-9ed7-b72485768709', '12f
 INSERT INTO `gongdanjiance` VALUES ('bee19747-6d94-46b4-9b2e-c1a84bfcf2f7', '90dd0fe2-9e33-417c-80d5-0838da5e9bb3', '1', '检查发动机机油液位', '更换', '已更换自带机油');
 INSERT INTO `gongdanjiance` VALUES ('bee3a4b0-886b-4915-a49a-9b717de7dba4', 'f4934fdb-f260-49ce-9f6d-dc7ec837a45f', '5', '检查刮水器刮片', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('beec9d1f-466f-4154-bd9e-592d759c251f', '84faef09-0a0e-4ac6-bf07-b1fddac0afcf', '9', '检查动力转向系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('bef374e8-e4f9-4771-98e0-764f2d02f91a', '62f71e29-177d-4a77-bdea-cc0ebdae988b', '3', '蓄电池及起动机检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('bef578ee-9cbc-4f6e-94fc-9a8673919e7a', '460f40a3-e301-4a44-8296-4ef9fd79beeb', '3', '检查发动机空气滤芯', '润滑清洁或调整', '已清洁');
 INSERT INTO `gongdanjiance` VALUES ('bf01fa4d-92ba-42a7-adbb-e4878242bf47', 'dbc25512-1d5b-4fcd-959d-899a5b2004ae', '0', '检测发动机控制模块系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('bf069928-baca-4036-a22d-5e2588f2c075', '89e47abb-2f15-4346-9a46-1384bd4173f5', '7', '检查灯光系统', '正常', '');
@@ -7160,6 +7226,7 @@ INSERT INTO `gongdanjiance` VALUES ('bf7ccc4a-3512-469f-a52e-cf7eb7d26d71', '5e3
 INSERT INTO `gongdanjiance` VALUES ('bf7f35fb-5148-416e-b8cc-c2a44d234065', 'c37badde-c610-4f47-b978-8586f395a767', '1', '检查发动机机油液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('bf83e941-ba4d-4f92-aceb-0b22aa4e88eb', '5e22bd94-4e8d-410b-bcca-2af1216821c0', '13', '检查反光镜、后视镜', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('bf863739-9dcb-43ca-849d-8a8f4991ba2f', '9cbfc955-3209-4354-b446-cb66ac3197fb', '2', '检查发动机冷却系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('bf866fa0-be70-4206-aeb2-a472fdcab38e', '8cf77d70-bf73-4a1c-b2b6-20fe33ceff55', '5', '检查刮水器刮片', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('bf99c94f-7a03-4c7d-946f-f3f8c24db968', 'c14f1953-1da2-42d5-9da1-cbd2f33485de', '12', '检查冷却风扇', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('bf9d1cd1-5daf-4d57-bd50-af83b3342a8f', 'b77ed90f-ff49-44f3-8e75-554c128696ed', '7', '检查灯光系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('bfc7c2cc-8fe6-43d7-93c5-5d1e368d84d7', '9622aa6d-aed7-48ad-9f9c-ba78ec25804d', '1', '检查发动机机油液位', '未检测', null);
@@ -7282,6 +7349,7 @@ INSERT INTO `gongdanjiance` VALUES ('c41bd68c-7b0f-4374-8951-520d27f2aa8d', '4d8
 INSERT INTO `gongdanjiance` VALUES ('c41de844-b2e5-43bc-b97b-1836387cfd8a', '7f3d9e06-296b-48bf-9e46-c9f65fee194f', '12', '检查冷却风扇', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('c44f2490-677c-423b-a4a8-2ad6d3c47be3', '5d8e8bca-1f18-4c18-9d70-121d28a35201', '0', '检测发动机控制模块系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('c457a814-462e-4541-a718-d84aec3ca84b', 'a2f05520-7c84-48eb-a217-c7e397a196e1', '0', '检测发动机控制模块系统', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('c478f92e-d88a-42c8-aa83-4c51a2de2646', '8cf77d70-bf73-4a1c-b2b6-20fe33ceff55', '1', '检查发动机机油液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('c479ba76-200d-411c-9c0b-a7ce0c88f9b9', '5c6e73f0-97e3-4bc9-aec5-3b3e585b4e49', '8', '检查制动系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('c47c788b-4525-4676-8060-e3db177a66b3', '8b0ac484-8945-4566-9a37-68b1b76ebe62', '14', '检查车轮', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('c47d9eec-aca5-4474-b9bb-0598f334ed32', 'd9714589-0e30-47d1-9b31-e8afde138f1b', '1', '检查发动机机油液位', '未检测', null);
@@ -7347,6 +7415,7 @@ INSERT INTO `gongdanjiance` VALUES ('c6e0d4ef-c566-455c-adf0-f5e16a8ad230', '397
 INSERT INTO `gongdanjiance` VALUES ('c6e24d3b-9754-4efb-af0c-cc8f46cb6392', '362b5a7b-b97f-4f35-8224-a146da1b81b3', '1', '检查发动机机油液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('c6f553b3-7f46-426c-bc48-f78a1024fd4c', '698288cd-bc34-4bbe-ba7e-fb55701df539', '10', '检查发动机附件皮带', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('c7124724-6244-4017-abb3-28455a93a965', 'd862cb24-75c6-4c83-bee1-1ec614d46342', '14', '检查车轮', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('c7229fa8-c1a4-4256-ac30-85334c5d63e4', '10b600cf-efdf-4c6b-863f-1cdf3356eeaa', '12', '检查制冷剂', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('c728f827-09d2-4175-a45c-46fb327144c0', '12f429b5-b681-44cf-b789-d02644ec8a29', '0', '检测发动机控制模块系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('c72bb82c-7570-4719-8bde-60740cd20374', '60c40e3a-1ac1-4760-8ba1-1fa257325164', '10', '检查发动机附件皮带', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('c72e9ee6-cdd1-4881-b957-38ccf9a1c657', '4a0585f3-1c71-46bf-b855-9d04fd7ca3f6', '0', '检测发动机控制模块系统', '正常', '');
@@ -7493,6 +7562,7 @@ INSERT INTO `gongdanjiance` VALUES ('cd4f1e8e-ce5a-4755-ba43-e8e0dc49da9e', 'bb4
 INSERT INTO `gongdanjiance` VALUES ('cd51409d-7449-449c-9ef8-c2ec6bddd92f', '9cbfc955-3209-4354-b446-cb66ac3197fb', '1', '检查发动机机油液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('cd5c330b-ac17-4ea4-9dd0-b5fec32344ce', '1c8d56d6-b5b3-41fc-bddb-46d5eb92cdc2', '15', '检查蓄电池', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('cd611456-5d73-4979-a58a-1fbca85fbbc2', '139f7765-9a10-4a2a-a084-e8d383b36207', '12', '检查冷却风扇', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('cd69d677-f29c-4984-9a6b-7bb294a2a3ab', '8cf77d70-bf73-4a1c-b2b6-20fe33ceff55', '2', '检查发动机冷却系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('cd6d580a-cd51-4153-8e40-d7214d11427d', 'abcf3d73-aa81-4686-8966-cd5e5d9557dd', '11', '检查空调系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('cd729f42-46d3-4db7-9f46-9d0df33b407e', '39994ca9-1a6f-4665-b3b6-12a8c557aaf3', '6', '检查车辆底部', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('cd877bbd-20fc-4aaa-98b6-8c4c014d07f9', '31856753-2d53-4e5e-b2df-99235f5875f1', '8', '检查制动系统', '正常', '');
@@ -7550,6 +7620,7 @@ INSERT INTO `gongdanjiance` VALUES ('cf6bcbd7-02b2-449c-af77-650230f04b88', '763
 INSERT INTO `gongdanjiance` VALUES ('cf6ccc46-0f81-4023-b7b8-727476e778c9', '9372ba72-9da0-4ea0-8144-7bafa1f2d41e', '15', '检查蓄电池', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('cf739d4e-3d50-4df3-a8b6-c90a7d6c36c6', '1ad46111-fb91-4563-98a8-85711a7a0798', '1', '检查发动机机油液位', '更换', '');
 INSERT INTO `gongdanjiance` VALUES ('cfa15611-74e1-4f38-a156-218fa76fc6bb', '4a0585f3-1c71-46bf-b855-9d04fd7ca3f6', '1', '检查发动机机油液位', '正常', '已更换');
+INSERT INTO `gongdanjiance` VALUES ('cfb04598-ddb5-4a8e-b2a4-91d90543cda1', '8cf77d70-bf73-4a1c-b2b6-20fe33ceff55', '4', '检查挡风玻璃清洁剂液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('cfbec472-08a1-48a2-8a5f-bafbc0adb90d', 'b3356b69-5298-481c-b40f-f155040d8bdb', '6', '检查车辆底部', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('cfc5cb55-c6d7-43fd-8ebf-cc61e59b4863', '98385f67-3ae7-4e92-8bce-ee2168824b4d', '4', '检查挡风玻璃清洁剂液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('cfd281bd-2ea4-43f7-8dd1-c14fd489cbf8', '759e6fbd-84ee-43ba-9af9-669890dcc236', '12', '检查冷却风扇', '未检测', null);
@@ -7719,6 +7790,7 @@ INSERT INTO `gongdanjiance` VALUES ('d6b94424-16f7-41af-a29f-0ebe48949f37', '94d
 INSERT INTO `gongdanjiance` VALUES ('d6cc586d-f99f-42a4-a477-81ad05fb67cf', 'cd356813-f322-423f-a577-63b6bd1107b8', '12', '检查冷却风扇', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('d6d84c14-b08a-4be4-90d4-b7953505d7b7', 'b8b5bba7-f389-43c9-8f69-7f54740bf987', '9', '检查动力转向系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('d6ff216b-abca-4b54-bc06-55d54ef9bb53', '39994ca9-1a6f-4665-b3b6-12a8c557aaf3', '15', '检查蓄电池', '正常', '');
+INSERT INTO `gongdanjiance` VALUES ('d6ff8faf-eb09-4bda-be6c-3d7f4a29e439', '10b600cf-efdf-4c6b-863f-1cdf3356eeaa', '15', '雨刮器和玻璃水', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('d72fb6fc-8561-40ab-852c-ade5b1487b3d', '6a149962-0a2a-4c2b-9572-59a49fdeffdc', '14', '检查车轮', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('d73ceebb-1228-46c1-b22c-07cd9b4189bd', '5dcfa543-deb6-4ea1-b5ea-1a1e4c1e2dfc', '1', '检查发动机机油液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('d73f1a5e-e51c-434c-9b52-09dccdb8c545', 'c30f419d-8e05-40dc-bd37-64b8c8e25231', '11', '检查空调系统', '未检测', null);
@@ -7731,6 +7803,7 @@ INSERT INTO `gongdanjiance` VALUES ('d7aeec29-6fe8-4972-9db6-de7d5441d4c9', '0b1
 INSERT INTO `gongdanjiance` VALUES ('d7bec205-379a-42d2-b537-deb26b5ce794', 'fcdcdb1b-9838-4f96-a762-362ee9d11666', '14', '检查车轮', '正常', '3.5');
 INSERT INTO `gongdanjiance` VALUES ('d7cb3377-3f0b-4b18-8612-c41cccc4686e', '79c262fd-f94e-4023-a57d-1244101ef293', '10', '检查发动机附件皮带', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('d7cba997-2b17-4f31-a11f-56f8404ca61d', 'a4e4d844-8f7c-418f-8682-165f3cad92f6', '8', '检查制动系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('d7e44a1c-3279-4764-9b36-df0a28a6debf', '10b600cf-efdf-4c6b-863f-1cdf3356eeaa', '4', '各种橡胶软管的检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('d7eabe6a-26bb-4d5f-b754-7c379af8770f', '3a40272a-7188-47c5-bfd6-0baba092fd4c', '8', '检查制动系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('d7f14b7e-53a4-4dfa-b717-fec09b9f02c6', '5568304f-1081-45d5-af6f-40febbeb7e72', '4', '检查挡风玻璃清洁剂液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('d80a9424-ef7f-41f6-9d7d-cce826cce80c', '3b94cb95-7ebf-4d68-a826-29e3b6371030', '6', '检查车辆底部', '正常', '');
@@ -7821,6 +7894,7 @@ INSERT INTO `gongdanjiance` VALUES ('dbbaf124-e7d5-4143-a1d3-d10cb0f763c0', '02a
 INSERT INTO `gongdanjiance` VALUES ('dbdb0ba4-e9fc-45e6-bc32-03faac5397e6', 'd58ff43e-2fc7-47a5-9fe3-aaf3dc3e421a', '13', '检查反光镜、后视镜', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('dbe5612e-ed03-4536-b7a6-ffb45f5f7c6a', '34b9f639-f3d0-4482-8242-5b95bedb5a46', '14', '检查车轮', '正常', '2.5');
 INSERT INTO `gongdanjiance` VALUES ('dbe7a2ed-fcd4-4825-97fb-16c826c5f324', 'c37badde-c610-4f47-b978-8586f395a767', '15', '检查蓄电池', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('dbeb610b-cc12-4c96-8efa-cf23f2c19c15', '62f71e29-177d-4a77-bdea-cc0ebdae988b', '5', '怠速及火花塞', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('dbeccaae-c663-4db7-a312-c409cfcb4213', '3105beaf-2f8b-47c1-80c9-cc29178d311c', '9', '检查动力转向系统', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('dbede1a5-04f0-4aa6-8671-d2e4a28fcb6d', '37eea73c-7c1a-4acd-acf5-f507c6034660', '0', '检测发动机控制模块系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('dbf16d73-e18c-40fa-b34d-4ef3c9c3a36e', '40c3aaa4-a707-4526-8a44-0634093b37a0', '4', '检查挡风玻璃清洁剂液位', '正常', '');
@@ -8073,6 +8147,7 @@ INSERT INTO `gongdanjiance` VALUES ('e67eb85e-c1de-48e1-a3ab-a3a535ef8483', '1f5
 INSERT INTO `gongdanjiance` VALUES ('e689da0d-556c-4959-a503-46e17202bafe', '15979d81-1aef-434b-8360-834e7bb3d40f', '5', '检查刮水器刮片', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('e68a7acf-f580-4591-971a-1375b3d0a8b2', '5099af92-af6b-4fc1-b462-4a6b7499b324', '11', '检查空调系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('e6972eba-05ab-4bc2-b2fb-a2ed43e18c7b', 'b433bd81-b8f1-4e56-822f-a727a35e9c0f', '3', '检查发动机空气滤芯', '正常', '已更换');
+INSERT INTO `gongdanjiance` VALUES ('e69a25c7-7836-4535-a90c-7096dab4986c', '62f71e29-177d-4a77-bdea-cc0ebdae988b', '14', '空调滤清器', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('e69cc1bd-7131-4e35-9ff7-44cffd7d0ba9', 'a4f57734-eb3b-430f-91ba-efca1848d5b1', '5', '检查刮水器刮片', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('e69cd9b3-705a-4200-abb7-eb6714e53b96', 'c6549083-25ad-42c7-b998-9672d0f86956', '4', '检查挡风玻璃清洁剂液位', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('e6a6e8b3-f415-4241-92e8-4ab10c08b67b', '79c262fd-f94e-4023-a57d-1244101ef293', '14', '检查车轮', '未检测', null);
@@ -8157,6 +8232,7 @@ INSERT INTO `gongdanjiance` VALUES ('e9697345-f513-406e-8824-c37f5c5e764c', '6a1
 INSERT INTO `gongdanjiance` VALUES ('e96eed53-8f21-44af-88a6-082b3893f88e', '2c65ec5b-de44-437f-9b89-1b9038d1c508', '3', '检查发动机空气滤芯', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('e97c7696-491d-4db7-afd8-1e478421a692', '33008335-dadc-43fb-86ac-46fbf2828e2f', '11', '检查空调系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('e981a3f7-8830-47af-8348-06b0c96780f7', '0a6c2768-c728-4f21-9a02-97e05863ca51', '4', '检查挡风玻璃清洁剂液位', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('e988daee-d326-491d-8125-ec63e440cce7', '62f71e29-177d-4a77-bdea-cc0ebdae988b', '4', '各种橡胶软管的检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('e9a99101-71f3-4f99-b436-f2f0db7cafb5', 'd9714589-0e30-47d1-9b31-e8afde138f1b', '5', '检查刮水器刮片', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('e9af8e91-0cad-480f-8cbc-f2d1bff0eb0f', '78230c04-c635-417d-89b0-14d66f93dd64', '3', '检查发动机空气滤芯', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('e9cb81f9-475e-43e3-8cdf-e7a5c3212b3c', 'b55c289f-a2de-4474-8ea3-dda56d3bd50a', '6', '检查车辆底部', '未检测', null);
@@ -8174,6 +8250,7 @@ INSERT INTO `gongdanjiance` VALUES ('ea357f09-73c8-40c8-8bc8-bcb5814466e0', '8d0
 INSERT INTO `gongdanjiance` VALUES ('ea4e73ca-79d0-4e72-9bac-0ef91939c95b', '87cedf92-230f-472e-85ae-87a00f8a4a76', '3', '检查发动机空气滤芯', '正常', '');
 INSERT INTO `gongdanjiance` VALUES ('ea580c1b-f460-447a-8aad-6c60b04d7146', '5238032b-3b1d-44e9-aa54-17f1ebcdba02', '11', '检查空调系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('ea6e5f9b-161d-442c-b4aa-e6b77a8178d6', 'ea3b9135-b5d3-43d5-a175-e2665764d45e', '12', '检查冷却风扇', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('ea72470e-c6ec-41e3-bfc1-c396910daff1', '10b600cf-efdf-4c6b-863f-1cdf3356eeaa', '10', '发动机外观检查', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('ea7f2b88-bbf5-4ccd-b3d4-134bbdc69821', '5e22bd94-4e8d-410b-bcca-2af1216821c0', '15', '检查蓄电池', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('ea865e05-1e4b-4865-a670-0e771d1afe11', '60c40e3a-1ac1-4760-8ba1-1fa257325164', '15', '检查蓄电池', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('ea8a2160-4ebb-461c-b89e-9b5899f7d317', '4411e1f8-c5b2-4f3e-81fe-f769b8008f0c', '1', '检查发动机机油液位', '未检测', null);
@@ -8404,6 +8481,7 @@ INSERT INTO `gongdanjiance` VALUES ('f3471316-bf52-47c9-9a06-1a6700f4b0cb', '58c
 INSERT INTO `gongdanjiance` VALUES ('f3597ebc-828d-40c5-9f0e-9e4510c7c94e', 'c14f1953-1da2-42d5-9da1-cbd2f33485de', '7', '检查灯光系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('f3744b36-0a44-4754-8849-b7b00d5c8344', '35c3dcf2-70be-494c-bb48-ea433b6edacd', '11', '检查空调系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('f376ad2f-182b-4aae-92e2-04079b515c9c', 'c1340b8d-49b1-4294-affb-578114a6d984', '9', '检查动力转向系统', '未检测', null);
+INSERT INTO `gongdanjiance` VALUES ('f37bda42-2cd2-4a88-8dcb-5ae280e44144', '8cf77d70-bf73-4a1c-b2b6-20fe33ceff55', '12', '检查冷却风扇', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('f384a644-b41d-42eb-91b2-042651769967', '936af41c-3a73-4809-bf7b-ca84cbfdeabd', '3', '检查发动机空气滤芯', '正常', '已清洁');
 INSERT INTO `gongdanjiance` VALUES ('f38af901-a2d0-4520-8d72-66d31a79bad7', '04ddbfd7-ab0a-4b9d-98f9-495f15506980', '11', '检查空调系统', '未检测', null);
 INSERT INTO `gongdanjiance` VALUES ('f38e4e5a-cb63-4e29-a129-9ddb0691cd10', '60c40e3a-1ac1-4760-8ba1-1fa257325164', '6', '检查车辆底部', '未检测', null);
@@ -8752,6 +8830,7 @@ CREATE TABLE `gongdanwuliao` (
   `txtQty` float(10,2) DEFAULT '1.00' COMMENT '领用数量',
   `txtSalePrice` float(10,2) DEFAULT NULL COMMENT '销售价',
   `txtChengBenJia` float(10,2) DEFAULT NULL COMMENT '成本价',
+  `txtPaidPrice` float(10,2) DEFAULT NULL COMMENT '实际支付价格',
   `ddlSuoSuXiangMu` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '所属维修项目',
   `ddlZhangTao` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '帐套',
   `ddlStatus` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '物料状态',
@@ -8765,56 +8844,62 @@ CREATE TABLE `gongdanwuliao` (
 -- ----------------------------
 -- Records of gongdanwuliao
 -- ----------------------------
-INSERT INTO `gongdanwuliao` VALUES ('0357d244-e98f-4eab-9730-fbb519905929', '001', 'e5c0ab87-da66-4a1b-95ee-4ccdd16b0744', '234654321', '测试物料1', '八路通', '1.00', null, null, null, '客户自费', '已收货', null, '采购');
-INSERT INTO `gongdanwuliao` VALUES ('04b2d7af-d9d6-47f1-8420-2b78a6843344', '001', '20866592-0061-4111-ad27-c8317e56a52c', 'BLT-JYG-001', '机油格BO-3305', '八路通', '1.00', null, null, null, '客户自费', '未出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('0654b5b6-351d-4178-810a-0b1b742eabd5', '001', 'd8cb9751-4d63-4361-9453-4aabdd8c8eed', 'BLT-JYG-001', '机油格BO-3305', '八路通', '1.00', '0.00', '9.09', null, '客户自费', '未出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('0db206d3-c37d-4071-b6a2-ed7ba91202a9', '001', '3b94cb95-7ebf-4d68-a826-29e3b6371030', '003', '7系机油', '八路通', '1.00', '0.00', '608.33', '', '客户自费', '已出库', '5升 BOP-1006', '库存');
-INSERT INTO `gongdanwuliao` VALUES ('0de239c6-6df2-4142-870f-6b385038352d', '001', '20866592-0061-4111-ad27-c8317e56a52c', '001', '奇瑞A3机油格', '冠峰', '1.00', null, null, null, '客户自费', '已收货', null, '采购');
-INSERT INTO `gongdanwuliao` VALUES ('0ffed5ec-8859-4f50-bb83-d4ae7bdb0229', '001', '460f40a3-e301-4a44-8296-4ef9fd79beeb', '166', '1系机油及格', '八路通', '1.00', '0.00', '100.00', null, '客户自费', '未出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('1a2a8945-7466-4b49-9cde-b2322dfb1dca', '001', '685f546e-64e5-4419-8957-e4e601825c3e', 'BLT-SCYBOT4', '刹车油', '八路通', '1.00', null, null, '换7系4L机油', '客户自费', '已出库', '', '库存');
-INSERT INTO `gongdanwuliao` VALUES ('2bf52eb4-8450-4e47-933d-e77d8f6f39ad', '001', '20866592-0061-4111-ad27-c8317e56a52c', 'bltjiyouge', '机油格型号BO-9401', '八路通', '1.00', null, null, null, '客户自费', '未出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('3ebbc73e-8580-463d-8e03-f88520e3195b', '001', '3b94cb95-7ebf-4d68-a826-29e3b6371030', '148', '空调格', '八路通', '1.00', '0.00', '60.00', '', '客户自费', '已出库', 'BAC-10186', '库存');
-INSERT INTO `gongdanwuliao` VALUES ('3f5e6280-a05c-47d0-97d0-d911d0e8de90', '001', '97442eef-ad16-4a13-9bf4-3bdf7c51ae52', 'cs-001', '测试1', '深圳市八路通汽车科技有限公司', '1.00', '10.00', '10.00', null, '客户自费', '已下单', null, '采购');
-INSERT INTO `gongdanwuliao` VALUES ('40326b22-8881-44a2-acac-066b382dd7f5', '001', 'e5c0ab87-da66-4a1b-95ee-4ccdd16b0744', '1234512345', '测试物料', '八路通', '1.00', null, null, null, '客户自费', '已出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('43b85913-067c-4260-8cda-4f5866da92ff', '001', '759e6fbd-84ee-43ba-9af9-669890dcc236', '52', '普通雨刮', '八路通', '1.00', '0.00', '60.00', '', '客户自费', '未出库', '16*16', '库存');
-INSERT INTO `gongdanwuliao` VALUES ('460418be-5a37-4fce-b492-eef84329d4bc', '001', '7c99a5ea-5636-4c89-a2b7-5d339dbaef29', '166', '1系机油及格', '八路通', '1.00', '0.00', '100.00', '', '客户自费', '未出库', '机油格 外采', '库存');
-INSERT INTO `gongdanwuliao` VALUES ('4ab09735-7b11-4299-bc7a-bf1361e11c67', '001', '9372ba72-9da0-4ea0-8144-7bafa1f2d41e', '002', '7系机油', '八路通', '1.00', '0.00', '260.00', '500劵', '客户自费', '未出库', '', '库存');
-INSERT INTO `gongdanwuliao` VALUES ('5b1bda1d-d5f0-4a1c-b1c6-fc21d0a3df00', '001', '61bef017-0e4d-4e63-b599-f930e2c683d3', 'xad-penqi', '右前叶子板钣金喷漆', '新安店', '1.00', null, null, '喷漆', '客户自费', '未出库', '', '库存');
-INSERT INTO `gongdanwuliao` VALUES ('5b4ae7fd-8caf-4e70-b2a9-7f56b006ce46', '001', '4c6b0111-83b0-40c1-b7ed-e4e908731e80', 'PLST-R15', '普利司通205.65R15', '中大旺', '1.00', null, null, null, '客户自费', '未出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('5b64dabb-50f5-4fd9-b488-c13a61e27217', '001', '6d600135-0437-49dc-aea7-ccbe896a01a4', '123450001', '测试1', '八路通', '1.00', '0.00', '10.00', '保养', '客户自费', '已出库', '', '库存');
-INSERT INTO `gongdanwuliao` VALUES ('5c9b51a5-2523-403f-bc17-a27a59ad8b50', '001', '4c6b0111-83b0-40c1-b7ed-e4e908731e80', 'BLT-SCYBOT4', '刹车油', '八路通', '1.00', null, null, null, '客户自费', '未出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('5cdab5bd-2e47-48fc-9e30-dc658e381b62', '001', '97442eef-ad16-4a13-9bf4-3bdf7c51ae52', '1234512343', '测试物料3', '八路通', '1.00', null, null, null, '客户自费', '已出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('5e337603-5642-4efc-9863-875a0a235a18', '001', 'd8cb9751-4d63-4361-9453-4aabdd8c8eed', '3578987567', '机油格', '八路通', '1.00', '20.00', '0.00', null, '客户自费', '未出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('6497d5aa-47fe-4f1b-a1e9-03e0e1817b92', '001', 'f5c85b4c-07a8-44d9-a7b0-26b954358c13', '002', '7系机油', '八路通', '1.00', '0.00', '260.00', null, '客户自费', '已出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('6a0e980c-4d82-4570-a14f-d9a38dd3b3b9', '001', '4c6b0111-83b0-40c1-b7ed-e4e908731e80', 'BLT-JYG-001', '机油格BO-3305', '八路通', '1.00', null, null, null, '客户自费', '未出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('6f11d87f-e041-4629-92cc-0b39e45bdd0b', '001', '8992ccbe-91bd-458f-9ced-4e2151b14155', '0001', '7系机油', '八路通', '1.00', null, null, '换7系4L机油', '客户自费', '已出库', '500劵 机油格B0-5202', '库存');
-INSERT INTO `gongdanwuliao` VALUES ('70c7a50d-bb2d-4af3-96b3-002eaabe1d67', '001', '20866592-0061-4111-ad27-c8317e56a52c', 'PLST-R15', '普利司通205.65R15', '中大旺', '1.00', null, null, null, '客户自费', '未出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('7781f95c-88e3-4dff-97d2-3bf41b9bf619', '001', '89f47f87-052e-4171-874d-07997efb93cb', '123450001', '测试1', '八路通', '1.00', '0.00', '10.00', null, '客户自费', '未出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('77a4f168-f8f6-423d-833f-1fee71440dcd', '001', 'c757306b-aef8-4903-aeed-dc65b85d23d4', '1378', '动平衡', '八路通', '1.00', '0.00', '40.00', null, '客户自费', '已出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('79e26e1f-1663-45ff-a7ba-c18bf14b71ee', '001', '97442eef-ad16-4a13-9bf4-3bdf7c51ae52', '3578987567', '机油格', '八路通', '1.00', null, null, '保养', '客户自费', '已出库', '', '库存');
-INSERT INTO `gongdanwuliao` VALUES ('81598cd4-cfa1-4426-ab70-4d0815bf3892', '001', '4c6b0111-83b0-40c1-b7ed-e4e908731e80', 'bltjiyouge', '机油格型号BO-9401', '八路通', '1.00', null, null, null, '客户自费', '未出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('83b9cde8-1d0f-4d3d-9848-1ed0bde05122', '001', 'c3805ed7-9445-48b1-b9fa-889131747aab', 'PLST-R15', '普利司通205.65R15', '中大旺', '2.00', null, null, '', '客户自费', '已出库', '', '库存');
-INSERT INTO `gongdanwuliao` VALUES ('89d99dfb-da6d-4645-b57a-9914705bc359', '001', 'c757306b-aef8-4903-aeed-dc65b85d23d4', '1366', '喷漆', '宝芝林（喷漆）', '1.00', '0.00', '130.00', null, '客户自费', '已出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('90ec08ef-1079-4300-8fb8-c101da4e0b76', '001', '6d600135-0437-49dc-aea7-ccbe896a01a4', '1234512343', '测试物料3', '八路通', '1.00', '25.00', '11.00', '现洗', '客户自费', '已出库', '', '库存');
-INSERT INTO `gongdanwuliao` VALUES ('932e3d5d-2cfc-43f4-a825-58d355951ef1', '001', 'c1340b8d-49b1-4294-affb-578114a6d984', '001', '奇瑞A3机油格', '冠峰', '1.00', null, null, '换机油', '客户自费', '已收货', '', '采购');
-INSERT INTO `gongdanwuliao` VALUES ('96fa9a9a-db0a-4415-ba99-8ee3c0c72c40', '001', '631ef9e5-02d2-4559-88a6-c32f9951b202', '003', '7系机油', '八路通', '1.00', null, null, null, '客户自费', '已出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('9a64e329-f502-4959-802b-c4471e633237', '001', '943fa99e-aaf5-4196-b73d-c5baf3d8d7ac', 'BLT-SCYBOT4', '刹车油', '八路通', '1.00', null, null, '', '客户自费', '已出库', '', '库存');
-INSERT INTO `gongdanwuliao` VALUES ('a7a96e92-bc0b-4634-8cba-2c7dc3715bfd', '001', 'f3560c67-17d6-4ea9-a1c1-f2cb26bada00', '166', '1系机油及格', '八路通', '1.00', '0.00', '100.00', '', '客户自费', '已出库', 'BO-6003', '库存');
-INSERT INTO `gongdanwuliao` VALUES ('b0e9d772-67b0-430b-b7ed-eae6f2015b88', '001', '6d600135-0437-49dc-aea7-ccbe896a01a4', '1234512345', '测试物料', '八路通', '1.00', '15.00', '0.00', null, '客户自费', '未出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('ba27b2a2-26b9-4179-875e-e063a4256afe', '001', 'e5c0ab87-da66-4a1b-95ee-4ccdd16b0744', '123450002', '测试2', '八路通', '1.00', null, null, null, '客户自费', '未出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('bc5cad37-c366-433d-b6bb-413e5ed27324', '001', '8d09dc62-7ba3-48c3-9ffc-9296e56f6de6', 'bltjiyouge', '机油格型号BO-9401', '八路通', '1.00', null, null, null, '客户自费', '已出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('c1c1d0c7-bc56-45b3-b6cd-4704706d0c37', '001', '71e5661f-cfe2-4743-941f-0973d949d848', '65', '灯泡', '八路通', '1.00', '0.00', '10.00', null, '客户自费', '已出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('cc12071b-1b2d-4f58-b500-4ce2991ff04e', '001', '20866592-0061-4111-ad27-c8317e56a52c', '002', '7系机油', '八路通', '1.00', null, null, null, '客户自费', '未出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('ccf0d9b0-3f98-4312-b04d-6aaa44db595b', '001', '753ca2dc-c119-4aa9-a39a-249ed96733ad', '254', '普通雨刮', '八路通', '1.00', '0.00', '60.00', '', '客户自费', '已出库', '17*24', '库存');
-INSERT INTO `gongdanwuliao` VALUES ('d2b375e4-3126-4f77-8852-bd3cbcec3e99', '001', '943fa99e-aaf5-4196-b73d-c5baf3d8d7ac', '003', '7系机油', '八路通', '1.00', null, null, null, '客户自费', '已出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('dc63b174-88cf-401a-9419-ecd8d86698e9', '001', '024ae4e0-a8bc-4c63-b303-eeaeb3f09c5a', 'QPTY-15W-40', '一系机油', '深圳市八路通汽车科技有限公司', '1.00', '220.00', '117.00', null, '客户自费', '已出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('df5f7830-d931-483f-b65f-825e8dee995d', '001', '20866592-0061-4111-ad27-c8317e56a52c', 'BLT-SCYBOT4', '刹车油', '八路通', '1.00', null, null, null, '客户自费', '未出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('e29ca341-2053-42c8-89e4-d1192bfbf00c', '001', '685f546e-64e5-4419-8957-e4e601825c3e', 'BLT-JYG-001', '机油格BO-3305', '八路通', '1.00', null, null, null, '客户自费', '已出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('ed2143ba-7386-4f32-970c-012c923a6a8e', '001', 'fa9e5976-a81b-4152-9673-7f1af647e307', '166', '1系机油及格', '八路通', '1.00', '0.00', '100.00', '', '客户自费', '未出库', 'BO-305', '库存');
-INSERT INTO `gongdanwuliao` VALUES ('ed8f6477-f4f5-4f6d-9ff9-a3d6a90067ec', '001', '6d600135-0437-49dc-aea7-ccbe896a01a4', '123450002', '测试2', '八路通', '1.00', '0.00', '40.00', null, '客户自费', '已出库', null, '库存');
-INSERT INTO `gongdanwuliao` VALUES ('edd79a5d-4b9d-4d5e-95f1-a308eec3e5bb', '001', '3b94cb95-7ebf-4d68-a826-29e3b6371030', 'xad-penqi', '右前叶子板钣金喷漆', '新安店', '1.00', '0.00', '230.00', '', '客户自费', '已出库', '林', '库存');
-INSERT INTO `gongdanwuliao` VALUES ('f9786d66-9728-48d5-8883-977808c707f9', '001', 'c757306b-aef8-4903-aeed-dc65b85d23d4', '002', '7系机油', '八路通', '1.00', '0.00', '260.00', '500劵', '客户自费', '已出库', '', '库存');
-INSERT INTO `gongdanwuliao` VALUES ('fb16d6d4-325d-4c4a-9104-4b136335b750', '001', '87cedf92-230f-472e-85ae-87a00f8a4a76', 'bltjiyouge', '机油格型号BO-9401', '八路通', '1.00', null, null, null, '客户自费', '已出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('0357d244-e98f-4eab-9730-fbb519905929', '001', 'e5c0ab87-da66-4a1b-95ee-4ccdd16b0744', '234654321', '测试物料1', '八路通', '1.00', null, null, null, null, '客户自费', '已收货', null, '采购');
+INSERT INTO `gongdanwuliao` VALUES ('04b2d7af-d9d6-47f1-8420-2b78a6843344', '001', '20866592-0061-4111-ad27-c8317e56a52c', 'BLT-JYG-001', '机油格BO-3305', '八路通', '1.00', null, null, null, null, '客户自费', '未出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('0654b5b6-351d-4178-810a-0b1b742eabd5', '001', 'd8cb9751-4d63-4361-9453-4aabdd8c8eed', 'BLT-JYG-001', '机油格BO-3305', '八路通', '1.00', '0.00', '9.09', null, null, '客户自费', '未出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('0db206d3-c37d-4071-b6a2-ed7ba91202a9', '001', '3b94cb95-7ebf-4d68-a826-29e3b6371030', '003', '7系机油', '八路通', '1.00', '0.00', '608.33', null, '', '客户自费', '已出库', '5升 BOP-1006', '库存');
+INSERT INTO `gongdanwuliao` VALUES ('0de239c6-6df2-4142-870f-6b385038352d', '001', '20866592-0061-4111-ad27-c8317e56a52c', '001', '奇瑞A3机油格', '冠峰', '1.00', null, null, null, null, '客户自费', '已收货', null, '采购');
+INSERT INTO `gongdanwuliao` VALUES ('0ffed5ec-8859-4f50-bb83-d4ae7bdb0229', '001', '460f40a3-e301-4a44-8296-4ef9fd79beeb', '166', '1系机油及格', '八路通', '1.00', '0.00', '100.00', null, null, '客户自费', '未出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('1a2a8945-7466-4b49-9cde-b2322dfb1dca', '001', '685f546e-64e5-4419-8957-e4e601825c3e', 'BLT-SCYBOT4', '刹车油', '八路通', '1.00', null, null, null, '换7系4L机油', '客户自费', '已出库', '', '库存');
+INSERT INTO `gongdanwuliao` VALUES ('2bf52eb4-8450-4e47-933d-e77d8f6f39ad', '001', '20866592-0061-4111-ad27-c8317e56a52c', 'bltjiyouge', '机油格型号BO-9401', '八路通', '1.00', null, null, null, null, '客户自费', '未出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('3ebbc73e-8580-463d-8e03-f88520e3195b', '001', '3b94cb95-7ebf-4d68-a826-29e3b6371030', '148', '空调格', '八路通', '1.00', '0.00', '60.00', null, '', '客户自费', '已出库', 'BAC-10186', '库存');
+INSERT INTO `gongdanwuliao` VALUES ('3f5e6280-a05c-47d0-97d0-d911d0e8de90', '001', '97442eef-ad16-4a13-9bf4-3bdf7c51ae52', 'cs-001', '测试1', '深圳市八路通汽车科技有限公司', '1.00', '10.00', '10.00', null, null, '客户自费', '已下单', null, '采购');
+INSERT INTO `gongdanwuliao` VALUES ('40326b22-8881-44a2-acac-066b382dd7f5', '001', 'e5c0ab87-da66-4a1b-95ee-4ccdd16b0744', '1234512345', '测试物料', '八路通', '1.00', null, null, null, null, '客户自费', '已出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('43b85913-067c-4260-8cda-4f5866da92ff', '001', '759e6fbd-84ee-43ba-9af9-669890dcc236', '52', '普通雨刮', '八路通', '1.00', '0.00', '60.00', null, '', '客户自费', '未出库', '16*16', '库存');
+INSERT INTO `gongdanwuliao` VALUES ('460418be-5a37-4fce-b492-eef84329d4bc', '001', '7c99a5ea-5636-4c89-a2b7-5d339dbaef29', '166', '1系机油及格', '八路通', '1.00', '0.00', '100.00', null, '', '客户自费', '未出库', '机油格 外采', '库存');
+INSERT INTO `gongdanwuliao` VALUES ('4a448636-a9b2-46aa-b6d0-d6f3b6b4939d', '001', '2c65ec5b-de44-437f-9b89-1b9038d1c508', 'CS-002', '测试', '深圳市八路通汽车科技有限公司', '1.00', '150.00', '50.00', '100.00', '喷漆', '客户自费', '已下单', '测试', '采购');
+INSERT INTO `gongdanwuliao` VALUES ('4ab09735-7b11-4299-bc7a-bf1361e11c67', '001', '9372ba72-9da0-4ea0-8144-7bafa1f2d41e', '002', '7系机油', '八路通', '1.00', '0.00', '260.00', null, '500劵', '客户自费', '未出库', '', '库存');
+INSERT INTO `gongdanwuliao` VALUES ('5b1bda1d-d5f0-4a1c-b1c6-fc21d0a3df00', '001', '61bef017-0e4d-4e63-b599-f930e2c683d3', 'xad-penqi', '右前叶子板钣金喷漆', '新安店', '1.00', null, null, null, '喷漆', '客户自费', '未出库', '', '库存');
+INSERT INTO `gongdanwuliao` VALUES ('5b4ae7fd-8caf-4e70-b2a9-7f56b006ce46', '001', '4c6b0111-83b0-40c1-b7ed-e4e908731e80', 'PLST-R15', '普利司通205.65R15', '中大旺', '1.00', null, null, null, null, '客户自费', '未出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('5b64dabb-50f5-4fd9-b488-c13a61e27217', '001', '6d600135-0437-49dc-aea7-ccbe896a01a4', '123450001', '测试1', '八路通', '1.00', '0.00', '10.00', null, '保养', '客户自费', '已出库', '', '库存');
+INSERT INTO `gongdanwuliao` VALUES ('5c9b51a5-2523-403f-bc17-a27a59ad8b50', '001', '4c6b0111-83b0-40c1-b7ed-e4e908731e80', 'BLT-SCYBOT4', '刹车油', '八路通', '1.00', null, null, null, null, '客户自费', '未出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('5cdab5bd-2e47-48fc-9e30-dc658e381b62', '001', '97442eef-ad16-4a13-9bf4-3bdf7c51ae52', '1234512343', '测试物料3', '八路通', '1.00', null, null, null, null, '客户自费', '已出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('5e337603-5642-4efc-9863-875a0a235a18', '001', 'd8cb9751-4d63-4361-9453-4aabdd8c8eed', '3578987567', '机油格', '八路通', '1.00', '20.00', '0.00', null, null, '客户自费', '未出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('618c8d0b-bc7d-48f3-b053-1caf10b5640c', '001', 'cef32518-6ec1-44f0-8f19-dc5788c79c4f', '3M-001', '立体圈丝汽车脚垫（宝马系列）', '广州三驹汽车用品有限公司', '1.00', '1680.00', '700.00', '1680.00', null, '客户自费', '未出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('6497d5aa-47fe-4f1b-a1e9-03e0e1817b92', '001', 'f5c85b4c-07a8-44d9-a7b0-26b954358c13', '002', '7系机油', '八路通', '1.00', '0.00', '260.00', null, null, '客户自费', '已出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('670397a2-a286-4f54-97e2-7664ec59e629', '001', 'cef32518-6ec1-44f0-8f19-dc5788c79c4f', '3M-002', '立体圈丝汽车脚垫（皇冠系列）', '广州三驹汽车用品有限公司', '1.00', '1680.00', '700.00', '1680.00', null, '客户自费', '未出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('6a0e980c-4d82-4570-a14f-d9a38dd3b3b9', '001', '4c6b0111-83b0-40c1-b7ed-e4e908731e80', 'BLT-JYG-001', '机油格BO-3305', '八路通', '1.00', null, null, null, null, '客户自费', '未出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('6f11d87f-e041-4629-92cc-0b39e45bdd0b', '001', '8992ccbe-91bd-458f-9ced-4e2151b14155', '0001', '7系机油', '八路通', '1.00', null, null, null, '换7系4L机油', '客户自费', '已出库', '500劵 机油格B0-5202', '库存');
+INSERT INTO `gongdanwuliao` VALUES ('70c7a50d-bb2d-4af3-96b3-002eaabe1d67', '001', '20866592-0061-4111-ad27-c8317e56a52c', 'PLST-R15', '普利司通205.65R15', '中大旺', '1.00', null, null, null, null, '客户自费', '未出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('7781f95c-88e3-4dff-97d2-3bf41b9bf619', '001', '89f47f87-052e-4171-874d-07997efb93cb', '123450001', '测试1', '八路通', '1.00', '0.00', '10.00', null, null, '客户自费', '未出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('77a4f168-f8f6-423d-833f-1fee71440dcd', '001', 'c757306b-aef8-4903-aeed-dc65b85d23d4', '1378', '动平衡', '八路通', '1.00', '0.00', '40.00', null, null, '客户自费', '已出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('79e26e1f-1663-45ff-a7ba-c18bf14b71ee', '001', '97442eef-ad16-4a13-9bf4-3bdf7c51ae52', '3578987567', '机油格', '八路通', '1.00', null, null, null, '保养', '客户自费', '已出库', '', '库存');
+INSERT INTO `gongdanwuliao` VALUES ('81598cd4-cfa1-4426-ab70-4d0815bf3892', '001', '4c6b0111-83b0-40c1-b7ed-e4e908731e80', 'bltjiyouge', '机油格型号BO-9401', '八路通', '1.00', null, null, null, null, '客户自费', '未出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('83b9cde8-1d0f-4d3d-9848-1ed0bde05122', '001', 'c3805ed7-9445-48b1-b9fa-889131747aab', 'PLST-R15', '普利司通205.65R15', '中大旺', '2.00', null, null, null, '', '客户自费', '已出库', '', '库存');
+INSERT INTO `gongdanwuliao` VALUES ('8414e167-65b9-4ebf-8e52-eb143e261bce', '001', '2c65ec5b-de44-437f-9b89-1b9038d1c508', 'CS-002', '测试002', '深圳市八路通汽车科技有限公司', '1.00', '100.00', '40.00', null, null, '客户自费', '已下单', null, '采购');
+INSERT INTO `gongdanwuliao` VALUES ('89d99dfb-da6d-4645-b57a-9914705bc359', '001', 'c757306b-aef8-4903-aeed-dc65b85d23d4', '1366', '喷漆', '宝芝林（喷漆）', '1.00', '0.00', '130.00', null, null, '客户自费', '已出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('90ec08ef-1079-4300-8fb8-c101da4e0b76', '001', '6d600135-0437-49dc-aea7-ccbe896a01a4', '1234512343', '测试物料3', '八路通', '1.00', '25.00', '11.00', null, '现洗', '客户自费', '已出库', '', '库存');
+INSERT INTO `gongdanwuliao` VALUES ('932e3d5d-2cfc-43f4-a825-58d355951ef1', '001', 'c1340b8d-49b1-4294-affb-578114a6d984', '001', '奇瑞A3机油格', '冠峰', '1.00', null, null, null, '换机油', '客户自费', '已收货', '', '采购');
+INSERT INTO `gongdanwuliao` VALUES ('96fa9a9a-db0a-4415-ba99-8ee3c0c72c40', '001', '631ef9e5-02d2-4559-88a6-c32f9951b202', '003', '7系机油', '八路通', '1.00', null, null, null, null, '客户自费', '已出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('9a64e329-f502-4959-802b-c4471e633237', '001', '943fa99e-aaf5-4196-b73d-c5baf3d8d7ac', 'BLT-SCYBOT4', '刹车油', '八路通', '1.00', null, null, null, '', '客户自费', '已出库', '', '库存');
+INSERT INTO `gongdanwuliao` VALUES ('a7a96e92-bc0b-4634-8cba-2c7dc3715bfd', '001', 'f3560c67-17d6-4ea9-a1c1-f2cb26bada00', '166', '1系机油及格', '八路通', '1.00', '0.00', '100.00', null, '', '客户自费', '已出库', 'BO-6003', '库存');
+INSERT INTO `gongdanwuliao` VALUES ('b0e9d772-67b0-430b-b7ed-eae6f2015b88', '001', '6d600135-0437-49dc-aea7-ccbe896a01a4', '1234512345', '测试物料', '八路通', '1.00', '15.00', '0.00', null, null, '客户自费', '未出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('ba27b2a2-26b9-4179-875e-e063a4256afe', '001', 'e5c0ab87-da66-4a1b-95ee-4ccdd16b0744', '123450002', '测试2', '八路通', '1.00', null, null, null, null, '客户自费', '未出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('bc5cad37-c366-433d-b6bb-413e5ed27324', '001', '8d09dc62-7ba3-48c3-9ffc-9296e56f6de6', 'bltjiyouge', '机油格型号BO-9401', '八路通', '1.00', null, null, null, null, '客户自费', '已出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('c1c1d0c7-bc56-45b3-b6cd-4704706d0c37', '001', '71e5661f-cfe2-4743-941f-0973d949d848', '65', '灯泡', '八路通', '1.00', '0.00', '10.00', null, null, '客户自费', '已出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('cc12071b-1b2d-4f58-b500-4ce2991ff04e', '001', '20866592-0061-4111-ad27-c8317e56a52c', '002', '7系机油', '八路通', '1.00', null, null, null, null, '客户自费', '未出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('ccf0d9b0-3f98-4312-b04d-6aaa44db595b', '001', '753ca2dc-c119-4aa9-a39a-249ed96733ad', '254', '普通雨刮', '八路通', '1.00', '0.00', '60.00', null, '', '客户自费', '已出库', '17*24', '库存');
+INSERT INTO `gongdanwuliao` VALUES ('d2b375e4-3126-4f77-8852-bd3cbcec3e99', '001', '943fa99e-aaf5-4196-b73d-c5baf3d8d7ac', '003', '7系机油', '八路通', '1.00', null, null, null, null, '客户自费', '已出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('dc63b174-88cf-401a-9419-ecd8d86698e9', '001', '024ae4e0-a8bc-4c63-b303-eeaeb3f09c5a', 'QPTY-15W-40', '一系机油', '深圳市八路通汽车科技有限公司', '1.00', '220.00', '117.00', null, null, '客户自费', '已出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('df5f7830-d931-483f-b65f-825e8dee995d', '001', '20866592-0061-4111-ad27-c8317e56a52c', 'BLT-SCYBOT4', '刹车油', '八路通', '1.00', null, null, null, null, '客户自费', '未出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('e29ca341-2053-42c8-89e4-d1192bfbf00c', '001', '685f546e-64e5-4419-8957-e4e601825c3e', 'BLT-JYG-001', '机油格BO-3305', '八路通', '1.00', null, null, null, null, '客户自费', '已出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('e5585996-57d9-4475-9c75-8d4799d4d383', '001', '2c65ec5b-de44-437f-9b89-1b9038d1c508', 'CS-003', '测试003', '深圳市朗龙汽车用品公司', '1.00', '230.00', '80.00', '100.00', '喷漆', '客户自费', '已下单', '', '采购');
+INSERT INTO `gongdanwuliao` VALUES ('ed2143ba-7386-4f32-970c-012c923a6a8e', '001', 'fa9e5976-a81b-4152-9673-7f1af647e307', '166', '1系机油及格', '八路通', '1.00', '0.00', '100.00', null, '', '客户自费', '未出库', 'BO-305', '库存');
+INSERT INTO `gongdanwuliao` VALUES ('ed8f6477-f4f5-4f6d-9ff9-a3d6a90067ec', '001', '6d600135-0437-49dc-aea7-ccbe896a01a4', '123450002', '测试2', '八路通', '1.00', '0.00', '40.00', null, null, '客户自费', '已出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('edd79a5d-4b9d-4d5e-95f1-a308eec3e5bb', '001', '3b94cb95-7ebf-4d68-a826-29e3b6371030', 'xad-penqi', '右前叶子板钣金喷漆', '新安店', '1.00', '0.00', '230.00', null, '', '客户自费', '已出库', '林', '库存');
+INSERT INTO `gongdanwuliao` VALUES ('f9786d66-9728-48d5-8883-977808c707f9', '001', 'c757306b-aef8-4903-aeed-dc65b85d23d4', '002', '7系机油', '八路通', '1.00', '0.00', '260.00', null, '500劵', '客户自费', '已出库', '', '库存');
+INSERT INTO `gongdanwuliao` VALUES ('fb16d6d4-325d-4c4a-9104-4b136335b750', '001', '87cedf92-230f-472e-85ae-87a00f8a4a76', 'bltjiyouge', '机油格型号BO-9401', '八路通', '1.00', null, null, null, null, '客户自费', '已出库', null, '库存');
+INSERT INTO `gongdanwuliao` VALUES ('fff556a0-b08f-4992-aa95-b3cac4aa4f72', '001', 'cef32518-6ec1-44f0-8f19-dc5788c79c4f', '3M-003', '立体圈丝汽车脚垫（凯迪拉克系列）', '广州三驹汽车用品有限公司', '1.00', '1681.00', '701.00', '1681.00', null, '客户自费', '未出库', null, '库存');
 
 -- ----------------------------
 -- Table structure for `gongdanxiangmu`
@@ -9043,6 +9128,7 @@ INSERT INTO `gongdanxiangmu` VALUES ('44addbd9-ad67-4959-a8b6-659e3efe335d', '40
 INSERT INTO `gongdanxiangmu` VALUES ('44c862e1-5998-4705-8793-35654657e2ae', '4f3b099f-0e76-4543-9653-2cbf55935597', '113', '更换空气格', '更换空气格BAP-315', '快修', '60.00', '', '客户自费', '', '维修组2', '杨植伟', '完检', '周丽娟', '2015-03-15 13:49:03');
 INSERT INTO `gongdanxiangmu` VALUES ('44d871b1-6206-45f2-ab56-5f2a4f642205', '6a3bbccd-eaa1-4c85-9ce7-d70ad2276027', '001', '现洗', '洗车', '精洗', '50.00', null, '客户自费', null, '维修组3', '陈超', '完检', '乐欢', '2015-03-14 13:58:15');
 INSERT INTO `gongdanxiangmu` VALUES ('450631ed-34d6-432a-87a3-fbe7523c9d6c', '09da1efe-dcdf-414b-bdb5-0b986bc66ede', '123', '更换雨刮片', '更换雨刮片24*18', '快修', '60.00', '', '客户自费', '赠送;雨刮水 清洁膏', '维修组1', '李晓明', '完检', '周丽娟', '2015-03-16 18:11:11');
+INSERT INTO `gongdanxiangmu` VALUES ('452677c6-28e8-483c-98e8-5f375c1a985d', '8cf77d70-bf73-4a1c-b2b6-20fe33ceff55', '0001722', '500劵', '500券一系机油6升及格', '保养', '155.00', '', '客户自费', '20449426', null, null, null, null, null);
 INSERT INTO `gongdanxiangmu` VALUES ('45467ac5-bd78-4af5-a755-7ce0da6911e5', '20866592-0061-4111-ad27-c8317e56a52c', '001', '更换刹车灯', '更换刹车灯', '快修', '100.00', null, '客户自费', null, null, null, '完检', '杨小院', '2015-03-04 10:08:29');
 INSERT INTO `gongdanxiangmu` VALUES ('459f8112-5393-43e6-a4f7-6bd4dfc7293f', '024ae4e0-a8bc-4c63-b303-eeaeb3f09c5a', '0001722', '500劵', '一系机油及格BO-305', '保养', '100.00', '', '客户自费', '', '维修组2', '杨植伟', '完检', '周丽娟', '2015-03-17 08:34:39');
 INSERT INTO `gongdanxiangmu` VALUES ('45a03ca4-e86c-4efa-b332-d508c239f577', '9372ba72-9da0-4ea0-8144-7bafa1f2d41e', '0001722', '500劵', '500券七系机油及格BO-5210A', '保养', '260.00', '', '客户自费', '20247316', '维修组3', '陈超', '完检', '周丽娟', '2015-03-14 14:49:27');
@@ -9385,6 +9471,7 @@ INSERT INTO `gongdanxiangmu` VALUES ('ad2e5ccc-ca29-470c-836f-c8a102a4220e', '9b
 INSERT INTO `gongdanxiangmu` VALUES ('ad398d59-091c-43c9-a5e0-ebf0f5d9cef2', '2fd70faf-a850-4ce8-81cc-fc18b82f6c16', '001', '500元券', '机油及机油格带走', '快修', '100.00', '', '客户自费', '', '维修组2', '杨植伟', '完检', '周丽娟', '2015-03-06 13:53:15');
 INSERT INTO `gongdanxiangmu` VALUES ('ae0bb53a-2aae-4e3d-bddb-372cfd368884', '6762f368-28af-4d89-8c32-fb72ff14fa02', '007', '人保洗车', '精细洗车', '精洗', '0.00', null, '客户自费', null, null, null, '完检', '周丽娟', '2015-03-15 18:25:21');
 INSERT INTO `gongdanxiangmu` VALUES ('ae44b5c3-a72e-443e-9453-f4836514325d', '9afb3392-e311-40fc-bca8-ae19396a6cf5', '189', '四轮刹车保养', '四轮刹车分泵 喷漆', '快修', '300.00', '', '客户自费', '', '维修组1', '李晓明', '完检', '周丽娟', '2015-03-07 10:00:33');
+INSERT INTO `gongdanxiangmu` VALUES ('ae693055-16af-4a78-85fb-87e80e137283', '2c65ec5b-de44-437f-9b89-1b9038d1c508', '0001716', '喷漆', '右后门', '喷漆', '130.00', null, '客户自费', null, null, null, null, null, null);
 INSERT INTO `gongdanxiangmu` VALUES ('aeb257f5-616a-4299-ada7-131ff291ae31', '90dd0fe2-9e33-417c-80d5-0838da5e9bb3', '189', '四轮刹车保养', '四轮刹车保养', '快修', '200.00', '', '客户自费', '', '美容组4', '邱建辉', '完检', '周丽娟', '2015-03-15 14:50:42');
 INSERT INTO `gongdanxiangmu` VALUES ('aeb96a08-3da0-45b0-b0ea-ce85b749b850', '8f13294b-842c-43bc-bb56-c4c409d0821b', '008', '1系机油4L', '换机油', '快修', '100.00', '', '客户自费', '500劵 机油格BO-5201B', '维修组3', '陈超', '完检', '周丽娟', '2015-03-04 16:48:58');
 INSERT INTO `gongdanxiangmu` VALUES ('aed8725a-b612-4341-bc1c-a6d633d79e94', '5c6e73f0-97e3-4bc9-aec5-3b3e585b4e49', '167', '龙卡洗车', '龙卡洗车', '美容', '30.00', null, '客户自费', null, '美容组', '潘培坤', '完检', '潘培坤', '2015-03-15 17:41:05');
@@ -10206,13 +10293,18 @@ CREATE TABLE `rukudan` (
 -- Records of rukudan
 -- ----------------------------
 INSERT INTO `rukudan` VALUES ('1c1186d2-1ec6-45d2-add1-f24c551851ee', '001', 'RCCG20150317005', '2015-03-17', '深圳家常兴茶叶商行', '杨小院', '日常采购', '', '审核完毕', '杨小院', '2015-03-17');
+INSERT INTO `rukudan` VALUES ('1c9a3cd1-02a4-4c5d-8c70-9a4d29eb9b65', '001', 'LSCG20150317018', '2015-03-17', '深圳市朗龙汽车用品公司', '杨小院', '临时采购', '', '审核完毕', '杨小院', '2015-03-17');
+INSERT INTO `rukudan` VALUES ('1ff250b8-ae9e-4af4-8b66-89d7e626813d', '001', 'LSCG20150317015', '2015-03-17', '深圳市八路通汽车科技有限公司', '杨小院', '临时采购', '测试', '准备单据', null, null);
 INSERT INTO `rukudan` VALUES ('391381ac-e66b-4c17-a842-c767642dae71', '001', 'RCCG20150317008', '2015-03-17', '深圳市好利时汽车用品公司', '杨小院', '日常采购', '', '审核完毕', '杨小院', '2015-03-17');
 INSERT INTO `rukudan` VALUES ('3d6b9e6b-d374-4c6c-8c62-aeb315515c18', '001', 'RCCG20150317009', '2015-03-17', '深圳市道博汽车用品公司', '杨小院', '日常采购', '', '审核完毕', '杨小院', '2015-03-17');
 INSERT INTO `rukudan` VALUES ('3f337c86-c8eb-46cd-aed1-f67c86280c76', '001', 'RCCG20150317001', '2015-03-17', '深圳市八路通汽车科技有限公司', '杨小院', '日常采购', '', '审核完毕', '杨小院', '2015-03-17');
 INSERT INTO `rukudan` VALUES ('43abcd59-9c3d-4899-9a51-65090a078d9c', '001', 'RCCG20150317002', '2015-03-17', '广州三驹汽车用品有限公司', '杨小院', '日常采购', '', '审核完毕', '杨小院', '2015-03-17');
+INSERT INTO `rukudan` VALUES ('48479ad0-fdd8-45f5-b25f-ddd932ef6536', '001', 'LSCG20150317016', '2015-03-17', '深圳市八路通汽车科技有限公司', '杨小院', '临时采购', '测试', '审核完毕', '杨小院', '2015-03-17');
 INSERT INTO `rukudan` VALUES ('49dddcc4-ed52-4375-bd10-0c1be63c9853', '001', 'LSCG20150317011', '2015-03-17', '深圳市朗龙汽车用品公司', '乐欢', '临时采购', '', '准备单据', null, null);
 INSERT INTO `rukudan` VALUES ('4f26b28c-7aa3-4228-876e-72f6bc89413b', '001', 'LSCG20150317010', '2015-03-17', '深圳市香蒂香水公司', '周丽娟', '临时采购', '', '提交审核', null, null);
+INSERT INTO `rukudan` VALUES ('86cf1611-e9ca-4a6e-bf09-529834c8772c', '001', 'LSCG20150317014', '2015-03-17', '深圳市八路通汽车科技有限公司', '杨小院', '临时采购', '', '准备单据', null, null);
 INSERT INTO `rukudan` VALUES ('88df251b-3938-437a-8842-7efe635080ba', '001', 'LSCG20150317012', '2015-03-17', '深圳市八路通汽车科技有限公司', '杨小院', '临时采购', '', '审核完毕', '杨小院', '2015-03-17');
+INSERT INTO `rukudan` VALUES ('91d06f06-a6e3-4b03-ab6a-f87b63df8fff', '001', 'LSCG20150317017', '2015-03-17', '深圳市八路通汽车科技有限公司', '杨小院', '临时采购', '', '审核完毕', '杨小院', '2015-03-17');
 INSERT INTO `rukudan` VALUES ('b5940046-46eb-4ad8-96e1-7a8f447c03bb', '001', 'RCCG20150317004', '2015-03-17', '高级音像出版社', '杨小院', '日常采购', '', '审核完毕', '杨小院', '2015-03-17');
 INSERT INTO `rukudan` VALUES ('e4b0c4eb-1904-499d-b17f-faf4e29f5b2e', '001', 'RCCG20150317003', '2015-03-17', '京东商城', '杨小院', '日常采购', '', '审核完毕', '杨小院', '2015-03-17');
 INSERT INTO `rukudan` VALUES ('f058e17b-f570-42e2-bca6-6c57a20a789d', '001', 'RCCG20150317006', '2015-03-17', '深圳市朗龙汽车用品公司', '杨小院', '日常采购', '', '审核完毕', '杨小院', '2015-03-17');
@@ -10229,7 +10321,8 @@ CREATE TABLE `rukudanwuliao` (
   `txtWuLiaoCode` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '物料编码',
   `txtWuLiaoName` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '物料名称',
   `txtQty` int(11) DEFAULT '1' COMMENT '数量',
-  `txtPrice` float(10,2) DEFAULT NULL COMMENT '价格',
+  `txtPrice` float(10,2) DEFAULT NULL COMMENT '采购价',
+  `txtSalePrice` float(10,2) DEFAULT NULL COMMENT '销售价',
   `txtRemark` varchar(200) COLLATE utf8_bin DEFAULT NULL COMMENT '备注',
   `ddlStatus` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '物料状态',
   PRIMARY KEY (`txtWuLiaoGuid`),
@@ -10240,203 +10333,206 @@ CREATE TABLE `rukudanwuliao` (
 -- ----------------------------
 -- Records of rukudanwuliao
 -- ----------------------------
-INSERT INTO `rukudanwuliao` VALUES ('02892614-c7c3-4d02-96b5-e26459f8a89a', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-022', '甲醛清除剂（475ML）', '11', '12.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('02dfd98e-f194-4233-9e4f-659829f1dfb4', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-1010', 'BAP-1010', '3', '17.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('05b8b012-6ff1-4698-af18-b0b5a00942f6', 'f1281bc3-3ef8-4fe8-b8db-da6db9068ff7', 'XD-005', '香水补充液', '4', '25.00', '', null);
-INSERT INTO `rukudanwuliao` VALUES ('0793c6c6-1f7c-49d5-8a3c-98eaeb14a3f3', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-1012', 'BAP-1012', '7', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('07c6ac4c-5855-4864-8f64-fe53e2d0d574', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-4201', 'BO-4201', '4', '11.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('0a108413-3a0e-4529-98cc-d2aea55f0b66', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-1074', 'BAP-1074', '1', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('0a4dceaf-be77-4415-8e63-8bd4bb7f9a52', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-1046', 'BAP-1046', '8', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('0ae15970-f526-4120-be30-60f4943ec370', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-001', '自然液体香水', '1', '30.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('0b49cbef-af89-438c-b632-aa9d174a838f', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHS-005', '铱金旋动力火花塞OCPR7EX', '4', '38.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('0c596702-2ead-447e-82fe-c4daf8cc30a4', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'QPTY-15W-40', '一系机油', '36', '117.00', '4L/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('0e45fe1f-981a-48ca-97f5-ca7ac7023af2', '43abcd59-9c3d-4899-9a51-65090a078d9c', '3M-005', '通用平面脚垫（黑色）', '2', '400.00', '套', null);
-INSERT INTO `rukudanwuliao` VALUES ('0e49116a-c057-4519-b9e5-40bdfc573aea', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-022', '豪华型无骨雨刮22寸', '10', '20.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('103358ca-1fc1-488b-b647-575373ceaf1f', '1c1186d2-1ec6-45d2-add1-f24c551851ee', 'CY-006', '贡茶大红袍', '9', '36.00', '罐', null);
-INSERT INTO `rukudanwuliao` VALUES ('11a04451-14f6-4b6f-a068-a2e515f9d54e', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-017', '通用型无骨雨刮17寸', '10', '10.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('12c8e0a9-aacb-4e3a-aa25-a3571776209e', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-023', '七彩喷膜（白）', '4', '38.00', '', null);
-INSERT INTO `rukudanwuliao` VALUES ('12d89053-3787-4376-a6cb-cac8d7ebe01b', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-005', '创典皮坊小羊纹方向套', '2', '25.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('14349a49-9ebe-457f-8ed9-29b35c0896db', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-2008', 'BO-2008', '3', '13.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('18f64713-16db-495c-a66b-507310c05976', 'f058e17b-f570-42e2-bca6-6c57a20a789d', 'LL-005', '朗龙特效除甲醛型炭膏', '3', '56.00', '盒', null);
-INSERT INTO `rukudanwuliao` VALUES ('1bea9785-7557-48b5-a97c-e0e5c27f24a7', '3d6b9e6b-d374-4c6c-8c62-aeb315515c18', 'DB-005', '镀膜套装', '1', '580.00', '套', null);
-INSERT INTO `rukudanwuliao` VALUES ('1e6b6789-b094-48d3-bb5f-7bf7eacac01e', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-1011', 'BAC-1011', '3', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('2049cadc-92a1-4f63-b3b3-56417147f89c', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-3322', 'BAP-3322', '6', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('20ca9749-8152-41dd-ae81-0c9bca3d5335', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-3004', 'BO-3004', '0', '12.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('237277b0-0700-42f3-a212-dcf313f0797d', 'b5940046-46eb-4ad8-96e1-7a8f447c03bb', 'GD-009', 'DVD碟_45', '16', '20.00', '张', null);
-INSERT INTO `rukudanwuliao` VALUES ('2497b1ae-66fb-44c3-b102-309cf6c6a561', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'D062', 'D062空调杀菌消毒剂', '20', '20.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('27f456b8-1b5e-4d9b-81fc-c4fbec0ae3ce', '43abcd59-9c3d-4899-9a51-65090a078d9c', '3M-003', '立体圈丝汽车脚垫（凯迪拉克系列）', '1', '701.00', '套', null);
-INSERT INTO `rukudanwuliao` VALUES ('2924e2ba-e41a-4d29-b132-2055d277a716', '43abcd59-9c3d-4899-9a51-65090a078d9c', '3M-006', '通用平面脚垫（灰色）', '1', '400.00', '套', null);
-INSERT INTO `rukudanwuliao` VALUES ('2cf15d3f-2c1f-43bd-8e98-b4440afb7edb', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-014', '豪华型无骨雨刮14寸', '10', '20.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('2e41e399-6fdd-4826-a981-88ebb909b89a', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-011', '速效抛光蜡', '6', '35.00', '1L*12/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('2ee9e335-b460-4a0f-a790-7ef02ca0474e', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-1006', 'BO-1006', '14', '12.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('2ffb2f4d-fc44-4c04-9dcd-7223ee1c48fd', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-5607', 'BO-5607', '7', '11.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('34f92cd2-96a3-4b14-a83d-3a4425b3e027', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-012', '金尊镀膜蜡（08版）', '4', '80.00', '230g*8/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('3501e871-fb31-4a5d-ad65-c0ccb88b9919', '3d6b9e6b-d374-4c6c-8c62-aeb315515c18', 'DB-004', '琥珀之光镀膜套装', '1', '480.00', '套', null);
-INSERT INTO `rukudanwuliao` VALUES ('354a5c08-f6e9-449b-92c7-a50fa4f47ac5', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'QPTY-5W-30-001', '七系机油', '32', '188.00', '4L/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('36773d4d-d534-4c86-bc16-06983f60ac4d', 'b5940046-46eb-4ad8-96e1-7a8f447c03bb', 'GD-008', 'CD碟_40', '21', '20.00', '张', null);
-INSERT INTO `rukudanwuliao` VALUES ('367b9480-2ef4-49e0-b3be-58eca4aa7f5b', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-6003', 'BO-6003', '33', '8.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('39279b53-bbce-4408-946a-4f8316ea029b', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHS-004', '铱金旋动力火花塞LFR6X', '2', '38.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('399572c1-6693-4ff7-8d6f-38c727451c8c', '3d6b9e6b-d374-4c6c-8c62-aeb315515c18', 'DB-003', '威盾镀晶', '1', '180.00', '套', null);
-INSERT INTO `rukudanwuliao` VALUES ('3b134afe-53a8-422a-99c0-24e58c53d2d0', '3d6b9e6b-d374-4c6c-8c62-aeb315515c18', 'DB-001', '白金镀晶套装', '2', '580.00', '套', null);
-INSERT INTO `rukudanwuliao` VALUES ('3c3b8231-1ffd-4b5b-abee-1e7d30d02381', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-020', '环保雪种R134A', '105', '13.00', '250g*30/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('3e47f95d-362c-4f27-9418-b41d7ad87b1b', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-018', '|铁将军智能感应暗锁', '1', '380.00', '套', null);
-INSERT INTO `rukudanwuliao` VALUES ('3f313afb-9c7c-468c-a42e-44072d168094', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'SXT-001', '悬挂式摄像头', '5', '50.00', '台', null);
-INSERT INTO `rukudanwuliao` VALUES ('3f498ab9-d641-4e79-9fed-fefbc0c7946f', 'e4b0c4eb-1904-499d-b17f-faf4e29f5b2e', 'GD-007', '蓝调音乐：爵士乐蓝调', '1', '15.00', '张', null);
-INSERT INTO `rukudanwuliao` VALUES ('3f5e6280-a05c-47d0-97d0-d911d0e8de90', '88df251b-3938-437a-8842-7efe635080ba', 'cs-001', '测试1', '1', '10.00', '', '已下单');
-INSERT INTO `rukudanwuliao` VALUES ('3face95b-d7b0-43c1-b3f3-2fa982ca0411', '1c1186d2-1ec6-45d2-add1-f24c551851ee', 'CY-007', '养肝茶', '2', '100.00', '盒', null);
-INSERT INTO `rukudanwuliao` VALUES ('413333b7-6ed2-478c-b8ad-0fd2b1270ea9', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHS-008', 'A-1TR4-15火花塞', '18', '25.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('43538971-67c5-4e33-b5e5-808ba18fdc4d', 'f058e17b-f570-42e2-bca6-6c57a20a789d', 'LL-003', '朗龙车用香水_魔方系列', '8', '56.00', '瓶', null);
-INSERT INTO `rukudanwuliao` VALUES ('43e66edc-5782-4877-bb70-22676ff24095', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-4031', 'BAP-4031', '10', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('44766f1a-2c70-4cff-a16d-63bdb4593408', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-001', '万能泡沫清洗剂', '21', '6.00', '瓶', null);
-INSERT INTO `rukudanwuliao` VALUES ('459c1f38-c416-4da8-8d5d-0a5bf1f6551d', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-022', '通用型无骨雨刮22寸', '10', '10.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('4653bda7-3559-4e07-826e-c4d246410e19', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-5208', 'BAC-5208', '9', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('48046fb2-2571-42f5-a3a0-3899c13cc3f7', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-5202', 'BO-5202', '16', '11.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('484df0a2-3d1a-4968-9a71-749dbd2382bb', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-021', '环保雪种R134A', '30', '13.00', '200g*30/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('484e63bb-1e30-4781-9910-bf691d62c611', 'f1281bc3-3ef8-4fe8-b8db-da6db9068ff7', 'XD-003', '永恒系列', '6', '40.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('49720b9d-b6ff-47e3-8927-373f5b852b41', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-5228', 'BAP-5228', '10', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('4ba92b4c-23eb-41b1-a876-cac167c8d280', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-009', '万能除锈剂', '72', '7.20', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('4c27e8e3-52d9-405e-b19a-05dc5aed5cc3', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-2015', 'BO-2015', '34', '13.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('4c6e68d1-69a1-46d0-afdb-5ea3479e352f', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-018', '豪华型无骨雨刮18寸', '10', '20.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('4eb38588-6cd6-4a9d-a460-7ddc2b5396c4', 'f1281bc3-3ef8-4fe8-b8db-da6db9068ff7', 'XD-001', '金典系列', '2', '118.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('4eec7d7b-0f95-4bf8-b02c-2fd907e9a3a4', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-2119', 'BAP-2119', '3', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('4f9e736d-a7f1-406f-8807-8731f453c110', 'e4b0c4eb-1904-499d-b17f-faf4e29f5b2e', 'GD-004', '对唱无敌粤语经典情歌（2CD)黑胶', '2', '25.00', '张', null);
-INSERT INTO `rukudanwuliao` VALUES ('5176890b-730d-4c52-8e42-f0f5a212090c', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-1018B', 'BAC-1018B', '2', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('52d1174f-955a-4fba-a3d8-49cca7f6e48c', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-5210A', 'BO-5210A', '6', '21.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('538b20fa-73cf-49cd-aae8-5d2c84bf219b', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-004', '去污水蜡', '12', '25.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('53a31ca8-aedc-437e-beab-63a80e1b6b31', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-005', '发动机外表清洗剂', '1', '12.00', '200ML*24/瓶', null);
-INSERT INTO `rukudanwuliao` VALUES ('53c2ac72-61bb-4f20-86ec-63388a9bdbae', 'e4b0c4eb-1904-499d-b17f-faf4e29f5b2e', 'GD-005', '顶级音响必备汽车音乐（12CD)', '1', '80.00', '张', null);
-INSERT INTO `rukudanwuliao` VALUES ('53c7cf3b-aef8-4bd3-bdc8-b061c7efccab', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BOP-3201', 'BOP-3201', '4', '11.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('546dff11-0dbd-4a04-8f7c-8dc08313513b', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-9222', 'BO-9222', '7', '11.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('55f57925-0697-4ecb-84b5-203826ae9660', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-1022', 'BO-1022', '1', '15.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('570ed0a3-6b2f-475a-9125-ffc9ca9fd5c3', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-2011', 'BO-2011', '1', '13.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('57da8fe4-71b2-4921-b36e-fc8a85fb22f8', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-4004', 'BAC-4004', '11', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('5debe218-e78b-445f-8df7-e123b80e1340', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-028', '通用型无骨雨刮28寸', '10', '10.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('5e4448af-22ee-4335-8850-ace25834cc80', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-016', '高效冷冻油', '24', '12.00', '70ml*24瓶', null);
-INSERT INTO `rukudanwuliao` VALUES ('5f17f946-f7e1-4e1a-abf5-f6ecfbcd0049', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-019', '|铁将军行车录像仪', '1', '380.00', '套', null);
-INSERT INTO `rukudanwuliao` VALUES ('5f1ded76-2050-438c-8ee8-050411153e6b', '43abcd59-9c3d-4899-9a51-65090a078d9c', '3M-004', '通用平面脚垫（咖啡色）', '1', '400.00', '套', null);
-INSERT INTO `rukudanwuliao` VALUES ('610f1180-81cc-4b6c-a44d-f66bb1ea2b1b', 'f058e17b-f570-42e2-bca6-6c57a20a789d', 'LL-002', '朗龙车用香水_晶钻系列', '8', '56.00', '瓶', null);
-INSERT INTO `rukudanwuliao` VALUES ('61417e06-effa-4e2f-b32d-d6da7bef1a84', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-019', '通用型无骨雨刮19寸', '10', '10.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('62564a5f-955a-4d35-a66a-03efad00960d', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-008', '化油器清洗剂（红）', '240', '6.00', '24*450ML/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('63d08a1b-3377-40c2-9dff-c3007e3696b2', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-4040', 'BAP-4040', '6', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('640c4f6d-1d3e-4a3b-9838-fff996e53737', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-008', '储物箱', '1', '49.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('645c593f-37ab-4824-9c9b-c0baaceb111f', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-016', '豪华型无骨雨刮16寸', '10', '20.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('6733b9da-7df2-4c74-a129-1ff8820a383b', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHS-002', '铱金普通火花塞7EX', '8', '38.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('67df248e-8ce2-4027-a3bb-a78ddd6edbf2', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-513', 'BAP-513', '6', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('67e36653-ff1f-4493-ba03-45d728b950a8', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-5436', 'BO-5436', '18', '11.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('6808654a-9f67-4783-b575-398b7dd3d003', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-002', '柏油清洗剂', '22', '10.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('69deeb3b-0a48-408b-a92c-6a41199a21a3', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-9214', 'BO-9214', '35', '13.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('6abafe9a-14ad-46e5-b4a3-2231cb2636c3', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'QPTY-5W-30-002', '七系机油', '0', '60.00', '1L/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('6b889f7c-9f46-48d2-b71d-a3b2524b680b', '1c1186d2-1ec6-45d2-add1-f24c551851ee', 'CY-001', '至尊大红袍', '4', '50.00', '条', null);
-INSERT INTO `rukudanwuliao` VALUES ('6c55c1b8-3188-4e22-8df6-f440a9fd7364', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-9009', 'BAP-9009', '3', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('6fa435a4-1313-4ce3-9241-7c0290842cd2', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-5035', 'BAP-5035', '2', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('72fb8992-323a-478e-bdcf-7b56db89c050', '1c1186d2-1ec6-45d2-add1-f24c551851ee', 'CY-002', '金芽滇红（高级红茶）', '15', '60.00', '罐', null);
-INSERT INTO `rukudanwuliao` VALUES ('7446d1d8-19f0-4b1a-a7e8-546641727066', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-007', '爱车屋方形被枕YK', '1', '25.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('744b12d3-db2d-4a5e-b63c-35e75c75508b', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-002', '小狗泥巴U型枕NB-122KT', '1', '25.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('777cbc81-3110-498a-8dad-b0515d680220', '1c1186d2-1ec6-45d2-add1-f24c551851ee', 'CY-008', '普洱茶', '8', '60.00', '罐', null);
-INSERT INTO `rukudanwuliao` VALUES ('7ca6df4a-e2ce-4eda-b51d-c36157a125ba', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-5514', 'BO-5514', '2', '11.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('7f06ae85-5463-4b24-82a3-faa54c5ff08a', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-003', '小狗泥巴圆形被枕', '1', '25.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('801c18c9-60a2-41d1-912b-dc61bf204e32', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BLT-5W40', 'LX7机油', '52', '117.00', '4L/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('8031330a-b361-4128-beb9-192f96171701', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-9401', 'BO-9401', '34', '12.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('80ee8021-e3f2-4ff5-8154-9915a77d5cc2', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-4880', 'BAP-4880', '2', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('813995f4-b5dd-4cb7-8ffd-be21dca2eb38', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-2007B', 'BAC-2007B', '9', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('81a4c80a-e806-4108-b720-95e518877e33', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-3306', 'BO-3306', '6', '11.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('83a04ad1-b093-4bad-8fa7-f68e9b39b5cf', 'f1281bc3-3ef8-4fe8-b8db-da6db9068ff7', 'XD-004', '品尚系列', '47', '50.00', '瓶', null);
-INSERT INTO `rukudanwuliao` VALUES ('850a41e3-67c5-48d2-aba3-a89bfcaf1263', 'e4b0c4eb-1904-499d-b17f-faf4e29f5b2e', 'GD-003', '港台情歌黄金时代', '2', '25.00', '张', null);
-INSERT INTO `rukudanwuliao` VALUES ('86e59b80-3a9d-4162-9abb-ce26df9ec864', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-7042', 'BAP-7042', '5', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('8727025b-f5bc-45a5-be27-8318ce96f0f2', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-1038', 'BAP-1038', '6', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('87433879-2f4c-4e3d-9598-8722e5037466', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-5201B', 'BO-5201B', '25', '13.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('896defca-2747-430d-9bba-328d326f3afc', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-4038', 'BAP-4038', '3', '20.00', '', null);
-INSERT INTO `rukudanwuliao` VALUES ('89787909-7cf4-44c3-8cd5-0d64c612b104', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'D068', 'D068刹车系统保养组件', '8', '20.00', '325ML/套', null);
-INSERT INTO `rukudanwuliao` VALUES ('8a8cef04-324d-4285-bb56-de066d92f754', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-7064', 'BAP-7064', '4', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('8ae3b56f-705f-4ff3-82f6-89c4a1bb9cae', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-007', '螺丝松动剂', '120', '6.00', '24*450ML/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('8b2e59fd-fc26-4f80-b4d4-bca993c124be', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-5232', 'BAP-5232', '6', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('8bd3788f-f982-41fd-9b35-ae5c3d3a8287', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-2036', 'BAC-2036', '11', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('8d5d069b-b17f-4965-99e9-6f70b5bc08af', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-019', '环保雪种R134A', '30', '13.00', '300g*30/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('8e060a73-0bf9-4974-b0eb-7f9a752c8fec', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'QPTY-DOT4', '高级合成制动液', '127', '56.00', 'D0T4', null);
-INSERT INTO `rukudanwuliao` VALUES ('8eab9110-9a2a-4132-a7bc-1bf6b42fa7e9', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-5005', 'BO-5005', '7', '11.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('94ebed71-bfc6-411d-88f0-2422c40742a5', 'e4b0c4eb-1904-499d-b17f-faf4e29f5b2e', 'GD-002', '中国民乐精粹大全（16CD)', '2', '70.00', '张', null);
-INSERT INTO `rukudanwuliao` VALUES ('958a0f23-e948-4b02-8a21-9eed2027038b', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'QPTY-GL-5', '轿车专用齿轮油', '44', '80.00', '4L/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('9665500f-2753-4fd4-b6d5-1fe719b06908', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-004', '创典皮坊真皮方向套', '3', '25.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('97cc5a96-c693-4c73-b435-534aa4127a55', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'QPTY-CF-4', '柴油机油', '20', '80.00', '4L/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('9b0dc602-ea78-4055-acc9-3f97a4bf15a8', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-019', '豪华型无骨雨刮19寸', '10', '20.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('9b3e48e7-2ba2-4fb2-94da-00556b34d0f6', '1c1186d2-1ec6-45d2-add1-f24c551851ee', 'CY-005', '凤凰单枞', '5', '70.00', '罐', null);
-INSERT INTO `rukudanwuliao` VALUES ('9ec6d198-307f-4333-a82e-4117a3696f75', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-014', '通用型无骨雨刮14寸', '10', '10.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('9ee69e33-268a-4818-bd97-e97dc7e20f0b', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHS-003', '铱金普通火花塞ZKR7-11', '12', '38.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('9f52facf-2132-41e6-8569-b51be1d5cd54', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHS-007', '铱金旋动力火花塞1LZKAR7BX', '12', '38.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('a0915283-ba78-4b53-9605-0ff6a0b6c09a', '3d6b9e6b-d374-4c6c-8c62-aeb315515c18', 'DB-002', '至尊镀晶套装', '1', '1080.00', '套', null);
-INSERT INTO `rukudanwuliao` VALUES ('a0f83c92-7dcd-4f91-acb7-466a63d3a21b', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-025', '自动喷漆（白）', '13', '38.00', '', null);
-INSERT INTO `rukudanwuliao` VALUES ('a1c5d158-5cce-42d6-b917-533d4ce76401', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-2143', 'BAP-2143', '10', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('a4b730c1-bb85-4710-8441-8e12eb4417ca', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-3005', 'BO-3005', '3', '11.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('a63ab957-c726-47af-a164-f5c540c7693a', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-4479', 'BAP-4479', '5', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('a6d47631-7e9f-4429-880f-da6c7d3e0ca4', '1c1186d2-1ec6-45d2-add1-f24c551851ee', 'CY-003', '黄金牛蒡茶', '10', '45.00', '罐', null);
-INSERT INTO `rukudanwuliao` VALUES ('aec94efc-0edd-4b66-91fe-8325707ca30a', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-1045', 'BAP-1045', '2', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('afd6c57e-fb6b-4c18-bc32-05c25702b0ce', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-026', '通用型无骨雨刮26寸', '10', '10.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('b0a56135-7d55-4c15-bbca-570326dc2e21', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'MF-0W-40', '金装美孚一号', '39', '80.00', '1L/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('b0c04d69-12f3-4902-a037-91ce6b866e27', '1c1186d2-1ec6-45d2-add1-f24c551851ee', 'CY-004', '贡茶大红袍', '8', '60.00', '罐', null);
-INSERT INTO `rukudanwuliao` VALUES ('b1d938ff-6ca7-4629-8083-f43dccd65afa', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-4307B', 'BAC-4307B', '2', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('b1eca391-13cf-4170-aff5-1f1c91246fec', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-024', '豪华型无骨雨刮24寸', '10', '20.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('b28c6390-7f8f-4b89-ba2d-27f873f257fe', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-101', 'BAC-101', '29', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('b3416a16-1e6d-4a09-a0f9-a8b99dd12570', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-017', '红魔王水箱宝', '36', '9.00', '2L*6/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('b46f2e24-3950-4de6-ab70-f77f26581c71', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-003', '表板蜡', '61', '10.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('b55f55d8-26f6-4cb6-964a-9b7b55e698a3', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-7006', 'BAC-7006', '7', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('b5811237-37d8-4d22-87b4-169a9bd0c89c', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-4039', 'BAP-4039', '10', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('b593f289-4833-437f-9e45-130a4c91ad25', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-2035', 'BAP-2035', '18', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('b5f83f59-f01e-4956-a7c6-9a9afeeaeadc', 'f058e17b-f570-42e2-bca6-6c57a20a789d', 'LL-001', '朗龙车用香水_玺系列', '2', '128.00', '瓶', null);
-INSERT INTO `rukudanwuliao` VALUES ('b78b7b18-5199-415b-a04d-6054adfd4503', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-1005', 'BO-1005', '7', '12.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('b89d6252-d3b4-4adf-bddb-42f489f9124c', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-7048', 'BAP-7048', '7', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('bafe4a04-e489-46f2-952c-52d6b707a3d9', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-015', '玻璃水', '75', '5.00', '1.8L*9/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('bbb044c4-d074-4991-a331-33a7abb333c1', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-006', '爱车屋安全带护肩套FJT', '2', '25.00', '对', null);
-INSERT INTO `rukudanwuliao` VALUES ('bd99e6f3-8d39-4eba-8f19-98a5e650cbdb', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'QPTY-5W-40', '八系机油', '0', '278.00', '4L/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('be247d4f-5ec2-47c3-a628-262274a354a3', 'f1281bc3-3ef8-4fe8-b8db-da6db9068ff7', 'XD-002', '冰晶系列', '2', '70.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('be95f336-1ef3-49b1-bc87-40ded246ddc8', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-907', 'BO-907', '33', '9.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('bf21a4db-445d-4541-9dc4-605e5a5339f2', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-021', '豪华型无骨雨刮21寸', '10', '20.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('c02eb546-d2e7-4088-a3f6-9d6a5f75c38f', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-024', '通用型无骨雨刮24寸', '10', '10.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('c039a04d-d4d0-41bb-812d-12ee0747ba2c', '43abcd59-9c3d-4899-9a51-65090a078d9c', '3M-002', '立体圈丝汽车脚垫（皇冠系列）', '1', '700.00', '套', null);
-INSERT INTO `rukudanwuliao` VALUES ('c290a83b-766c-4308-8cad-c127f7aed8e4', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-009', '座套', '2', '480.00', '', null);
-INSERT INTO `rukudanwuliao` VALUES ('c3661285-5777-41c1-8fee-fe445685f6b2', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-016', '通用型无骨雨刮16寸', '10', '10.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('c3c1dca6-699f-47c2-ba2d-6bae3b16eebf', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HSJDH-001', '后视镜导航', '5', '549.00', '台', null);
-INSERT INTO `rukudanwuliao` VALUES ('c4e5176e-76da-4a46-ae8a-aaf575f158f8', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHS-001', '铱金普通火花塞LFR6X', '24', '38.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('c55cd8e7-c16a-4b87-b838-c114281acd8d', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-018', '绿巨人水箱宝', '0', '9.00', '2L*6/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('c5854e72-b809-44f9-85c3-4467f7f5f030', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-2102', 'BAC-2102', '5', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('c5b58267-ae8f-4d82-ac1b-7897b10e99f8', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-1072', 'BAP-1072', '9', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('c9d538e5-a038-4882-a0e0-a0c9658d3e2a', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHS-009', '铱金普通火花塞E-BKR6', '10', '25.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('cb6777a9-a77a-484b-842a-68abacc862a6', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-904', 'BAP-904', '3', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('cbf87b20-a168-430a-a0d4-2a1b29b890fe', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'DPZJ-001', '底盘装甲油', '60', '25.00', '', null);
-INSERT INTO `rukudanwuliao` VALUES ('cc6c314c-987d-4d31-9f2a-8ff4c428e7d9', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-2101', 'BO-2101', '28', '11.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('cd755830-9a94-4b42-85c9-11a3f01d2845', '4f26b28c-7aa3-4228-876e-72f6bc89413b', '1356', '机油格', '1', '35.00', '', null);
-INSERT INTO `rukudanwuliao` VALUES ('cd9f4c4b-7e5f-4ba0-b0ad-5d0893b95e9e', 'e4b0c4eb-1904-499d-b17f-faf4e29f5b2e', 'GD-001', '黑胶顶级DJ试音王（10CD)', '1', '80.00', '张', null);
-INSERT INTO `rukudanwuliao` VALUES ('cde24817-bea1-4d29-bece-8caab97e0e67', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-3321', 'BAC-3321', '10', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('ce3e0755-5b9b-41b9-8acb-4375eff36bfe', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-024', '七彩喷膜（荧光红）', '1', '38.00', '', null);
-INSERT INTO `rukudanwuliao` VALUES ('cf370111-e4c6-4789-b06f-d4f3840edd1a', 'f058e17b-f570-42e2-bca6-6c57a20a789d', 'LL-004', '朗龙强力除异味型炭膏', '3', '56.00', '盒', null);
-INSERT INTO `rukudanwuliao` VALUES ('d5f6e64b-9207-4fba-91ec-0aa319a533ea', 'e4b0c4eb-1904-499d-b17f-faf4e29f5b2e', 'GD-006', '金领Lady car房车音乐厅（2CD)', '3', '15.00', '张', null);
-INSERT INTO `rukudanwuliao` VALUES ('d7217525-15c3-4b38-874c-8420b312d615', '1c1186d2-1ec6-45d2-add1-f24c551851ee', 'CY-009', '大红袍', '6', '100.00', '条', null);
-INSERT INTO `rukudanwuliao` VALUES ('daf49e0d-92c0-4f85-8286-951182997d23', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-7010', 'BAC-7010', '6', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('dc020f44-57f5-4ad3-8c06-fe087fa084d6', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'SXT-002', '嵌入式摄像头', '5', '50.00', '台', null);
-INSERT INTO `rukudanwuliao` VALUES ('dc514b5e-eb7d-4826-ad15-6c8ea11ec9ca', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-001', '各款专车专用雨刮', '533', '40.00', '套', null);
-INSERT INTO `rukudanwuliao` VALUES ('dc97fdda-dddc-47d6-bf07-6ac6bfc2f163', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-014', '魔彩 中级镀膜套装', '1', '195.00', '套', null);
-INSERT INTO `rukudanwuliao` VALUES ('dfb156d6-783f-4bb3-9ad3-7ef316150260', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-020', '豪华型无骨雨刮20寸', '10', '20.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('e1e31692-2e1b-41c5-92ae-a30714b5f408', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'D090', '090汽车全能清洁膏', '30', '15.00', '盒', null);
-INSERT INTO `rukudanwuliao` VALUES ('e1eab790-d9b6-49a6-8e90-068ca3b38f65', 'f058e17b-f570-42e2-bca6-6c57a20a789d', 'LL-006', '朗龙长效抗菌型炭膏', '3', '56.00', '盒', null);
-INSERT INTO `rukudanwuliao` VALUES ('e31b9cbb-35fd-4636-80a9-924b2e9633dc', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-4037', 'BAP-4037', '10', '19.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('e42867f3-91db-4ede-9500-4d21025a4443', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BOV-111', 'BOV-111', '33', '13.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('e6d00313-7404-4520-ab36-01373356e290', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-018', '通用型无骨雨刮18寸', '10', '10.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('e9beb622-c07d-43cf-a0c1-f894234e9d77', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-021', '通用型无骨雨刮21寸', '10', '10.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('ec9c65c5-75c6-4d98-9dc9-331ae7c01173', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'QPTY-10W-40', '六系机油', '67', '152.00', '4L/支', null);
-INSERT INTO `rukudanwuliao` VALUES ('ece1114f-6b87-4399-95ca-71c7a7777132', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-7063', 'BAP-7063', '2', '20.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('efe28b37-147d-46a8-a4ce-610cc8af0fe8', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HSJDH-002', '后视镜导航多功能', '1', '849.00', '台', null);
-INSERT INTO `rukudanwuliao` VALUES ('f0405b54-64d5-47c9-85e9-4f26062bd0a2', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-026', '自动喷漆（银灰）', '1', '38.00', '', null);
-INSERT INTO `rukudanwuliao` VALUES ('f1b74ea4-ea9e-4f58-9132-c112880b808d', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHS-006', '铱金旋动力火花塞GR6X', '12', '38.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('f24881b0-41c5-492e-9c91-52cb4a150048', '43abcd59-9c3d-4899-9a51-65090a078d9c', '3M-001', '立体圈丝汽车脚垫（宝马系列）', '6', '700.00', '套', null);
-INSERT INTO `rukudanwuliao` VALUES ('f2d563d9-5367-4757-9fcf-dcd10607d8e1', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-010', '保赐利划痕祛除', '20', '15.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('f4480b9d-a473-4efa-9b08-352c50b227bc', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'KTG-001', '活性碳空调格', '153', '25.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('f6b21d1a-74df-41d5-ba99-961eb0f20899', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-1075', 'BAP-1075', '21', '17.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('f712f084-8d6d-4e81-8356-650c463d2798', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-5209', 'BO-5209', '18', '30.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('f7f09550-3c04-4e6d-89f1-9adab663938f', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-026', '豪华型无骨雨刮26寸', '10', '20.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('f99d80b0-26b7-4c11-933a-70954ce9b407', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-305', 'BO-305', '11', '11.00', '个', null);
-INSERT INTO `rukudanwuliao` VALUES ('facb07b7-4e81-47ce-a4e4-9898c2721df6', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-017', '豪华型无骨雨刮17寸', '10', '20.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('fb694758-8857-4128-8e73-cd19665f6635', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-013', '魔彩 高级镀膜套装', '3', '295.00', '套', null);
-INSERT INTO `rukudanwuliao` VALUES ('fdd76abd-fe5b-485f-b2be-e919e2909fce', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-020', '通用型无骨雨刮20寸', '10', '10.00', '支', null);
-INSERT INTO `rukudanwuliao` VALUES ('fec929d6-9df8-4199-8c21-08e95dc3cd10', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-5206', 'BO-5206', '3', '11.00', '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('02892614-c7c3-4d02-96b5-e26459f8a89a', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-022', '甲醛清除剂（475ML）', '11', '12.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('02dfd98e-f194-4233-9e4f-659829f1dfb4', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-1010', 'BAP-1010', '3', '17.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('05b8b012-6ff1-4698-af18-b0b5a00942f6', 'f1281bc3-3ef8-4fe8-b8db-da6db9068ff7', 'XD-005', '香水补充液', '4', '25.00', null, '', null);
+INSERT INTO `rukudanwuliao` VALUES ('0793c6c6-1f7c-49d5-8a3c-98eaeb14a3f3', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-1012', 'BAP-1012', '7', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('07c6ac4c-5855-4864-8f64-fe53e2d0d574', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-4201', 'BO-4201', '4', '11.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('0a108413-3a0e-4529-98cc-d2aea55f0b66', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-1074', 'BAP-1074', '1', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('0a4dceaf-be77-4415-8e63-8bd4bb7f9a52', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-1046', 'BAP-1046', '8', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('0ae15970-f526-4120-be30-60f4943ec370', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-001', '自然液体香水', '1', '30.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('0b49cbef-af89-438c-b632-aa9d174a838f', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHS-005', '铱金旋动力火花塞OCPR7EX', '4', '38.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('0c596702-2ead-447e-82fe-c4daf8cc30a4', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'QPTY-15W-40', '一系机油', '36', '117.00', null, '4L/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('0e45fe1f-981a-48ca-97f5-ca7ac7023af2', '43abcd59-9c3d-4899-9a51-65090a078d9c', '3M-005', '通用平面脚垫（黑色）', '2', '400.00', null, '套', null);
+INSERT INTO `rukudanwuliao` VALUES ('0e49116a-c057-4519-b9e5-40bdfc573aea', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-022', '豪华型无骨雨刮22寸', '10', '20.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('103358ca-1fc1-488b-b647-575373ceaf1f', '1c1186d2-1ec6-45d2-add1-f24c551851ee', 'CY-006', '贡茶大红袍', '9', '36.00', null, '罐', null);
+INSERT INTO `rukudanwuliao` VALUES ('11a04451-14f6-4b6f-a068-a2e515f9d54e', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-017', '通用型无骨雨刮17寸', '10', '10.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('12c8e0a9-aacb-4e3a-aa25-a3571776209e', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-023', '七彩喷膜（白）', '4', '38.00', null, '', null);
+INSERT INTO `rukudanwuliao` VALUES ('12d89053-3787-4376-a6cb-cac8d7ebe01b', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-005', '创典皮坊小羊纹方向套', '2', '25.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('14349a49-9ebe-457f-8ed9-29b35c0896db', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-2008', 'BO-2008', '3', '13.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('18f64713-16db-495c-a66b-507310c05976', 'f058e17b-f570-42e2-bca6-6c57a20a789d', 'LL-005', '朗龙特效除甲醛型炭膏', '3', '56.00', null, '盒', null);
+INSERT INTO `rukudanwuliao` VALUES ('1bea9785-7557-48b5-a97c-e0e5c27f24a7', '3d6b9e6b-d374-4c6c-8c62-aeb315515c18', 'DB-005', '镀膜套装', '1', '580.00', null, '套', null);
+INSERT INTO `rukudanwuliao` VALUES ('1e6b6789-b094-48d3-bb5f-7bf7eacac01e', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-1011', 'BAC-1011', '3', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('2049cadc-92a1-4f63-b3b3-56417147f89c', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-3322', 'BAP-3322', '6', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('20ca9749-8152-41dd-ae81-0c9bca3d5335', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-3004', 'BO-3004', '0', '12.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('237277b0-0700-42f3-a212-dcf313f0797d', 'b5940046-46eb-4ad8-96e1-7a8f447c03bb', 'GD-009', 'DVD碟_45', '16', '20.00', null, '张', null);
+INSERT INTO `rukudanwuliao` VALUES ('2497b1ae-66fb-44c3-b102-309cf6c6a561', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'D062', 'D062空调杀菌消毒剂', '20', '20.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('27f456b8-1b5e-4d9b-81fc-c4fbec0ae3ce', '43abcd59-9c3d-4899-9a51-65090a078d9c', '3M-003', '立体圈丝汽车脚垫（凯迪拉克系列）', '1', '701.00', null, '套', null);
+INSERT INTO `rukudanwuliao` VALUES ('2924e2ba-e41a-4d29-b132-2055d277a716', '43abcd59-9c3d-4899-9a51-65090a078d9c', '3M-006', '通用平面脚垫（灰色）', '1', '400.00', null, '套', null);
+INSERT INTO `rukudanwuliao` VALUES ('2cf15d3f-2c1f-43bd-8e98-b4440afb7edb', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-014', '豪华型无骨雨刮14寸', '10', '20.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('2e41e399-6fdd-4826-a981-88ebb909b89a', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-011', '速效抛光蜡', '6', '35.00', null, '1L*12/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('2ee9e335-b460-4a0f-a790-7ef02ca0474e', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-1006', 'BO-1006', '14', '12.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('2ffb2f4d-fc44-4c04-9dcd-7223ee1c48fd', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-5607', 'BO-5607', '7', '11.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('34f92cd2-96a3-4b14-a83d-3a4425b3e027', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-012', '金尊镀膜蜡（08版）', '4', '80.00', null, '230g*8/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('3501e871-fb31-4a5d-ad65-c0ccb88b9919', '3d6b9e6b-d374-4c6c-8c62-aeb315515c18', 'DB-004', '琥珀之光镀膜套装', '1', '480.00', null, '套', null);
+INSERT INTO `rukudanwuliao` VALUES ('354a5c08-f6e9-449b-92c7-a50fa4f47ac5', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'QPTY-5W-30-001', '七系机油', '32', '188.00', null, '4L/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('36773d4d-d534-4c86-bc16-06983f60ac4d', 'b5940046-46eb-4ad8-96e1-7a8f447c03bb', 'GD-008', 'CD碟_40', '21', '20.00', null, '张', null);
+INSERT INTO `rukudanwuliao` VALUES ('367b9480-2ef4-49e0-b3be-58eca4aa7f5b', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-6003', 'BO-6003', '33', '8.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('39279b53-bbce-4408-946a-4f8316ea029b', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHS-004', '铱金旋动力火花塞LFR6X', '2', '38.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('399572c1-6693-4ff7-8d6f-38c727451c8c', '3d6b9e6b-d374-4c6c-8c62-aeb315515c18', 'DB-003', '威盾镀晶', '1', '180.00', null, '套', null);
+INSERT INTO `rukudanwuliao` VALUES ('3b134afe-53a8-422a-99c0-24e58c53d2d0', '3d6b9e6b-d374-4c6c-8c62-aeb315515c18', 'DB-001', '白金镀晶套装', '2', '580.00', null, '套', null);
+INSERT INTO `rukudanwuliao` VALUES ('3c3b8231-1ffd-4b5b-abee-1e7d30d02381', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-020', '环保雪种R134A', '105', '13.00', null, '250g*30/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('3e47f95d-362c-4f27-9418-b41d7ad87b1b', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-018', '|铁将军智能感应暗锁', '1', '380.00', null, '套', null);
+INSERT INTO `rukudanwuliao` VALUES ('3f313afb-9c7c-468c-a42e-44072d168094', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'SXT-001', '悬挂式摄像头', '5', '50.00', null, '台', null);
+INSERT INTO `rukudanwuliao` VALUES ('3f498ab9-d641-4e79-9fed-fefbc0c7946f', 'e4b0c4eb-1904-499d-b17f-faf4e29f5b2e', 'GD-007', '蓝调音乐：爵士乐蓝调', '1', '15.00', null, '张', null);
+INSERT INTO `rukudanwuliao` VALUES ('3f5e6280-a05c-47d0-97d0-d911d0e8de90', '88df251b-3938-437a-8842-7efe635080ba', 'cs-001', '测试1', '1', '10.00', '40.00', '', '已下单');
+INSERT INTO `rukudanwuliao` VALUES ('3face95b-d7b0-43c1-b3f3-2fa982ca0411', '1c1186d2-1ec6-45d2-add1-f24c551851ee', 'CY-007', '养肝茶', '2', '100.00', null, '盒', null);
+INSERT INTO `rukudanwuliao` VALUES ('413333b7-6ed2-478c-b8ad-0fd2b1270ea9', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHS-008', 'A-1TR4-15火花塞', '18', '25.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('43538971-67c5-4e33-b5e5-808ba18fdc4d', 'f058e17b-f570-42e2-bca6-6c57a20a789d', 'LL-003', '朗龙车用香水_魔方系列', '8', '56.00', null, '瓶', null);
+INSERT INTO `rukudanwuliao` VALUES ('43e66edc-5782-4877-bb70-22676ff24095', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-4031', 'BAP-4031', '10', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('44766f1a-2c70-4cff-a16d-63bdb4593408', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-001', '万能泡沫清洗剂', '21', '6.00', null, '瓶', null);
+INSERT INTO `rukudanwuliao` VALUES ('459c1f38-c416-4da8-8d5d-0a5bf1f6551d', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-022', '通用型无骨雨刮22寸', '10', '10.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('4653bda7-3559-4e07-826e-c4d246410e19', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-5208', 'BAC-5208', '9', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('48046fb2-2571-42f5-a3a0-3899c13cc3f7', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-5202', 'BO-5202', '16', '11.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('484df0a2-3d1a-4968-9a71-749dbd2382bb', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-021', '环保雪种R134A', '30', '13.00', null, '200g*30/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('484e63bb-1e30-4781-9910-bf691d62c611', 'f1281bc3-3ef8-4fe8-b8db-da6db9068ff7', 'XD-003', '永恒系列', '6', '40.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('49720b9d-b6ff-47e3-8927-373f5b852b41', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-5228', 'BAP-5228', '10', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('4a448636-a9b2-46aa-b6d0-d6f3b6b4939d', '48479ad0-fdd8-45f5-b25f-ddd932ef6536', 'CS-002', '测试', '1', '50.00', '150.00', '', '已下单');
+INSERT INTO `rukudanwuliao` VALUES ('4ba92b4c-23eb-41b1-a876-cac167c8d280', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-009', '万能除锈剂', '72', '7.20', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('4c27e8e3-52d9-405e-b19a-05dc5aed5cc3', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-2015', 'BO-2015', '34', '13.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('4c6e68d1-69a1-46d0-afdb-5ea3479e352f', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-018', '豪华型无骨雨刮18寸', '10', '20.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('4eb38588-6cd6-4a9d-a460-7ddc2b5396c4', 'f1281bc3-3ef8-4fe8-b8db-da6db9068ff7', 'XD-001', '金典系列', '2', '118.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('4eec7d7b-0f95-4bf8-b02c-2fd907e9a3a4', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-2119', 'BAP-2119', '3', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('4f9e736d-a7f1-406f-8807-8731f453c110', 'e4b0c4eb-1904-499d-b17f-faf4e29f5b2e', 'GD-004', '对唱无敌粤语经典情歌（2CD)黑胶', '2', '25.00', null, '张', null);
+INSERT INTO `rukudanwuliao` VALUES ('5176890b-730d-4c52-8e42-f0f5a212090c', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-1018B', 'BAC-1018B', '2', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('52d1174f-955a-4fba-a3d8-49cca7f6e48c', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-5210A', 'BO-5210A', '6', '21.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('538b20fa-73cf-49cd-aae8-5d2c84bf219b', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-004', '去污水蜡', '12', '25.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('53a31ca8-aedc-437e-beab-63a80e1b6b31', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-005', '发动机外表清洗剂', '1', '12.00', null, '200ML*24/瓶', null);
+INSERT INTO `rukudanwuliao` VALUES ('53c2ac72-61bb-4f20-86ec-63388a9bdbae', 'e4b0c4eb-1904-499d-b17f-faf4e29f5b2e', 'GD-005', '顶级音响必备汽车音乐（12CD)', '1', '80.00', null, '张', null);
+INSERT INTO `rukudanwuliao` VALUES ('53c7cf3b-aef8-4bd3-bdc8-b061c7efccab', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BOP-3201', 'BOP-3201', '4', '11.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('546dff11-0dbd-4a04-8f7c-8dc08313513b', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-9222', 'BO-9222', '7', '11.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('55f57925-0697-4ecb-84b5-203826ae9660', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-1022', 'BO-1022', '1', '15.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('570ed0a3-6b2f-475a-9125-ffc9ca9fd5c3', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-2011', 'BO-2011', '1', '13.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('57da8fe4-71b2-4921-b36e-fc8a85fb22f8', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-4004', 'BAC-4004', '11', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('5debe218-e78b-445f-8df7-e123b80e1340', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-028', '通用型无骨雨刮28寸', '10', '10.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('5e4448af-22ee-4335-8850-ace25834cc80', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-016', '高效冷冻油', '24', '12.00', null, '70ml*24瓶', null);
+INSERT INTO `rukudanwuliao` VALUES ('5f17f946-f7e1-4e1a-abf5-f6ecfbcd0049', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-019', '|铁将军行车录像仪', '1', '380.00', null, '套', null);
+INSERT INTO `rukudanwuliao` VALUES ('5f1ded76-2050-438c-8ee8-050411153e6b', '43abcd59-9c3d-4899-9a51-65090a078d9c', '3M-004', '通用平面脚垫（咖啡色）', '1', '400.00', null, '套', null);
+INSERT INTO `rukudanwuliao` VALUES ('610f1180-81cc-4b6c-a44d-f66bb1ea2b1b', 'f058e17b-f570-42e2-bca6-6c57a20a789d', 'LL-002', '朗龙车用香水_晶钻系列', '8', '56.00', null, '瓶', null);
+INSERT INTO `rukudanwuliao` VALUES ('61417e06-effa-4e2f-b32d-d6da7bef1a84', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-019', '通用型无骨雨刮19寸', '10', '10.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('62564a5f-955a-4d35-a66a-03efad00960d', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-008', '化油器清洗剂（红）', '240', '6.00', null, '24*450ML/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('63d08a1b-3377-40c2-9dff-c3007e3696b2', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-4040', 'BAP-4040', '6', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('640c4f6d-1d3e-4a3b-9838-fff996e53737', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-008', '储物箱', '1', '49.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('645c593f-37ab-4824-9c9b-c0baaceb111f', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-016', '豪华型无骨雨刮16寸', '10', '20.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('6733b9da-7df2-4c74-a129-1ff8820a383b', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHS-002', '铱金普通火花塞7EX', '8', '38.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('67df248e-8ce2-4027-a3bb-a78ddd6edbf2', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-513', 'BAP-513', '6', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('67e36653-ff1f-4493-ba03-45d728b950a8', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-5436', 'BO-5436', '18', '11.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('6808654a-9f67-4783-b575-398b7dd3d003', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-002', '柏油清洗剂', '22', '10.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('69deeb3b-0a48-408b-a92c-6a41199a21a3', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-9214', 'BO-9214', '35', '13.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('6abafe9a-14ad-46e5-b4a3-2231cb2636c3', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'QPTY-5W-30-002', '七系机油', '0', '60.00', null, '1L/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('6b889f7c-9f46-48d2-b71d-a3b2524b680b', '1c1186d2-1ec6-45d2-add1-f24c551851ee', 'CY-001', '至尊大红袍', '4', '50.00', null, '条', null);
+INSERT INTO `rukudanwuliao` VALUES ('6c55c1b8-3188-4e22-8df6-f440a9fd7364', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-9009', 'BAP-9009', '3', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('6fa435a4-1313-4ce3-9241-7c0290842cd2', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-5035', 'BAP-5035', '2', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('72fb8992-323a-478e-bdcf-7b56db89c050', '1c1186d2-1ec6-45d2-add1-f24c551851ee', 'CY-002', '金芽滇红（高级红茶）', '15', '60.00', null, '罐', null);
+INSERT INTO `rukudanwuliao` VALUES ('7446d1d8-19f0-4b1a-a7e8-546641727066', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-007', '爱车屋方形被枕YK', '1', '25.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('744b12d3-db2d-4a5e-b63c-35e75c75508b', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-002', '小狗泥巴U型枕NB-122KT', '1', '25.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('777cbc81-3110-498a-8dad-b0515d680220', '1c1186d2-1ec6-45d2-add1-f24c551851ee', 'CY-008', '普洱茶', '8', '60.00', null, '罐', null);
+INSERT INTO `rukudanwuliao` VALUES ('7ca6df4a-e2ce-4eda-b51d-c36157a125ba', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-5514', 'BO-5514', '2', '11.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('7f06ae85-5463-4b24-82a3-faa54c5ff08a', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-003', '小狗泥巴圆形被枕', '1', '25.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('801c18c9-60a2-41d1-912b-dc61bf204e32', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BLT-5W40', 'LX7机油', '52', '117.00', null, '4L/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('8031330a-b361-4128-beb9-192f96171701', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-9401', 'BO-9401', '34', '12.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('80ee8021-e3f2-4ff5-8154-9915a77d5cc2', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-4880', 'BAP-4880', '2', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('813995f4-b5dd-4cb7-8ffd-be21dca2eb38', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-2007B', 'BAC-2007B', '9', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('81a4c80a-e806-4108-b720-95e518877e33', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-3306', 'BO-3306', '6', '11.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('83a04ad1-b093-4bad-8fa7-f68e9b39b5cf', 'f1281bc3-3ef8-4fe8-b8db-da6db9068ff7', 'XD-004', '品尚系列', '47', '50.00', null, '瓶', null);
+INSERT INTO `rukudanwuliao` VALUES ('8414e167-65b9-4ebf-8e52-eb143e261bce', '91d06f06-a6e3-4b03-ab6a-f87b63df8fff', 'CS-002', '测试002', '3', '40.00', '100.00', '', '已下单');
+INSERT INTO `rukudanwuliao` VALUES ('850a41e3-67c5-48d2-aba3-a89bfcaf1263', 'e4b0c4eb-1904-499d-b17f-faf4e29f5b2e', 'GD-003', '港台情歌黄金时代', '2', '25.00', null, '张', null);
+INSERT INTO `rukudanwuliao` VALUES ('86e59b80-3a9d-4162-9abb-ce26df9ec864', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-7042', 'BAP-7042', '5', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('8727025b-f5bc-45a5-be27-8318ce96f0f2', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-1038', 'BAP-1038', '6', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('87433879-2f4c-4e3d-9598-8722e5037466', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-5201B', 'BO-5201B', '25', '13.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('896defca-2747-430d-9bba-328d326f3afc', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-4038', 'BAP-4038', '3', '20.00', null, '', null);
+INSERT INTO `rukudanwuliao` VALUES ('89787909-7cf4-44c3-8cd5-0d64c612b104', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'D068', 'D068刹车系统保养组件', '8', '20.00', null, '325ML/套', null);
+INSERT INTO `rukudanwuliao` VALUES ('8a8cef04-324d-4285-bb56-de066d92f754', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-7064', 'BAP-7064', '4', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('8ae3b56f-705f-4ff3-82f6-89c4a1bb9cae', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-007', '螺丝松动剂', '120', '6.00', null, '24*450ML/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('8b2e59fd-fc26-4f80-b4d4-bca993c124be', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-5232', 'BAP-5232', '6', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('8bd3788f-f982-41fd-9b35-ae5c3d3a8287', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-2036', 'BAC-2036', '11', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('8d5d069b-b17f-4965-99e9-6f70b5bc08af', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-019', '环保雪种R134A', '30', '13.00', null, '300g*30/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('8e060a73-0bf9-4974-b0eb-7f9a752c8fec', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'QPTY-DOT4', '高级合成制动液', '127', '56.00', null, 'D0T4', null);
+INSERT INTO `rukudanwuliao` VALUES ('8eab9110-9a2a-4132-a7bc-1bf6b42fa7e9', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-5005', 'BO-5005', '7', '11.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('94ebed71-bfc6-411d-88f0-2422c40742a5', 'e4b0c4eb-1904-499d-b17f-faf4e29f5b2e', 'GD-002', '中国民乐精粹大全（16CD)', '2', '70.00', null, '张', null);
+INSERT INTO `rukudanwuliao` VALUES ('958a0f23-e948-4b02-8a21-9eed2027038b', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'QPTY-GL-5', '轿车专用齿轮油', '44', '80.00', null, '4L/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('9665500f-2753-4fd4-b6d5-1fe719b06908', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-004', '创典皮坊真皮方向套', '3', '25.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('97cc5a96-c693-4c73-b435-534aa4127a55', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'QPTY-CF-4', '柴油机油', '20', '80.00', null, '4L/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('9b0dc602-ea78-4055-acc9-3f97a4bf15a8', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-019', '豪华型无骨雨刮19寸', '10', '20.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('9b3e48e7-2ba2-4fb2-94da-00556b34d0f6', '1c1186d2-1ec6-45d2-add1-f24c551851ee', 'CY-005', '凤凰单枞', '5', '70.00', null, '罐', null);
+INSERT INTO `rukudanwuliao` VALUES ('9ec6d198-307f-4333-a82e-4117a3696f75', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-014', '通用型无骨雨刮14寸', '10', '10.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('9ee69e33-268a-4818-bd97-e97dc7e20f0b', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHS-003', '铱金普通火花塞ZKR7-11', '12', '38.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('9f52facf-2132-41e6-8569-b51be1d5cd54', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHS-007', '铱金旋动力火花塞1LZKAR7BX', '12', '38.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('a0915283-ba78-4b53-9605-0ff6a0b6c09a', '3d6b9e6b-d374-4c6c-8c62-aeb315515c18', 'DB-002', '至尊镀晶套装', '1', '1080.00', null, '套', null);
+INSERT INTO `rukudanwuliao` VALUES ('a0f83c92-7dcd-4f91-acb7-466a63d3a21b', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-025', '自动喷漆（白）', '13', '38.00', null, '', null);
+INSERT INTO `rukudanwuliao` VALUES ('a1c5d158-5cce-42d6-b917-533d4ce76401', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-2143', 'BAP-2143', '10', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('a4b730c1-bb85-4710-8441-8e12eb4417ca', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-3005', 'BO-3005', '3', '11.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('a63ab957-c726-47af-a164-f5c540c7693a', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-4479', 'BAP-4479', '5', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('a6d47631-7e9f-4429-880f-da6c7d3e0ca4', '1c1186d2-1ec6-45d2-add1-f24c551851ee', 'CY-003', '黄金牛蒡茶', '10', '45.00', null, '罐', null);
+INSERT INTO `rukudanwuliao` VALUES ('aec94efc-0edd-4b66-91fe-8325707ca30a', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-1045', 'BAP-1045', '2', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('afd6c57e-fb6b-4c18-bc32-05c25702b0ce', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-026', '通用型无骨雨刮26寸', '10', '10.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('b0a56135-7d55-4c15-bbca-570326dc2e21', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'MF-0W-40', '金装美孚一号', '39', '80.00', null, '1L/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('b0c04d69-12f3-4902-a037-91ce6b866e27', '1c1186d2-1ec6-45d2-add1-f24c551851ee', 'CY-004', '贡茶大红袍', '8', '60.00', null, '罐', null);
+INSERT INTO `rukudanwuliao` VALUES ('b1d938ff-6ca7-4629-8083-f43dccd65afa', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-4307B', 'BAC-4307B', '2', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('b1eca391-13cf-4170-aff5-1f1c91246fec', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-024', '豪华型无骨雨刮24寸', '10', '20.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('b28c6390-7f8f-4b89-ba2d-27f873f257fe', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-101', 'BAC-101', '29', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('b3416a16-1e6d-4a09-a0f9-a8b99dd12570', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-017', '红魔王水箱宝', '36', '9.00', null, '2L*6/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('b46f2e24-3950-4de6-ab70-f77f26581c71', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-003', '表板蜡', '61', '10.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('b55f55d8-26f6-4cb6-964a-9b7b55e698a3', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-7006', 'BAC-7006', '7', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('b5811237-37d8-4d22-87b4-169a9bd0c89c', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-4039', 'BAP-4039', '10', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('b593f289-4833-437f-9e45-130a4c91ad25', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-2035', 'BAP-2035', '18', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('b5f83f59-f01e-4956-a7c6-9a9afeeaeadc', 'f058e17b-f570-42e2-bca6-6c57a20a789d', 'LL-001', '朗龙车用香水_玺系列', '2', '128.00', null, '瓶', null);
+INSERT INTO `rukudanwuliao` VALUES ('b78b7b18-5199-415b-a04d-6054adfd4503', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-1005', 'BO-1005', '7', '12.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('b89d6252-d3b4-4adf-bddb-42f489f9124c', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-7048', 'BAP-7048', '7', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('bafe4a04-e489-46f2-952c-52d6b707a3d9', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-015', '玻璃水', '75', '5.00', null, '1.8L*9/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('bbb044c4-d074-4991-a331-33a7abb333c1', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-006', '爱车屋安全带护肩套FJT', '2', '25.00', null, '对', null);
+INSERT INTO `rukudanwuliao` VALUES ('bd99e6f3-8d39-4eba-8f19-98a5e650cbdb', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'QPTY-5W-40', '八系机油', '0', '278.00', null, '4L/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('be247d4f-5ec2-47c3-a628-262274a354a3', 'f1281bc3-3ef8-4fe8-b8db-da6db9068ff7', 'XD-002', '冰晶系列', '2', '70.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('be95f336-1ef3-49b1-bc87-40ded246ddc8', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-907', 'BO-907', '33', '9.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('bf21a4db-445d-4541-9dc4-605e5a5339f2', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-021', '豪华型无骨雨刮21寸', '10', '20.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('c02eb546-d2e7-4088-a3f6-9d6a5f75c38f', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-024', '通用型无骨雨刮24寸', '10', '10.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('c039a04d-d4d0-41bb-812d-12ee0747ba2c', '43abcd59-9c3d-4899-9a51-65090a078d9c', '3M-002', '立体圈丝汽车脚垫（皇冠系列）', '1', '700.00', null, '套', null);
+INSERT INTO `rukudanwuliao` VALUES ('c290a83b-766c-4308-8cad-c127f7aed8e4', '391381ac-e66b-4c17-a842-c767642dae71', 'HLS-009', '座套', '2', '480.00', null, '', null);
+INSERT INTO `rukudanwuliao` VALUES ('c3661285-5777-41c1-8fee-fe445685f6b2', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-016', '通用型无骨雨刮16寸', '10', '10.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('c3c1dca6-699f-47c2-ba2d-6bae3b16eebf', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HSJDH-001', '后视镜导航', '5', '549.00', null, '台', null);
+INSERT INTO `rukudanwuliao` VALUES ('c4e5176e-76da-4a46-ae8a-aaf575f158f8', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHS-001', '铱金普通火花塞LFR6X', '24', '38.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('c55cd8e7-c16a-4b87-b838-c114281acd8d', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-018', '绿巨人水箱宝', '0', '9.00', null, '2L*6/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('c5854e72-b809-44f9-85c3-4467f7f5f030', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-2102', 'BAC-2102', '5', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('c5b58267-ae8f-4d82-ac1b-7897b10e99f8', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-1072', 'BAP-1072', '9', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('c9d538e5-a038-4882-a0e0-a0c9658d3e2a', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHS-009', '铱金普通火花塞E-BKR6', '10', '25.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('cb6777a9-a77a-484b-842a-68abacc862a6', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-904', 'BAP-904', '3', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('cbf87b20-a168-430a-a0d4-2a1b29b890fe', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'DPZJ-001', '底盘装甲油', '60', '25.00', null, '', null);
+INSERT INTO `rukudanwuliao` VALUES ('cc6c314c-987d-4d31-9f2a-8ff4c428e7d9', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-2101', 'BO-2101', '28', '11.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('cd755830-9a94-4b42-85c9-11a3f01d2845', '4f26b28c-7aa3-4228-876e-72f6bc89413b', '1356', '机油格', '1', '35.00', null, '', null);
+INSERT INTO `rukudanwuliao` VALUES ('cd9f4c4b-7e5f-4ba0-b0ad-5d0893b95e9e', 'e4b0c4eb-1904-499d-b17f-faf4e29f5b2e', 'GD-001', '黑胶顶级DJ试音王（10CD)', '1', '80.00', null, '张', null);
+INSERT INTO `rukudanwuliao` VALUES ('cde24817-bea1-4d29-bece-8caab97e0e67', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-3321', 'BAC-3321', '10', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('ce3e0755-5b9b-41b9-8acb-4375eff36bfe', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-024', '七彩喷膜（荧光红）', '1', '38.00', null, '', null);
+INSERT INTO `rukudanwuliao` VALUES ('cf370111-e4c6-4789-b06f-d4f3840edd1a', 'f058e17b-f570-42e2-bca6-6c57a20a789d', 'LL-004', '朗龙强力除异味型炭膏', '3', '56.00', null, '盒', null);
+INSERT INTO `rukudanwuliao` VALUES ('d5f6e64b-9207-4fba-91ec-0aa319a533ea', 'e4b0c4eb-1904-499d-b17f-faf4e29f5b2e', 'GD-006', '金领Lady car房车音乐厅（2CD)', '3', '15.00', null, '张', null);
+INSERT INTO `rukudanwuliao` VALUES ('d7217525-15c3-4b38-874c-8420b312d615', '1c1186d2-1ec6-45d2-add1-f24c551851ee', 'CY-009', '大红袍', '6', '100.00', null, '条', null);
+INSERT INTO `rukudanwuliao` VALUES ('daf49e0d-92c0-4f85-8286-951182997d23', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAC-7010', 'BAC-7010', '6', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('dc020f44-57f5-4ad3-8c06-fe087fa084d6', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'SXT-002', '嵌入式摄像头', '5', '50.00', null, '台', null);
+INSERT INTO `rukudanwuliao` VALUES ('dc514b5e-eb7d-4826-ad15-6c8ea11ec9ca', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-001', '各款专车专用雨刮', '533', '40.00', null, '套', null);
+INSERT INTO `rukudanwuliao` VALUES ('dc97fdda-dddc-47d6-bf07-6ac6bfc2f163', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-014', '魔彩 中级镀膜套装', '1', '195.00', null, '套', null);
+INSERT INTO `rukudanwuliao` VALUES ('dfb156d6-783f-4bb3-9ad3-7ef316150260', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-020', '豪华型无骨雨刮20寸', '10', '20.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('e1e31692-2e1b-41c5-92ae-a30714b5f408', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'D090', '090汽车全能清洁膏', '30', '15.00', null, '盒', null);
+INSERT INTO `rukudanwuliao` VALUES ('e1eab790-d9b6-49a6-8e90-068ca3b38f65', 'f058e17b-f570-42e2-bca6-6c57a20a789d', 'LL-006', '朗龙长效抗菌型炭膏', '3', '56.00', null, '盒', null);
+INSERT INTO `rukudanwuliao` VALUES ('e31b9cbb-35fd-4636-80a9-924b2e9633dc', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-4037', 'BAP-4037', '10', '19.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('e42867f3-91db-4ede-9500-4d21025a4443', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BOV-111', 'BOV-111', '33', '13.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('e5585996-57d9-4475-9c75-8d4799d4d383', '1c9a3cd1-02a4-4c5d-8c70-9a4d29eb9b65', 'CS-003', '测试003', '1', '80.00', '230.00', '', '已下单');
+INSERT INTO `rukudanwuliao` VALUES ('e6d00313-7404-4520-ab36-01373356e290', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-018', '通用型无骨雨刮18寸', '10', '10.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('e9beb622-c07d-43cf-a0c1-f894234e9d77', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-021', '通用型无骨雨刮21寸', '10', '10.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('ec9c65c5-75c6-4d98-9dc9-331ae7c01173', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'QPTY-10W-40', '六系机油', '67', '152.00', null, '4L/支', null);
+INSERT INTO `rukudanwuliao` VALUES ('ece1114f-6b87-4399-95ca-71c7a7777132', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-7063', 'BAP-7063', '2', '20.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('efe28b37-147d-46a8-a4ce-610cc8af0fe8', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HSJDH-002', '后视镜导航多功能', '1', '849.00', null, '台', null);
+INSERT INTO `rukudanwuliao` VALUES ('f0405b54-64d5-47c9-85e9-4f26062bd0a2', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-026', '自动喷漆（银灰）', '1', '38.00', null, '', null);
+INSERT INTO `rukudanwuliao` VALUES ('f1b74ea4-ea9e-4f58-9132-c112880b808d', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHS-006', '铱金旋动力火花塞GR6X', '12', '38.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('f24881b0-41c5-492e-9c91-52cb4a150048', '43abcd59-9c3d-4899-9a51-65090a078d9c', '3M-001', '立体圈丝汽车脚垫（宝马系列）', '6', '700.00', null, '套', null);
+INSERT INTO `rukudanwuliao` VALUES ('f2d563d9-5367-4757-9fcf-dcd10607d8e1', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-010', '保赐利划痕祛除', '20', '15.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('f4480b9d-a473-4efa-9b08-352c50b227bc', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'KTG-001', '活性碳空调格', '153', '25.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('f6b21d1a-74df-41d5-ba99-961eb0f20899', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BAP-1075', 'BAP-1075', '21', '17.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('f712f084-8d6d-4e81-8356-650c463d2798', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-5209', 'BO-5209', '18', '30.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('f7f09550-3c04-4e6d-89f1-9adab663938f', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-026', '豪华型无骨雨刮26寸', '10', '20.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('f99d80b0-26b7-4c11-933a-70954ce9b407', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-305', 'BO-305', '11', '11.00', null, '个', null);
+INSERT INTO `rukudanwuliao` VALUES ('facb07b7-4e81-47ce-a4e4-9898c2721df6', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'HHYG-017', '豪华型无骨雨刮17寸', '10', '20.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('fb694758-8857-4128-8e73-cd19665f6635', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BCL-013', '魔彩 高级镀膜套装', '3', '295.00', null, '套', null);
+INSERT INTO `rukudanwuliao` VALUES ('fdd76abd-fe5b-485f-b2be-e919e2909fce', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'YG-020', '通用型无骨雨刮20寸', '10', '10.00', null, '支', null);
+INSERT INTO `rukudanwuliao` VALUES ('fec929d6-9df8-4199-8c21-08e95dc3cd10', '3f337c86-c8eb-46cd-aed1-f67c86280c76', 'BO-5206', 'BO-5206', '3', '11.00', null, '个', null);
 
 -- ----------------------------
 -- Table structure for `serviceitem`
@@ -10448,7 +10544,7 @@ CREATE TABLE `serviceitem` (
   `itemName` varchar(50) NOT NULL,
   `itemDesc` varchar(100) DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of serviceitem
@@ -10475,7 +10571,7 @@ CREATE TABLE `shop` (
   `shopLogo` varchar(20) DEFAULT NULL COMMENT '机构LOGO',
   `shopAddr` varchar(100) DEFAULT NULL COMMENT '机构地址',
   `shopDesc` text COMMENT '机构描述',
-  `shopTel` varchar(20) DEFAULT NULL COMMENT '机构电话',
+  `shopTel` varchar(40) DEFAULT NULL COMMENT '机构电话',
   `shopFax` varchar(20) DEFAULT NULL COMMENT '机构传真',
   `expirydate` varchar(40) DEFAULT '2016-12-30' COMMENT '系统使用到期时间',
   `complaintCall` varchar(40) DEFAULT NULL COMMENT '投诉电话',
@@ -10502,7 +10598,7 @@ CREATE TABLE `shopserviceitem` (
   `shopCode` varchar(10) NOT NULL,
   `serviceItemCode` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of shopserviceitem
@@ -10613,9 +10709,9 @@ CREATE TABLE `taokaitem` (
   `txtXiangMuName` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '套卡项目名称',
   `txtTotalTimes` int(11) DEFAULT NULL COMMENT '服务次数',
   PRIMARY KEY (`txtGuid`),
-  KEY `txtTaoKaSortGuid` (`txtTaoKaSortGuid`) USING BTREE,
+  KEY `txtTaoKaSortGuid` (`txtTaoKaSortGuid`),
   CONSTRAINT `taokaitem_ibfk_1` FOREIGN KEY (`txtTaoKaSortGuid`) REFERENCES `taokasort` (`txtGuid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of taokaitem
@@ -10652,7 +10748,7 @@ CREATE TABLE `taokasort` (
   `txtTaoKaPrice` int(11) DEFAULT NULL COMMENT '套卡价格',
   `txtShopCode` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '所属店铺编码',
   PRIMARY KEY (`txtGuid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of taokasort
@@ -10928,7 +11024,7 @@ CREATE TABLE `zhangtao` (
 -- View structure for `v_caigouwuliao`
 -- ----------------------------
 DROP VIEW IF EXISTS `v_caigouwuliao`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`%` SQL SECURITY DEFINER VIEW `v_caigouwuliao` AS select `rukudan`.`txtShopCode` AS `txtShopCode`,`rukudan`.`txtBillNo` AS `txtBillNo`,`rukudan`.`txtRuKuDate` AS `txtRuKuDate`,`rukudan`.`txtSuppName` AS `txtSuppName`,`rukudan`.`txtJingShouRen` AS `txtJingShouRen`,`rukudan`.`ddlRuKuSort` AS `ddlRuKuSort`,`rukudan`.`txtStatus` AS `txtStatus`,`rukudanwuliao`.`txtPrice` AS `txtPrice`,`rukudanwuliao`.`txtQty` AS `txtQty`,`rukudanwuliao`.`txtWuLiaoName` AS `txtWuLiaoName`,`rukudanwuliao`.`txtWuLiaoCode` AS `txtWuLiaoCode`,`rukudanwuliao`.`txtRuKuDanGuid` AS `txtRuKuDanGuid`,`rukudanwuliao`.`txtWuLiaoGuid` AS `txtWuLiaoGuid`,`rukudan`.`txtShenHeShiJian` AS `txtShenHeShiJian`,`rukudan`.`txtShenHeRen` AS `txtShenHeRen`,`rukudanwuliao`.`ddlStatus` AS `ddlStatus`,`rukudanwuliao`.`txtRemark` AS `txtRemark` from (`rukudan` join `rukudanwuliao` on((`rukudan`.`txtGuid` = `rukudanwuliao`.`txtRuKuDanGuid`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`%` SQL SECURITY DEFINER VIEW `v_caigouwuliao` AS select `rukudan`.`txtShopCode` AS `txtShopCode`,`rukudan`.`txtBillNo` AS `txtBillNo`,`rukudan`.`txtRuKuDate` AS `txtRuKuDate`,`rukudan`.`txtSuppName` AS `txtSuppName`,`rukudan`.`txtJingShouRen` AS `txtJingShouRen`,`rukudan`.`ddlRuKuSort` AS `ddlRuKuSort`,`rukudan`.`txtStatus` AS `txtStatus`,`rukudanwuliao`.`txtPrice` AS `txtPrice`,`rukudanwuliao`.`txtSalePrice` AS `txtSalePrice`,`rukudanwuliao`.`txtQty` AS `txtQty`,`rukudanwuliao`.`txtWuLiaoName` AS `txtWuLiaoName`,`rukudanwuliao`.`txtWuLiaoCode` AS `txtWuLiaoCode`,`rukudanwuliao`.`txtRuKuDanGuid` AS `txtRuKuDanGuid`,`rukudanwuliao`.`txtWuLiaoGuid` AS `txtWuLiaoGuid`,`rukudan`.`txtShenHeShiJian` AS `txtShenHeShiJian`,`rukudan`.`txtShenHeRen` AS `txtShenHeRen`,`rukudanwuliao`.`ddlStatus` AS `ddlStatus`,`rukudanwuliao`.`txtRemark` AS `txtRemark` from (`rukudan` join `rukudanwuliao` on((`rukudan`.`txtGuid` = `rukudanwuliao`.`txtRuKuDanGuid`))) ;
 
 -- ----------------------------
 -- View structure for `v_carmodel`
@@ -10937,10 +11033,16 @@ DROP VIEW IF EXISTS `v_carmodel`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`%` SQL SECURITY DEFINER VIEW `v_carmodel` AS select `carmodel2`.`modelId` AS `modelId`,`carmodel2`.`modelName` AS `modelName`,`carbrand2`.`brandId` AS `brandId`,`carbrand2`.`brandName` AS `brandName`,`carbrand2`.`brandLogo` AS `brandLogo`,`carmodel2`.`id` AS `modelCode`,`carbrand2`.`id` AS `brandCode` from (`carmodel2` join `carbrand2`) where (`carmodel2`.`brandId` = `carbrand2`.`brandId`) ;
 
 -- ----------------------------
+-- View structure for `v_customerreservation`
+-- ----------------------------
+DROP VIEW IF EXISTS `v_customerreservation`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`%` SQL SECURITY DEFINER VIEW `v_customerreservation` AS select `t1`.`txtReserveGuid` AS `txtReserveGuid`,`t1`.`txtCheLiangId` AS `txtCheLiangId`,`t1`.`txtTicketInfo` AS `txtTicketInfo`,`t1`.`txtReserveDate` AS `txtReserveDate`,`t1`.`txtReserveShop` AS `txtReserveShop`,`t1`.`txtWeiXinId` AS `txtWeiXinId`,`t1`.`txtCallAddr` AS `txtCallAddr`,`t1`.`txtCustomerServiceName` AS `txtCustomerServiceName`,`t1`.`txtRemarks` AS `txtRemarks`,`t2`.`txtCheZhuName` AS `txtCheZhuName`,`t2`.`txtLianXiRenTel` AS `txtLianXiRenTel`,`t2`.`ddlCheLiangCheXi` AS `ddlCheLiangCheXi`,`t2`.`ddlCheLiangNianFen` AS `ddlCheLiangNianFen`,`t2`.`ddlCheLiangPaiLiang` AS `ddlCheLiangPaiLiang`,`t2`.`txtCheLiangChePaiHao` AS `txtCheLiangChePaiHao` from (`customerreservation` `t1` left join `v_kehu_cheliang` `t2` on((`t2`.`txtCheLiangId` = `t1`.`txtCheLiangId`))) ;
+
+-- ----------------------------
 -- View structure for `v_kehu_cheliang`
 -- ----------------------------
 DROP VIEW IF EXISTS `v_kehu_cheliang`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`%` SQL SECURITY DEFINER VIEW `v_kehu_cheliang` AS select `customerinfo`.`txtCustId` AS `txtCustId`,`customerinfo`.`txtCheZhuName` AS `txtCheZhuName`,`customerinfo`.`txtCheZhuTel` AS `txtCheZhuTel`,`customerinfo`.`txtLianXiRenName` AS `txtLianXiRenName`,`customerinfo`.`txtLianXiRenTel` AS `txtLianXiRenTel`,`customerinfo`.`txtLianXiRenAdd` AS `txtLianXiRenAdd`,`customerinfo`.`txtHuiYuanJiFen` AS `txtHuiYuanJiFen`,`customerinfo`.`txtGongShiZheKou` AS `txtGongShiZheKou`,`customerinfo`.`txtCaiLiaoZheKou` AS `txtCaiLiaoZheKou`,`customerinfo`.`txtHuiYuanDengJi` AS `txtHuiYuanDengJi`,`customerinfo`.`txtCheZhuJiaZhaoDate` AS `txtCheZhuJiaZhaoDate`,`chelianginfo`.`txtCheLiangId` AS `txtCheLiangId`,`chelianginfo`.`txtCheLiangChePaiHao` AS `txtCheLiangChePaiHao`,`chelianginfo`.`ddlCheLiangZhiZaoShang` AS `ddlCheLiangZhiZaoShang`,`chelianginfo`.`ddlCheLiangCheXi` AS `ddlCheLiangCheXi`,`chelianginfo`.`txtCheLiangCheXingDaiMa` AS `txtCheLiangCheXingDaiMa`,`chelianginfo`.`txtCheLiangCheJiaHao` AS `txtCheLiangCheJiaHao`,`chelianginfo`.`txtCheLiangFaDongJiHao` AS `txtCheLiangFaDongJiHao`,`customerinfo`.`ddlCustSort` AS `ddlCustSort`,`chelianginfo`.`txtCheLiangDengJiRiQi` AS `txtCheLiangDengJiRiQi`,`chelianginfo`.`txtCheLiangNianShenDaoQiRi` AS `txtCheLiangNianShenDaoQiRi`,`chelianginfo`.`txtCheLiangBaoXianDaoQiRi` AS `txtCheLiangBaoXianDaoQiRi`,`chelianginfo`.`ddlChengBaoGongSi` AS `ddlChengBaoGongSi`,`customerinfo`.`ddlDianPu` AS `ddlDianPu` from (`customerinfo` left join `chelianginfo` on((`customerinfo`.`txtCustId` = `chelianginfo`.`txtCustId`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`%` SQL SECURITY DEFINER VIEW `v_kehu_cheliang` AS select `customerinfo`.`txtCustId` AS `txtCustId`,`customerinfo`.`txtCheZhuName` AS `txtCheZhuName`,`customerinfo`.`txtCheZhuTel` AS `txtCheZhuTel`,`customerinfo`.`txtLianXiRenName` AS `txtLianXiRenName`,`customerinfo`.`txtLianXiRenTel` AS `txtLianXiRenTel`,`customerinfo`.`txtLianXiRenAdd` AS `txtLianXiRenAdd`,`customerinfo`.`txtHuiYuanJiFen` AS `txtHuiYuanJiFen`,`customerinfo`.`txtGongShiZheKou` AS `txtGongShiZheKou`,`customerinfo`.`txtCaiLiaoZheKou` AS `txtCaiLiaoZheKou`,`customerinfo`.`txtHuiYuanDengJi` AS `txtHuiYuanDengJi`,`customerinfo`.`txtCheZhuJiaZhaoDate` AS `txtCheZhuJiaZhaoDate`,`chelianginfo`.`txtCheLiangId` AS `txtCheLiangId`,`chelianginfo`.`txtCheLiangChePaiHao` AS `txtCheLiangChePaiHao`,`chelianginfo`.`ddlCheLiangZhiZaoShang` AS `ddlCheLiangZhiZaoShang`,`chelianginfo`.`ddlCheLiangCheXi` AS `ddlCheLiangCheXi`,`chelianginfo`.`txtCheLiangCheXingDaiMa` AS `txtCheLiangCheXingDaiMa`,`chelianginfo`.`txtCheLiangCheJiaHao` AS `txtCheLiangCheJiaHao`,`chelianginfo`.`txtCheLiangFaDongJiHao` AS `txtCheLiangFaDongJiHao`,`customerinfo`.`ddlCustSort` AS `ddlCustSort`,`chelianginfo`.`txtCheLiangDengJiRiQi` AS `txtCheLiangDengJiRiQi`,`chelianginfo`.`txtCheLiangNianShenDaoQiRi` AS `txtCheLiangNianShenDaoQiRi`,`chelianginfo`.`txtCheLiangBaoXianDaoQiRi` AS `txtCheLiangBaoXianDaoQiRi`,`chelianginfo`.`ddlChengBaoGongSi` AS `ddlChengBaoGongSi`,`customerinfo`.`ddlDianPu` AS `ddlDianPu`,`chelianginfo`.`ddlCheLiangNianFen` AS `ddlCheLiangNianFen`,`chelianginfo`.`ddlCheLiangPaiLiang` AS `ddlCheLiangPaiLiang` from (`customerinfo` left join `chelianginfo` on((`customerinfo`.`txtCustId` = `chelianginfo`.`txtCustId`))) ;
 
 -- ----------------------------
 -- View structure for `v_renbao_weekly_report`

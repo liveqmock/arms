@@ -114,6 +114,15 @@
 										},
 										children : [
 												{
+													name : "客户预约",
+													font : {
+														'font-style' : '微软雅黑'
+													},
+													url : "",
+													target : "_blank",
+													click : "mdfMenu('6aebe08f-9fff-4492-8103-a20712348345','客户预约','../saleAfterManage/customerReservationManage.action');"
+												},
+												{
 													name : "客户回访",
 													font : {
 														'font-style' : '微软雅黑'
