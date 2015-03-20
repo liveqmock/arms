@@ -391,4 +391,10 @@ public class GongDanServiceImpl implements GongDanService {
 
 		return isFree;
 	}
+
+	@Override
+	public List<GongDanCheLiangJianCe> getGongDanCheLiangJianCeListByGongDanId(String txtGongDanId) {
+		return  gongDanDao
+				.getGongDanCheLiangJianCeListByGongDanId(txtGongDanId);
+	}
 }

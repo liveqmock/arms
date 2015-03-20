@@ -211,7 +211,16 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('7acf3c55-3939-41ba-s135-3a1dfa035c88','套卡管理','../webSetup/taoKaManage.action');"
-												} ],
+												} ,
+												{
+													name : "检查项目",
+													font : {
+														'font-style' : '微软雅黑'
+													},
+													url : "",
+													target : "_blank",
+													click : "mdfMenu('7acf3c55-3939-41ba-s135-3a1dfa035c71','检查项目管理','../webSetup/jianChaXiangMuManage.action');"
+												}],
 										url : "",
 										target : "_blank"
 									},
@@ -400,6 +409,10 @@
 	
 	function gongDanManage(){
 		mdfMenu('e3f0fe70-9e54-4fe5-9fbc-a0004af38ab5','工单管理','../saleAfterManage/saleAfterGongDanManage.action');
+	}
+	
+	function reservationManage(){
+		mdfMenu('6aebe08f-9fff-4492-8103-a20712348345','客户预约','../saleAfterManage/customerReservationManage.action');
 	}
 </script>
 

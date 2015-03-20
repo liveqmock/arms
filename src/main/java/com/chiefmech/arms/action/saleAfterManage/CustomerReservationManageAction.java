@@ -2,6 +2,9 @@ package com.chiefmech.arms.action.saleAfterManage;
 
 import javax.annotation.Resource;
 
+import net.sf.json.JSONObject;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -11,8 +14,10 @@ import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.action.BaseActionSupport;
 import com.chiefmech.arms.common.util.IDGen;
+import com.chiefmech.arms.entity.CheLiangInfo;
 import com.chiefmech.arms.entity.query.CustomerReservationSearchBean;
 import com.chiefmech.arms.entity.view.VCustomerReservation;
+import com.chiefmech.arms.service.CustomerInfoService;
 import com.chiefmech.arms.service.CustomerReservationService;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -26,6 +31,8 @@ public class CustomerReservationManageAction extends BaseActionSupport
 			ModelDriven<VCustomerReservation> {
 	@Resource()
 	private CustomerReservationService customerReservationService;
+	@Resource()
+	private CustomerInfoService customerInfoService;
 
 	private VCustomerReservation item = new VCustomerReservation();
 	private String txtReserveDateBegin;
@@ -35,6 +42,19 @@ public class CustomerReservationManageAction extends BaseActionSupport
 
 	@Action(value = "customerReservationManage", results = {@Result(name = "input", location = "customerReservationManage.jsp")})
 	public String customerReservationManage() {
+		return INPUT;
+	}
+
+	@Action(value = "customerReservationInfo", results = {@Result(name = "input", location = "customerReservationInfo.jsp")})
+	public String customerReservationInfo() {
+		if (StringUtils.isNotBlank(item.getTxtCheLiangId())) {
+			CheLiangInfo cheLiangInfo = customerInfoService
+					.queryCheLiangInfoByCheLiangId(item.getTxtCheLiangId());
+			item.setTxtCheLiangChePaiHao(cheLiangInfo.getTxtCheLiangChePaiHao());
+		} else if (StringUtils.isNotBlank(item.getTxtReserveGuid())) {
+			item = customerReservationService.findItemById(item
+					.getTxtReserveGuid());
+		}
 		return INPUT;
 	}
 
@@ -53,7 +73,7 @@ public class CustomerReservationManageAction extends BaseActionSupport
 
 	@Action(value = "isChePaiHaoExist")
 	public void isChePaiHaoExist() {
-		String chePaiHao = item.getTxtCheLiangChePaiHao();
+		String chePaiHao = item.getTxtCheLiangChePaiHao().toUpperCase().trim();
 
 		String jsonStr = customerReservationService.isChePaiHaoExist(chePaiHao);
 
@@ -114,6 +134,10 @@ public class CustomerReservationManageAction extends BaseActionSupport
 	@Override
 	public VCustomerReservation getModel() {
 		return item;
+	}
+
+	public String getJsonData() {
+		return JSONObject.fromObject(item).toString();
 	}
 
 }

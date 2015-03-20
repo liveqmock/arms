@@ -142,7 +142,7 @@ public interface GongDanDao {
 	public List<GongDanCheLiangJianCe> getGongDanCheLiangJianCeListByGongDanId(
 			String txtGongDanId);
 
-	@Insert("insert into gongdanjiance(txtJianceGuid,txtGongDanGuid,txtXuHao,txtNeiRong,txtZhuangTai,txtRemark) values(#{txtJianceGuid},#{txtGongDanGuid},#{txtXuHao},#{txtNeiRong},#{txtZhuangTai},#{txtRemark})")
+	@Insert("insert into gongdanjiance(txtJianceGuid,txtGongDanGuid,txtXuHao,txtNeiRong,txtZhuangTai,txtRemark,txtJianChaXiangMuRemark) values(#{txtJianceGuid},#{txtGongDanGuid},#{txtXuHao},#{txtNeiRong},#{txtZhuangTai},#{txtRemark},#{txtJianChaXiangMuRemark})")
 	public int insertCheLiangJianCe(GongDanCheLiangJianCe item);
 
 	@Update("update gongdanjiance set txtZhuangTai=#{txtZhuangTai},txtRemark=#{txtRemark} where txtJianceGuid=#{txtJianceGuid}")

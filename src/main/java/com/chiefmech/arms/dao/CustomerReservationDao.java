@@ -36,4 +36,7 @@ public interface CustomerReservationDao {
 
 	@Select("select * from v_kehu_cheliang where txtCheLiangChePaiHao=#{txtCheLiangChePaiHao}")
 	public List<VKeHuCheLiang> getVKeHuCheLiangList(String txtCheLiangChePaiHao);
+
+	@Select("select * from v_customerreservation where txtReserveGuid=#{txtReserveGuid}")
+	public VCustomerReservation findItemById(String txtReserveGuid);
 }

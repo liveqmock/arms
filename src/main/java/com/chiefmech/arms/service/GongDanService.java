@@ -68,7 +68,9 @@ public interface GongDanService {
 	public String queryZhuXiuRen(String weiXiuBanZu);
 
 	public String getGongDanCheLiangJianCeEasyUiJSonByGongDanId(
-			String saleAfterWeiXiuGuid);
+	String saleAfterWeiXiuGuid);
+
+	public List<GongDanCheLiangJianCe> getGongDanCheLiangJianCeListByGongDanId(String txtGongDanId);
 
 	public int insertCheLiangJianCe(GongDanCheLiangJianCe item);
 

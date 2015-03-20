@@ -156,15 +156,11 @@
 			var thisGuid = $('#mydg').datagrid('getRows')[index]['txtGongDanId'];
 			if (thisGuid != "" && thisGuid != undefined) {
 				<s:if test="actionName=='saleAfterGongDanManage'">
-				var url = 'saleAfterIndex.action?saleAfterWeiXiuGuid=' + thisGuid + '&d=' + new Date();
-				var features = 'height=825, width=1200, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';
+					var url = 'saleAfterIndex.action?saleAfterWeiXiuGuid=' + thisGuid + '&d=' + new Date();
 				</s:if>
 				<s:elseif test="actionName=='clientReviewManage'">
-				var url = 'weiXiuLiShiDetail.action?saleAfterWeiXiuGuid=' + thisGuid + '&d=' + new Date();
-				var features = 'height=900, width=990, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';
+					var url = 'weiXiuLiShiDetail.action?saleAfterWeiXiuGuid=' + thisGuid + '&d=' + new Date();
 				</s:elseif>
-				//z = window.open(url, '_blank', features); //弹出窗口
-				//z.focus();
 				
 				window.open(url);	//tab页
 			}

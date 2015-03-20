@@ -94,15 +94,26 @@ td {
 <script src="../js/frame/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
 <script language="javascript" type="text/javascript">
+var saleAfterGuid = '<s:property value="saleAfterWeiXiuGuid" />';
 	function show() {
 		window.print();
 	}
+	function showCheLiangXiangMu(){			
+		var url = '../saleAfterManage/JianCePrint.action?saleAfterWeiXiuGuid='
+				+ saleAfterGuid + '&d=' + new Date();
+		var name = '车辆检测项目打印';
+		var features = 'height=900, width=730, top=80, left=900, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';
+		
+		z = window.open(url, name, features);
+		z.focus();
+}
 </script>
 <body>
 	<table id="tbPrint" border="0" class="Noprint">
 		<tr>
 			<td><s:if test="gongDanStatus in {'费用结算','交车'}">
 					<input type="button" value="打印结算单" onClick="javascript:show();" />
+					<input type="button" value="查看车辆检测项目" onClick="javascript:showCheLiangXiangMu();" />
 				</s:if>
 				<s:else>结算单预览（只能在结算或交车后打印结算单）</s:else></td>
 		</tr>
@@ -133,7 +144,7 @@ td {
 								value='gongDan.txtFuWuGuWen' /></td>
 						<td width="160px"
 							style="border: 2px solid black; padding-left: 3px; font-size: 14px;">客户确认:</td>
-						<td width="200px"></td>
+						<td width="200px"></td>   
 						<td height="60px" style="font-size: 12px;">日期:&nbsp;<span
 							name="time"><s:property value='gongDan.txtRuChangDate' />
 						</span> <br />工单号:&nbsp;<s:property value='gongDan.txtBillNo' /> <br />车牌号码:&nbsp;<s:property
@@ -257,7 +268,7 @@ td {
 		<tr>
 			<td style="height: 5px;"></td>
 		</tr>
-		<tr id="jiance">
+		  <%-- <tr id="jiance">
 			<td>
 				<!--维修物料 start-->
 
@@ -292,7 +303,7 @@ td {
 								</s:iterator>
 				</table> <!--维修物料 end-->
 			</td>
-		</tr>
+		</tr>  --%> 
 		<tr>
 			<td style="height: 5px;"></td>
 		</tr>
@@ -439,7 +450,7 @@ td {
 					</tr>
 				</table> <!--备注信息 end-->
 			</td>
-		</tr>
+		</tr>	
 	</table>
 </body>
 </html>

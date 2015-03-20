@@ -8,6 +8,7 @@ public class GongDanCheLiangJianCe {
 	private String txtNeiRong;
 	private String txtZhuangTai;
 	private String txtRemark;
+	private String txtJianChaXiangMuRemark;
 
 	public String getTxtJianceGuid() {
 		return txtJianceGuid;
@@ -45,5 +46,12 @@ public class GongDanCheLiangJianCe {
 	public void setTxtRemark(String txtRemark) {
 		this.txtRemark = txtRemark;
 	}
+	public String getTxtJianChaXiangMuRemark() {
+		return txtJianChaXiangMuRemark;
+	}
+	public void setTxtJianChaXiangMuRemark(String txtJianChaXiangMuRemark) {
+		this.txtJianChaXiangMuRemark = txtJianChaXiangMuRemark;
+	}
 
+	
 }

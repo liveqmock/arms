@@ -26,11 +26,13 @@ import com.chiefmech.arms.entity.GongDanCheLiangJianCe;
 import com.chiefmech.arms.entity.GongDanJieSuan;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
+import com.chiefmech.arms.entity.JianChaXiangMu;
 import com.chiefmech.arms.entity.KuCun;
 import com.chiefmech.arms.entity.view.VCaiGouWuLiao;
 import com.chiefmech.arms.entity.view.VKeHuCheLiang;
 import com.chiefmech.arms.service.CustomerInfoService;
 import com.chiefmech.arms.service.GongDanService;
+import com.chiefmech.arms.service.JianChaXiangMuService;
 import com.opensymphony.xwork2.ModelDriven;
 
 @SuppressWarnings("serial")
@@ -47,6 +49,8 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 	private GongDanService gongDanService;
 	@Resource()
 	private CustomerInfoService customerInfoService;
+	@Resource()
+	private JianChaXiangMuService jianChaXiangMuService;
 
 	private String saleAfterWeiXiuGuid;
 	private String cheLiangId;
@@ -59,6 +63,7 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 	private VKeHuCheLiang customer;
 	private List<GongDan> gongDanLst;
 	private List<GongDanWeiXiuXiangMu> gongDanXiangMuLst;
+	private List<JianChaXiangMu> jianChaXiangMuList;
 	private List<GongDanCheLiangJianCe> gongDanCheLiangJianCeLst;
 	private List<GongDanWeiXiuWuLiao> gongDanWuLiaoLst;
 	private List<CustomerTaoKaItem> customerTaoKaItemLst;
@@ -136,6 +141,8 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 	@Action(value = "weiXiuLiShiDetail", results = {@Result(name = "input", location = "saleAfter_WeiXiuJieSuanPrint.jsp")})
 	public String weiXiuLiShiDetail() {
 		gongDan = gongDanService.findGongDanByWeiXiuGuid(saleAfterWeiXiuGuid);
+		gongDanCheLiangJianCeLst = gongDanService
+				.getGongDanCheLiangJianCeListByGongDanId(saleAfterWeiXiuGuid);
 		jieSuanInfo = gongDanService.getGongDanJieSuanXinXi(gongDan);
 		gongDanXiangMuLst = gongDanService
 				.findGongDanXiangMuLstByWeiXiuGuid(saleAfterWeiXiuGuid);
@@ -152,6 +159,14 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 		return INPUT;
 	}
 
+	@Action(value="JianCePrint",results={@Result(name="input",location="cheLiangJianCePrint.jsp")})
+	public String JianCe(){
+		gongDan = gongDanService.findGongDanByWeiXiuGuid(saleAfterWeiXiuGuid);
+		gongDanCheLiangJianCeLst = gongDanService
+				.getGongDanCheLiangJianCeListByGongDanId(saleAfterWeiXiuGuid);
+		return INPUT;
+	}
+	
 	@Action(value = "saveWeiXiuJieDaiInfo")
 	public void saveWeiXiuJieDaiInfo() {
 		String statusCode = "failed";
@@ -174,16 +189,17 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 			// String[] jianCeLst = jianCeLstPuTong;
 
 			// 张经理最新的建议
-			String[] jianCeLst = jianCeLstRenBao;
-			int size = jianCeLst.length;
+		//	String[] jianCeLst = jianCeLstRenBao;
+			jianChaXiangMuList=jianChaXiangMuService.selectItem();
+			int size = jianChaXiangMuList.size();
 			for (int i = 0; i < size; i++) {
-				String jianCeNeiRong = jianCeLst[i];
 				GongDanCheLiangJianCe item = new GongDanCheLiangJianCe();
 				item.setTxtJianceGuid(IDGen.getUUID());
 				item.setTxtGongDanGuid(gongDan.getTxtGongDanId());
-				item.setTxtNeiRong(jianCeNeiRong);
+				item.setTxtNeiRong(jianChaXiangMuList.get(i).getTxtJianChaName());
 				item.setTxtZhuangTai("未检测");
 				item.setTxtXuHao(i);
+				item.setTxtJianChaXiangMuRemark(jianChaXiangMuList.get(i).getTxtXiangMuRemark());
 
 				gongDanService.insertCheLiangJianCe(item);
 			}
@@ -474,6 +490,10 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 
 	public List<CustomerTaoKaItem> getCustomerTaoKaItemLst() {
 		return customerTaoKaItemLst;
+	}
+
+	public List<JianChaXiangMu> getJianChaXiangMuList() {
+		return jianChaXiangMuList;
 	}
 
 }

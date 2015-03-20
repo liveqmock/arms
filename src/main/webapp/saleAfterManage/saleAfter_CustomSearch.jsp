@@ -38,10 +38,6 @@
 					<td><select name="queryField" id="queryField">
 							<option selected="selected" value="txtCheLiangChePaiHao">按车牌号</option>
 							<option value="txtCheLiangCheJiaHao">按车架号</option>
-							<option value="txtLianXiRenName">按联系人</option>
-							<option value="txtLianXiRenTel">联系人电话</option>
-							<option value="txtCheZhuName">按车主名</option>
-
 					</select></td>
 					<td style="padding-left: 5px"><input class="easyui-textbox" name="queryValue"
 						type="text" maxlength="20" id="queryValue" />&nbsp;&nbsp;
@@ -56,6 +52,8 @@
 						href="javascript:void(0)">维修接待</a> <a
 						onclick="gongDanManage();return false;" class="easyui-linkbutton"
 						href="javascript:void(0)">工单管理</a> <a
+						onclick="reservationManage();return false;" class="easyui-linkbutton"
+						href="javascript:void(0)">预约管理</a> <a
 						onclick="editCustomerInfo('');return false;"
 						class="easyui-linkbutton" href="javascript:void(0)">新增客户信息</a></td>
 
@@ -64,10 +62,9 @@
 			<!--数据列表 start-->
 			<div style="height: 3px"></div>
 			<table id="mydg" class="easyui-datagrid"
-				data-options="url:'customerSearch.action',pageList:[20,30,50,100],rownumbers:true,singleSelect:true, pagination:true,onDblClickRow:jieDaiDaoHang">
+				data-options="pageList:[20,30,50,100],rownumbers:true,singleSelect:true, pagination:true,onDblClickRow:jieDaiDaoHang">
 				<thead>
 					<tr>
-						<th width="20" data-options="field:'txtCustId',checkbox:true"></th>
 						<th width="100" data-options="field:'txtCheLiangChePaiHao'">车牌号码</th>
 						<th width="150" data-options="field:'ddlCheLiangCheXi'">车型</th>
 						<th width="150" data-options="field:'txtCheLiangCheXingDaiMa'">车辆型号</th>
@@ -158,6 +155,10 @@
 		
 		function gongDanManage(){
 			parent.gongDanManage();
+		}
+		
+		function reservationManage(){
+			parent.reservationManage();			
 		}
 	</script>
 

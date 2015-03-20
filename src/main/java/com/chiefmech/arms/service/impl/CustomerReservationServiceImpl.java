@@ -54,7 +54,18 @@ public class CustomerReservationServiceImpl
 	public String isChePaiHaoExist(String txtCheLiangChePaiHao) {
 		List<VKeHuCheLiang> lst = customerReservationDao
 				.getVKeHuCheLiangList(txtCheLiangChePaiHao);
-		String existStatus = lst.size() > 0 ? "yes" : "no";
-		return String.format("{\"existFlag\":\"%s\"}", existStatus);
+		String existStatus = "no";
+		String cheLiangId = "";
+		if (lst.size() > 0) {
+			existStatus = "yes";
+			cheLiangId = lst.get(0).getTxtCheLiangId();
+		}
+		return String.format("{\"existFlag\":\"%s\",\"cheLiangId\":\"%s\"}",
+				existStatus, cheLiangId);
+	}
+
+	@Override
+	public VCustomerReservation findItemById(String txtReserveGuid) {
+		return customerReservationDao.findItemById(txtReserveGuid);
 	}
 }

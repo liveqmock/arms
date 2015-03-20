@@ -19,7 +19,7 @@ public class CheZhuLianXiRenDaoSqlProvider {
 						item.getTxtCheLiangChePaiHao()));
 				this.addField(new Criteria(Action.LIKE, "ddlCheLiangCheXi",
 						item.getDdlCheLiangCheXi()));
-				this.addField(new Criteria(Action.LIKE, "txtCheLiangCheJiaHao",
+				this.addField(new Criteria(Action.STR_EQUAL, "txtCheLiangCheJiaHao",
 						item.getTxtCheLiangCheJiaHao()));
 				this.addField(new Criteria(Action.LIKE, "txtCheZhuName", item
 						.getTxtCheZhuName()));

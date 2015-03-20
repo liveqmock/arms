@@ -261,6 +261,7 @@ td {
 							data-options="align:'center',editor:{type:'radiobox',options:{defaultValue:'未检测',values:['未检测','正常','异常']}}">检测状态</th>
 						<th field="txtRemark" width="250"
 							data-options="editor:{type:'textbox'}">备注</th>
+						<th field="txtJianChaXiangMuRemark" width="950">检查项目说明</th>
 					</tr>
 				</thead>
 			</table>

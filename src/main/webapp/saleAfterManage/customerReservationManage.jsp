@@ -62,11 +62,11 @@ td {
                 <th width="100" data-options="field:'txtCheZhuName'">车主</th>
                 <th width="150" data-options="field:'txtLianXiRenTel'">联系电话</th>
                 <th width="150" data-options="field:'ddlCheLiangCheXi'">车型</th>
-                <th width="150" data-options="field:'ddlCheLiangNianFen'">车辆年份</th>
-                <th width="150" data-options="field:'ddlCheLiangPaiLiang'">排量</th>
+                <th width="100" data-options="field:'ddlCheLiangNianFen'">车辆年份</th>
+                <th width="60" data-options="field:'ddlCheLiangPaiLiang'">排量</th>
                 <th width="100" data-options="field:'txtCheLiangChePaiHao'">车牌号</th>
-                <th width="150" data-options="field:'txtTicketInfo'">服务券信息</th>
-                <th width="150" data-options="field:'txtReserveDate'">预约时间</th>
+                <th width="130" data-options="field:'txtTicketInfo'">服务券信息</th>
+                <th width="180" data-options="field:'txtReserveDate'">预约时间</th>
                 <th width="150" data-options="field:'txtReserveShop'">预约店铺</th>
                 <th width="150" data-options="field:'txtWeiXinId'">微信号</th>
                 <th width="150" data-options="field:'txtCallAddr'">来电地址</th>
@@ -81,80 +81,29 @@ td {
 		<a href="javascript:void(0)" class="easyui-linkbutton"
 			iconCls="icon-add" plain="true" onclick="addItem()">新增预约</a>
 	</div>
-	<div id="mydlg" class="easyui-dialog" closed="true"
-		style="width: 400px; height: 400px; padding: 10px 20px;">
-		<form name="fm" method="post" id="fm">
-			<table border="0">
-				<tr>
-					<td align="right"><span class="requireSpan">*&nbsp;</span>车牌号码：</td>
-					<td><input class="easyui-textbox"
-						data-options="required:true"
-						name="txtCheLiangChePaiHao" type="text" maxlength="60" id="txtCheLiangChePaiHao"
-						 /></td>
-				</tr>
-				<tr>
-					<td align="right"><span class="requireSpan">*&nbsp;</span>服务券信息：</td>
-					<td><input class="easyui-textbox"
-						data-options="required:true"
-						name="txtTicketInfo" type="text" maxlength="60" id="txtTicketInfo"
-						 /></td>
-				</tr>
-				<tr>
-					<td align="right"><span class="requireSpan">*&nbsp;</span>预约时间：</td>
-					<td><input class="easyui-datetimebox"
-						data-options="required:true"
-						name="txtReserveDate" type="text" maxlength="60" id="txtReserveDate"
-						 /></td>
-				</tr>
-				<tr>
-					<td align="right"><span class="requireSpan">*&nbsp;</span>预约店铺：</td>
-					<td><input name="txtReserveShop" id="txtReserveShop"
-								class="easyui-combobox"
-								data-options="editable:false,required:true,valueField:'code',textField:'name',method:'post',url:'<s:property value='basePath' />/data/shopOption.action'" /></td>
-				</tr>
-				<tr>
-					<td align="right">微信号：</td>
-					<td><input class="easyui-textbox"
-						name="txtWeiXinId" type="text" maxlength="60" id="txtWeiXinId"
-						 /></td>
-				</tr>
-				<tr>
-					<td align="right">来电地址：</td>
-					<td><input class="easyui-textbox"
-						name="txtCallAddr" type="text" maxlength="60" id="txtCallAddr"
-						 /></td>
-				</tr>
-				<tr>
-					<td align="right">备注：</td>
-					<td><input class="easyui-textbox"
-						name="txtRemarks" type="text" maxlength="60" id="txtRemarks"
-						/></td>
-				<tr>
-					<td colspan="8" align="center"><br /> <a
-						onclick="saveItem()" id="btnSave" class="easyui-linkbutton"
-						href="javascript:void(0)">保存</a>&nbsp;&nbsp;&nbsp;<a
-						onclick="javascript:$('#mydlg').dialog('close')" id="btnSave"
-						class="easyui-linkbutton" href="javascript:void(0)">取消</a></td>
-				</tr>
-			</table>
-		</form>
-	</div>
 	<script type="text/javascript">
-		var url;
 		function addItem() {
-			$('#mydlg').dialog('open').dialog('setTitle', '添加预约信息');
-			$('#fm').form('clear');
-			url = 'insertCustomerReservation.action';
-		}
+			openCustomerReserveDialog();
+		}	
 		function editItem(clickevent) {
 			var row = $('#mydg').datagrid('getEventTargetRow', clickevent);
-			if (row) {
-				$('#mydlg').dialog('open').dialog('setTitle', '修改预约信息');
-				$('#fm').form('load', row);
-				url = 'updateCustomerReservation.action?txtReserveGuid='
-						+ row.txtReserveGuid;
-			}
+			
+			openCustomerReserveDialog(row.txtReserveGuid);
 		}
+		
+		function openCustomerReserveDialog(txtReserveGuid) {
+			var sURL = "customerReservationInfo.action";
+			if(arguments.length == 1){
+				sURL += "?txtReserveGuid="	+ txtReserveGuid + "&d=" + new Date();
+			}else{
+				sURL += "?d=" + new Date();
+			}
+			var sFeatures = "dialogWidth:500px;dialogHeight:400px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
+			window.showModalDialog(sURL, window, sFeatures);
+			
+			doSearch();
+		}
+		
 		function deleteItem(clickevent) {
 			var row = $('#mydg').datagrid('getEventTargetRow', clickevent);
 			if (row) {
@@ -171,30 +120,6 @@ td {
 						}, 'json');
 					}
 				});
-			}
-		}
-		function saveItem() {
-			if($('#fm').form('validate')){
-				$.post('isChePaiHaoExist.action', {
-					"txtCheLiangChePaiHao" : $("#txtCheLiangChePaiHao").textbox("getValue")
-				}, function(status) {
-					if (status.existFlag == 'yes') {
-						$('#fm').form('submit', {
-							url : url,
-							success : function(result) {
-								var result = eval('(' + result + ')');
-								if (result.errorMsg) {
-									$.messager.alert('出错啦', result.errorMsg);
-								} else {
-									$('#mydlg').dialog('close'); // close the dialog
-									$('#mydg').datagrid('reload'); // reload data
-								}
-							}
-						});
-					} else {
-						$.messager.alert('提示', "车辆信息还不存在，请先添加客户及车辆信息");
-					}
-				}, 'json');
 			}
 		}
 

@@ -129,7 +129,7 @@
 				</tr><s:if test="cheLiangInfoLst.size>0">
                 <s:iterator value="cheLiangInfoLst" status="status">
 				<tr>
-					<td colspan="6">车辆<s:property value="#status.count"/>&nbsp;&nbsp;<a href="javascript:editItem('<s:property value='txtCheLiangId' />')">修改</a>&nbsp;&nbsp;<a href="javascript:deleteItem('<s:property value='txtCheLiangId' />')">删除</a></td>
+					<td colspan="6">车辆<s:property value="#status.count"/>&nbsp;&nbsp;<a href="javascript:editItem('<s:property value='txtCheLiangId' />')">修改</a>&nbsp;&nbsp;<a href="javascript:deleteItem('<s:property value='txtCheLiangId' />')">删除</a>&nbsp;&nbsp;<a href="javascript:newWeiXiuJieDai('<s:property value='txtCheLiangId' />')">维修接待</a>&nbsp;&nbsp;<a href="javascript:openCustomerReserveDialog('<s:property value='txtCheLiangId' />')">维修预约</a></td>
 				</tr>
 				<tr>
 					<td align="right">品牌：</td>
@@ -473,6 +473,21 @@
 				}
 			});
 		}
+		
+		function newWeiXiuJieDai(cheLiangId) {
+			window.open('../saleAfterManage/saleAfterIndex.action?cheLiangId='+ cheLiangId +'&d=' + new Date());
+            window.opener = null;
+            window.close();
+        } 	
+		
+		function openCustomerReserveDialog(cheLiangId) {			
+			var sURL = '../saleAfterManage/customerReservationInfo.action?txtCheLiangId='+ cheLiangId +'&d=' + new Date();
+			var sFeatures = "dialogWidth:600px;dialogHeight:400px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
+			window.showModalDialog(sURL, window, sFeatures);
+			
+			window.opener = null;
+            window.close();
+		}		
 		
 	</script>
 </body>
