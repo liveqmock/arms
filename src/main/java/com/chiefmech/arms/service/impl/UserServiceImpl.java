@@ -73,4 +73,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.isLoginNameExist(item);
 	}
 
+	@Override
+	public List<String> getUserPrivilegeLst(String userId) {
+		return userDao.getUserPrivilegeLst(userId);
+	}
+
 }

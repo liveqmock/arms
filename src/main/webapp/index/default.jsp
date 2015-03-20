@@ -50,6 +50,7 @@
 											'font-style' : '微软雅黑'
 										},
 										children : [
+											<s:if test="user.privilegeLst.contains('customSearch')">
 												{
 													name : "维修接待",
 													font : {
@@ -59,6 +60,8 @@
 													target : "_blank",
 													click : "mdfMenu('e729a493-1fe5-45f8-910c-060e7d4a4865','维修接待','../saleAfterManage/saleAfterCustomSearch.action');"
 												},
+											</s:if>
+											<s:if test="user.privilegeLst.contains('gongDanManage')">
 												{
 													name : "工单管理",
 													font : {
@@ -67,7 +70,8 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('e3f0fe70-9e54-4fe5-9fbc-a0004af38ab5','工单管理','../saleAfterManage/saleAfterGongDanManage.action');"
-												} ],
+												}
+											</s:if> ],
 										url : "",
 										target : "_blank"
 									},
@@ -77,6 +81,7 @@
 											'font-style' : '微软雅黑'
 										},
 										children : [
+											<s:if test="user.privilegeLst.contains('caiGouManage')">
 												{
 													name : "采购管理",
 													font : {
@@ -86,6 +91,8 @@
 													target : "_blank",
 													click : "mdfMenu('aef416a9-a829-4b9d-acb1-d31d4e2e1ef4','采购管理','../storeOtherManage/storeOtherInsertBillManage.action?action=updateCaiGou');"
 												},
+											</s:if>
+											<s:if test="user.privilegeLst.contains('kuCunManage')">
 												{
 													name : "库存管理",
 													font : {
@@ -95,6 +102,8 @@
 													target : "_blank",
 													click : "mdfMenu('6968c5ef-3eff-4242-ac88-b6d645d6efd9','库存管理','../storeOtherManage/kuCunManage.action?action=updateKuCun');"
 												},
+											</s:if>
+											<s:if test="user.privilegeLst.contains('kuCunOperLog')">
 												{
 													name : "库存日志",
 													font : {
@@ -103,7 +112,8 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('6968c5ef-3eff-4242-ac88-b6d645dsds4','库存日志','../storeOtherManage/kuCunOperLog.action');"
-												} ],
+												}
+											</s:if> ],
 										url : "",
 										target : "_blank"
 									},
@@ -113,6 +123,7 @@
 											'font-style' : '微软雅黑'
 										},
 										children : [
+											<s:if test="user.privilegeLst.contains('customerReservationManage')">
 												{
 													name : "客户预约",
 													font : {
@@ -122,6 +133,8 @@
 													target : "_blank",
 													click : "mdfMenu('6aebe08f-9fff-4492-8103-a20712348345','客户预约','../saleAfterManage/customerReservationManage.action');"
 												},
+											</s:if>
+											<s:if test="user.privilegeLst.contains('clientReviewManage')">
 												{
 													name : "客户回访",
 													font : {
@@ -131,6 +144,8 @@
 													target : "_blank",
 													click : "mdfMenu('6aebe08f-9fff-4492-885f-a20712348345','客户回访','../saleAfterManage/clientReviewManage.action');"
 												},
+											</s:if>	
+											<s:if test="user.privilegeLst.contains('taoKaOperLogManage')">
 												{
 													name : "套卡日志",
 													font : {
@@ -139,7 +154,8 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('6aebe08f-9fff-4425-885f-a20712348345','套卡日志','../customManage/taoKaOperLogManage.action');"
-												} ],
+												}
+											</s:if>	 ],
 										url : "",
 										target : "_blank"
 									},
@@ -149,6 +165,7 @@
 											'font-style' : '微软雅黑'
 										},
 										children : [
+											<s:if test="user.privilegeLst.contains('renBaoWeeklyReport')">
 												{
 													name : "人保清单",
 													font : {
@@ -157,7 +174,8 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('6123e08f-9fff-4492-885f-a20712348812','人保清单','../report/renBaoWeeklyReport.action');"
-												} ],
+												}
+											</s:if>	 ],
 										url : "",
 										target : "_blank"
 									},
@@ -167,6 +185,7 @@
 											'font-style' : '微软雅黑'
 										},
 										children : [
+											<s:if test="user.privilegeLst.contains('supplierManage')">
 												{
 													name : "供应商",
 													font : {
@@ -176,6 +195,8 @@
 													target : "_blank",
 													click : "mdfMenu('aeb72bd6-5aa7-4fba-a097-9b8f0ad2b81f','供应商管理','../webSetup/supplierManage.action');"
 												},
+											</s:if>	
+											<s:if test="user.privilegeLst.contains('carModelManage')">	
 												{
 													name : "品牌车型",
 													font : {
@@ -185,6 +206,8 @@
 													target : "_blank",
 													click : "mdfMenu('aeb72bd6-5aa7-4fba-a097-9b8f0ad2b8a3','品牌车型','../webSetup/carModel.action');"
 												},
+											</s:if>	
+											<s:if test="user.privilegeLst.contains('weiXiuXiangMuManage')">	
 												{
 													name : "维修项目",
 													font : {
@@ -194,6 +217,8 @@
 													target : "_blank",
 													click : "mdfMenu('7acf3c55-3939-41ba-b525-3a1dfa035ce9','维修项目','../webSetup/weiXiuXiangMuManage.action?action=addXiangMu');"
 												},
+											</s:if>	
+											<s:if test="user.privilegeLst.contains('weiXiuZhuManage')">	
 												{
 													name : "维修组",
 													font : {
@@ -203,6 +228,8 @@
 													target : "_blank",
 													click : "mdfMenu('7acf3c55-3939-41ba-b525-3a1dfa035c88','维修组','../webSetup/weiXiuZhuManage.action');"
 												},
+											</s:if>	
+											<s:if test="user.privilegeLst.contains('taoKaManage')">	
 												{
 													name : "套卡管理",
 													font : {
@@ -212,6 +239,8 @@
 													target : "_blank",
 													click : "mdfMenu('7acf3c55-3939-41ba-s135-3a1dfa035c88','套卡管理','../webSetup/taoKaManage.action');"
 												} ,
+											</s:if>	
+											<s:if test="user.privilegeLst.contains('jianChaXiangMuManage')">	
 												{
 													name : "检查项目",
 													font : {
@@ -220,7 +249,9 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('7acf3c55-3939-41ba-s135-3a1dfa035c71','检查项目管理','../webSetup/jianChaXiangMuManage.action');"
-												}],
+												}
+											</s:if>	
+											],
 										url : "",
 										target : "_blank"
 									},
@@ -230,6 +261,7 @@
 											'font-style' : '微软雅黑'
 										},
 										children : [
+										<s:if test="user.privilegeLst.contains('shopManage')">
 												{
 													name : "系统信息",
 													font : {
@@ -238,15 +270,9 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('6aebe08f-9fff-4492-883434-a20712348812','系统信息','../saleAfterDiscount/shopManage.action');"
-												},{
-													name : "用户权限",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('6aebe08f-9fff-4492-885f-a20712348812','用户权限','../saleAfterDiscount/groupManage.action');"
 												},
+										</s:if>	
+										<s:if test="user.privilegeLst.contains('userManage')">	
 												{
 													name : "用户管理",
 													font : {
@@ -255,7 +281,9 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('6aebe08f-9fff-4492-885f-a20712348899','用户管理','../saleAfterDiscount/userManage.action');"
-												} ],
+												}
+										</s:if>	
+										 ],
 										url : "",
 										target : "_blank"
 									} ],
@@ -264,7 +292,8 @@
 							click : "mdfMenu('00000000-0000-0000-0000-000000000001','系统菜单','');"
 						} ]);
 		buildLink();
-
+		
+	<s:if test="user.privilegeLst.contains('customSearch')">
 		$("#tabList")
 				.tabs(
 						'add',
@@ -273,6 +302,7 @@
 							content : "<iframe src='../saleAfterManage/saleAfterCustomSearch.action' class=\"tabDefault\"  style='width:100%;height:100%;' frameborder='0' ></iframe>",
 							closable : false
 						});
+	</s:if>
 
 	});
 

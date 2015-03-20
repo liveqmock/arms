@@ -36,26 +36,35 @@
 			<table border="0" cellpadding="0" cellspacing="0">
 				<tr>
 					<td><select name="queryField" id="queryField">
+                    		<s:if test="user.privilegeLst.contains('customerReservationManage')">
 							<option selected="selected" value="txtCheLiangChePaiHao">按车牌号</option>
+                             </s:if>
 							<option value="txtCheLiangCheJiaHao">按车架号</option>
 					</select></td>
 					<td style="padding-left: 5px"><input class="easyui-textbox" name="queryValue"
 						type="text" maxlength="20" id="queryValue" />&nbsp;&nbsp;
 					</td>
 					<td><a onclick="doSearch();return false;"
-						class="easyui-linkbutton" href="javascript:void(0)">查询</a> <a
-						onclick="showCustomerInfo();return false;"
-						class="easyui-linkbutton" href="javascript:void(0)">查看修改客户信息</a> <a
-						onclick="showWeiXiuLiShiList();return false;"
-						class="easyui-linkbutton" href="javascript:void(0)">维修历史</a> <a
-						onclick="jieDaiDaoHang();return false;" class="easyui-linkbutton"
-						href="javascript:void(0)">维修接待</a> <a
-						onclick="gongDanManage();return false;" class="easyui-linkbutton"
-						href="javascript:void(0)">工单管理</a> <a
-						onclick="reservationManage();return false;" class="easyui-linkbutton"
-						href="javascript:void(0)">预约管理</a> <a
-						onclick="editCustomerInfo('');return false;"
-						class="easyui-linkbutton" href="javascript:void(0)">新增客户信息</a></td>
+						class="easyui-linkbutton" href="javascript:void(0)">查询</a> 
+                        <s:if test="user.privilegeLst.contains('viewEditCustomerInfo')">
+                        <a onclick="showCustomerInfo();return false;" class="easyui-linkbutton" href="javascript:void(0)">查看修改客户信息</a>  
+                        </s:if>
+						<s:if test="user.privilegeLst.contains('showWeiXiuLiShiList')">
+                        <a onclick="showWeiXiuLiShiList();return false;" class="easyui-linkbutton" href="javascript:void(0)">维修历史</a> 
+                        </s:if>
+                        <s:if test="user.privilegeLst.contains('jieDaiDaoHang')">
+                        <a onclick="jieDaiDaoHang();return false;" class="easyui-linkbutton" href="javascript:void(0)">维修接待导航</a> 
+                        </s:if>
+						<s:if test="user.privilegeLst.contains('gongDanManage')">
+                        <a onclick="gongDanManage();return false;" class="easyui-linkbutton" href="javascript:void(0)">工单管理</a> 
+                        </s:if>
+						<s:if test="user.privilegeLst.contains('customerReservationManage')">
+                        <a onclick="reservationManage();return false;" class="easyui-linkbutton" href="javascript:void(0)">预约管理</a>  
+                        </s:if>
+						<s:if test="user.privilegeLst.contains('addNewCustomerInfo')">
+                         <a	onclick="editCustomerInfo('');return false;" class="easyui-linkbutton" href="javascript:void(0)">新增客户信息</a>
+                        </s:if>                         
+                    </td>
 
 				</tr>
 			</table>

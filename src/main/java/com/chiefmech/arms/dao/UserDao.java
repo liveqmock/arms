@@ -49,4 +49,7 @@ public interface UserDao {
 	@Select("select count(*) from users where loginName=#{loginName} and userId!=#{userId}")
 	public boolean isLoginNameExist(User item);
 
+	@Select("select t2.privilege from users t1, group_privileges t2 where t1.userId=#{userId} and t1.groupName=t2.groupName")
+	public List<String> getUserPrivilegeLst(String userId);
+
 }

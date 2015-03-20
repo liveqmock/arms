@@ -32,7 +32,7 @@ public interface CommonDataDao {
 	@Select("select txtXiangMuName name, txtXiangMuName code from gongdanxiangmu where txtGongDanGuid=#{txtGongDanGuid}")
 	List<OptionBean> getGongDanXiangMuOptionBean(String txtGongDanGuid);
 
-	@Select("select groupName name,groupName code from groups")
+	@Select("select distinct groupName name,groupName code from group_privileges")
 	List<OptionBean> getGroupNameOptionBean();
 
 	@Select("select distinct txtTaoKaName name,txtGuid code from taokasort where txtShopCode=#{txtShopCode}")

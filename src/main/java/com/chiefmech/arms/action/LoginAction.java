@@ -1,6 +1,7 @@
 package com.chiefmech.arms.action;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -35,7 +36,7 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 
 	@Action(value = "login", results = {
 			@Result(name = "success", type = "redirectAction", location = "index/default"),
-			@Result(name = "input", location = "login.jsp")})
+			@Result(name = "input", location = "login.jsp") })
 	public String login() {
 		this.clearFieldErrors();
 		if (StringUtils.isBlank(user.getLoginName())
@@ -66,6 +67,9 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 				this.addFieldError("message_login_failed", error_msg);
 				return INPUT;
 			} else {
+				List<String> privilegeLst = userService
+						.getUserPrivilegeLst(userInfo.getUserId());
+				userInfo.setPrivilegeLst(privilegeLst);
 				servletRequest.getSession().setAttribute(
 						Constants.KEY_USER_SESSION, userInfo);
 				servletRequest.getSession().setAttribute(
@@ -76,6 +80,7 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 			}
 		}
 	}
+
 	@Override
 	public User getModel() {
 		return user;
