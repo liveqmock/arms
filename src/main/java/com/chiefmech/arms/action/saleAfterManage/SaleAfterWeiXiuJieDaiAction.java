@@ -136,7 +136,7 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport implements
 		return INPUT;
 	}
 
-	@Action(value = "weiXiuLiShiDetail", results = { @Result(name = "input", location = "saleAfter_WeiXiuJieSuanPrint.jsp") })
+	@Action(value = "weiXiuLiShiDetail", results = { @Result(name = "input", location = "weiXiuLiShi.jsp") })
 	public String weiXiuLiShiDetail() {
 		gongDan = gongDanService.findGongDanByWeiXiuGuid(saleAfterWeiXiuGuid);
 		gongDanCheLiangJianCeLst = gongDanService
@@ -154,6 +154,12 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport implements
 		}
 		customerTaoKaItemLst = customerInfoService
 				.queryCustomerTaoKaItemLstByCustomerId(gongDan.getTxtCustId());
+		return INPUT;
+	}
+
+	@Action(value = "weiXiuJieSuan", results = { @Result(name = "input", location = "saleAfter_WeiXiuJieSuanPrint.jsp") })
+	public String weiXiuJieSuanPrint() {
+		weiXiuLiShiDetail();
 		return INPUT;
 	}
 
@@ -383,12 +389,6 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport implements
 		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
 
 		this.transmitJson(jsonStr);
-	}
-
-	@Action(value = "queryZhuXiuRen")
-	public void queryZhuXiuRen() {
-		String zhuXiuRen = gongDanService.queryZhuXiuRen(weiXiuBanZu);
-		this.transmitJson(String.format("{\"info\":\"%s\"}", zhuXiuRen));
 	}
 
 	public void setTxtWeiXiuXiangMuId(String txtWeiXiuXiangMuId) {

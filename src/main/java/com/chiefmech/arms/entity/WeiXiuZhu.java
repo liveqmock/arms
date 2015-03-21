@@ -8,7 +8,6 @@ public class WeiXiuZhu {
 	/** 维修组名 */
 	private String weixiuzuName;
 	/** 主修人 */
-	private String zhuxiuRen;
 
 	private String txtShopCode = ConfigUtil.getInstance().getShopInfo()
 			.getShopCode();
@@ -30,12 +29,6 @@ public class WeiXiuZhu {
 	}
 	public void setWeixiuzuName(String weixiuzuName) {
 		this.weixiuzuName = weixiuzuName;
-	}
-	public String getZhuxiuRen() {
-		return zhuxiuRen;
-	}
-	public void setZhuxiuRen(String zhuxiuRen) {
-		this.zhuxiuRen = zhuxiuRen;
 	}
 
 }

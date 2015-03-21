@@ -17,7 +17,7 @@ public class GongDanWeiXiuWuLiao {
 	private float txtChengBenJia;
 	private float txtSalePrice;
 	private float txtPaidPrice;
-	private String ddlSuoSuXiangMu;
+	private String ddlSuoSuGongDuan;
 	private String ddlZhangTao;
 	private String ddlStatus;
 	private String txtRemark;
@@ -74,6 +74,14 @@ public class GongDanWeiXiuWuLiao {
 		}
 	}
 
+	public String getDdlSuoSuGongDuan() {
+		return ddlSuoSuGongDuan;
+	}
+
+	public void setDdlSuoSuGongDuan(String ddlSuoSuGongDuan) {
+		this.ddlSuoSuGongDuan = ddlSuoSuGongDuan;
+	}
+
 	public float getTxtPaidPrice() {
 		return txtPaidPrice;
 	}
@@ -88,14 +96,6 @@ public class GongDanWeiXiuWuLiao {
 
 	public void setTxtShopCode(String txtShopCode) {
 		this.txtShopCode = txtShopCode;
-	}
-
-	public String getDdlSuoSuXiangMu() {
-		return ddlSuoSuXiangMu;
-	}
-
-	public void setDdlSuoSuXiangMu(String ddlSuoSuXiangMu) {
-		this.ddlSuoSuXiangMu = ddlSuoSuXiangMu;
 	}
 
 	public String getTxtWuLiaoGuid() {

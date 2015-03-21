@@ -65,7 +65,6 @@ public interface GongDanService {
 	public List<GongDanWeiXiuWuLiao> findGongDanWuLiaoLstByWeiXiuGuid(
 			String saleAfterWeiXiuGuid);
 
-	public String queryZhuXiuRen(String weiXiuBanZu);
 
 	public String getGongDanCheLiangJianCeEasyUiJSonByGongDanId(
 	String saleAfterWeiXiuGuid);

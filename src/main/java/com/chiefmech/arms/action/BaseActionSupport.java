@@ -20,8 +20,12 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
-public class BaseActionSupport extends ActionSupport implements SessionAware,
-		RequestAware, ServletResponseAware, ServletRequestAware {
+public class BaseActionSupport extends ActionSupport
+		implements
+			SessionAware,
+			RequestAware,
+			ServletResponseAware,
+			ServletRequestAware {
 	private static Logger logger = Logger.getLogger(BaseActionSupport.class
 			.getName());
 

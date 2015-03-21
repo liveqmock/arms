@@ -56,6 +56,7 @@ td {
 			style="border-collapse: collapse; border: 1px solid gray;">
 
 			<tr>
+			    <td>店铺</td>
 				<td>工单号</td>
 				<td>车牌号</td>
 				<td>服务顾问</td>
@@ -67,6 +68,7 @@ td {
 			</tr>
 			<s:iterator value="gongDanLst">
 			<tr onclick=showJieSuanDan('<s:property value="txtGongDanId" />')>
+			    <td><s:property value='shop.shopName' /></td>
 				<td><s:property value="txtBillNo" /></td>
 				<td><s:property value="txtChePaiHao" /></td>
 				<td><s:property value="txtFuWuGuWen" /></td>

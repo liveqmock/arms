@@ -35,40 +35,41 @@ public class CommonDataAction extends BaseActionSupport implements CommonData {
 
 	@Action(value = "weiXiuGongDuanOption")
 	public void weiXiuGongDuan() {
-		this.transmitJson(getJsonData("data/weiXiuGongDuan.json"));
+		this.transmitJson(getOptionJsonFronLst(gongDuanLst));
 	}
 
 	@Action(value = "zhangTaoOption")
 	public void zhangTao() {
 		this.transmitJson(getOptionJsonFronLst(zhangTaoLst));
 	}
+
 	@Action(value = "chuRuKuSortOption")
 	public void chuRuKuSort() {
-		this.transmitJson(getJsonData("data/chuRuKuSort.json"));
+		this.transmitJson(getOptionJsonFronLst(chuRuKuSortLst));
 	}
 
 	@Action(value = "weiXiuSortOption")
 	public void weiXiuSort() {
-		this.transmitJson(getJsonData("data/weiXiuSort.json"));
+		this.transmitJson(getOptionJsonFronLst(weiXiuSortLst));
 	}
 
 	@Action(value = "cheLiangSortOption")
 	public void cheLiangSort() {
-		this.transmitJson(getJsonData("data/cheLiangSort.json"));
+		this.transmitJson(getOptionJsonFronLst(cheLiangSortLst));
 	}
 
 	@Action(value = "customerSortOption")
 	public void customerSort() {
-		this.transmitJson(getJsonData("data/customerSort.json"));
+		this.transmitJson(getOptionJsonFronLst(customerSortLst));
 	}
 
 	@Action(value = "zhiFuSortOption")
 	public void zhiFuSort() {
 		this.transmitJson(getOptionJsonFronLst(zhiFuLst));
 	}
-	
-	@Action(value="jianChaXiangMuSortOption")
-	public void jianChaXiangMuSort(){
+
+	@Action(value = "jianChaXiangMuSortOption")
+	public void jianChaXiangMuSort() {
 		this.transmitJson(getOptionJsonFronLst(jianChaXiangMuSort));
 	}
 
@@ -122,11 +123,13 @@ public class CommonDataAction extends BaseActionSupport implements CommonData {
 		this.transmitJson(JSONArray.fromObject(
 				commonDataService.getOptionBean("GroupName")).toString());
 	}
+
 	@Action(value = "getCarBrandOption")
 	public void getCarbrandOption() {
 		this.transmitJson(JSONArray.fromObject(
 				commonDataService.getOptionBean("CarBrand")).toString());
 	}
+
 	@Action(value = "cheLiangCheXiOption")
 	public void cheLiangCheXi() {
 		Map<String, String> param = new HashMap<String, String>();
@@ -149,19 +152,6 @@ public class CommonDataAction extends BaseActionSupport implements CommonData {
 	public void taoKaSortGuidOption() {
 		this.transmitJson(JSONArray.fromObject(
 				commonDataService.getOptionBean("TaoKaSortGuid")).toString());
-	}
-
-	private String getJsonData(String path) {
-		// 当前调试阶段不缓存数据，直接从文件读取，后面调优时需缓存数据
-		String jsonStr = "[]";
-		try {
-			File file = new File(this.getClass().getClassLoader()
-					.getResource(path).getPath());
-			jsonStr = FileUtils.readFileToString(file);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return jsonStr;
 	}
 
 	public void setCheLiangBrandName(String cheLiangBrandName) {

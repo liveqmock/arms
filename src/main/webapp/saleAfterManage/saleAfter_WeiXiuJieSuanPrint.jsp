@@ -218,7 +218,6 @@ var saleAfterGuid = '<s:property value="saleAfterWeiXiuGuid" />';
 						<td width="105">工段名</td>
 						<td width="203">项目名称</td>
 						<td width="62">工时费</td>
-						<td width="63">主修人</td>
 						<td width="189" style="border-right: none;">备注</td>
 					</tr>
 					<s:iterator value="gongDanXiangMuLst" status="index">
@@ -228,7 +227,6 @@ var saleAfterGuid = '<s:property value="saleAfterWeiXiuGuid" />';
 							<td nowrap style="overflow: hidden;">&nbsp;<s:property
 									value="txtWeiXiuNeiRong" /></td>
 							<td align="right">&nbsp;<s:property value="disPlayFeiYong" /></td>
-							<td>&nbsp;<s:property value="txtZhuXiuRen" /></td>
 							<td nowrap style="overflow: hidden;">&nbsp;<s:property
 									value="txtRemark" /></td>
 						</tr>
@@ -268,42 +266,8 @@ var saleAfterGuid = '<s:property value="saleAfterWeiXiuGuid" />';
 		<tr>
 			<td style="height: 5px;"></td>
 		</tr>
-		  <%-- <tr id="jiance">
-			<td>
-				<!--维修物料 start-->
 
-				<table border="0" id="jianceList"
-					style="border: 2px solid black; width: 100%; border-collapse: collapse;">
-					<tr>				
-								<tr>
-									<td width="130">&nbsp;检测内容</td>
-									<td width="50">&nbsp;检测状态</td>
-									<td width="110">&nbsp;备注</td>
-									<td width="130">&nbsp;检测内容</td>
-									<td width="50">&nbsp;检测状态</td>
-									<td width="110">&nbsp;备注</td>
-								</tr>
-								<s:iterator value="gongDanCheLiangJianCeLst" status="index">
-									<s:if test="#index.odd||#index.first">
-										<tr>
-									</s:if>
-									<td>&nbsp; <s:property value="txtNeiRong" /></td>
-									<td>&nbsp; <s:property value="txtZhuangTai" /></td>
-									<td>&nbsp; <s:property value="txtRemark" /></td>
-									<s:if test="#index.even&&#index.last">
-										</tr>
-									</s:if>
 
-									<s:if test="#index.odd&&#index.last">
-										<td>&nbsp; <s:property value="txtNeiRong" /></td>
-										<td>&nbsp; <s:property value="txtZhuangTai" /></td>
-										<td>&nbsp; <s:property value="txtRemark" /></td>
-										</tr>
-									</s:if>
-								</s:iterator>
-				</table> <!--维修物料 end-->
-			</td>
-		</tr>  --%> 
 		<tr>
 			<td style="height: 5px;"></td>
 		</tr>

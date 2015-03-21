@@ -286,11 +286,7 @@ public class GongDanServiceImpl implements GongDanService {
 	}
 
 	@Override
-	public String queryZhuXiuRen(String weiXiuBanZu) {
-		return gongDanDao.queryZhuXiuRen(weiXiuBanZu);
-	}
 
-	@Override
 	public int insertCheLiangJianCe(GongDanCheLiangJianCe item) {
 		return gongDanDao.insertCheLiangJianCe(item);
 	}
@@ -393,8 +389,8 @@ public class GongDanServiceImpl implements GongDanService {
 	}
 
 	@Override
-	public List<GongDanCheLiangJianCe> getGongDanCheLiangJianCeListByGongDanId(String txtGongDanId) {
-		return  gongDanDao
-				.getGongDanCheLiangJianCeListByGongDanId(txtGongDanId);
+	public List<GongDanCheLiangJianCe> getGongDanCheLiangJianCeListByGongDanId(
+			String txtGongDanId) {
+		return gongDanDao.getGongDanCheLiangJianCeListByGongDanId(txtGongDanId);
 	}
 }

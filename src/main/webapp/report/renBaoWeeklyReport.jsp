@@ -39,9 +39,9 @@ td {
 				<tr>
 					<td nowrap>消费时间:</td>
 					<td><input name="txtRuChangDateBegin" type="text"
-						id="txtRuChangDateBegin" class="easyui-datebox" style="width: 100px;" /></td>
+						id="txtRuChangDateBegin" class="easyui-datebox" style="width: 120px;" /></td>
 					<td><input name="txtRuChangDateEnd" type="text"
-						id="txtRuChangDateEnd" class="easyui-datebox" style="width: 100px;" /></td>
+						id="txtRuChangDateEnd" class="easyui-datebox" style="width: 120px;" /></td>
 					<td>车牌号:</td>
 					<td><input name="txtChePaiHao" type="text"
 						class="easyui-textbox" maxlength="10" id="txtChePaiHao"
@@ -63,7 +63,7 @@ td {
 				<th width="100" data-options="field:'txtTicketNumber'">服务券券号</th>
 				<th width="120" data-options="field:'txtXiangMuValue'">项目价值（元）</th>
 				<th width="100"  data-options="field:'txtRenBaoChaJia'">补差价(元）</th>
-				<th width="100" data-options="field:'txtRuChangDate'">消费时间</th>
+				<th width="200" data-options="field:'txtRuChangDate'">消费时间</th>
 				<th width="100" data-options="field:'txtCheZhuName'">车主姓名</th>
 				<th width="150" data-options="field:'txtCheZhuTel'">联系电话</th>
 				<th width="180" data-options="field:'txtCheXiName'">车型</th>

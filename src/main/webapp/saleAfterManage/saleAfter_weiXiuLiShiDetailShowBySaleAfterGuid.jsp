@@ -91,7 +91,6 @@
         <td nowrap align="center">&nbsp;帐套</td>  
         <td nowrap align="center">&nbsp;备注</td>        
         <td nowrap align="center">&nbsp;维修班组</td>
-        <td nowrap align="center">&nbsp;主修人</td>
         <td nowrap align="center">&nbsp;完检人</td>
         </tr> 
 
@@ -103,7 +102,6 @@
         <td nowrap align="center">&nbsp;<s:property value="ddlZhangTao" /></td>  
         <td nowrap align="center">&nbsp;<s:property value="txtRemark" /></td>        
         <td nowrap align="center">&nbsp;<s:property value="txtBanZu" /></td>
-        <td nowrap align="center">&nbsp;<s:property value="txtZhuXiuRen" /></td>
         <td nowrap align="center">&nbsp;<s:property value="txtWanJianRen" /></td>
         </tr> 
  		</s:iterator>

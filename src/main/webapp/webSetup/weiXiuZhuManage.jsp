@@ -41,7 +41,6 @@ td {
 		<thead>
 			<tr>
 				<th width="100" data-options="field:'weixiuzuName'">维修组名</th>
-				<th width="100" data-options="field:'zhuxiuRen'">主修人</th>
 				<th width="100" field="action"align="center"
 					formatter="formatAction">操作</th>
 			</tr>
@@ -61,13 +60,6 @@ td {
 						class="easyui-validatebox"
 						data-options="required:true"
 						id="weixiuzuName" style="width: 250px;" /></td>
-				</tr>
-				<tr>
-					<td align="right"><span class="requireSpan">*&nbsp;</span>主修人:</td>
-					<td><input name="zhuxiuRen" type="text" maxlength="10"
-						class="easyui-validatebox"
-						data-options="required:true"
-						id="zhuxiuRen" style="width: 250px;" /></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><br /> <a onclick="saveItem()"

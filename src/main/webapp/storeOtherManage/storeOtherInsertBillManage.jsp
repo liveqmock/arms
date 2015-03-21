@@ -37,10 +37,7 @@ td {
 			<td align="right"><s:if test="action=='updateCaiGou'">
 					<a href="#" class="easyui-linkbutton"
 						data-options="plain:true,iconCls:'icon-add'"
-						onclick="openRuKuDan('','1');">日常采购</a> <a
-					href="javascript:void(0)" class="easyui-linkbutton"
-					data-options="iconCls:'icon-add',plain:true"
-					onClick="openRuKuDan('','2')">临时采购</a>
+						onclick="openRuKuDan('','1');">日常采购</a>
 					<a href="#" class="easyui-linkbutton"
 						data-options="plain:true,iconCls:'icon-search'"
 						onclick="toggleSearchPanel();">查询</a>
@@ -150,7 +147,7 @@ td {
 		function openRuKuDan(ruKuDanGuid, flag) {
 			var sURL = 'rukudanDetail.action?ruKuDanGuid=' + ruKuDanGuid
 					+ '&flag=' + flag + '&d=' + new Date()
-			var sFeatures = "dialogWidth:960px;dialogHeight:500px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
+			var sFeatures = "dialogWidth:1000px;dialogHeight:500px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
 			window.showModalDialog(sURL, window, sFeatures);
 			//$('#mydg').datagrid('reload');
 			doSearch();

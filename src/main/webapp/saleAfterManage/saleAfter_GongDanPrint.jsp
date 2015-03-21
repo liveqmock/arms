@@ -200,7 +200,6 @@ td {
 										<td nowrap class="border-black" align="center" width="40">工段</td>
 										<td nowrap class="border-black" align="center" width="120">维修项目</td>
 										<td nowrap class="border-black" align="center" width="70">费用</td>
-										<td nowrap class="border-black" align="center" width="60">主修人</td>
 										<td class="border-black" align="center" width="100">备注</td>
 									</tr>
 									<s:iterator value="gongDanXiangMuLst" status="index">
@@ -215,8 +214,6 @@ td {
 											<td nowrap align="right" class="border-black">&nbsp;<s:property
 													value="disPlayFeiYong" />&nbsp;
 											</td>
-											<td nowrap class="border-black">&nbsp;<s:property
-													value="txtZhuXiuRen" /></td>
 											<td nowrap class="border-black">&nbsp;<s:property
 													value="txtRemark" />											  &nbsp;</td>
 
