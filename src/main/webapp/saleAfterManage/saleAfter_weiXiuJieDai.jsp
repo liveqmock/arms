@@ -111,7 +111,7 @@ td {
                         <a onClick="saveZhiFuXinXi();return false;" class="easyui-linkbutton"
 							href="javascript:void(0)">保存支付信息</a>
                         <s:if test="gongDan.ddlZhiFuFangShi != null">
-                        <a onClick="showJieSuanDan('<s:property value='saleAfterWeiXiuGuid' />');return false;" class="easyui-linkbutton"
+                        <a onClick="javascript:weiXiuJieSuanPrint();" class="easyui-linkbutton"
 							href="javascript:void(0)">结算单信息</a>
                         </s:if>
 						<s:if test="gongDan.ddlZhiFuFangShi != null"><a

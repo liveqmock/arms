@@ -7,7 +7,6 @@ public class WeiXiuZhu {
 	private String weixiuzuID;
 	/** 维修组名 */
 	private String weixiuzuName;
-	/** 主修人 */
 
 	private String txtShopCode = ConfigUtil.getInstance().getShopInfo()
 			.getShopCode();

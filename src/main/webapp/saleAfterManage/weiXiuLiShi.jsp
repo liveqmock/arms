@@ -86,7 +86,7 @@ td {
 	text-align: center;
 }
 </style>
-<title>维修结算单</title>
+<title>维修历史</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
@@ -129,7 +129,7 @@ var saleAfterGuid = '<s:property value="saleAfterWeiXiuGuid" />';
 				<table border="0" cellpadding="0" cellspacing="0" width="100%"
 					style=" border-collapse: collapse;">
 					<tr>
-						<td><s:property value='shop.shopName' /></td>
+						<td><s:property value='gongDan.shopName' /></td>
                         <td>&nbsp;</td>
                         <td style="text-align:right">工单号：<s:property value='gongDan.txtBillNo' /></td>
 					</tr>				

@@ -341,7 +341,7 @@ function confirmAllWanJian(saleAfterWeiXiuGuid) {
 
 
 
-function showJieSuanDan(saleAfterGuid) {
+function showWeiXiuLiShi(saleAfterGuid) {
 	z = window.open('../saleAfterManage/weiXiuLiShiDetail.action?saleAfterWeiXiuGuid=' + saleAfterGuid + '&d=' + new Date(), '维修历史查看', 'height=900, width=720, top=100, left=100, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no')
 	z.focus();
 }

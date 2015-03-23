@@ -67,8 +67,8 @@ td {
 				<td>单据状态</td>
 			</tr>
 			<s:iterator value="gongDanLst">
-			<tr onclick=showJieSuanDan('<s:property value="txtGongDanId" />')>
-			    <td><s:property value='shop.shopName' /></td>
+			<tr onclick=showWeiXiuLiShi('<s:property value="txtGongDanId" />')>
+			    <td><s:property value='shopName' /></td>
 				<td><s:property value="txtBillNo" /></td>
 				<td><s:property value="txtChePaiHao" /></td>
 				<td><s:property value="txtFuWuGuWen" /></td>

@@ -88,6 +88,7 @@ public class GongDan {
 	private String txtReviewRemark;
 	private String txtDeleteFlag;
 	private float txtFinalPay;
+	private String shopName;
 
 	private String txtShopCode = ConfigUtil.getInstance().getShopInfo()
 			.getShopCode();
@@ -508,6 +509,14 @@ public class GongDan {
 
 	public void setTxtDeleteFlag(String txtDeleteFlag) {
 		this.txtDeleteFlag = txtDeleteFlag;
+	}
+
+	public String getShopName() {
+		return shopName;
+	}
+
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
 	}
 
 }

@@ -22,7 +22,7 @@ import com.chiefmech.arms.entity.query.SaleAfterGongDanSearchBean;
 
 @Repository("gongDanDao")
 public interface GongDanDao {
-	@Select("select * from gongdan where txtGongDanId=#{txtGongDanId}")
+	@Select("select gongdan.*,shop.shopName from gongdan left join shop on shop.shopCode=gongdan.txtShopCode where txtGongDanId=#{txtGongDanId}")
 	public GongDan findGongDanByWeiXiuGuid(String txtGongDanId);
 
 	@Insert("insert into gongdan(txtGongDanId,txtShopCode,txtCustId,txtCheLiangId,txtGongDanStatus,txtGongDanStatusChain,txtChePaiHao,txtLiCheng,txtVin,txtFaDongJiHao,txtChangJiaPinPai,txtCheXiName,txtCheXingDaiMa,txtCustSort,txtCheZhuName,txtCheZhuTel,txtHuiYuanDengJi,txtLianXiRenName,txtLianXiRenTel,txtLianXiRenAdd,txtBillNo,txtXieYiBillNo,txtRuChangDate,txtYuChuChangDate,txtFuWuGuWen,txtNewLiCheng,txtNewRuChangDate,txtJiaoXiuReason,txtYuYueId,txtJieSuanDate,txtChuChangDate,txtGongShiZheKou,txtCaiLiaoZheKou,txtCheLiangDengJiRiQi,txtCheLiangNianShenDaoQiRi,txtCheLiangBaoXianDaoQiRi,ddlChengBaoGongSi) values(#{txtGongDanId},#{txtShopCode},#{txtCustId},#{txtCheLiangId},#{txtGongDanStatus},concat('|',#{txtGongDanStatus}),#{txtChePaiHao},#{txtLiCheng},#{txtVin},#{txtFaDongJiHao},#{txtChangJiaPinPai},#{txtCheXiName},#{txtCheXingDaiMa},#{txtCustSort},#{txtCheZhuName},#{txtCheZhuTel},#{txtHuiYuanDengJi},#{txtLianXiRenName},#{txtLianXiRenTel},#{txtLianXiRenAdd},#{txtBillNo},#{txtXieYiBillNo},#{txtRuChangDate},#{txtYuChuChangDate},#{txtFuWuGuWen},#{txtNewLiCheng},#{txtNewRuChangDate},#{txtJiaoXiuReason},#{txtYuYueId},#{txtJieSuanDate},#{txtChuChangDate},#{txtGongShiZheKou},#{txtCaiLiaoZheKou},#{txtCheLiangDengJiRiQi},#{txtCheLiangNianShenDaoQiRi},#{txtCheLiangBaoXianDaoQiRi},#{ddlChengBaoGongSi})")
@@ -124,7 +124,7 @@ public interface GongDanDao {
 	public int updateChuChangDate(@Param("txtGongDanId") String txtGongDanId,
 			@Param("txtChuChangDate") String txtChuChangDate);
 
-	@Select("select * from gongdan where txtCheLiangId=#{txtCheLiangId} and txtDeleteFlag='0' and txtGongDanStatus='交车' order by txtChuChangDate desc")
+	@Select("select gongdan.*,shop.shopName from gongdan left join shop on shop.shopCode=gongdan.txtShopCode where txtCheLiangId=#{txtCheLiangId} and txtDeleteFlag='0' and txtGongDanStatus='交车' order by txtChuChangDate desc")
 	public List<GongDan> getGongDanListByCheLiangId(String txtCheLiangId);
 
 	@Select("select * from gongdanxiangmu where txtGongDanGuid=#{txtGongDanGuid}")

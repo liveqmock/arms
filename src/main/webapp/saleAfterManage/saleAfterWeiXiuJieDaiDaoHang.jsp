@@ -162,6 +162,7 @@ td {
 				style="border-collapse: collapse; border: 1px solid gray;">
 
 				<tr>
+				    <td>店铺名</td>
 					<td>工单号</td>
 					<td>车牌号</td>
 					<td>服务顾问</td>
@@ -173,6 +174,7 @@ td {
 				</tr>
 				<s:iterator value="gongDanLst">
 					<tr onclick=saleAfterLiShiShow('<s:property value="txtGongDanId" />','<s:property value="txtGongDanStatus" />')>
+					    <td><s:property value='shopName' /></td>
 						<td><s:property value="txtBillNo" /></td>
 						<td><s:property value="txtChePaiHao" /></td>
 						<td><s:property value="txtFuWuGuWen" /></td>
@@ -209,7 +211,7 @@ td {
         }    
 		
 		function saleAfterLiShiDetail(saleAfterGuid) {
-            showJieSuanDan(saleAfterGuid);
+			showWeiXiuLiShi(saleAfterGuid);
 			
             window.opener = null;
             window.close();
