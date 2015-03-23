@@ -17,6 +17,7 @@ public class KuCunOperLog {
 	private float txtSalePrice;
 	private String txtSuppName;
 	private String txtRemark;
+	private int txtNewQty;
 
 	public KuCunOperLog() {
 	}
@@ -37,11 +38,11 @@ public class KuCunOperLog {
 		this.txtRemark = ruKuDanWuLiao.getTxtRemark();
 	}
 
-	public KuCunOperLog(GongDanWeiXiuWuLiao gongDanWuLiao) {
+	public KuCunOperLog(GongDanWeiXiuWuLiao gongDanWuLiao, String txtOperAction) {
 		this.txtLogGuid = IDGen.getUUID();
 		this.txtShopCode = gongDanWuLiao.getTxtShopCode();
 		this.txtBillGuid = gongDanWuLiao.getTxtGongDanGuid();
-		this.txtOperAction = "维修出库";
+		this.txtOperAction = txtOperAction;
 		this.txtLogDate = DateUtil.getCurrentDateTime();
 
 		this.txtWuLiaoCode = gongDanWuLiao.getTxtWuLiaoCode();
@@ -53,21 +54,29 @@ public class KuCunOperLog {
 		this.txtRemark = gongDanWuLiao.getTxtRemark();
 	}
 
-	public KuCunOperLog(KuCun kuCun) {
+	public KuCunOperLog(KuCun kuCun, String txtOperAction) {
 		this.txtLogGuid = IDGen.getUUID();
 		this.txtShopCode = kuCun.getTxtShopCode();
 		this.txtBillGuid = "";
-		this.txtOperAction = "修改销售价";
+		this.txtOperAction = txtOperAction;
 		this.txtLogDate = DateUtil.getCurrentDateTime();
 
 		this.txtWuLiaoCode = kuCun.getTxtWuLiaoCode();
 		this.txtWuLiaoName = kuCun.getTxtWuLiaoName();
-		this.txtQty = kuCun.getTxtQty();
+		this.txtQty = kuCun.getTxtTakeQty();
 		this.txtChengBenJia = kuCun.getTxtChengBenJia();
 		this.txtSalePrice = kuCun.getTxtSalePrice();
 		this.txtSuppName = kuCun.getTxtSuppName();
 		this.txtRemark = kuCun.getTxtRemark();
 
+	}
+
+	public int getTxtNewQty() {
+		return txtNewQty;
+	}
+
+	public void setTxtNewQty(int txtNewQty) {
+		this.txtNewQty = txtNewQty;
 	}
 
 	public String getTxtShopCode() {

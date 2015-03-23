@@ -39,7 +39,6 @@ public class GongDanServiceImpl implements GongDanService {
 	private WeiXiuXiangMuDao weiXiuXiangMuDao;
 	@Resource()
 	private WeiXiuWuLiaoDao weiXiuWuLiaoDao;
-
 	@Resource()
 	private KuCunService kuCunService;
 
@@ -233,20 +232,23 @@ public class GongDanServiceImpl implements GongDanService {
 	@Override
 	public int addGongDanWeiXiuWuLiaoFromKuCun(String saleAfterGuid,
 			List<KuCun> weiXiuWuLiaoLst) {
-		boolean isAllItemInserted = true;
-		int rowAffected = 0;
 		for (KuCun item : weiXiuWuLiaoLst) {
-			GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao = new GongDanWeiXiuWuLiao(
+			GongDanWeiXiuWuLiao gongDanWuLiao = new GongDanWeiXiuWuLiao(
 					saleAfterGuid, item);
-			rowAffected = gongDanDao
-					.insertGongDanWeiXiuWuLiao(gongDanWeiXiuWuLiao);
-			if (rowAffected != 1) {
-				isAllItemInserted = false;
-				break;
-			}
+			gongDanDao.insertGongDanWeiXiuWuLiao(gongDanWuLiao);
+			kuCunService.updateKuCun(new KuCunOperLog(gongDanWuLiao, "维修出库"));
 		}
 
-		return isAllItemInserted ? 1 : 0;
+		return 1;
+	}
+
+	@Override
+	public int withdrawGongDanWeiXiuWuLiao(String txtWuLiaoGuid) {
+		GongDanWeiXiuWuLiao gongDanWuLiao = gongDanDao
+				.getGongDanWeiXiuWuLiaoByWuLiaoId(txtWuLiaoGuid);
+		gongDanDao.deleteGongDanWeiXiuWuLiao(txtWuLiaoGuid);
+		kuCunService.updateKuCun(new KuCunOperLog(gongDanWuLiao, "维修退库"));
+		return 1;
 	}
 
 	@Override
@@ -286,7 +288,6 @@ public class GongDanServiceImpl implements GongDanService {
 	}
 
 	@Override
-
 	public int insertCheLiangJianCe(GongDanCheLiangJianCe item) {
 		return gongDanDao.insertCheLiangJianCe(item);
 	}
@@ -325,7 +326,7 @@ public class GongDanServiceImpl implements GongDanService {
 			rowAffected = gongDanDao
 					.updateGongDanWuLiaoStatusWhenLingQuWuLiao(item);
 			if (rowAffected != -1) {
-				KuCunOperLog operLog = new KuCunOperLog(item);
+				KuCunOperLog operLog = new KuCunOperLog(item, "维修出库");
 				rowAffected = kuCunService.updateKuCun(operLog);
 			}
 		}

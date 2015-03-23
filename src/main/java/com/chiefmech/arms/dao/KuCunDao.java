@@ -30,7 +30,7 @@ public interface KuCunDao {
 	@Update("update kucun set txtSalePrice=#{txtSalePrice} where txtWuLiaoCode=#{txtWuLiaoCode}")
 	public int updateKuCunSalePrice(KuCun item);
 
-	@Insert("insert into kucunoperlog(txtLogGuid,txtShopCode,txtBillGuid,txtOperAction,txtLogDate,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,txtSuppName,txtRemark) values(#{txtLogGuid},#{txtShopCode},#{txtBillGuid},#{txtOperAction},#{txtLogDate},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{txtSuppName},#{txtRemark})")
+	@Insert("insert into kucunoperlog(txtLogGuid,txtShopCode,txtBillGuid,txtOperAction,txtLogDate,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,txtSuppName,txtRemark,txtNewQty) values(#{txtLogGuid},#{txtShopCode},#{txtBillGuid},#{txtOperAction},#{txtLogDate},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{txtSuppName},#{txtRemark},#{txtNewQty})")
 	public int insertKuCunOperLog(KuCunOperLog item);
 
 	@SelectProvider(type = KuCunDaoSqlProvider.class, method = "getKuCunList")

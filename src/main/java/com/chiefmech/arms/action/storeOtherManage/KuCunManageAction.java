@@ -52,7 +52,7 @@ public class KuCunManageAction extends BaseActionSupport
 		JSONObject jsonObject = JSONObject.fromObject(rowJsonData);
 		item = (KuCun) JSONObject.toBean(jsonObject, KuCun.class);
 
-		KuCunOperLog operLog = new KuCunOperLog(item);
+		KuCunOperLog operLog = new KuCunOperLog(item, "修改销售价");
 		int rowAffected = kuCunService.updateKuCun(operLog);
 		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
 

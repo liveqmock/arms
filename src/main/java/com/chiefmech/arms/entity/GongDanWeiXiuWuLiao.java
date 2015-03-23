@@ -16,7 +16,6 @@ public class GongDanWeiXiuWuLiao {
 	private float txtQty;
 	private float txtChengBenJia;
 	private float txtSalePrice;
-	private float txtPaidPrice;
 	private String ddlSuoSuGongDuan;
 	private String ddlZhangTao;
 	private String ddlStatus;
@@ -36,7 +35,7 @@ public class GongDanWeiXiuWuLiao {
 		this.txtSuppName = item.getTxtSuppName();
 		this.txtChengBenJia = item.getTxtChengBenJia();
 		this.txtSalePrice = item.getTxtSalePrice();
-		this.txtPaidPrice = item.getTxtSalePrice();
+		this.txtQty = item.getTxtTakeQty();
 		this.txtLaiYuan = "库存";
 		this.ddlStatus = "未出库";
 		this.ddlZhangTao = "客户自费";
@@ -52,7 +51,7 @@ public class GongDanWeiXiuWuLiao {
 		this.txtSuppName = item.getTxtSuppName();
 		this.txtChengBenJia = item.getTxtPrice();
 		this.txtSalePrice = item.getTxtSalePrice();
-		this.txtPaidPrice = item.getTxtSalePrice();
+		this.txtQty = item.getTxtQty();
 		this.ddlStatus = item.getDdlStatus();
 		this.txtLaiYuan = "采购";
 		this.ddlZhangTao = "客户自费";
@@ -80,14 +79,6 @@ public class GongDanWeiXiuWuLiao {
 
 	public void setDdlSuoSuGongDuan(String ddlSuoSuGongDuan) {
 		this.ddlSuoSuGongDuan = ddlSuoSuGongDuan;
-	}
-
-	public float getTxtPaidPrice() {
-		return txtPaidPrice;
-	}
-
-	public void setTxtPaidPrice(float txtPaidPrice) {
-		this.txtPaidPrice = txtPaidPrice;
 	}
 
 	public String getTxtShopCode() {

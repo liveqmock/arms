@@ -65,11 +65,11 @@ public interface GongDanService {
 	public List<GongDanWeiXiuWuLiao> findGongDanWuLiaoLstByWeiXiuGuid(
 			String saleAfterWeiXiuGuid);
 
-
 	public String getGongDanCheLiangJianCeEasyUiJSonByGongDanId(
-	String saleAfterWeiXiuGuid);
+			String saleAfterWeiXiuGuid);
 
-	public List<GongDanCheLiangJianCe> getGongDanCheLiangJianCeListByGongDanId(String txtGongDanId);
+	public List<GongDanCheLiangJianCe> getGongDanCheLiangJianCeListByGongDanId(
+			String txtGongDanId);
 
 	public int insertCheLiangJianCe(GongDanCheLiangJianCe item);
 
@@ -96,4 +96,6 @@ public interface GongDanService {
 			String txtWanJianRen, String txtWanJianShiJian);
 
 	public boolean isRequestWuLiaoFree(GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao);
+
+	public int withdrawGongDanWeiXiuWuLiao(String txtWeiXiuWuLiaoId);
 }

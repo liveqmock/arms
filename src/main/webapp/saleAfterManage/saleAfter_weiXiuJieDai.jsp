@@ -31,73 +31,50 @@ td {
 <body
 	<s:if test="flag=='GrayBGColor'">style="background-color:#DDD;"</s:if>>
 	<div style="margin-top: 5px; margin-left: 5px; margin-right: 5px;">
-		<table border="0" style="width: 900px">
+		<table border="0" style="width: 1100px">
 			<!--按钮区域 sart-->
 			<tr>
-				<td align="right">
-						<s:if
+				<td align="right"><s:if
 						test="gongDanStatus=='维修接待' && actionName=='gongDanWeiXiuJieDai'">
 						<a onClick="saveGongDan();return false;" class="easyui-linkbutton"
 							href="javascript:void(0)">保存接待信息</a>
 						<s:if test="saleAfterWeiXiuGuid != null">
-						    <a onClick="javascript:renBaoPrint()" class="easyui-linkbutton" > 打印施工单</a>
-							<a
-								onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','车辆检测');return false;"
-								class="easyui-linkbutton" href="javascript:void(0)">车辆检测</a>
 							<a
 								onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','维修派工');return false;"
 								class="easyui-linkbutton" href="javascript:void(0)">维修派工</a>
 							<a
-							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','费用结算');return false;"
-							class="easyui-linkbutton" href="javascript:void(0)">费用结算</a>
+								onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','费用结算');return false;"
+								class="easyui-linkbutton" href="javascript:void(0)">费用结算</a>
 						</s:if>
-					</s:if> <s:if
-						test="gongDanStatus=='车辆检测' && actionName=='gongDanCheLiangJianCe'">
-						<a
-							onClick="revertGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />');return false;"
-							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
-                        <a
-							onClick="setAllJianCheNormal();return false;"
-							class="easyui-linkbutton" href="javascript:void(0)">检测全部正常</a>
-						<a
-							onClick="saveJianCheInfo();return false;"
-							class="easyui-linkbutton" href="javascript:void(0)">保存检测信息</a>
-						<a
-							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','物料登记');return false;"
-							class="easyui-linkbutton" href="javascript:void(0)">物料登记</a>
-					</s:if> <s:if
-						test="gongDanStatus=='物料登记' && actionName=='gongDanWuLiaoDengJi'">
-						<a
-							onClick="revertGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />');return false;"
-							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
-                        <a
-							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','维修派工');return false;"
-							class="easyui-linkbutton" href="javascript:void(0)">维修派工</a>
 					</s:if> <s:if
 						test="gongDanStatus=='维修派工' && actionName=='gongDanWeiXiuPaiGong'">
 						<a
 							onClick="revertGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
-                        <a
-							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','领取物料');return false;"
+						<a
+							onClick="gongDanPaiGongToNext('领取物料');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">领取物料</a>
-                        <a
-							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','维修完检');return false;"
+						<a
+							onClick="gongDanPaiGongToNext('维修完检');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">维修完检</a>
 					</s:if> <s:elseif
 						test="gongDanStatus=='领取物料' && actionName=='gongDanLingQuWuLiao'">
 						<a
 							onClick="revertGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
-                        <a
-							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','维修完检');return false;"
+						<a
+							onClick="lingQuWuLiaoToNext('维修完检');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">维修完检</a>
 					</s:elseif> <s:elseif
 						test="gongDanStatus=='维修完检' && actionName=='gongDanWeiXiuWanJian'">
 						<a
 							onClick="revertGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
-                        <a
+						<a onClick="setAllJianCheNormal();return false;"
+							class="easyui-linkbutton" href="javascript:void(0)">检测全部正常</a>
+						<a onClick="saveJianCheInfo();return false;"
+							class="easyui-linkbutton" href="javascript:void(0)">保存检测信息</a>
+						<a
 							onClick="confirmAllWanJian('<s:property value='saleAfterWeiXiuGuid' />');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">全部完检</a>
 						<a
@@ -108,15 +85,17 @@ td {
 						<a
 							onClick="revertGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
-                        <a onClick="saveZhiFuXinXi();return false;" class="easyui-linkbutton"
-							href="javascript:void(0)">保存支付信息</a>
-                        <s:if test="gongDan.ddlZhiFuFangShi != null">
-                        <a onClick="javascript:weiXiuJieSuanPrint();" class="easyui-linkbutton"
-							href="javascript:void(0)">结算单信息</a>
-                        </s:if>
-						<s:if test="gongDan.ddlZhiFuFangShi != null"><a
-							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','交车');return false;"
-							class="easyui-linkbutton" href="javascript:void(0)">交车</a></s:if>
+						<a onClick="saveZhiFuXinXi();return false;"
+							class="easyui-linkbutton" href="javascript:void(0)">保存支付信息</a>
+						<s:if test="gongDan.ddlZhiFuFangShi != null">
+							<a onClick="javascript:weiXiuJieSuanPrint();"
+								class="easyui-linkbutton" href="javascript:void(0)">结算单信息</a>
+						</s:if>
+						<s:if test="gongDan.ddlZhiFuFangShi != null">
+							<a
+								onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','交车');return false;"
+								class="easyui-linkbutton" href="javascript:void(0)">交车</a>
+						</s:if>
 					</s:elseif></td>
 			</tr>
 			<!--按钮区域 end-->
@@ -142,7 +121,7 @@ td {
 							<td align="right">发动机号：</td>
 							<td><div id="txtFaDongJiHao"></div></td>
 						</tr>
-						<tr style="border-bottom:thin dotted #000;">
+						<tr style="border-bottom: thin dotted #000;">
 							<td align="right">注册登记日：</td>
 							<td><div id="txtCheLiangDengJiRiQi"></div></td>
 							<td align="right">年审到期日：</td>
@@ -153,7 +132,7 @@ td {
 							<td><div id="ddlChengBaoGongSi"></div></td>
 						</tr>
 						<tr>
-							<td colspan="8" height="5" >&nbsp;</td>
+							<td colspan="8" height="5">&nbsp;</td>
 						</tr>
 						<tr>
 							<td>车主信息</td>
@@ -220,11 +199,11 @@ td {
 							<td class="input" align="right"><span class="requireSpan">*</span>入厂时间：</td>
 							<td><input name="txtRuChangDate" type="text"
 								id="txtRuChangDate" class="easyui-datetimebox"
-								data-options="required:true" style="width: 145px;" /></td>
+								data-options="required:true" /></td>
 							<td align="right"><span class="requireSpan">*</span>预出厂时间：</td>
 							<td><input name="txtYuChuChangDate" type="text"
 								id="txtYuChuChangDate" class="easyui-datetimebox"
-								data-options="required:true" style="width: 145px;" /></td>
+								data-options="required:true" /></td>
 							<td align="right"><span class="requireSpan">*</span>下次保养里程：</td>
 							<td><input type="text" id="txtNewLiCheng"
 								name="txtNewLiCheng" class="easyui-numberbox"
@@ -238,8 +217,8 @@ td {
 							<td colspan="8">备注：</td>
 						</tr>
 						<tr>
-							<td colspan="8"><textarea name="txtJiaoXiuReason"
-									rows="2" cols="20" id="txtJiaoXiuReason"
+							<td colspan="8"><textarea name="txtJiaoXiuReason" rows="2"
+									cols="20" id="txtJiaoXiuReason"
 									style="height: 70px; width: 100%;"></textarea></td>
 						</tr>
 
@@ -251,22 +230,6 @@ td {
 				</div>
 			</form>
 		</s:if>
-		<s:if test="actionName=='gongDanCheLiangJianCe'">
-			<table id="datagridJianCe" class="easyui-datagrid"
-				data-options="url:'queryGongDanCheLiangJianCe.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />',singleSelect:true,rownumbers:true,showFooter:true<s:if test="gongDanStatus=='车辆检测' && actionName=='gongDanCheLiangJianCe'">,onLoadSuccess:beginEditAllRows</s:if>">
-				<thead>
-					<tr>
-						<th field="txtNeiRong" width="200">检测内容</th>
-						<th field="txtZhuangTai" width="200"
-							data-options="align:'center',editor:{type:'radiobox',options:{defaultValue:'未检测',values:['未检测','正常','异常']}}">检测状态</th>
-						<th field="txtRemark" width="250"
-							data-options="editor:{type:'textbox'}">备注</th>
-						<th field="txtJianChaXiangMuRemark" width="950">检查项目说明</th>
-					</tr>
-				</thead>
-			</table>
-			<div style="height: 10px;"></div>
-		</s:if>
 		<s:if test="saleAfterWeiXiuGuid != null">
 			<table id="datagridXiangMu" class="easyui-datagrid"
 				data-options="url:'queryGongDanWeiXiuXiangMu.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />',toolbar:'#tb',singleSelect:true,rownumbers:true,showFooter:true">
@@ -275,28 +238,18 @@ td {
 						<th field="txtGongDuanName" width="80"
 							<s:if test="actionName=='gongDanWeiXiuJieDai'">
 data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuGongDuanOption.action'}}"</s:if>>工段</th>
-						<s:if
-							test="actionName=='gongDanWeiXiuJieDai' || actionName=='gongDanWeiXiuJieSuan'">
-							<th field="txtXiangMuCode" width="100">项目编号</th>
-						</s:if>
 						<th field="txtXiangMuName" width="150">项目名称</th>
-						<s:if
-							test="actionName not in {'gongDanWeiXiuWanJian', 'gongDanWeiXiuJieSuan'}">
-							<th field="txtWeiXiuNeiRong" width="200"
-								<s:if test="actionName in {'gongDanWeiXiuJieDai', 'gongDanCheLiangJianCe'}">
-						data-options="align:'right',editor:{type:'textbox'}"</s:if>>项目内容</th>
-						</s:if>
+						<th field="txtWeiXiuNeiRong" width="200"
+							<s:if test="actionName in {'gongDanWeiXiuJieDai', 'gongDanCheLiangJianCe'}">
+						data-options="editor:{type:'textbox'}"</s:if>>项目内容</th>
 						<th field="txtFeiYong" width="80"
 							<s:if test="actionName in {'gongDanWeiXiuJieDai', 'gongDanCheLiangJianCe'}">
 						data-options="align:'right',editor:{type:'numberbox',options:{precision:2,required:true}}"</s:if>>工时费</th>
 						<th field="ddlZhangTao" width="100"
 							<s:if test="actionName in {'gongDanWeiXiuJieDai', 'gongDanCheLiangJianCe'}">
 						data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/zhangTaoOption.action'}}"</s:if>>帐套</th>
-						<s:if
-							test="actionName in {'gongDanWeiXiuJieDai','gongDanWuLiaoDengJi','gongDanCheLiangJianCe'}">
-							<th field="txtRemark" width="150"
-								data-options="editor:{type:'textbox'}">备注</th>
-						</s:if>
+						<th field="txtRemark" width="150"
+							data-options="editor:{type:'textbox'}">备注</th>
 						<s:if
 							test="actionName=='gongDanWeiXiuPaiGong' || actionName=='gongDanLingQuWuLiao' || actionName=='gongDanWeiXiuWanJian' || actionName=='gongDanWeiXiuJieSuan'">
 							<th field="txtBanZu" width="150"
@@ -328,19 +281,33 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			</s:if>
 			<div style="height: 10px;"></div>
 		</s:if>
+		<s:if test="actionName=='gongDanWeiXiuWanJian'">
+			<table id="datagridJianCe" class="easyui-datagrid"
+				data-options="url:'queryGongDanCheLiangJianCe.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />',singleSelect:true,rownumbers:true,showFooter:true<s:if test="gongDanStatus=='维修完检' && actionName=='gongDanWeiXiuWanJian'">,onLoadSuccess:beginEditAllRows</s:if>">
+				<thead>
+					<tr>
+						<th field="txtNeiRong" width="200">检测内容</th>
+						<th field="txtZhuangTai" width="200"
+							data-options="align:'center',editor:{type:'radiobox',options:{defaultValue:'未检测',values:['未检测','正常','异常']}}">检测状态</th>
+						<th field="txtRemark" width="250"
+							data-options="editor:{type:'textbox'}">备注</th>
+						<th field="txtJianChaXiangMuRemark" width="950">检查项目说明</th>
+					</tr>
+				</thead>
+			</table>
+			<div style="height: 10px;"></div>
+		</s:if>
 		<s:if
-			test="actionName in {'gongDanWuLiaoDengJi', 'gongDanLingQuWuLiao', 'gongDanWeiXiuJieSuan'}">
+			test="actionName in {'gongDanLingQuWuLiao', 'gongDanWeiXiuJieSuan'}">
 			<table id="datagridWuLiao" class="easyui-datagrid"
 				data-options="url:'queryGongDanWeiXiuWuLiao.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />',toolbar:'#tb2',singleSelect:true,rownumbers:true,showFooter:true">
 				<thead>
 					<tr>
 						<th field="txtWuLiaoCode" width="150">物料编号</th>
-						<th field="txtWuLiaoName" width="200">名称及规格</th>
+						<th field="txtWuLiaoName" width="250">名称及规格</th>
 						<th field="txtQty" width="60"
-							data-options="align:'right',editor:{type:'numberbox',options:{required: true}}">数量</th>
+							data-options="align:'right'">数量</th>
 						<th field="txtSalePrice" width="80">销售价</th>
-						<th field="txtPaidPrice" width="80"
-							data-options="align:'right',editor:{type:'numberbox',options:{precision:2,required:true}}">支付价格</th>
 						<th field="ddlSuoSuGongDuan" width="150"
 							data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuGongDuanOption.action'}}">所属工段</th>
 						<th field="ddlZhangTao" width="100"
@@ -348,7 +315,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 						<th field="txtRemark" width="100"
 							data-options="editor:{type:'textbox'}">备注</th>
 						<s:if
-							test="(gongDanStatus=='物料登记' && actionName=='gongDanWuLiaoDengJi') || (gongDanStatus=='领取物料' && actionName=='gongDanLingQuWuLiao')">
+							test="(gongDanStatus=='领取物料' && actionName=='gongDanLingQuWuLiao')">
 							<th field="action" width="180" align="center"
 								formatter="formatAction2">操作</th>
 						</s:if>
@@ -357,14 +324,11 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			</table>
 		</s:if>
 		<s:if
-			test="gongDanStatus=='物料登记' && actionName=='gongDanWuLiaoDengJi'">
+			test="gongDanStatus=='领取物料' && actionName=='gongDanLingQuWuLiao'">
 			<div id="tb2" style="height: auto">
 				<a href="javascript:void(0)" class="easyui-linkbutton"
 					data-options="iconCls:'icon-add',plain:true"
-					onClick="addWulaoFromKuCun()">添加库存物料</a> <a
-					href="javascript:void(0)" class="easyui-linkbutton"
-					data-options="iconCls:'icon-add',plain:true"
-					onClick="openRuKuDan('','1')">物料采购</a>
+					onClick="addWulaoFromKuCun()">添加库存物料</a>
 			</div>
 		</s:if>
 		<s:if test="actionName=='gongDanWeiXiuJieSuan'">
@@ -383,64 +347,89 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 									value='gongDan.txtCaiLiaoZheKou' /></span></td>
 
 					</tr>
-                    <s:if test="customerTaoKaItemLst.size > 0">
-                    <tr>
-                        <td colspan="5">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th width="100" align="left">套卡类型</th>
-                                        <th width="100" align="left">业务名称</th>
-                                        <th width="80" align="center">服务次数</th>
-                                        <th width="80" align="center">剩余次数</th>
-                                        <th width="80" align="center">操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <s:iterator value="customerTaoKaItemLst" status="status">
-                                    <tr>
-                                        <td align="left"><s:property value="txtTaoKaSort" /></td>
-                                        <td align="left"><s:property value="txtXiangMuName" /></td>
-                                        <td align="center"><s:property value="txtTotalTimes" /></td>
-                                        <td align="center"><s:property value="txtRestTimes" /></td>
-                                        <td align="center"><s:if test="txtRestTimes > 0"><a href="javascript:modifyRestTimes('<s:property value='txtXiangMuName' />', '<s:property value='txtGuid' />', '<s:property value='txtRestTimes' />')">套卡支付</a>&nbsp;</s:if></td>
-                                    </tr>
-                                </s:iterator>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                    </s:if>
+					<s:if test="customerTaoKaItemLst.size > 0">
+						<tr>
+							<td colspan="5">
+								<table>
+									<thead>
+										<tr>
+											<th width="100" align="left">套卡类型</th>
+											<th width="100" align="left">业务名称</th>
+											<th width="80" align="center">服务次数</th>
+											<th width="80" align="center">剩余次数</th>
+											<th width="80" align="center">操作</th>
+										</tr>
+									</thead>
+									<tbody>
+										<s:iterator value="customerTaoKaItemLst" status="status">
+											<tr>
+												<td align="left"><s:property value="txtTaoKaSort" /></td>
+												<td align="left"><s:property value="txtXiangMuName" /></td>
+												<td align="center"><s:property value="txtTotalTimes" /></td>
+												<td align="center"><s:property value="txtRestTimes" /></td>
+												<td align="center"><s:if test="txtRestTimes > 0">
+														<a
+															href="javascript:modifyRestTimes('<s:property value='txtXiangMuName' />', '<s:property value='txtGuid' />', '<s:property value='txtRestTimes' />')">套卡支付</a>&nbsp;</s:if></td>
+											</tr>
+										</s:iterator>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</s:if>
 					<tr>
-						<td width="100" style="font-weight:bold;">帐套</td>
-						<td width="100" style="font-weight:bold;">工时费（折前）</td>
-						<td width="100" style="font-weight:bold;">工时费（折后）</td>
-						<td width="100" style="font-weight:bold;">物料费（折前）</td>
-						<td width="100" style="font-weight:bold;">物料费（折后）</td>
+						<td width="100" style="font-weight: bold;">帐套</td>
+						<td width="100" style="font-weight: bold;">工时费（折前）</td>
+						<td width="100" style="font-weight: bold;">工时费（折后）</td>
+						<td width="100" style="font-weight: bold;">物料费（折前）</td>
+						<td width="100" style="font-weight: bold;">物料费（折后）</td>
 					</tr>
-                    <s:iterator value="jieSuanInfo.jieSuanLst">                    
-					<tr>
-						<td>&nbsp;<s:property value="zhangtao" />&nbsp;</td>
-						<td align="right">&nbsp;<s:property value="gongshiFeiZheQian" />&nbsp;</td>
-						<td align="right">&nbsp;<s:property value="gongshiFeiZheHou" />&nbsp;</td>
-						<td align="right">&nbsp;<s:property value="wuLiaoFeiZheQian" />&nbsp;</td>
-						<td align="right">&nbsp;<s:property value="wuLiaoFeiZheHou" />&nbsp;</td>
-					</tr>
-                    </s:iterator>                  
+					<s:iterator value="jieSuanInfo.jieSuanLst">
+						<tr>
+							<td>&nbsp;<s:property value="zhangtao" />&nbsp;
+							</td>
+							<td align="right">&nbsp;<s:property
+									value="gongshiFeiZheQian" />&nbsp;
+							</td>
+							<td align="right">&nbsp;<s:property value="gongshiFeiZheHou" />&nbsp;
+							</td>
+							<td align="right">&nbsp;<s:property value="wuLiaoFeiZheQian" />&nbsp;
+							</td>
+							<td align="right">&nbsp;<s:property value="wuLiaoFeiZheHou" />&nbsp;
+							</td>
+						</tr>
+					</s:iterator>
 					<tr>
 						<td>&nbsp;合计&nbsp;</td>
-						<td align="right">&nbsp;<s:property value="jieSuanInfo.gongshiFeiZheQianHeJi" />&nbsp;</td>
-						<td align="right">&nbsp;<s:property value="jieSuanInfo.gongshiFeiZheHouHeJi" />&nbsp;</td>
-						<td align="right">&nbsp;<s:property value="jieSuanInfo.wuLiaoFeiZheQianHeJi" />&nbsp;</td>
-						<td align="right">&nbsp;<s:property value="jieSuanInfo.wuLiaoFeiZheHouHeJi" />&nbsp;</td>
+						<td align="right">&nbsp;<s:property
+								value="jieSuanInfo.gongshiFeiZheQianHeJi" />&nbsp;
+						</td>
+						<td align="right">&nbsp;<s:property
+								value="jieSuanInfo.gongshiFeiZheHouHeJi" />&nbsp;
+						</td>
+						<td align="right">&nbsp;<s:property
+								value="jieSuanInfo.wuLiaoFeiZheQianHeJi" />&nbsp;
+						</td>
+						<td align="right">&nbsp;<s:property
+								value="jieSuanInfo.wuLiaoFeiZheHouHeJi" />&nbsp;
+						</td>
 					</tr>
 					<tr>
-						<td colspan="5">合计(客户支付)：<span>&nbsp;<s:property value="jieSuanInfo.gongDanHeJi" />&nbsp;</span>&nbsp;&nbsp;&nbsp;
-                        支付方式：&nbsp;<span><input name="ddlZhiFuFangShi" id="ddlZhiFuFangShi" class="easyui-combobox" data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/zhiFuSortOption.action'" style="width:100px;"/></span>&nbsp;&nbsp;&nbsp;&nbsp;
-                        实付金额：&nbsp;<span><input class="easyui-numberbox" name="txtFinalPay" type="text" id="txtFinalPay" data-options="required:true,precision:2,min:0" style="width:80px;" /></span></td>
+						<td colspan="5">合计(客户支付)：<span>&nbsp;<s:property
+									value="jieSuanInfo.gongDanHeJi" />&nbsp;
+						</span>&nbsp;&nbsp;&nbsp; 支付方式：&nbsp;<span><input
+								name="ddlZhiFuFangShi" id="ddlZhiFuFangShi"
+								class="easyui-combobox"
+								data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/zhiFuSortOption.action'"
+								style="width: 100px;" /></span>&nbsp;&nbsp;&nbsp;&nbsp; 实付金额：&nbsp;<span><input
+								class="easyui-numberbox" name="txtFinalPay" type="text"
+								id="txtFinalPay" data-options="required:true,precision:2,min:0"
+								style="width: 80px;" /></span></td>
 					</tr>
 					<tr>
-					<td style="text-align:right;" colspan="5"><input class="easyui-linkbutton" type="button" value="打印结算单信息" onClick="javascript:weiXiuJieSuanPrint();" /></td>
+						<td style="text-align: right;" colspan="5"><input
+							class="easyui-linkbutton" type="button" value="打印结算单信息"
+							onClick="javascript:weiXiuJieSuanPrint();" /></td>
 					</tr>
 				</table>
 			</div>
@@ -469,6 +458,19 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			<s:if test="gongDanStatus != '费用结算'">
 			makeElementsReadonly(idsJieSuanAry, jsonData);
 			</s:if>
+		});
+
+		var tmp = '#FFFFFF';
+		$(function() {
+			$('tr').mouseover(function() {
+				tmp = this.style.backgroundColor;
+				this.style.backgroundColor = '#eaf2ff';
+			});
+
+			$('tr').mouseout(function() {
+				this.style.backgroundColor = tmp;
+			});
+
 		});
 
 		function saveGongDan() {
@@ -500,19 +502,6 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 				}
 			});
 		}
-
-		var tmp = '#FFFFFF';
-		$(function() {
-			$('tr').mouseover(function() {
-				tmp = this.style.backgroundColor;
-				this.style.backgroundColor = '#eaf2ff';
-			});
-
-			$('tr').mouseout(function() {
-				this.style.backgroundColor = tmp;
-			});
-
-		});
 		
 		var myTable = $('#datagridXiangMu');
 		function addItemList() {
@@ -644,6 +633,16 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 				z = window.open(url, name, features);
 				z.focus();
 		}
+		function gongDanPaiGongToNext(nextStatus){
+			var rows = myTable.datagrid('getRows');
+			var isSomeWeiXiuZuEmpty = _.some(_.pluck(rows, 'txtBanZu'), function(name){return name=='';});
+			if(isSomeWeiXiuZuEmpty){
+				$.messager.alert('提示', '维修组信息不能为空');
+			}else{
+				updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />', nextStatus);
+			}
+		}		
+		
 		//-------------------------Datagrid2------------------------------------
 		var myTable2 = $('#datagridWuLiao');
 
@@ -667,32 +666,15 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			if (row.txtWuLiaoCode == "合计") {
 				return "";
 			} else {
-				<s:if test="gongDanStatus=='领取物料' && actionName=='gongDanLingQuWuLiao'">
-					var e='';
-					if(row.ddlStatus=='已下单' || row.ddlStatus=='未出库'){
-						if (row.txtLaiYuan=='库存') {
-							return '<a href="#" onclick="confirmChuKu(this);return false;">物料出库确认</a>';	
-						}else{
-							return '<a href="#" onclick="confirmChuKu(this);return false;">物料到货确认</a>';						
-						}
-					}
-					return e;		
-				</s:if>
-				<s:else>
 					if (row.editing) {
 						var s = '<a href="#" onclick="saverow2(this);return false;">保存修改</a>&nbsp;&nbsp;&nbsp;&nbsp;';
 						var c = '<a href="#" onclick="cancelrow2(this);return false;">取消修改</a>';
 						return s + c;
 					} else {
 						var e = '<a href="#" onclick="editrow2(this);return false;">编辑本行</a>&nbsp;&nbsp;&nbsp;&nbsp;';
-						var d = '<a href="#" onclick="deleterow2(this);return false;">删除本行</a>';
-						if(row.ddlStatus=='已出库'){
-							e = '';
-							d = '';	
-						}
+						var d = '<a href="#" onclick="wuLiaoWithdraw(this);return false;">物料退库</a>';
 						return e + d;
 					}
-				</s:else>
 			}
 		}
 
@@ -708,15 +690,15 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			}
 		}
 
-		function deleterow2(target) {
+		function wuLiaoWithdraw(target) {
 			if (myTable2.datagrid('hasEditingRow')) {
 				$.messager.alert('提示', '请先处理尚未完成的编辑行信息');
 			} else {
-				$.messager.confirm('提示', '确定要删除本行信息吗?', function(r) {
+				$.messager.confirm('提示', '确定要将选中物料退库吗?', function(r) {
 					if (r) {
 						var rowIndex = getTargetRowIndex2(target);
 						var editRow = myTable2.datagrid('getRows')[rowIndex];
-						$.post('deleteGongDanWeiXiuWuLiao.action', {
+						$.post('withdrawGongDanWeiXiuWuLiao.action', {
 							"txtWeiXiuWuLiaoId" : editRow.txtWuLiaoGuid
 						}, function(result) {
 							if (result.errorMsg) {
@@ -772,6 +754,16 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 					}, 'json');
 				}
 			});			
+		}	
+		
+		function lingQuWuLiaoToNext(nextStatus){
+			var rows = myTable2.datagrid('getRows');
+			var isSomeGongDuanEmpty = _.some(_.pluck(rows, 'ddlSuoSuGongDuan'), function(name){return name=='';});
+			if(isSomeGongDuanEmpty){
+				$.messager.alert('提示', '所属工段信息不能为空');
+			}else{
+				updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />', nextStatus);
+			}
 		}
 
 

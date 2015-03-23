@@ -12,6 +12,7 @@ public class KuCun {
 	private float txtSalePrice;
 	private String txtSuppName;
 	private String txtRemark;
+	private int txtTakeQty = 1;
 
 	public KuCun(KuCunOperLog operLog) {
 		this.txtKuCunGuid = IDGen.getUUID();
@@ -26,6 +27,14 @@ public class KuCun {
 	}
 
 	public KuCun() {
+	}
+
+	public int getTxtTakeQty() {
+		return txtTakeQty;
+	}
+
+	public void setTxtTakeQty(int txtTakeQty) {
+		this.txtTakeQty = txtTakeQty;
 	}
 
 	public String getTxtShopCode() {

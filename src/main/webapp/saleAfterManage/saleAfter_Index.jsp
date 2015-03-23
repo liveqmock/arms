@@ -114,19 +114,17 @@ td,div {
 	<div id="tabs" class="tabs">
 		<ul>
 			<li id="tab0"><a href="javascript:void(0)" onClick="show(0)">维修接待</a></li>
-			<li id="tab1"><a href="javascript:void(0)" onClick="show(1)">车辆检测</a></li>
-			<li id="tab2"><a href="javascript:void(0)" onClick="show(2)">物料登记</a></li>
-			<li id="tab3"><a href="javascript:void(0)" onClick="show(3)">维修派工</a></li>
-			<li id="tab4"><a href="javascript:void(0)" onClick="show(4)">领取物料</a></li>
-			<li id="tab5"><a href="javascript:void(0)" onClick="show(5)">维修完检</a></li>
-			<li id="tab6"><a href="javascript:void(0)" onClick="show(6)">费用结算</a></li>
-			<li id="tab7"><a href="javascript:void(0)" onClick="show(7)">维修历史</a></li>
+			<li id="tab1"><a href="javascript:void(0)" onClick="show(1)">维修派工</a></li>
+			<li id="tab2"><a href="javascript:void(0)" onClick="show(2)">领取物料</a></li>
+			<li id="tab3"><a href="javascript:void(0)" onClick="show(3)">维修完检</a></li>
+			<li id="tab4"><a href="javascript:void(0)" onClick="show(4)">费用结算</a></li>
+			<li id="tab5"><a href="javascript:void(0)" onClick="show(5)">维修历史</a></li>
 		</ul>
 
 	</div>
 
 	<div id="content"
-		style="border-left: 1px solid gray; border-right: 1px solid gray; border-bottom: 1px solid gray; margin: 0px; height: 720px;">
+		style="border-left: 1px solid gray; border-right: 1px solid gray; border-bottom: 1px solid gray; margin: 0px; height: 100%;">
 
 
 	</div>
@@ -136,8 +134,6 @@ td,div {
 	var cheLiangId = "<s:property value='cheLiangId' />";
 	var saleAfterWeiXiuGuid = "<s:property value='saleAfterWeiXiuGuid' />";
 	var tabInfo = [ [ 'gongDanWeiXiuJieDai.action', '维修接待' ],
-			[ 'gongDanCheLiangJianCe.action', '车辆检测' ],
-			[ 'gongDanWuLiaoDengJi.action', '物料登记' ],
 			[ 'gongDanWeiXiuPaiGong.action', '维修派工' ],
 			[ 'gongDanLingQuWuLiao.action', '领取物料' ],
 			[ 'gongDanWeiXiuWanJian.action', '维修完检' ],

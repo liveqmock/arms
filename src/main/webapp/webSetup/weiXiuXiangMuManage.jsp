@@ -31,14 +31,14 @@
 	<form name="fmSearch" method="post" id="fmSearch" class="searchform">
 		<table id="searchPanel" class="searchPanel" style="display: block;">
 			<tr>
-				<td>项目名称:</td>
-				<td><input name="txtName" type="text" maxlength="20"
-					id="txtName" class="easyui-textbox" style="width: 120px;" /></td>
 				<td>工段名称:</td>
 				<td><input name="ddlGongDuan" id="ddlGongDuan"
 					class="easyui-combobox"
 					data-options="editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuGongDuanOption.action'"
 					style="width: 120px;" /></td>
+				<td>项目名称:</td>
+				<td><input name="txtName" type="text" maxlength="20"
+					id="txtName" class="easyui-textbox" style="width: 120px;" /></td>
 				<td><a id="lnkSearch" class="easyui-linkbutton"
 					href="javascript:doSearch()">查询</a>
 		      <a href="#" class="easyui-linkbutton" onclick="reloadCurentPage();">刷新</a></td>
