@@ -33,8 +33,8 @@ public interface TaoKaDao {
 	@Delete("delete from taokaitem where txtGuid=#{txtGuid}")
 	public int deleteTaoKaItem(String id);
 
-	@Select("select * from v_taokaitem order by txtTaoKaSort,txtXiangMuCode")
-	public List<TaoKaItem> getTaoKaItemList();
+	@Select("select * from v_taokaitem where txtShopCode=#{txtShopCode} order by txtTaoKaSort,txtXiangMuCode")
+	public List<TaoKaItem> getTaoKaItemList(String txtShopCode);
 
 	@Delete("delete from taokaitem where txtTaoKaSortGuid=#{txtTaoKaSortGuid}")
 	int deleteAllTaoKaItemByTaoKaSortGuid(String txtTaoKaSortGuid);

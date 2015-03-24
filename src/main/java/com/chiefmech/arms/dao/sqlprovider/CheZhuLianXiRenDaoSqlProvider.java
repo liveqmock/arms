@@ -19,8 +19,8 @@ public class CheZhuLianXiRenDaoSqlProvider {
 						item.getTxtCheLiangChePaiHao()));
 				this.addField(new Criteria(Action.LIKE, "ddlCheLiangCheXi",
 						item.getDdlCheLiangCheXi()));
-				this.addField(new Criteria(Action.STR_EQUAL, "txtCheLiangCheJiaHao",
-						item.getTxtCheLiangCheJiaHao()));
+				this.addField(new Criteria(Action.STR_EQUAL,
+						"txtCheLiangCheJiaHao", item.getTxtCheLiangCheJiaHao()));
 				this.addField(new Criteria(Action.LIKE, "txtCheZhuName", item
 						.getTxtCheZhuName()));
 				this.addField(new Criteria(Action.LIKE, "txtCheZhuTel", item
@@ -34,14 +34,34 @@ public class CheZhuLianXiRenDaoSqlProvider {
 	}
 
 	public String getVKeHuCheLiangListForEasyUi(Map<String, Object> param) {
-		SearchBean query = (SaleAfterCustomSearchBean) param.get("item");
-		return String.format("select * from v_kehu_cheliang %s order by txtCheZhuName %s",
-				query.getWhereSql(), query.getLimitSql());
+		SaleAfterCustomSearchBean query = (SaleAfterCustomSearchBean) param
+				.get("item");
+		return String.format(
+				"select * from v_kehu_cheliang %s order by txtCheZhuName %s",
+				getWhereSql(query), query.getLimitSql());
 	}
 
 	public String getVKeHuCheLiangCountForEasyUi(Map<String, Object> param) {
-		SearchBean query = (SaleAfterCustomSearchBean) param.get("item");
+		SaleAfterCustomSearchBean query = (SaleAfterCustomSearchBean) param
+				.get("item");
 		return String.format("select count(*) from v_kehu_cheliang %s",
-				query.getWhereSql());
+				getWhereSql(query));
+	}
+
+	private String getWhereSql(SaleAfterCustomSearchBean query) {
+		String where = query.getWhereSql();
+
+		if (!query.isSearchAllCustomerAllowed()) {
+			String tmp = String
+					.format("txtCheLiangChePaiHao in (select txtChePaiHao from gongdan where txtShopCode='%s')",
+							query.getShopCode());
+			if (where.length() > 0) {
+				where = where + " and " + tmp;
+			} else {
+				where = "where " + tmp;
+			}
+		}
+
+		return where;
 	}
 }

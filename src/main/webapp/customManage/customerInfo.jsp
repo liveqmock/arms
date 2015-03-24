@@ -14,7 +14,7 @@
 <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
 <script src="../js/frame/jquery.easyui.min.js" type="text/javascript"></script>
 <script src="../js/frame/underscore-min.js" type="text/javascript"></script>
-<link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="../image/SyAuto_<s:property value='shop.companyFlag' />.ico" type="image/x-icon" />
 <script src="../js/common.js" type="text/javascript"></script>
 <script src="../js/frame/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>

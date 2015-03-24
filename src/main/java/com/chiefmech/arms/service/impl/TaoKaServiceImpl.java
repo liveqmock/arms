@@ -52,7 +52,8 @@ public class TaoKaServiceImpl implements TaoKaService {
 
 	@Override
 	public String getTaoKaItemEasyUiJSon() {
-		List<TaoKaItem> lst = taoKaDao.getTaoKaItemList();
+		List<TaoKaItem> lst = taoKaDao.getTaoKaItemList(ConfigUtil
+				.getInstance().getShopInfo().getShopCode());
 
 		String lstJson = JSONArray.fromObject(lst).toString();
 		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}",

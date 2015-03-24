@@ -16,7 +16,7 @@
 <script src="../js/common.js" type="text/javascript"></script>
 <script src="../js/customcommon.js" type="text/javascript"></script>
 <link href="../style/common.css" rel="stylesheet" type="text/css" />
-<link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="../image/SyAuto_<s:property value='shop.companyFlag' />.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
 </head>
@@ -36,9 +36,7 @@
 			<table border="0" cellpadding="0" cellspacing="0">
 				<tr>
 					<td><select name="queryField" id="queryField">
-                    		<s:if test="user.privilegeLst.contains('customerReservationManage')">
 							<option selected="selected" value="txtCheLiangChePaiHao">按车牌号</option>
-                             </s:if>
 							<option value="txtCheLiangCheJiaHao">按车架号</option>
 					</select></td>
 					<td style="padding-left: 5px"><input class="easyui-textbox" name="queryValue"

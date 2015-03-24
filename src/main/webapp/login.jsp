@@ -8,7 +8,6 @@
 <title>ARMS系统登录页</title>
 <script src="js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
 <script src="js/frame/jquery.Cookie.js" type="text/javascript"></script>
-<link rel="shortcut icon" href="image/SyAuto.ico" type="image/x-icon" />
 <style type="text/css" media="screen">
 body {
 	margin: 0px;
@@ -172,7 +171,6 @@ body {
 	<form name="form1" method="post" action="login.action" id="form1">
 		<div id="topData">
 			<div id="loginForm">
-				<div id="login"></div>
 				<div id="sagLogin"></div>
 				<div id="loginFormBg">
 					<!--登录框 start-->

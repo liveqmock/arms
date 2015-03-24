@@ -14,7 +14,7 @@
 	type="text/javascript"></script>
 <script src="../js/common.js" type="text/javascript"></script>
 <link href="../style/common.css" rel="stylesheet" type="text/css" />
-<link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="../image/SyAuto_<s:property value='shop.companyFlag' />.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
 </head>
@@ -453,9 +453,11 @@
 		style="height: 55px; padding-left: 15px; padding-right: 15px;">
 		<table border='0'>
 			<tr>
-				<td><img src="../image/DCLogo.png" alt='logo' /></td>
-				<td><img src="../image/ShineClubLogo.png"
+				<td><img src="../image/companyLogo_<s:property value='shop.companyFlag' />.png" alt='logo' width="244" height="44"/></td>
+				<s:if test="shop.companyFlag=='blt'">
+                <td><img src="../image/ShineClubLogo.png"
 					style='margin-left: 10px;' alt='logo' /></td>
+                </s:if>
 				<td style='width: 75%; vertical-align: bottom; color: Blue;'>[<s:property
 						value='shop.shopName' />][<s:property value='user.groupName' />] <a href='#'
 					onclick="winopen('userPersonalChange.action','个人设置',500,300,true,true,false);"><s:property

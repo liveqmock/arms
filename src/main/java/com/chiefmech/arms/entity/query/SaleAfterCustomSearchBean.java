@@ -6,6 +6,8 @@ public class SaleAfterCustomSearchBean extends SearchBean {
 
 	private String queryField;
 	private String queryValue;
+	private String shopCode;
+	private boolean isSearchAllCustomerAllowed = false;
 	private int txtPageNum = 1;
 	private int txtPageSize = 20;
 
@@ -18,6 +20,22 @@ public class SaleAfterCustomSearchBean extends SearchBean {
 		this.addField(new Criteria(action, this.getQueryField(), this
 				.getQueryValue()));
 		this.addLimitInfo(this.getTxtPageNum(), this.getTxtPageSize());
+	}
+
+	public String getShopCode() {
+		return shopCode;
+	}
+
+	public void setShopCode(String shopCode) {
+		this.shopCode = shopCode;
+	}
+
+	public boolean isSearchAllCustomerAllowed() {
+		return isSearchAllCustomerAllowed;
+	}
+
+	public void setSearchAllCustomerAllowed(boolean isSearchAllCustomerAllowed) {
+		this.isSearchAllCustomerAllowed = isSearchAllCustomerAllowed;
 	}
 
 	public String getQueryField() {

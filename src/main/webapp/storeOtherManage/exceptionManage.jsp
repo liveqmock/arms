@@ -18,7 +18,7 @@
 	type="text/javascript"></script>
 <link href="../style/common.css?v=74feba2d2e70452cbc1840620b9de165"
 	rel="stylesheet" type="text/css" />
-<link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="../image/SyAuto_<s:property value='shop.companyFlag' />.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
 </head>

@@ -15,7 +15,7 @@
 <script src="../js/frame/underscore-min.js" type="text/javascript"></script>
 <script src="../js/customcommon.js" type="text/javascript"></script>
 <link href="../style/common.css" rel="stylesheet" type="text/css" />
-<link rel="shortcut icon" href="../image/SyAuto.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="../image/SyAuto_<s:property value='shop.companyFlag' />.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
 <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
