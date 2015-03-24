@@ -70,15 +70,15 @@ td {
 						<a
 							onClick="revertGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">退回上一步</a>
-						<a onClick="setAllJianCheNormal();return false;"
-							class="easyui-linkbutton" href="javascript:void(0)">检测全部正常</a>
-						<a onClick="saveJianCheInfo();return false;"
-							class="easyui-linkbutton" href="javascript:void(0)">保存检测信息</a>
 						<a
 							onClick="confirmAllWanJian('<s:property value='saleAfterWeiXiuGuid' />');return false;"
-							class="easyui-linkbutton" href="javascript:void(0)">全部完检</a>
+							class="easyui-linkbutton" href="javascript:void(0)">报修项目全部完检</a>
+						<a onClick="setAllJianCheNormal();return false;"
+							class="easyui-linkbutton" href="javascript:void(0)">检测项目全部正常</a>
+						<a onClick="saveJianCheInfo();return false;"
+							class="easyui-linkbutton" href="javascript:void(0)">保存检测项目信息</a>
 						<a
-							onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','费用结算');return false;"
+							onClick="weiXiuWanJianToNext('费用结算');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">费用结算</a>
 					</s:elseif> <s:elseif
 						test="gongDanStatus=='费用结算' && actionName=='gongDanWeiXiuJieSuan'">
@@ -235,10 +235,10 @@ td {
 				data-options="url:'queryGongDanWeiXiuXiangMu.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />',toolbar:'#tb',singleSelect:true,rownumbers:true,showFooter:true">
 				<thead>
 					<tr>
-						<th field="txtGongDuanName" width="80"
+						<th width="80" height="24" field="txtGongDuanName"
 							<s:if test="actionName=='gongDanWeiXiuJieDai'">
 data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuGongDuanOption.action'}}"</s:if>>工段</th>
-						<th field="txtXiangMuName" width="150">项目名称</th>
+					  <th field="txtXiangMuName" width="150">项目名称</th>
 						<th field="txtWeiXiuNeiRong" width="200"
 							<s:if test="actionName in {'gongDanWeiXiuJieDai', 'gongDanCheLiangJianCe'}">
 						data-options="editor:{type:'textbox'}"</s:if>>项目内容</th>
@@ -416,20 +416,15 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 					</tr>
 					<tr>
 						<td colspan="5">合计(客户支付)：<span>&nbsp;<s:property
-									value="jieSuanInfo.gongDanHeJi" />&nbsp;
-						</span>&nbsp;&nbsp;&nbsp; 支付方式：&nbsp;<span><input
+									value="jieSuanInfo.gongDanHeJi" />
+						</span>&nbsp;&nbsp;&nbsp;&nbsp; 实付金额：&nbsp;<span><input
+								class="easyui-numberbox" name="txtFinalPay" type="text"
+								id="txtFinalPay" data-options="required:true,precision:2,min:0"
+								style="width: 80px;" /></span>&nbsp;&nbsp;&nbsp;&nbsp; 支付方式：&nbsp;<span><input
 								name="ddlZhiFuFangShi" id="ddlZhiFuFangShi"
 								class="easyui-combobox"
 								data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/zhiFuSortOption.action'"
-								style="width: 100px;" /></span>&nbsp;&nbsp;&nbsp;&nbsp; 实付金额：&nbsp;<span><input
-								class="easyui-numberbox" name="txtFinalPay" type="text"
-								id="txtFinalPay" data-options="required:true,precision:2,min:0"
-								style="width: 80px;" /></span></td>
-					</tr>
-					<tr>
-						<td style="text-align: right;" colspan="5"><input
-							class="easyui-linkbutton" type="button" value="打印结算单信息"
-							onClick="javascript:weiXiuJieSuanPrint();" /></td>
+								style="width: 100px;" /></span></td>
 					</tr>
 				</table>
 			</div>
@@ -641,7 +636,29 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			}else{
 				updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />', nextStatus);
 			}
-		}		
+		}
+		function weiXiuWanJianToNext(nextStatus){
+			var rows_xiangMu = myTable.datagrid('getRows');
+			var isSomeWanJianStatusEmpty = _.some(_.pluck(rows_xiangMu, 'txtWanJianStatus'), function(name){return name=='';});
+			if(isSomeWanJianStatusEmpty){
+				$.messager.alert('提示', '完检状态信息不能为空');
+				return;
+			}		
+			
+			//检测项目判断
+			saveJianCheInfo(function(){
+				var rows_jianCe = myTable3.datagrid('getRows');
+				var isSomeAbnormalJianCeRemarkEmpty = _.some(rows_jianCe, function(row){return row.txtZhuangTai == '异常' ? $.trim(row.txtRemark)=='' : false;});
+				if(isSomeAbnormalJianCeRemarkEmpty){
+					$.messager.alert('提示', '检测异常项目的备注信息不能为空');
+					beginEditAllRows();
+					return;
+				}
+				
+				//符合条件才能进入下一步
+				updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />', nextStatus);
+			});			
+		}
 		
 		//-------------------------Datagrid2------------------------------------
 		var myTable2 = $('#datagridWuLiao');
@@ -784,25 +801,34 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			});	
 		}
 
-		function saveJianCheInfo() {
+		function saveJianCheInfo(callBack) {
 			endEditAllRows();
 			
 			var rows = myTable3.datagrid('getRows');
 			var allZhuangTai = _.pluck(rows, "txtZhuangTai");
 			if(_.some(allZhuangTai, function(value){return value=="未检测"})){
-				$.messager.confirm('提示', "还有未检测的项目，确定要保存吗？", function(r) {
+				$.messager.confirm('提示', "还有未检测的项目，确定要保存检测信息吗？", function(r) {
 					if (r) {
-						doSaveJianCheInfo(rows);
+						if(arguments.length == 1){
+							doSaveJianCheInfo(rows, callBack);
+						}else{
+							doSaveJianCheInfo(rows);
+						}
 					}else{
 						beginEditAllRows();
 					}
 				});	
 			}else{
-				doSaveJianCheInfo(rows);
+				if(arguments.length == 1){
+					doSaveJianCheInfo(rows, callBack);
+				}else{
+					doSaveJianCheInfo(rows);
+				}
 			}
 		}
 		
-		function doSaveJianCheInfo(rows){
+		function doSaveJianCheInfo(rows, callBack){
+			var isCallBackExist = (arguments.length == 2);
 			$.post('updateGongDanCheLiangJianCe.action', {
 				"easyUiJSonData" : JsonToString(rows)
 			}, function(result) {
@@ -810,6 +836,9 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 					$.messager.alert('出错啦', result.errorMsg);
 				} else {
 					myTable3.datagrid('reload');
+					if(isCallBackExist){
+						callBack();
+					}
 				}
 			}, 'json');			
 		}
@@ -841,7 +870,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			var ddlZhiFuFangShi = $("#ddlZhiFuFangShi").combobox("getValue");
 			var txtFinalPay = $("#txtFinalPay").numberbox("getValue");
 			if (ddlZhiFuFangShi=="" || txtFinalPay=="") {	
-				$.messager.alert('提示', '请先填写完整支付信息');
+				$.messager.alert('提示', '请先按提示填写支付信息');
 			} else {			
 				$.post('updateGongDanZhiFuXinXi.action', {
 					"saleAfterWeiXiuGuid" : saleAfterGuid,

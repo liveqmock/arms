@@ -25,8 +25,9 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/storeOtherManage")
 @Controller()
 @Scope("prototype")
-public class RuKuDetailManageAction extends BaseActionSupport implements
-		ModelDriven<RuKuDan> {
+public class RuKuDetailManageAction extends BaseActionSupport
+		implements
+			ModelDriven<RuKuDan> {
 
 	@Resource()
 	private RuKuDanService ruKuDanService;
@@ -37,7 +38,7 @@ public class RuKuDetailManageAction extends BaseActionSupport implements
 	private String txtWuLiaoGuid;
 	private String rowJsonData;
 
-	@Action(value = "rukudanDetail", results = { @Result(name = "input", location = "rukudanDetail.jsp") })
+	@Action(value = "rukudanDetail", results = {@Result(name = "input", location = "rukudanDetail.jsp")})
 	public String rukudanDetail() {
 
 		if (StringUtils.isBlank(ruKuDanGuid)) {
@@ -46,6 +47,10 @@ public class RuKuDetailManageAction extends BaseActionSupport implements
 				ddlRuKuSort = "日常采购";
 			} else if ("2".equals(flag)) {
 				ddlRuKuSort = "临时采购";
+			} else if ("3".equals(flag)) {
+				ddlRuKuSort = "例外入库";
+			} else if ("4".equals(flag)) {
+				ddlRuKuSort = "例外出库";
 			}
 			ruKuDan.setTxtBillNo("等待生成");
 			ruKuDan.setTxtStatus("准备单据");
@@ -73,6 +78,10 @@ public class RuKuDetailManageAction extends BaseActionSupport implements
 				prefix = "RCCG";
 			} else if (ruKuDanSort.equals("临时采购")) {
 				prefix = "LSCG";
+			} else if (ruKuDanSort.equals("例外入库")) {
+				prefix = "LWRG";
+			} else if (ruKuDanSort.equals("例外出库")) {
+				prefix = "LWCG";
 			}
 
 			ruKuDan.setTxtBillNo(prefix + ruKuDanService.getNewBillNo());
@@ -96,6 +105,16 @@ public class RuKuDetailManageAction extends BaseActionSupport implements
 			ruKuDan.setTxtShenHeShiJian(DateUtil.getCurrentDate());
 		}
 		int rowAffected = ruKuDanService.updateRuKuDanStatus(ruKuDan);
+		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
+
+		this.transmitJson(jsonStr);
+	}
+
+	@Action(value = "updateRuKuDanToKuCun")
+	public void updateRuKuDanToKuCun() {
+		ruKuDan.setTxtShenHeRen(this.getUser().getDisplayName());
+		ruKuDan.setTxtShenHeShiJian(DateUtil.getCurrentDate());
+		int rowAffected = ruKuDanService.updateRuKuDanToKuCun(ruKuDan);
 		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
 
 		this.transmitJson(jsonStr);

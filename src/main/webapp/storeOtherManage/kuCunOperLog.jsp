@@ -56,7 +56,7 @@ td {
 				<td><input name="txtWuLiaoName" type="text" class="easyui-textbox" maxlength="20"
 					id="txtWuLiaoName" style="width: 100px;" /></td>
 				<td colspan="3" style="text-align: center;"><a id="lnkSearch"
-					class="easyui-linkbutton" href="javascript:doSearch()">查询项目</a></td>
+					class="easyui-linkbutton" href="javascript:doSearch()">查询</a></td>
 				<td><a id="lnkSearch" class="easyui-linkbutton"
 					href="javascript:clearSearchFrm()">清空查询</a></td>
 			</tr>

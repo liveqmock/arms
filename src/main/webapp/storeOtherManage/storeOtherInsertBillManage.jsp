@@ -39,6 +39,12 @@ td {
 						data-options="plain:true,iconCls:'icon-add'"
 						onclick="openRuKuDan('','1');">日常采购</a>
 					<a href="#" class="easyui-linkbutton"
+						data-options="plain:true,iconCls:'icon-add'"
+						onclick="openRuKuDan('','3');">例外入库</a>
+					<a href="#" class="easyui-linkbutton"
+						data-options="plain:true,iconCls:'icon-add'"
+						onclick="openRuKuDan('','4');">例外出库</a>
+					<a href="#" class="easyui-linkbutton"
 						data-options="plain:true,iconCls:'icon-search'"
 						onclick="toggleSearchPanel();">查询</a>
 					<a href="#" class="easyui-linkbutton"
@@ -65,10 +71,10 @@ td {
 					data-options="editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/gongYingShangOption.action'"
 					style="width: 250px;" /></td>
 				<s:if test="action=='updateCaiGou'">
-					<td nowrap>审核状态:</td>
+					<td nowrap>状态:</td>
 					<td><input name="txtStatus" id="txtStatus"
 						class="easyui-combobox"
-						data-options="editable:false,valueField: 'label',textField: 'value',data: [{label: '准备单据',value: '准备单据'},{label: '提交审核',value: '提交审核'},{label: '审核完毕',value: '审核完毕'}]"
+						data-options="editable:false,valueField: 'label',textField: 'value',data: [{label: '准备单据',value: '准备单据'},{label: '确认更新',value: '确认更新'}]"
 						style="width: 100px;" /></td>
 				</s:if>
 				<td colspan="6" align="center" nowrap><a id="lnkSearch"
@@ -101,13 +107,8 @@ td {
 					<th width="250" data-options="field:'txtSuppName'">供应商</th>
 				<th width="80" data-options="field:'txtQty'">采购数量</th>
 				<th width="80" data-options="field:'txtPrice'">采购价</th>
-				<th width="80" data-options="field:'txtSalePrice'">销售价</th>
                 <th width="150" data-options="field:'txtRemark'">备注</th>
-				<s:if test="action=='updateCaiGou'">
-					<th width="80" data-options="field:'txtStatus'">审核状态</th>
-					<th width="80" data-options="field:'txtShenHeRen'">审核人</th>
-					<th width="150" data-options="field:'txtShenHeShiJian'">审核时间</th>
-				</s:if>
+                <th width="150" data-options="field:'txtStatus'">状态</th>
 			</tr>
 		</thead>
 	</table>

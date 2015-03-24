@@ -28,26 +28,18 @@
 			<table border="0"
 				style="width: 900px; border-bottom: 1px solid #b8b8b8;"">
 				<tr>
-					<td class="titlebg"><span>物料管理(<span
+					<td class="titlebg"><span>物料管理</span><span class="titleSpan">(<span
 							style="color: blue; font-weight: bold;"><s:property
-									value='ruKuDan.txtStatus' /></span>)
-					</span></td>
-					<td align="right"><s:if test="ruKuDan.txtStatus=='准备单据'">
+									value='ruKuDan.txtStatus' /></span>)</span></td>
+					<td align="right">&nbsp;
+                    <s:if test="ruKuDan.txtStatus!='确认更新'">
 							<a onClick="saveRuKuDan();return false;"
 								class="easyui-linkbutton" href="javascript:void(0)">保存表头</a>
 							<s:if test="ruKuDanGuid!=''">
 								<a
-									onClick="updateRuKuDanStatus('<s:property value='ruKuDanGuid' />','提交审核');return false;"
-									class="easyui-linkbutton" href="javascript:void(0)">提交审核</a>
-							</s:if>
-						</s:if> <s:elseif test="ruKuDan.txtStatus=='提交审核'">
-							<a
-								onClick="updateRuKuDanStatus('<s:property value='ruKuDanGuid' />','审核完毕');return false;"
-								class="easyui-linkbutton" href="javascript:void(0)">审核完毕</a>
-							<a
-								onClick="updateRuKuDanStatus('<s:property value='ruKuDanGuid' />','准备单据');return false;"
-								class="easyui-linkbutton" href="javascript:void(0)">单据退回</a>
-						</s:elseif></td>
+									onClick="updateRuKuDanToKuCun('<s:property value='ruKuDanGuid' />');return false;"
+									class="easyui-linkbutton" href="javascript:void(0)">更新库存信息</a>
+							</s:if></td></s:if>
 				</tr>
 			</table>
 		</div>
@@ -100,21 +92,18 @@
 						<th field="txtQty" width="60"
 							data-options="align:'right',editor:{type:'numberbox',options:{required:true}}">数量</th>
 						<th field="txtPrice" width="100"
-							data-options="align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">采购价</th>
-                        <s:if test="ruKuDan.ddlRuKuSort == '临时采购'">
-						<th field="txtSalePrice" width="100"
-							data-options="align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">销售价</th>
-                        </s:if>
+							data-options="align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">价格</th>
+                        
 			      <th field="txtRemark" width="200"
 							data-options="editor:{type:'textbox',options:{required:false}}">备注</th>
-						<s:if test="ruKuDan.txtStatus!='审核完毕'">
+						<s:if test="ruKuDan.txtStatus!='确认更新'">
 							<th field="action" width="150" align="center"
 								formatter="formatAction">操作</th>
 						</s:if>
 					</tr>
 				</thead>
 			</table>
-			<s:if test="ruKuDanGuid != '' && ruKuDan.txtStatus!='审核完毕'">
+			<s:if test="ruKuDanGuid != '' && ruKuDan.txtStatus!='确认更新'">
 				<div id="tb" style="height: auto">
 					<a href="javascript:void(0)" class="easyui-linkbutton"
 						data-options="iconCls:'icon-add',plain:true" onClick="appendRow()">添加物料</a>
@@ -134,7 +123,7 @@
 					+ '<s:property value="jsonData" escape="false"/>' + ')');
 			initializeWithJsonData(formJson);
 			
-			<s:if test="ruKuDan.txtStatus=='审核完毕'">
+			<s:if test="ruKuDan.txtStatus=='确认更新'">
 			_.each(formJson, function(value, key) {
 				var el = $("#" + key);
 				if(_.size(el) > 0){
@@ -234,6 +223,24 @@
 		
 		function refreshRuKuDan(ruKuDanGuid){
 			location.href = 'rukudanDetail.action?ruKuDanGuid='+ ruKuDanGuid + '&d=' + new Date();
+		}
+		
+		function updateRuKuDanToKuCun(ruKuDanGuid){
+			$.messager.confirm('提示', '确认<span  style="color: blue; font-weight: bold;">更新库存信息</span>后本页面信息不能被修改，确定更新库存信息吗?', function(r) {
+				if (r) {
+					$("#txtStatus").val("确认更新");
+					$("#form1").form('submit',{
+						url : "updateRuKuDanToKuCun.action",
+						success : function(result) {
+							var result = eval('(' + result + ')');
+							if (result.errorMsg) {
+								$.messager.alert('出错啦', result.errorMsg);
+							}
+							refreshRuKuDan(ruKuDanGuid);
+						}
+					});
+				}
+			});		
 		}
 	</script>
 

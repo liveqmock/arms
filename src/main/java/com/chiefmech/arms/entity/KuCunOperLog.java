@@ -26,7 +26,7 @@ public class KuCunOperLog {
 		this.txtLogGuid = IDGen.getUUID();
 		this.txtShopCode = ruKuDan.getTxtShopCode();
 		this.txtBillGuid = ruKuDan.getTxtGuid();
-		this.txtOperAction = "日常采购";
+		this.txtOperAction = ruKuDan.getDdlRuKuSort();
 		this.txtLogDate = DateUtil.getCurrentDateTime();
 
 		this.txtWuLiaoCode = ruKuDanWuLiao.getTxtWuLiaoCode();

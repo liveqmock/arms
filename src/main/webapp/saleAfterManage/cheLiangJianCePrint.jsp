@@ -97,14 +97,22 @@ td {
 		</tr>
 	</table>
 	<table border="0" cellpadding="0" cellspacing="0" width="700px" style="margin-left: 5px;">
-		<tr>
-			<td align="center" style="height: 70px;font-size:19px; font-weight:bold; line-height:70px;">车辆检测项目</td>
+    	<tr>
+			<td align="center"
+				style="font-size: 19px; font-weight: bold; text-align: center;">
+				<div
+					style="width: 700px; height: 70px; margin: 0 auto; line-height: 70px;">
+					<img src="../image/BaLuTongLogo.png"
+						style="width: 65px; display: block; margin: 0 auto; float: left; padding-left: 100px;" /><span
+						style="padding-right: 100px;">深圳市八路通汽车服务连锁机构(车辆检测报告)</span>
+				</div>
+			</td>
 		</tr>
 		<tr>
 			<td style="height: 7px;"></td>
 		</tr>
         <tr>
-			<td>客户:<span style="font-size:14px; font-weight:bold;"><s:property	value='gongDan.txtCheZhuName' /></span></td>
+			<td>车牌号：<s:property	value='gongDan.txtChePaiHao' /></td>
 		</tr>
 		<tr id="jiance">
 			<td>
@@ -122,7 +130,7 @@ td {
 									<td>&nbsp; <s:property value="txtNeiRong" /></td>
 									<td>&nbsp; <s:property value="txtZhuangTai" /></td>
 									<td>&nbsp; <s:property value="txtRemark" /></td>
-                                    <td>&nbsp; <s:property value="txtJianChaXiangMuRemark" /></td>
+                                    <td><s:property value="txtJianChaXiangMuRemark" /></td>
 								</tr>						
 								</s:iterator>
 				</table> <!--维修物料 end-->

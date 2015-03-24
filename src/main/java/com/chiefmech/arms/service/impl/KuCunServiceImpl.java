@@ -42,13 +42,13 @@ public class KuCunServiceImpl implements KuCunService {
 				rowAffected = kuCunDao.insertKuCun(logKuCun);
 				operLog.setTxtNewQty(logKuCun.getTxtQty());
 			}
-		} else if ("维修出库".equals(txtOperAction) || "维修退库".equals(txtOperAction)) {
+		} else if ("例外入库".equals(txtOperAction) || "例外出库".equals(txtOperAction)
+				|| "维修出库".equals(txtOperAction) || "维修退库".equals(txtOperAction)) {
 			KuCun kuCun = findExistKuCunByWuLiaoCode(logKuCun.getTxtShopCode(),
 					logKuCun.getTxtWuLiaoCode());
 			// 维修出库：库存减少；退库库存增加
-			boolean isKuCunPlusRequire = "维修出库".equals(txtOperAction)
-					? false
-					: true;
+			boolean isKuCunPlusRequire = ("维修出库".equals(txtOperAction) || "例外出库"
+					.equals(txtOperAction)) ? false : true;
 			KuCun newKuCun = getUpdateKuCunInfo(kuCun, operLog,
 					isKuCunPlusRequire);
 			// 更新现有库存的数量和成本价

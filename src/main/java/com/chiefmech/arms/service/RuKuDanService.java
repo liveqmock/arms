@@ -18,6 +18,8 @@ public interface RuKuDanService {
 
 	public int updateRuKuDanStatus(RuKuDan ruKuDan);
 
+	public int updateRuKuDanToKuCun(RuKuDan ruKuDan);
+
 	public String getRuKuDanWuLiaoEasyUiJSon(String ruKuDanGuid);
 
 	public int updateRuKuDanWuLiao(RuKuDanWuLiao ruKuDanWuLiao);
