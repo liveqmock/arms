@@ -44,8 +44,7 @@ public class GroupServiceImpl implements GroupService {
 
 	@Override
 	public Boolean isGroupNameExist(GroupPrivilege item) {
-		return groupDao.isGroupNameExist(item) > 0 ? true
-				: false;
+		return groupDao.isGroupNameExist(item) > 0 ? true : false;
 	}
 
 	@Override
@@ -54,15 +53,12 @@ public class GroupServiceImpl implements GroupService {
 	}
 
 	@Override
-	public String getGroupPrivilegesEasyUiJSon(GroupPrivilege query, int page,
-			int rows) {
-		List<GroupPrivilege> lst = groupDao.getGroupPrivilegesList(query,
-				page, rows);
-		int total = groupDao.getGroupPrivilegesListCount(query);
+	public String getGroupPrivilegesEasyUiJSon(GroupPrivilege query) {
+		List<GroupPrivilege> lst = groupDao.getGroupPrivilegesList(query);
 
 		String lstJson = JSONArray.fromObject(lst).toString();
-		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
-				lstJson);
+		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}",
+				lst.size(), lstJson);
 		return jsonStr;
 	}
 

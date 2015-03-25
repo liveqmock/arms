@@ -48,12 +48,13 @@ public class CommonDataServiceImpl implements CommonDataService {
 		} else if (("CarBrand").equals(target)) {
 			lst = commonDataDao.getCarBrand();
 		} else if (("TaoKaSortGuid").equals(target)) {
-			lst = commonDataDao.getTaoKaSortGuid(ConfigUtil.getInstance()
-					.getShopInfo().getShopCode());
+			lst = commonDataDao.getTaoKaSortGuid(shopCode);
 		} else if (("Remark").equals(target)) {
 			lst = commonDataDao.getPrivilege();
 		} else if (("chengBaoGongSiName").equals(target)) {
 			lst = commonDataDao.getchengBaoGongSiOptionBean();
+		} else if (("CustomerSort").equals(target)) {
+			lst = commonDataDao.getCustomerSortOptionBean(shopCode);
 		}
 		return lst;
 	}

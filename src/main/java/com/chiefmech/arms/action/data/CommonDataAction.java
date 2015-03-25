@@ -56,7 +56,8 @@ public class CommonDataAction extends BaseActionSupport implements CommonData {
 
 	@Action(value = "customerSortOption")
 	public void customerSort() {
-		this.transmitJson(getOptionJsonFronLst(customerSortLst));
+		this.transmitJson(JSONArray.fromObject(
+				commonDataService.getOptionBean("CustomerSort")).toString());
 	}
 
 	@Action(value = "zhiFuSortOption")
@@ -155,11 +156,12 @@ public class CommonDataAction extends BaseActionSupport implements CommonData {
 		this.transmitJson(JSONArray.fromObject(
 				commonDataService.getOptionBean("Remark")).toString());
 	}
-	
+
 	@Action(value = "chengBaoGongSiOption")
 	public void ChengBaoGongSiOption() {
 		this.transmitJson(JSONArray.fromObject(
-				commonDataService.getOptionBean("chengBaoGongSiName")).toString());
+				commonDataService.getOptionBean("chengBaoGongSiName"))
+				.toString());
 	}
 
 	public void setCheLiangBrandName(String cheLiangBrandName) {

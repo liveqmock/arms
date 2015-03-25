@@ -15,9 +15,6 @@ public interface CommonData {
 
 	public static final String[] cheLiangSortLst = {"SUV", "MPV"};
 
-	public static final String[] customerSortLst = {"人保客户", "会员", "现金", "合作商户",
-			"龙卡", "自店"};
-
 	public static final String[] chengBaoGongSiLst = {"人保", "太保", "平安", "人寿",
 			"天安", "阳光"};
 

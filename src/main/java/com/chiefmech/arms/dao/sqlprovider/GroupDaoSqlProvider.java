@@ -9,34 +9,12 @@ import com.chiefmech.arms.entity.query.Criteria.Action;
 
 public class GroupDaoSqlProvider {
 	public String getGroupPrivilegesList(Map<String, Object> param) {
-		final int page = (Integer) param.get("page");
-		final int rows = (Integer) param.get("rows");
-		SearchBean searchBean = getCountSearchBean(param);
-		searchBean.addLimitInfo(page, rows);
-		if (searchBean.getWhereSql().equals("")) {
-			return String
-					.format("select * from group_privileges where groupName != '管理员'  order by groupName desc %s",
-							searchBean.getLimitSql());
-		} else {
-			return String
-					.format("select * from group_privileges %s and groupName !='管理员'  order by groupName desc %s",
-							searchBean.getWhereSql(), searchBean.getLimitSql());
-		}
+		return String.format(
+				"select * from group_privileges %s order by groupName desc",
+				getWhereSql(param));
 	}
 
-	public String getGroupPrivilegesListCount(Map<String, Object> param) {
-		SearchBean searchBean = getCountSearchBean(param);
-		if (searchBean.getWhereSql().equals("")) {
-			return String
-					.format("select count(*) from group_privileges where groupName != '管理员' ");
-		} else {
-			return String
-					.format("select count(*) from group_privileges  %s and groupName != '管理员'  ",
-							searchBean.getWhereSql());
-		}
-	}
-
-	private SearchBean getCountSearchBean(Map<String, Object> param) {
+	private String getWhereSql(Map<String, Object> param) {
 		final GroupPrivilege item = (GroupPrivilege) param.get("item");
 		SearchBean searchBean = new SearchBean() {
 			@Override
@@ -45,6 +23,14 @@ public class GroupDaoSqlProvider {
 						.getGroupName()));
 			}
 		};
-		return searchBean;
+		String where = searchBean.getWhereSql();
+		String searchSql = "groupName != '管理员'";
+		if (where.length() > 0) {
+			where += (" and " + searchSql);
+		} else {
+			where = (" where " + searchSql);
+		}
+
+		return where;
 	}
 }

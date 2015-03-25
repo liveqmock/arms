@@ -25,7 +25,7 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/webSetup")
 @Controller()
 @Scope("prototype")
-public class WeiXiuXiangMunanageAction extends BaseActionSupport implements
+public class WeiXiuXiangMuManageAction extends BaseActionSupport implements
 		ModelDriven<WeiXiuXiangMu> {
 
 	@Resource()

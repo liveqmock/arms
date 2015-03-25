@@ -4,15 +4,14 @@ import java.lang.reflect.Field;
 
 import junit.framework.TestCase;
 
-import com.chiefmech.arms.entity.JianChaXiangMu;
-import com.chiefmech.arms.entity.TaoKaItem;
+import com.chiefmech.arms.entity.CustomerSort;
 
 public class MybatisDaoGen extends TestCase {
 
 	public static void main(String[] args) {
 
-		Object[][] beans = {{"jianChaXiangMu", "txtJianChaGuId",
-			JianChaXiangMu.class}};
+		Object[][] beans = {{"customersort", "txtGuid",
+			CustomerSort.class}};
 
 		StringBuffer sb = new StringBuffer();
 		String fieldInfo = "";
@@ -79,7 +78,7 @@ public class MybatisDaoGen extends TestCase {
 			sb.append("@Select(\"select * from ").append(tableName)
 					.append("\")\n");
 			sb.append(String.format("public List<%s> select%s();\n",
-					entityName, "Item"));
+					entityName, "AllItems"));
 			System.out.println(sb.toString());
 		}
 	}

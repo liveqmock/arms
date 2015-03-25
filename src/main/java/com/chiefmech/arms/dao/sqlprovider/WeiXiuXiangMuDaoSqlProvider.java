@@ -32,7 +32,7 @@ public class WeiXiuXiangMuDaoSqlProvider {
 	}
 
 	public String getWhereSql(SearchBean searchBean, String txtGongDanId) {
-		String sql = String
+		/*String sql = String
 				.format("txtName not in(select txtXiangMuName from gongdanxiangmu where txtGongDanGuid='%s')",
 						txtGongDanId);
 		String where = searchBean.getWhereSql();
@@ -41,8 +41,8 @@ public class WeiXiuXiangMuDaoSqlProvider {
 			where += " and " + sql;
 		} else {
 			where = " where " + sql;
-		}
-		return where;
+		}*/
+		return searchBean.getWhereSql();
 	}
 
 	private SearchBean getCountSearchBean(Map<String, Object> param) {

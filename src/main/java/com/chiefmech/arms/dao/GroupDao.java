@@ -17,11 +17,7 @@ public interface GroupDao {
 
 	@SelectProvider(type = GroupDaoSqlProvider.class, method = "getGroupPrivilegesList")
 	public List<GroupPrivilege> getGroupPrivilegesList(
-			@Param("item") GroupPrivilege query, @Param("page") int page,
-			@Param("rows") int rows);
-
-	@SelectProvider(type = GroupDaoSqlProvider.class, method = "getGroupPrivilegesListCount")
-	public int getGroupPrivilegesListCount(@Param("item") GroupPrivilege query);
+			@Param("item") GroupPrivilege query);
 
 	@Insert("insert into group_privileges(id,groupName,privilege,remark) values(#{id},#{groupName},#{privilege},#{remark})")
 	public int insertGroupPrivilegesItem(GroupPrivilege item);

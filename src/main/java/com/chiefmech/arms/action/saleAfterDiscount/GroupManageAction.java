@@ -36,8 +36,6 @@ public class GroupManageAction extends BaseActionSupport
 	private GroupPrivilege item = new GroupPrivilege();
 	private List<OptionBean> privilegesLst;
 	private List<String> groupPrivilegesLst;
-	private int page = 1;
-	private int rows = 20;
 
 	@Action(value = "groupManage", results = {@Result(name = "input", location = "groupManage.jsp")})
 	public String groupManage() {
@@ -47,8 +45,7 @@ public class GroupManageAction extends BaseActionSupport
 
 	@Action(value = "queryGroup")
 	public void querygroup() {
-		this.transmitJson(groupService.getGroupPrivilegesEasyUiJSon(item, page,
-				rows));
+		this.transmitJson(groupService.getGroupPrivilegesEasyUiJSon(item));
 	}
 
 	@Action(value = "insertGroup")
@@ -116,14 +113,6 @@ public class GroupManageAction extends BaseActionSupport
 	@Override
 	public GroupPrivilege getModel() {
 		return item;
-	}
-
-	public void setPage(int page) {
-		this.page = page;
-	}
-
-	public void setRows(int rows) {
-		this.rows = rows;
 	}
 
 	public List<OptionBean> getPrivilegesLst() {

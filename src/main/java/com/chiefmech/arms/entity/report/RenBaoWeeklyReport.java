@@ -41,6 +41,8 @@ public class RenBaoWeeklyReport {
 				|| txtXiangMuName.startsWith("500")
 				|| txtXiangMuName.startsWith("800")) {
 			value = Integer.parseInt(txtXiangMuName.substring(0, 3));
+		} else if (txtRemark == null) {
+			value = 0;
 		} else if (txtRemark.startsWith("300") || txtRemark.startsWith("500")
 				|| txtRemark.startsWith("800")) {
 			value = Integer.parseInt(txtRemark.substring(0, 3));
@@ -51,18 +53,18 @@ public class RenBaoWeeklyReport {
 
 	private void updateRenBaoInfo() {
 		switch (getTxtXiangMuValue()) {
-		case 300:
-			txtRenBaoXiangMu = "机修";
-			txtRenBaoChaJia = 100;
-			break;
-		case 500:
-			txtRenBaoXiangMu = "保养";
-			txtRenBaoChaJia = 100;
-			break;
-		case 800:
-			txtRenBaoXiangMu = "喷漆";
-			txtRenBaoChaJia = 130;
-			break;
+			case 300 :
+				txtRenBaoXiangMu = "机修";
+				txtRenBaoChaJia = 100;
+				break;
+			case 500 :
+				txtRenBaoXiangMu = "保养";
+				txtRenBaoChaJia = 100;
+				break;
+			case 800 :
+				txtRenBaoXiangMu = "喷漆";
+				txtRenBaoChaJia = 130;
+				break;
 		}
 	}
 
@@ -215,7 +217,7 @@ public class RenBaoWeeklyReport {
 	}
 
 	public String getTxtTicketNumberDisplay() {
-		return StringUtils.isNumeric(txtRemark) ?txtRemark : "";
+		return StringUtils.isNumeric(txtRemark) ? txtRemark : "";
 	}
 
 }

@@ -75,7 +75,7 @@
 						<th width="100" data-options="field:'txtCheLiangChePaiHao'">车牌号码</th>
 						<th width="150" data-options="field:'ddlCheLiangCheXi'">车型</th>
 						<th width="150" data-options="field:'txtCheLiangCheXingDaiMa'">车辆型号</th>
-						<th width="150" data-options="field:'txtCheLiangCheJiaHao'">车架号</th>
+						<th width="200" data-options="field:'txtCheLiangCheJiaHao'">车架号</th>
 						<th width="100" data-options="field:'ddlCustSort'">客户类别</th>
 						<th width="100" data-options="field:'txtCheZhuName'">车主</th>
 						<th width="100" data-options="field:'txtLianXiRenName'">联系人</th>

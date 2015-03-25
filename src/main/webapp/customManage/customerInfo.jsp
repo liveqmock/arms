@@ -225,7 +225,7 @@
 					<tr>
 						<td align="right">车架号：</td>
 						<td><input name="txtCheLiangCheJiaHao" type="text"
-							class="easyui-textbox" data-options="required:false"
+							class="easyui-textbox" data-options="required:true,validType:'exactLength[17]'"
 							id="txtCheLiangCheJiaHao" /></td>
 						<td align="right">发动机号：</td>
 						<td><input name="txtCheLiangFaDongJiHao" type="text"

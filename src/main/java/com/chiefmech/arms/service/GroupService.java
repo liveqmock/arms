@@ -6,8 +6,7 @@ import com.chiefmech.arms.entity.GroupPrivilege;
 
 public interface GroupService {
 
-	public String getGroupPrivilegesEasyUiJSon(GroupPrivilege query, int page,
-			int rows);
+	public String getGroupPrivilegesEasyUiJSon(GroupPrivilege query);
 
 	public int insertGroupPrivilege(GroupPrivilege item);
 

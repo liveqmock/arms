@@ -196,6 +196,17 @@
 													click : "mdfMenu('aeb72bd6-5aa7-4fba-a097-9b8f0ad2b81f','供应商管理','../webSetup/supplierManage.action');"
 												},
 											</s:if>	
+											<s:if test="user.privilegeLst.contains('customerSortManage')">
+												{
+													name : "客户类型",
+													font : {
+														'font-style' : '微软雅黑'
+													},
+													url : "",
+													target : "_blank",
+													click : "mdfMenu('aeb72bd6-5aa7-4fba-a097-9brwer32b81f','客户类型','../webSetup/customerSortManage.action');"
+												},
+											</s:if>	
 											<s:if test="user.privilegeLst.contains('carModelManage')">	
 												{
 													name : "品牌车型",

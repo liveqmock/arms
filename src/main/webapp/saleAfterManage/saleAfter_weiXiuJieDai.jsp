@@ -272,7 +272,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 				</thead>
 			</table>
 			<s:if
-				test="(gongDanStatus=='维修接待' && actionName=='gongDanWeiXiuJieDai') || (gongDanStatus=='车辆检测' && actionName=='gongDanCheLiangJianCe')">
+				test="(gongDanStatus=='维修接待' && actionName=='gongDanWeiXiuJieDai') || (gongDanStatus=='维修派工' && actionName=='gongDanWeiXiuPaiGong')">
 				<div id="tb" style="height: auto">
 					<a href="javascript:void(0)" class="easyui-linkbutton"
 						data-options="iconCls:'icon-add',plain:true"
@@ -357,7 +357,9 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 											<th width="100" align="left">业务名称</th>
 											<th width="80" align="center">服务次数</th>
 											<th width="80" align="center">剩余次数</th>
+                                            <s:if test="gongDanStatus=='费用结算'">
 											<th width="80" align="center">操作</th>
+                                            </s:if>
 										</tr>
 									</thead>
 									<tbody>
@@ -367,9 +369,12 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 												<td align="left"><s:property value="txtXiangMuName" /></td>
 												<td align="center"><s:property value="txtTotalTimes" /></td>
 												<td align="center"><s:property value="txtRestTimes" /></td>
+                                                
+                                            <s:if test="gongDanStatus=='费用结算'">
 												<td align="center"><s:if test="txtRestTimes > 0">
 														<a
 															href="javascript:modifyRestTimes('<s:property value='txtXiangMuName' />', '<s:property value='txtGuid' />', '<s:property value='txtRestTimes' />')">套卡支付</a>&nbsp;</s:if></td>
+                                            </s:if>
 											</tr>
 										</s:iterator>
 									</tbody>

@@ -31,7 +31,7 @@
 	<form name="fmSearch" method="post" id="fmSearch">
 		<table id="searchPanel" class="searchPanel">
 			<tr>
-				<td>组名:</td>
+				<td>用户组名称:</td>
 				<td><input name="groupName" type="text" id="groupName"
 					class="easyui-combobox"
 					data-options="editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/groupNameOption.action'"
@@ -48,11 +48,11 @@
 						   rownumbers:true,
 						   singleSelect:true,
 						   toolbar:'#toolbar',
-						   pagination:true,
+						   pagination:false,
 						   onDblClickRow:editItem ">
 		<thead>
 			<tr>
-				<th width="300" data-options="field:'groupName'">名称</th>
+				<th width="300" data-options="field:'groupName'">用户组名称</th>
 				<th width="300" data-options="field:'remark'">用户权限</th>
 			</tr>
 		</thead>
@@ -67,24 +67,24 @@
 			<table id="fm_privileges" border="0" cellpadding="0" cellspacing="0"
 				width="100%;">
 				<tr>
-					<td colspan="4" width="50"  align="center">名称：
-					<input name="groupName" type="text" style="width: 300px;"
+					<td colspan="4" width="50"  align="center">用户组名称：
+					  <input name="groupName" type="text" style="width: 300px;"
 						id="fm_groupName" class="easyui-textbox" data-options="required:true" /></td>
 				</tr>
 				<tr>
 					<td align="right">权限分配：</td>
 				</tr>
-				<s:iterator value="PrivilegesLst" status="count">
-					<s:if test="#count.odd||#cout.first">				
+				<s:iterator value="privilegesLst" status="status">
+					<s:if test="#status.odd||#status.first">				
 					<tr>
 					</s:if>
 					<td align="right">&nbsp;</td>
 					<td><input type="checkbox"
-						id="remark_<s:property value='#count.count' />" name="remark"
+						id="remark_<s:property value='#status.count' />" name="remark"
 						value="<s:property value='name' />" /> <label
-						for="remark_<s:property value='#count.count' />"><s:property
+						for="remark_<s:property value='#status.count' />"><s:property
 								value='name' /></label> <br /></td>
-					<s:if test="#count.even||#count.last">
+					<s:if test="#status.even||#status.last">
 					</tr>
 					</s:if>
 				</s:iterator>
