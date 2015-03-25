@@ -32,9 +32,15 @@ public interface CommonDataDao {
 	@Select("select txtXiangMuName name, txtXiangMuName code from gongdanxiangmu where txtGongDanGuid=#{txtGongDanGuid}")
 	List<OptionBean> getGongDanXiangMuOptionBean(String txtGongDanGuid);
 
-	@Select("select distinct groupName name,groupName code from group_privileges")
+	@Select("select distinct groupName name,groupName code from group_privileges where groupName!='管理员'")
 	List<OptionBean> getGroupNameOptionBean();
 
 	@Select("select distinct txtTaoKaName name,txtGuid code from taokasort where txtShopCode=#{txtShopCode}")
 	List<OptionBean> getTaoKaSortGuid(String txtShopCode);
+	
+	@Select("select distinct remark name,privilege code from group_privileges")
+	List<OptionBean> getPrivilege();
+	
+	@Select("select chengBaoGongSiName name, chengBaoGongSiName code from chengbaogongsi")
+	List<OptionBean> getchengBaoGongSiOptionBean();
 }

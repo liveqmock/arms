@@ -259,8 +259,9 @@
 							id="txtCheLiangBaoXianDaoQiRi" /></td>
 						<td align="right">承保公司：</td>
 						<td><input name="ddlChengBaoGongSi" type="text"
-							class="easyui-textbox" 
-							id="ddlChengBaoGongSi" /></td>
+							class="easyui-combobox"
+								data-options="editable:false,valueField:'code',textField:'name',method:'post',url:'<s:property value='basePath' />/data/chengBaoGongSiOption.action'"
+							id="ddlChengBaoGongSi" /></td> 
 					</tr>
 					<tr>
 						<td colspan="4">&nbsp;</td>

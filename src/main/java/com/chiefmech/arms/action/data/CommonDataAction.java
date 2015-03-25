@@ -1,15 +1,11 @@
 package com.chiefmech.arms.action.data;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
 import net.sf.json.JSONArray;
-
-import org.apache.commons.io.FileUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -119,7 +115,7 @@ public class CommonDataAction extends BaseActionSupport implements CommonData {
 	}
 
 	@Action(value = "groupNameOption")
-	public void departNameOption() {
+	public void groupNameOption() {
 		this.transmitJson(JSONArray.fromObject(
 				commonDataService.getOptionBean("GroupName")).toString());
 	}
@@ -152,6 +148,18 @@ public class CommonDataAction extends BaseActionSupport implements CommonData {
 	public void taoKaSortGuidOption() {
 		this.transmitJson(JSONArray.fromObject(
 				commonDataService.getOptionBean("TaoKaSortGuid")).toString());
+	}
+
+	@Action(value = "remarkOption")
+	public void PrivilegeOption() {
+		this.transmitJson(JSONArray.fromObject(
+				commonDataService.getOptionBean("Remark")).toString());
+	}
+	
+	@Action(value = "chengBaoGongSiOption")
+	public void ChengBaoGongSiOption() {
+		this.transmitJson(JSONArray.fromObject(
+				commonDataService.getOptionBean("chengBaoGongSiName")).toString());
 	}
 
 	public void setCheLiangBrandName(String cheLiangBrandName) {

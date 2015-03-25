@@ -1,19 +1,25 @@
 package com.chiefmech.arms.service;
+
 import java.util.List;
 
-import com.chiefmech.arms.entity.Group;
+import com.chiefmech.arms.entity.GroupPrivilege;
 
 public interface GroupService {
-	public int insertItem(Group item);
 
-	public int updateItem(Group item);
+	public String getGroupPrivilegesEasyUiJSon(GroupPrivilege query, int page,
+			int rows);
 
-	public boolean isGroupNameExist(Group item);
+	public int insertGroupPrivilege(GroupPrivilege item);
 
-	public int deleteItem(String id);
+	public int updateGroupPrivilegesItem(GroupPrivilege item);
 
-	public String getGroupEasyUiJSon(Group query, int page, int rows);
+	public int deleteGroupPrivilegesItemById(int id);
 
-	public List<Group> selectItem();
+	public int deleteGroupPrivileges(String groupName);
 
+	public List<String> selectGroupPrivilegesItem(String groupName);
+
+	public Boolean isGroupNameExist(GroupPrivilege item);
+
+	public String getPrivilegeByRemark(String remark);
 }

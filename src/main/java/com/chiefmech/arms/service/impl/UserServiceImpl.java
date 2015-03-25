@@ -9,6 +9,7 @@ import net.sf.json.JSONArray;
 import org.springframework.stereotype.Service;
 
 import com.chiefmech.arms.dao.UserDao;
+import com.chiefmech.arms.entity.GroupPrivilege;
 import com.chiefmech.arms.entity.User;
 import com.chiefmech.arms.entity.UserPersonalInfo;
 import com.chiefmech.arms.service.UserService;

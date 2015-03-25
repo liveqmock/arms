@@ -9,33 +9,39 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
-
 import com.chiefmech.arms.dao.sqlprovider.GroupDaoSqlProvider;
-import com.chiefmech.arms.entity.Group;
+import com.chiefmech.arms.entity.GroupPrivilege;
 
 @Repository("groupDao")
 public interface GroupDao {
 
-	@SelectProvider(type = GroupDaoSqlProvider.class, method = "getGroupList")
-	public List<Group> getGroupList(@Param("item") Group query,
-			@Param("page") int page, @Param("rows") int rows);
+	@SelectProvider(type = GroupDaoSqlProvider.class, method = "getGroupPrivilegesList")
+	public List<GroupPrivilege> getGroupPrivilegesList(
+			@Param("item") GroupPrivilege query, @Param("page") int page,
+			@Param("rows") int rows);
 
-	@SelectProvider(type = GroupDaoSqlProvider.class, method = "getGroupListCount")
-	public int getGroupListCount(@Param("item") Group query);
+	@SelectProvider(type = GroupDaoSqlProvider.class, method = "getGroupPrivilegesListCount")
+	public int getGroupPrivilegesListCount(@Param("item") GroupPrivilege query);
 
-	@Insert("insert into groups(groupId,groupName) values(#{groupId},#{groupName})")
-	public int insertItem(Group item);
+	@Insert("insert into group_privileges(id,groupName,privilege,remark) values(#{id},#{groupName},#{privilege},#{remark})")
+	public int insertGroupPrivilegesItem(GroupPrivilege item);
 
-	@Update("update groups set groupName=#{groupName} where groupId=#{groupId}")
-	public int updateItem(Group item);
+	@Update("update group_privileges set groupName=#{groupName},privilege=#{privilege},remark=#{remark} where id=#{id}")
+	public int updateGroupPrivilegesItem(GroupPrivilege item);
 
-	@Delete("delete from groups where groupId=#{groupId}")
-	public int deleteItem(String id);
+	@Delete("delete from group_privileges where id=#{id}")
+	public int deleteGroupPrivilegesItemById(int id);
 
-	@Select("select * from groups")
-	public List<Group> selectItem();
+	@Delete("delete from group_privileges where groupName=#{groupName}")
+	public int deleteGroupPrivilegesItem(String groupName);
 
-	@Select("select count(*) from groups where groupName=#{groupName} and groupId!=#{groupId}")
-	public boolean isGroupNameExist(Group item);
+	@Select("select distinct remark from group_privileges where groupName=#{groupName}")
+	public List<String> selectGroupPrivilegesItem(String groupName);
+
+	@Select("select count(*) from group_privileges where groupName=#{groupName} and privilege=#{privilege}")
+	public int isGroupNameExist(GroupPrivilege item);
+
+	@Select("select distinct privilege from group_privileges where remark=#{remark}")
+	public String selectPrivilege(String remark);
 
 }

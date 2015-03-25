@@ -9,7 +9,7 @@ import net.sf.json.JSONArray;
 import org.springframework.stereotype.Service;
 
 import com.chiefmech.arms.dao.GroupDao;
-import com.chiefmech.arms.entity.Group;
+import com.chiefmech.arms.entity.GroupPrivilege;
 import com.chiefmech.arms.service.GroupService;
 
 @Service("groupService")
@@ -18,39 +18,52 @@ public class GroupServiceImpl implements GroupService {
 	private GroupDao groupDao;
 
 	@Override
-	public int insertItem(Group item) {
-		return groupDao.insertItem(item);
+	public int insertGroupPrivilege(GroupPrivilege item) {
+		return groupDao.insertGroupPrivilegesItem(item);
 	}
 
 	@Override
-	public int updateItem(Group item) {
-		return groupDao.updateItem(item);
+	public int updateGroupPrivilegesItem(GroupPrivilege item) {
+		return groupDao.updateGroupPrivilegesItem(item);
 	}
 
 	@Override
-	public int deleteItem(String id) {
-		return groupDao.deleteItem(id);
+	public int deleteGroupPrivilegesItemById(int id) {
+		return groupDao.deleteGroupPrivilegesItemById(id);
 	}
 
 	@Override
-	public String getGroupEasyUiJSon(Group query, int page, int rows) {
-		List<Group> lst = groupDao.getGroupList(query, page, rows);
-		int total = groupDao.getGroupListCount(query);
+	public int deleteGroupPrivileges(String groupName) {
+		return groupDao.deleteGroupPrivilegesItem(groupName);
+	}
+
+	@Override
+	public List<String> selectGroupPrivilegesItem(String groupName) {
+		return groupDao.selectGroupPrivilegesItem(groupName);
+	}
+
+	@Override
+	public Boolean isGroupNameExist(GroupPrivilege item) {
+		return groupDao.isGroupNameExist(item) > 0 ? true
+				: false;
+	}
+
+	@Override
+	public String getPrivilegeByRemark(String remark) {
+		return groupDao.selectPrivilege(remark);
+	}
+
+	@Override
+	public String getGroupPrivilegesEasyUiJSon(GroupPrivilege query, int page,
+			int rows) {
+		List<GroupPrivilege> lst = groupDao.getGroupPrivilegesList(query,
+				page, rows);
+		int total = groupDao.getGroupPrivilegesListCount(query);
 
 		String lstJson = JSONArray.fromObject(lst).toString();
 		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
 				lstJson);
 		return jsonStr;
-	}
-
-	@Override
-	public List<Group> selectItem() {
-		return groupDao.selectItem();
-	}
-
-	@Override
-	public boolean isGroupNameExist(Group item) {
-		return groupDao.isGroupNameExist(item);
 	}
 
 }

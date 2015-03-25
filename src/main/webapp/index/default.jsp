@@ -229,6 +229,17 @@
 													click : "mdfMenu('7acf3c55-3939-41ba-b525-3a1dfa035c88','维修组','../webSetup/weiXiuZhuManage.action');"
 												},
 											</s:if>	
+											<s:if test="user.privilegeLst.contains('chengBaoGongSiManage')">	
+												{
+													name : "承保公司",
+													font : {
+														'font-style' : '微软雅黑'
+													},
+													url : "",
+													target : "_blank",
+													click : "mdfMenu('7acf3c55-3939-41ba-b525-3a1dfa035448','承保公司','../webSetup/chengBaoGongSiManage.action');"
+												},
+											</s:if>
 											<s:if test="user.privilegeLst.contains('taoKaManage')">	
 												{
 													name : "套卡管理",
@@ -270,6 +281,17 @@
 													url : "",
 													target : "_blank",
 													click : "mdfMenu('6aebe08f-9fff-4492-883434-a20712348812','系统信息','../saleAfterDiscount/shopManage.action');"
+												},
+										</s:if>	
+										<s:if test="user.privilegeLst.contains('groupManage')">	
+												{
+													name : "用户组管理",
+													font : {
+														'font-style' : '微软雅黑'
+													},
+													url : "",
+													target : "_blank",
+													click : "mdfMenu('6aebe08f-9fff-4492-885f-a20712348877','用户组管理','../saleAfterDiscount/groupManage.action');"
 												},
 										</s:if>	
 										<s:if test="user.privilegeLst.contains('userManage')">	
