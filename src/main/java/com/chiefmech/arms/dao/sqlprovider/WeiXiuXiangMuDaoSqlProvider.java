@@ -18,31 +18,16 @@ public class WeiXiuXiangMuDaoSqlProvider {
 		SearchBean searchBean = getCountSearchBean(param);
 		searchBean.addLimitInfo(page, rows);
 
-		return String
-				.format("select * from weixiuxiangmu %s order by txtCode %s",
-						getWhereSql(searchBean, txtGongDanId),
-						searchBean.getLimitSql());
+		return String.format(
+				"select * from weixiuxiangmu %s order by ddlGongDuan %s",
+				searchBean.getWhereSql(), searchBean.getLimitSql());
 	}
 
 	public String getWeiXiuXiangMuListCount(Map<String, Object> param) {
 		String txtGongDanId = (String) param.get("txtGongDanId");
 		SearchBean searchBean = getCountSearchBean(param);
 		return String.format("select count(*) from weixiuxiangmu %s",
-				getWhereSql(searchBean, txtGongDanId));
-	}
-
-	public String getWhereSql(SearchBean searchBean, String txtGongDanId) {
-		/*String sql = String
-				.format("txtName not in(select txtXiangMuName from gongdanxiangmu where txtGongDanGuid='%s')",
-						txtGongDanId);
-		String where = searchBean.getWhereSql();
-
-		if (where.length() > 0) {
-			where += " and " + sql;
-		} else {
-			where = " where " + sql;
-		}*/
-		return searchBean.getWhereSql();
+				searchBean.getWhereSql());
 	}
 
 	private SearchBean getCountSearchBean(Map<String, Object> param) {
@@ -50,8 +35,6 @@ public class WeiXiuXiangMuDaoSqlProvider {
 		SearchBean searchBean = new SearchBean() {
 			@Override
 			public void initSearchFields() {
-				this.addField(new Criteria(Action.LIKE, "txtCode", item
-						.getTxtCode()));
 				this.addField(new Criteria(Action.LIKE, "ddlGongDuan", item
 						.getDdlGongDuan()));
 				this.addField(new Criteria(Action.LIKE, "txtName", item

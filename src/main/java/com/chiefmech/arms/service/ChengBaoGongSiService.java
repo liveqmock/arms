@@ -1,6 +1,5 @@
 package com.chiefmech.arms.service;
 
-import java.util.List;
 import com.chiefmech.arms.entity.ChengBaoGongSi;
 
 public interface ChengBaoGongSiService {
@@ -13,6 +12,4 @@ public interface ChengBaoGongSiService {
 
 	public String getChengBaoGongSiEasyUiJSon(ChengBaoGongSi query, int page,
 			int rows);
-
-	public List<ChengBaoGongSi> selectItem();
 }

@@ -6,14 +6,14 @@ public class UserSearchBean extends SearchBean {
 
 	private String queryField;
 	private String queryValue;
-	private int txtPageNum = 1;
-	private int txtPageSize = 20;
+	private int page = 1;
+	private int rows = 20;
 
 	@Override
 	public void initSearchFields() {
 		this.addField(new Criteria(Action.LIKE, this.getQueryField(), this
 				.getQueryValue()));
-		this.addLimitInfo(this.getTxtPageNum(), this.getTxtPageSize());
+		this.addLimitInfo(this.getPage(), this.getRows());
 	}
 
 	public String getQueryField() {
@@ -28,16 +28,21 @@ public class UserSearchBean extends SearchBean {
 	public void setQueryValue(String queryValue) {
 		this.queryValue = queryValue;
 	}
-	public int getTxtPageNum() {
-		return txtPageNum;
+
+	public int getPage() {
+		return page;
 	}
-	public void setTxtPageNum(int txtPageNum) {
-		this.txtPageNum = txtPageNum;
+
+	public void setPage(int page) {
+		this.page = page;
 	}
-	public int getTxtPageSize() {
-		return txtPageSize;
+
+	public int getRows() {
+		return rows;
 	}
-	public void setTxtPageSize(int txtPageSize) {
-		this.txtPageSize = txtPageSize;
+
+	public void setRows(int rows) {
+		this.rows = rows;
 	}
+
 }

@@ -6,7 +6,8 @@ public class TaoKaOperLogSearchBean extends SearchBean {
 	private String txtLogDateBegin;
 	private String txtLogDateEnd;
 	private String txtCheZhuTel;
-	private int start = 1;
+
+	private int page = 1;
 	private int rows = 20;
 
 	@Override
@@ -14,7 +15,7 @@ public class TaoKaOperLogSearchBean extends SearchBean {
 		this.addField(new Criteria(Action.STR_BETWEEN, "txtLogDate",
 				txtLogDateBegin, txtLogDateEnd));
 		this.addField(new Criteria(Action.LIKE, "txtCheZhuTel", txtCheZhuTel));
-		this.addLimitInfo(this.getStart(), this.getRows());
+		this.addLimitInfo(this.getPage(), this.getRows());
 	}
 
 	public String getTxtLogDateBegin() {
@@ -41,12 +42,12 @@ public class TaoKaOperLogSearchBean extends SearchBean {
 		this.txtCheZhuTel = txtCheZhuTel;
 	}
 
-	public int getStart() {
-		return start;
+	public int getPage() {
+		return page;
 	}
 
-	public void setStart(int start) {
-		this.start = start;
+	public void setPage(int page) {
+		this.page = page;
 	}
 
 	public int getRows() {

@@ -104,7 +104,7 @@ td {
 					style="width: 700px; height: 70px; margin: 0 auto; line-height: 70px;">
 					<img src="../image/logo_<s:property value='shop.companyFlag' />.png"
 						style="width: 65px; display: block; margin: 0 auto; float: left; padding-left: 100px;" /><span
-						style="padding-right: 100px;">深圳市八路通汽车服务连锁机构(车辆检测报告)</span>
+						style="padding-right: 100px;"><s:if test="shop.companyFlag=='blt'">深圳市八路通汽车服务连锁机构</s:if><s:if test="shop.companyFlag=='cdf'">深圳市车道夫汽车服务连锁机构</s:if>(车辆检测报告)</span>
 				</div>
 			</td>
 		</tr>

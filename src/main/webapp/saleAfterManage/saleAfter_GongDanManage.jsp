@@ -94,7 +94,7 @@
 	</div>
 	<div class="region">
 		<table id="mydg" class="easyui-datagrid"
-			data-options="rownumbers:true,singleSelect:true,autoRowHeight:false,pagination:true,onDblClickRow:showGongDan">
+			data-options="url:'<s:if test="actionName=='saleAfterGongDanManage'">saleAfterGongDanSearch.action</s:if><s:elseif test="actionName=='clientReviewManage'">clientReviewSearch.action</s:elseif>',rownumbers:true,singleSelect:true,autoRowHeight:false,pagination:true,onDblClickRow:showGongDan">
 			<thead>
 				<tr>
                     <s:if test="actionName=='saleAfterGongDanManage'">
@@ -127,12 +127,7 @@
 	</div>
 
 
-	<script language="javascript" type="text/javascript">
-		$(function() {
-			var jsonStr = '<s:property value="easyUiJSonData" escape="false"/>';
-			setupDatagrid(jsonStr);
-		});
-
+	<script language="javascript" type="text/javascript">		
 		function setupDatagrid(jsonStr) {
 			jsonStrData = $.parseJSON(jsonStr);
 			$('#mydg').datagrid('loadData', jsonStrData);

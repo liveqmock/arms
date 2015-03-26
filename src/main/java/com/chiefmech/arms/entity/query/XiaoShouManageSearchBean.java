@@ -8,79 +8,64 @@ public class XiaoShouManageSearchBean extends SearchBean {
 	private String xiaoshouID;
 	private String kehuMing;
 	private String danjuState;
-	private int start = 1;
-	private int rows = 15;
+	private int page = 1;
+	private int rows = 20;
 
-	
 	public String getXiaoshouDate() {
 		return xiaoshouDate;
 	}
-
 
 	public void setXiaoshouDate(String xiaoshouDate) {
 		this.xiaoshouDate = xiaoshouDate;
 	}
 
-
 	public String getXiaoshouDateEnd() {
 		return xiaoshouDateEnd;
 	}
-
 
 	public void setXiaoshouDateEnd(String xiaoshouDateEnd) {
 		this.xiaoshouDateEnd = xiaoshouDateEnd;
 	}
 
-
 	public String getXiaoshouID() {
 		return xiaoshouID;
 	}
-
 
 	public void setXiaoshouID(String xiaoshouID) {
 		this.xiaoshouID = xiaoshouID;
 	}
 
-
 	public String getKehuMing() {
 		return kehuMing;
 	}
-
 
 	public void setKehuMing(String kehuMing) {
 		this.kehuMing = kehuMing;
 	}
 
-
 	public String getDanjuState() {
 		return danjuState;
 	}
-
 
 	public void setDanjuState(String danjuState) {
 		this.danjuState = danjuState;
 	}
 
-
-	public int getStart() {
-		return start;
+	public int getPage() {
+		return page;
 	}
 
-
-	public void setStart(int start) {
-		this.start = start;
+	public void setPage(int page) {
+		this.page = page;
 	}
-
 
 	public int getRows() {
 		return rows;
 	}
 
-
 	public void setRows(int rows) {
 		this.rows = rows;
 	}
-
 
 	@Override
 	public void initSearchFields() {
@@ -89,7 +74,7 @@ public class XiaoShouManageSearchBean extends SearchBean {
 		this.addField(new Criteria(Action.LIKE, "xiaoshouID", xiaoshouID));
 		this.addField(new Criteria(Action.LIKE, "kehuMing", kehuMing));
 		this.addField(new Criteria(Action.LIKE, "danjuState", danjuState));
-		this.addLimitInfo(this.getStart(), this.getRows());
+		this.addLimitInfo(this.getPage(), this.getRows());
 	}
 
 }

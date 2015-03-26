@@ -33,7 +33,7 @@
 			<div data-options="region:'north'" style="height: 340px">
 			<input style="display:none;" type="text" id="UserId" value="<s:property value="UserId" />" />
 				<ul class="easyui-tree" treeHeight='300px'>			
-					<li><span>深圳市八路通汽车科技有限公司</span>
+					<li><span><s:if test="shop.companyFlag=='blt'">深圳市八路通汽车服务连锁机构</s:if><s:if test="shop.companyFlag=='cdf'">深圳市车道夫汽车服务连锁机构</s:if></span>
 					<ul>    					
 					<s:iterator value='shopList' id="shop" >				
 							<li><span><s:property value="shopName" /></span>

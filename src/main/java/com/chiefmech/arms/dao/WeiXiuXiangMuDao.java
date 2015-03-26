@@ -26,10 +26,10 @@ public interface WeiXiuXiangMuDao {
 			@Param("txtGongDanId") String saleAfterGuid,
 			@Param("item") WeiXiuXiangMu query);
 
-	@Insert("insert into weixiuxiangmu(txtGuid,txtShopCode,txtCode,txtName,txtNeiRong,txtFeiYong,ddlGongDuan,txtRemark) values(#{txtGuid},#{txtShopCode},#{txtCode},#{txtName},#{txtNeiRong},#{txtFeiYong},#{ddlGongDuan},#{txtRemark})")
+	@Insert("insert into weixiuxiangmu(txtGuid,txtShopCode,txtName,txtNeiRong,txtFeiYong,ddlGongDuan,txtRemark) values(#{txtGuid},#{txtShopCode},#{txtName},#{txtNeiRong},#{txtFeiYong},#{ddlGongDuan},#{txtRemark})")
 	public int insertItem(WeiXiuXiangMu item);
 
-	@Update("update weixiuxiangmu set txtCode=#{txtCode},txtName=#{txtName},txtNeiRong=#{txtNeiRong},txtFeiYong=#{txtFeiYong},ddlGongDuan=#{ddlGongDuan},txtRemark=#{txtRemark} where txtGuid=#{txtGuid}")
+	@Update("update weixiuxiangmu set txtName=#{txtName},txtNeiRong=#{txtNeiRong},txtFeiYong=#{txtFeiYong},ddlGongDuan=#{ddlGongDuan},txtRemark=#{txtRemark} where txtGuid=#{txtGuid}")
 	public int updateItem(WeiXiuXiangMu item);
 
 	@Delete("delete from weixiuxiangmu where txtGuid=#{txtGuid}")

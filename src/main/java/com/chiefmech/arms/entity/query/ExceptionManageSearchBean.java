@@ -8,15 +8,15 @@ public class ExceptionManageSearchBean extends SearchBean {
 	private String billNo;
 	private String billType;
 	private String cangKuName;
-	
+
 	private String beiZhu;
 	private String shuLiang;
 	private String jinE;
 	private String liWaiStatus;
 	private String shenHeRen;
-	
-	private int start = 1;
-	private int rows = 15;
+
+	private int page = 1;
+	private int rows = 20;
 
 	public String getLiWaiDate() {
 		return liWaiDate;
@@ -98,12 +98,12 @@ public class ExceptionManageSearchBean extends SearchBean {
 		this.shenHeRen = shenHeRen;
 	}
 
-	public int getStart() {
-		return start;
+	public int getPage() {
+		return page;
 	}
 
-	public void setStart(int start) {
-		this.start = start;
+	public void setPage(int page) {
+		this.page = page;
 	}
 
 	public int getRows() {
@@ -114,16 +114,15 @@ public class ExceptionManageSearchBean extends SearchBean {
 		this.rows = rows;
 	}
 
-
 	@Override
 	public void initSearchFields() {
-		this.addField(new Criteria(Action.STR_BETWEEN, "liWaiDate",
-				liWaiDate, liWaiDateEnd));
+		this.addField(new Criteria(Action.STR_BETWEEN, "liWaiDate", liWaiDate,
+				liWaiDateEnd));
 		this.addField(new Criteria(Action.LIKE, "billNo", billNo));
 		this.addField(new Criteria(Action.LIKE, "billType", billType));
 		this.addField(new Criteria(Action.LIKE, "beiZhu", beiZhu));
 		this.addField(new Criteria(Action.LIKE, "liWaiStatus", liWaiStatus));
-		this.addLimitInfo(this.getStart(), this.getRows());
+		this.addLimitInfo(this.getPage(), this.getRows());
 	}
 
 }

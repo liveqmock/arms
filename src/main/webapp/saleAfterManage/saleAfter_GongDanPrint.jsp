@@ -96,7 +96,7 @@ td {
 		<table border="0" cellpadding="0" cellspacing="0"
 			style="margin-top: 40px; width: 760px;">
 			<tr>
-				<td class="title">深圳市八路通汽车服务连锁机构</td>
+				<td class="title"><s:if test="shop.companyFlag=='blt'">深圳市八路通汽车服务连锁机构</s:if><s:if test="shop.companyFlag=='cdf'">深圳市车道夫汽车服务连锁机构</s:if></td>
 			</tr>
 			<tr>
 				<td class="title">结算单</td>
@@ -273,7 +273,7 @@ td {
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td>深圳市八路通汽车服务连锁机构 <span style="padding-left: 30%;">投诉热线：29971491/18038094463</span></td>
+				<td><s:if test="shop.companyFlag=='blt'">深圳市八路通汽车服务连锁机构</s:if><s:if test="shop.companyFlag=='cdf'">深圳市车道夫汽车服务连锁机构</s:if> <span style="padding-left: 30%;">投诉热线：29971491/18038094463</span></td>
 			</tr>
 			<tr>
 				<td>深圳市宝安五十区海景花园一层(宝安大道与开屏路交界处)</td>

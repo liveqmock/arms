@@ -5,7 +5,10 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import net.sf.json.JSONArray;
+
 import org.springframework.stereotype.Service;
+
+import com.chiefmech.arms.common.util.ConfigUtil;
 import com.chiefmech.arms.dao.ChengBaoGongSiDao;
 import com.chiefmech.arms.entity.ChengBaoGongSi;
 import com.chiefmech.arms.service.ChengBaoGongSiService;
@@ -42,11 +45,6 @@ public class ChengBaoGongSiServiceImpl implements ChengBaoGongSiService {
 		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}", total,
 				lstJson);
 		return jsonStr;
-	}
-
-	@Override
-	public List<ChengBaoGongSi> selectItem() {
-		return chengBaoGongSiDao.selectItem();
 	}
 
 }

@@ -507,7 +507,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 		function addItemList() {
 			var sURL = "../webSetup/weiXiuXiangMuManage.action?action=pickXiangMu&saleAfterGuid="
 					+ saleAfterGuid + "&d=" + new Date();
-			var sFeatures = "dialogWidth:1000px;dialogHeight:670px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
+			var sFeatures = "dialogWidth:1000px;dialogHeight:900px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
 			window.showModalDialog(sURL, window, sFeatures);
 			myTable.datagrid('reload');
 		}

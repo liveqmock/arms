@@ -2,6 +2,8 @@ package com.chiefmech.arms.dao.sqlprovider;
 
 import java.util.Map;
 
+import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.entity.Shop;
 import com.chiefmech.arms.entity.query.Criteria;
 import com.chiefmech.arms.entity.query.Criteria.Action;
 import com.chiefmech.arms.entity.query.SaleAfterCustomSearchBean;
@@ -48,18 +50,37 @@ public class CheZhuLianXiRenDaoSqlProvider {
 				getWhereSql(query));
 	}
 
-	private String getWhereSql(SaleAfterCustomSearchBean query) {
-		String where = query.getWhereSql();
+	private String getWhereSql(SaleAfterCustomSearchBean searchBean) {
+		String where = searchBean.getWhereSql();
+		String searchSql = "";
 
-		if (!query.isSearchAllCustomerAllowed()) {
-			String tmp = String
-					.format("txtCheLiangChePaiHao in (select txtChePaiHao from gongdan where txtShopCode='%s')",
-							query.getShopCode());
-			if (where.length() > 0) {
-				where = where + " and " + tmp;
+		Shop curShop = ConfigUtil.getInstance().getShopInfo();
+
+		String queryField = searchBean.getQueryField();
+		String queryValue = searchBean.getQueryValue();
+
+		if (queryField != null) {
+			// 完整车架号可跨店铺搜索
+			if ("txtCheLiangCheJiaHao".equals(queryField)) {
+				searchSql += String.format("%s = '%s'", queryField, queryValue);
 			} else {
-				where = "where " + tmp;
+				// 跨店查询客户车辆信息
+				searchSql += String.format("%s like '%%%s%%'", queryField,
+						queryValue);
+
+				if (!searchBean.isSearchAllShopCustomerAllowed()) {
+					// 仅在当前店铺查询客户车辆信息
+					// 1. 车辆信息在本店登记的 2. 车牌号在本店的工单里面出现过
+					searchSql += String
+							.format(" and ((txtRegisterShopCode='%s') or (txtCheLiangChePaiHao in (select txtChePaiHao from gongdan where txtShopCode='%s')))",
+									curShop.getShopCode(),
+									curShop.getShopCode());
+				}
 			}
+		}
+
+		if (searchSql.length() > 0) {
+			where = where + " and " + searchSql;
 		}
 
 		return where;

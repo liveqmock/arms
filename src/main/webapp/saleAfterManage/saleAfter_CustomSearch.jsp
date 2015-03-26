@@ -38,6 +38,8 @@
 					<td><select name="queryField" id="queryField">
 							<option selected="selected" value="txtCheLiangChePaiHao">按车牌号</option>
 							<option value="txtCheLiangCheJiaHao">按车架号</option>
+							<option value="txtCheZhuTel">按车主电话</option>
+							<option value="txtLianXiRenTel">按联系人电话</option>
 					</select></td>
 					<td style="padding-left: 5px"><input class="easyui-textbox" name="queryValue"
 						type="text" maxlength="20" id="queryValue" />&nbsp;&nbsp;
@@ -69,7 +71,7 @@
 			<!--数据列表 start-->
 			<div style="height: 3px"></div>
 			<table id="mydg" class="easyui-datagrid"
-				data-options="pageList:[20,30,50,100],rownumbers:true,singleSelect:true, pagination:true,onDblClickRow:jieDaiDaoHang">
+				data-options="url:'customerSearch.action',pageList:[20,30,50,100],rownumbers:true,singleSelect:true, pagination:true,onDblClickRow:jieDaiDaoHang">
 				<thead>
 					<tr>
 						<th width="100" data-options="field:'txtCheLiangChePaiHao'">车牌号码</th>

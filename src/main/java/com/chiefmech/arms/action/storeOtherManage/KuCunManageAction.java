@@ -31,7 +31,7 @@ public class KuCunManageAction extends BaseActionSupport
 
 	private KuCun item = new KuCun();
 	private int page = 1;
-	private int rows = 10;
+	private int rows = 20;
 	private String rowJsonData;
 	private String saleAfterWeiXiuGuid;
 	private String action;

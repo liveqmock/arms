@@ -38,7 +38,7 @@ public class WeiXiuXiangMuManageAction extends BaseActionSupport implements
 	private String easyUiJSonData;
 	private String action;
 	private int page = 1;
-	private int rows = 10;
+	private int rows = 20;
 
 	@Action(value = "weiXiuXiangMuManage", results = { @Result(name = "input", location = "weiXiuXiangMuManage.jsp") })
 	public String saleAfterWeiXiuXiangMuSet() {

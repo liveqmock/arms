@@ -22,6 +22,6 @@ public interface CustomerSortDao {
 	@Delete("delete from customersort where txtGuid=#{txtGuid}")
 	public int deleteItem(String id);
 
-	@Select("select * from customersort")
-	public List<CustomerSort> selectAllItems();
+	@Select("select * from customersort where txtShopCode=#{txtShopCode}")
+	public List<CustomerSort> selectAllItems(String txtShopCode);
 }

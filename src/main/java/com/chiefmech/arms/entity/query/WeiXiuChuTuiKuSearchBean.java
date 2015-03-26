@@ -11,8 +11,8 @@ public class WeiXiuChuTuiKuSearchBean extends SearchBean {
 	private String txtLianXiMob;
 	private String txtRuChangDateStart;
 	private String txtRuChangDateEnd;
-	private int start = 1;
-	private int rows = 15;
+	private int page = 1;
+	private int rows = 20;
 
 	public String getTxtBillNo() {
 		return txtBillNo;
@@ -70,12 +70,12 @@ public class WeiXiuChuTuiKuSearchBean extends SearchBean {
 		this.txtRuChangDateEnd = txtRuChangDateEnd;
 	}
 
-	public int getStart() {
-		return start;
+	public int getPage() {
+		return page;
 	}
 
-	public void setStart(int start) {
-		this.start = start;
+	public void setPage(int page) {
+		this.page = page;
 	}
 
 	public int getRows() {
@@ -95,7 +95,7 @@ public class WeiXiuChuTuiKuSearchBean extends SearchBean {
 				txtXieYiBillNo));
 		this.addField(new Criteria(Action.LIKE, "txtChePaiHao", txtChePaiHao));
 		this.addField(new Criteria(Action.LIKE, "txtLianXiRen", txtLianXiRen));
-		this.addLimitInfo(this.getStart(), this.getRows());
+		this.addLimitInfo(this.getPage(), this.getRows());
 	}
 
 }

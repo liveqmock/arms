@@ -31,8 +31,9 @@ public class MaillSearchBean extends SearchBean {
 	 * 主送人
 	 */
 	private String hidToUserName;
-	private int start = 1;
-	private int rows = 15;
+
+	private int page = 1;
+	private int rows = 20;
 
 	public String getTxtSendDate() {
 		return txtSendDate;
@@ -90,12 +91,12 @@ public class MaillSearchBean extends SearchBean {
 		this.senderName = senderName;
 	}
 
-	public int getStart() {
-		return start;
+	public int getPage() {
+		return page;
 	}
 
-	public void setStart(int start) {
-		this.start = start;
+	public void setPage(int page) {
+		this.page = page;
 	}
 
 	public int getRows() {
@@ -115,7 +116,7 @@ public class MaillSearchBean extends SearchBean {
 		this.addField(new Criteria(Action.LIKE, "txtRemarks", txtRemarks));
 		this.addField(new Criteria(Action.LIKE, "senderName", senderName));
 		this.addField(new Criteria(Action.LIKE, "hidToUserName", hidToUserName));
-		this.addLimitInfo(this.getStart(), this.getRows());
+		this.addLimitInfo(this.getPage(), this.getRows());
 	}
 
 }

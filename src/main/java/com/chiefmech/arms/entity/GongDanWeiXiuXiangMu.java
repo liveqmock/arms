@@ -8,7 +8,6 @@ public class GongDanWeiXiuXiangMu {
 
 	private String txtWeiXiuXiangMuId;
 	private String txtGongDanGuid;
-	private String txtXiangMuCode;
 	private String txtXiangMuName;
 	private String txtGongDuanName;
 	private String txtWeiXiuNeiRong;
@@ -31,7 +30,6 @@ public class GongDanWeiXiuXiangMu {
 	public GongDanWeiXiuXiangMu(String saleAfterWeiXiuGuid, WeiXiuXiangMu item) {
 		this.txtWeiXiuXiangMuId = IDGen.getUUID();
 		this.txtGongDanGuid = saleAfterWeiXiuGuid;
-		this.txtXiangMuCode = item.getTxtCode();
 		this.txtXiangMuName = item.getTxtName();
 		this.txtGongDuanName = item.getDdlGongDuan();
 		this.txtFeiYong = item.getTxtFeiYong();
@@ -69,14 +67,6 @@ public class GongDanWeiXiuXiangMu {
 
 	public void setTxtGongDanGuid(String txtGongDanGuid) {
 		this.txtGongDanGuid = txtGongDanGuid;
-	}
-
-	public String getTxtXiangMuCode() {
-		return txtXiangMuCode;
-	}
-
-	public void setTxtXiangMuCode(String txtXiangMuCode) {
-		this.txtXiangMuCode = txtXiangMuCode;
 	}
 
 	public String getTxtGongDuanName() {

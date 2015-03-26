@@ -24,7 +24,7 @@ import com.chiefmech.arms.entity.view.VTaoKaOperLog;
 
 @Repository("customerInfoDao")
 public interface CustomerInfoDao {
-	@Insert("insert into customerinfo(txtCustId,ddlCustSort,txtCheZhuName,txtCheZhuTel,txtCheZhuPwd,txtLianXiRenName,txtLianXiRenTel,txtLianXiRenAdd,txtCheZhuJiaZhaoDate,txtHuiYuanJiFen,txtGongShiZheKou,txtCaiLiaoZheKou,txtHuiYuanDengJi) values(#{txtCustId},#{ddlCustSort},#{txtCheZhuName},#{txtCheZhuTel},#{txtCheZhuPwd},#{txtLianXiRenName},#{txtLianXiRenTel},#{txtLianXiRenAdd},#{txtCheZhuJiaZhaoDate},#{txtHuiYuanJiFen},#{txtGongShiZheKou},#{txtCaiLiaoZheKou},#{txtHuiYuanDengJi})")
+	@Insert("insert into customerinfo(txtCustId,ddlCustSort,txtCheZhuName,txtCheZhuTel,txtCheZhuPwd,txtLianXiRenName,txtLianXiRenTel,txtLianXiRenAdd,txtCheZhuJiaZhaoDate,txtHuiYuanJiFen,txtGongShiZheKou,txtCaiLiaoZheKou,txtHuiYuanDengJi,companyFlag) values(#{txtCustId},#{ddlCustSort},#{txtCheZhuName},#{txtCheZhuTel},#{txtCheZhuPwd},#{txtLianXiRenName},#{txtLianXiRenTel},#{txtLianXiRenAdd},#{txtCheZhuJiaZhaoDate},#{txtHuiYuanJiFen},#{txtGongShiZheKou},#{txtCaiLiaoZheKou},#{txtHuiYuanDengJi},#{companyFlag} )")
 	public int insertCustomerInfo(CustomerInfo item);
 
 	@Update("update customerinfo set ddlCustSort=#{ddlCustSort},txtCheZhuName=#{txtCheZhuName},txtCheZhuTel=#{txtCheZhuTel},txtCheZhuPwd=#{txtCheZhuPwd},txtLianXiRenName=#{txtLianXiRenName},txtLianXiRenTel=#{txtLianXiRenTel},txtLianXiRenAdd=#{txtLianXiRenAdd},txtCheZhuJiaZhaoDate=#{txtCheZhuJiaZhaoDate},txtHuiYuanJiFen=#{txtHuiYuanJiFen},txtGongShiZheKou=#{txtGongShiZheKou},txtCaiLiaoZheKou=#{txtCaiLiaoZheKou},txtHuiYuanDengJi=#{txtHuiYuanDengJi} where txtCustId=#{txtCustId}")
@@ -33,8 +33,10 @@ public interface CustomerInfoDao {
 	@Select("select * from customerinfo where txtCustId=#{txtCustId}")
 	public CustomerInfo findCustomerInfoById(String txtCustId);
 
-	@Select("select * from customerinfo where txtCheZhuTel=#{txtCheZhuTel}")
-	public List<CustomerInfo> findCustomerInfoByCheZhuTel(String txtCheZhuTel);
+	@Select("select * from customerinfo where txtCheZhuTel=#{txtCheZhuTel} and companyFlag=#{companyFlag}")
+	public List<CustomerInfo> findCustomerInfoByCheZhuTel(
+			@Param("txtCheZhuTel") String txtCheZhuTel,
+			@Param("companyFlag") String companyFlag);
 
 	@SelectProvider(type = CheZhuLianXiRenDaoSqlProvider.class, method = "queryVKeHuCheLiang")
 	public List<VKeHuCheLiang> queryVKeHuCheLiang(
@@ -54,7 +56,7 @@ public interface CustomerInfoDao {
 	@Select("select * from customerinfo")
 	public List<CustomerInfo> selectItem();
 
-	@Insert("insert into chelianginfo(txtCustId,txtCheLiangId,ddlCheLiangZhiZaoShang,ddlCheLiangCheXi,txtCheLiangCheXingDaiMa,txtCheLiangChePaiHao,txtCheLiangCheJiaHao,txtCheLiangFaDongJiHao,txtCheLiangDengJiRiQi,txtCheLiangNianShenDaoQiRi,txtCheLiangBaoXianDaoQiRi,ddlChengBaoGongSi,ddlCheLiangNianFen,ddlCheLiangPaiLiang) values(#{txtCustId},#{txtCheLiangId},#{ddlCheLiangZhiZaoShang},#{ddlCheLiangCheXi},#{txtCheLiangCheXingDaiMa},#{txtCheLiangChePaiHao},#{txtCheLiangCheJiaHao},#{txtCheLiangFaDongJiHao},#{txtCheLiangDengJiRiQi},#{txtCheLiangNianShenDaoQiRi},#{txtCheLiangBaoXianDaoQiRi},#{ddlChengBaoGongSi},#{ddlCheLiangNianFen},#{ddlCheLiangPaiLiang})")
+	@Insert("insert into chelianginfo(txtCustId,txtCheLiangId,ddlCheLiangZhiZaoShang,ddlCheLiangCheXi,txtCheLiangCheXingDaiMa,txtCheLiangChePaiHao,txtCheLiangCheJiaHao,txtCheLiangFaDongJiHao,txtCheLiangDengJiRiQi,txtCheLiangNianShenDaoQiRi,txtCheLiangBaoXianDaoQiRi,ddlChengBaoGongSi,ddlCheLiangNianFen,ddlCheLiangPaiLiang,txtRegisterShopCode) values(#{txtCustId},#{txtCheLiangId},#{ddlCheLiangZhiZaoShang},#{ddlCheLiangCheXi},#{txtCheLiangCheXingDaiMa},#{txtCheLiangChePaiHao},#{txtCheLiangCheJiaHao},#{txtCheLiangFaDongJiHao},#{txtCheLiangDengJiRiQi},#{txtCheLiangNianShenDaoQiRi},#{txtCheLiangBaoXianDaoQiRi},#{ddlChengBaoGongSi},#{ddlCheLiangNianFen},#{ddlCheLiangPaiLiang},#{txtRegisterShopCode})")
 	public int insertCheLiangInfo(CheLiangInfo item);
 
 	@Update("update chelianginfo set txtCustId=#{txtCustId},ddlCheLiangZhiZaoShang=#{ddlCheLiangZhiZaoShang},ddlCheLiangCheXi=#{ddlCheLiangCheXi},txtCheLiangCheXingDaiMa=#{txtCheLiangCheXingDaiMa},txtCheLiangChePaiHao=#{txtCheLiangChePaiHao},txtCheLiangCheJiaHao=#{txtCheLiangCheJiaHao},txtCheLiangFaDongJiHao=#{txtCheLiangFaDongJiHao},txtCheLiangDengJiRiQi=#{txtCheLiangDengJiRiQi},txtCheLiangNianShenDaoQiRi=#{txtCheLiangNianShenDaoQiRi},txtCheLiangBaoXianDaoQiRi=#{txtCheLiangBaoXianDaoQiRi},ddlChengBaoGongSi=#{ddlChengBaoGongSi},ddlCheLiangNianFen=#{ddlCheLiangNianFen},ddlCheLiangPaiLiang=#{ddlCheLiangPaiLiang} where txtCheLiangId=#{txtCheLiangId}")

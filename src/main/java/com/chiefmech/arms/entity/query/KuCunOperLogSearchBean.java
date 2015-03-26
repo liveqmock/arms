@@ -11,8 +11,8 @@ public class KuCunOperLogSearchBean extends SearchBean {
 	private String txtWuLiaoCode;
 	private String txtWuLiaoName;
 	private String txtBillNo;
-	private int start = 1;
-	private int rows = 15;
+	private int page = 1;
+	private int rows = 20;
 
 	@Override
 	public void initSearchFields() {
@@ -25,7 +25,7 @@ public class KuCunOperLogSearchBean extends SearchBean {
 		// 只查找属于当前店铺的库存
 		this.addField(new Criteria(Action.STR_EQUAL, "txtShopCode", ConfigUtil
 				.getInstance().getShopInfo().getShopCode()));
-		this.addLimitInfo(this.getStart(), this.getRows());
+		this.addLimitInfo(this.getPage(), this.getRows());
 	}
 
 	public String getTxtLogDateBegin() {
@@ -84,12 +84,12 @@ public class KuCunOperLogSearchBean extends SearchBean {
 		this.txtBillNo = txtBillNo;
 	}
 
-	public int getStart() {
-		return start;
+	public int getPage() {
+		return page;
 	}
 
-	public void setStart(int start) {
-		this.start = start;
+	public void setPage(int page) {
+		this.page = page;
 	}
 
 	public int getRows() {

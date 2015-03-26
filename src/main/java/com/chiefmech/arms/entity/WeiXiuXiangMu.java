@@ -4,7 +4,6 @@ import com.chiefmech.arms.common.util.ConfigUtil;
 
 public class WeiXiuXiangMu {
 	private String txtGuid;
-	private String txtCode;
 	private String txtName;
 	private String txtNeiRong;
 	private float txtFeiYong;
@@ -28,14 +27,6 @@ public class WeiXiuXiangMu {
 
 	public void setTxtGuid(String txtGuid) {
 		this.txtGuid = txtGuid;
-	}
-
-	public String getTxtCode() {
-		return txtCode;
-	}
-
-	public void setTxtCode(String txtCode) {
-		this.txtCode = txtCode;
 	}
 
 	public String getTxtName() {

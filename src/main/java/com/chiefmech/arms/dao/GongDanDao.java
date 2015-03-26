@@ -48,7 +48,7 @@ public interface GongDanDao {
 	public int getGongDanCountForEasyUi(
 			@Param("item") SaleAfterGongDanSearchBean query);
 
-	@Insert("insert into gongdanxiangmu(txtWeiXiuXiangMuId,txtGongDanGuid,txtXiangMuCode,txtXiangMuName,txtFeiYong,txtGongDuanName,txtWeiXiuNeiRong,ddlZhangTao) values(#{txtWeiXiuXiangMuId},#{txtGongDanGuid},#{txtXiangMuCode},#{txtXiangMuName},#{txtFeiYong},#{txtGongDuanName},#{txtWeiXiuNeiRong},#{ddlZhangTao})")
+	@Insert("insert into gongdanxiangmu(txtWeiXiuXiangMuId,txtGongDanGuid,txtXiangMuName,txtFeiYong,txtGongDuanName,txtWeiXiuNeiRong,ddlZhangTao) values(#{txtWeiXiuXiangMuId},#{txtGongDanGuid},#{txtXiangMuName},#{txtFeiYong},#{txtGongDuanName},#{txtWeiXiuNeiRong},#{ddlZhangTao})")
 	public int insertGongDanWeiXiuXiangMu(GongDanWeiXiuXiangMu item);
 
 	@Update("update gongdanxiangmu set txtGongDuanName=#{txtGongDuanName},txtWeiXiuNeiRong=#{txtWeiXiuNeiRong},txtFeiYong=#{txtFeiYong},ddlZhangTao=#{ddlZhangTao},ddlSuoSuXiangMu=#{ddlSuoSuXiangMu},txtRemark=#{txtRemark} where txtWeiXiuXiangMuId=#{txtWeiXiuXiangMuId}")

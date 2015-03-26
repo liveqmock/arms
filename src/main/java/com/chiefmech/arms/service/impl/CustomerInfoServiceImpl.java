@@ -10,6 +10,7 @@ import net.sf.json.JSONObject;
 
 import org.springframework.stereotype.Service;
 
+import com.chiefmech.arms.common.util.ConfigUtil;
 import com.chiefmech.arms.dao.CustomerInfoDao;
 import com.chiefmech.arms.entity.CheLiangInfo;
 import com.chiefmech.arms.entity.CustomerInfo;
@@ -44,7 +45,8 @@ public class CustomerInfoServiceImpl implements CustomerInfoService {
 
 	@Override
 	public List<CustomerInfo> findCustomerInfoByCheZhuTel(String txtCheZhuTel) {
-		return customerInfoDao.findCustomerInfoByCheZhuTel(txtCheZhuTel);
+		return customerInfoDao.findCustomerInfoByCheZhuTel(txtCheZhuTel,
+				ConfigUtil.getInstance().getShopInfo().getCompanyFlag());
 	}
 
 	@Override

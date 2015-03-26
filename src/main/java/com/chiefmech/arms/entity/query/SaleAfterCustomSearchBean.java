@@ -1,41 +1,30 @@
 package com.chiefmech.arms.entity.query;
 
+import com.chiefmech.arms.common.util.ConfigUtil;
 import com.chiefmech.arms.entity.query.Criteria.Action;
 
 public class SaleAfterCustomSearchBean extends SearchBean {
 
 	private String queryField;
 	private String queryValue;
-	private String shopCode;
-	private boolean isSearchAllCustomerAllowed = false;
-	private int txtPageNum = 1;
-	private int txtPageSize = 20;
+	private boolean isSearchAllShopCustomerAllowed = false;
+	private int page = 1;
+	private int rows = 20;
 
 	@Override
 	public void initSearchFields() {
-		Action action = Action.LIKE;
-		if ("txtCheLiangCheJiaHao".equals(queryField)) {
-			action = Action.STR_EQUAL;
-		}
-		this.addField(new Criteria(action, this.getQueryField(), this
-				.getQueryValue()));
-		this.addLimitInfo(this.getTxtPageNum(), this.getTxtPageSize());
+		this.addField(new Criteria(Action.STR_EQUAL, "companyFlag", ConfigUtil
+				.getInstance().getShopInfo().getCompanyFlag()));
+		this.addLimitInfo(this.getPage(), this.getRows());
 	}
 
-	public String getShopCode() {
-		return shopCode;
+	public boolean isSearchAllShopCustomerAllowed() {
+		return isSearchAllShopCustomerAllowed;
 	}
 
-	public void setShopCode(String shopCode) {
-		this.shopCode = shopCode;
-	}
-
-	public boolean isSearchAllCustomerAllowed() {
-		return isSearchAllCustomerAllowed;
-	}
-
-	public void setSearchAllCustomerAllowed(boolean isSearchAllCustomerAllowed) {
-		this.isSearchAllCustomerAllowed = isSearchAllCustomerAllowed;
+	public void setSearchAllShopCustomerAllowed(
+			boolean isSearchAllCustomerAllowed) {
+		this.isSearchAllShopCustomerAllowed = isSearchAllCustomerAllowed;
 	}
 
 	public String getQueryField() {
@@ -50,23 +39,20 @@ public class SaleAfterCustomSearchBean extends SearchBean {
 		return queryValue;
 	}
 
-	public void setQueryValue(String queryValue) {
-		this.queryValue = queryValue;
+	public int getPage() {
+		return page;
 	}
 
-	public int getTxtPageNum() {
-		return txtPageNum;
+	public void setPage(int page) {
+		this.page = page;
 	}
 
-	public void setTxtPageNum(int txtPageNum) {
-		this.txtPageNum = txtPageNum;
+	public int getRows() {
+		return rows;
 	}
 
-	public int getTxtPageSize() {
-		return txtPageSize;
+	public void setRows(int rows) {
+		this.rows = rows;
 	}
 
-	public void setTxtPageSize(int txtPageSize) {
-		this.txtPageSize = txtPageSize;
-	}
 }

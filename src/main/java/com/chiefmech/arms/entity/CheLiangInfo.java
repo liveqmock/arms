@@ -1,5 +1,7 @@
 package com.chiefmech.arms.entity;
 
+import com.chiefmech.arms.common.util.ConfigUtil;
+
 public class CheLiangInfo {
 	private String txtCustId;
 	private String txtCheLiangId;
@@ -15,6 +17,17 @@ public class CheLiangInfo {
 	private String ddlChengBaoGongSi;
 	private String ddlCheLiangNianFen;
 	private String ddlCheLiangPaiLiang;
+
+	private String txtRegisterShopCode = ConfigUtil.getInstance().getShopInfo()
+			.getShopCode();
+
+	public String getTxtRegisterShopCode() {
+		return txtRegisterShopCode;
+	}
+
+	public void setTxtRegisterShopCode(String txtRegisterShopCode) {
+		this.txtRegisterShopCode = txtRegisterShopCode;
+	}
 
 	public String getDdlCheLiangNianFen() {
 		return ddlCheLiangNianFen;

@@ -20,23 +20,22 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/saleAfterManage")
 @Controller()
 @Scope("prototype")
-public class CustomSearchAction extends BaseActionSupport implements
-		ModelDriven<SaleAfterCustomSearchBean> {
+public class CustomerSearchAction extends BaseActionSupport
+		implements
+			ModelDriven<SaleAfterCustomSearchBean> {
 
 	@Resource()
 	private CustomerInfoService cheZhuLianXiRenService;
 
 	private SaleAfterCustomSearchBean query = new SaleAfterCustomSearchBean() {
 		{
-			this.setSearchAllCustomerAllowed(ConfigUtil.getInstance()
+			this.setSearchAllShopCustomerAllowed(ConfigUtil.getInstance()
 					.getUserInfo().getPrivilegeLst()
 					.contains("customerReservationManage"));
-			this.setShopCode(ConfigUtil.getInstance().getShopInfo()
-					.getShopCode());
 		}
 	};
 
-	@Action(value = "saleAfterCustomSearch", results = { @Result(name = "input", location = "saleAfter_CustomSearch.jsp") })
+	@Action(value = "saleAfterCustomSearch", results = {@Result(name = "input", location = "saleAfter_CustomSearch.jsp")})
 	public String saleAfterCustomSearch() {
 		return INPUT;
 	}

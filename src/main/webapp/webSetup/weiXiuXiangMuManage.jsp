@@ -83,11 +83,6 @@
 		style="width: 500px; height: 400px; padding: 10px 20px;">
 		<form name="fm" method="post" id="fm">
 			<table border="0" cellpadding="0" cellspacing="0" width="280px">
-				<!--<tr>
-					<td><span class="requireSpan">*&nbsp;</span>项目编号:</td>
-					<td><input name="txtCode" type="text" id="txtCode"
-						class="easyui-textbox" data-options="required:true" /></td>
-				</tr>-->
 				<tr>
 					<td><span class="requireSpan">*&nbsp;</span>项目名称:</td>
 					<td><input name="txtName" type="text" id="txtName"

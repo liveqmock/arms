@@ -15,7 +15,7 @@ public class CaiGouWuLiaoSearchBean extends SearchBean {
 	private String txtWuLiaoCode;
 	private String txtWuLiaoName;
 	private int page = 1;
-	private int rows = 15;
+	private int rows = 20;
 	private String action;
 
 	@Override
