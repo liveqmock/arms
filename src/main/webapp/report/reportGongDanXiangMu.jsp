@@ -69,7 +69,8 @@ td {
 				<th width="100" data-options="field:'txtWanJianStatus'">完检状态</th>
 				<th width="100" data-options="field:'txtChePaiHao'">车牌号</th>
 				<th width="100" data-options="field:'txtFuWuGuWen'">服务顾问</th>
-				<th width="200" data-options="field:'txtVin'">VIN</th>
+				<th width="200" data-options="field:'txtVin'">车架号</th>
+				<th width="200" data-options="field:'txtFaDongJiHao'">发动机号</th>
 				<th width="200" data-options="field:'txtCheXiName'">车型</th>
 				<th width="100" data-options="field:'txtCheZhuName'">车主名</th>
 				<th width="150" data-options="field:'txtCheZhuTel'">车主电话</th>
