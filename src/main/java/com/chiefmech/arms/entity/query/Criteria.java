@@ -5,7 +5,7 @@ import org.apache.commons.lang.StringUtils;
 public class Criteria {
 
 	public static enum Action {
-		STR_EQUAL, NUM_EQUAL, STR_BETWEEN, NUM_BETWEEN, LIKE
+		STR_EQUAL, NUM_EQUAL, DATE_BETWEEN, NUM_BETWEEN, LIKE
 	}
 
 	private Action action;
@@ -30,37 +30,49 @@ public class Criteria {
 	@Override
 	public String toString() {
 		String sql = "";
-		String quoto = "";
-		if (action == Action.STR_EQUAL || action == Action.STR_BETWEEN) {
-			quoto = "'";
-		}
 		switch (action) {
-		case STR_EQUAL:
-		case NUM_EQUAL:
-			if (fieldValue1 != null) {
-				sql = String.format("%s=%s%s%s", fieldName, quoto, fieldValue1,
-						quoto);
-			}
-			break;
-		case LIKE:
-			if (StringUtils.isNotBlank(fieldValue1)) {
-				sql = String.format("%s like '%%%s%%'", fieldName, fieldValue1);
-			}
-			break;
-		case STR_BETWEEN:
-		case NUM_BETWEEN:
-			if (StringUtils.isNotBlank(fieldValue1)) {
-				sql = String.format("%s>=%s%s%s", fieldName, quoto,
-						fieldValue1, quoto);
-			}
-			if (StringUtils.isNotBlank(fieldValue2)) {
-				if (StringUtils.isNotBlank(sql)) {
-					sql += " and ";
+			case STR_EQUAL :
+				if (fieldValue1 != null) {
+					sql = String.format("%s='%s'", fieldName, fieldValue1);
 				}
-				sql += String.format("%s<=%s%s%s", fieldName, quoto,
-						fieldValue2, quoto);
-			}
-			break;
+				break;
+			case NUM_EQUAL :
+				if (fieldValue1 != null) {
+					sql = String.format("%s=%s", fieldName, fieldValue1);
+				}
+				break;
+			case LIKE :
+				if (StringUtils.isNotBlank(fieldValue1)) {
+					sql = String.format("%s like '%%%s%%'", fieldName,
+							fieldValue1);
+				}
+				break;
+			case DATE_BETWEEN :
+				if (StringUtils.isNotBlank(fieldValue1)) {
+					sql = String
+							.format("date_format(%s,'%%Y%%m%%d')>=date_format('%s','%%Y%%m%%d')",
+									fieldName, fieldValue1);
+				}
+				if (StringUtils.isNotBlank(fieldValue2)) {
+					if (StringUtils.isNotBlank(sql)) {
+						sql += " and ";
+					}
+					sql += String
+							.format("date_format(%s,'%%Y%%m%%d')<=date_format('%s','%%Y%%m%%d')",
+									fieldName, fieldValue2);
+				}
+				break;
+			case NUM_BETWEEN :
+				if (StringUtils.isNotBlank(fieldValue1)) {
+					sql = String.format("%s>=%s", fieldName, fieldValue1);
+				}
+				if (StringUtils.isNotBlank(fieldValue2)) {
+					if (StringUtils.isNotBlank(sql)) {
+						sql += " and ";
+					}
+					sql += String.format("%s<=%s", fieldName, fieldValue2);
+				}
+				break;
 		}
 		return sql;
 	}

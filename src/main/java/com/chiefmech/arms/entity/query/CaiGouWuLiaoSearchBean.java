@@ -20,7 +20,7 @@ public class CaiGouWuLiaoSearchBean extends SearchBean {
 
 	@Override
 	public void initSearchFields() {
-		this.addField(new Criteria(Action.STR_BETWEEN, "txtRuKuDate",
+		this.addField(new Criteria(Action.DATE_BETWEEN, "txtRuKuDate",
 				txtRuKuDateBegin, txtRuKuDateEnd));
 		this.addField(new Criteria(Action.LIKE, "txtBillNo", txtBillNo));
 		this.addField(new Criteria(Action.STR_EQUAL, "txtRuKuDanGuid",

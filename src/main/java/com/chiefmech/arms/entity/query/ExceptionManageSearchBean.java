@@ -116,7 +116,7 @@ public class ExceptionManageSearchBean extends SearchBean {
 
 	@Override
 	public void initSearchFields() {
-		this.addField(new Criteria(Action.STR_BETWEEN, "liWaiDate", liWaiDate,
+		this.addField(new Criteria(Action.DATE_BETWEEN, "liWaiDate", liWaiDate,
 				liWaiDateEnd));
 		this.addField(new Criteria(Action.LIKE, "billNo", billNo));
 		this.addField(new Criteria(Action.LIKE, "billType", billType));

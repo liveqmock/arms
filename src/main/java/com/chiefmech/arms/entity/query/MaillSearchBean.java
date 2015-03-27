@@ -109,9 +109,9 @@ public class MaillSearchBean extends SearchBean {
 
 	@Override
 	public void initSearchFields() {
-		this.addField(new Criteria(Action.STR_BETWEEN, "txtSendDate",
+		this.addField(new Criteria(Action.DATE_BETWEEN, "txtSendDate",
 				txtSendDate, txtSendDateEnd));
-		this.addField(new Criteria(Action.STR_BETWEEN, "txtReadDate",
+		this.addField(new Criteria(Action.DATE_BETWEEN, "txtReadDate",
 				txtReadDate, txtReadDateEnd));
 		this.addField(new Criteria(Action.LIKE, "txtRemarks", txtRemarks));
 		this.addField(new Criteria(Action.LIKE, "senderName", senderName));

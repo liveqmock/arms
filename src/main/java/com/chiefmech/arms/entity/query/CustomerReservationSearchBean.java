@@ -11,7 +11,7 @@ public class CustomerReservationSearchBean extends SearchBean {
 
 	@Override
 	public void initSearchFields() {
-		this.addField(new Criteria(Action.STR_BETWEEN, "txtReserveDate",
+		this.addField(new Criteria(Action.DATE_BETWEEN, "txtReserveDate",
 				txtReserveDateBegin, txtReserveDateEnd));
 		this.addField(new Criteria(Action.LIKE, "txtCheLiangChePaiHao",
 				txtCheLiangChePaiHao));

@@ -24,9 +24,9 @@ public class SaleAfterGongDanSearchBean extends SearchBean {
 
 	@Override
 	public void initSearchFields() {
-		this.addField(new Criteria(Action.STR_BETWEEN, "txtRuChangDate",
+		this.addField(new Criteria(Action.DATE_BETWEEN, "txtRuChangDate",
 				txtRuChangDate1, txtRuChangDate2));
-		this.addField(new Criteria(Action.STR_BETWEEN, "txtChuChangDate",
+		this.addField(new Criteria(Action.DATE_BETWEEN, "txtChuChangDate",
 				txtChuChangDate1, txtChuChangDate2));
 		this.addField(new Criteria(Action.LIKE, "txtBillNo", txtBillNo));
 		this.addField(new Criteria(Action.LIKE, "txtXieYiBillNo",

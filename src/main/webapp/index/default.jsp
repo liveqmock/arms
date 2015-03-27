@@ -165,26 +165,26 @@
 											'font-style' : '微软雅黑'
 										},
 										children : [
-											<s:if test="user.privilegeLst.contains('gongDanXiangMuReport')">
+											<s:if test="user.privilegeLst.contains('reportGongDanXiangMu')">
 												{
-													name : "维修项目清单",
+													name : "工单维修项目",
 													font : {
 														'font-style' : '微软雅黑'
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('6123e08f-9fff-4492-885f-a20712348812','维修项目清单','../report/gongDanXiangMuReport.action');"
+													click : "mdfMenu('6123e08f-9fff-4492-885f-a20712348812','工单维修项目','../report/reportGongDanXiangMu.action');"
 												},
 											</s:if>
-											<s:if test="user.privilegeLst.contains('gongDanWuLiaoReport')">
+											<s:if test="user.privilegeLst.contains('reportGongDanWuLiao')">
 												{
-													name : "维修物料清单",
+													name : "工单维修物料",
 													font : {
 														'font-style' : '微软雅黑'
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('6123e08f-9fff-4492-885f-a20712348812','维修物料清单','../report/gongDanWuLiaoReport.action');"
+													click : "mdfMenu('6123e08f-9fff-4492-885f-a20712348812','工单维修物料','../report/reportGongDanWuLiao.action');"
 												},
 											</s:if>	 ],
 										url : "",

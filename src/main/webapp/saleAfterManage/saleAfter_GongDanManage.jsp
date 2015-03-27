@@ -49,9 +49,9 @@
 				<tr>
 					<td nowrap>入厂时间:</td>
 					<td><input name="txtRuChangDate1" type="text"
-						id="txtRuChangDate1" class="easyui-datebox" style="width: 100px;" /></td>
+						id="txtRuChangDate1" class="easyui-datebox" style="width: 120px;" /></td>
 					<td nowrap><input name="txtRuChangDate2" type="text"
-						id="txtRuChangDate2" class="easyui-datebox" style="width: 100px;" /></td>
+						id="txtRuChangDate2" class="easyui-datebox" style="width: 120px;" /></td>
 					<td nowrap>工单号:</td>
 					<td><input name="txtBillNo" type="text" class="easyui-textbox"
 						maxlength="30" id="txtBillNo" style="width: 150px;" /></td>
@@ -68,9 +68,9 @@
 				<tr>
 					<td nowrap>出厂时间:</td>
 					<td><input name="txtChuChangDate1" type="text"
-						id="txtChuChangDate1" class="easyui-datebox" style="width: 100px;" /></td>
+						id="txtChuChangDate1" class="easyui-datebox" style="width: 120px;" /></td>
 					<td><input name="txtChuChangDate2" type="text"
-						id="txtChuChangDate2" class="easyui-datebox" style="width: 100px;" /></td>
+						id="txtChuChangDate2" class="easyui-datebox" style="width: 120px;" /></td>
 					<td nowrap>车牌号:</td>
 					<td><input name="txtChePaiHao" type="text"
 						class="easyui-textbox" maxlength="10" id="txtChePaiHao"
@@ -113,7 +113,6 @@
 					<th width="180" data-options="field:'txtRuChangDate'">入厂时间</th>
                     <s:if test="actionName=='saleAfterGongDanManage'">
 					<th width="180" data-options="field:'txtYuChuChangDate'">预出厂时间</th>
-					<th width="100" data-options="field:'txtJieSuanDate'">结算时间</th>
                     </s:if>
 					<th width="100" data-options="field:'txtChuChangDate'">出厂时间</th>
                     <s:if test="actionName=='clientReviewManage'">

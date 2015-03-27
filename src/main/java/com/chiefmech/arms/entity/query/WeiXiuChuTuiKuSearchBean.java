@@ -88,7 +88,7 @@ public class WeiXiuChuTuiKuSearchBean extends SearchBean {
 
 	@Override
 	public void initSearchFields() {
-		this.addField(new Criteria(Action.STR_BETWEEN, "txtRuChangDateStart",
+		this.addField(new Criteria(Action.DATE_BETWEEN, "txtRuChangDateStart",
 				txtRuChangDateStart, txtRuChangDateEnd));
 		this.addField(new Criteria(Action.LIKE, "txtBillNo", txtBillNo));
 		this.addField(new Criteria(Action.LIKE, "txtXieYiBillNo",

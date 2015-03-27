@@ -3,29 +3,37 @@ package com.chiefmech.arms.entity.query;
 import com.chiefmech.arms.common.util.ConfigUtil;
 import com.chiefmech.arms.entity.query.Criteria.Action;
 
-public class RenBaoWeeklyReportSearchBean extends SearchBean {
+public class GongDanWuLiaoReportSearchBean extends SearchBean {
 
 	private String txtRuChangDateBegin;
 	private String txtRuChangDateEnd;
-	private String txtChePaiHao;
+	private String txtWuLiaoCode;
+	private String txtWuLiaoName;
 
 	@Override
 	public void initSearchFields() {
-		this.addField(new Criteria(Action.LIKE, "txtChePaiHao", txtChePaiHao));
+		this.addField(new Criteria(Action.LIKE, "txtWuLiaoCode", txtWuLiaoCode));
+		this.addField(new Criteria(Action.LIKE, "txtWuLiaoName", txtWuLiaoName));
 		this.addField(new Criteria(Action.DATE_BETWEEN, "txtRuChangDate",
 				txtRuChangDateBegin, txtRuChangDateEnd));
-		this.addField(new Criteria(Action.STR_EQUAL, "txtDeleteFlag", "0"));
-		// 只查找属于当前店铺的工单
-		this.addField(new Criteria(Action.STR_EQUAL, "txtShopCode", ConfigUtil
+		this.addField(new Criteria(Action.STR_EQUAL, "shopCode", ConfigUtil
 				.getInstance().getShopInfo().getShopCode()));
 	}
 
-	public String getTxtChePaiHao() {
-		return txtChePaiHao;
+	public String getTxtWuLiaoCode() {
+		return txtWuLiaoCode;
 	}
 
-	public void setTxtChePaiHao(String txtChePaiHao) {
-		this.txtChePaiHao = txtChePaiHao;
+	public void setTxtWuLiaoCode(String txtWuLiaoCode) {
+		this.txtWuLiaoCode = txtWuLiaoCode;
+	}
+
+	public String getTxtWuLiaoName() {
+		return txtWuLiaoName;
+	}
+
+	public void setTxtWuLiaoName(String txtWuLiaoName) {
+		this.txtWuLiaoName = txtWuLiaoName;
 	}
 
 	public String getTxtRuChangDateBegin() {

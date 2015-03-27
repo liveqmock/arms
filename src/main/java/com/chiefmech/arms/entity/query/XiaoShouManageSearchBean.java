@@ -69,7 +69,7 @@ public class XiaoShouManageSearchBean extends SearchBean {
 
 	@Override
 	public void initSearchFields() {
-		this.addField(new Criteria(Action.STR_BETWEEN, "xiaoshouDate",
+		this.addField(new Criteria(Action.DATE_BETWEEN, "xiaoshouDate",
 				xiaoshouDate, xiaoshouDateEnd));
 		this.addField(new Criteria(Action.LIKE, "xiaoshouID", xiaoshouID));
 		this.addField(new Criteria(Action.LIKE, "kehuMing", kehuMing));

@@ -12,7 +12,7 @@ public class TaoKaOperLogSearchBean extends SearchBean {
 
 	@Override
 	public void initSearchFields() {
-		this.addField(new Criteria(Action.STR_BETWEEN, "txtLogDate",
+		this.addField(new Criteria(Action.DATE_BETWEEN, "txtLogDate",
 				txtLogDateBegin, txtLogDateEnd));
 		this.addField(new Criteria(Action.LIKE, "txtCheZhuTel", txtCheZhuTel));
 		this.addLimitInfo(this.getPage(), this.getRows());
