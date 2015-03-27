@@ -52,13 +52,13 @@ public class CheZhuLianXiRenDaoSqlProvider {
 
 	private String getWhereSql(SaleAfterCustomSearchBean searchBean) {
 		String where = searchBean.getWhereSql();
-		String searchSql = "";
 
 		Shop curShop = ConfigUtil.getInstance().getShopInfo();
 
 		String queryField = searchBean.getQueryField();
 		String queryValue = searchBean.getQueryValue();
 
+		String searchSql = "";
 		if (queryField != null) {
 			// 完整车架号可跨店铺搜索
 			if ("txtCheLiangCheJiaHao".equals(queryField)) {

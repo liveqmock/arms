@@ -165,16 +165,27 @@
 											'font-style' : '微软雅黑'
 										},
 										children : [
-											<s:if test="user.privilegeLst.contains('renBaoWeeklyReport')">
+											<s:if test="user.privilegeLst.contains('gongDanXiangMuReport')">
 												{
-													name : "人保清单",
+													name : "维修项目清单",
 													font : {
 														'font-style' : '微软雅黑'
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('6123e08f-9fff-4492-885f-a20712348812','人保清单','../report/renBaoWeeklyReport.action');"
-												}
+													click : "mdfMenu('6123e08f-9fff-4492-885f-a20712348812','维修项目清单','../report/gongDanXiangMuReport.action');"
+												},
+											</s:if>
+											<s:if test="user.privilegeLst.contains('gongDanWuLiaoReport')">
+												{
+													name : "维修物料清单",
+													font : {
+														'font-style' : '微软雅黑'
+													},
+													url : "",
+													target : "_blank",
+													click : "mdfMenu('6123e08f-9fff-4492-885f-a20712348812','维修物料清单','../report/gongDanWuLiaoReport.action');"
+												},
 											</s:if>	 ],
 										url : "",
 										target : "_blank"

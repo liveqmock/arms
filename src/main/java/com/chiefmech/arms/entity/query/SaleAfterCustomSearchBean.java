@@ -39,6 +39,10 @@ public class SaleAfterCustomSearchBean extends SearchBean {
 		return queryValue;
 	}
 
+	public void setQueryValue(String queryValue) {
+		this.queryValue = queryValue;
+	}
+
 	public int getPage() {
 		return page;
 	}
