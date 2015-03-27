@@ -19,6 +19,7 @@ public class GongDanXiangMuReport {
 	private String txtLiCheng;
 	private String txtVin;
 	private String txtFaDongJiHao;
+	private String txtCheLiangBaoXianDaoQiRi;
 	private String txtChangJiaPinPai;
 	private String txtCheXiName;
 	private String txtCustSort;
@@ -33,6 +34,13 @@ public class GongDanXiangMuReport {
 	private String shopName;
 	private String shopCode;
 	private String companyFlag;
+
+	public String getTxtCheLiangBaoXianDaoQiRi() {
+		return txtCheLiangBaoXianDaoQiRi;
+	}
+	public void setTxtCheLiangBaoXianDaoQiRi(String txtCheLiangBaoXianDaoQiRi) {
+		this.txtCheLiangBaoXianDaoQiRi = txtCheLiangBaoXianDaoQiRi;
+	}
 	public String getTxtWeiXiuXiangMuId() {
 		return txtWeiXiuXiangMuId;
 	}
