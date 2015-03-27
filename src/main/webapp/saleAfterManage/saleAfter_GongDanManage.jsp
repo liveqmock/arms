@@ -92,7 +92,7 @@
 			</table>
 		</form>
 	</div>
-	<div class="region">
+	<div  style="margin: 0 10px;">
 		<table id="mydg" class="easyui-datagrid"
 			data-options="url:'<s:if test="actionName=='saleAfterGongDanManage'">saleAfterGongDanSearch.action</s:if><s:elseif test="actionName=='clientReviewManage'">clientReviewSearch.action</s:elseif>',rownumbers:true,singleSelect:true,autoRowHeight:false,pagination:true,onDblClickRow:showGongDan">
 			<thead>
