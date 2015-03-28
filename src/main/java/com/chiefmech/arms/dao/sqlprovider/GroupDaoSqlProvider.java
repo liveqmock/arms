@@ -19,7 +19,7 @@ public class GroupDaoSqlProvider {
 		SearchBean searchBean = new SearchBean() {
 			@Override
 			public void initSearchFields() {
-				this.addField(new Criteria(Action.LIKE, "groupName", item
+				this.addField(new Criteria(Action.STR_EQUAL, "groupName", item
 						.getGroupName()));
 			}
 		};

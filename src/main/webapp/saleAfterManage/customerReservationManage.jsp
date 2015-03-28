@@ -67,19 +67,22 @@ td {
                 <th width="100" data-options="field:'txtCheLiangChePaiHao'">车牌号</th>
                 <th width="130" data-options="field:'txtTicketInfo'">服务券信息</th>
                 <th width="180" data-options="field:'txtReserveDate'">预约时间</th>
+                <s:if test="user.privilegeLst.contains('customerReservationManage')">
                 <th width="150" data-options="field:'txtReserveShop'">预约店铺</th>
                 <th width="150" data-options="field:'txtWeiXinId'">微信号</th>
                 <th width="150" data-options="field:'txtCallAddr'">来电地址</th>
                 <th width="150" data-options="field:'txtCustomerServiceName'">客服姓名</th>
 				<th width="200" data-options="field:'txtRemarks'">备注</th>
-				<th width="100" field="action" align="center"
-					formatter="formatAction">操作</th>
+                <th width="100" field="action" align="center" formatter="formatAction">操作</th>
+                </s:if>
 			</tr>
 		</thead>
 	</table>
 	<div id="toolbar">
+    	<s:if test="user.privilegeLst.contains('customerReservationManage')">
 		<a href="javascript:void(0)" class="easyui-linkbutton"
 			iconCls="icon-add" plain="true" onclick="addItem()">新增预约</a>
+     	</s:if>
 	</div>
 	<script type="text/javascript">
 		function addItem() {

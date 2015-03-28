@@ -27,7 +27,7 @@ import com.chiefmech.arms.entity.Shop;
 
 public class KuCunImport {
 	private String shopCode = "001";
-	private String fileName = "kucun/kucun_xixiang_2015-03-16.xls";
+	private String fileName = "kucun/kucun_xixiang_2015-03-27.xls";
 	private String genSqlFile = "D:\\sqlFromExcel.txt";
 	private String user = "杨小院";
 
@@ -62,7 +62,7 @@ public class KuCunImport {
 	private void writeToGenSqlFile() {
 		try {
 			FileUtils.writeStringToFile(new File(genSqlFile), sb.toString());
-			System.out.println(sb.toString());
+			// System.out.println(sb.toString());
 			System.out.println("解析完成，sql语句汇总在" + genSqlFile);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -90,7 +90,7 @@ public class KuCunImport {
 			ruKuDan.setTxtJingShouRen(this.user);
 			ruKuDan.setDdlRuKuSort("日常采购");
 			ruKuDan.setTxtRemarks("");
-			ruKuDan.setTxtStatus("审核完毕");
+			ruKuDan.setTxtStatus("确认更新");
 			ruKuDan.setTxtShenHeRen(this.user);
 			ruKuDan.setTxtShenHeShiJian(DateUtil.getCurrentDate());
 
@@ -146,14 +146,15 @@ public class KuCunImport {
 	private void genKuCunOperLogSqls() {
 		for (KuCunOperLog item : this.kuCunOperLogLst) {
 			String sql = String
-					.format("insert into kucunoperlog(txtLogGuid,txtShopCode,txtBillGuid,txtOperAction,txtLogDate,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,txtSuppName,txtRemark) "
-							+ "values('%s','%s','%s','%s','%s','%s','%s',%d,%.2f,%.2f,'%s','%s');\n",
+					.format("insert into kucunoperlog(txtLogGuid,txtShopCode,txtBillGuid,txtOperAction,txtLogDate,txtNewQty,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,txtSuppName,txtRemark) "
+							+ "values('%s','%s','%s','%s','%s',%d,'%s','%s',%d,%.2f,%.2f,'%s','%s');\n",
 							item.getTxtLogGuid(), item.getTxtShopCode(),
 							item.getTxtBillGuid(), item.getTxtOperAction(),
-							item.getTxtLogDate(), item.getTxtWuLiaoCode(),
-							item.getTxtWuLiaoName(), item.getTxtQty(),
-							item.getTxtChengBenJia(), item.getTxtSalePrice(),
-							item.getTxtSuppName(), item.getTxtRemark());
+							item.getTxtLogDate(), item.getTxtQty(),
+							item.getTxtWuLiaoCode(), item.getTxtWuLiaoName(),
+							item.getTxtQty(), item.getTxtChengBenJia(),
+							item.getTxtSalePrice(), item.getTxtSuppName(),
+							item.getTxtRemark());
 			sb.append(sql);
 		}
 	}
@@ -242,8 +243,10 @@ public class KuCunImport {
 				item.setTxtRemark(getCellValue(row, 7));
 
 				kuCunLst.add(item);
+				System.out.println(item);
 			}
 		} catch (IOException e) {
+			System.out.println("kuCunLst size:" + kuCunLst.size());
 			e.printStackTrace();
 		}
 		System.out.println("解析库存结束，总条数：" + kuCunLst.size());
@@ -266,6 +269,9 @@ public class KuCunImport {
 					break;
 				case HSSFCell.CELL_TYPE_STRING :
 					cellvalue = cell.getStringCellValue();
+					break;
+				case HSSFCell.CELL_TYPE_FORMULA :
+					cellvalue = cell.getRichStringCellValue().getString();
 					break;
 				default :
 					cellvalue = "";

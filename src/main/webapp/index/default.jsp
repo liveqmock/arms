@@ -123,7 +123,7 @@
 											'font-style' : '微软雅黑'
 										},
 										children : [
-											<s:if test="user.privilegeLst.contains('customerReservationManage')">
+											<s:if test="user.privilegeLst.contains('customerReservationManage') or user.privilegeLst.contains('customerReservationView')">
 												{
 													name : "客户预约",
 													font : {

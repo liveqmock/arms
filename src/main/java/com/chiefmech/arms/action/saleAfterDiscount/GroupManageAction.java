@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import net.sf.json.JSONArray;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -45,9 +46,11 @@ public class GroupManageAction extends BaseActionSupport
 
 	@Action(value = "queryGroup")
 	public void querygroup() {
+		if (StringUtils.isBlank(item.getGroupName())) {
+			item.setGroupName("前台");
+		}
 		this.transmitJson(groupService.getGroupPrivilegesEasyUiJSon(item));
 	}
-
 	@Action(value = "insertGroup")
 	public void insertItem() {
 		String jsonStr = "";

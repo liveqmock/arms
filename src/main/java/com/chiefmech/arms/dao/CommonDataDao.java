@@ -17,8 +17,8 @@ public interface CommonDataDao {
 	@Select("select weixiuzuName name, weixiuzuName code from weixiuzu where txtShopCode=#{txtShopCode}")
 	List<OptionBean> getWeiXiuZuOptionBean(String txtShopCode);
 
-	@Select("select shopName name, shopName code from shop")
-	List<OptionBean> getShopOptionBean();
+	@Select("select shopName name, shopName code from shop where companyFlag=#{companyFlag}")
+	List<OptionBean> getShopOptionBean(String companyFlag);
 
 	@Select("select brandName name, brandName code from carbrand2")
 	List<OptionBean> getCheLiangPingPaiOptionBean();
@@ -38,11 +38,11 @@ public interface CommonDataDao {
 	@Select("select distinct txtTaoKaName name,txtGuid code from taokasort where txtShopCode=#{txtShopCode}")
 	List<OptionBean> getTaoKaSortGuid(String txtShopCode);
 
-	@Select("select distinct remark name,privilege code from group_privileges")
+	@Select("select remark name,privilege code from group_privileges where groupName='管理员' order by privilegeCode")
 	List<OptionBean> getPrivilege();
 
-	@Select("select chengBaoGongSiName name, chengBaoGongSiName code from chengbaogongsi")
-	List<OptionBean> getchengBaoGongSiOptionBean();
+	@Select("select chengBaoGongSiName name, chengBaoGongSiName code from chengbaogongsi where txtShopCode=#{txtShopCode}")
+	List<OptionBean> getchengBaoGongSiOptionBean(String txtShopCode);
 
 	@Select("select txtName name, txtName code from customersort where txtShopCode=#{txtShopCode}")
 	List<OptionBean> getCustomerSortOptionBean(String txtShopCode);

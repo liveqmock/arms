@@ -88,8 +88,9 @@ td {
 				<th width="100" field="txtSalePrice"
 					<s:if test="action=='updateKuCun'">data-options="align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}"</s:if>>售价单价</th>
 				<th width="150" data-options="field:'txtRemark'">备注</th>
-				<th width="100" field="txtTakeQty"
-					<s:if test="action=='addWuLiao'">data-options="align:'right',editor:{type:'numberbox',options:{required:true,min:0}}"</s:if>>需求数量</th>
+				<s:if test="action=='addWuLiao'">
+					<th width="100" field="txtTakeQty" data-options="align:'right',editor:{type:'numberbox',options:{required:true,min:0}}">需求数量</th>
+				</s:if>
 				<s:if test="action=='updateKuCun'">
 					<th field="action" width="200" align="center"
 						formatter="formatAction">操作</th>
