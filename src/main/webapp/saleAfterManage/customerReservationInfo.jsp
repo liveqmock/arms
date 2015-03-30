@@ -33,7 +33,7 @@
 						 /></td>
 				</tr>
 				<tr>
-					<td align="right"><span class="requireSpan">*&nbsp;</span>预约时间：</td>
+					<td align="right"><span class="requireSpan">*&nbsp;</span>预约到店时间：</td>
 					<td><input class="easyui-datetimebox"
 						data-options="required:true"
 						name="txtReserveDate" type="text" maxlength="60" id="txtReserveDate"
@@ -46,22 +46,10 @@
 								data-options="editable:false,required:true,valueField:'code',textField:'name',method:'post',url:'<s:property value='basePath' />/data/shopOption.action'" /></td>
 				</tr>
 				<tr>
-					<td align="right">服务券信息：</td>
+					<td align="right">作业信息：</td>
 					<td><input class="easyui-textbox"
 						data-options="required:false"
 						name="txtTicketInfo" type="text" maxlength="60" id="txtTicketInfo"
-						 /></td>
-				</tr>
-				<tr>
-					<td align="right">微信号：</td>
-					<td><input class="easyui-textbox"
-						name="txtWeiXinId" type="text" maxlength="60" id="txtWeiXinId"
-						 /></td>
-				</tr>
-				<tr>
-					<td align="right">来电地址：</td>
-					<td><input class="easyui-textbox"
-						name="txtCallAddr" type="text" maxlength="60" id="txtCallAddr"
 						 /></td>
 				</tr>
 				<tr>

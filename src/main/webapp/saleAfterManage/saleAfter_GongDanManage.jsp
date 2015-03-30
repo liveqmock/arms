@@ -63,7 +63,13 @@
 					<td nowrap>车架号:</td>
 					<td><input name="txtVin" type="text" class="easyui-textbox"
 						maxlength="30" id="txtVin" style="width: 150px;" /></td>
-					<td nowrap>&nbsp;</td>
+					<s:if test="actionName=='saleAfterGongDanManage'">
+					<td nowrap>工单状态:</td>
+					<td><input name="txtGongDanStatus" id="txtGongDanStatus"
+						class="easyui-combobox"
+						data-options="editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/gongDanStatusOption.action'"
+						style="width: 150px;" /></td>
+					</s:if>
 				</tr>
 				<tr>
 					<td nowrap>出厂时间:</td>
@@ -83,7 +89,7 @@
 					<td><input name="txtCheZhuTel" type="text"
 						class="easyui-textbox" maxlength="18" id="txtCheZhuTel"
 						style="width: 150px;" /></td>
-					<td nowrap><a id="lnkSearch" class="easyui-linkbutton"
+					<td nowrap colspan="2"><a id="lnkSearch" class="easyui-linkbutton"
 						href="javascript:doSearch()">查询</a>&nbsp;&nbsp;&nbsp;<a
 					id="lnkSearch" class="easyui-linkbutton"
 					href="javascript:clearSearchFrm()">清空查询</a></td>

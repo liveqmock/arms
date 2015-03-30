@@ -8,8 +8,6 @@ public class CustomerReservation {
 	private String txtTicketInfo;
 	private String txtReserveDate;
 	private String txtReserveShop;
-	private String txtWeiXinId;
-	private String txtCallAddr;
 	private String txtCustomerServiceName = ConfigUtil.getInstance()
 			.getUserInfo().getDisplayName();
 	private String txtRemarks;
@@ -42,18 +40,6 @@ public class CustomerReservation {
 	}
 	public void setTxtReserveShop(String txtReserveShop) {
 		this.txtReserveShop = txtReserveShop;
-	}
-	public String getTxtWeiXinId() {
-		return txtWeiXinId;
-	}
-	public void setTxtWeiXinId(String txtWeiXinId) {
-		this.txtWeiXinId = txtWeiXinId;
-	}
-	public String getTxtCallAddr() {
-		return txtCallAddr;
-	}
-	public void setTxtCallAddr(String txtCallAddr) {
-		this.txtCallAddr = txtCallAddr;
 	}
 	public String getTxtCustomerServiceName() {
 		return txtCustomerServiceName;

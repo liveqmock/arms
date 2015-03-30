@@ -21,4 +21,7 @@ public interface CommonData {
 	public static final String[] jianChaXiangMuSort = {"按里程时间定期更换项目",
 			"检查后确定的项目"};
 
+	public static final String[] gongDanStatusSort = {"维修接待", "维修派工", "领取物料",
+			"维修完检", "费用结算", "交车"};
+
 }

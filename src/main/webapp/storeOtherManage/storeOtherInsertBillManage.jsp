@@ -41,9 +41,11 @@ td {
 					<a href="#" class="easyui-linkbutton"
 						data-options="plain:true,iconCls:'icon-add'"
 						onclick="openRuKuDan('','3');">例外入库</a>
+				<s:if test="user.privilegeLst.contains('chuKuException')">
 					<a href="#" class="easyui-linkbutton"
 						data-options="plain:true,iconCls:'icon-add'"
 						onclick="openRuKuDan('','4');">例外出库</a>
+				</s:if>
 					<a href="#" class="easyui-linkbutton"
 						data-options="plain:true,iconCls:'icon-search'"
 						onclick="toggleSearchPanel();">查询</a>

@@ -474,6 +474,12 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 		});
 
 		function saveGongDan() {
+			var vin = "<s:property value='gongDan.txtVin' />";
+			if(vin.trim().length == 0){
+				$.messager.alert('提示','车架号不能为空，请补全客户车辆信息并重新接待！');
+				return;	
+			}
+			
 			$("#form1").form('submit', {
 				url : "saveWeiXiuJieDaiInfo.action",
 				success : function(result) {

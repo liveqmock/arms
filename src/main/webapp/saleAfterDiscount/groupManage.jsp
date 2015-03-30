@@ -135,8 +135,7 @@
 			}
 		}
 		function deleteItem(clickevent) {
-		//	var row = $('#mydg').datagrid('getEventTargetRow', clickevent);
-		var groupName = $("#fm_groupName").val().trim();
+			var groupName = $("#fm_groupName").val().trim();
 		
 			if (groupName != null) {
 				$.messager.confirm('确认', '确定要删除选中用户组权限信息吗?', function(r) {
@@ -183,8 +182,9 @@
 						$.messager.alert('出错啦', result.errorMsg);
 					} else {
 						$('#mydlg').dialog('close'); // close the dialog
-						$('#mydg').datagrid('reload'); // reload data
 						$('#groupName').combobox("reload");
+						
+						doSearch();
 					}
 				}
 			});

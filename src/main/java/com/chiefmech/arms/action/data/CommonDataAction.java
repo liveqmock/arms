@@ -70,6 +70,11 @@ public class CommonDataAction extends BaseActionSupport implements CommonData {
 		this.transmitJson(getOptionJsonFronLst(jianChaXiangMuSort));
 	}
 
+	@Action(value = "gongDanStatusOption")
+	public void gongDanStatusOption() {
+		this.transmitJson(getOptionJsonFronLst(gongDanStatusSort));
+	}
+
 	private String getOptionJsonFronLst(String[] itemLst) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("[");
