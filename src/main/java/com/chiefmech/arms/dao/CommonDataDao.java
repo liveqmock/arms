@@ -17,9 +17,6 @@ public interface CommonDataDao {
 	@Select("select weixiuzuName name, weixiuzuName code from weixiuzu where txtShopCode=#{txtShopCode}")
 	List<OptionBean> getWeiXiuZuOptionBean(String txtShopCode);
 
-	@Select("select shopName name, shopName code from shop where companyFlag=#{companyFlag}")
-	List<OptionBean> getShopOptionBean(String companyFlag);
-
 	@Select("select shopName name, shopCode code from shop where companyFlag=#{companyFlag}")
 	List<OptionBean> getShopCodeOptionBean(String companyFlag);
 

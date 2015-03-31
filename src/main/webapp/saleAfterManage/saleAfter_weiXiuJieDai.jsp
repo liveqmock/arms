@@ -476,7 +476,13 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 		function saveGongDan() {
 			var vin = "<s:property value='gongDan.txtVin' />";
 			if(vin.trim().length == 0){
-				$.messager.alert('提示','车架号不能为空，请补全客户车辆信息并重新接待！');
+				$.messager.alert('提示','车架号不能为空，请补全客户车辆信息！','info', function(){
+					var url = '../customManage/customerInfo.action?customerId=<s:property value="gongDan.txtCustId" />&d=' + new Date();
+					var sFeatures = "dialogWidth:970px;dialogHeight:700px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
+					window.showModalDialog(url, window, sFeatures);
+					
+					reloadCurentPage();
+				});
 				return;	
 			}
 			

@@ -66,6 +66,7 @@ public class CustomerReservationManageAction extends BaseActionSupport
 		query.setTxtCheLiangChePaiHao(item.getTxtCheLiangChePaiHao());
 		query.setTxtReserveDateBegin(txtReserveDateBegin);
 		query.setTxtReserveDateEnd(txtReserveDateEnd);
+		query.setTxtCallSort(item.getTxtCallSort());
 
 		this.transmitJson(customerReservationService
 				.getReservationListEasyUiJSon(query));

@@ -141,8 +141,17 @@ td {
 					<td colspan="2" align="center">
 						<div
 							style="border: 1px dashed gray; width: 200px; height: 180px; text-align: center;">
-							<br /> <a onClick="newWeiXiuJieDai('<s:property value='customer.txtCheLiangId' />');return false;"
+							<s:if test="user.privilegeLst.contains('gongDanManage')">
+                            <br /> 
+							<a onClick="newWeiXiuJieDai('<s:property value='customer.txtCheLiangId' />');return false;"
 								class="easyui-linkbutton" href="javascript:void(0)">维修接待</a>
+							</s:if>
+                            <br /> 
+							<s:if test="user.privilegeLst.contains('customerReservationManage')">
+                            <br /> 
+							<a onClick="openCustomerReserveDialog('<s:property value='customer.txtCheLiangId' />');return false;"
+								class="easyui-linkbutton" href="javascript:void(0)">维修预约</a>
+							</s:if>
 						</div>
 
 					</td>

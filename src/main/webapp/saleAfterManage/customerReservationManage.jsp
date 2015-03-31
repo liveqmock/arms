@@ -44,7 +44,11 @@ td {
                     id="txtReserveDateBegin" class="easyui-datebox" style="width: 120px;" /></td>
                 <td><input name="txtReserveDateEnd" type="text"
                     id="txtReserveDateEnd" class="easyui-datebox" style="width: 120px;" /></td>
-                <td><a class="easyui-linkbutton" href="javascript:doSearch()">查询项目</a>&nbsp;&nbsp;&nbsp;
+                <td>来电类型:</td>
+				<td><input name="txtCallSort" type="text" id="txtCallSort"
+							class="easyui-combobox"
+							data-options="editable:false,valueField:'code',textField:'name',data: [{name: '预约',code: '预约'},{name: '咨询',code: '咨询'}]" style="width: 150px;" /></td>
+				<td><a class="easyui-linkbutton" href="javascript:doSearch()">查询项目</a>&nbsp;&nbsp;&nbsp;
                 <a class="easyui-linkbutton" href="javascript:doSearchForToday()">今日预约</a>&nbsp;&nbsp;&nbsp;<a
 					id="lnkSearch" class="easyui-linkbutton"
 					href="javascript:clearSearchFrm()">清空查询</a></td>
@@ -65,11 +69,12 @@ td {
                 <th width="100" data-options="field:'ddlCheLiangNianFen'">车辆年份</th>
                 <th width="60" data-options="field:'ddlCheLiangPaiLiang'">排量</th>
                 <th width="100" data-options="field:'txtCheLiangChePaiHao'">车牌号</th>
+                <th width="100" data-options="field:'txtCallSort'">来电类型</th>
                 <th width="180" data-options="field:'txtReserveDate'">预约到店时间</th>
                 <th width="130" data-options="field:'txtTicketInfo'">作业信息</th>
 				<th width="200" data-options="field:'txtRemarks'">备注</th>
                 <s:if test="user.privilegeLst.contains('customerReservationManage')">
-                <th width="150" data-options="field:'txtReserveShop'">预约店铺</th>
+                <th width="150" data-options="field:'txtShopName'">预约店铺</th>
                 <th width="150" data-options="field:'txtCustomerServiceName'">客服姓名</th>
                 <th width="100" field="action" align="center" formatter="formatAction">操作</th>
                 </s:if>

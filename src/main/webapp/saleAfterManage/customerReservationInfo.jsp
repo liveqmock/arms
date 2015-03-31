@@ -26,6 +26,10 @@
         	<input name="txtCheLiangId" type="hidden" id="txtCheLiangId" />
 			<table border="0">
 				<tr>
+					<td align="right">来电类型：</td>
+					<td><input type="radio" id="txtCallSort1" name="txtCallSort" value="预约" /><label for="txtCallSort1">预约</label>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="txtCallSort2" name="txtCallSort" value="咨询" /><label for="txtCallSort2">咨询</label></td>
+				</tr>
+				<tr>
 					<td align="right"><span class="requireSpan">*&nbsp;</span>车牌号码：</td>
 					<td><input class="easyui-textbox"
 						data-options="required:true"
@@ -41,9 +45,9 @@
 				</tr>
 				<tr>
 					<td align="right"><span class="requireSpan">*&nbsp;</span>预约店铺：</td>
-					<td><input name="txtReserveShop" id="txtReserveShop"
+					<td><input name="txtShopCode" id="txtShopCode"
 								class="easyui-combobox"
-								data-options="editable:false,required:true,valueField:'code',textField:'name',method:'post',url:'<s:property value='basePath' />/data/shopOption.action'" /></td>
+								data-options="editable:false,required:true,valueField:'code',textField:'name',method:'post',url:'<s:property value='basePath' />/data/shopCodeOption.action'" /></td>
 				</tr>
 				<tr>
 					<td align="right">作业信息：</td>
@@ -70,7 +74,9 @@
 <script type="text/javascript">			
 		$(function() {
 			var formJson = eval('(' + '<s:property value="jsonData" escape="false"/>' + ')');
-			initializeWithJsonData(formJson);			
+			initializeWithJsonData(formJson);
+			
+			$('input:radio[name=txtCallSort][value=<s:property value="txtCallSort" />]').attr('checked',true);
 		});
 		
 		function saveItem() {

@@ -7,6 +7,7 @@ public class CustomerReservationSearchBean extends SearchBean {
 	private String txtCheLiangChePaiHao;
 	private String txtReserveDateBegin;
 	private String txtReserveDateEnd;
+	private String txtCallSort;
 	private int page = 1;
 	private int rows = 20;
 
@@ -16,6 +17,9 @@ public class CustomerReservationSearchBean extends SearchBean {
 				txtReserveDateBegin, txtReserveDateEnd));
 		this.addField(new Criteria(Action.LIKE, "txtCheLiangChePaiHao",
 				txtCheLiangChePaiHao));
+		this.addField(new Criteria(Action.LIKE, "txtCheLiangChePaiHao",
+				txtCheLiangChePaiHao));
+		this.addField(new Criteria(Action.LIKE, "txtCallSort", txtCallSort));
 		this.addLimitInfo(this.getPage(), this.getRows());
 		// 不能跨公司查看预约信息
 		this.addField(new Criteria(Action.STR_EQUAL, "companyFlag", ConfigUtil
@@ -26,6 +30,14 @@ public class CustomerReservationSearchBean extends SearchBean {
 			this.addField(new Criteria(Action.STR_EQUAL, "txtReserveShop",
 					ConfigUtil.getInstance().getShopInfo().getShopName()));
 		}
+	}
+
+	public String getTxtCallSort() {
+		return txtCallSort;
+	}
+
+	public void setTxtCallSort(String txtCallSort) {
+		this.txtCallSort = txtCallSort;
 	}
 
 	public String getTxtCheLiangChePaiHao() {

@@ -153,7 +153,7 @@
 				var url = '../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.action?cheLiangId='
 						+ row.txtCheLiangId + '&d=' + new Date();
 				var name = '维修接待';
-				var features = 'height=600, width=790, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';
+				var features = 'height=600, width=950, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';
 				
 				z = window.open(url, name, features);
 				z.focus();

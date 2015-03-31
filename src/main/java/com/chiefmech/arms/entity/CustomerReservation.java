@@ -11,6 +11,28 @@ public class CustomerReservation {
 	private String txtCustomerServiceName = ConfigUtil.getInstance()
 			.getUserInfo().getDisplayName();
 	private String txtRemarks;
+	private String txtCallSort = "预约";
+	private String txtShopCode;
+	private String txtShopName;
+
+	public String getTxtCallSort() {
+		return txtCallSort;
+	}
+	public void setTxtCallSort(String txtCallSort) {
+		this.txtCallSort = txtCallSort;
+	}
+	public String getTxtShopCode() {
+		return txtShopCode;
+	}
+	public void setTxtShopCode(String txtShopCode) {
+		this.txtShopCode = txtShopCode;
+	}
+	public String getTxtShopName() {
+		return txtShopName;
+	}
+	public void setTxtShopName(String txtShopName) {
+		this.txtShopName = txtShopName;
+	}
 	public String getTxtReserveGuid() {
 		return txtReserveGuid;
 	}
