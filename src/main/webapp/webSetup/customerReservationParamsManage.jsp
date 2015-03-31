@@ -40,8 +40,9 @@ td {
 						   toolbar:'#toolbar'">
 		<thead>
 			<tr>
-				<th width="200" data-options="field:'paramKey'">参数名称</th>
-				<th width="200" data-options="field:'paramValue'">参数值</th>
+				<th width="200" data-options="field:'paramKey'">店铺</th>
+				<th width="200" data-options="field:'paramValue'">日期</th>
+				<th width="200" data-options="field:'paramValue'">最大指派数</th>
 				<th width="100" field="action" align="center"
 					formatter="formatAction">操作</th>
 			</tr>
