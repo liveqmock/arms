@@ -20,6 +20,9 @@ public interface CommonDataDao {
 	@Select("select shopName name, shopName code from shop where companyFlag=#{companyFlag}")
 	List<OptionBean> getShopOptionBean(String companyFlag);
 
+	@Select("select shopName name, shopCode code from shop where companyFlag=#{companyFlag}")
+	List<OptionBean> getShopCodeOptionBean(String companyFlag);
+
 	@Select("select brandName name, brandName code from carbrand2")
 	List<OptionBean> getCheLiangPingPaiOptionBean();
 

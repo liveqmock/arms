@@ -99,7 +99,7 @@ td {
 			}else{
 				sURL += "?d=" + new Date();
 			}
-			var sFeatures = "dialogWidth:500px;dialogHeight:400px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
+			var sFeatures = "dialogWidth:600px;dialogHeight:400px;center:yes;help:no;resizable:no;scroll:yes;status:no;";
 			window.showModalDialog(sURL, window, sFeatures);
 			
 			doSearch();

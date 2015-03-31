@@ -25,10 +25,10 @@ public interface CustomerReservationDao {
 	public int getReservationListCount(
 			@Param("item") CustomerReservationSearchBean query);
 
-	@Insert("insert into customerreservation(txtReserveGuid,txtCheLiangId,txtTicketInfo,txtReserveDate,txtReserveShop,txtWeiXinId,txtCallAddr,txtCustomerServiceName,txtRemarks) values(#{txtReserveGuid},#{txtCheLiangId},#{txtTicketInfo},#{txtReserveDate},#{txtReserveShop},#{txtWeiXinId},#{txtCallAddr},#{txtCustomerServiceName},#{txtRemarks})")
+	@Insert("insert into customerreservation(txtReserveGuid,txtCheLiangId,txtTicketInfo,txtReserveDate,txtReserveShop,txtCustomerServiceName,txtRemarks) values(#{txtReserveGuid},#{txtCheLiangId},#{txtTicketInfo},#{txtReserveDate},#{txtReserveShop},#{txtCustomerServiceName},#{txtRemarks})")
 	public int insertItem(CustomerReservation item);
 
-	@Update("update customerreservation set txtCheLiangId=#{txtCheLiangId},txtTicketInfo=#{txtTicketInfo},txtReserveDate=#{txtReserveDate},txtReserveShop=#{txtReserveShop},txtWeiXinId=#{txtWeiXinId},txtCallAddr=#{txtCallAddr},txtCustomerServiceName=#{txtCustomerServiceName},txtRemarks=#{txtRemarks} where txtReserveGuid=#{txtReserveGuid}")
+	@Update("update customerreservation set txtCheLiangId=#{txtCheLiangId},txtTicketInfo=#{txtTicketInfo},txtReserveDate=#{txtReserveDate},txtReserveShop=#{txtReserveShop},txtCustomerServiceName=#{txtCustomerServiceName},txtRemarks=#{txtRemarks} where txtReserveGuid=#{txtReserveGuid}")
 	public int updateItem(CustomerReservation item);
 
 	@Delete("delete from customerreservation where txtReserveGuid=#{txtReserveGuid}")

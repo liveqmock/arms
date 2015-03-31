@@ -26,7 +26,7 @@ public interface UserDao {
 	@Insert("insert into users(userId,loginName,displayName,password,expirydate,groupName,shopCode) values(#{userId},#{loginName},#{displayName},#{password},#{expirydate},#{groupName},#{shopCode})")
 	public int insertItem(User item);
 
-	@Update("update users set loginName=#{loginName},displayName=#{displayName},password=#{password},expirydate=#{expirydate},groupName=#{groupName} where userId=#{userId}")
+	@Update("update users set loginName=#{loginName},displayName=#{displayName},password=#{password},expirydate=#{expirydate},groupName=#{groupName},shopCode=#{shopCode} where userId=#{userId}")
 	public int updateItem(User item);
 
 	@Delete("delete from users where userId=#{userId}")

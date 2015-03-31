@@ -23,7 +23,7 @@ public interface ShopDao {
 	@SelectProvider(type = ShopDaoSqlProvider.class, method = "getShopListCount")
 	public int getShopListCount(@Param("item") Shop query);
 
-	@Insert("insert into Shop(shopGuid,shopCode,shopName,shopLogo,shopAddr,shopDesc,shopTel,shopFax,expirydate,complaintCall) values(#{shopGuid},#{shopCode},#{shopName},#{shopLogo},#{shopAddr},#{shopDesc},#{shopTel},#{shopFax},#{expirydate},#{complaintCall})")
+	@Insert("insert into Shop(shopGuid,shopCode,shopName,shopLogo,shopAddr,shopDesc,shopTel,shopFax,expirydate,complaintCall,companyFlag) values(#{shopGuid},#{shopCode},#{shopName},#{shopLogo},#{shopAddr},#{shopDesc},#{shopTel},#{shopFax},#{expirydate},#{complaintCall},#{companyFlag})")
 	public int insertItem(Shop item);
 
 	@Update("update Shop set shopCode=#{shopCode},shopName=#{shopName},shopLogo=#{shopLogo},shopAddr=#{shopAddr},shopDesc=#{shopDesc},shopTel=#{shopTel},shopFax=#{shopFax},expirydate=#{expirydate},complaintCall=#{complaintCall} where shopGuid=#{shopGuid}")

@@ -27,7 +27,8 @@ public class CommonDataServiceImpl implements CommonDataService {
 			Map<String, String> param) {
 		List<OptionBean> lst = null;
 		String shopCode = ConfigUtil.getInstance().getShopInfo().getShopCode();
-		String companyFlag = ConfigUtil.getInstance().getShopInfo().getCompanyFlag();
+		String companyFlag = ConfigUtil.getInstance().getShopInfo()
+				.getCompanyFlag();
 		if ("GongYingShang".equals(target)) {
 			lst = commonDataDao.getSupplierOptionBean(shopCode);
 		} else if ("ChangKu".equals(target)) {
@@ -36,6 +37,8 @@ public class CommonDataServiceImpl implements CommonDataService {
 			lst = commonDataDao.getWeiXiuZuOptionBean(shopCode);
 		} else if ("Shop".equals(target)) {
 			lst = commonDataDao.getShopOptionBean(companyFlag);
+		} else if ("ShopCode".equals(target)) {
+			lst = commonDataDao.getShopCodeOptionBean(companyFlag);
 		} else if ("CheLiangPingPai".equals(target)) {
 			lst = commonDataDao.getCheLiangPingPaiOptionBean();
 		} else if ("CheLiangCheXi".equals(target)) {

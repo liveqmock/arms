@@ -68,15 +68,17 @@ public class CheZhuLianXiRenDaoSqlProvider {
 				searchSql += String.format("%s like '%%%s%%'", queryField,
 						queryValue);
 
-				if (!searchBean.isSearchAllShopCustomerAllowed()) {
-					// 仅在当前店铺查询客户车辆信息
-					// 1. 车辆信息在本店登记的 2. 车牌号在本店的工单里面出现过
-					searchSql += String
-							.format(" and ((txtRegisterShopCode='%s') or (txtCheLiangChePaiHao in (select txtChePaiHao from gongdan where txtShopCode='%s')))",
-									curShop.getShopCode(),
-									curShop.getShopCode());
-				}
 			}
+		}
+		if (!searchBean.isSearchAllShopCustomerAllowed()) {
+			// 仅在当前店铺查询客户车辆信息
+			// 1. 车辆信息在本店登记的 2. 车牌号在本店的工单里面出现过
+			if (searchSql.length() > 0) {
+				searchSql += " and ";
+			}
+			searchSql += String
+					.format("((txtRegisterShopCode='%s') or (txtCheLiangChePaiHao in (select txtChePaiHao from gongdan where txtShopCode='%s')))",
+							curShop.getShopCode(), curShop.getShopCode());
 		}
 
 		if (searchSql.length() > 0) {

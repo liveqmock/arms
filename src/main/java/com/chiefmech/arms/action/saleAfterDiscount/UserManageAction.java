@@ -2,6 +2,7 @@ package com.chiefmech.arms.action.saleAfterDiscount;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -48,8 +49,9 @@ public class UserManageAction extends BaseActionSupport
 		if (userService.isLoginNameExist(item)) {
 			jsonStr = getJsonResponse(-1, "已有同名的登录账号");
 		} else {
-			item.setShopCode(ConfigUtil.getInstance().getShopInfo()
-					.getShopCode());
+			if (StringUtils.isBlank(item.getShopCode())) {
+				item.setShopCode(this.getShop().getShopCode());
+			}
 			int rowAffected = userService.insertItem(item);
 			jsonStr = getJsonResponse(rowAffected, "新增数据失败");
 		}

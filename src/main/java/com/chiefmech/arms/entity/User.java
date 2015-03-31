@@ -12,6 +12,15 @@ public class User {
 	private String groupName;
 	private List<String> privilegeLst;
 	private String shopCode;
+	private String shopName;
+
+	public String getShopName() {
+		return shopName;
+	}
+
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
+	}
 
 	public String getUserId() {
 		return userId;

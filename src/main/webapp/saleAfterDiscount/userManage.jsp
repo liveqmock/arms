@@ -43,6 +43,9 @@
 				<th width="150" data-options="field:'password'">用户密码</th>
 				<th width="150" data-options="field:'expirydate'">账号有效期</th>
 				<th width="200" data-options="field:'groupName'">用户组</th>
+                <s:if test="user.privilegeLst.contains('manageUserForAllShop')">
+				<th width="200" data-options="field:'shopName'">所属店铺</th>
+                </s:if>
 				<th field="action" width="100" align="center"
 					formatter="formatAction">操作</th>
 			</tr>
@@ -53,7 +56,7 @@
 			iconCls="icon-add" plain="true" onclick="addItem()">新增</a>
 	</div>
 	<div id="mydlg" class="easyui-dialog" closed="true"
-		style="width: 700px; height: 300px; padding: 10px 20px;">
+		style="width: 700px; height: 350px; padding: 10px 20px;">
 		<form name="fm" method="post" id="fm">
 			<table border="0" cellpadding="0" cellspacing="0" width="100%;">
 				<tr>
@@ -81,11 +84,22 @@
 						data-options="required:true"/></td>
 				</tr>
 				<tr>
-					<td>用户组</td>
+					<td>用户组:</td>
 					<td><input name="groupName" type="text" id="groupName"
 							class="easyui-combobox"
 							data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/groupNameOption.action'" style="width: 250px;"/></td>
 				</tr>
+                <s:if test="user.privilegeLst.contains('manageUserForAllShop')">
+				<tr>
+					<td>所属店铺：</td>
+					<td><input name="shopCode" id="shopCode"
+								class="easyui-combobox"
+								data-options="editable:false,required:true,valueField:'code',textField:'name',method:'post',url:'<s:property value='basePath' />/data/shopCodeOption.action'"  style="width: 250px;"/></td>
+				</tr>
+                </s:if>
+                <s:else>
+                	<input name="shopCode" id="shopCode" type="hidden" />
+                </s:else>
 				<tr>
 					<td colspan="2" align="center"><br /> <a onclick="saveItem()"
 						id="btnSave" class="easyui-linkbutton" href="javascript:void(0)">保存</a>&nbsp;&nbsp;&nbsp;<a
