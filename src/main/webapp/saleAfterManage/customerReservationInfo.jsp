@@ -98,7 +98,6 @@
 				"txtShopCode" : $("#txtShopCode").combobox("getValue"),
 				"txtReserveDate" : $("#txtReserveDate").datebox("getValue")
 			}, function(result) {
-				var result = eval('(' + result + ')');
 				var shopName = result.shopName;
 				var reservationLimit = result.reservationLimit;
 				var curReservation = result.curReservation;
