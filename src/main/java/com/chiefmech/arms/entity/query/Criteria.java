@@ -5,7 +5,7 @@ import org.apache.commons.lang.StringUtils;
 public class Criteria {
 
 	public static enum Action {
-		STR_EQUAL, NUM_EQUAL, DATE_BETWEEN, NUM_BETWEEN, LIKE
+		STR_EQUAL, NUM_EQUAL, DATE_BETWEEN, DATE_LARGE_EQUAL, NUM_BETWEEN, LIKE
 	}
 
 	private Action action;
@@ -60,6 +60,13 @@ public class Criteria {
 					sql += String
 							.format("date_format(%s,'%%Y%%m%%d')<=date_format('%s','%%Y%%m%%d')",
 									fieldName, fieldValue2);
+				}
+				break;
+			case DATE_LARGE_EQUAL :
+				if (StringUtils.isNotBlank(fieldValue1)) {
+					sql = String
+							.format("date_format(%s,'%%Y%%m%%d')>=date_format('%s','%%Y%%m%%d')",
+									fieldName, fieldValue1);
 				}
 				break;
 			case NUM_BETWEEN :

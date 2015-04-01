@@ -292,7 +292,7 @@
 													},
 													url : "",
 													target : "_blank",
-													click : "mdfMenu('7acf3c55-3939-41ba-s135-3a1dfa035c71','客户预约参数','../webSetup/customerReservationParamsManage.action');"
+													click : "mdfMenu('7acf3c55-3939-41ba-s135-3a1dfa035c71','客户预约参数','../webSetup/reservationLimitManage.action');"
 												},
 											</s:if>	
 											],

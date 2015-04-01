@@ -79,33 +79,54 @@
 			$('input:radio[name=txtCallSort][value=<s:property value="txtCallSort" />]').attr('checked',true);
 		});
 		
-		function saveItem() {
-			var url;
-			<s:if test="txtReserveGuid==null || txtReserveGuid==''">url = 'insertCustomerReservation.action';</s:if>
-			<s:else>url = 'updateCustomerReservation.action';</s:else>
-			
+		function saveItem() {			
 			if($('#fm').form('validate')){
 				$.post('isChePaiHaoExist.action', {
 					"txtCheLiangChePaiHao" : $("#txtCheLiangChePaiHao").textbox("getValue")
 				}, function(status) {
 					if (status.existFlag == 'yes') {
-						$("#txtCheLiangId").val(status.cheLiangId);
-						$('#fm').form('submit', {
-							url : url,
-							success : function(result) {
-								var result = eval('(' + result + ')');
-								if (result.errorMsg) {
-									$.messager.alert('出错啦', result.errorMsg);
-								} else {
-									winClose();
-								}
-							}
-						});
+						doSaveItem1(status.cheLiangId);
 					} else {
 						$.messager.alert('提示', "车辆信息还不存在，请先添加客户及车辆信息");
 					}
 				}, 'json');
 			}
+		}
+		
+		function doSaveItem1(cheLiangId) {
+			$.post('getReservationInfo.action', {
+				"txtShopCode" : $("#txtShopCode").combobox("getValue"),
+				"txtReserveDate" : $("#txtReserveDate").datebox("getValue")
+			}, function(result) {
+				var result = eval('(' + result + ')');
+				var shopName = result.shopName;
+				var reservationLimit = result.reservationLimit;
+				var curReservation = result.curReservation;
+				if (curReservation >= reservationLimit) {
+					$.messager.alert('提示', shopName+"最多可预约"+reservationLimit+"台车，现已预约"+curReservation+"台，请预约到其他店！");
+				}else{
+					doSaveItem2(cheLiangId);
+				}
+			}, 'json');
+		}
+		
+		function doSaveItem2(cheLiangId) {
+			var url;
+			<s:if test="txtReserveGuid==null || txtReserveGuid==''">url = 'insertCustomerReservation.action';</s:if>
+			<s:else>url = 'updateCustomerReservation.action';</s:else>
+			
+			$("#txtCheLiangId").val(cheLiangId);
+			$('#fm').form('submit', {
+				url : url,
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.errorMsg) {
+						$.messager.alert('出错啦', result.errorMsg);
+					} else {
+						winClose();
+					}
+				}
+			});
 		}
 
 		function winClose() {

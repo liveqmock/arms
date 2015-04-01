@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Update;
 
 import com.chiefmech.arms.dao.sqlprovider.CustomerReservationDaoSqlProvider;
 import com.chiefmech.arms.entity.CustomerReservation;
+import com.chiefmech.arms.entity.ReservationLimit;
 import com.chiefmech.arms.entity.query.CustomerReservationSearchBean;
 import com.chiefmech.arms.entity.view.VCustomerReservation;
 import com.chiefmech.arms.entity.view.VKeHuCheLiang;
@@ -39,4 +40,9 @@ public interface CustomerReservationDao {
 
 	@Select("select * from v_customerreservation where txtReserveGuid=#{txtReserveGuid}")
 	public VCustomerReservation findItemById(String txtReserveGuid);
+
+	@Select("select ifnull(count(*),0) from customerreservation where txtShopCode=#{txtShopCode} and date_format(txtReserveDate,'%%Y%%m%%d')=date_format(#{txtReserveDate},'%%Y%%m%%d') ")
+	public int getCurrentReservation(@Param("txtShopCode") String txtShopCode,
+			@Param("txtReserveDate") String txtReserveDate);
+
 }

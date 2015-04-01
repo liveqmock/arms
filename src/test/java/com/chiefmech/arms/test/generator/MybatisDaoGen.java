@@ -4,13 +4,14 @@ import java.lang.reflect.Field;
 
 import junit.framework.TestCase;
 
-import com.chiefmech.arms.entity.Param;
+import com.chiefmech.arms.entity.ReservationLimit;
 
 public class MybatisDaoGen extends TestCase {
 
 	public static void main(String[] args) {
 
-		Object[][] beans = {{"params", "paramGuid", Param.class}};
+		Object[][] beans = {{"reservationlimit", "txtGuid",
+				ReservationLimit.class}};
 
 		StringBuffer sb = new StringBuffer();
 		String fieldInfo = "";

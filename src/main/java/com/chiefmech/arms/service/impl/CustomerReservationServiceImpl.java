@@ -9,7 +9,11 @@ import net.sf.json.JSONArray;
 import org.springframework.stereotype.Service;
 
 import com.chiefmech.arms.dao.CustomerReservationDao;
+import com.chiefmech.arms.dao.ReservationLimitDao;
+import com.chiefmech.arms.dao.ShopDao;
 import com.chiefmech.arms.entity.CustomerReservation;
+import com.chiefmech.arms.entity.ReservationLimit;
+import com.chiefmech.arms.entity.Shop;
 import com.chiefmech.arms.entity.query.CustomerReservationSearchBean;
 import com.chiefmech.arms.entity.view.VCustomerReservation;
 import com.chiefmech.arms.entity.view.VKeHuCheLiang;
@@ -21,6 +25,10 @@ public class CustomerReservationServiceImpl
 			CustomerReservationService {
 	@Resource()
 	private CustomerReservationDao customerReservationDao;
+	@Resource()
+	private ReservationLimitDao reservationLimitDao;
+	@Resource()
+	private ShopDao shopDao;
 
 	@Override
 	public String getReservationListEasyUiJSon(
@@ -62,6 +70,26 @@ public class CustomerReservationServiceImpl
 		}
 		return String.format("{\"existFlag\":\"%s\",\"cheLiangId\":\"%s\"}",
 				existStatus, cheLiangId);
+	}
+
+	@Override
+	public String getReservationInfo(VCustomerReservation query) {
+		String shopCode = query.getTxtShopCode();
+		String txtReserveDate = query.getTxtReserveDate();
+
+		Shop shop = shopDao.findShopInfoByShopCode(shopCode);
+		ReservationLimit targetReservationLimit = reservationLimitDao
+				.queryReservationLimit(shopCode, txtReserveDate);
+		int reservationLimit = (targetReservationLimit == null) ? shop
+				.getReservationLimit() : targetReservationLimit
+				.getReservationLimit();
+		int curReservation = customerReservationDao.getCurrentReservation(
+				shopCode, txtReserveDate);
+		String jsonStr = String
+				.format("{\"shopCode\":\"%s\",\"reservationDate\":\"%s\",\"shopName\":\"%s\",\"reservationLimit\":\"%s\",\"curReservation\":\"%s\"}",
+						shopCode, query.getTxtReserveDate(),
+						shop.getShopName(), reservationLimit, curReservation);
+		return jsonStr;
 	}
 
 	@Override

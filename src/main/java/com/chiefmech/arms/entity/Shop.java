@@ -13,6 +13,15 @@ public class Shop {
 	private String expirydate;
 	private String complaintCall;
 	private String companyFlag;
+	private int reservationLimit;
+
+	public int getReservationLimit() {
+		return reservationLimit;
+	}
+
+	public void setReservationLimit(int reservationLimit) {
+		this.reservationLimit = reservationLimit;
+	}
 
 	public String getCompanyFlag() {
 		return companyFlag;

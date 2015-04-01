@@ -81,6 +81,13 @@ public class CustomerReservationManageAction extends BaseActionSupport
 		this.transmitJson(jsonStr);
 	}
 
+	@Action(value = "getReservationInfo")
+	public void getReservationLimitInfo() {
+		String jsonStr = customerReservationService.getReservationInfo(item);
+
+		this.transmitJson(jsonStr);
+	}
+
 	@Action(value = "insertCustomerReservation")
 	public void insertCustomerReservation() {
 		item.setTxtReserveGuid(IDGen.getUUID());
