@@ -46,7 +46,7 @@ public class CustomerInfoServiceImpl implements CustomerInfoService {
 	@Override
 	public List<CustomerInfo> findCustomerInfoByCheZhuTel(String txtCheZhuTel) {
 		return customerInfoDao.findCustomerInfoByCheZhuTel(txtCheZhuTel,
-				SessionUtil.getShopInfo().getCompanyFlag());
+				SessionUtil.getShopInfo().getShopCode());
 	}
 
 	@Override

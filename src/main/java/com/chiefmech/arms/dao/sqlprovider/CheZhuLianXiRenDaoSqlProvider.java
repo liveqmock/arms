@@ -60,7 +60,7 @@ public class CheZhuLianXiRenDaoSqlProvider {
 
 		String searchSql = "";
 		if (queryField != null) {
-			// 完整车架号可跨店铺搜索
+			// 完整车架号完全匹配可跨店铺搜索
 			if ("txtCheLiangCheJiaHao".equals(queryField)) {
 				searchSql += String.format("%s = '%s'", queryField, queryValue);
 			} else {
@@ -70,15 +70,15 @@ public class CheZhuLianXiRenDaoSqlProvider {
 
 			}
 		}
-		if (!searchBean.isSearchAllShopCustomerAllowed()) {
+		if (!searchBean.isSearchAllShopCustomerAllowed()
+				|| !"txtCheLiangCheJiaHao".equals(queryField)) {
 			// 仅在当前店铺查询客户车辆信息
-			// 1. 车辆信息在本店登记的 2. 车牌号在本店的工单里面出现过
+			// 1. 车辆信息在本店登记的 2. 不是按车架号查找
 			if (searchSql.length() > 0) {
 				searchSql += " and ";
 			}
-			searchSql += String
-					.format("((txtRegisterShopCode='%s') or (txtCheLiangChePaiHao in (select txtChePaiHao from gongdan where txtShopCode='%s')))",
-							curShop.getShopCode(), curShop.getShopCode());
+			searchSql += String.format("txtRegisterShopCode='%s'",
+					curShop.getShopCode());
 		}
 
 		if (searchSql.length() > 0) {

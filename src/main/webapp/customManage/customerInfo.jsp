@@ -129,7 +129,7 @@
 				</tr><s:if test="cheLiangInfoLst.size>0">
                 <s:iterator value="cheLiangInfoLst" status="status">
 				<tr>
-					<td colspan="6">车辆<s:property value="#status.count"/>&nbsp;&nbsp;<a href="javascript:editItem('<s:property value='txtCheLiangId' />')">修改</a>&nbsp;&nbsp;<a href="javascript:deleteItem('<s:property value='txtCheLiangId' />')">删除</a>&nbsp;&nbsp;<a href="javascript:newWeiXiuJieDai('<s:property value='txtCheLiangId' />')">维修接待</a>&nbsp;&nbsp;<a href="javascript:openCustomerReserveDialog('<s:property value='txtCheLiangId' />')">维修预约</a></td>
+					<td colspan="6">车辆<s:property value="#status.count"/>&nbsp;&nbsp;<a href="javascript:editItem('<s:property value='txtCheLiangId' />')">修改</a>&nbsp;&nbsp;<a href="javascript:deleteItem('<s:property value='txtCheLiangId' />')">删除</a>&nbsp;&nbsp;<a href="javascript:newWeiXiuJieDai('<s:property value='txtCheLiangId' />')">维修接待</a><s:if test="user.privilegeLst.contains('customerReservationManage')">&nbsp;&nbsp;<a href="javascript:openCustomerReserveDialog('<s:property value='txtCheLiangId' />')">维修预约</a></s:if></td>
 				</tr>
 				<tr>
 					<td align="right">品牌：</td>

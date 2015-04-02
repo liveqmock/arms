@@ -46,13 +46,13 @@ td {
 	<form name="fmSearch" method="post" id="fmSearch" class="searchform">
 		<table id="searchPanel" class="searchPanel">
 			<tr>
-				<td>物料编码:</td>
-				<td><input name="txtWuLiaoCode" type="text"
-					class="easyui-textbox" maxlength="20" id="txtWuLiaoCode"
-					style="width: 120px;" /></td>
 				<td>名称及规格:</td>
 				<td><input name="txtWuLiaoName" type="text"
 					class="easyui-textbox" maxlength="20" id="txtWuLiaoName"
+					style="width: 120px;" /></td>
+				<td>物料编码:</td>
+				<td><input name="txtWuLiaoCode" type="text"
+					class="easyui-textbox" maxlength="20" id="txtWuLiaoCode"
 					style="width: 120px;" /></td>
 				<td>供应商:</td>
 				<td><input name="txtSuppName" id="txtSuppName"
@@ -76,8 +76,8 @@ td {
 						   showFooter:true">
 		<thead>
 			<tr>
-				<th width="150" data-options="field:'txtWuLiaoCode'">物料编码</th>
 				<th width="200" data-options="field:'txtWuLiaoName'">名称及规格</th>
+				<th width="150" data-options="field:'txtWuLiaoCode'">物料编码</th>
 				<s:if test="action=='updateKuCun'">
 					<th width="250" data-options="field:'txtSuppName'">供应商</th>
 				</s:if>

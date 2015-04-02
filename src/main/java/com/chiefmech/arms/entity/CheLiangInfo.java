@@ -17,18 +17,6 @@ public class CheLiangInfo {
 	private String ddlChengBaoGongSi;
 	private String ddlCheLiangNianFen;
 	private String ddlCheLiangPaiLiang;
-	private String txtRegisterShopCode;
-
-	public String getTxtRegisterShopCode() {
-		if (txtRegisterShopCode == null) {
-			txtRegisterShopCode = SessionUtil.getShopInfo().getShopCode();
-		}
-		return txtRegisterShopCode;
-	}
-
-	public void setTxtRegisterShopCode(String txtRegisterShopCode) {
-		this.txtRegisterShopCode = txtRegisterShopCode;
-	}
 
 	public String getDdlCheLiangNianFen() {
 		return ddlCheLiangNianFen;

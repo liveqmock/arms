@@ -19,17 +19,17 @@ public class CustomerInfo {
 	private String txtHuiYuanDengJi;
 	private String txtHuiYuanZhangHao;
 
-	private String companyFlag;
+	private String txtRegisterShopCode;
 
-	public String getCompanyFlag() {
-		if (companyFlag == null) {
-			companyFlag = SessionUtil.getShopInfo().getCompanyFlag();
+	public String getTxtRegisterShopCode() {
+		if (txtRegisterShopCode == null) {
+			txtRegisterShopCode = SessionUtil.getShopInfo().getShopCode();
 		}
-		return companyFlag;
+		return txtRegisterShopCode;
 	}
 
-	public void setCompanyFlag(String companyFlag) {
-		this.companyFlag = companyFlag;
+	public void setTxtRegisterShopCode(String txtRegisterShopCode) {
+		this.txtRegisterShopCode = txtRegisterShopCode;
 	}
 
 	public String getTxtHuiYuanDengJi() {
