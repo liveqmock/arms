@@ -12,14 +12,25 @@ public class SaleAfterCustomSearchBean extends SearchBean {
 
 	@Override
 	public void initSearchFields() {
-		this.addField(new Criteria(Action.STR_EQUAL, "companyFlag", SessionUtil
-				.getShopInfo().getCompanyFlag()));
-		this.addLimitInfo(this.getPage(), this.getRows());
-	}
+		if (queryField != null) {
+			Criteria.Action action = "txtCheLiangCheJiaHao".equals(queryField) ? Action.STR_EQUAL
+					: Action.LIKE;
+			this.addField(new Criteria(action, queryField, queryValue));
+		}
 
-	public boolean isSearchAllShopCustomerAllowed() {
-		return SessionUtil.getUserInfo().getPrivilegeLst()
-				.contains("customerReservationManage");
+		if ("txtCheLiangCheJiaHao".equals(queryField)
+				|| SessionUtil.getUserInfo().getPrivilegeLst()
+						.contains("customerReservationManage")) {
+			// 1. 车架号可以跨店查询 2. 客服权限可跨店查询
+			this.addField(new Criteria(Action.STR_EQUAL, "companyFlag",
+					SessionUtil.getShopInfo().getCompanyFlag()));
+		} else {
+			// 不是车架号或者客服只能查询本店录入的客户信息
+			this.addField(new Criteria(Action.STR_EQUAL, "txtRegisterShopCode",
+					SessionUtil.getShopInfo().getShopCode()));
+		}
+
+		this.addLimitInfo(this.getPage(), this.getRows());
 	}
 
 	public String getQueryField() {

@@ -65,7 +65,7 @@ td {
 						   rownumbers:true,
 						   singleSelect:true,
 						   toolbar:'#toolbar',
-						   pagination:true">
+						   pagination:true,onDblClickRow:jieDaiDaoHang">
 		<thead>
 			<tr>
                 <th width="100" data-options="field:'txtCheZhuName'">车主</th>
@@ -163,6 +163,23 @@ td {
 
 		function formatAction(value, row, index) {
 			return '<a href="javascript:void(0)" onclick="editItem(this)">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="deleteItem(this)">删除</a>';
+		}
+		
+		
+
+		function jieDaiDaoHang() {
+			var row = $('#mydg').datagrid('getSelected');
+			if (row && row.txtCheLiangId!="") {
+				var url = '../saleAfterManage/saleAfterWeiXiuJieDaiDaoHang.action?cheLiangId='
+						+ row.txtCheLiangId + '&d=' + new Date();
+				var name = '维修接待导航';
+				var features = 'height=600, width=950, top=80, left=80, toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no';
+				
+				z = window.open(url, name, features);
+				z.focus();
+			} else {
+				$.messager.alert('提示', '请先选中目标车辆');
+			}
 		}
 	</script>
 </body>

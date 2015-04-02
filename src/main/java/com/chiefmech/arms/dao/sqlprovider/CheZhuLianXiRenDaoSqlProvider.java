@@ -40,51 +40,13 @@ public class CheZhuLianXiRenDaoSqlProvider {
 				.get("item");
 		return String.format(
 				"select * from v_kehu_cheliang %s order by txtCheZhuName %s",
-				getWhereSql(query), query.getLimitSql());
+				query.getWhereSql(), query.getLimitSql());
 	}
 
 	public String getVKeHuCheLiangCountForEasyUi(Map<String, Object> param) {
 		SaleAfterCustomSearchBean query = (SaleAfterCustomSearchBean) param
 				.get("item");
 		return String.format("select count(*) from v_kehu_cheliang %s",
-				getWhereSql(query));
-	}
-
-	private String getWhereSql(SaleAfterCustomSearchBean searchBean) {
-		String where = searchBean.getWhereSql();
-
-		Shop curShop = SessionUtil.getShopInfo();
-
-		String queryField = searchBean.getQueryField();
-		String queryValue = searchBean.getQueryValue();
-
-		String searchSql = "";
-		if (queryField != null) {
-			// 完整车架号完全匹配可跨店铺搜索
-			if ("txtCheLiangCheJiaHao".equals(queryField)) {
-				searchSql += String.format("%s = '%s'", queryField, queryValue);
-			} else {
-				// 跨店查询客户车辆信息
-				searchSql += String.format("%s like '%%%s%%'", queryField,
-						queryValue);
-
-			}
-		}
-		if (!searchBean.isSearchAllShopCustomerAllowed()
-				|| !"txtCheLiangCheJiaHao".equals(queryField)) {
-			// 仅在当前店铺查询客户车辆信息
-			// 1. 车辆信息在本店登记的 2. 不是按车架号查找
-			if (searchSql.length() > 0) {
-				searchSql += " and ";
-			}
-			searchSql += String.format("txtRegisterShopCode='%s'",
-					curShop.getShopCode());
-		}
-
-		if (searchSql.length() > 0) {
-			where = where + " and " + searchSql;
-		}
-
-		return where;
+				query.getWhereSql());
 	}
 }
