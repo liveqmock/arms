@@ -33,7 +33,7 @@ public interface CustomerInfoDao {
 	@Select("select * from customerinfo where txtCustId=#{txtCustId}")
 	public CustomerInfo findCustomerInfoById(String txtCustId);
 
-	@Select("select * from customerinfo where txtCheZhuTel=#{txtCheZhuTel} and shopCode=#{shopCode}")
+	@Select("select * from customerinfo where txtCheZhuTel=#{txtCheZhuTel} and txtRegisterShopCode=#{shopCode}")
 	public List<CustomerInfo> findCustomerInfoByCheZhuTel(
 			@Param("txtCheZhuTel") String txtCheZhuTel,
 			@Param("shopCode") String shopCode);
