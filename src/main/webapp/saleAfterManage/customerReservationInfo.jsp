@@ -102,7 +102,7 @@
 				var reservationLimit = result.reservationLimit;
 				var curReservation = result.curReservation;
 				if (curReservation >= reservationLimit) {
-					$.messager.alert('提示', shopName+"最多可预约"+reservationLimit+"台车，现已预约"+curReservation+"台，请预约到其他店！");
+					$.messager.alert('提示', shopName+"最多可预约<span  style='color: blue; font-weight: bold;'>"+reservationLimit+"</span>台车，现已预约<span  style='color: blue; font-weight: bold;'>"+curReservation+"</span>台，请预约到其他店！");
 				}else{
 					doSaveItem2(cheLiangId);
 				}

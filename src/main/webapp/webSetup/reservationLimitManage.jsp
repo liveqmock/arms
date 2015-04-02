@@ -81,7 +81,7 @@ td {
 	</table>
 	<div id="toolbar">
 		<a href="javascript:void(0)" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true" onclick="addItem()">新增</a> 
+			iconCls="icon-add" plain="true" onclick="addItem()">新增例外信息</a> 
 	</div>
 	<div id="mydlg" class="easyui-dialog" closed="true"
 		style="width: 450px; height: 300px; padding: 10px 20px;">

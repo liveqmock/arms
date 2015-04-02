@@ -44,11 +44,14 @@ td {
                     id="txtReserveDateBegin" class="easyui-datebox" style="width: 120px;" /></td>
                 <td><input name="txtReserveDateEnd" type="text"
                     id="txtReserveDateEnd" class="easyui-datebox" style="width: 120px;" /></td>
+                <td nowrap>预约店铺:</td>
+                <td><input name="txtShopCode" id="txtShopCode" class="easyui-combobox"
+								data-options="editable:false,valueField:'code',textField:'name',method:'post',url:'<s:property value='basePath' />/data/shopCodeOption.action'" /></td>
                 <td>来电类型:</td>
 				<td><input name="txtCallSort" type="text" id="txtCallSort"
 							class="easyui-combobox"
 							data-options="editable:false,valueField:'code',textField:'name',data: [{name: '预约',code: '预约'},{name: '咨询',code: '咨询'}]" style="width: 150px;" /></td>
-				<td><a class="easyui-linkbutton" href="javascript:doSearch()">查询项目</a>&nbsp;&nbsp;&nbsp;
+				<td><a class="easyui-linkbutton" href="javascript:doSearch()">查询</a>&nbsp;&nbsp;&nbsp;
                 <a class="easyui-linkbutton" href="javascript:doSearchForToday()">今日预约</a>&nbsp;&nbsp;&nbsp;<a
 					id="lnkSearch" class="easyui-linkbutton"
 					href="javascript:clearSearchFrm()">清空查询</a></td>

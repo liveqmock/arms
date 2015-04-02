@@ -10,7 +10,7 @@ public class CustomerReservationDaoSqlProvider {
 		CustomerReservationSearchBean searchBean = (CustomerReservationSearchBean) param
 				.get("item");
 
-		return String.format("select * from v_customerreservation %s order by txtReserveDate desc %s",
+		return String.format("select * from v_customerreservation %s order by txtReserveDate desc,txtShopName %s",
 				searchBean.getWhereSql(), searchBean.getLimitSql());
 	}
 

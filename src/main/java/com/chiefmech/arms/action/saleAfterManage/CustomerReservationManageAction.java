@@ -64,6 +64,7 @@ public class CustomerReservationManageAction extends BaseActionSupport
 		query.setPage(page);
 		query.setRows(rows);
 		query.setTxtCheLiangChePaiHao(item.getTxtCheLiangChePaiHao());
+		query.setTxtShopCode(item.getTxtShopCode());
 		query.setTxtReserveDateBegin(txtReserveDateBegin);
 		query.setTxtReserveDateEnd(txtReserveDateEnd);
 		query.setTxtCallSort(item.getTxtCallSort());
