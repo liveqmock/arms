@@ -125,7 +125,9 @@
 					<th width="150" data-options="field:'ddlReviewStatus',align:'center',editor:{type:'radiobox',options:{defaultValue:'未回访',values:['已回访','未回访']}}">回访状态</th>
 					<th width="200" data-options="field:'txtReviewRemark',editor:{type:'textbox'}">回访备注</th>
                     </s:if>
+                    <s:if test="user.privilegeLst.contains('gongDanDelete')">
                     <th width="150" field="action" align="center" formatter="formatAction">操作</th>
+                    </s:if>
 				</tr>
 			</thead>
 		</table>

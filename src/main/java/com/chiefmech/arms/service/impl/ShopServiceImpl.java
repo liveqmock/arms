@@ -8,7 +8,7 @@ import net.sf.json.JSONArray;
 
 import org.springframework.stereotype.Service;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.dao.ShopDao;
 import com.chiefmech.arms.entity.Shop;
@@ -22,8 +22,7 @@ public class ShopServiceImpl implements ShopService {
 	@Override
 	public int insertItem(Shop item) {
 		item.setShopGuid(IDGen.getUUID());
-		item.setCompanyFlag(ConfigUtil.getInstance().getShopInfo()
-				.getCompanyFlag());
+		item.setCompanyFlag(SessionUtil.getShopInfo().getCompanyFlag());
 		return shopDao.insertItem(item);
 	}
 

@@ -12,7 +12,6 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
 import com.chiefmech.arms.common.util.Constants;
 import com.chiefmech.arms.entity.Shop;
 import com.chiefmech.arms.entity.User;
@@ -36,7 +35,7 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 
 	@Action(value = "login", results = {
 			@Result(name = "success", type = "redirectAction", location = "index/default"),
-			@Result(name = "input", location = "login.jsp") })
+			@Result(name = "input", location = "login.jsp")})
 	public String login() {
 		this.clearFieldErrors();
 		if (StringUtils.isBlank(user.getLoginName())
@@ -74,8 +73,6 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 						Constants.KEY_USER_SESSION, userInfo);
 				servletRequest.getSession().setAttribute(
 						Constants.KEY_SHOP_SESSION, shopInfo);
-				ConfigUtil.getInstance().setUserInfo(userInfo);
-				ConfigUtil.getInstance().setShopInfo(shopInfo);
 				return SUCCESS;
 			}
 		}

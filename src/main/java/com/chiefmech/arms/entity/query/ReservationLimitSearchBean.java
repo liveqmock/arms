@@ -1,6 +1,6 @@
 package com.chiefmech.arms.entity.query;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.common.util.DateUtil;
 import com.chiefmech.arms.entity.query.Criteria.Action;
 
@@ -20,8 +20,8 @@ public class ReservationLimitSearchBean extends SearchBean {
 		this.addField(new Criteria(Action.DATE_BETWEEN, "reservationDate",
 				reservationDateBegin, reservationDateEnd));
 		// 不能跨公司查看预约信息
-		this.addField(new Criteria(Action.STR_EQUAL, "companyFlag", ConfigUtil
-				.getInstance().getShopInfo().getCompanyFlag()));
+		this.addField(new Criteria(Action.STR_EQUAL, "companyFlag", SessionUtil
+				.getShopInfo().getCompanyFlag()));
 	}
 
 	public String getShopCode() {

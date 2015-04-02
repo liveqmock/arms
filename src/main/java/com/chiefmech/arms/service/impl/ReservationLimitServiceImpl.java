@@ -8,7 +8,7 @@ import net.sf.json.JSONArray;
 
 import org.springframework.stereotype.Service;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.dao.ReservationLimitDao;
 import com.chiefmech.arms.dao.ShopDao;
 import com.chiefmech.arms.entity.ReservationLimit;
@@ -53,8 +53,8 @@ public class ReservationLimitServiceImpl implements ReservationLimitService {
 	@Override
 	public String getDefaultReservationListEasyUiJSon() {
 		List<ReservationLimit> lst = reservationLimitDao
-				.getDefaultReservationList(ConfigUtil.getInstance()
-						.getShopInfo().getCompanyFlag());
+				.getDefaultReservationList(SessionUtil.getShopInfo()
+						.getCompanyFlag());
 
 		String lstJson = JSONArray.fromObject(lst).toString();
 		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}",

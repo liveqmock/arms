@@ -26,4 +26,8 @@
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
+	<!-- session超时设置，以分钟为单位 -->
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
 </web-app>

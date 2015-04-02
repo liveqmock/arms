@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.action.BaseActionSupport;
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.entity.TaoKaItem;
 import com.chiefmech.arms.entity.TaoKaSort;
@@ -55,8 +55,7 @@ public class TaoKaManageAction extends BaseActionSupport
 		String action;
 		if (StringUtils.isBlank(item.getTxtGuid())) {
 			item.setTxtGuid(IDGen.getUUID());
-			item.setTxtShopCode(ConfigUtil.getInstance().getShopInfo()
-					.getShopCode());
+			item.setTxtShopCode(SessionUtil.getShopInfo().getShopCode());
 			rowsAffected = taoKaService.insertTaoKaSort(item);
 			action = "插入";
 		} else {

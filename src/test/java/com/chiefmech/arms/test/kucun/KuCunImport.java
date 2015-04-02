@@ -16,7 +16,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.common.util.DateUtil;
 import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.entity.KuCun;
@@ -39,7 +39,6 @@ public class KuCunImport {
 	private StringBuffer sb = new StringBuffer();
 
 	public static void main(String[] args) {
-		ConfigUtil.getInstance().setShopInfo(new Shop()); // 避免运行出错
 
 		KuCunImport importer = new KuCunImport();
 		importer.initKuCunListFromExcel();

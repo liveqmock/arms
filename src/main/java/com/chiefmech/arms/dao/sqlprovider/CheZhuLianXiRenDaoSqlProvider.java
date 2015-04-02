@@ -2,7 +2,7 @@ package com.chiefmech.arms.dao.sqlprovider;
 
 import java.util.Map;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.entity.Shop;
 import com.chiefmech.arms.entity.query.Criteria;
 import com.chiefmech.arms.entity.query.Criteria.Action;
@@ -53,7 +53,7 @@ public class CheZhuLianXiRenDaoSqlProvider {
 	private String getWhereSql(SaleAfterCustomSearchBean searchBean) {
 		String where = searchBean.getWhereSql();
 
-		Shop curShop = ConfigUtil.getInstance().getShopInfo();
+		Shop curShop = SessionUtil.getShopInfo();
 
 		String queryField = searchBean.getQueryField();
 		String queryValue = searchBean.getQueryValue();

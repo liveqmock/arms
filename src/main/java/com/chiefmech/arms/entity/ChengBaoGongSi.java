@@ -1,6 +1,6 @@
 package com.chiefmech.arms.entity;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 
 public class ChengBaoGongSi {
 	/**
@@ -11,10 +11,12 @@ public class ChengBaoGongSi {
 	 * 承保公司名称
 	 */
 	private String chengBaoGongSiName;
-	private String txtShopCode = ConfigUtil.getInstance().getShopInfo()
-			.getShopCode();
+	private String txtShopCode;
 
 	public String getTxtShopCode() {
+		if (txtShopCode == null) {
+			txtShopCode = SessionUtil.getShopInfo().getShopCode();
+		}
 		return txtShopCode;
 	}
 

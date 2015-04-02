@@ -16,8 +16,6 @@ public interface RuKuDanService {
 
 	public RuKuDan findRuKuDanByGuid(String ruKuDanGuid);
 
-	public int updateRuKuDanStatus(RuKuDan ruKuDan);
-
 	public int updateRuKuDanToKuCun(RuKuDan ruKuDan);
 
 	public String getRuKuDanWuLiaoEasyUiJSon(String ruKuDanGuid);

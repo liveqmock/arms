@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.chiefmech.arms.action.BaseActionSupport;
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.entity.query.SaleAfterCustomSearchBean;
 import com.chiefmech.arms.service.CustomerInfoService;
 import com.opensymphony.xwork2.ModelDriven;
@@ -27,13 +27,7 @@ public class CustomerSearchAction extends BaseActionSupport
 	@Resource()
 	private CustomerInfoService cheZhuLianXiRenService;
 
-	private SaleAfterCustomSearchBean query = new SaleAfterCustomSearchBean() {
-		{
-			this.setSearchAllShopCustomerAllowed(ConfigUtil.getInstance()
-					.getUserInfo().getPrivilegeLst()
-					.contains("customerReservationManage"));
-		}
-	};
+	private SaleAfterCustomSearchBean query = new SaleAfterCustomSearchBean();
 
 	@Action(value = "saleAfterCustomSearch", results = {@Result(name = "input", location = "saleAfter_CustomSearch.jsp")})
 	public String saleAfterCustomSearch() {

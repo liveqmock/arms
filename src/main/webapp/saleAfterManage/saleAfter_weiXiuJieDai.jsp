@@ -96,6 +96,10 @@ td {
 								onClick="updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />','交车');return false;"
 								class="easyui-linkbutton" href="javascript:void(0)">交车</a>
 						</s:if>
+					</s:elseif> <s:elseif
+						test="gongDanStatus=='交车' && actionName=='gongDanWeiXiuJieSuan'">
+                        <a onClick="javascript:weiXiuJieSuanPrint();"
+                            class="easyui-linkbutton" href="javascript:void(0)">结算单信息</a>
 					</s:elseif></td>
 			</tr>
 			<!--按钮区域 end-->
@@ -239,7 +243,7 @@ td {
 							<s:if test="actionName=='gongDanWeiXiuJieDai'">
 data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/weiXiuGongDuanOption.action'}}"</s:if>>工段</th>
 					  <th field="txtXiangMuName" width="150">项目名称</th>
-						<th field="txtWeiXiuNeiRong" width="200"
+						<th field="txtWeiXiuNeiRong" width="250"
 							<s:if test="actionName in {'gongDanWeiXiuJieDai', 'gongDanCheLiangJianCe'}">
 						data-options="editor:{type:'textbox'}"</s:if>>项目内容</th>
 						<th field="txtFeiYong" width="80"

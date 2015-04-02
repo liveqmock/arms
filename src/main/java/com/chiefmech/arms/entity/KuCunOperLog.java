@@ -33,7 +33,7 @@ public class KuCunOperLog {
 		this.txtWuLiaoName = ruKuDanWuLiao.getTxtWuLiaoName();
 		this.txtQty = ruKuDanWuLiao.getTxtQty();
 		this.txtChengBenJia = ruKuDanWuLiao.getTxtPrice();
-		// this.txtSalePrice; //采购物料入库时没有成本价信息
+		this.txtSalePrice = (float) (this.txtChengBenJia * 1.5); // 采购物料入库时销售价默认为成本价的1.5倍(张小平经理的要求)
 		this.txtSuppName = ruKuDan.getTxtSuppName();
 		this.txtRemark = ruKuDanWuLiao.getTxtRemark();
 	}

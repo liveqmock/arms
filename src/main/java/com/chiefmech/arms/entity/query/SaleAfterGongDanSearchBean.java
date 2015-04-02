@@ -1,6 +1,6 @@
 package com.chiefmech.arms.entity.query;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.entity.query.Criteria.Action;
 
 public class SaleAfterGongDanSearchBean extends SearchBean {
@@ -42,8 +42,8 @@ public class SaleAfterGongDanSearchBean extends SearchBean {
 		this.addField(new Criteria(Action.STR_EQUAL, "txtDeleteFlag",
 				txtDeleteFlag));
 		// 只查找属于当前店铺的工单
-		this.addField(new Criteria(Action.STR_EQUAL, "txtShopCode", ConfigUtil
-				.getInstance().getShopInfo().getShopCode()));
+		this.addField(new Criteria(Action.STR_EQUAL, "txtShopCode", SessionUtil
+				.getShopInfo().getShopCode()));
 		this.addLimitInfo(this.getPage(), this.getRows());
 	}
 

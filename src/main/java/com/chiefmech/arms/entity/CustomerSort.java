@@ -1,12 +1,11 @@
 package com.chiefmech.arms.entity;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 
 public class CustomerSort {
 	private String txtGuid;
 	private String txtName;
-	private String txtShopCode = ConfigUtil.getInstance().getShopInfo()
-			.getShopCode();
+	private String txtShopCode;
 	public String getTxtGuid() {
 		return txtGuid;
 	}
@@ -20,6 +19,9 @@ public class CustomerSort {
 		this.txtName = txtName;
 	}
 	public String getTxtShopCode() {
+		if (txtShopCode == null) {
+			txtShopCode = SessionUtil.getShopInfo().getShopCode();
+		}
 		return txtShopCode;
 	}
 	public void setTxtShopCode(String txtShopCode) {
@@ -27,5 +29,3 @@ public class CustomerSort {
 	}
 
 }
-
-

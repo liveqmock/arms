@@ -363,24 +363,6 @@ function saveRuKuDan() {
 	});
 }
 
-function updateRuKuDanStatus(ruKuDanGuid, newStatus){
-	$.messager.confirm('提示', '确认<span  style="color: blue; font-weight: bold;">'+newStatus+'</span>后本页面信息不能被修改，确定要'+newStatus+'吗?', function(r) {
-		if (r) {
-			$("#txtStatus").val(newStatus);
-			$("#form1").form('submit',{
-				url : "updateRuKuDanStatus.action",
-				success : function(result) {
-					var result = eval('(' + result + ')');
-					if (result.errorMsg) {
-						$.messager.alert('出错啦', result.errorMsg);
-					}
-					refreshRuKuDan(ruKuDanGuid);
-				}
-			});
-		}
-	});
-}
-
 function deleteRuKuDan() {
 	$.messager.confirm('提示', "本操作将删除入库单及其明细，您确定要删除吗？", function(r) {
 		if (r) {

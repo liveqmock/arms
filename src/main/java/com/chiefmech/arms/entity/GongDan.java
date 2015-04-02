@@ -2,7 +2,7 @@ package com.chiefmech.arms.entity;
 
 import org.apache.commons.lang.StringUtils;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.common.util.DateUtil;
 import com.chiefmech.arms.entity.view.VKeHuCheLiang;
 
@@ -90,8 +90,7 @@ public class GongDan {
 	private float txtFinalPay;
 	private String shopName;
 
-	private String txtShopCode = ConfigUtil.getInstance().getShopInfo()
-			.getShopCode();
+	private String txtShopCode;
 
 	public GongDan(VKeHuCheLiang customerInfo) {
 		this.setTxtCustId(customerInfo.getTxtCustId());
@@ -149,6 +148,9 @@ public class GongDan {
 	}
 
 	public String getTxtShopCode() {
+		if (txtShopCode == null) {
+			txtShopCode = SessionUtil.getShopInfo().getShopCode();
+		}
 		return txtShopCode;
 	}
 

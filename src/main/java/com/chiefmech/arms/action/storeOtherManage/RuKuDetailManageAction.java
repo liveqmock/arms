@@ -98,18 +98,6 @@ public class RuKuDetailManageAction extends BaseActionSupport
 				"{\"statusCode\":\"%s\", \"info\":'%s'}", statusCode, info));
 	}
 
-	@Action(value = "updateRuKuDanStatus")
-	public void updateRuKuDanStatus() {
-		if (ruKuDan.getTxtStatus().equals("审核完毕")) {
-			ruKuDan.setTxtShenHeRen(this.getUser().getDisplayName());
-			ruKuDan.setTxtShenHeShiJian(DateUtil.getCurrentDate());
-		}
-		int rowAffected = ruKuDanService.updateRuKuDanStatus(ruKuDan);
-		String jsonStr = getCrudJsonResponse(rowAffected, "更新");
-
-		this.transmitJson(jsonStr);
-	}
-
 	@Action(value = "updateRuKuDanToKuCun")
 	public void updateRuKuDanToKuCun() {
 		ruKuDan.setTxtShenHeRen(this.getUser().getDisplayName());

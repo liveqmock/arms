@@ -8,7 +8,7 @@ import net.sf.json.JSONArray;
 
 import org.springframework.stereotype.Service;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.dao.CustomerSortDao;
 import com.chiefmech.arms.entity.CustomerSort;
 import com.chiefmech.arms.service.CustomerSortService;
@@ -36,8 +36,8 @@ public class CustomerSortServiceImpl implements CustomerSortService {
 
 	@Override
 	public String getCustomerSortLisEasyUiJSon() {
-		List<CustomerSort> lst = customerSortDao.selectAllItems(ConfigUtil
-				.getInstance().getShopInfo().getShopCode());
+		List<CustomerSort> lst = customerSortDao.selectAllItems(SessionUtil
+				.getShopInfo().getShopCode());
 
 		String lstJson = JSONArray.fromObject(lst).toString();
 		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}",

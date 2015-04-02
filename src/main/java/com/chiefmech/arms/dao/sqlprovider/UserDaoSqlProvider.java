@@ -2,7 +2,7 @@ package com.chiefmech.arms.dao.sqlprovider;
 
 import java.util.Map;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.entity.User;
 import com.chiefmech.arms.entity.query.Criteria;
 import com.chiefmech.arms.entity.query.Criteria.Action;
@@ -33,12 +33,12 @@ public class UserDaoSqlProvider {
 			public void initSearchFields() {
 				// 不能跨公司查看用户
 				this.addField(new Criteria(Action.STR_EQUAL, "companyFlag",
-						ConfigUtil.getInstance().getShopInfo().getCompanyFlag()));
+						SessionUtil.getShopInfo().getCompanyFlag()));
 				// 没有跨店管理权限就只能查看自店信息
-				if (!ConfigUtil.getInstance().getUserInfo().getPrivilegeLst()
+				if (!SessionUtil.getUserInfo().getPrivilegeLst()
 						.contains("manageUserForAllShop")) {
 					this.addField(new Criteria(Action.STR_EQUAL, "shopCode",
-							ConfigUtil.getInstance().getShopInfo()
+							SessionUtil.getShopInfo()
 									.getShopCode()));
 				}
 			}

@@ -1,6 +1,6 @@
 package com.chiefmech.arms.entity.query;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.entity.query.Criteria.Action;
 
 public class KuCunOperLogSearchBean extends SearchBean {
@@ -23,8 +23,8 @@ public class KuCunOperLogSearchBean extends SearchBean {
 		this.addField(new Criteria(Action.LIKE, "txtWuLiaoName", txtWuLiaoName));
 		this.addField(new Criteria(Action.LIKE, "txtBillNo", txtBillNo));
 		// 只查找属于当前店铺的库存
-		this.addField(new Criteria(Action.STR_EQUAL, "txtShopCode", ConfigUtil
-				.getInstance().getShopInfo().getShopCode()));
+		this.addField(new Criteria(Action.STR_EQUAL, "txtShopCode", SessionUtil
+				.getShopInfo().getShopCode()));
 		this.addLimitInfo(this.getPage(), this.getRows());
 	}
 

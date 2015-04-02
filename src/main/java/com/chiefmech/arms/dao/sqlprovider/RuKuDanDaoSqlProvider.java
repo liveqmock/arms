@@ -11,7 +11,7 @@ public class RuKuDanDaoSqlProvider {
 				.get("item");
 
 		return String
-				.format("select * from v_caigouwuliao %s order by field(txtStatus,'准备单据','提交审核','审核完毕'), txtRuKuDate desc %s",
+				.format("select * from v_caigouwuliao %s order by field(txtStatus,'准备单据','确认更新'), txtRuKuDate desc %s",
 						getWhereSql(query), query.getLimitSql());
 	}
 

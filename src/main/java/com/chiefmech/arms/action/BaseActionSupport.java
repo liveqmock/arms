@@ -14,6 +14,7 @@ import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.chiefmech.arms.common.util.Constants;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.entity.Shop;
 import com.chiefmech.arms.entity.User;
 import com.opensymphony.xwork2.ActionContext;
@@ -38,6 +39,7 @@ public class BaseActionSupport extends ActionSupport
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+		SessionUtil.setSession(session);
 	}
 
 	@Override

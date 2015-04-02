@@ -1,6 +1,6 @@
 package com.chiefmech.arms.entity;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 
 public class RuKuDan {
 	private String txtGuid;
@@ -17,8 +17,7 @@ public class RuKuDan {
 
 	private String txtShenHeRen;
 	private String txtShenHeShiJian;
-	private String txtShopCode = ConfigUtil.getInstance().getShopInfo()
-			.getShopCode();
+	private String txtShopCode;
 
 	public String getTxtGuid() {
 		return txtGuid;
@@ -27,6 +26,9 @@ public class RuKuDan {
 		this.txtGuid = txtGuid;
 	}
 	public String getTxtShopCode() {
+		if (txtShopCode == null) {
+			txtShopCode = SessionUtil.getShopInfo().getShopCode();
+		}
 		return txtShopCode;
 	}
 	public void setTxtShopCode(String txtShopCode) {

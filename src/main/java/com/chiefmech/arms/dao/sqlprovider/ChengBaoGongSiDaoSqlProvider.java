@@ -2,7 +2,7 @@ package com.chiefmech.arms.dao.sqlprovider;
 
 import java.util.Map;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.entity.ChengBaoGongSi;
 import com.chiefmech.arms.entity.query.Criteria;
 import com.chiefmech.arms.entity.query.SearchBean;
@@ -34,7 +34,7 @@ public class ChengBaoGongSiDaoSqlProvider {
 				this.addField(new Criteria(Action.LIKE, "chengBaoGongSiName",
 						item.getChengBaoGongSiName()));
 				this.addField(new Criteria(Action.STR_EQUAL, "txtShopCode",
-						ConfigUtil.getInstance().getShopInfo().getShopCode()));
+						SessionUtil.getShopInfo().getShopCode()));
 			}
 		};
 		return searchBean;

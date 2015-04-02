@@ -8,7 +8,7 @@ import net.sf.json.JSONArray;
 
 import org.springframework.stereotype.Service;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.dao.TaoKaDao;
 import com.chiefmech.arms.entity.TaoKaItem;
 import com.chiefmech.arms.entity.TaoKaSort;
@@ -22,8 +22,8 @@ public class TaoKaServiceImpl implements TaoKaService {
 
 	@Override
 	public String getTaoKaSortEasyUiJSon() {
-		List<TaoKaSort> lst = taoKaDao.getTaoKaSortList(ConfigUtil
-				.getInstance().getShopInfo().getShopCode());
+		List<TaoKaSort> lst = taoKaDao.getTaoKaSortList(SessionUtil
+				.getShopInfo().getShopCode());
 
 		String lstJson = JSONArray.fromObject(lst).toString();
 		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}",
@@ -52,8 +52,8 @@ public class TaoKaServiceImpl implements TaoKaService {
 
 	@Override
 	public String getTaoKaItemEasyUiJSon() {
-		List<TaoKaItem> lst = taoKaDao.getTaoKaItemList(ConfigUtil
-				.getInstance().getShopInfo().getShopCode());
+		List<TaoKaItem> lst = taoKaDao.getTaoKaItemList(SessionUtil
+				.getShopInfo().getShopCode());
 
 		String lstJson = JSONArray.fromObject(lst).toString();
 		String jsonStr = String.format("{\"total\":\"%d\",\"rows\":%s}",

@@ -1,6 +1,6 @@
 package com.chiefmech.arms.entity;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.common.util.HuiYuanUtil;
 
 public class CustomerInfo {
@@ -19,10 +19,12 @@ public class CustomerInfo {
 	private String txtHuiYuanDengJi;
 	private String txtHuiYuanZhangHao;
 
-	private String companyFlag = ConfigUtil.getInstance().getShopInfo()
-			.getCompanyFlag();
+	private String companyFlag;
 
 	public String getCompanyFlag() {
+		if (companyFlag == null) {
+			companyFlag = SessionUtil.getShopInfo().getCompanyFlag();
+		}
 		return companyFlag;
 	}
 

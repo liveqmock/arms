@@ -8,7 +8,7 @@ import net.sf.json.JSONArray;
 
 import org.springframework.stereotype.Service;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.dao.ChengBaoGongSiDao;
 import com.chiefmech.arms.entity.ChengBaoGongSi;
 import com.chiefmech.arms.service.ChengBaoGongSiService;

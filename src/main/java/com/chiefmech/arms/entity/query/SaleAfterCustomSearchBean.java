@@ -1,30 +1,25 @@
 package com.chiefmech.arms.entity.query;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.entity.query.Criteria.Action;
 
 public class SaleAfterCustomSearchBean extends SearchBean {
 
 	private String queryField;
 	private String queryValue;
-	private boolean isSearchAllShopCustomerAllowed = false;
 	private int page = 1;
 	private int rows = 20;
 
 	@Override
 	public void initSearchFields() {
-		this.addField(new Criteria(Action.STR_EQUAL, "companyFlag", ConfigUtil
-				.getInstance().getShopInfo().getCompanyFlag()));
+		this.addField(new Criteria(Action.STR_EQUAL, "companyFlag", SessionUtil
+				.getShopInfo().getCompanyFlag()));
 		this.addLimitInfo(this.getPage(), this.getRows());
 	}
 
 	public boolean isSearchAllShopCustomerAllowed() {
-		return isSearchAllShopCustomerAllowed;
-	}
-
-	public void setSearchAllShopCustomerAllowed(
-			boolean isSearchAllCustomerAllowed) {
-		this.isSearchAllShopCustomerAllowed = isSearchAllCustomerAllowed;
+		return SessionUtil.getUserInfo().getPrivilegeLst()
+				.contains("customerReservationManage");
 	}
 
 	public String getQueryField() {

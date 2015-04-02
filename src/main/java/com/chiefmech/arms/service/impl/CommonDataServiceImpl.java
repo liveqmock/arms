@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.dao.CommonDataDao;
 import com.chiefmech.arms.entity.option.OptionBean;
 import com.chiefmech.arms.service.CommonDataService;
@@ -26,9 +26,8 @@ public class CommonDataServiceImpl implements CommonDataService {
 	public List<OptionBean> getOptionBean(String target,
 			Map<String, String> param) {
 		List<OptionBean> lst = null;
-		String shopCode = ConfigUtil.getInstance().getShopInfo().getShopCode();
-		String companyFlag = ConfigUtil.getInstance().getShopInfo()
-				.getCompanyFlag();
+		String shopCode = SessionUtil.getShopInfo().getShopCode();
+		String companyFlag = SessionUtil.getShopInfo().getCompanyFlag();
 		if ("GongYingShang".equals(target)) {
 			lst = commonDataDao.getSupplierOptionBean(shopCode);
 		} else if ("ChangKu".equals(target)) {

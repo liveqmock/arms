@@ -1,6 +1,6 @@
 package com.chiefmech.arms.entity.query;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.entity.query.Criteria.Action;
 
 public class CustomerReservationSearchBean extends SearchBean {
@@ -24,13 +24,13 @@ public class CustomerReservationSearchBean extends SearchBean {
 		this.addField(new Criteria(Action.LIKE, "txtShopCode", txtShopCode));
 		this.addLimitInfo(this.getPage(), this.getRows());
 		// 不能跨公司查看预约信息
-		this.addField(new Criteria(Action.STR_EQUAL, "companyFlag", ConfigUtil
-				.getInstance().getShopInfo().getCompanyFlag()));
+		this.addField(new Criteria(Action.STR_EQUAL, "companyFlag", SessionUtil
+				.getShopInfo().getCompanyFlag()));
 		// 没有预约管理权限就只能查看自店预约信息
-		if (!ConfigUtil.getInstance().getUserInfo().getPrivilegeLst()
+		if (!SessionUtil.getUserInfo().getPrivilegeLst()
 				.contains("customerReservationManage")) {
 			this.addField(new Criteria(Action.STR_EQUAL, "txtShopCode",
-					ConfigUtil.getInstance().getShopInfo().getShopCode()));
+					SessionUtil.getShopInfo().getShopCode()));
 		}
 	}
 

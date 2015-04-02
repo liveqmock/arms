@@ -1,6 +1,6 @@
 package com.chiefmech.arms.entity;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 
 public class CustomerReservation {
 	private String txtReserveGuid;
@@ -8,8 +8,7 @@ public class CustomerReservation {
 	private String txtTicketInfo;
 	private String txtReserveDate;
 	private String txtReserveShop;
-	private String txtCustomerServiceName = ConfigUtil.getInstance()
-			.getUserInfo().getDisplayName();
+	private String txtCustomerServiceName;
 	private String txtRemarks;
 	private String txtCallSort = "预约";
 	private String txtShopCode;
@@ -64,6 +63,9 @@ public class CustomerReservation {
 		this.txtReserveShop = txtReserveShop;
 	}
 	public String getTxtCustomerServiceName() {
+		if (txtCustomerServiceName == null) {
+			txtCustomerServiceName = SessionUtil.getUserInfo().getDisplayName();
+		}
 		return txtCustomerServiceName;
 	}
 	public void setTxtCustomerServiceName(String txtCustomerServiceName) {

@@ -22,7 +22,7 @@ public class LoginInterceptor extends AbstractInterceptor {
 				|| invocation.getAction() instanceof LoginAction) {
 			return invocation.invoke();
 		} else {
-			logger.debug("用户未登录，跳转登录页面");
+			logger.debug("session信息为空,跳转登陆页面");
 			return "userLogin";
 			// return invocation.invoke(); // For dev purpose
 		}

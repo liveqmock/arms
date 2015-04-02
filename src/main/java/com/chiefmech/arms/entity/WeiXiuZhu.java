@@ -1,6 +1,6 @@
 package com.chiefmech.arms.entity;
 
-import com.chiefmech.arms.common.util.ConfigUtil;
+import com.chiefmech.arms.common.util.SessionUtil;
 
 public class WeiXiuZhu {
 	/** 维修组编号 */
@@ -8,10 +8,12 @@ public class WeiXiuZhu {
 	/** 维修组名 */
 	private String weixiuzuName;
 
-	private String txtShopCode = ConfigUtil.getInstance().getShopInfo()
-			.getShopCode();
+	private String txtShopCode;
 
 	public String getTxtShopCode() {
+		if (txtShopCode == null) {
+			txtShopCode = SessionUtil.getShopInfo().getShopCode();
+		}
 		return txtShopCode;
 	}
 	public void setTxtShopCode(String txtShopCode) {
