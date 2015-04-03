@@ -273,17 +273,6 @@
 													click : "mdfMenu('7acf3c55-3939-41ba-s135-3a1dfa035c88','套卡管理','../webSetup/taoKaManage.action');"
 												} ,
 											</s:if>	
-											<s:if test="user.privilegeLst.contains('jianChaXiangMuManage')">	
-												{
-													name : "检查项目",
-													font : {
-														'font-style' : '微软雅黑'
-													},
-													url : "",
-													target : "_blank",
-													click : "mdfMenu('7acf3c55-3939-41ba-s135-3a1dfa035c71','检查项目管理','../webSetup/jianChaXiangMuManage.action');"
-												},
-											</s:if>	
 											<s:if test="user.privilegeLst.contains('reservationLimitManage')">	
 												{
 													name : "客户预约参数",

@@ -132,6 +132,53 @@ function makeElementsReadonly(idAry, jsonData){
 		}
 	});
 	
+	$.extend($.fn.datagrid.defaults.editors, {
+		radiobox_jianCe: {
+			radioGroupIndex:0,
+			init: function(container, options){
+				var html = "<span style='text-align:center;'></span>";
+				return $(html).appendTo(container);
+			},
+			destroy: function(target){
+				$(target).remove();
+			},
+			getValue: function(target){
+				var radioGroup = $(target).find(":radio[checked='checked']");
+				var value = $(radioGroup[0]).attr("value");
+				return value;
+			},
+			setValue: function(target, value){
+				this.radioGroupIndex += 1;
+				var self = this;
+				var infoAry = value.split("-");
+				
+				var optionInfo = infoAry[0];
+				var opts = value.split("|");
+				var html = "";
+				_.each(opts, function(option, index){
+					html += '<input type="radio" id="myRadio_'+self.radioGroupIndex+'_'+index+'" name="myRadio_'+self.radioGroupIndex+'" value="'+option+'" /><label for="myRadio_'+self.radioGroupIndex+'_'+index+'">'+option+"</label>";
+					if(index < _.size(opts)-1){
+						html += "&nbsp;&nbsp;";
+					}
+				});
+				$(html).appendTo(target);				
+				
+				var t = $(target).find(":radio:first");
+				var checkedOption = $(target).find(":radio:first").attr("value");
+				if(_.size() == 2){
+					checkedOption = infoAry[1];
+				}
+				var radioGroup = $(target).find(":radio[value='"+checkedOption+"']");
+				if(_.size(radioGroup)>0){
+					$(radioGroup[0]).attr("checked","checked");
+				}				
+			},
+			resize: function(target, width){
+				$(target)._outerWidth(width);
+			}
+		}
+	});
+	
 	$.extend($.fn.textbox.defaults.inputEvents,{
 		keydown:function(e){
 			if(e.keyCode==13){

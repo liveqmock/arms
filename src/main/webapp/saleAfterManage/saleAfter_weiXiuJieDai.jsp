@@ -290,12 +290,12 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 				data-options="url:'queryGongDanCheLiangJianCe.action?saleAfterWeiXiuGuid=<s:property value='saleAfterWeiXiuGuid' />',singleSelect:true,rownumbers:true,showFooter:true<s:if test="gongDanStatus=='维修完检' && actionName=='gongDanWeiXiuWanJian'">,onLoadSuccess:beginEditAllRows</s:if>">
 				<thead>
 					<tr>
-						<th field="txtNeiRong" width="200">检测内容</th>
-						<th field="txtZhuangTai" width="200"
-							data-options="align:'center',editor:{type:'radiobox',options:{defaultValue:'未检测',values:['未检测','正常','异常']}}">检测状态</th>
+						<th field="txtJianChaName" width="150">检测项目</th>
+						<th field="txtStatusItem" width="300" data-options="editor:{type:'radiobox_jianCe'}">检测状态</th>
+						<th field="txtActionItem" width="250" data-options="editor:{type:'radiobox_jianCe'}">实际处理</th>
 						<th field="txtRemark" width="250"
 							data-options="editor:{type:'textbox'}">备注</th>
-						<th field="txtJianChaXiangMuRemark" width="950">检查项目说明</th>
+						<th field="toolTip" width="800" formatter="format_toolTip">提示内容</th>
 					</tr>
 				</thead>
 			</table>
@@ -681,7 +681,19 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			});			
 		}
 		
-		//-------------------------Datagrid2------------------------------------
+		//-------------------------检测项目列表-------------------------------------------		
+
+		function format_statusItem(value, row, index) {
+			return row.txtStatusItem;
+		}
+		function format_actionItem(value, row, index) {
+			return row.txtActionItem;
+		}
+		function format_toolTip(value, row, index) {
+			return row.txtTip1;
+		}
+		
+		//-------------------------工单物料Datagrid2------------------------------------
 		var myTable2 = $('#datagridWuLiao');
 
 		function addWulaoFromKuCun() {

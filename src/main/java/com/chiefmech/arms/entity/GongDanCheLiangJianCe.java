@@ -1,15 +1,23 @@
 package com.chiefmech.arms.entity;
 
-public class GongDanCheLiangJianCe {
+import com.chiefmech.arms.common.util.IDGen;
+
+public class GongDanCheLiangJianCe extends JianChaXiangMu {
 
 	private String txtJianceGuid;
 	private String txtGongDanGuid;
-	private int txtXuHao;
-	private String txtNeiRong;
-	private String txtZhuangTai;
 	private String txtRemark;
-	private String txtJianChaXiangMuRemark;
 
+	public GongDanCheLiangJianCe(String txtGongDanGuid, JianChaXiangMu item) {
+		super(item);
+
+		this.txtJianceGuid = IDGen.getUUID();
+		this.txtGongDanGuid = txtGongDanGuid;
+		this.txtRemark = "";
+
+	}
+	public GongDanCheLiangJianCe() {
+	}
 	public String getTxtJianceGuid() {
 		return txtJianceGuid;
 	}
@@ -22,36 +30,11 @@ public class GongDanCheLiangJianCe {
 	public void setTxtGongDanGuid(String txtGongDanGuid) {
 		this.txtGongDanGuid = txtGongDanGuid;
 	}
-	public int getTxtXuHao() {
-		return txtXuHao;
-	}
-	public void setTxtXuHao(int txtXuHao) {
-		this.txtXuHao = txtXuHao;
-	}
-	public String getTxtNeiRong() {
-		return txtNeiRong;
-	}
-	public void setTxtNeiRong(String txtNeiRong) {
-		this.txtNeiRong = txtNeiRong;
-	}
-	public String getTxtZhuangTai() {
-		return txtZhuangTai;
-	}
-	public void setTxtZhuangTai(String txtZhuangTai) {
-		this.txtZhuangTai = txtZhuangTai;
-	}
 	public String getTxtRemark() {
 		return txtRemark;
 	}
 	public void setTxtRemark(String txtRemark) {
 		this.txtRemark = txtRemark;
 	}
-	public String getTxtJianChaXiangMuRemark() {
-		return txtJianChaXiangMuRemark;
-	}
-	public void setTxtJianChaXiangMuRemark(String txtJianChaXiangMuRemark) {
-		this.txtJianChaXiangMuRemark = txtJianChaXiangMuRemark;
-	}
 
-	
 }

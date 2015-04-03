@@ -188,19 +188,9 @@ public class SaleAfterWeiXiuJieDaiAction extends BaseActionSupport
 			rowsAffected = gongDanService.insertWeiXiuJieDai(gongDan);
 
 			jianChaXiangMuList = jianChaXiangMuService.selectItem();
-			int size = jianChaXiangMuList.size();
-			for (int i = 0; i < size; i++) {
-				GongDanCheLiangJianCe item = new GongDanCheLiangJianCe();
-				item.setTxtJianceGuid(IDGen.getUUID());
-				item.setTxtGongDanGuid(gongDan.getTxtGongDanId());
-				item.setTxtNeiRong(jianChaXiangMuList.get(i)
-						.getTxtJianChaName());
-				item.setTxtZhuangTai("未检测");
-				item.setTxtXuHao(i);
-				item.setTxtJianChaXiangMuRemark(jianChaXiangMuList.get(i)
-						.getTxtXiangMuRemark());
-
-				gongDanService.insertCheLiangJianCe(item);
+			for (JianChaXiangMu item : jianChaXiangMuList) {
+				gongDanService.insertCheLiangJianCe(new GongDanCheLiangJianCe(
+						gongDan.getTxtGongDanId(), item));
 			}
 		} else {
 			rowsAffected = gongDanService.updateWeiXiuJieDai(gongDan);
