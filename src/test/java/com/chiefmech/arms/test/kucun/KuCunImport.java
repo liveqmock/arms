@@ -10,20 +10,19 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
-import com.chiefmech.arms.common.util.SessionUtil;
 import com.chiefmech.arms.common.util.DateUtil;
 import com.chiefmech.arms.common.util.IDGen;
 import com.chiefmech.arms.entity.KuCun;
 import com.chiefmech.arms.entity.KuCunOperLog;
 import com.chiefmech.arms.entity.RuKuDan;
 import com.chiefmech.arms.entity.RuKuDanWuLiao;
-import com.chiefmech.arms.entity.Shop;
 
 public class KuCunImport {
 	private String shopCode = "001";
@@ -42,6 +41,9 @@ public class KuCunImport {
 
 		KuCunImport importer = new KuCunImport();
 		importer.initKuCunListFromExcel();
+		if (!importer.isKuCunListValid()) {
+			return;
+		}
 		importer.initBensLst();
 
 		// 供应商
@@ -66,6 +68,29 @@ public class KuCunImport {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private boolean isKuCunListValid() {
+		boolean isValid = true;
+
+		List<String> wuLiaoCodeLst = new ArrayList<String>();
+		for (KuCun item : kuCunLst) {
+			String wuLiaoCode = item.getTxtWuLiaoCode();
+			if (StringUtils.isBlank(wuLiaoCode)) {
+				System.err.println("\n\n库存Excel数据有误，物料编码不能为空。物料名称："
+						+ item.getTxtWuLiaoName());
+				isValid = false;
+				break;
+			} else if (wuLiaoCodeLst.contains(wuLiaoCode)) {
+				System.err.println("\n\n库存Excel数据有误，存在重复的物料编码：" + wuLiaoCode);
+				isValid = false;
+				break;
+			} else {
+				wuLiaoCodeLst.add(wuLiaoCode);
+			}
+		}
+
+		return isValid;
 	}
 
 	private void initBensLst() {

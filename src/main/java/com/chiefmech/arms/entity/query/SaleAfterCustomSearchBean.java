@@ -13,7 +13,8 @@ public class SaleAfterCustomSearchBean extends SearchBean {
 	@Override
 	public void initSearchFields() {
 		if (queryField != null) {
-			Criteria.Action action = "txtCheLiangCheJiaHao".equals(queryField) ? Action.STR_EQUAL
+			Criteria.Action action = "txtCheLiangCheJiaHao".equals(queryField)
+					? Action.STR_EQUAL
 					: Action.LIKE;
 			this.addField(new Criteria(action, queryField, queryValue));
 		}
@@ -25,7 +26,7 @@ public class SaleAfterCustomSearchBean extends SearchBean {
 			this.addField(new Criteria(Action.STR_EQUAL, "companyFlag",
 					SessionUtil.getShopInfo().getCompanyFlag()));
 		} else {
-			// 不是车架号或者客服只能查询本店录入的客户信息
+			// 不是车架号或者客服 1.查询本店录入的车辆信息 2.预约到本店的车辆信息
 			this.addField(new Criteria(Action.STR_EQUAL, "txtRegisterShopCode",
 					SessionUtil.getShopInfo().getShopCode()));
 		}
