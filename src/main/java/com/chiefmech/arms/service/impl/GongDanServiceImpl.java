@@ -21,6 +21,7 @@ import com.chiefmech.arms.entity.GongDanCheLiangJianCe;
 import com.chiefmech.arms.entity.GongDanJieSuan;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
+import com.chiefmech.arms.entity.JianChaXiangMu;
 import com.chiefmech.arms.entity.JieSuanItem;
 import com.chiefmech.arms.entity.KuCun;
 import com.chiefmech.arms.entity.KuCunOperLog;
@@ -288,8 +289,10 @@ public class GongDanServiceImpl implements GongDanService {
 	}
 
 	@Override
-	public int insertCheLiangJianCe(GongDanCheLiangJianCe item) {
-		return gongDanDao.insertCheLiangJianCe(item);
+	public int addAllJianCeItemsToGongDan(String txtGongDanId,
+			List<JianChaXiangMu> jianChaXiangMuList) {
+		return gongDanDao.addAllJianCeItemsToGongDan(txtGongDanId,
+				jianChaXiangMuList);
 	}
 
 	@Override

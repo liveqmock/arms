@@ -4,17 +4,20 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
+import com.chiefmech.arms.dao.sqlprovider.CarModelDaoSqlProvider;
 import com.chiefmech.arms.dao.sqlprovider.GongDanDaoSqlProvider;
 import com.chiefmech.arms.entity.GongDan;
 import com.chiefmech.arms.entity.GongDanCheLiangJianCe;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
+import com.chiefmech.arms.entity.JianChaXiangMu;
 import com.chiefmech.arms.entity.JieSuanItem;
 import com.chiefmech.arms.entity.footer.GongDanWeiXiuWuLiaoFooter;
 import com.chiefmech.arms.entity.footer.GongDanWeiXiuXiangMuFooter;
@@ -145,6 +148,11 @@ public interface GongDanDao {
 
 	@Insert("insert into gongdanjiance(txtJianceGuid,txtGongDanGuid,txtXuHao,txtJianChaName,txtStatusItem,txtActionItem,txtTip1,txtTip2,txtRemark) values(#{txtJianceGuid},#{txtGongDanGuid},#{txtXuHao},#{txtJianChaName},#{txtStatusItem},#{txtActionItem},#{txtTip1},#{txtTip2},#{txtRemark})")
 	public int insertCheLiangJianCe(GongDanCheLiangJianCe item);
+
+	@InsertProvider(type = GongDanDaoSqlProvider.class, method = "addAllJianCeItemsToGongDan")
+	public int addAllJianCeItemsToGongDan(
+			@Param("txtGongDanId") String txtGongDanId,
+			@Param("jianChaXiangMuList") List<JianChaXiangMu> jianChaXiangMuList);
 
 	@Update("update gongdanjiance set txtZhuangTai=#{txtZhuangTai},txtRemark=#{txtRemark} where txtJianceGuid=#{txtJianceGuid}")
 	public int updateCheLiangJianCe(GongDanCheLiangJianCe item);

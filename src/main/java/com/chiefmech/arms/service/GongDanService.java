@@ -7,6 +7,7 @@ import com.chiefmech.arms.entity.GongDanCheLiangJianCe;
 import com.chiefmech.arms.entity.GongDanJieSuan;
 import com.chiefmech.arms.entity.GongDanWeiXiuWuLiao;
 import com.chiefmech.arms.entity.GongDanWeiXiuXiangMu;
+import com.chiefmech.arms.entity.JianChaXiangMu;
 import com.chiefmech.arms.entity.KuCun;
 import com.chiefmech.arms.entity.WeiXiuWuLiao;
 import com.chiefmech.arms.entity.WeiXiuXiangMu;
@@ -71,8 +72,6 @@ public interface GongDanService {
 	public List<GongDanCheLiangJianCe> getGongDanCheLiangJianCeListByGongDanId(
 			String txtGongDanId);
 
-	public int insertCheLiangJianCe(GongDanCheLiangJianCe item);
-
 	public int updateGongDanCheLiangJianCe(List<GongDanCheLiangJianCe> itemLst);
 
 	public int addGongDanWeiXiuWuLiaoFromCaiGou(String saleAfterWeiXiuGuid,
@@ -98,4 +97,7 @@ public interface GongDanService {
 	public boolean isRequestWuLiaoFree(GongDanWeiXiuWuLiao gongDanWeiXiuWuLiao);
 
 	public int withdrawGongDanWeiXiuWuLiao(String txtWeiXiuWuLiaoId);
+
+	public int addAllJianCeItemsToGongDan(String txtGongDanId,
+			List<JianChaXiangMu> jianChaXiangMuList);
 }
