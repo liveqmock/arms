@@ -59,4 +59,25 @@ public class GongDanDaoSqlProvider {
 				.format("insert into gongdanjiance(txtJianCeGuid,txtGongDanGuid,txtXuHao,txtJianChaName,txtStatusItem,txtActionItem,txtTip1,txtTip2,txtCurStatus,txtCurAction,txtRemark) values %s",
 						valueTuplesSb.toString());
 	}
+
+	public String updateGongDanJianCeList(Map<String, Object> param) {
+		@SuppressWarnings("unchecked")
+		List<GongDanCheLiangJianCe> itemLst = (List<GongDanCheLiangJianCe>) param
+				.get("itemLst");
+
+		StringBuffer valueTuplesSb = new StringBuffer();
+		for (GongDanCheLiangJianCe item : itemLst) {
+			if (valueTuplesSb.length() > 0) {
+				valueTuplesSb.append(",");
+			}
+			valueTuplesSb.append(String.format("('%s','%s','%s','%s')",
+					item.getTxtJianCeGuid(), item.getTxtCurStatus(),
+					item.getTxtCurAction(), item.getTxtRemark()));
+		}
+
+		return String
+				.format("insert into gongdanjiance(txtJianCeGuid,txtCurStatus,txtCurAction,txtRemark) values %s"
+						+ " ON DUPLICATE KEY UPDATE txtCurStatus=VALUES(txtCurStatus), txtCurAction=VALUES(txtCurAction), txtRemark=VALUES(txtRemark);",
+						valueTuplesSb.toString());
+	}
 }

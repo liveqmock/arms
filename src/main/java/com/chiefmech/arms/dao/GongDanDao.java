@@ -154,8 +154,9 @@ public interface GongDanDao {
 			@Param("txtGongDanId") String txtGongDanId,
 			@Param("jianChaXiangMuList") List<JianChaXiangMu> jianChaXiangMuList);
 
-	@Update("update gongdanjiance set txtCurStatus=#{txtCurStatus},txtCurAction=#{txtCurAction},txtRemark=#{txtRemark} where txtJianCeGuid=#{txtJianCeGuid}")
-	public int updateCheLiangJianCe(GongDanCheLiangJianCe item);
+	@InsertProvider(type = GongDanDaoSqlProvider.class, method = "updateGongDanJianCeList")
+	public int updateGongDanJianCeList(
+			@Param("itemLst") List<GongDanCheLiangJianCe> itemLst);
 
 	@Update("update gongdanwuliao set ddlStatus=#{ddlStatus} where txtWuLiaoGuid=#{txtWuLiaoGuid}")
 	public int updateGongDanWuLiaoStatusWhenLingQuWuLiao(

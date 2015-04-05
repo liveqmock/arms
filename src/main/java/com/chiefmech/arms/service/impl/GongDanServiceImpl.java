@@ -297,18 +297,7 @@ public class GongDanServiceImpl implements GongDanService {
 
 	@Override
 	public int updateGongDanCheLiangJianCe(List<GongDanCheLiangJianCe> itemLst) {
-		boolean isAllItemInserted = true;
-		int rowAffected = 0;
-		for (GongDanCheLiangJianCe item : itemLst) {
-			rowAffected = gongDanDao.updateCheLiangJianCe(item);
-			if (rowAffected != 1) {
-				isAllItemInserted = false;
-				break;
-			}
-		}
-
-		return isAllItemInserted ? 1 : 0;
-
+		return gongDanDao.updateGongDanJianCeList(itemLst);
 	}
 
 	@Override

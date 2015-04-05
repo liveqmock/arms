@@ -878,7 +878,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 				var zhuangTaiEditor = myTable3.datagrid('getEditor', { index: rowIndex, field: 'txtStatusItem' });
 				var radioGroup = $(zhuangTaiEditor.target).find(":radio[value='未见异常']");
 				if(_.size(radioGroup)>0){
-					$(radioGroup[0]).attr("checked","checked");
+					$(radioGroup[0]).trigger("click");
 				}	
 			});	
 		}
