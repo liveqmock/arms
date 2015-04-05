@@ -46,15 +46,17 @@ public class GongDanDaoSqlProvider {
 				valueTuplesSb.append(",");
 			}
 			valueTuplesSb.append(String.format(
-					"('%s','%s','%s','%s','%s','%s','%s','%s','%s')",
-					item.getTxtJianceGuid(), item.getTxtGongDanGuid(),
+					"('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')",
+					item.getTxtJianCeGuid(), item.getTxtGongDanGuid(),
 					item.getTxtXuHao(), item.getTxtJianChaName(),
 					item.getTxtStatusItem(), item.getTxtActionItem(),
-					item.getTxtTip1(), item.getTxtTip2(), item.getTxtRemark()));
+					item.getTxtTip1(), item.getTxtTip2(),
+					item.getTxtCurStatus(), item.getTxtCurAction(),
+					item.getTxtRemark()));
 		}
 
 		return String
-				.format("insert into gongdanjiance(txtJianceGuid,txtGongDanGuid,txtXuHao,txtJianChaName,txtStatusItem,txtActionItem,txtTip1,txtTip2,txtRemark) values %s",
+				.format("insert into gongdanjiance(txtJianCeGuid,txtGongDanGuid,txtXuHao,txtJianChaName,txtStatusItem,txtActionItem,txtTip1,txtTip2,txtCurStatus,txtCurAction,txtRemark) values %s",
 						valueTuplesSb.toString());
 	}
 }

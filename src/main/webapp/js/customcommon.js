@@ -147,13 +147,32 @@ function makeElementsReadonly(idAry, jsonData){
 				var value = $(radioGroup[0]).attr("value");
 				return value;
 			},
-			setValue: function(target, value){
-				this.radioGroupIndex += 1;
-				var self = this;
-				var infoAry = value.split("-");
+			setValue: function(target, value){		
+				var self = this;		
+				var fieldNameTd = $(target).parentsUntil("td[field]").parent();
+				var rowTr = $(fieldNameTd).parent();						
+				var fieldName = $(fieldNameTd).attr("field");
+				var rowIndex = $(rowTr).attr("datagrid-row-index");	
+				var jianCeDatagrid = $('#datagridJianCe');
+				var rows = 	jianCeDatagrid.datagrid('getRows');	
+				var row = rows[rowIndex];
 				
-				var optionInfo = infoAry[0];
-				var opts = value.split("|");
+				var statusOptsStr = row.txtStatusItem;
+				var statusCheckedOption = row.txtCurStatus;
+				if(statusCheckedOption == ""){
+					statusCheckedOption = statusOptsStr.split("|")[0];
+				}
+				var actionOptsStr = row.txtActionItem;
+				var actionCheckedOption = row.txtCurAction;				
+				var optionsStr = (fieldName == "txtStatusItem")? statusOptsStr : actionOptsStr;
+				var checkedOption = (fieldName == "txtStatusItem")? statusCheckedOption : actionCheckedOption;
+				
+				if(fieldName == "txtActionItem" && statusCheckedOption == "未检测"){
+					//项目未检测时实际操作选项不显示
+					$(target).hide();
+				}
+				
+				var opts = optionsStr.split("|");
 				var html = "";
 				_.each(opts, function(option, index){
 					html += '<input type="radio" id="myRadio_'+self.radioGroupIndex+'_'+index+'" name="myRadio_'+self.radioGroupIndex+'" value="'+option+'" /><label for="myRadio_'+self.radioGroupIndex+'_'+index+'">'+option+"</label>";
@@ -161,17 +180,57 @@ function makeElementsReadonly(idAry, jsonData){
 						html += "&nbsp;&nbsp;";
 					}
 				});
-				$(html).appendTo(target);				
+				$(html).appendTo(target);
 				
-				var t = $(target).find(":radio:first");
-				var checkedOption = $(target).find(":radio:first").attr("value");
-				if(_.size() == 2){
-					checkedOption = infoAry[1];
-				}
 				var radioGroup = $(target).find(":radio[value='"+checkedOption+"']");
 				if(_.size(radioGroup)>0){
 					$(radioGroup[0]).attr("checked","checked");
-				}				
+				}
+				
+				var curRadioGroup = $('input[name="myRadio_'+self.radioGroupIndex+'"]');
+				if(curRadioGroup){
+					curRadioGroup.change(function(){
+						var status = $(this).val();
+						var clickRow = rows[rowIndex];
+						//alert(rowIndex + "------" + fieldName + "------" + status);	
+						if(fieldName == "txtStatusItem"){
+							var actionEditor = jianCeDatagrid.datagrid('getEditor', { index: rowIndex, field: 'txtActionItem' });
+							if(status == "未检测"){
+								$(actionEditor.target).hide();
+							}else{
+								$(actionEditor.target).show();	
+							}
+						}else if(fieldName == "txtActionItem"){
+							var txtToolTip = (status == "已更换")? clickRow.txtTip1 : clickRow.txtTip2; 
+							var toolTipEditor = jianCeDatagrid.datagrid('getEditor', { index: rowIndex, field: 'toolTip' });
+							
+							$(toolTipEditor.target).html(txtToolTip);
+						}						
+					});	
+				}
+				
+				this.radioGroupIndex += 1;
+			},
+			resize: function(target, width){
+				$(target)._outerWidth(width);
+			}
+		}
+	});
+	
+	$.extend($.fn.datagrid.defaults.editors, {
+		textReadOnly: {
+			init: function(container, options){
+				var input = $('<span></span>').appendTo(container);
+				return input;
+			},
+			destroy: function(target){
+				$(target).remove();
+			},
+			getValue: function(target){
+				return $(target).html();
+			},
+			setValue: function(target, value){
+				$(target).html(value);
 			},
 			resize: function(target, width){
 				$(target)._outerWidth(width);
@@ -434,4 +493,14 @@ function openCustomerReserveDialog(cheLiangId) {
 	
 	window.opener = null;
 	window.close();
-}	
+}
+
+//----------工单检测-------------
+function getRealJianCeOptionValue(value) {
+	var infoAry = value.split("-");
+	if(_.size(infoAry) == 2){
+		return infoAry[1];	
+	}else{
+		return infoAry[0].split("|")[0];	
+	}			
+}

@@ -146,7 +146,7 @@ public interface GongDanDao {
 	public List<GongDanCheLiangJianCe> getGongDanCheLiangJianCeListByGongDanId(
 			String txtGongDanId);
 
-	@Insert("insert into gongdanjiance(txtJianceGuid,txtGongDanGuid,txtXuHao,txtJianChaName,txtStatusItem,txtActionItem,txtTip1,txtTip2,txtRemark) values(#{txtJianceGuid},#{txtGongDanGuid},#{txtXuHao},#{txtJianChaName},#{txtStatusItem},#{txtActionItem},#{txtTip1},#{txtTip2},#{txtRemark})")
+	@Insert("insert into gongdanjiance(txtJianCeGuid,txtGongDanGuid,txtXuHao,txtJianChaName,txtStatusItem,txtActionItem,txtTip1,txtTip2,txtRemark) values(#{txtJianCeGuid},#{txtGongDanGuid},#{txtXuHao},#{txtJianChaName},#{txtStatusItem},#{txtActionItem},#{txtTip1},#{txtTip2},#{txtRemark})")
 	public int insertCheLiangJianCe(GongDanCheLiangJianCe item);
 
 	@InsertProvider(type = GongDanDaoSqlProvider.class, method = "addAllJianCeItemsToGongDan")
@@ -154,7 +154,7 @@ public interface GongDanDao {
 			@Param("txtGongDanId") String txtGongDanId,
 			@Param("jianChaXiangMuList") List<JianChaXiangMu> jianChaXiangMuList);
 
-	@Update("update gongdanjiance set txtZhuangTai=#{txtZhuangTai},txtRemark=#{txtRemark} where txtJianceGuid=#{txtJianceGuid}")
+	@Update("update gongdanjiance set txtCurStatus=#{txtCurStatus},txtCurAction=#{txtCurAction},txtRemark=#{txtRemark} where txtJianCeGuid=#{txtJianCeGuid}")
 	public int updateCheLiangJianCe(GongDanCheLiangJianCe item);
 
 	@Update("update gongdanwuliao set ddlStatus=#{ddlStatus} where txtWuLiaoGuid=#{txtWuLiaoGuid}")

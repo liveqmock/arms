@@ -74,7 +74,7 @@ td {
 							onClick="confirmAllWanJian('<s:property value='saleAfterWeiXiuGuid' />');return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">报修项目全部完检</a>
 						<a onClick="setAllJianCheNormal();return false;"
-							class="easyui-linkbutton" href="javascript:void(0)">检测项目全部正常</a>
+							class="easyui-linkbutton" href="javascript:void(0)">检测项目全部未见异常</a>
 						<a onClick="saveJianCheInfo();return false;"
 							class="easyui-linkbutton" href="javascript:void(0)">保存检测项目信息</a>
 						<a
@@ -291,11 +291,11 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 				<thead>
 					<tr>
 						<th field="txtJianChaName" width="150">检测项目</th>
-						<th field="txtStatusItem" width="300" data-options="editor:{type:'radiobox_jianCe'}">检测状态</th>
-						<th field="txtActionItem" width="250" data-options="editor:{type:'radiobox_jianCe'}">实际处理</th>
+						<th field="txtStatusItem" width="300" data-options="editor:{type:'radiobox_jianCe'}" formatter="format_statusItem">检测状态</th>
+						<th field="txtActionItem" width="250" data-options="editor:{type:'radiobox_jianCe'}" formatter="format_actionItem">实际处理</th>
 						<th field="txtRemark" width="250"
 							data-options="editor:{type:'textbox'}">备注</th>
-						<th field="toolTip" width="800" formatter="format_toolTip">提示内容</th>
+						<th field="toolTip" width="1000" data-options="editor:{type:'textReadOnly'}">提示内容</th>
 					</tr>
 				</thead>
 			</table>
@@ -681,18 +681,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			});			
 		}
 		
-		//-------------------------检测项目列表-------------------------------------------		
 
-		function format_statusItem(value, row, index) {
-			return row.txtStatusItem;
-		}
-		function format_actionItem(value, row, index) {
-			return row.txtActionItem;
-		}
-		function format_toolTip(value, row, index) {
-			return row.txtTip1;
-		}
-		
 		//-------------------------工单物料Datagrid2------------------------------------
 		var myTable2 = $('#datagridWuLiao');
 
@@ -862,8 +851,15 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 		
 		function doSaveJianCheInfo(rows, callBack){
 			var isCallBackExist = (arguments.length == 2);
+			var updateJsonStr = "[";
+			_.each(rows, function(row){
+				var curAction = row.txtActionItem ? row.txtActionItem : "";
+				updateJsonStr += "{'txtJianCeGuid':'" + row.txtJianCeGuid + "','txtCurStatus':'" + row.txtStatusItem + "','txtCurAction':'" + curAction + "','txtRemark':'" + row.txtRemark + "'},";	
+			});
+			updateJsonStr += "]";
+			
 			$.post('updateGongDanCheLiangJianCe.action', {
-				"easyUiJSonData" : JsonToString(rows)
+				"easyUiJSonData" : updateJsonStr
 			}, function(result) {
 				if (result.errorMsg) {
 					$.messager.alert('出错啦', result.errorMsg);
@@ -879,8 +875,8 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 		function setAllJianCheNormal(){			
 			var rows = myTable3.datagrid('getRows');
 			_.each(rows, function(row, rowIndex){
-				var zhuangTaiEditor = myTable3.datagrid('getEditor', { index: rowIndex, field: 'txtZhuangTai' });
-				var radioGroup = $(zhuangTaiEditor.target).find(":radio[value='正常']");
+				var zhuangTaiEditor = myTable3.datagrid('getEditor', { index: rowIndex, field: 'txtStatusItem' });
+				var radioGroup = $(zhuangTaiEditor.target).find(":radio[value='未见异常']");
 				if(_.size(radioGroup)>0){
 					$(radioGroup[0]).attr("checked","checked");
 				}	
@@ -889,8 +885,16 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 
 		function cancelrow3(target) {
 			myTable3.datagrid('cancelEdit', getTargetRowIndex3(target));
+		}		
+		
+		function format_statusItem(value, row, index) {
+			return row.txtCurStatus;		
+		}
+		function format_actionItem(value, row, index) {
+			return row.txtCurAction;
 		}
 		
+		//-------------------------入库单信息------------------------------------------
 		 //新增入库单
 		function openRuKuDan(ruKuDanGuid, flag) {
 			var sURL = '../storeOtherManage/rukudanDetail.action?ruKuDanGuid=' + ruKuDanGuid
