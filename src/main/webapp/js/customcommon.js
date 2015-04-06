@@ -172,15 +172,17 @@ function makeElementsReadonly(idAry, jsonData){
 					$(target).hide();
 				}
 				
-				var opts = optionsStr.split("|");
-				var html = "";
-				_.each(opts, function(option, index){
-					html += '<input type="radio" id="myRadio_'+self.radioGroupIndex+'_'+index+'" name="myRadio_'+self.radioGroupIndex+'" value="'+option+'" /><label for="myRadio_'+self.radioGroupIndex+'_'+index+'">'+option+"</label>";
-					if(index < _.size(opts)-1){
-						html += "&nbsp;&nbsp;";
-					}
-				});
-				$(html).appendTo(target);
+				if(optionsStr != ""){
+					var opts = optionsStr.split("|");
+					var html = "";
+					_.each(opts, function(option, index){
+						html += '<input type="radio" id="myRadio_'+self.radioGroupIndex+'_'+index+'" name="myRadio_'+self.radioGroupIndex+'" value="'+option+'" /><label for="myRadio_'+self.radioGroupIndex+'_'+index+'">'+option+"</label>";
+						if(index < _.size(opts)-1){
+							html += "&nbsp;&nbsp;";
+						}
+					});
+					$(html).appendTo(target);
+				}
 				
 				var radioGroup = $(target).find(":radio[value='"+checkedOption+"']");
 				if(_.size(radioGroup)>0){

@@ -127,10 +127,10 @@ td {
 								</tr>
 								<s:iterator value="gongDanCheLiangJianCeLst" >
 								<tr>							
-									<td>&nbsp; <s:property value="txtNeiRong" /></td>
-									<td>&nbsp; <s:property value="txtZhuangTai" /></td>
+									<td>&nbsp; <s:property value="txtJianChaName" /></td>
+									<td>&nbsp; <s:property value="txtCurStatus" /></td>
 									<td>&nbsp; <s:property value="txtRemark" /></td>
-                                    <td><s:property value="txtJianChaXiangMuRemark" /></td>
+                                    <td><s:property value="toolTip" /></td>
 								</tr>						
 								</s:iterator>
 				</table> <!--维修物料 end-->
