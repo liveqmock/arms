@@ -146,9 +146,6 @@ public interface GongDanDao {
 	public List<GongDanCheLiangJianCe> getGongDanCheLiangJianCeListByGongDanId(
 			String txtGongDanId);
 
-	@Insert("insert into gongdanjiance(txtJianCeGuid,txtGongDanGuid,txtXuHao,txtJianChaName,txtStatusItem,txtActionItem,txtTip1,txtTip2,txtRemark) values(#{txtJianCeGuid},#{txtGongDanGuid},#{txtXuHao},#{txtJianChaName},#{txtStatusItem},#{txtActionItem},#{txtTip1},#{txtTip2},#{txtRemark})")
-	public int insertCheLiangJianCe(GongDanCheLiangJianCe item);
-
 	@InsertProvider(type = GongDanDaoSqlProvider.class, method = "addAllJianCeItemsToGongDan")
 	public int addAllJianCeItemsToGongDan(
 			@Param("txtGongDanId") String txtGongDanId,

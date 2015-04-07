@@ -45,18 +45,22 @@ public class GongDanDaoSqlProvider {
 			if (valueTuplesSb.length() > 0) {
 				valueTuplesSb.append(",");
 			}
-			valueTuplesSb.append(String.format(
-					"('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')",
-					item.getTxtJianCeGuid(), item.getTxtGongDanGuid(),
-					item.getTxtXuHao(), item.getTxtJianChaName(),
-					item.getTxtStatusItem(), item.getTxtActionItem(),
-					item.getTxtTip1(), item.getTxtTip2(),
-					item.getTxtCurStatus(), item.getTxtCurAction(),
-					item.getTxtRemark()));
+			valueTuplesSb
+					.append(String
+							.format("('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')",
+									item.getTxtJianCeGuid(),
+									item.getTxtGongDanGuid(),
+									item.getTxtXuHao(),
+									item.getTxtJianChaName(),
+									item.getTxtStatusItem(),
+									item.getTxtActionItem(), item.getTxtTip1(),
+									item.getTxtTip2(), item.getTxtTip3(),
+									item.getTxtTip4(), item.getTxtCurStatus(),
+									item.getTxtCurAction(), item.getTxtRemark()));
 		}
 
 		return String
-				.format("insert into gongdanjiance(txtJianCeGuid,txtGongDanGuid,txtXuHao,txtJianChaName,txtStatusItem,txtActionItem,txtTip1,txtTip2,txtCurStatus,txtCurAction,txtRemark) values %s",
+				.format("insert into gongdanjiance(txtJianCeGuid,txtGongDanGuid,txtXuHao,txtJianChaName,txtStatusItem,txtActionItem,txtTip1,txtTip2,txtTip3,txtTip4,txtCurStatus,txtCurAction,txtRemark) values %s",
 						valueTuplesSb.toString());
 	}
 

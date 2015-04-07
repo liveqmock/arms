@@ -192,21 +192,42 @@ function makeElementsReadonly(idAry, jsonData){
 				var curRadioGroup = $('input[name="myRadio_'+self.radioGroupIndex+'"]');
 				if(curRadioGroup){
 					curRadioGroup.change(function(){
-						var status = $(this).val();
 						var clickRow = rows[rowIndex];
-						//alert(rowIndex + "------" + fieldName + "------" + status);	
+						//alert(rowIndex + "------" + fieldName);	
+						var statusEditor = jianCeDatagrid.datagrid('getEditor', { index: rowIndex, field: 'txtStatusItem' });
+						var actionEditor = jianCeDatagrid.datagrid('getEditor', { index: rowIndex, field: 'txtActionItem' });
+						var toolTipEditor = jianCeDatagrid.datagrid('getEditor', { index: rowIndex, field: 'toolTip' });							
+						
 						if(fieldName == "txtStatusItem"){
-							var actionEditor = jianCeDatagrid.datagrid('getEditor', { index: rowIndex, field: 'txtActionItem' });
-							if(status == "未检测"){
+							var rowStatus = $(this).val();
+							if(rowStatus == "未检测" || rowStatus == "未见异常"){
 								$(actionEditor.target).hide();
+								$(toolTipEditor.target).html("");
 							}else{
-								$(actionEditor.target).show();	
+								$(actionEditor.target).show();
+								updateToolTip();
 							}
 						}else if(fieldName == "txtActionItem"){
-							var txtToolTip = (status == "已更换")? clickRow.txtTip1 : clickRow.txtTip2; 
-							var toolTipEditor = jianCeDatagrid.datagrid('getEditor', { index: rowIndex, field: 'toolTip' });
+							updateToolTip();
+						}
+						
+						function updateToolTip(){
+							var rowStatusRadio = $(statusEditor.target).find(":radio[checked='checked']");
+							var rowStatus = $(rowStatusRadio[0]).attr("value");							
+							var rowActionRadio = $(actionEditor.target).find(":radio[checked='checked']");
+							var rowAction = $(rowActionRadio[0]).attr("value");
+							//alert(rowStatus+ "---" + rowAction);
 							
-							$(toolTipEditor.target).html(txtToolTip);
+							if(rowAction){//如果实际处理被选中
+								var txtToolTip = (rowAction == "已更换")? clickRow.txtTip1 : clickRow.txtTip2; 
+								if(rowStatus == "需清洁" && rowAction == "已清洁"){
+									txtToolTip = clickRow.txtTip3;
+								}else if(rowStatus == "需添加" && rowAction == "已添加"){
+									txtToolTip = clickRow.txtTip4;
+								}
+								
+								$(toolTipEditor.target).html(txtToolTip);
+							}
 						}						
 					});	
 				}

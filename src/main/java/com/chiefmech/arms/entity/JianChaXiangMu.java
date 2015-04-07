@@ -11,6 +11,9 @@ public class JianChaXiangMu {
 	private String txtActionItem;
 	private String txtTip1;
 	private String txtTip2;
+	private String txtTip3;
+	private String txtTip4;
+	private String txtRemark;
 
 	public JianChaXiangMu(JianChaXiangMu item) {
 		this.txtJianChaGuId = item.getTxtJianChaGuId();
@@ -23,6 +26,9 @@ public class JianChaXiangMu {
 		this.txtActionItem = item.getTxtActionItem();
 		this.txtTip1 = item.getTxtTip1();
 		this.txtTip2 = item.getTxtTip2();
+		this.txtTip3 = item.getTxtTip3();
+		this.txtTip4 = item.getTxtTip4();
+		this.txtRemark = item.getTxtRemark();
 	}
 
 	public JianChaXiangMu() {
@@ -58,6 +64,22 @@ public class JianChaXiangMu {
 
 	public void setTxtTip2(String txtTip2) {
 		this.txtTip2 = txtTip2;
+	}
+
+	public String getTxtTip3() {
+		return txtTip3;
+	}
+
+	public void setTxtTip3(String txtTip3) {
+		this.txtTip3 = txtTip3;
+	}
+
+	public String getTxtTip4() {
+		return txtTip4;
+	}
+
+	public void setTxtTip4(String txtTip4) {
+		this.txtTip4 = txtTip4;
 	}
 
 	public String getTxtJianChaGuId() {
@@ -105,5 +127,13 @@ public class JianChaXiangMu {
 
 	public void setTxtXuHao(int txtXuHao) {
 		this.txtXuHao = txtXuHao;
+	}
+
+	public String getTxtRemark() {
+		return txtRemark;
+	}
+
+	public void setTxtRemark(String txtRemark) {
+		this.txtRemark = txtRemark;
 	}
 }
