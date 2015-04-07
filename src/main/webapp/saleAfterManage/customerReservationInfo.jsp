@@ -99,8 +99,8 @@
 				"txtReserveDate" : $("#txtReserveDate").datebox("getValue")
 			}, function(result) {
 				var shopName = result.shopName;
-				var reservationLimit = result.reservationLimit;
-				var curReservation = result.curReservation;
+				var reservationLimit = parseInt(result.reservationLimit);
+				var curReservation = parseInt(result.curReservation);
 				if (curReservation >= reservationLimit) {
 					$.messager.alert('提示', shopName+"最多可预约<span  style='color: blue; font-weight: bold;'>"+reservationLimit+"</span>台车，现已预约<span  style='color: blue; font-weight: bold;'>"+curReservation+"</span>台，请预约到其他店！");
 				}else{

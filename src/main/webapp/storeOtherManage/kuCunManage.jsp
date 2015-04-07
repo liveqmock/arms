@@ -102,7 +102,7 @@ td {
 		<div id="tb" style="height: auto">
 			<a href="javascript:void(0)" class="easyui-linkbutton"
 				data-options="iconCls:'icon-add',plain:true"
-				onClick="addCheckedItems()">添加选中物料</a>
+				onClick="addCheckedItems()" style="background-color:green; color:white;">添加选中物料</a>
 		</div>
 	</s:if>
 	<script type="text/javascript">

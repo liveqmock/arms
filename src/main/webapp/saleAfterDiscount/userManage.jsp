@@ -43,6 +43,7 @@
 				<th width="150" data-options="field:'password'">用户密码</th>
 				<th width="150" data-options="field:'expirydate'">账号有效期</th>
 				<th width="200" data-options="field:'groupName'">用户组</th>
+				<th width="200" data-options="field:'showOwnerTel'">店长电话</th>
                 <s:if test="user.privilegeLst.contains('manageUserForAllShop')">
 				<th width="200" data-options="field:'shopName'">所属店铺</th>
                 </s:if>
@@ -87,9 +88,15 @@
 					<td>用户组:</td>
 					<td><input name="groupName" type="text" id="groupName"
 							class="easyui-combobox"
-							data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/groupNameOption.action'" style="width: 250px;"/></td>
+							data-options="editable:false,required:true,valueField:'code',textField:'name',method:'get',url:'<s:property value='basePath' />/data/groupNameOption.action',onChange:updateShowOwnerTelTr" style="width: 250px;"/></td>
 				</tr>
-                <s:if test="user.privilegeLst.contains('manageUserForAllShop')">
+               <tr id="showOwnerTel" style="display:none;">
+					<td>店长电话:</td>
+					<td><input name="showOwnerTel" type="text" maxlength="15"
+						id="showOwnerTel" style="width: 250px;" class="easyui-textbox"
+						data-options="required:false" /></td>
+				</tr>
+				<s:if test="user.privilegeLst.contains('manageUserForAllShop')">
 				<tr>
 					<td>所属店铺：</td>
 					<td><input name="shopCode" id="shopCode"
@@ -122,6 +129,7 @@
 			if (row) {
 				$('#mydlg').dialog('open').dialog('setTitle', '修改系统用户信息');
 				$('#fm').form('load', row);
+				updateShowOwnerTelTr(row.groupName);
 				url = 'updateUser.action?userId=' + row.userId;
 			}
 		}
@@ -163,6 +171,14 @@
 
 		function formatAction(value, row, index) {
 			return '<a href="javascript:void(0)" onclick="editItem(this)">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="deleteItem(this)">删除</a>';
+		}
+		
+		function updateShowOwnerTelTr(newVal){
+			if(newVal == "店长"){
+				$("#showOwnerTel").show();
+			}else{
+				$("#showOwnerTel").hide();	
+			}
 		}
 	</script>
 </body>

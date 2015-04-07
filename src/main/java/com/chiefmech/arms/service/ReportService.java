@@ -8,6 +8,7 @@ import com.chiefmech.arms.entity.query.RenBaoWeeklyReportSearchBean;
 import com.chiefmech.arms.entity.report.GongDanWuLiaoReport;
 import com.chiefmech.arms.entity.report.GongDanXiangMuReport;
 import com.chiefmech.arms.entity.report.RenBaoWeeklyReport;
+import com.chiefmech.arms.entity.report.ShopDailyReport;
 
 public interface ReportService {
 
@@ -31,4 +32,5 @@ public interface ReportService {
 	List<GongDanWuLiaoReport> getGongDanWuLiaoReportList(
 			GongDanWuLiaoReportSearchBean query);
 
+	ShopDailyReport getShopDailyReportByShopCode(String shopCode);
 }

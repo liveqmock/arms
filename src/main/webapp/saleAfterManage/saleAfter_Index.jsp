@@ -186,8 +186,10 @@ td,div {
 			garyBgFlag = "GrayBGColor";
 		}
 		var url = action + "?saleAfterWeiXiuGuid="	+ saleAfterWeiXiuGuid + "&flag=" + garyBgFlag + "&d=" + new Date();
-		if((tabName == "维修接待" && saleAfterWeiXiuGuid == "") || (tabName == "维修历史")){
+		if(tabName == "维修接待" && saleAfterWeiXiuGuid == ""){
 			url = action + "?cheLiangId=<s:property	value='gongDan.txtCheLiangId' />&flag=" + garyBgFlag + "&d=" + new Date();
+		}else if(tabName == "维修历史"){
+			url = action + "?cheLiangId=<s:property	value='gongDan.txtCheLiangId' />&saleAfterWeiXiuGuid="	+ saleAfterWeiXiuGuid + "&flag=" + garyBgFlag + "&d=" + new Date();
 		}
 		
 		$("#tab" + preTabIndex).removeClass("tabs_active");

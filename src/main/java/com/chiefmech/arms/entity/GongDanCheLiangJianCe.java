@@ -27,7 +27,10 @@ public class GongDanCheLiangJianCe extends JianChaXiangMu {
 	}
 
 	public String getToolTip() {
-		if ("需更换".equals(this.txtCurStatus)) {
+		if (this.getTxtTip2() == null && this.getTxtTip1() != null) {
+			// 兼容以前版本只有一个提示且没有需更换/已更换字段
+			return this.getTxtTip1();
+		} else if ("需更换".equals(this.txtCurStatus)) {
 			if ("已更换".equals(this.txtCurAction)) {
 				return this.getTxtTip1();
 			} else {
@@ -37,7 +40,6 @@ public class GongDanCheLiangJianCe extends JianChaXiangMu {
 			return "";
 		}
 	}
-
 	public String getTxtCurStatus() {
 		return txtCurStatus;
 	}

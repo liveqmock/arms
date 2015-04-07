@@ -23,10 +23,10 @@ public interface UserDao {
 	@SelectProvider(type = UserDaoSqlProvider.class, method = "getUserListCount")
 	public int getUserListCount(@Param("item") User query);
 
-	@Insert("insert into users(userId,loginName,displayName,password,expirydate,groupName,shopCode) values(#{userId},#{loginName},#{displayName},#{password},#{expirydate},#{groupName},#{shopCode})")
+	@Insert("insert into users(userId,loginName,displayName,password,expirydate,groupName,shopCode,showOwnerTel) values(#{userId},#{loginName},#{displayName},#{password},#{expirydate},#{groupName},#{shopCode},#{showOwnerTel})")
 	public int insertItem(User item);
 
-	@Update("update users set loginName=#{loginName},displayName=#{displayName},password=#{password},expirydate=#{expirydate},groupName=#{groupName},shopCode=#{shopCode} where userId=#{userId}")
+	@Update("update users set loginName=#{loginName},displayName=#{displayName},password=#{password},expirydate=#{expirydate},groupName=#{groupName},shopCode=#{shopCode},showOwnerTel=#{showOwnerTel} where userId=#{userId}")
 	public int updateItem(User item);
 
 	@Delete("delete from users where userId=#{userId}")

@@ -13,6 +13,7 @@ import com.chiefmech.arms.entity.query.RenBaoWeeklyReportSearchBean;
 import com.chiefmech.arms.entity.report.GongDanWuLiaoReport;
 import com.chiefmech.arms.entity.report.GongDanXiangMuReport;
 import com.chiefmech.arms.entity.report.RenBaoWeeklyReport;
+import com.chiefmech.arms.entity.report.ShopDailyReport;
 
 public interface ReportDao {
 
@@ -31,5 +32,11 @@ public interface ReportDao {
 	@SelectProvider(type = ReportDaoSqlProvider.class, method = "getGongDanWuLiaoReportList")
 	List<GongDanWuLiaoReport> getGongDanWuLiaoReportList(
 			@Param("item") GongDanWuLiaoReportSearchBean query);
+
+	@Select("SELECT count(*) dailyIncomingCount, sum(generalIncome) dailyOutputValue, sum(generalIncome - wuLiaoCost) dailyGrossProfit FROM v_shopDailyReport WHERE ruChangDate = date_format(now(), '%Y%m%d') AND txtShopCode = #{shopCode} GROUP BY txtShopCode;")
+	ShopDailyReport getShopDailyInfo(String shopCode);
+
+	@Select("SELECT count(*) monthlyIncomingCount, sum(generalIncome) monthlyOutputValue, sum(generalIncome - wuLiaoCost) monthlyGrossProfit FROM v_shopDailyReport WHERE ruChangDate >= date_format(now(), '%Y%m01') and ruChangDate <= date_format(now(), '%Y%m%d') AND txtShopCode = #{shopCode} GROUP BY txtShopCode")
+	ShopDailyReport getMonthlyInfo(String shopCode);
 
 }

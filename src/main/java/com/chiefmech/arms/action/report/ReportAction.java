@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import net.sf.json.JSONObject;
+
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -20,6 +22,7 @@ import com.chiefmech.arms.common.util.ReportUtil;
 import com.chiefmech.arms.entity.RenBaoPrintItem;
 import com.chiefmech.arms.entity.query.RenBaoWeeklyReportSearchBean;
 import com.chiefmech.arms.entity.report.RenBaoWeeklyReport;
+import com.chiefmech.arms.entity.report.ShopDailyReport;
 import com.chiefmech.arms.service.ReportService;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -28,13 +31,15 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/report")
 @Controller()
 @Scope("prototype")
-public class ReportAction extends BaseActionSupport implements
-		ModelDriven<RenBaoWeeklyReportSearchBean> {
+public class ReportAction extends BaseActionSupport
+		implements
+			ModelDriven<RenBaoWeeklyReportSearchBean> {
 
 	@Resource()
 	private ReportService reportService;
 
 	private String txtGongDanId;
+	private String shopCode;
 	private List<RenBaoPrintItem> renBaoprintItemLst = new ArrayList<RenBaoPrintItem>();
 	private List<RenBaoWeeklyReport> renBaoWeeklyReportLst;
 
@@ -45,7 +50,7 @@ public class ReportAction extends BaseActionSupport implements
 	};
 	private String easyUiJSonData;
 
-	@Action(value = "renBaoWeeklyReport", results = { @Result(name = "input", location = "renBaoWeeklyReport.jsp") })
+	@Action(value = "renBaoWeeklyReport", results = {@Result(name = "input", location = "renBaoWeeklyReport.jsp")})
 	public String renBaoWeeklyReport() {
 		easyUiJSonData = reportService.getRenBaoWeeklyReportEasyUiJSon(query);
 		return INPUT;
@@ -77,7 +82,7 @@ public class ReportAction extends BaseActionSupport implements
 		}
 	}
 
-	@Action(value = "renBaoWeeklyReportPrint", results = { @Result(name = "input", location = "renBaoCheXianPrint.jsp") })
+	@Action(value = "renBaoWeeklyReportPrint", results = {@Result(name = "input", location = "renBaoCheXianPrint.jsp")})
 	public String renBaoWeeklyReportPrint() {
 		renBaoWeeklyReportLst = reportService
 				.getRenBaoWeeklyReportListById(txtGongDanId);
@@ -95,6 +100,13 @@ public class ReportAction extends BaseActionSupport implements
 		return INPUT;
 	}
 
+	@Action(value = "shopDailyReportByShopCode")
+	public void shopDailyReportByShopCode() {
+		ShopDailyReport bean = reportService
+				.getShopDailyReportByShopCode(shopCode);
+
+		this.transmitJson(JSONObject.fromObject(bean).toString());
+	}
 	public String getEasyUiJSonData() {
 		return easyUiJSonData;
 	}
@@ -118,6 +130,10 @@ public class ReportAction extends BaseActionSupport implements
 
 	public void setTxtGongDanId(String txtGongDanId) {
 		this.txtGongDanId = txtGongDanId;
+	}
+
+	public void setShopCode(String shopCode) {
+		this.shopCode = shopCode;
 	}
 
 	public List<RenBaoWeeklyReport> getRenBaoWeeklyReportLst() {

@@ -67,7 +67,7 @@ td {
 				<td>单据状态</td>
 			</tr>
 			<s:iterator value="gongDanLst">
-			<tr onclick=showWeiXiuLiShi('<s:property value="txtGongDanId" />')>
+			<tr onclick=showWeiXiuLiShi('<s:property value="txtGongDanId" />') <s:if test="txtGongDanId == saleAfterWeiXiuGuid">style="background-color: #feee83;"</s:if>>
 			    <td><s:property value='shopName' /></td>
 				<td><s:property value="txtBillNo" /></td>
 				<td><s:property value="txtChePaiHao" /></td>

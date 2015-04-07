@@ -13,6 +13,15 @@ public class User {
 	private List<String> privilegeLst;
 	private String shopCode;
 	private String shopName;
+	private String showOwnerTel;
+
+	public String getShowOwnerTel() {
+		return showOwnerTel;
+	}
+
+	public void setShowOwnerTel(String showOwnerTel) {
+		this.showOwnerTel = showOwnerTel;
+	}
 
 	public String getShopName() {
 		return shopName;

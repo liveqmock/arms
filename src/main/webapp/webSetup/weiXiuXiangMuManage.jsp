@@ -72,7 +72,7 @@
 		<s:if test="action=='pickXiangMu'">
 			<a href="javascript:void(0)" class="easyui-linkbutton"
 				data-options="iconCls:'icon-add',plain:true"
-				onClick="addCheckedXiangMu()">添加选中维修项目</a>
+				onClick="addCheckedXiangMu()" style="background-color:green; color:white;">添加选中维修项目</a>
 		</s:if>
         <s:if test="action=='addXiangMu'">
             <a href="javascript:void(0)" class="easyui-linkbutton"
