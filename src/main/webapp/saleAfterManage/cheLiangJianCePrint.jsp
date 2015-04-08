@@ -120,8 +120,9 @@ td {
 				<table border="0" id="jianceList"
 					style="border: 2px solid black; width: 100%; border-collapse: collapse;">			
 								<tr>
-									<td width="156">&nbsp;检测内容</td>
-									<td width="87">&nbsp;检测状态</td>
+									<td width="130">&nbsp;检测内容</td>
+									<td width="70">&nbsp;检测状态</td>
+									<td width="60">&nbsp;处理结果</td>
 									<td width="86">&nbsp;备注</td>
                                     <td width="349">&nbsp;项目说明</td>
 								</tr>
@@ -129,6 +130,7 @@ td {
 								<tr>							
 									<td>&nbsp; <s:property value="txtJianChaName" /></td>
 									<td>&nbsp; <s:property value="txtCurStatus" /></td>
+									<td>&nbsp; <s:property value="txtCurAction" /></td>
 									<td>&nbsp; <s:property value="txtRemark" /></td>
                                     <td><s:property value="toolTip" /></td>
 								</tr>						

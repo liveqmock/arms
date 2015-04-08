@@ -208,6 +208,15 @@ body {
 	</form>
 </body>
 <script language="javascript" type="text/javascript">
+	var browserTip = "您好，本系统尚未完成所有浏览器的兼容性测试，为了确保系统正常稳定的运行，请使用火狐浏览器运行本系统！";
+	function browserCheckFailed(){		
+		if($.browser.mozilla){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
 	//登录框绝对定位
 	$(function() {
 		if(top.location != location){ 
@@ -222,9 +231,19 @@ body {
 			$("#loginName").val($.cookie('txtUserName'));
 			$("#password").val($.cookie('txtPassWord'));
 		}
+		
+		if(browserCheckFailed()){			
+			alert(browserTip);	
+		}
 	});
 
 	function login() {
+		
+		if(browserCheckFailed()){			
+			alert(browserTip);
+			return false;
+		}
+		
 		//验证所有必填项
 		var theForm = document.forms['form1'];
 		if (!theForm) {
