@@ -43,6 +43,8 @@
 		<spring.security.version>3.2.5.RELEASE</spring.security.version>
 		<!-- mybatis版本号 -->
 		<mybatis.version>3.2.8</mybatis.version>
+		<!-- httpclient版本号 -->
+		<httpclient.version>4.1.2</httpclient.version>
 	</properties>
 	<dependencies>
 		<!-- 测试范围，一般是单元测试场景使用，在编译环境加入classpath，但打包时不会加入 -->
@@ -145,6 +147,11 @@
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${httpclient.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>p6spy</groupId>

@@ -135,6 +135,8 @@ function makeElementsReadonly(idAry, jsonData){
 	$.extend($.fn.datagrid.defaults.editors, {
 		radiobox_jianCe: {
 			radioGroupIndex:0,
+			statusFieldName:"txtCurStatus",
+			actionFieldName:"txtCurAction",
 			init: function(container, options){
 				var html = "<span style='text-align:center;'></span>";
 				return $(html).appendTo(container);
@@ -143,19 +145,24 @@ function makeElementsReadonly(idAry, jsonData){
 				$(target).remove();
 			},
 			getValue: function(target){
-				var radioGroup = $(target).find(":radio[checked='checked']");
-				var value = $(radioGroup[0]).attr("value");
+				var fieldName = this.getTargetFieldName(target);
+				var rowStatus = this.getTargetRowStatus(target);
+				var rowAction = this.getTargetRowAction(target);
+				
+				if(fieldName == this.actionFieldName && (rowStatus == "未检测" || rowStatus == "未见异常")){
+					//检测状态未检测、未见异常时实际处理项为空字符串
+					rowAction = "";
+				}
+				
+				var value = (fieldName == this.actionFieldName) ? rowAction : rowStatus;
 				return value;
 			},
 			setValue: function(target, value){		
-				var self = this;		
-				var fieldNameTd = $(target).parentsUntil("td[field]").parent();
-				var rowTr = $(fieldNameTd).parent();						
-				var fieldName = $(fieldNameTd).attr("field");
-				var rowIndex = $(rowTr).attr("datagrid-row-index");	
-				var jianCeDatagrid = $('#datagridJianCe');
-				var rows = 	jianCeDatagrid.datagrid('getRows');	
-				var row = rows[rowIndex];
+				var self = this;					
+				var fieldName = this.getTargetFieldName(target);
+				var rowIndex = this.getTargetRowIndex(target);
+				var rows = this.getJianCeDatagrid().datagrid('getRows');
+				var row = this.getTargetRow(target);
 				
 				var statusOptsStr = row.txtStatusItem;
 				var statusCheckedOption = row.txtCurStatus;
@@ -164,25 +171,23 @@ function makeElementsReadonly(idAry, jsonData){
 				}
 				var actionOptsStr = row.txtActionItem;
 				var actionCheckedOption = row.txtCurAction;				
-				var optionsStr = (fieldName == "txtStatusItem")? statusOptsStr : actionOptsStr;
-				var checkedOption = (fieldName == "txtStatusItem")? statusCheckedOption : actionCheckedOption;
+				var optionsStr = (fieldName == this.statusFieldName)? statusOptsStr : actionOptsStr;
+				var checkedOption = (fieldName == this.statusFieldName)? statusCheckedOption : actionCheckedOption;
 				
-				if(fieldName == "txtActionItem" && statusCheckedOption == "未检测"){
-					//项目未检测时实际操作选项不显示
+				if(fieldName == this.actionFieldName && (statusCheckedOption == "未检测" || statusCheckedOption == "未见异常")){
+					//项目未检测或未见异常时实际操作选项不显示
 					$(target).hide();
 				}
 				
-				if(optionsStr != ""){
-					var opts = optionsStr.split("|");
-					var html = "";
-					_.each(opts, function(option, index){
-						html += '<input type="radio" id="myRadio_'+self.radioGroupIndex+'_'+index+'" name="myRadio_'+self.radioGroupIndex+'" value="'+option+'" /><label for="myRadio_'+self.radioGroupIndex+'_'+index+'">'+option+"</label>";
-						if(index < _.size(opts)-1){
-							html += "&nbsp;&nbsp;";
-						}
-					});
-					$(html).appendTo(target);
-				}
+				var opts = optionsStr.split("|");
+				var html = "";
+				_.each(opts, function(option, index){
+					html += '<input type="radio" id="myRadio_'+self.radioGroupIndex+'_'+index+'" name="myRadio_'+self.radioGroupIndex+'" value="'+option+'" /><label for="myRadio_'+self.radioGroupIndex+'_'+index+'">'+option+"</label>";
+					if(index < _.size(opts)-1){
+						html += "&nbsp;&nbsp;";
+					}
+				});
+				$(html).appendTo(target);
 				
 				var radioGroup = $(target).find(":radio[value='"+checkedOption+"']");
 				if(_.size(radioGroup)>0){
@@ -194,11 +199,11 @@ function makeElementsReadonly(idAry, jsonData){
 					curRadioGroup.change(function(){
 						var clickRow = rows[rowIndex];
 						//alert(rowIndex + "------" + fieldName);	
-						var statusEditor = jianCeDatagrid.datagrid('getEditor', { index: rowIndex, field: 'txtStatusItem' });
-						var actionEditor = jianCeDatagrid.datagrid('getEditor', { index: rowIndex, field: 'txtActionItem' });
-						var toolTipEditor = jianCeDatagrid.datagrid('getEditor', { index: rowIndex, field: 'toolTip' });							
+						var statusEditor = self.getJianCeDatagrid().datagrid('getEditor', { index: rowIndex, field: 'txtCurStatus' });
+						var actionEditor = self.getJianCeDatagrid().datagrid('getEditor', { index: rowIndex, field: 'txtCurAction' });
+						var toolTipEditor = self.getJianCeDatagrid().datagrid('getEditor', { index: rowIndex, field: 'toolTip' });							
 						
-						if(fieldName == "txtStatusItem"){
+						if(fieldName == self.statusFieldName){
 							var rowStatus = $(this).val();
 							if(rowStatus == "未检测" || rowStatus == "未见异常"){
 								$(actionEditor.target).hide();
@@ -207,18 +212,16 @@ function makeElementsReadonly(idAry, jsonData){
 								$(actionEditor.target).show();
 								updateToolTip();
 							}
-						}else if(fieldName == "txtActionItem"){
+						}else if(fieldName == self.actionFieldName){
 							updateToolTip();
 						}
 						
 						function updateToolTip(){
-							var rowStatusRadio = $(statusEditor.target).find(":radio[checked='checked']");
-							var rowStatus = $(rowStatusRadio[0]).attr("value");							
-							var rowActionRadio = $(actionEditor.target).find(":radio[checked='checked']");
-							var rowAction = $(rowActionRadio[0]).attr("value");
+							var rowStatus = self.getTargetRowStatus(statusEditor.target);
+							var rowAction = self.getTargetRowAction(actionEditor.target);
 							//alert(rowStatus+ "---" + rowAction);
 							
-							if(rowAction){//如果实际处理被选中
+							if(rowAction.length > 0){//如果实际处理被选中
 								var txtToolTip = (rowAction == "已更换")? clickRow.txtTip1 : clickRow.txtTip2; 
 								if(rowStatus == "需清洁" && rowAction == "已清洁"){
 									txtToolTip = clickRow.txtTip3;
@@ -236,6 +239,42 @@ function makeElementsReadonly(idAry, jsonData){
 			},
 			resize: function(target, width){
 				$(target)._outerWidth(width);
+			},
+			getJianCeDatagrid: function(){
+				return  $('#datagridJianCe');
+			},
+			getTargetRowIndex: function(target){
+				var fieldNameTd = $(target).parentsUntil("td[field]").parent();
+				var rowTr = $(fieldNameTd).parent();						
+				var fieldName = $(fieldNameTd).attr("field");
+				return $(rowTr).attr("datagrid-row-index");	
+			},
+			getTargetRow: function(target){				
+				var rowIndex = this.getTargetRowIndex(target);	
+				var rows = 	this.getJianCeDatagrid().datagrid('getRows');	
+				return rows[rowIndex];
+			},
+			getTargetRowStatus: function(target){
+				var rowIndex = this.getTargetRowIndex(target);	
+				var statusEditor = this.getJianCeDatagrid().datagrid('getEditor', { index: rowIndex, field: 'txtCurStatus' });		
+				var rowStatusRadio = $(statusEditor.target).find(":radio[checked='checked']");
+				return $(rowStatusRadio[0]).attr("value");	
+			},
+			getTargetRowAction: function(target){	
+				var rowIndex = this.getTargetRowIndex(target);			
+				var actionEditor = this.getJianCeDatagrid().datagrid('getEditor', { index: rowIndex, field: 'txtCurAction' });							
+				var rowActionRadio = $(actionEditor.target).find(":radio[checked='checked']");
+				var rowAction = $(rowActionRadio[0]).attr("value");	
+				if(!rowAction){
+					//没有选中项时赋值空字符串
+					rowAction = "";	
+				}
+				return rowAction;
+			},
+			getTargetFieldName: function(target){	
+				var fieldNameTd = $(target).parentsUntil("td[field]").parent();
+				var rowTr = $(fieldNameTd).parent();						
+				return $(fieldNameTd).attr("field");
 			}
 		}
 	});
@@ -381,7 +420,6 @@ $(document).ready(function() {
 });
 
 })(jQuery);
-
 
 function toggleSearchPanel() {
 	$("#searchPanel").toggle();

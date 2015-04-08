@@ -291,10 +291,9 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 				<thead>
 					<tr>
 						<th field="txtJianChaName" width="150">检测项目</th>
-						<th field="txtStatusItem" width="300" data-options="editor:{type:'radiobox_jianCe'}" formatter="format_statusItem">检测状态</th>
-						<th field="txtActionItem" width="250" data-options="editor:{type:'radiobox_jianCe'}" formatter="format_actionItem">实际处理</th>
-						<th field="txtRemark" width="250"
-							data-options="editor:{type:'textbox'}">备注</th>
+						<th field="txtCurStatus" width="300" data-options="editor:{type:'radiobox_jianCe'}">检测状态</th>
+						<th field="txtCurAction" width="280" data-options="editor:{type:'radiobox_jianCe'}">实际处理</th>
+						<th field="txtRemark" width="250" data-options="editor:{type:'textbox'}">备注</th>
 						<th field="toolTip" width="1000" data-options="editor:{type:'textReadOnly'}">提示内容</th>
 					</tr>
 				</thead>
@@ -667,15 +666,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			}		
 			
 			//检测项目判断
-			saveJianCheInfo(function(){
-				var rows_jianCe = myTable3.datagrid('getRows');
-				var isSomeAbnormalJianCeRemarkEmpty = _.some(rows_jianCe, function(row){return row.txtZhuangTai == '异常' ? $.trim(row.txtRemark)=='' : false;});
-				if(isSomeAbnormalJianCeRemarkEmpty){
-					$.messager.alert('提示', '检测异常项目的备注信息不能为空');
-					beginEditAllRows();
-					return;
-				}
-				
+			saveJianCheInfo(function(){				
 				//符合条件才能进入下一步
 				updateGongDanStatus('<s:property value='saleAfterWeiXiuGuid' />', nextStatus);
 			});			
@@ -824,37 +815,52 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 		}
 
 		function saveJianCheInfo(callBack) {
-			endEditAllRows();
-			
+			endEditAllRows();			
 			var rows = myTable3.datagrid('getRows');
-			var allZhuangTai = _.pluck(rows, "txtZhuangTai");
+			
+			var isValidCheckPassed = true;
+			var msg = "";			
+			if(isValidCheckPassed){
+				var rowShaCheCheck = rows[12];
+				isValidCheckPassed = /^前轮：\s*\d+\.{0,1}\d*\s*，后轮：\s*\d+\.{0,1}\d*\s*mm。$/.test($.trim(rowShaCheCheck.txtRemark));
+				if(!isValidCheckPassed){
+					msg = "请填写刹车片检测信息";
+				}
+			}			
+			
+			if(isValidCheckPassed){
+				var rowLunTaiCheck = rows[13];
+				isValidCheckPassed = /前轮：\s*\d+\.{0,1}\d*\s*，后轮：\s*\d+\.{0,1}\d*\s*，备胎：\s*\d+\.{0,1}\d*\s*kgf\/cm²/.test($.trim(rowLunTaiCheck.txtRemark));
+				if(!isValidCheckPassed){
+					msg = "请填写轮胎及备胎的检测信息";
+				}
+			}
+			
+			if(!isValidCheckPassed){
+				$.messager.alert('提示', msg,'info', function(){
+					beginEditAllRows();
+				});
+				return;
+			}
+			
+			var allZhuangTai = _.pluck(rows, "txtStatusItem");
 			if(_.some(allZhuangTai, function(value){return value=="未检测"})){
 				$.messager.confirm('提示', "还有未检测的项目，确定要保存检测信息吗？", function(r) {
 					if (r) {
-						if(arguments.length == 1){
-							doSaveJianCheInfo(rows, callBack);
-						}else{
-							doSaveJianCheInfo(rows);
-						}
+						doSaveJianCheInfo(rows, callBack);
 					}else{
 						beginEditAllRows();
 					}
 				});	
 			}else{
-				if(arguments.length == 1){
-					doSaveJianCheInfo(rows, callBack);
-				}else{
-					doSaveJianCheInfo(rows);
-				}
+				doSaveJianCheInfo(rows, callBack);
 			}
 		}
 		
 		function doSaveJianCheInfo(rows, callBack){
-			var isCallBackExist = (arguments.length == 2);
 			var updateJsonStr = "[";
 			_.each(rows, function(row){
-				var curAction = row.txtActionItem ? row.txtActionItem : "";
-				updateJsonStr += "{'txtJianCeGuid':'" + row.txtJianCeGuid + "','txtCurStatus':'" + row.txtStatusItem + "','txtCurAction':'" + curAction + "','txtRemark':'" + row.txtRemark + "'},";	
+				updateJsonStr += "{'txtJianCeGuid':'" + row.txtJianCeGuid + "','txtCurStatus':'" + row.txtCurStatus + "','txtCurAction':'" + row.txtCurAction + "','txtRemark':'" + row.txtRemark + "'},";	
 			});
 			updateJsonStr += "]";
 			
@@ -865,7 +871,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 					$.messager.alert('出错啦', result.errorMsg);
 				} else {
 					myTable3.datagrid('reload');
-					if(isCallBackExist){
+					if(callBack){
 						callBack();
 					}
 				}
@@ -891,7 +897,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			return row.txtCurStatus;		
 		}
 		function format_actionItem(value, row, index) {
-			return row.txtCurAction;
+			return row.txtCurAction ? row.txtCurAction : "";
 		}
 		
 		//-------------------------入库单信息------------------------------------------

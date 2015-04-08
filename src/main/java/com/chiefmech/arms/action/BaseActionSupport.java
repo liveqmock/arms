@@ -1,9 +1,13 @@
 package com.chiefmech.arms.action;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Map;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -105,6 +109,22 @@ public class BaseActionSupport extends ActionSupport
 			out.close();
 		} catch (IOException e) {
 			logger.fatal("IOException when output ajax data", e);
+		}
+	}
+
+	protected void transmitImage(byte[] picBytes, String formatName) {
+		logger.debug("transmitImage formatName:" + formatName);
+
+		servletResponse.setContentType("image/jpeg");
+		servletResponse.setHeader("Cache-control", "no-cache");
+		servletResponse.setHeader("pragma", "no-cache");
+
+		try {
+			InputStream inputStream = new ByteArrayInputStream(picBytes);
+			BufferedImage bi = ImageIO.read(inputStream);
+			ImageIO.write(bi, "JPEG", servletResponse.getOutputStream());
+		} catch (IOException e) {
+			logger.fatal("IOException when output image", e);
 		}
 	}
 
