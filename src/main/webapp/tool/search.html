@@ -39,9 +39,7 @@ $().ready(function(){
 					var detail = json.detail;
 					var type = json.type;
 					alert(detail);
-					if ("fail" == type) {
-						$('.cphyzm').attr('src', "getNewCaptcha.action");
-					}
+					$('.cphyzm').trigger("click");
 				},
 				timeout : 60*1000, //超时时间设置，单位毫秒
     			dataType:'json'
