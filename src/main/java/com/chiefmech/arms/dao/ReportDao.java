@@ -33,10 +33,22 @@ public interface ReportDao {
 	List<GongDanWuLiaoReport> getGongDanWuLiaoReportList(
 			@Param("item") GongDanWuLiaoReportSearchBean query);
 
-	@Select("SELECT count(*) dailyIncomingCount, sum(generalIncome) dailyOutputValue, sum(generalIncome - wuLiaoCost) dailyGrossProfit FROM v_shopDailyReport WHERE ruChangDate = date_format(now(), '%Y%m%d') AND txtShopCode = #{shopCode} GROUP BY txtShopCode;")
-	ShopDailyReport getShopDailyInfo(String shopCode);
+	@Select("select count(*) from v_shopDailyReport WHERE ruChangDate = date_format(now(), '%Y%m%d') and txtShopCode = #{shopCode}")
+	int getDailyIncomingCount(String shopCode);
 
-	@Select("SELECT count(*) monthlyIncomingCount, sum(generalIncome) monthlyOutputValue, sum(generalIncome - wuLiaoCost) monthlyGrossProfit FROM v_shopDailyReport WHERE ruChangDate >= date_format(now(), '%Y%m01') and ruChangDate <= date_format(now(), '%Y%m%d') AND txtShopCode = #{shopCode} GROUP BY txtShopCode")
-	ShopDailyReport getMonthlyInfo(String shopCode);
+	@Select("select ifnull(sum(outputValue),0) from v_shopDailyReport WHERE chuChangDate = date_format(now(), '%Y%m%d') and txtShopCode = #{shopCode}")
+	int getDailyOutputValue(String shopCode);
+
+	@Select("select ifnull(sum(outputValue-wuLiaoCost),0) from v_shopDailyReport WHERE chuChangDate = date_format(now(), '%Y%m%d') and txtShopCode = #{shopCode}")
+	int getDailyGrossProfit(String shopCode);
+
+	@Select("select count(*) from v_shopDailyReport WHERE ruChangDate >= date_format(now(), '%Y%m01') and ruChangDate <= date_format(now(), '%Y%m%d') and txtShopCode = #{shopCode}")
+	int getMonthlyIncomingCount(String shopCode);
+
+	@Select("select ifnull(sum(outputValue),0) from v_shopDailyReport WHERE chuChangDate >= date_format(now(), '%Y%m01') and chuChangDate <= date_format(now(), '%Y%m%d') and txtShopCode = #{shopCode}")
+	int getMonthlyOutputValue(String shopCode);
+
+	@Select("select ifnull(sum(outputValue-wuLiaoCost),0) from v_shopDailyReport WHERE chuChangDate >= date_format(now(), '%Y%m01') and chuChangDate <= date_format(now(), '%Y%m%d') and txtShopCode = #{shopCode}")
+	int getMonthlyGrossProfit(String shopCode);
 
 }

@@ -134,14 +134,27 @@
 	</div>
 
 
-	<script language="javascript" type="text/javascript">		
+	<script language="javascript" type="text/javascript">			
+		var myTable = $('#mydg');
+		
+		$(function(){
+			myTable.datagrid().datagrid('getPager').pagination({
+				onSelectPage:function(pageNum, pageSize){
+					doSearch();
+				}
+			});				
+		});
+			
 		function setupDatagrid(jsonStr) {
 			jsonStrData = $.parseJSON(jsonStr);
-			$('#mydg').datagrid('loadData', jsonStrData);
+			myTable.datagrid('loadData', jsonStrData);
 		}
 
 		function doSearch() {
-			var url = "<s:if test="actionName=='saleAfterGongDanManage'">saleAfterGongDanSearch.action</s:if><s:elseif test="actionName=='clientReviewManage'">clientReviewSearch.action</s:elseif>";
+			var options = myTable.datagrid('getPager').data("pagination").options;
+			var page = options.pageNumber;
+			var rows = options.pageSize;
+			var url = "<s:if test="actionName=='saleAfterGongDanManage'">saleAfterGongDanSearch.action</s:if><s:elseif test="actionName=='clientReviewManage'">clientReviewSearch.action</s:elseif>?page="+page+"&rows="+rows;
 			$("#fmSearch").form('submit', {
 				url : url,
 				success : function(jsonStr) {
@@ -155,7 +168,7 @@
 		}
 
 		function showGongDan(index) {
-			var thisGuid = $('#mydg').datagrid('getRows')[index]['txtGongDanId'];
+			var thisGuid = myTable.datagrid('getRows')[index]['txtGongDanId'];
 			if (thisGuid != "" && thisGuid != undefined) {
 				<s:if test="actionName=='saleAfterGongDanManage'">
 					var url = 'saleAfterIndex.action?saleAfterWeiXiuGuid=' + thisGuid + '&d=' + new Date();
@@ -167,8 +180,6 @@
 				window.open(url);	//tab页
 			}
 		}
-		
-		var myTable = $('#mydg');
 		function formatAction(value, row, index) {			
 			<s:if test="actionName=='saleAfterGongDanManage'">
 			return '<a href="javascript:void(0)" onclick="deleteItem(this)">删除工单</a>';

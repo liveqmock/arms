@@ -822,17 +822,21 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 			var msg = "";			
 			if(isValidCheckPassed){
 				var rowShaCheCheck = rows[12];
-				isValidCheckPassed = /^前轮：\s*\d+\.{0,1}\d*\s*，后轮：\s*\d+\.{0,1}\d*\s*mm。$/.test($.trim(rowShaCheCheck.txtRemark));
-				if(!isValidCheckPassed){
-					msg = "请填写刹车片检测信息";
+				if(rowShaCheCheck.txtCurStatus != "未检测"){
+					isValidCheckPassed = /^前轮：\s*\d+\.{0,1}\d*\s*，后轮：\s*\d+\.{0,1}\d*\s*mm。$/.test($.trim(rowShaCheCheck.txtRemark));
+					if(!isValidCheckPassed){
+						msg = "请填写刹车片检测信息";
+					}
 				}
 			}			
 			
 			if(isValidCheckPassed){
 				var rowLunTaiCheck = rows[13];
-				isValidCheckPassed = /前轮：\s*\d+\.{0,1}\d*\s*，后轮：\s*\d+\.{0,1}\d*\s*，备胎：\s*\d+\.{0,1}\d*\s*kgf\/cm²/.test($.trim(rowLunTaiCheck.txtRemark));
-				if(!isValidCheckPassed){
-					msg = "请填写轮胎及备胎的检测信息";
+				if(rowLunTaiCheck.txtCurStatus != "未检测"){
+					isValidCheckPassed = /前轮：\s*\d+\.{0,1}\d*\s*，后轮：\s*\d+\.{0,1}\d*\s*，备胎：\s*\d+\.{0,1}\d*\s*kgf\/cm²/.test($.trim(rowLunTaiCheck.txtRemark));
+					if(!isValidCheckPassed){
+						msg = "请填写轮胎及备胎的检测信息";
+					}
 				}
 			}
 			
@@ -881,7 +885,7 @@ data-options="editor:{type:'combobox',options:{editable:false,valueField:'code',
 		function setAllJianCheNormal(){			
 			var rows = myTable3.datagrid('getRows');
 			_.each(rows, function(row, rowIndex){
-				var zhuangTaiEditor = myTable3.datagrid('getEditor', { index: rowIndex, field: 'txtStatusItem' });
+				var zhuangTaiEditor = myTable3.datagrid('getEditor', { index: rowIndex, field: 'txtCurStatus' });
 				var radioGroup = $(zhuangTaiEditor.target).find(":radio[value='未见异常']");
 				if(_.size(radioGroup)>0){
 					$(radioGroup[0]).trigger("click");

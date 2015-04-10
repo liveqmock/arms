@@ -86,20 +86,14 @@ public class ReportServiceImpl implements ReportService {
 
 	@Override
 	public ShopDailyReport getShopDailyReportByShopCode(String shopCode) {
-		ShopDailyReport dailyInfo = reportDao.getShopDailyInfo(shopCode);
-		ShopDailyReport monthlyInfo = reportDao.getMonthlyInfo(shopCode);
-
 		ShopDailyReport bean = new ShopDailyReport();
-		if (dailyInfo != null) {
-			bean.setDailyIncomingCount(dailyInfo.getDailyIncomingCount());
-			bean.setDailyOutputValue(dailyInfo.getDailyOutputValue());
-			bean.setDailyGrossProfit(dailyInfo.getDailyGrossProfit());
-		}
-		if (monthlyInfo != null) {
-			bean.setMonthlyIncomingCount(monthlyInfo.getMonthlyIncomingCount());
-			bean.setMonthlyOutputValue(monthlyInfo.getMonthlyOutputValue());
-			bean.setMonthlyGrossProfit(monthlyInfo.getMonthlyGrossProfit());
-		}
+		bean.setDailyIncomingCount(reportDao.getDailyIncomingCount(shopCode));
+		bean.setDailyOutputValue(reportDao.getDailyOutputValue(shopCode));
+		bean.setDailyGrossProfit(reportDao.getDailyGrossProfit(shopCode));
+		bean.setMonthlyIncomingCount(reportDao
+				.getMonthlyIncomingCount(shopCode));
+		bean.setMonthlyOutputValue(reportDao.getMonthlyOutputValue(shopCode));
+		bean.setMonthlyGrossProfit(reportDao.getMonthlyGrossProfit(shopCode));
 		return bean;
 	}
 

@@ -34,4 +34,18 @@ public class ReportDaoSqlProvider {
 				.format("select * from v_gongdanwuliao %s order by txtRuChangDate desc",
 						query.getWhereSql());
 	}
+
+	public String getShopDailyReport(Map<String, Object> param) {
+		String shopCode = (String) param.get("shopCode");
+
+		return String
+				.format("select (select count(*) from v_shopDailyReport WHERE ruChangDate = date_format(now(), '%Y%m%d') and txtShopCode = %s) dailyIncomingCount,"
+						+ "(select ifnull(sum(outputValue),0) from v_shopDailyReport WHERE chuChangDate = date_format(now(), '%Y%m%d') and txtShopCode = %s) dailyOutputValue,"
+						+ "(select ifnull(sum(outputValue-wuLiaoCost),0) from v_shopDailyReport WHERE chuChangDate = date_format(now(), '%Y%m%d') and txtShopCode = %s) dailyGrossProfit,"
+						+ "(select count(*) from v_shopDailyReport WHERE ruChangDate >= date_format(now(), '%Y%m01') and ruChangDate <= date_format(now(), '%Y%m%d') and txtShopCode = %s) monthlyIncomingCount,"
+						+ "(select ifnull(sum(outputValue),0) from v_shopDailyReport WHERE chuChangDate >= date_format(now(), '%Y%m01') and chuChangDate <= date_format(now(), '%Y%m%d') and txtShopCode = %s) monthlyOutputValue,"
+						+ "(select ifnull(sum(outputValue-wuLiaoCost),0) from v_shopDailyReport WHERE chuChangDate >= date_format(now(), '%Y%m01') and chuChangDate <= date_format(now(), '%Y%m%d') and txtShopCode = %s) monthlyGrossProfit",
+						shopCode, shopCode, shopCode, shopCode, shopCode,
+						shopCode);
+	}
 }

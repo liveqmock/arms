@@ -24,36 +24,31 @@ public class KuCunServiceImpl implements KuCunService {
 	public int updateKuCun(KuCunOperLog operLog) {
 		int rowAffected = -1;
 
-		KuCun logKuCun = new KuCun(operLog);
+		KuCun logKuCunInfo = new KuCun(operLog);
 		String txtOperAction = operLog.getTxtOperAction();
+		KuCun dbKuCunInfo = findExistKuCunByWuLiaoCode(
+				logKuCunInfo.getTxtShopCode(), logKuCunInfo.getTxtWuLiaoCode());
 		if ("修改销售价".equals(txtOperAction)) {
-			rowAffected = kuCunDao.updateKuCunSalePrice(logKuCun);
-			operLog.setTxtNewQty(logKuCun.getTxtQty());
-		} else if ("日常采购".equals(txtOperAction)) {
-			KuCun kuCun = findExistKuCunByWuLiaoCode(logKuCun.getTxtShopCode(),
-					logKuCun.getTxtWuLiaoCode());
-			if (kuCun != null) {
+			rowAffected = kuCunDao.updateKuCunSalePrice(logKuCunInfo);
+			operLog.setTxtQty(0);
+			operLog.setTxtNewQty(dbKuCunInfo.getTxtQty());
+		} else if ("日常采购".equals(txtOperAction) || "例外入库".equals(txtOperAction)
+				|| "维修退库".equals(txtOperAction) || "例外出库".equals(txtOperAction)
+				|| "维修出库".equals(txtOperAction)) {
+			if (dbKuCunInfo != null) {
+				// 出库：库存减少；退库和入库：库存增加
+				boolean isKuCunPlusRequire = ("维修出库".equals(txtOperAction) || "例外出库"
+						.equals(txtOperAction)) ? false : true;
+				KuCun newKuCun = getUpdateKuCunInfo(dbKuCunInfo, logKuCunInfo,
+						isKuCunPlusRequire);
 				// 更新现有库存的数量和成本价
-				KuCun newKuCun = getUpdateKuCunInfo(kuCun, operLog, true);
 				rowAffected = kuCunDao.updateKuCun(newKuCun);
 				operLog.setTxtNewQty(newKuCun.getTxtQty());
 			} else {
 				// 插入新的库存信息
-				rowAffected = kuCunDao.insertKuCun(logKuCun);
-				operLog.setTxtNewQty(logKuCun.getTxtQty());
+				rowAffected = kuCunDao.insertKuCun(logKuCunInfo);
+				operLog.setTxtNewQty(logKuCunInfo.getTxtQty());
 			}
-		} else if ("例外入库".equals(txtOperAction) || "例外出库".equals(txtOperAction)
-				|| "维修出库".equals(txtOperAction) || "维修退库".equals(txtOperAction)) {
-			KuCun kuCun = findExistKuCunByWuLiaoCode(logKuCun.getTxtShopCode(),
-					logKuCun.getTxtWuLiaoCode());
-			// 维修出库：库存减少；退库库存增加
-			boolean isKuCunPlusRequire = ("维修出库".equals(txtOperAction) || "例外出库"
-					.equals(txtOperAction)) ? false : true;
-			KuCun newKuCun = getUpdateKuCunInfo(kuCun, operLog,
-					isKuCunPlusRequire);
-			// 更新现有库存的数量和成本价
-			rowAffected = kuCunDao.updateKuCun(newKuCun);
-			operLog.setTxtNewQty(newKuCun.getTxtQty());
 		}
 
 		if (rowAffected == 1) {
@@ -65,32 +60,38 @@ public class KuCunServiceImpl implements KuCunService {
 	/**
 	 * 根据KuCunOperLog更新库存的数量和成本价信息
 	 * 
-	 * @param kuCun
+	 * @param dbKuCunInfo
 	 * @param operLog
 	 * @param isKuCunPlusRequire
 	 * @return
 	 */
-	private KuCun getUpdateKuCunInfo(KuCun kuCun, KuCunOperLog operLog,
+	private KuCun getUpdateKuCunInfo(KuCun dbKuCunInfo, KuCun logKuCunInfo,
 			boolean isKuCunPlusRequire) {
 		float totalAmount;
 		int newQty;
 		if (isKuCunPlusRequire) {
-			newQty = kuCun.getTxtQty() + operLog.getTxtQty();
-			totalAmount = kuCun.getTxtChengBenJia() * kuCun.getTxtQty()
-					+ operLog.getTxtChengBenJia() * operLog.getTxtQty();
+			newQty = dbKuCunInfo.getTxtQty() + logKuCunInfo.getTxtQty();
+			totalAmount = dbKuCunInfo.getTxtChengBenJia()
+					* dbKuCunInfo.getTxtQty()
+					+ logKuCunInfo.getTxtChengBenJia()
+					* logKuCunInfo.getTxtQty();
 		} else {
-			newQty = kuCun.getTxtQty() - operLog.getTxtQty();
-			totalAmount = kuCun.getTxtChengBenJia() * kuCun.getTxtQty()
-					- operLog.getTxtChengBenJia() * operLog.getTxtQty();
+			newQty = dbKuCunInfo.getTxtQty() - logKuCunInfo.getTxtQty();
+			totalAmount = dbKuCunInfo.getTxtChengBenJia()
+					* dbKuCunInfo.getTxtQty()
+					- logKuCunInfo.getTxtChengBenJia()
+					* logKuCunInfo.getTxtQty();
 		}
-		kuCun.setTxtQty(newQty);
 
+		logKuCunInfo.setTxtKuCunGuid(dbKuCunInfo.getTxtKuCunGuid());
+		logKuCunInfo.setTxtQty(newQty);
 		if (newQty != 0) {
-			kuCun.setTxtChengBenJia(totalAmount / newQty);
+			logKuCunInfo.setTxtChengBenJia(totalAmount / newQty);
 		} else {
 			// 库存为0时显示以前的成本价
+			logKuCunInfo.setTxtChengBenJia(dbKuCunInfo.getTxtChengBenJia());
 		}
-		return kuCun;
+		return logKuCunInfo;
 	}
 
 	@Override

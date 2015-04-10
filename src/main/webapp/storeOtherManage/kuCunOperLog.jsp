@@ -73,10 +73,11 @@ td {
 				<th width="250" data-options="field:'txtSuppName'">供应商</th>
 				<th width="150" data-options="field:'txtWuLiaoCode'">物料编码</th>
 				<th width="200" data-options="field:'txtWuLiaoName'">名称及规格</th>
-				<th width="100" data-options="field:'txtChengBenJia'">成本价格</th>
-				<th width="100" data-options="field:'txtSalePrice'">销售价格</th>
+				<th width="100" data-options="field:'txtChengBenJia'">成本价</th>
+				<th width="100" data-options="field:'txtSalePrice'">销售价</th>
 				<th width="150" data-options="field:'txtQty'">本次操作数量</th>
 				<th width="150" data-options="field:'txtNewQty'">最新库存数量</th>
+				<th width="150" data-options="field:'txtRemark'">备注</th>
                 <!--
 				<th width="150" data-options="field:'txtBillGuid'">业务单号</th>
                 -->

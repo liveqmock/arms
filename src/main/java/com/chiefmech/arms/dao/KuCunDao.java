@@ -24,10 +24,10 @@ public interface KuCunDao {
 	@Insert("insert into kucun(txtKuCunGuid,txtShopCode,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,txtSuppName,txtRemark) values(#{txtKuCunGuid},#{txtShopCode},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{txtSuppName},#{txtRemark})")
 	public int insertKuCun(KuCun item);
 
-	@Update("update kucun set txtQty=#{txtQty},txtChengBenJia=#{txtChengBenJia} where txtWuLiaoCode=#{txtWuLiaoCode}")
+	@Update("update kucun set txtWuLiaoName=#{txtWuLiaoName},txtQty=#{txtQty},txtChengBenJia=#{txtChengBenJia},txtSalePrice=#{txtSalePrice},txtSuppName=#{txtSuppName},txtRemark=#{txtRemark} where txtKuCunGuid=#{txtKuCunGuid}")
 	public int updateKuCun(KuCun item);
 
-	@Update("update kucun set txtSalePrice=#{txtSalePrice} where txtWuLiaoCode=#{txtWuLiaoCode}")
+	@Update("update kucun set txtSalePrice=#{txtSalePrice} where txtShopCode=#{txtShopCode} and txtWuLiaoCode = #{txtWuLiaoCode}")
 	public int updateKuCunSalePrice(KuCun item);
 
 	@Insert("insert into kucunoperlog(txtLogGuid,txtShopCode,txtBillGuid,txtOperAction,txtLogDate,txtWuLiaoCode,txtWuLiaoName,txtQty,txtChengBenJia,txtSalePrice,txtSuppName,txtRemark,txtNewQty) values(#{txtLogGuid},#{txtShopCode},#{txtBillGuid},#{txtOperAction},#{txtLogDate},#{txtWuLiaoCode},#{txtWuLiaoName},#{txtQty},#{txtChengBenJia},#{txtSalePrice},#{txtSuppName},#{txtRemark},#{txtNewQty})")

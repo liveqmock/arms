@@ -6,15 +6,15 @@ import java.util.List;
 
 import junit.framework.TestCase;
 
-import com.chiefmech.arms.entity.GongDanCheLiangJianCe;
+import com.chiefmech.arms.entity.KuCun;
 
 public class MybatisDaoGen extends TestCase {
 	private static List<Field> fieldLst = new ArrayList<Field>();
 
 	public static void main(String[] args) {
 
-		Object[][] beans = {{"gongdanjiance", "txtJianceGuid",
-				GongDanCheLiangJianCe.class}};
+		Object[][] beans = {{"kucun", "txtKuCunGuid",
+			KuCun.class}};
 
 		StringBuffer sb = new StringBuffer();
 		String fieldInfo = "";

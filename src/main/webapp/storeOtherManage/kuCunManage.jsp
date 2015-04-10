@@ -161,7 +161,7 @@ td {
 						$.messager.alert('出错啦', result.errorMsg);
 						myTable.datagrid('cancelEdit', rowIndex);
 					} else {
-						myTable.datagrid('reload');
+						doSearch();
 					}
 				}, 'json');
 			} else {

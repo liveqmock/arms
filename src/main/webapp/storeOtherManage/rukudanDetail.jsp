@@ -80,6 +80,7 @@
 			</form>
 		</div>
 
+		<div style="padding-top:10px;">注：此处的销售价和备注即为物料入库后物料的销售价和备注</div>
 		<div id="divBtnInfo" style="margin-top: 5px;">
 			<table id="datagridWuLiao" class="easyui-datagrid"
 				data-options="url:'queryRuKuDanWuLiao.action?ruKuDanGuid=<s:property value='ruKuDan.txtGuid' />',toolbar:'#tb',singleSelect:true,rownumbers:true,showFooter:true">
@@ -92,12 +93,13 @@
 						<th field="txtQty" width="60"
 							data-options="align:'right',editor:{type:'numberbox',options:{required:true}}">数量</th>
 						<th field="txtPrice" width="100"
-							data-options="align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">价格</th>
-                        
-			      <th field="txtRemark" width="200"
+							data-options="align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">采购价</th>
+						<th field="txtSalePrice" width="100"
+							data-options="align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">销售价</th>
+			      		<th field="txtRemark" width="200"
 							data-options="editor:{type:'textbox',options:{required:false}}">备注</th>
 						<s:if test="ruKuDan.txtStatus!='确认更新'">
-							<th field="action" width="150" align="center"
+							<th field="action" width="180" align="center"
 								formatter="formatAction">操作</th>
 						</s:if>
 					</tr>
