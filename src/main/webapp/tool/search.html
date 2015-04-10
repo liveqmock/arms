@@ -7,45 +7,43 @@
 <script src="../js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
 <script>
 
-/** 检查当前值是否为空 */
-function isNullValue(value) { 
-	if (value == null || $.trim(value).length == 0) {
-		return true;
+function JsonToString(o) {
+	var arr = [];
+	var fmt = function(s) {
+		if (typeof s == 'object' && s != null) return JsonToStr(s);
+		return /^(string|number)$/.test(typeof s) ? "'" + s + "'" : s;
 	}
-	return false;
-};
-
-/** 检查input是否填写 ，如为空并提示*/
-function checkValue(inputID, message) {
-	var value = $("#" + inputID).val();
-	if (isNullValue(value)) {
-		alert(message);
-		$("#" + inputID).focus();
-		return false;
+	for (var i in o){
+		arr.push("'" + i + "':" + fmt(o[i]));
 	}
-	return true;
+	return '{' + arr.join(',') + '}';
 }
-
+	
 $().ready(function(){
 		
-	$("#queryCph").click(function() {
-		if (checkValue("hphm", "请填写车牌号码") && checkValue("clsbdh", "请填写车辆识别代号（后6位）") && checkValue("djzsbh", "机动车登记证书编号(后7位)") && checkValue("cphValidateCode", "请输入验证码")) {
-			
-			$.ajax({     
-				url:"queryTrafficViolationResult.action",     
-				type:'get',     
-				data:"clsbdh="+$("#clsbdh").val()+"&djzsbh="+$("#djzsbh").val()+"&hphm="+$("#hphm").val()+"&hpzl=02&captcha="+$("#cphValidateCode").val()+"&date="+new Date(),
-				success:function(json){
-					var detail = json.detail;
-					var type = json.type;
-					alert(detail);
-					$('.cphyzm').trigger("click");
-				},
-				timeout : 60*1000, //超时时间设置，单位毫秒
-    			dataType:'json'
-			});  
-			
-		}
+	$("#queryCph").click(function() {			
+		var number=$("#number").val();
+		var numLast4=$("#numLast4").val();
+		var engineNoLast4=$("#engineNoLast4").val();
+		var checkCode=$("#checkCode").val()
+
+		$.ajax({     
+			url:"queryTrafficViolationResult.action",     
+			type:'post',     
+			data:{
+				number : $("#number").val(),
+				numLast4 : $("#numLast4").val(),
+				engineNoLast4 : $("#engineNoLast4").val(),
+				checkCode : $("#checkCode").val()
+			},
+			success:function(result){
+				alert(JsonToString(result));
+				$('.captcha').trigger("click");
+			},
+			timeout : 60*1000, //超时时间设置，单位毫秒
+			dataType:'json'
+		});  
+		
 	});
 });
 </script>
@@ -53,25 +51,24 @@ $().ready(function(){
 <body>
 <table>
   <tr>
-    <td colspan="2" align="center"><h3><a href="http://210.76.69.58/wfcx/query.jsp">广东省公安厅交通违法查询</a></h3></td>
+    <td colspan="2" align="center"><h3><a href="http://www.24pay.net/vehicle/gotoVehicle.htm">车辆违法信息查询</a></h3></td>
   </tr>
   <tr>
     <td align="right">车牌号码：</td>
-    <td>粤
-      <input type="text" id="hphm" name="hphm" class="w_input" value="" /></td>
+    <td><input type="text" id="number" name="number" value="粤BN591F" /></td>
   </tr>
   <tr>
-    <td align="right">车辆识别代号(后6位)：</td>
-    <td><input type="text" id="clsbdh" name="clsbdh" class="w_input" value="" /></td>
+    <td align="right">车辆识别码（后6位）：</td>
+    <td><input type="text" id="numLast4" name="numLast4" value="825990" /></td>
   </tr>
   <tr>
-    <td align="right">机动车登记证书编号(后7位)：</td>
-    <td><input type="text" id="djzsbh" name="djzsbh" class="w_input" value="" /></td>
+    <td align="right">发动机号（后6位）：</td>
+    <td><input type="text" id="engineNoLast4" name="engineNoLast4" value="J84902" /></td>
   </tr>
   <tr>
     <td align="right">验证码：</td>
-    <td><input id="cphValidateCode" name="cphValidateCode" type="text" style="width:150px;" class="w_input" value=""/>
-      &nbsp;<img class="cphyzm" src="getNewCaptcha.action" onclick="this.src='getNewCaptcha.action?random='+Math.random();" style="vertical-align: middle; cursor: hand;" title="看不清楚？点击换一张图" border="0"/>&nbsp;看不清楚?请点击图片</td>
+    <td><input id="checkCode" name="checkCode" type="text" style="width:150px;" value=""/>
+      &nbsp;<img class="captcha" src="getNewCaptcha.action" onclick="this.src='getNewCaptcha.action?random='+Math.random();" style="vertical-align: middle; cursor: hand;" title="看不清楚？点击换一张图" border="0"/>&nbsp;看不清楚?请点击图片</td>
   </tr>
   <tr>
     <td colspan="2" align="center"><input type="button" value="查询"  class="button_blue"  id="queryCph" name="queryCph"/></td>
