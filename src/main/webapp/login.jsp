@@ -197,7 +197,7 @@ body {
 						<div id="loginTishi">
 							<p>
 								<input type="checkbox" class="chkLogin" id="chkJiZhuPwd" />
-								<label for="chkJiZhuPwd">在此电脑记住用户名及密码(若你在使用公用电脑,请不要剔选)</label>
+								<label for="chkJiZhuPwd">在此电脑记住用户名及密码(若你在使用公用电脑,请不要勾选)</label>
 							</p>
 						</div>
 					</div>

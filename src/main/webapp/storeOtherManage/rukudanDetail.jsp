@@ -26,7 +26,7 @@
 	<div style="margin: 0 5px;">
 		<div>
 			<table border="0"
-				style="width: 900px; border-bottom: 1px solid #b8b8b8;"">
+				style="width: 900px; border-bottom: 1px solid #b8b8b8;">
 				<tr>
 					<td class="titlebg"><span>物料管理</span><span class="titleSpan">(<span
 							style="color: blue; font-weight: bold;"><s:property
@@ -80,7 +80,7 @@
 			</form>
 		</div>
 
-		<div style="padding-top:10px;">注：此处的销售价和备注即为物料入库后物料的销售价和备注</div>
+		<div style="padding-top:10px;">注：此处的销售价和备注即为物料入库后物料的销售价和备注，销售价默认为采购价的1.5倍</div>
 		<div id="divBtnInfo" style="margin-top: 5px;">
 			<table id="datagridWuLiao" class="easyui-datagrid"
 				data-options="url:'queryRuKuDanWuLiao.action?ruKuDanGuid=<s:property value='ruKuDan.txtGuid' />',toolbar:'#tb',singleSelect:true,rownumbers:true,showFooter:true">
@@ -91,9 +91,9 @@
 						<th field="txtWuLiaoName" width="200"
 							data-options="editor:{type:'textbox',options:{required:true}}">名称及规格</th>
 						<th field="txtQty" width="60"
-							data-options="align:'right',editor:{type:'numberbox',options:{required:true}}">数量</th>
+							data-options="align:'right',editor:{type:'numberbox',options:{required:true,min:1}}">数量</th>
 						<th field="txtPrice" width="100"
-							data-options="align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">采购价</th>
+							data-options="align:'right',editor:{type:'numberbox',options:{required:true,precision:2,onChange:updateSalePrice}}">采购价</th>
 						<th field="txtSalePrice" width="100"
 							data-options="align:'right',editor:{type:'numberbox',options:{required:true,precision:2}}">销售价</th>
 			      		<th field="txtRemark" width="200"
@@ -243,6 +243,15 @@
 					});
 				}
 			});		
+		}
+		
+		function updateSalePrice(newValue,oldValue){
+			var row = myTable.datagrid('getEditingRow');
+			if(!row.txtSalePrice || parseInt(row.txtSalePrice)==0){
+				var rowIndex = myTable.datagrid('getEditingRowIndex');
+				var salePriceEditor = myTable.datagrid('getEditor', { index: rowIndex, field: 'txtSalePrice' });
+				$(salePriceEditor.target).numberbox("setValue", parseFloat(newValue) * 1.5);
+			}			
 		}
 	</script>
 

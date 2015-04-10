@@ -139,7 +139,7 @@
 		
 		$(function(){
 			myTable.datagrid().datagrid('getPager').pagination({
-				onSelectPage:function(pageNum, pageSize){
+				onSelectPage:function(){
 					doSearch();
 				}
 			});				

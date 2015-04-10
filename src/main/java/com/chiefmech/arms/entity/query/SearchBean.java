@@ -57,6 +57,9 @@ public abstract class SearchBean {
 
 		String sql = "";
 		if (this.pageRows > 0) {
+			if (this.pageNum < 1) {
+				this.pageNum = 1;
+			}
 			int offset = (this.pageNum - 1) * this.pageRows;
 			sql = String.format("limit %s,%s", offset, this.pageRows);
 		}

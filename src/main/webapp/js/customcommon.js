@@ -314,17 +314,6 @@ function makeElementsReadonly(idAry, jsonData){
 			}
 		}
 	});
-	
-	$.extend($.fn.datagrid.methods, {
-		onCustomSelectPage: function(jq){
-			var dg = $(this);
-			dg.datagrid('getPager').pagination({
-				onSelectPage:function(){
-					doSearch();
-				}
-			});	
-		}
-	});
 
 })(jQuery);
 
