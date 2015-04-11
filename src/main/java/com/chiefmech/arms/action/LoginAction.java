@@ -33,17 +33,18 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 
 	private User user = new User();
 
-	@Action(value = "login", results = {
-			@Result(name = "success", type = "redirectAction", location = "index/default"),
-			@Result(name = "input", location = "login.jsp")})
+	@Action(value = "login", results = {@Result(name = "input", location = "login.jsp")})
 	public String login() {
-		this.clearFieldErrors();
+		return INPUT;
+	}
+
+	@Action(value = "accessCheck")
+	public void accessCheck() {
+		String error_msg = "";
 		if (StringUtils.isBlank(user.getLoginName())
 				|| StringUtils.isBlank(user.getPassword())) {
-			// 跳转到登录页面
-			return INPUT;
+			error_msg = "用户名和密码都不能为空";
 		} else {
-			String error_msg = "";
 			User userInfo = userService
 					.findUserByLoginName(user.getLoginName());
 			Shop shopInfo = null;
@@ -58,14 +59,13 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 				} else if (Date.valueOf(userInfo.getExpirydate()).before(
 						new Date(System.currentTimeMillis()))) {
 					error_msg = "亲，账号已超过使用期，请联系管理员！";
+				} else {
+					// 用户和系统信息都合法有效
 				}
 			} else {
 				error_msg = String.format("亲，用户名%s不存在！", user.getLoginName());
 			}
-			if (error_msg.length() > 0) {
-				this.addFieldError("message_login_failed", error_msg);
-				return INPUT;
-			} else {
+			if (error_msg.length() == 0) {
 				List<String> privilegeLst = userService
 						.getUserPrivilegeLst(userInfo.getUserId());
 				userInfo.setPrivilegeLst(privilegeLst);
@@ -73,9 +73,9 @@ public class LoginAction extends BaseActionSupport implements ModelDriven<User> 
 						Constants.KEY_USER_SESSION, userInfo);
 				servletRequest.getSession().setAttribute(
 						Constants.KEY_SHOP_SESSION, shopInfo);
-				return SUCCESS;
 			}
 		}
+		this.transmitJson(String.format("{\"errorMsg\":\"%s\"}", error_msg));
 	}
 
 	@Override

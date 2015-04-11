@@ -8,6 +8,7 @@
 <title>ARMS系统登录页</title>
 <script src="js/frame/jquery-1.8.0.min.js" type="text/javascript"></script>
 <script src="js/frame/jquery.Cookie.js" type="text/javascript"></script>
+<script src="js/sha1.js" type="text/javascript"></script>
 <style type="text/css" media="screen">
 body {
 	margin: 0px;
@@ -168,44 +169,35 @@ body {
 </style>
 </head>
 <body onkeydown="loginKey(event);">
-	<form name="form1" method="post" action="login.action" id="form1">
-		<div id="topData">
-			<div id="loginForm">
-				<div id="sagLogin"></div>
-				<div id="loginFormBg">
-					<!--登录框 start-->
-					<span id="spanUser">用户名</span> <span id="spanPwd">密&nbsp;&nbsp;码</span>
-					<span id="spanForgetPwd"> </span> <br />
-					<div>
-						<input name="loginName" type="text"
-							value="<s:property value='user.loginName'/>" maxlength="20"
-							id="loginName" />
+    <div id="topData">
+        <div id="loginForm">
+            <div id="sagLogin"></div>
+            <div id="loginFormBg">
+                <!--登录框 start-->
+                <span id="spanUser">用户名</span> <span id="spanPwd">密&nbsp;&nbsp;码</span>
+                <div>
+                    <input name="loginName" type="text" maxlength="20"	id="loginName" />
+                    <div>
+                        <input name="password" type="password" maxlength="20" id="password" />
 
-						<div>
-							<input name="password" type="password"
-								value="<s:property value='user.password'/>" maxlength="20"
-								id="password" />
-
-							<div id="loginBtn">
-								<input type="image" name="loginImgBtn" id="loginImgBtn"
-									src="loginImage/btn.png" onclick="return login();"
-									style="border-width: 0px; width: 100px; height: 100px;" />
-							</div>
-							<span style="color: red; font-weight: bold;" id="spanErr"><s:fielderror
-									fieldName="message_login_failed" /></span>
-						</div>
-						<div id="loginTishi">
-							<p>
-								<input type="checkbox" class="chkLogin" id="chkJiZhuPwd" />
-								<label for="chkJiZhuPwd">在此电脑记住用户名及密码(若你在使用公用电脑,请不要勾选)</label>
-							</p>
-						</div>
-					</div>
-					<!--登录框 end-->
-				</div>
-			</div>
-		</div>
-	</form>
+                        <div id="loginBtn">
+                            <input type="image" name="loginImgBtn" id="loginImgBtn"
+                                src="loginImage/btn.png" onclick="doLogin()"
+                                style="border-width: 0px; width: 100px; height: 100px;" />
+                        </div>
+                        <span style="color: red; font-weight: bold;" id="spanErr"></span>
+                    </div>
+                    <div id="loginTishi">
+                        <p>
+                            <input type="checkbox" class="chkLogin" id="chkJiZhuPwd" />
+                            <label for="chkJiZhuPwd">在此电脑记住用户名</label>
+                        </p>
+                    </div>
+                </div>
+                <!--登录框 end-->
+            </div>
+        </div>
+    </div>
 </body>
 <script language="javascript" type="text/javascript">
 	var browserTip = "您好，本系统尚未完成所有浏览器的兼容性测试，为了确保系统正常稳定的运行，请使用火狐浏览器运行本系统！";
@@ -227,9 +219,7 @@ body {
 				&& $.cookie('txtUserName') != ""
 				&& $.cookie('txtUserName') != 'null') {
 			document.getElementById("chkJiZhuPwd").checked = true;
-
 			$("#loginName").val($.cookie('txtUserName'));
-			$("#password").val($.cookie('txtPassWord'));
 		}
 		
 		if(browserCheckFailed()){			
@@ -237,47 +227,44 @@ body {
 		}
 	});
 
-	function login() {
-		
+	function doLogin() {		
 		if(browserCheckFailed()){			
 			alert(browserTip);
-			return false;
-		}
-		
-		//验证所有必填项
-		var theForm = document.forms['form1'];
-		if (!theForm) {
-			theForm = document.form1;
+			return;
 		}
 
 		if ($("#loginName").val() == "") {
 			$("#spanErr").html("登录名不能为空!");
-			theForm.disable = true;
-			return false;
+			return;
 		}
 		if ($("#password").val() == "") {
 			$("#spanErr").html("密码不能为空!");
-			theForm.disable = true;
-			return false;
-
+			return;
 		}
 
 		//写入cookies
 		if (document.getElementById("chkJiZhuPwd").checked == true) {
 			$.cookie('txtUserName', $("#loginName").val());
-			$.cookie('txtPassWord', $("#password").val());
 		} else {
 			$.cookie('txtUserName', null);
-			$.cookie('txtPassWord', null);
 		}
-		theForm.disable = false;
-		return true;
+		
+		$.post("accessCheck.action",{
+			"loginName" : $("#loginName").val(),
+			"password" : $("#password").val()
+		},function(result){
+			if (result.errorMsg != "") {
+				$("#spanErr").html(result.errorMsg);
+			}else{
+				top.location.href= "index/default.action"; 
+			}
+		},"json");
 	}
 
 	function loginKey(evt) {
 		var event = arguments[0]||window.event;
 		if (event.keyCode == 13) {
-			$("#loginImgBtn").click();
+			doLogin();
 		}
 	}
 </script>

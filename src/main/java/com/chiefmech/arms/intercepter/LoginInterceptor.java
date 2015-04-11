@@ -16,15 +16,18 @@ public class LoginInterceptor extends AbstractInterceptor {
 
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
-		Map<String, Object> session = invocation.getInvocationContext()
-				.getSession();
-		if (session.get(Constants.KEY_USER_SESSION) != null
-				|| invocation.getAction() instanceof LoginAction) {
+		if (invocation.getAction() instanceof LoginAction) {
 			return invocation.invoke();
 		} else {
-			logger.debug("session信息为空,跳转登陆页面");
-			return "userLogin";
-			// return invocation.invoke(); // For dev purpose
+			Map<String, Object> session = invocation.getInvocationContext()
+					.getSession();
+			if (session.get(Constants.KEY_USER_SESSION) != null) {
+				return invocation.invoke();
+			} else {
+				logger.debug("session信息为空,跳转登陆页面");
+				return "userLogin";
+				// return invocation.invoke(); // For dev purpose
+			}
 		}
 	}
 }
