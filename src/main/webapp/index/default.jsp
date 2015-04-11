@@ -165,6 +165,17 @@
 											'font-style' : '微软雅黑'
 										},
 										children : [
+											<s:if test="user.privilegeLst.contains('reportGongShi')">
+												{
+													name : "工时报表",
+													font : {
+														'font-style' : '微软雅黑'
+													},
+													url : "",
+													target : "_blank",
+													click : "mdfMenu('6123e78f-9fff-4492-885f-a20712348812','工时报表','../report/reportGongShi.action');"
+												},
+											</s:if>
 											<s:if test="user.privilegeLst.contains('reportGongDanXiangMu')">
 												{
 													name : "工单维修项目",

@@ -14,6 +14,7 @@ import com.chiefmech.arms.entity.query.GongDanXiangMuReportSearchBean;
 import com.chiefmech.arms.entity.query.RenBaoWeeklyReportSearchBean;
 import com.chiefmech.arms.entity.report.GongDanWuLiaoReport;
 import com.chiefmech.arms.entity.report.GongDanXiangMuReport;
+import com.chiefmech.arms.entity.report.GongShiReportItem;
 import com.chiefmech.arms.entity.report.RenBaoWeeklyReport;
 import com.chiefmech.arms.entity.report.ShopDailyReport;
 import com.chiefmech.arms.service.ReportService;
@@ -95,6 +96,13 @@ public class ReportServiceImpl implements ReportService {
 		bean.setMonthlyOutputValue(reportDao.getMonthlyOutputValue(shopCode));
 		bean.setMonthlyGrossProfit(reportDao.getMonthlyGrossProfit(shopCode));
 		return bean;
+	}
+
+	@Override
+	public List<GongShiReportItem> queryAllGongShiReportItems(String dateBegin,
+			String dateEnd, String shopCode) {
+		return reportDao.queryAllGongShiReportItems(dateBegin, dateEnd,
+				shopCode);
 	}
 
 }

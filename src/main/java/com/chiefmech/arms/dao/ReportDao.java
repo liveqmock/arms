@@ -12,6 +12,7 @@ import com.chiefmech.arms.entity.query.GongDanXiangMuReportSearchBean;
 import com.chiefmech.arms.entity.query.RenBaoWeeklyReportSearchBean;
 import com.chiefmech.arms.entity.report.GongDanWuLiaoReport;
 import com.chiefmech.arms.entity.report.GongDanXiangMuReport;
+import com.chiefmech.arms.entity.report.GongShiReportItem;
 import com.chiefmech.arms.entity.report.RenBaoWeeklyReport;
 import com.chiefmech.arms.entity.report.ShopDailyReport;
 
@@ -50,5 +51,10 @@ public interface ReportDao {
 
 	@Select("select ifnull(sum(outputValue-wuLiaoCost),0) from v_shopDailyReport WHERE chuChangDate >= date_format(now(), '%Y%m01') and chuChangDate <= date_format(now(), '%Y%m%d') and txtShopCode = #{shopCode}")
 	int getMonthlyGrossProfit(String shopCode);
+
+	@Select("select ifnull(txtBanZu,'其他') txtBanZu,sum(txtFeiYong) txtFeiYong,txtShopCode from v_gongShiReport where txtShopCode=#{shopCode} and txtDate>=#{dateBegin} and txtDate<=#{dateEnd} group by txtBanZu")
+	List<GongShiReportItem> queryAllGongShiReportItems(
+			@Param("dateBegin") String dateBegin,
+			@Param("dateEnd") String dateEnd, @Param("shopCode") String shopCode);
 
 }

@@ -565,3 +565,33 @@ function getRealJianCeOptionValue(value) {
 		return infoAry[0].split("|")[0];	
 	}			
 }
+
+//----------报表管理-------------	
+function doSearchForToday(){
+	doSearchForDate(getTodayDateStr(), getTodayDateStr());
+}
+
+function doSearchForCurMonth(){
+	doSearchForDate(getCurentMonthFirstDayDateStr(), getTodayDateStr());
+}
+
+function doSearchForDate(dateBegin, dateEnd){
+	$("#fmSearch").form('clear');
+	$("#dateBegin").datebox("setValue",dateBegin);
+	$("#dateEnd").datebox("setValue",dateEnd);
+	doSearch();			
+}
+function getTodayDateStr(){
+	var curDate = new Date();
+	var y = curDate.getFullYear();
+	var m = curDate.getMonth()+1;
+	var d = curDate.getDate();
+	return y+'-'+(m<10?('0'+m):m)+'-'+(d<10?('0'+d):d);	
+}
+
+function getCurentMonthFirstDayDateStr(){
+	var curDate = new Date();
+	var y = curDate.getFullYear();
+	var m = curDate.getMonth()+1;
+	return y+'-'+(m<10?('0'+m):m)+'-01';	
+}
