@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.jxls.transformer.XLSTransformer;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.struts2.ServletActionContext;
 import org.jfree.chart.ChartFactory;
@@ -196,6 +197,19 @@ public class ReportUtil {
 			e.printStackTrace();
 		}
 		return fileName;
+	}
+
+	public static String getDateInfo(String dateBegin, String dateEnd) {
+		String info = "";
+		if (StringUtils.isNotBlank(dateBegin)
+				&& StringUtils.isNotBlank(dateEnd)) {
+			info = dateBegin + "至" + dateEnd;
+		} else if (StringUtils.isNotBlank(dateBegin)) {
+			info = dateBegin;
+		} else if (StringUtils.isNotBlank(dateEnd)) {
+			info = dateEnd;
+		}
+		return info;
 	}
 
 	private static void initJfreeChartFactory() {

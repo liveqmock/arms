@@ -31,9 +31,8 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/report")
 @Controller()
 @Scope("prototype")
-public class ReportAction extends BaseActionSupport
-		implements
-			ModelDriven<RenBaoWeeklyReportSearchBean> {
+public class ReportAction extends BaseActionSupport implements
+		ModelDriven<RenBaoWeeklyReportSearchBean> {
 
 	@Resource()
 	private ReportService reportService;
@@ -50,7 +49,7 @@ public class ReportAction extends BaseActionSupport
 	};
 	private String easyUiJSonData;
 
-	@Action(value = "renBaoWeeklyReport", results = {@Result(name = "input", location = "renBaoWeeklyReport.jsp")})
+	@Action(value = "renBaoWeeklyReport", results = { @Result(name = "input", location = "renBaoWeeklyReport.jsp") })
 	public String renBaoWeeklyReport() {
 		easyUiJSonData = reportService.getRenBaoWeeklyReportEasyUiJSon(query);
 		return INPUT;
@@ -68,8 +67,10 @@ public class ReportAction extends BaseActionSupport
 
 		String templateFileName = this.getClass().getClassLoader()
 				.getResource("report/RenBaoWeeklyReport.xls").getPath();
-		String destFileName = String.format("人保清单%s-%s.xls",
-				query.getTxtRuChangDateBegin(), query.getTxtRuChangDateEnd());
+		String destFileName = String.format(
+				"人保清单%s.xls",
+				ReportUtil.getDateInfo(query.getTxtRuChangDateBegin(),
+						query.getTxtRuChangDateEnd()));
 		Map<String, List<RenBaoWeeklyReport>> beans = new HashMap<String, List<RenBaoWeeklyReport>>();
 		beans.put("recordLst", recordLst);
 
@@ -82,7 +83,7 @@ public class ReportAction extends BaseActionSupport
 		}
 	}
 
-	@Action(value = "renBaoWeeklyReportPrint", results = {@Result(name = "input", location = "renBaoCheXianPrint.jsp")})
+	@Action(value = "renBaoWeeklyReportPrint", results = { @Result(name = "input", location = "renBaoCheXianPrint.jsp") })
 	public String renBaoWeeklyReportPrint() {
 		renBaoWeeklyReportLst = reportService
 				.getRenBaoWeeklyReportListById(txtGongDanId);
@@ -107,6 +108,7 @@ public class ReportAction extends BaseActionSupport
 
 		this.transmitJson(JSONObject.fromObject(bean).toString());
 	}
+
 	public String getEasyUiJSonData() {
 		return easyUiJSonData;
 	}

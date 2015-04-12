@@ -69,15 +69,15 @@ public class ReportGongShiAction extends BaseActionSupport {
 				GongShiReportItem item = lst.get(i);
 				dataset.setValue(item.getTxtBanZu(), item.getTxtFeiYong());
 			}
-			String piePicFileName = ReportUtil
-					.getPieChartFileName("工时报表", dateBegin + "至" + dateEnd,
-							dataset, graphWidth, graphHeight);
+			String piePicFileName = ReportUtil.getPieChartFileName("工时报表",
+					ReportUtil.getDateInfo(dateBegin, dateEnd), dataset,
+					graphWidth, graphHeight);
 			// ----------piechart end------------
 
 			// 选择其中一个作为最终输出结果，此处作为参考代码，其余报表只生成其中一个即可
 			String fileName = barPicFileName;
 			if (fileName == null) {
-				errorMsg = "生成报表图片信息出差";
+				errorMsg = "生成报表图片信息出错";
 			} else {
 				graphURL = this.getBasePath() + "/DisplayChart?filename="
 						+ fileName;
@@ -98,8 +98,8 @@ public class ReportGongShiAction extends BaseActionSupport {
 
 		String templateFileName = this.getClass().getClassLoader()
 				.getResource("report/gongShiReport.xls").getPath();
-		String destFileName = String
-				.format("工时报表%s-%s.xls", dateBegin, dateEnd);
+		String destFileName = String.format("工时报表%s.xls",
+				ReportUtil.getDateInfo(dateBegin, dateEnd));
 		Map<String, List<GongShiReportItem>> beans = new HashMap<String, List<GongShiReportItem>>();
 		beans.put("recordLst", lst);
 

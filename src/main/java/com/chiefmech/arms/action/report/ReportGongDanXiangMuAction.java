@@ -26,9 +26,8 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/report")
 @Controller()
 @Scope("prototype")
-public class ReportGongDanXiangMuAction extends BaseActionSupport
-		implements
-			ModelDriven<GongDanXiangMuReportSearchBean> {
+public class ReportGongDanXiangMuAction extends BaseActionSupport implements
+		ModelDriven<GongDanXiangMuReportSearchBean> {
 
 	@Resource()
 	private ReportService reportService;
@@ -40,7 +39,7 @@ public class ReportGongDanXiangMuAction extends BaseActionSupport
 	};
 	private String easyUiJSonData;
 
-	@Action(value = "reportGongDanXiangMu", results = {@Result(name = "input", location = "reportGongDanXiangMu.jsp")})
+	@Action(value = "reportGongDanXiangMu", results = { @Result(name = "input", location = "reportGongDanXiangMu.jsp") })
 	public String reportGongDanXiangMu() {
 		easyUiJSonData = reportService.getGongDanXiangMuReportEasyUiJSon(query);
 		return INPUT;
@@ -59,8 +58,10 @@ public class ReportGongDanXiangMuAction extends BaseActionSupport
 
 		String templateFileName = this.getClass().getClassLoader()
 				.getResource("report/GongDanXiangMuReport.xls").getPath();
-		String destFileName = String.format("工单维修项目清单%s-%s.xls",
-				query.getTxtRuChangDateBegin(), query.getTxtRuChangDateEnd());
+		String destFileName = String.format(
+				"工单维修项目清单%s.xls",
+				ReportUtil.getDateInfo(query.getTxtRuChangDateBegin(),
+						query.getTxtRuChangDateEnd()));
 		Map<String, List<GongDanXiangMuReport>> beans = new HashMap<String, List<GongDanXiangMuReport>>();
 		beans.put("recordLst", recordLst);
 
